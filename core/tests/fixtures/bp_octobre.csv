@@ -1,0 +1,13 @@
+Date de comptabilisation;Libelle simplifie;Libelle operation;Reference;Informations complementaires;Type operation;Categorie;Sous categorie;Debit;Credit;Date operation;Date de valeur;Pointage operation
+02/11/2026;BOULANGERIE DES LILAS;CB BOULANGERIE DES LILAS 31/10;REFA001;311026 CB****0000-;Carte bancaire;Alimentation;Petit commercant;-4,20;;31/10/2026;31/10/2026;0
+31/10/2026;CAFÉ DES ARTS;CB CAFÉ DES ARTS;REFA002;301026 CB****0000-;Carte bancaire;Loisirs et vacances;Bar;-7,50;;30/10/2026;30/10/2026;0
+31/10/2026;CAFÉ DES ARTS;CB CAFÉ DES ARTS;REFA002;301026 CB****0000-;Carte bancaire;Loisirs et vacances;Bar;-7,50;;30/10/2026;30/10/2026;0
+29/10/2026;VIR EPARGNE;VIR SEPA VERS LIVRET;SERIE01;;Virement;Transaction exclue;Virement interne;-50,00;;29/10/2026;29/10/2026;0
+22/10/2026;VIR EPARGNE;VIR SEPA VERS LIVRET;SERIE01;;Virement;Transaction exclue;Virement interne;-50,00;;22/10/2026;22/10/2026;0
+15/10/2026;VIR EPARGNE;VIR SEPA VERS LIVRET;SERIE01;;Virement;Transaction exclue;Virement interne;-75,00;;15/10/2026;15/10/2026;0
+12/10/2026;PHARMACIE DE LA GARE;CB PHARMACIE DE LA GARE;REFA003;;Carte bancaire;Sante;Pharmacie;-18,35;;10/10/2026;10/10/2026;0
+10/10/2026;ECHEANCE PRET;PRLV ECHEANCE PRET IMMO;REFA004;;Prelevement;Banque et assurances;Banque et assurance - autre;-392,15;;10/10/2026;10/10/2026;0
+08/10/2026;HYPERMARCHÉ NORD;CB HYPERMARCHÉ NORD;REFA005;;Carte bancaire;Alimentation;Hyper/supermarche;-86,90;;07/10/2026;07/10/2026;0
+06/10/2026;RETRAIT DAB;RETRAIT DAB CENTRE;REFA006;;Retrait;A categoriser - sortie d'argent;Retrait d'especes - a categoriser;-40,00;;06/10/2026;06/10/2026;0
+05/10/2026;BOUTIQUE NOUVELLE;CB BOUTIQUE NOUVELLE;REFA007;;Carte bancaire;Nouveautes;Inconnue;-23,00;;04/10/2026;04/10/2026;0
+01/10/2026;SALAIRE;VIR SEPA SALAIRE EMPLOYEUR;REFA008;;Virement;Revenus et rentrees d'argent;Salaires;;2415,00;01/10/2026;01/10/2026;0

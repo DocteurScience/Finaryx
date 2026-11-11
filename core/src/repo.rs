@@ -202,6 +202,29 @@ impl InsertOutcome {
     }
 }
 
+/// Normalised label and duplicate key of each operation, in order (the
+/// rank of identical operations counts from the start of `txns`).
+pub fn dedupe_keys(txns: &[NewTransaction]) -> Vec<(String, String)> {
+    let mut counter = OccurrenceCounter::default();
+    txns.iter()
+        .map(|t| {
+            let date = t.booked_on.to_string();
+            let norm = label_norm(&t.label);
+            let reference = t.reference.as_deref().filter(|r| !r.is_empty());
+            let n = counter.next(&date, t.amount_cents, &norm, reference);
+            let key = dedupe_key(&date, t.amount_cents, &norm, reference, n);
+            (norm, key)
+        })
+        .collect()
+}
+
+/// Whether the account already has an operation with this key.
+pub fn has_dedupe_key(conn: &Connection, account_id: Id, key: &str) -> Result<bool> {
+    Ok(conn
+        .prepare_cached("SELECT 1 FROM txn WHERE account_id = ?1 AND dedupe_key = ?2")?
+        .exists(params![account_id, key])?)
+}
+
 /// Inserts operations of one account, skipping those already present
 /// (same duplicate key). Run it inside a transaction to make an import
 /// atomic.
@@ -218,14 +241,8 @@ pub fn insert_transactions(
          VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)
          ON CONFLICT (account_id, dedupe_key) DO NOTHING",
     )?;
-    let mut counter = OccurrenceCounter::default();
     let mut outcome = InsertOutcome::default();
-    for t in txns {
-        let date = t.booked_on.to_string();
-        let norm = label_norm(&t.label);
-        let reference = t.reference.as_deref().filter(|r| !r.is_empty());
-        let n = counter.next(&date, t.amount_cents, &norm, reference);
-        let key = dedupe_key(&date, t.amount_cents, &norm, reference, n);
+    for (t, (norm, key)) in txns.iter().zip(dedupe_keys(txns)) {
         let changed = stmt.execute(params![
             account_id,
             batch_id,

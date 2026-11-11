@@ -3,9 +3,11 @@
 //! This crate must not depend on GTK so that it stays fully unit-tested.
 
 pub mod accounts;
+pub mod categorize;
 pub mod dates;
 pub mod db;
 pub mod demo;
+pub mod importers;
 pub mod models;
 pub mod money;
 pub mod normalize;
