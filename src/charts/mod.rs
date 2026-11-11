@@ -101,4 +101,3 @@ pub fn rounded_rect(cr: &gtk::cairo::Context, x: f64, y: f64, w: f64, h: f64, r:
     );
     cr.close_path();
 }
-

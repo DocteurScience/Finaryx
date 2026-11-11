@@ -114,10 +114,7 @@ mod tests {
     fn normalises_labels() {
         assert_eq!(label_norm("CB****1234 Supermarche 12/10"), "CB SUPERMARCHE");
         assert_eq!(label_norm("Marché Saint-Germain"), "MARCHE SAINT GERMAIN");
-        assert_eq!(
-            label_norm("  CLINIQUE   des pins  "),
-            "CLINIQUE DES PINS"
-        );
+        assert_eq!(label_norm("  CLINIQUE   des pins  "), "CLINIQUE DES PINS");
         assert_eq!(label_norm("Œuvre & cœur"), "OEUVRE COEUR");
         assert_eq!(
             label_norm("PRLV SEPA 2026-10-05 REF:AB12CD"),
