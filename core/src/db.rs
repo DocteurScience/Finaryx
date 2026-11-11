@@ -16,7 +16,7 @@ pub const APPLICATION_ID: i32 = 0x464E_5258;
 /// Ordered list of migrations. Migration `i` (0-based) brings the schema
 /// from version `i` to `i + 1`. Never edit a migration that has shipped:
 /// append a new one.
-pub const MIGRATIONS: &[&str] = &[MIGRATION_1];
+pub const MIGRATIONS: &[&str] = &[MIGRATION_1, MIGRATION_2];
 
 /// Schema version written by this build of the application.
 pub const SCHEMA_VERSION: i32 = MIGRATIONS.len() as i32;
@@ -253,6 +253,22 @@ BEGIN
 END;
 "#;
 
+/// Version 2: names of the household (transfers from these people are
+/// proposed as "Virement interne"), and the pairs of operations the user
+/// said were not a transfer between their accounts.
+const MIGRATION_2: &str = r#"
+CREATE TABLE household_name (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE COLLATE NOCASE CHECK (trim(name) <> '')
+);
+
+CREATE TABLE transfer_rejection (
+  debit_id INTEGER NOT NULL REFERENCES txn(id) ON DELETE CASCADE,
+  credit_id INTEGER NOT NULL REFERENCES txn(id) ON DELETE CASCADE,
+  PRIMARY KEY (debit_id, credit_id)
+);
+"#;
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -269,6 +285,31 @@ mod tests {
             .pragma_query_value(None, "foreign_keys", |r| r.get(0))
             .unwrap();
         assert!(fk);
+    }
+
+    #[test]
+    fn version_1_databases_are_upgraded() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("v1.db");
+        {
+            let mut conn = Connection::open(&path).unwrap();
+            let tx = conn.transaction().unwrap();
+            tx.execute_batch(MIGRATIONS[0]).unwrap();
+            tx.pragma_update(None, "application_id", APPLICATION_ID)
+                .unwrap();
+            tx.pragma_update(None, "user_version", 1).unwrap();
+            tx.commit().unwrap();
+            conn.execute("INSERT INTO bank (name) VALUES ('Banque A')", [])
+                .unwrap();
+        }
+        let conn = open(&path).unwrap();
+        assert_eq!(schema_version(&conn).unwrap(), SCHEMA_VERSION);
+        conn.execute("INSERT INTO household_name (name) VALUES ('MARTIN')", [])
+            .unwrap();
+        let n: i64 = conn
+            .query_row("SELECT count(*) FROM bank", [], |r| r.get(0))
+            .unwrap();
+        assert_eq!(n, 1);
     }
 
     #[test]
