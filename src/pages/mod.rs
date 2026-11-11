@@ -273,3 +273,255 @@ pub fn clear(container: &gtk::Box) {
         container.remove(&child);
     }
 }
+
+pub mod cumulative;
+pub mod month;
+pub mod operations;
+pub mod overview;
+
+/// Percentage of `part` in `total` with one decimal, "20,9" (integer
+/// arithmetic, half up).
+pub fn pct1(part: i64, total: i64) -> String {
+    if total == 0 {
+        return "0,0".into();
+    }
+    let tenths = (part as i128 * 1000 + total as i128 / 2) / total as i128;
+    let sign = if tenths < 0 { "\u{2212}" } else { "" };
+    let t = tenths.abs();
+    format!("{sign}{},{}", t / 10, t % 10)
+}
+
+/// Percentage without decimals, "21".
+pub fn pct0(part: i64, total: i64) -> String {
+    if total == 0 {
+        return "0".into();
+    }
+    ((part as i128 * 100 + total as i128 / 2) / total as i128).to_string()
+}
+
+/// Size of the value of a key figure card.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum KpiSize {
+    /// 32 px (total balance).
+    Large,
+    /// 26 px.
+    Medium,
+    /// 20 px, narrow layout (2 cards per line).
+    Small,
+}
+
+/// A key figure card: caption, value, note.
+pub fn kpi_card(title: &str, value: &str, note: &str, size: KpiSize) -> gtk::Box {
+    let card = gtk::Box::builder()
+        .orientation(gtk::Orientation::Vertical)
+        .spacing(2)
+        .css_classes(["card", "kpi"])
+        .build();
+    card.append(&caption(title));
+    card.append(
+        &gtk::Label::builder()
+            .label(value)
+            .xalign(0.0)
+            .css_classes([match size {
+                KpiSize::Large => "amount-large",
+                KpiSize::Medium => "amount-medium",
+                KpiSize::Small => "amount-small",
+            }])
+            .build(),
+    );
+    if !note.is_empty() {
+        card.append(&caption(note));
+    }
+    card
+}
+
+/// Section title with a link to the detailed page on the right
+/// ("Détail du mois ›").
+/// Link of a section title: its label and what it opens.
+pub type SectionLink<'a> = Option<(&'a str, Box<dyn Fn()>)>;
+
+pub fn section_header(title: &str, link: SectionLink) -> gtk::Box {
+    let header = gtk::Box::builder().spacing(12).build();
+    let h = heading(title);
+    h.set_hexpand(true);
+    header.append(&h);
+    if let Some((label, action)) = link {
+        let content = gtk::Box::builder().spacing(4).build();
+        content.append(&gtk::Label::new(Some(label)));
+        content.append(&gtk::Image::from_icon_name("go-next-symbolic"));
+        let button = gtk::Button::builder()
+            .child(&content)
+            .css_classes(["flat", "link-button"])
+            .build();
+        button.connect_clicked(move |_| action());
+        header.append(&button);
+    }
+    header
+}
+
+/// A card with padding, holding `children` vertically.
+pub fn chart_card(children: &[&gtk::Widget]) -> gtk::Box {
+    let card = gtk::Box::builder()
+        .orientation(gtk::Orientation::Vertical)
+        .spacing(14)
+        .css_classes(["card", "padded"])
+        .build();
+    for c in children {
+        card.append(*c);
+    }
+    card
+}
+
+/// FlowBoxes used for layout only: their children are not focusable
+/// (they hold no action; the widgets inside keep their own focus).
+pub fn unfocusable_children(flow: &gtk::FlowBox) {
+    let mut child = flow.first_child();
+    while let Some(c) = child {
+        c.set_focusable(false);
+        child = c.next_sibling();
+    }
+}
+
+/// A legend: items side by side, wrapping when there is no room.
+pub fn legend(items: &[gtk::Box]) -> gtk::FlowBox {
+    let flow = gtk::FlowBox::builder()
+        .selection_mode(gtk::SelectionMode::None)
+        .max_children_per_line(6)
+        .column_spacing(20)
+        .row_spacing(6)
+        .build();
+    for item in items {
+        flow.append(item);
+    }
+    unfocusable_children(&flow);
+    flow
+}
+
+/// Legend item: a short line (dashed or not) or a square, and a label.
+pub fn legend_item(kind: crate::charts::LegendMark, label: &str) -> gtk::Box {
+    let item = gtk::Box::builder().spacing(8).build();
+    item.append(&crate::charts::legend_mark(kind));
+    item.append(
+        &gtk::Label::builder()
+            .label(label)
+            .css_classes(["caption"])
+            .build(),
+    );
+    item
+}
+
+/// "octobre 2026" with a capital: "Octobre 2026".
+pub fn capitalized(text: &str) -> String {
+    let mut chars = text.chars();
+    match chars.next() {
+        Some(c) => c.to_uppercase().collect::<String>() + chars.as_str(),
+        None => String::new(),
+    }
+}
+
+/// An empty state inside a page.
+pub fn empty_state(icon: &str, title: &str, description: &str) -> adw::StatusPage {
+    adw::StatusPage::builder()
+        .icon_name(icon)
+        .title(title)
+        .description(description)
+        .css_classes(["compact"])
+        .build()
+}
+
+/// "17 opérations"
+pub fn n_ops(n: i64) -> String {
+    gettextrs::ngettext(
+        "{n} opération",
+        "{n} opérations",
+        n.clamp(0, u32::MAX as i64) as u32,
+    )
+    .replace("{n}", &n.to_string())
+}
+
+/// "Détail de « Autres »": the categories grouped in grey in the charts.
+pub fn show_others_dialog(
+    parent: &impl IsA<gtk::Widget>,
+    part: &finaryx_core::stats::ChartPart,
+    month: chrono::NaiveDate,
+    currency: &str,
+) {
+    use gettextrs::gettext;
+    let list = boxed_list();
+    for m in &part.members {
+        let name = if m.category_id == finaryx_core::models::builtin::OTHERS {
+            gettext("Non classé")
+        } else {
+            m.name.clone()
+        };
+        let row = adw::ActionRow::builder()
+            .title(name)
+            .subtitle(n_ops(m.operations))
+            .build();
+        row.add_suffix(
+            &gtk::Label::builder()
+                .label(format!(
+                    "{}   {}\u{a0}%",
+                    amount(m.amount, currency, Sign::Negative),
+                    pct1(m.amount, part.amount)
+                ))
+                .css_classes(["numeric"])
+                .build(),
+        );
+        list.append(&row);
+    }
+    let content = gtk::Box::builder()
+        .orientation(gtk::Orientation::Vertical)
+        .spacing(12)
+        .margin_top(12)
+        .margin_bottom(24)
+        .margin_start(12)
+        .margin_end(12)
+        .build();
+    content.append(&caption(
+        &gettext("{month} · {amount} regroupés dans « Autres » dans les graphiques")
+            .replace("{month}", &capitalized(&chrono_month(month)))
+            .replace("{amount}", &amount(part.amount, currency, Sign::Negative)),
+    ));
+    content.append(&list);
+    content.append(&caption(&gettext(
+        "Les graphiques montrent au plus 8 couleurs. Les catégories sans couleur sont comptées ici ; les listes et \
+         les tableaux les montrent séparément.",
+    )));
+    let buttons = gtk::Box::builder()
+        .spacing(12)
+        .halign(gtk::Align::End)
+        .build();
+    let manage = gtk::Button::builder()
+        .label(gettext("Gérer les couleurs…"))
+        .action_name("win.categories")
+        .build();
+    let close = gtk::Button::builder()
+        .label(gettext("Fermer"))
+        .css_classes(["suggested-action"])
+        .build();
+    buttons.append(&manage);
+    buttons.append(&close);
+    content.append(&buttons);
+    let toolbar = adw::ToolbarView::new();
+    toolbar.add_top_bar(&adw::HeaderBar::new());
+    toolbar.set_content(Some(&content));
+    let dialog = adw::Dialog::builder()
+        .title(gettext("Détail de « Autres »"))
+        .content_width(440)
+        .child(&toolbar)
+        .build();
+    let d = dialog.clone();
+    close.connect_clicked(move |_| {
+        d.close();
+    });
+    let d = dialog.clone();
+    manage.connect_clicked(move |_| {
+        d.close();
+    });
+    dialog.present(Some(parent));
+}
+
+fn chrono_month(m: chrono::NaiveDate) -> String {
+    finaryx_core::dates::month_year(m)
+}

@@ -209,6 +209,7 @@ impl AccountDetailPage {
                         .collect(),
                     x_labels,
                     values: values.clone(),
+                    ..Default::default()
                 };
                 let description =
                     gettext("Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}")

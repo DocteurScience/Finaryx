@@ -11,7 +11,11 @@ src/application.rs
 src/database.rs
 src/pages/account_detail.rs
 src/pages/accounts.rs
+src/pages/cumulative.rs
 src/pages/import.rs
 src/pages/mod.rs
+src/pages/month.rs
+src/pages/operations.rs
+src/pages/overview.rs
 src/preferences.rs
 src/window.rs

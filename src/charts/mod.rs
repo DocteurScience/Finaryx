@@ -1,6 +1,9 @@
 //! Charts drawn with Cairo. Colours always come from the current theme
 //! (`data/style.css`, `data/style-dark.css`), never from the code.
 
+pub mod bars;
+pub mod columns;
+pub mod donut;
 pub mod line;
 pub mod share_bar;
 pub mod sparkline;
@@ -100,4 +103,137 @@ pub fn rounded_rect(cr: &gtk::cairo::Context, x: f64, y: f64, w: f64, h: f64, r:
         1.5 * std::f64::consts::PI,
     );
     cr.close_path();
+}
+
+/// Anchor of a text drawn with [`draw_text`].
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Align {
+    StartMiddle,
+    StartBottom,
+    EndMiddle,
+    CenterTop,
+    CenterBottom,
+    Center,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum TextStyle {
+    /// Secondary text, 12 px (axis labels).
+    Dim,
+    /// Bold, 13 px (values).
+    Bold,
+    /// Bold, 12 px, in the given colour (labels inside parts).
+    OnColor(gdk::RGBA),
+    /// Large bold (centre of the ring).
+    Large,
+}
+
+/// Draws a one-line text at (x, y) with the given anchor.
+pub fn draw_text(
+    widget: &impl IsA<gtk::Widget>,
+    cr: &gtk::cairo::Context,
+    text: &str,
+    x: f64,
+    y: f64,
+    align: Align,
+    style: TextStyle,
+) {
+    use gtk::pango;
+    let layout = widget.as_ref().create_pango_layout(Some(text));
+    let attrs = pango::AttrList::new();
+    attrs.insert(pango::AttrFontFeatures::new("tnum"));
+    let color = match style {
+        TextStyle::Dim => {
+            attrs.insert(pango::AttrFloat::new_scale(0.8));
+            let mut c = widget.as_ref().color();
+            c.set_alpha(0.7);
+            c
+        }
+        TextStyle::Bold => {
+            attrs.insert(pango::AttrFloat::new_scale(0.87));
+            attrs.insert(pango::AttrInt::new_weight(pango::Weight::Bold));
+            widget.as_ref().color()
+        }
+        TextStyle::OnColor(c) => {
+            attrs.insert(pango::AttrFloat::new_scale(0.8));
+            attrs.insert(pango::AttrInt::new_weight(pango::Weight::Bold));
+            c
+        }
+        TextStyle::Large => {
+            attrs.insert(pango::AttrFloat::new_scale(1.33));
+            attrs.insert(pango::AttrInt::new_weight(pango::Weight::Bold));
+            widget.as_ref().color()
+        }
+    };
+    layout.set_attributes(Some(&attrs));
+    let (w, h) = layout.pixel_size();
+    let (w, h) = (w as f64, h as f64);
+    let (dx, dy) = match align {
+        Align::StartMiddle => (0.0, -h / 2.0),
+        Align::StartBottom => (0.0, -h),
+        Align::EndMiddle => (-w, -h / 2.0),
+        Align::CenterTop => (-w / 2.0, 0.0),
+        Align::CenterBottom => (-w / 2.0, -h),
+        Align::Center => (-w / 2.0, -h / 2.0),
+    };
+    set_source(cr, &color);
+    cr.move_to(x + dx, y + dy);
+    pangocairo::functions::show_layout(cr, &layout);
+}
+
+/// Mark of a legend item.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum LegendMark {
+    /// Solid line of the main series.
+    Line,
+    /// Dashed grey line of the previous period.
+    Ghost,
+    /// Dashed line of the main series (forecast, step 7).
+    #[allow(dead_code)]
+    Dashed,
+    /// Square of the daily bars.
+    Bars,
+    /// Square of the forecast range (step 7).
+    #[allow(dead_code)]
+    Band,
+}
+
+pub fn legend_mark(kind: LegendMark) -> gtk::DrawingArea {
+    let area = gtk::DrawingArea::builder()
+        .content_width(20)
+        .content_height(10)
+        .valign(gtk::Align::Center)
+        .build();
+    area.set_draw_func(move |area, cr, w, h| {
+        let (w, h) = (w as f64, h as f64);
+        match kind {
+            LegendMark::Line | LegendMark::Ghost | LegendMark::Dashed => {
+                let color = if kind == LegendMark::Ghost {
+                    "finaryx_ghost"
+                } else {
+                    "finaryx_s1"
+                };
+                set_source(cr, &theme_color(area, color));
+                if kind != LegendMark::Line {
+                    cr.set_dash(&[5.0, 4.0], 0.0);
+                }
+                cr.set_line_width(2.0);
+                cr.move_to(0.0, h / 2.0);
+                cr.line_to(w, h / 2.0);
+                let _ = cr.stroke();
+            }
+            LegendMark::Bars | LegendMark::Band => {
+                let color = if kind == LegendMark::Bars {
+                    "finaryx_bars"
+                } else {
+                    "finaryx_band"
+                };
+                set_source(cr, &theme_color(area, color));
+                cr.rectangle(0.0, 0.0, w, h);
+                let _ = cr.fill();
+            }
+        }
+    });
+    redraw_on_theme_change(&area);
+    area
 }

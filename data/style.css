@@ -78,3 +78,47 @@
 .warning-card {
   box-shadow: inset 0 0 0 1px alpha(@warning_color, 0.6);
 }
+
+/* Key figures (design/Main.dc.html: 16 px 18 px padding). */
+.card.kpi {
+  padding: 16px 18px;
+}
+
+.amount-medium {
+  font-size: 1.73em;
+  font-weight: 700;
+  font-feature-settings: "tnum";
+}
+
+/* "Détail du mois ›" links of the section titles. */
+.link-button {
+  color: @accent_color;
+  font-weight: 500;
+}
+
+/* Table of the cumulative view. */
+.data-table label {
+  font-feature-settings: "tnum";
+}
+
+.data-table .header {
+  font-weight: 700;
+}
+
+/* Lines of the lists inside chart cards. */
+.list-line {
+  min-height: 40px;
+  border-top: 1px solid alpha(@window_fg_color, 0.08);
+}
+
+/* Category chips of the operations list: the selected one is circled in
+ * the accent colour (design/Operations.dc.html). */
+.chip:checked {
+  box-shadow: inset 0 0 0 2px @accent_color;
+}
+
+.amount-small {
+  font-size: 1.27em;
+  font-weight: 700;
+  font-feature-settings: "tnum";
+}

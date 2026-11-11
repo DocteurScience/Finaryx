@@ -5,7 +5,7 @@ Finaryx is a modern, open-source personal finance application for Linux. Track b
 
 Application GNOME de suivi de comptes bancaires : import de CSV de n'importe quelle banque (mappage des colonnes), base SQLite locale, évolution du mois, répartition des dépenses, cumul, prévision, catégories personnalisées, export de la base. Interface en français. Aucune donnée n'est envoyée en ligne.
 
-État : **étape 4 du plan** — navigation, thème clair/sombre, base SQLite avec migrations, données de démonstration (`--demo`), page Comptes (ajout, modification, archivage, suppression, annulation d’un import), import CSV générique (détection du format, mappage des colonnes, profils, aperçu, doublons, import atomique). Les graphiques viennent ensuite.
+État : **étape 5 du plan** — navigation, thème clair/sombre, base SQLite avec migrations, données de démonstration (`--demo`), page Comptes (ajout, modification, archivage, suppression, annulation d’un import), import CSV générique (détection du format, mappage des colonnes, profils, aperçu, doublons, import atomique), vue d’ensemble, mois en détail, cumul et liste des opérations avec graphiques Cairo. Prévisions et catégories viennent ensuite.
 
 ## Compiler et lancer
 ```

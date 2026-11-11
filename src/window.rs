@@ -16,7 +16,11 @@ use crate::account_dialog::{self, Field};
 use crate::database::{self, Source};
 use crate::pages::account_detail::{self, AccountDetailPage};
 use crate::pages::accounts::{self as accounts_page, AccountsPage};
+use crate::pages::cumulative::CumulativePage;
 use crate::pages::import::ImportPage;
+use crate::pages::month::MonthPage;
+use crate::pages::operations::OperationsPage;
+use crate::pages::overview::OverviewPage;
 use crate::pages::{self, MAIN_PAGES};
 
 /// Sidebar index of the "Importer un CSV" row (after the main pages).
@@ -78,6 +82,18 @@ mod imp {
         pub accounts_page: OnceCell<AccountsPage>,
         /// Account detail currently pushed, if any.
         pub detail: RefCell<Option<Rc<AccountDetailPage>>>,
+        pub overview_page: OnceCell<OverviewPage>,
+        pub month_page: OnceCell<MonthPage>,
+        pub cumulative_page: OnceCell<CumulativePage>,
+        pub operations_page: RefCell<Option<Rc<OperationsPage>>>,
+        /// Drop-down of the account filter shared by the views.
+        pub filter_master: OnceCell<gtk::DropDown>,
+        /// Account ids of the filter (index 0 is "Tous les comptes").
+        pub filter_ids: RefCell<Vec<i64>>,
+        /// Rows holding the account filter (and the page controls).
+        pub filter_rows: RefCell<Vec<gtk::Box>>,
+        /// Header subtitle of each main page.
+        pub subtitles: RefCell<std::collections::HashMap<&'static str, String>>,
         /// Import page currently pushed, if any.
         pub import_page: RefCell<Option<Rc<ImportPage>>>,
         /// "4 comptes · 3 banques"
@@ -165,6 +181,7 @@ impl FinaryxWindow {
             glib::g_warning!("finaryx", "Cannot read the database: {e}");
             self.toast(&gettext("Impossible de lire la base de données."));
         }
+        self.refresh_views();
     }
 
     fn try_reload(&self) -> finaryx_core::db::Result<()> {
@@ -203,6 +220,8 @@ impl FinaryxWindow {
         imp.summary.replace(summary);
         self.sync_with_stack();
 
+        imp.filter_ids
+            .replace(accounts.iter().map(|a| a.id).collect());
         imp.accounts_page.get().unwrap().refresh(conn, today())?;
         let detail = imp.detail.borrow().clone();
         if let Some(detail) = detail {
@@ -276,13 +295,46 @@ impl FinaryxWindow {
             undo_import: Rc::new(undo_import),
         });
 
+        let overview = OverviewPage::new(self);
+        let month = MonthPage::new(self);
+        let cumulative = CumulativePage::new(self);
+
         for page in MAIN_PAGES.iter() {
-            let content: Option<gtk::Widget> =
-                (page.name == "accounts").then(|| accounts.root.clone().upcast());
+            let content: Option<gtk::Widget> = match page.name {
+                "accounts" => Some(accounts.root.clone().upcast()),
+                "overview" => Some(overview.root.clone().upcast()),
+                "month" => Some(month.root.clone().upcast()),
+                "cumulative" => Some(cumulative.root.clone().upcast()),
+                _ => None,
+            };
             let widgets =
                 pages::build_main_page(page, &accounts_model, master.as_ref(), content.as_ref());
             imp.page_bodies.borrow_mut().push(widgets.body);
-            imp.summary_labels.borrow_mut().extend(widgets.summary);
+            // Controls of the page next to the account filter.
+            let extra: Option<gtk::Widget> = match page.name {
+                "month" => Some(month.navigation.clone().upcast()),
+                "cumulative" => Some(cumulative.periods.clone().upcast()),
+                _ => None,
+            };
+            if let Some(row) = widgets
+                .summary
+                .as_ref()
+                .and_then(|l| l.parent())
+                .and_downcast::<gtk::Box>()
+            {
+                imp.filter_rows.borrow_mut().push(row);
+            }
+            match (&widgets.summary, extra) {
+                (Some(summary), Some(extra)) => {
+                    summary.set_visible(false);
+                    extra.set_hexpand(true);
+                    if let Some(row) = summary.parent().and_downcast::<gtk::Box>() {
+                        row.append(&extra);
+                    }
+                }
+                (Some(summary), None) => imp.summary_labels.borrow_mut().push(summary.clone()),
+                _ => {}
+            }
             if master.is_none() {
                 master = widgets.account_filter;
             }
@@ -293,6 +345,114 @@ impl FinaryxWindow {
         }
         imp.accounts_model.set(accounts_model).unwrap();
         let _ = imp.accounts_page.set(accounts);
+        let _ = imp.overview_page.set(overview);
+        let _ = imp.month_page.set(month);
+        let _ = imp.cumulative_page.set(cumulative);
+        if let Some(master) = master {
+            master.connect_selected_notify(glib::clone!(
+                #[weak(rename_to = window)]
+                self,
+                move |_| window.refresh_views()
+            ));
+            let _ = imp.filter_master.set(master);
+        }
+    }
+
+    /// Accounts of the current filter (`None`: all accounts).
+    pub fn selected_account(&self) -> Option<i64> {
+        let imp = self.imp();
+        let index = imp.filter_master.get()?.selected() as usize;
+        index
+            .checked_sub(1)
+            .and_then(|i| imp.filter_ids.borrow().get(i).copied())
+    }
+
+    /// Rebuilds the overview, month and cumulative views.
+    pub fn refresh_views(&self) {
+        let imp = self.imp();
+        let narrow = imp.narrow.get();
+        // Narrow layout: the page controls go under the account filter.
+        for row in imp.filter_rows.borrow().iter() {
+            row.set_orientation(if narrow {
+                gtk::Orientation::Vertical
+            } else {
+                gtk::Orientation::Horizontal
+            });
+            let mut child = row.first_child();
+            while let Some(c) = child {
+                if c.has_css_class("dim-label") || c.downcast_ref::<gtk::DropDown>().is_none() {
+                    c.set_halign(if narrow {
+                        gtk::Align::Start
+                    } else {
+                        gtk::Align::End
+                    });
+                }
+                child = c.next_sibling();
+            }
+        }
+        let selected = self.selected_account();
+        let result = self.read(|conn| {
+            let scope = finaryx_core::stats::scope(conn, selected)?;
+            let s = scope.as_ref();
+            Ok([
+                (
+                    "overview",
+                    imp.overview_page.get().unwrap().refresh(conn, s, narrow)?,
+                ),
+                (
+                    "month",
+                    imp.month_page.get().unwrap().refresh(conn, s, narrow)?,
+                ),
+                (
+                    "cumulative",
+                    imp.cumulative_page
+                        .get()
+                        .unwrap()
+                        .refresh(conn, s, narrow)?,
+                ),
+            ])
+        });
+        if let Some(subtitles) = result {
+            imp.subtitles.borrow_mut().extend(subtitles);
+        }
+        self.sync_with_stack();
+    }
+
+    /// Previous (-1) or next (+1) month in "Mois en détail".
+    pub fn shift_month(&self, delta: i32) {
+        let page = self.imp().month_page.get().unwrap();
+        if let Some(m) = page.month.get() {
+            let m = if delta < 0 {
+                finaryx_core::stats::previous_month(m)
+            } else {
+                finaryx_core::stats::next_month(m)
+            };
+            page.month.set(Some(m));
+            self.refresh_views();
+        }
+    }
+
+    pub fn set_cumulative_months(&self, n: usize) {
+        let page = self.imp().cumulative_page.get().unwrap();
+        if page.months.replace(n) != n {
+            self.refresh_views();
+        }
+    }
+
+    /// Opens the list of operations with these filters.
+    pub fn show_operations(
+        &self,
+        account: Option<i64>,
+        month: Option<NaiveDate>,
+        category: Option<i64>,
+    ) {
+        let imp = self.imp();
+        let page = OperationsPage::new(self);
+        imp.content_nav.pop_to_tag("main");
+        imp.content_nav.push(&page.page);
+        page.setup(account, month, category);
+        imp.operations_page.replace(Some(page));
+        imp.split_view.set_show_content(true);
     }
 
     fn setup_sidebar(&self) {
@@ -481,7 +641,11 @@ impl FinaryxWindow {
         let subtitle = if on_accounts {
             imp.summary.borrow().clone()
         } else {
-            String::new()
+            imp.subtitles
+                .borrow()
+                .get(page.name)
+                .cloned()
+                .unwrap_or_default()
         };
         imp.window_title.set_subtitle(&subtitle);
         imp.import_button.set_visible(!on_accounts && !narrow);
@@ -759,14 +923,9 @@ impl FinaryxWindow {
                     window.confirm_delete_account(id);
                 }
             }),
-            see_all: Rc::new(move |_| {
+            see_all: Rc::new(move |id| {
                 if let Some(window) = w4() {
-                    window.push_sub_page(
-                        "operations",
-                        &gettext("Opérations"),
-                        "view-list-bullet-symbolic",
-                        5,
-                    );
+                    window.show_operations(Some(id), None, None);
                 }
             }),
         };

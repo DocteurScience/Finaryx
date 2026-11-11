@@ -13,6 +13,7 @@ pub mod money;
 pub mod normalize;
 pub mod repo;
 pub mod scale;
+pub mod stats;
 
 /// Re-exported so that the interface uses the same SQLite types.
 pub use rusqlite;
