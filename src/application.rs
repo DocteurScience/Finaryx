@@ -6,6 +6,7 @@ use gettextrs::gettext;
 use gtk::{gio, glib};
 
 use crate::config;
+use crate::database::Source;
 use crate::window::FinaryxWindow;
 
 mod imp {
@@ -14,6 +15,8 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct FinaryxApplication {
         pub settings: std::cell::OnceCell<gio::Settings>,
+        /// Set by `--demo`: work on demonstration data in memory.
+        pub demo: std::cell::Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -23,14 +26,40 @@ mod imp {
         type ParentType = adw::Application;
     }
 
-    impl ObjectImpl for FinaryxApplication {}
+    impl ObjectImpl for FinaryxApplication {
+        fn constructed(&self) {
+            self.parent_constructed();
+            self.obj().add_main_option(
+                "demo",
+                glib::Char::from(b'd'),
+                glib::OptionFlags::NONE,
+                glib::OptionArg::None,
+                &gettext("Ouvrir des données de démonstration (rien n’est enregistré)"),
+                None,
+            );
+        }
+    }
 
     impl ApplicationImpl for FinaryxApplication {
+        fn handle_local_options(&self, options: &glib::VariantDict) -> glib::ExitCode {
+            if options.contains("demo") {
+                self.demo.set(true);
+                // The demo runs beside a normal instance, never inside it.
+                let app = self.obj();
+                app.set_flags(app.flags() | gio::ApplicationFlags::NON_UNIQUE);
+            }
+            self.parent_handle_local_options(options)
+        }
+
         fn activate(&self) {
             let app = self.obj();
             let window = app.active_window().unwrap_or_else(|| {
-                let window = FinaryxWindow::new(&*app);
-                window.upcast()
+                let source = if self.demo.get() {
+                    Source::Demo
+                } else {
+                    Source::File(crate::database::default_path())
+                };
+                FinaryxWindow::new(&*app, &source).upcast()
             });
             window.present();
         }

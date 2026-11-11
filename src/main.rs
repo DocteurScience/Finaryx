@@ -1,5 +1,6 @@
 mod application;
 mod config;
+mod database;
 mod pages;
 mod preferences;
 mod settings;

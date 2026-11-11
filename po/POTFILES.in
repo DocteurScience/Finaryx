@@ -5,6 +5,7 @@ data/io.github.docteurscience.Finaryx.metainfo.xml.in
 data/ui/help-overlay.ui
 data/ui/window.ui
 src/application.rs
+src/database.rs
 src/pages.rs
 src/preferences.rs
 src/window.rs

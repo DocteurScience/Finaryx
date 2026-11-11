@@ -46,6 +46,16 @@
     <property name="content">
       <object class="AdwToastOverlay" id="toast_overlay">
         <property name="child">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+          <object class="GtkStack" id="root_stack">
+            <property name="vexpand">True</property>
+            <property name="transition-type">crossfade</property>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">main</property>
+                <property name="child">
           <object class="AdwNavigationSplitView" id="split_view">
             <property name="min-sidebar-width">260</property>
             <property name="max-sidebar-width">260</property>
@@ -109,6 +119,7 @@
                             </child>
                             <child>
                               <object class="GtkLabel" id="last_import_label">
+                                <property name="wrap-mode">word-char</property>
                                 <property name="xalign">0</property>
                                 <property name="wrap">True</property>
                                 <style>
@@ -199,6 +210,11 @@
                                 </child>
                               </object>
                             </child>
+                            <child type="top">
+                              <object class="AdwBanner" id="demo_banner">
+                                <property name="title" translatable="yes">Données de démonstration : rien n’est enregistré.</property>
+                              </object>
+                            </child>
                             <property name="content">
                               <object class="AdwViewStack" id="stack"/>
                             </property>
@@ -215,6 +231,148 @@
                 </property>
               </object>
             </property>
+          </object>
+                </property>
+              </object>
+            </child>
+
+            <!-- First launch: no account yet (design/Accueil.dc.html) -->
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">welcome</property>
+                <property name="child">
+                  <object class="AdwToolbarView">
+                    <child type="top">
+                      <object class="AdwHeaderBar">
+                        <child type="end">
+                          <object class="GtkMenuButton">
+                            <property name="icon-name">open-menu-symbolic</property>
+                            <property name="menu-model">primary_menu</property>
+                            <property name="primary">True</property>
+                            <property name="tooltip-text" translatable="yes">Menu principal</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <property name="content">
+                      <object class="AdwStatusPage">
+                        <property name="icon-name">finaryx-accounts-symbolic</property>
+                        <property name="title" translatable="yes">Bienvenue dans Finaryx</property>
+                        <property name="description" translatable="yes">Importez l’export CSV d’un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n’est envoyé en ligne.</property>
+                        <property name="child">
+                          <object class="AdwClamp">
+                            <property name="maximum-size">712</property>
+                            <property name="child">
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">40</property>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="halign">center</property>
+                                    <property name="spacing">12</property>
+                                    <child>
+                                      <object class="GtkButton">
+                                        <property name="label" translatable="yes">Importer un CSV</property>
+                                        <property name="action-name">win.import</property>
+                                        <style>
+                                          <class name="suggested-action"/>
+                                          <class name="pill"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton">
+                                        <property name="label" translatable="yes">Ajouter un compte d’abord</property>
+                                        <property name="action-name">win.add-account</property>
+                                        <style>
+                                          <class name="pill"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwPreferencesGroup">
+                                    <property name="title" translatable="yes">Pour commencer</property>
+                                    <child>
+                                      <object class="AdwActionRow">
+                                        <property name="title" translatable="yes">Exportez vos opérations en CSV</property>
+                                        <property name="subtitle" translatable="yes">Depuis le site ou l’application de votre banque, choisissez la période la plus longue possible.</property>
+                                        <child type="prefix">
+                                          <object class="GtkLabel">
+                                            <property name="label">1</property>
+                                            <property name="valign">center</property>
+                                            <style>
+                                              <class name="step-number"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="AdwActionRow">
+                                        <property name="title" translatable="yes">Importez le fichier dans Finaryx</property>
+                                        <property name="subtitle" translatable="yes">Le format est reconnu pour Boursorama, Banque Populaire et Revolut, sinon vous associez les colonnes une seule fois.</property>
+                                        <child type="prefix">
+                                          <object class="GtkLabel">
+                                            <property name="label">2</property>
+                                            <property name="valign">center</property>
+                                            <style>
+                                              <class name="step-number"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="AdwActionRow">
+                                        <property name="title" translatable="yes">Vérifiez les catégories</property>
+                                        <property name="subtitle" translatable="yes">Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle.</property>
+                                        <child type="prefix">
+                                          <object class="GtkLabel">
+                                            <property name="label">3</property>
+                                            <property name="valign">center</property>
+                                            <style>
+                                              <class name="step-number"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </property>
+                          </object>
+                        </property>
+                      </object>
+                    </property>
+                  </object>
+                </property>
+              </object>
+            </child>
+
+            <!-- The database could not be opened -->
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">error</property>
+                <property name="child">
+                  <object class="AdwToolbarView">
+                    <child type="top">
+                      <object class="AdwHeaderBar"/>
+                    </child>
+                    <property name="content">
+                      <object class="AdwStatusPage" id="error_page">
+                        <property name="icon-name">dialog-error-symbolic</property>
+                        <property name="title" translatable="yes">Impossible d’ouvrir la base de données</property>
+                      </object>
+                    </property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+            </child>
           </object>
         </property>
       </object>

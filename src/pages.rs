@@ -88,17 +88,26 @@ fn coming_soon(icon: &str, title: &str, step: u32) -> adw::StatusPage {
         .build()
 }
 
+/// Widgets of a main page that the window updates.
+pub struct MainPageWidgets {
+    /// Scrolled page added to the view stack.
+    pub root: gtk::Widget,
+    /// Body box; its side margins follow the layout (24 px, 12 px narrow).
+    pub body: gtk::Box,
+    pub account_filter: Option<gtk::DropDown>,
+    /// "4 comptes · 3 banques", next to the account filter.
+    pub summary: Option<gtk::Label>,
+}
+
 /// Builds the content of a main page: the account filter row, then the
-/// page body (a placeholder for now). Returns the scrolled page, its body
-/// box (whose side margins follow the layout: 24 px wide, 12 px narrow)
-/// and its account drop-down. `filter_master` is the drop-down of
+/// page body (a placeholder for now). `filter_master` is the drop-down of
 /// the first page; the others mirror its selection so that the filter
 /// applies to every view.
 pub fn build_main_page(
     page: &MainPage,
     accounts_model: &gtk::StringList,
     filter_master: Option<&gtk::DropDown>,
-) -> (gtk::Widget, gtk::Box, Option<gtk::DropDown>) {
+) -> MainPageWidgets {
     let body = gtk::Box::builder()
         .orientation(gtk::Orientation::Vertical)
         .spacing(24)
@@ -109,11 +118,11 @@ pub fn build_main_page(
         .build();
 
     let mut dropdown = None;
+    let mut summary_label = None;
     if page.has_account_filter {
         let filter = gtk::DropDown::builder()
             .model(accounts_model)
             .halign(gtk::Align::Start)
-            .tooltip_text(gettext("Compte affiché"))
             .build();
         filter.update_property(&[gtk::accessible::Property::Label(&gettext("Compte affiché"))]);
         if let Some(master) = filter_master {
@@ -133,6 +142,7 @@ pub fn build_main_page(
         row.append(&summary);
         body.append(&row);
         dropdown = Some(filter);
+        summary_label = Some(summary);
     }
 
     body.append(&coming_soon(
@@ -150,7 +160,12 @@ pub fn build_main_page(
         .hscrollbar_policy(gtk::PolicyType::Never)
         .child(&clamp)
         .build();
-    (scrolled.upcast(), body, dropdown)
+    MainPageWidgets {
+        root: scrolled.upcast(),
+        body,
+        account_filter: dropdown,
+        summary: summary_label,
+    }
 }
 
 /// A page pushed on top of the main view, with its own header bar and

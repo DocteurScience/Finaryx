@@ -12,6 +12,11 @@ pub const LOCALEDIR: &str = match option_env!("FINARYX_LOCALEDIR") {
     Some(dir) => dir,
     None => "/usr/share/locale",
 };
+/// "Devel" for development builds, empty otherwise.
+pub const PROFILE: &str = match option_env!("FINARYX_PROFILE") {
+    Some(profile) => profile,
+    None => "Devel",
+};
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 /// Base path of the compiled resources; libadwaita loads `style.css`,
 /// `style-dark.css`, `gtk/help-overlay.ui` and `icons/` from there.

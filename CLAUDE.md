@@ -21,6 +21,9 @@ Application GNOME de suivi de comptes bancaires (import CSV, base SQLite locale,
 ## Avant de coder les importeurs
 Le format **Banque Populaire** est vérifié sur un export réel (voir `FINARYX-SPEC.md`, section Import CSV, et `data/banque_populaire_category_map.csv`). Pour **Boursorama** et **Revolut**, demander à l'utilisateur un exemple anonymisé : leurs en-têtes dans le cahier des charges ne sont pas vérifiés. Ne jamais committer un export bancaire réel.
 
+## Données personnelles
+Ne jamais utiliser, citer ni committer de données issues des exports bancaires de l'utilisateur (montants, libellés, nombres de lignes, noms d'organismes…), y compris dans le cahier des charges, les tests ou les données de démonstration. Les données de démonstration viennent uniquement des chiffres d'exemple de la maquette.
+
 ## Décisions prises avec l'utilisateur (section 9 du cahier des charges)
 - **Pile : Rust** (gtk4-rs 0.9 + libadwaita-rs 0.7, GTK ≥ 4.14, libadwaita ≥ 1.5), Meson + Flatpak. Même architecture et même schéma de données que le cahier des charges : `core/` est la crate `finaryx-core` (sans GTK), `src/` est l'interface. Tests : `cargo test` (remplace pytest).
 - **Multi-devises : chaque compte dans sa propre devise**, totaux séparés par devise, aucune conversion. Montants en unités mineures (centimes pour l'euro). Formatage : `finaryx_core::money`.
@@ -30,14 +33,15 @@ Le format **Banque Populaire** est vérifié sur un export réel (voir `FINARYX-
 - Identifiant d'application : `io.github.docteurscience.Finaryx` (`.Devel` en profil développement).
 
 ## Organisation du code
-- `core/src/` : logique métier testée (pour l'instant `money.rs`).
-- `src/` : `application.rs` (actions globales), `window.rs` (navigation), `pages.rs` (pages), `preferences.rs`, `settings.rs`.
+- `core/src/` : logique métier testée — `db.rs` (ouverture, `application_id`, migrations dans `MIGRATIONS`, ne jamais modifier une migration publiée), `models.rs`, `repo.rs` (requêtes ; agrégats en SQL), `normalize.rs` (`label_norm`, clé anti-doublon), `money.rs`, `dates.rs`, `demo.rs` (données de démonstration).
+- `src/` : `application.rs` (actions globales, option `--demo`), `database.rs` (emplacement de la base), `window.rs` (navigation, accueil, rechargement), `pages.rs` (pages), `preferences.rs`, `settings.rs`.
 - `data/` : `ui/*.ui` (GtkBuilder), `style.css` / `style-dark.css` (couleurs de données reprises de `design/theme.css`, nommées `finaryx_c1`…), icônes, schéma GSettings, `.desktop`, metainfo. Ressources compilées par `build.rs` et intégrées au binaire.
 - Icônes de navigation : générées depuis les tracés de la maquette par `build-aux/gen-icons.py`.
 
 ## Commandes
 - Dépendances (Debian/Ubuntu) : `libgtk-4-dev libadwaita-1-dev meson ninja-build desktop-file-utils appstream gettext`, plus Rust stable.
-- Lancer en développement : `cargo run` (le schéma GSettings est compilé dans `target/` par `build.rs`).
+- Lancer en développement : `cargo run` (le schéma GSettings est compilé dans `target/` par `build.rs`). Base : `~/.local/share/finaryx/finaryx.db` (`finaryx-devel/` pour les builds de développement).
+- Données de démonstration (en mémoire, rien n'est écrit) : `cargo run -- --demo`.
 - Tests de la logique : `cargo test --workspace`.
 - Build Meson + tous les tests (cargo, `.desktop`, metainfo, schéma) : `meson setup build -Dprofile=development && meson test -C build`, puis `./build/src/finaryx`.
 - Flatpak (développement) : `flatpak-builder --user --install --force-clean _build build-aux/io.github.docteurscience.Finaryx.Devel.json`. Le manifeste autorise le réseau **pendant la compilation** seulement (téléchargement des crates) ; l'application elle-même n'a pas accès au réseau. Le manifeste de publication (crates vendorisées) viendra à l'étape 9.

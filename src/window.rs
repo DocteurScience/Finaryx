@@ -3,9 +3,12 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use gettextrs::gettext;
+use finaryx_core::rusqlite::Connection;
+use finaryx_core::{dates, repo};
+use gettextrs::{gettext, ngettext};
 use gtk::{gio, glib};
 
+use crate::database::{self, Source};
 use crate::pages::{self, MAIN_PAGES};
 
 /// Sidebar index of the "Importer un CSV" row (after the main pages).
@@ -46,11 +49,24 @@ mod imp {
         pub content_menu_button: TemplateChild<gtk::MenuButton>,
         #[template_child]
         pub stack: TemplateChild<adw::ViewStack>,
+        #[template_child]
+        pub root_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub demo_banner: TemplateChild<adw::Banner>,
+        #[template_child]
+        pub error_page: TemplateChild<adw::StatusPage>,
+        #[template_child]
+        pub last_import_box: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub last_import_label: TemplateChild<gtk::Label>,
 
         pub settings: OnceCell<gio::Settings>,
         pub accounts_model: OnceCell<gtk::StringList>,
         pub narrow: Cell<bool>,
         pub page_bodies: RefCell<Vec<gtk::Box>>,
+        pub summary_labels: RefCell<Vec<gtk::Label>>,
+        /// Open database; `None` until `open_database()` succeeds.
+        pub db: RefCell<Option<Connection>>,
         /// Guards against feedback loops while syncing the sidebar selection.
         pub syncing: Cell<bool>,
     }
@@ -104,8 +120,86 @@ glib::wrapper! {
 }
 
 impl FinaryxWindow {
-    pub fn new<P: IsA<gtk::Application>>(app: &P) -> Self {
-        glib::Object::builder().property("application", app).build()
+    pub fn new<P: IsA<gtk::Application>>(app: &P, source: &Source) -> Self {
+        let window: Self = glib::Object::builder().property("application", app).build();
+        window.open_database(source);
+        window
+    }
+
+    /// Opens the database (or the demonstration data) and shows its
+    /// content, or an error page if it cannot be opened.
+    fn open_database(&self, source: &Source) {
+        let imp = self.imp();
+        imp.demo_banner.set_revealed(source.is_demo());
+        match database::open(source) {
+            Ok(conn) => {
+                imp.db.replace(Some(conn));
+                self.reload();
+            }
+            Err(message) => {
+                glib::g_warning!("finaryx", "Cannot open the database: {message}");
+                imp.error_page.set_description(Some(&message));
+                imp.root_stack.set_visible_child_name("error");
+            }
+        }
+    }
+
+    /// Re-reads what the window shows from the database.
+    pub fn reload(&self) {
+        if let Err(e) = self.try_reload() {
+            glib::g_warning!("finaryx", "Cannot read the database: {e}");
+            self.toast(&gettext("Impossible de lire la base de données."));
+        }
+    }
+
+    fn try_reload(&self) -> finaryx_core::db::Result<()> {
+        let imp = self.imp();
+        let db = imp.db.borrow();
+        let Some(conn) = db.as_ref() else {
+            return Ok(());
+        };
+
+        let accounts = repo::list_accounts(conn, false)?;
+        imp.root_stack
+            .set_visible_child_name(if accounts.is_empty() {
+                "welcome"
+            } else {
+                "main"
+            });
+
+        // Account filter: "Tous les comptes", then each account.
+        let model = imp.accounts_model.get().unwrap();
+        let names: Vec<String> = accounts.iter().map(|a| a.name.clone()).collect();
+        let names: Vec<&str> = names.iter().map(String::as_str).collect();
+        model.splice(1, model.n_items() - 1, &names);
+
+        // "4 comptes · 3 banques"
+        let (n_accounts, n_banks) = repo::account_and_bank_counts(conn)?;
+        let summary = format!(
+            "{} · {}",
+            ngettext("{n} compte", "{n} comptes", n_accounts as u32)
+                .replace("{n}", &n_accounts.to_string()),
+            ngettext("{n} banque", "{n} banques", n_banks as u32)
+                .replace("{n}", &n_banks.to_string()),
+        );
+        for label in imp.summary_labels.borrow().iter() {
+            label.set_label(&summary);
+        }
+
+        // Sidebar footer: "2 nov. 2026 · Compte courant"
+        match repo::last_batch(conn)? {
+            Some(batch) => {
+                let date = dates::parse_iso_date(&batch.imported_at)
+                    .map(dates::day_month_year)
+                    .unwrap_or(batch.imported_at.clone());
+                let account = repo::account_name(conn, batch.account_id)?;
+                imp.last_import_label
+                    .set_label(&format!("{date} · {account}"));
+                imp.last_import_box.set_visible(true);
+            }
+            None => imp.last_import_box.set_visible(false),
+        }
+        Ok(())
     }
 
     fn settings(&self) -> &gio::Settings {
@@ -139,15 +233,15 @@ impl FinaryxWindow {
         let accounts_model = gtk::StringList::new(&[&gettext("Tous les comptes")]);
         let mut master: Option<gtk::DropDown> = None;
         for page in MAIN_PAGES.iter() {
-            let (widget, body, dropdown) =
-                pages::build_main_page(page, &accounts_model, master.as_ref());
-            imp.page_bodies.borrow_mut().push(body);
+            let widgets = pages::build_main_page(page, &accounts_model, master.as_ref());
+            imp.page_bodies.borrow_mut().push(widgets.body);
+            imp.summary_labels.borrow_mut().extend(widgets.summary);
             if master.is_none() {
-                master = dropdown;
+                master = widgets.account_filter;
             }
             let stack_page =
                 imp.stack
-                    .add_titled(&widget, Some(page.name), &gettext(page.short_title));
+                    .add_titled(&widgets.root, Some(page.name), &gettext(page.short_title));
             stack_page.set_icon_name(Some(page.icon));
         }
         imp.accounts_model.set(accounts_model).unwrap();
@@ -278,6 +372,7 @@ impl FinaryxWindow {
     }
 
     pub fn show_import(&self) {
+        self.imp().root_stack.set_visible_child_name("main");
         self.push_sub_page(
             "import",
             &gettext(pages::IMPORT_TITLE),
