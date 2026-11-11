@@ -1,0 +1,36 @@
+/* Finaryx — light (default) theme.
+ *
+ * Data colours copied verbatim from design/theme.css. Chart code reads
+ * them by name (finaryx_c1 … finaryx_c8 for the fixed category slots,
+ * finaryx_i1 … finaryx_i8 for text drawn on them, finaryx_a1 … finaryx_a4
+ * for accounts, finaryx_s1 / _band / _ghost / _bars for line charts).
+ * Never hard-code these values in Rust code.
+ *
+ * Window chrome (window, card, sidebar, header bar, accent) is left to
+ * libadwaita on purpose.
+ */
+
+@define-color finaryx_s1 #2a78d6;
+@define-color finaryx_band rgba(42,120,214,0.16);
+@define-color finaryx_ghost #898781;
+@define-color finaryx_bars #52514e;
+@define-color finaryx_c1 #2a78d6;
+@define-color finaryx_c2 #eb6834;
+@define-color finaryx_c3 #1baf7a;
+@define-color finaryx_c4 #eda100;
+@define-color finaryx_c5 #e87ba4;
+@define-color finaryx_c6 #008300;
+@define-color finaryx_c7 #6250d6;
+@define-color finaryx_c8 #898781;
+@define-color finaryx_i1 #ffffff;
+@define-color finaryx_i2 #0b0b0b;
+@define-color finaryx_i3 #0b0b0b;
+@define-color finaryx_i4 #0b0b0b;
+@define-color finaryx_i5 #0b0b0b;
+@define-color finaryx_i6 #ffffff;
+@define-color finaryx_i7 #ffffff;
+@define-color finaryx_i8 #0b0b0b;
+@define-color finaryx_a1 #2e2e30;
+@define-color finaryx_a2 #5e5e60;
+@define-color finaryx_a3 #929294;
+@define-color finaryx_a4 #c4c4c6;

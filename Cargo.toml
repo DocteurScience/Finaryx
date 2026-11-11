@@ -1,0 +1,29 @@
+[workspace]
+members = ["core"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+rust-version = "1.80"
+
+[package]
+name = "finaryx"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Suivi de comptes bancaires pour GNOME"
+build = "build.rs"
+
+[dependencies]
+finaryx-core = { path = "core" }
+gtk = { package = "gtk4", version = "0.9", features = ["v4_14"] }
+adw = { package = "libadwaita", version = "0.7", features = ["v1_5"] }
+gettext-rs = { version = "0.7", features = ["gettext-system"] }
+
+[build-dependencies]
+glib-build-tools = "0.20"
+
+[profile.release]
+lto = "thin"

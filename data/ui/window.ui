@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.14"/>
+  <requires lib="Adw" version="1.5"/>
+
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Catégories et règles…</attribute>
+        <attribute name="action">win.categories</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Exporter les données…</attribute>
+        <attribute name="action">win.export</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Préférences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Raccourcis clavier</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">À propos de Finaryx</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+
+  <template class="FinaryxWindow" parent="AdwApplicationWindow">
+    <property name="title" translatable="yes">Finaryx</property>
+    <property name="width-request">360</property>
+    <property name="height-request">294</property>
+
+    <child>
+      <object class="AdwBreakpoint" id="narrow_breakpoint">
+        <condition>max-width: 600sp</condition>
+        <setter object="split_view" property="collapsed">True</setter>
+        <setter object="switcher_bar" property="reveal">True</setter>
+      </object>
+    </child>
+
+    <property name="content">
+      <object class="AdwToastOverlay" id="toast_overlay">
+        <property name="child">
+          <object class="AdwNavigationSplitView" id="split_view">
+            <property name="min-sidebar-width">260</property>
+            <property name="max-sidebar-width">260</property>
+            <property name="show-content">True</property>
+
+            <!-- Sidebar -->
+            <property name="sidebar">
+              <object class="AdwNavigationPage">
+                <property name="title" translatable="yes">Finaryx</property>
+                <property name="tag">sidebar</property>
+                <property name="child">
+                  <object class="AdwToolbarView">
+                    <child type="top">
+                      <object class="AdwHeaderBar">
+                        <child type="end">
+                          <object class="GtkMenuButton">
+                            <property name="icon-name">open-menu-symbolic</property>
+                            <property name="menu-model">primary_menu</property>
+                            <property name="primary">True</property>
+                            <property name="tooltip-text" translatable="yes">Menu principal</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <property name="content">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkScrolledWindow">
+                            <property name="vexpand">True</property>
+                            <property name="hscrollbar-policy">never</property>
+                            <property name="child">
+                              <object class="GtkListBox" id="sidebar_list">
+                                <property name="selection-mode">single</property>
+                                <accessibility>
+                                  <property name="label" translatable="yes">Navigation principale</property>
+                                </accessibility>
+                                <style>
+                                  <class name="navigation-sidebar"/>
+                                </style>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="last_import_box">
+                            <property name="orientation">vertical</property>
+                            <property name="visible">False</property>
+                            <property name="margin-start">18</property>
+                            <property name="margin-end">18</property>
+                            <property name="margin-top">16</property>
+                            <property name="margin-bottom">16</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Dernier import</property>
+                                <property name="xalign">0</property>
+                                <style>
+                                  <class name="caption-heading"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="last_import_label">
+                                <property name="xalign">0</property>
+                                <property name="wrap">True</property>
+                                <style>
+                                  <class name="caption"/>
+                                  <class name="dim-label"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </property>
+              </object>
+            </property>
+
+            <!-- Content -->
+            <property name="content">
+              <object class="AdwNavigationPage">
+                <property name="title" translatable="yes">Finaryx</property>
+                <property name="tag">content</property>
+                <property name="child">
+                  <object class="AdwNavigationView" id="content_nav">
+                    <child>
+                      <object class="AdwNavigationPage" id="main_page">
+                        <property name="title" translatable="yes">Vue d'ensemble</property>
+                        <property name="tag">main</property>
+                        <property name="child">
+                          <object class="AdwToolbarView">
+                            <child type="top">
+                              <object class="AdwHeaderBar">
+                                <property name="show-back-button">False</property>
+                                <child type="start">
+                                  <object class="GtkButton" id="import_button">
+                                    <property name="action-name">win.import</property>
+                                    <property name="tooltip-text" translatable="yes">Importer un CSV</property>
+                                    <property name="child">
+                                      <object class="AdwButtonContent">
+                                        <property name="icon-name">finaryx-import-symbolic</property>
+                                        <property name="label" translatable="yes">Importer</property>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </child>
+                                <child type="start">
+                                  <object class="GtkButton" id="import_icon_button">
+                                    <property name="action-name">win.import</property>
+                                    <property name="icon-name">finaryx-import-symbolic</property>
+                                    <property name="tooltip-text" translatable="yes">Importer un CSV</property>
+                                    <property name="visible">False</property>
+                                  </object>
+                                </child>
+                                <child type="start">
+                                  <object class="GtkButton" id="add_account_button">
+                                    <property name="action-name">win.add-account</property>
+                                    <property name="tooltip-text" translatable="yes">Ajouter un compte</property>
+                                    <property name="visible">False</property>
+                                    <property name="child">
+                                      <object class="AdwButtonContent">
+                                        <property name="icon-name">list-add-symbolic</property>
+                                        <property name="label" translatable="yes">Ajouter</property>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </child>
+                                <child type="start">
+                                  <object class="GtkButton" id="add_account_icon_button">
+                                    <property name="action-name">win.add-account</property>
+                                    <property name="icon-name">list-add-symbolic</property>
+                                    <property name="tooltip-text" translatable="yes">Ajouter un compte</property>
+                                    <property name="visible">False</property>
+                                  </object>
+                                </child>
+                                <property name="title-widget">
+                                  <object class="AdwWindowTitle" id="window_title">
+                                    <property name="title" translatable="yes">Vue d'ensemble</property>
+                                  </object>
+                                </property>
+                                <child type="end">
+                                  <object class="GtkMenuButton" id="content_menu_button">
+                                    <property name="icon-name">open-menu-symbolic</property>
+                                    <property name="menu-model">primary_menu</property>
+                                    <property name="tooltip-text" translatable="yes">Menu principal</property>
+                                    <property name="primary">True</property>
+                                    <property name="visible" bind-source="split_view" bind-property="collapsed" bind-flags="sync-create"/>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <property name="content">
+                              <object class="AdwViewStack" id="stack"/>
+                            </property>
+                            <child type="bottom">
+                              <object class="AdwViewSwitcherBar" id="switcher_bar">
+                                <property name="stack">stack</property>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </property>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>

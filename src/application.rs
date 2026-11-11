@@ -1,0 +1,121 @@
+//! The `AdwApplication` subclass: application-wide actions and windows.
+
+use adw::prelude::*;
+use adw::subclass::prelude::*;
+use gettextrs::gettext;
+use gtk::{gio, glib};
+
+use crate::config;
+use crate::window::FinaryxWindow;
+
+mod imp {
+    use super::*;
+
+    #[derive(Debug, Default)]
+    pub struct FinaryxApplication {
+        pub settings: std::cell::OnceCell<gio::Settings>,
+    }
+
+    #[glib::object_subclass]
+    impl ObjectSubclass for FinaryxApplication {
+        const NAME: &'static str = "FinaryxApplication";
+        type Type = super::FinaryxApplication;
+        type ParentType = adw::Application;
+    }
+
+    impl ObjectImpl for FinaryxApplication {}
+
+    impl ApplicationImpl for FinaryxApplication {
+        fn activate(&self) {
+            let app = self.obj();
+            let window = app.active_window().unwrap_or_else(|| {
+                let window = FinaryxWindow::new(&*app);
+                window.upcast()
+            });
+            window.present();
+        }
+
+        fn startup(&self) {
+            self.parent_startup();
+            let app = self.obj();
+            app.setup_actions();
+
+            // Follow the style preference, including changes made elsewhere.
+            let settings = crate::settings::settings();
+            crate::settings::apply_color_scheme(&settings);
+            settings.connect_changed(Some("color-scheme"), |settings, _| {
+                crate::settings::apply_color_scheme(settings);
+            });
+            self.settings.set(settings).unwrap();
+        }
+    }
+
+    impl GtkApplicationImpl for FinaryxApplication {}
+    impl AdwApplicationImpl for FinaryxApplication {}
+}
+
+glib::wrapper! {
+    pub struct FinaryxApplication(ObjectSubclass<imp::FinaryxApplication>)
+        @extends gio::Application, gtk::Application, adw::Application,
+        @implements gio::ActionGroup, gio::ActionMap;
+}
+
+impl FinaryxApplication {
+    pub fn new() -> Self {
+        glib::Object::builder()
+            .property("application-id", config::APP_ID)
+            .property("resource-base-path", config::RESOURCE_BASE)
+            .build()
+    }
+
+    fn setup_actions(&self) {
+        let quit = gio::ActionEntry::builder("quit")
+            .activate(|app: &Self, _, _| app.quit())
+            .build();
+        let about = gio::ActionEntry::builder("about")
+            .activate(|app: &Self, _, _| app.show_about())
+            .build();
+        let preferences = gio::ActionEntry::builder("preferences")
+            .activate(|app: &Self, _, _| app.show_preferences())
+            .build();
+        self.add_action_entries([quit, about, preferences]);
+
+        self.set_accels_for_action("app.quit", &["<Control>q"]);
+        self.set_accels_for_action("app.preferences", &["<Control>comma"]);
+        self.set_accels_for_action("window.close", &["<Control>w"]);
+        self.set_accels_for_action("win.show-help-overlay", &["<Control>question"]);
+        self.set_accels_for_action("win.import", &["<Control>i"]);
+        for (i, page) in crate::pages::MAIN_PAGES.iter().enumerate() {
+            let accel = format!("<Alt>{}", i + 1);
+            self.set_accels_for_action(&format!("win.show-page::{}", page.name), &[&accel]);
+        }
+    }
+
+    fn show_about(&self) {
+        let dialog = adw::AboutDialog::builder()
+            .application_name("Finaryx")
+            .application_icon(config::APP_ID)
+            .developer_name("DocteurScience")
+            .version(config::VERSION)
+            .website("https://github.com/DocteurScience/Finaryx")
+            .issue_url("https://github.com/DocteurScience/Finaryx/issues")
+            .license_type(gtk::License::Agpl30)
+            .comments(gettext(
+                "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : \
+                 aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée.",
+            ))
+            .build();
+        dialog.present(self.active_window().as_ref());
+    }
+
+    fn show_preferences(&self) {
+        let dialog = crate::preferences::preferences_dialog();
+        dialog.present(self.active_window().as_ref());
+    }
+}
+
+impl Default for FinaryxApplication {
+    fn default() -> Self {
+        Self::new()
+    }
+}

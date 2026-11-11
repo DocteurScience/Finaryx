@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>@APP_ID@</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>AGPL-3.0-or-later</project_license>
+  <name>Finaryx</name>
+  <summary>Suivez vos comptes bancaires</summary>
+  <description>
+    <p>
+      Finaryx importe les exports CSV de vos banques, les range dans une base locale
+      et vous montre l’évolution du mois, la répartition des dépenses, le cumul sur
+      plusieurs mois et une prévision d’après vos habitudes.
+    </p>
+    <p>
+      Aucune donnée n’est envoyée en ligne.
+    </p>
+  </description>
+  <developer id="io.github.docteurscience">
+    <name>DocteurScience</name>
+  </developer>
+  <url type="homepage">https://github.com/DocteurScience/Finaryx</url>
+  <url type="bugtracker">https://github.com/DocteurScience/Finaryx/issues</url>
+  <launchable type="desktop-id">@APP_ID@.desktop</launchable>
+  <translation type="gettext">finaryx</translation>
+  <content_rating type="oars-1.1"/>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </supports>
+  <releases>
+    <release version="0.1.0" date="2026-11-11">
+      <description>
+        <p>Squelette de l’application : fenêtre, navigation et thème clair ou sombre.</p>
+      </description>
+    </release>
+  </releases>
+</component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/github/docteurscience/Finaryx">
+    <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/help-overlay.ui</file>
+    <file compressed="true">style.css</file>
+    <file compressed="true">style-dark.css</file>
+    <file preprocess="xml-stripblanks" alias="icons/scalable/actions/finaryx-accounts-symbolic.svg">icons/symbolic/finaryx-accounts-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="icons/scalable/actions/finaryx-cumulative-symbolic.svg">icons/symbolic/finaryx-cumulative-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="icons/scalable/actions/finaryx-forecast-symbolic.svg">icons/symbolic/finaryx-forecast-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="icons/scalable/actions/finaryx-import-symbolic.svg">icons/symbolic/finaryx-import-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="icons/scalable/actions/finaryx-month-symbolic.svg">icons/symbolic/finaryx-month-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="icons/scalable/actions/finaryx-overview-symbolic.svg">icons/symbolic/finaryx-overview-symbolic.svg</file>
+  </gresource>
+</gresources>

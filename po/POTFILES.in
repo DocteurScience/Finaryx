@@ -1,0 +1,10 @@
+# Source language is French; translations go in po/<lang>.po.
+data/io.github.docteurscience.Finaryx.desktop.in
+data/io.github.docteurscience.Finaryx.gschema.xml
+data/io.github.docteurscience.Finaryx.metainfo.xml.in
+data/ui/help-overlay.ui
+data/ui/window.ui
+src/application.rs
+src/pages.rs
+src/preferences.rs
+src/window.rs

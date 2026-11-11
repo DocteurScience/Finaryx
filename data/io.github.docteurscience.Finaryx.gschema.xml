@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="finaryx">
+  <enum id="io.github.docteurscience.Finaryx.ColorScheme">
+    <value nick="default" value="0"/>
+    <value nick="light" value="1"/>
+    <value nick="dark" value="2"/>
+  </enum>
+  <schema id="io.github.docteurscience.Finaryx" path="/io/github/docteurscience/Finaryx/">
+    <key name="color-scheme" enum="io.github.docteurscience.Finaryx.ColorScheme">
+      <default>'default'</default>
+      <summary>Style</summary>
+      <description>Suivre le style du système, ou forcer le style clair ou sombre.</description>
+    </key>
+    <key name="window-width" type="i">
+      <default>1200</default>
+      <summary>Largeur de la fenêtre</summary>
+    </key>
+    <key name="window-height" type="i">
+      <default>820</default>
+      <summary>Hauteur de la fenêtre</summary>
+    </key>
+    <key name="window-maximized" type="b">
+      <default>false</default>
+      <summary>Fenêtre maximisée</summary>
+    </key>
+  </schema>
+</schemalist>

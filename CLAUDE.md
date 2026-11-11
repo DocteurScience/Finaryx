@@ -21,5 +21,23 @@ Application GNOME de suivi de comptes bancaires (import CSV, base SQLite locale,
 ## Avant de coder les importeurs
 Le format **Banque Populaire** est vérifié sur un export réel (voir `FINARYX-SPEC.md`, section Import CSV, et `data/banque_populaire_category_map.csv`). Pour **Boursorama** et **Revolut**, demander à l'utilisateur un exemple anonymisé : leurs en-têtes dans le cahier des charges ne sont pas vérifiés. Ne jamais committer un export bancaire réel.
 
+## Décisions prises avec l'utilisateur (section 9 du cahier des charges)
+- **Pile : Rust** (gtk4-rs 0.9 + libadwaita-rs 0.7, GTK ≥ 4.14, libadwaita ≥ 1.5), Meson + Flatpak. Même architecture et même schéma de données que le cahier des charges : `core/` est la crate `finaryx-core` (sans GTK), `src/` est l'interface. Tests : `cargo test` (remplace pytest).
+- **Multi-devises : chaque compte dans sa propre devise**, totaux séparés par devise, aucune conversion. Montants en unités mineures (centimes pour l'euro). Formatage : `finaryx_core::money`.
+- **Virements entre comptes du foyer** : colonne `transfer_pair_id` dans `txn` dès le premier schéma ; rapprochement proposé (montants opposés, comptes différents, ±3 jours, noms du foyer), jamais appliqué sans confirmation.
+- **Pas de chiffrement** pour l'instant (rappel dans « À propos » et l'export) ; ouverture de la base isolée dans `core` pour pouvoir passer à SQLCipher plus tard.
+- Maquette vs HIG : entrée « Mois en détail » (et non « Liste des opérations ») ; un seul menu principal, dans l'en-tête de la barre latérale, déplacé dans l'en-tête du contenu en largeur étroite ; tailles libadwaita (pas 44 px) ; « Dernier import » = simple étiquette `dim-label`.
+- Identifiant d'application : `io.github.docteurscience.Finaryx` (`.Devel` en profil développement).
+
+## Organisation du code
+- `core/src/` : logique métier testée (pour l'instant `money.rs`).
+- `src/` : `application.rs` (actions globales), `window.rs` (navigation), `pages.rs` (pages), `preferences.rs`, `settings.rs`.
+- `data/` : `ui/*.ui` (GtkBuilder), `style.css` / `style-dark.css` (couleurs de données reprises de `design/theme.css`, nommées `finaryx_c1`…), icônes, schéma GSettings, `.desktop`, metainfo. Ressources compilées par `build.rs` et intégrées au binaire.
+- Icônes de navigation : générées depuis les tracés de la maquette par `build-aux/gen-icons.py`.
+
 ## Commandes
-À compléter après le squelette Meson : lancer l'application, lancer `pytest`, construire le Flatpak.
+- Dépendances (Debian/Ubuntu) : `libgtk-4-dev libadwaita-1-dev meson ninja-build desktop-file-utils appstream gettext`, plus Rust stable.
+- Lancer en développement : `cargo run` (le schéma GSettings est compilé dans `target/` par `build.rs`).
+- Tests de la logique : `cargo test --workspace`.
+- Build Meson + tous les tests (cargo, `.desktop`, metainfo, schéma) : `meson setup build -Dprofile=development && meson test -C build`, puis `./build/src/finaryx`.
+- Flatpak (développement) : `flatpak-builder --user --install --force-clean _build build-aux/io.github.docteurscience.Finaryx.Devel.json`. Le manifeste autorise le réseau **pendant la compilation** seulement (téléchargement des crates) ; l'application elle-même n'a pas accès au réseau. Le manifeste de publication (crates vendorisées) viendra à l'étape 9.

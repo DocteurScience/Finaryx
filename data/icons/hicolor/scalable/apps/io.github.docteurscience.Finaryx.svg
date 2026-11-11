@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Placeholder icon (step 9 of the plan delivers the final one). -->
+  <rect x="8" y="12" width="112" height="104" rx="20" fill="#1a5fb4"/>
+  <rect x="8" y="8" width="112" height="104" rx="20" fill="#3584e4"/>
+  <rect x="30" y="58" width="16" height="34" rx="3" fill="#ffffff"/>
+  <rect x="56" y="38" width="16" height="54" rx="3" fill="#ffffff"/>
+  <rect x="82" y="48" width="16" height="44" rx="3" fill="#ffffff" opacity="0.75"/>
+</svg>

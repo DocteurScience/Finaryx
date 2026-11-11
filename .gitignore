@@ -1,8 +1,14 @@
-__pycache__/
-*.pyc
-.venv/
+# Build outputs
+/target/
 build/
+_build/
 .flatpak-builder/
+.flatpak/
+repo/
+po/*.pot
+
+# Local databases and bank exports (never commit real data)
 *.db
 *.db-journal
-.pytest_cache/
+*.db-wal
+*.db-shm
