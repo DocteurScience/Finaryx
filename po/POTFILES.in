@@ -4,8 +4,11 @@ data/io.github.docteurscience.Finaryx.gschema.xml
 data/io.github.docteurscience.Finaryx.metainfo.xml.in
 data/ui/help-overlay.ui
 data/ui/window.ui
+src/account_dialog.rs
 src/application.rs
 src/database.rs
-src/pages.rs
+src/pages/account_detail.rs
+src/pages/accounts.rs
+src/pages/mod.rs
 src/preferences.rs
 src/window.rs

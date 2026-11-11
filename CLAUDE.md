@@ -33,8 +33,9 @@ Ne jamais utiliser, citer ni committer de données issues des exports bancaires 
 - Identifiant d'application : `io.github.docteurscience.Finaryx` (`.Devel` en profil développement).
 
 ## Organisation du code
-- `core/src/` : logique métier testée — `db.rs` (ouverture, `application_id`, migrations dans `MIGRATIONS`, ne jamais modifier une migration publiée), `models.rs`, `repo.rs` (requêtes ; agrégats en SQL), `normalize.rs` (`label_norm`, clé anti-doublon), `money.rs`, `dates.rs`, `demo.rs` (données de démonstration).
-- `src/` : `application.rs` (actions globales, option `--demo`), `database.rs` (emplacement de la base), `window.rs` (navigation, accueil, rechargement), `pages.rs` (pages), `preferences.rs`, `settings.rs`.
+- `core/src/` : logique métier testée — `db.rs` (ouverture, `application_id`, migrations dans `MIGRATIONS`, ne jamais modifier une migration publiée), `models.rs`, `repo.rs` (requêtes ; agrégats en SQL), `normalize.rs` (`label_norm`, clé anti-doublon), `money.rs` (format et saisie des montants), `dates.rs`, `accounts.rs` (page Comptes : aperçus, état des imports, parts, création, modification, archivage, suppression, annulation d'un import), `scale.rs` (graduations), `demo.rs` (données de démonstration).
+- `src/` : `application.rs` (actions globales, option `--demo`), `database.rs` (emplacement de la base), `window.rs` (navigation, accueil, rechargement, actions sur les comptes), `pages/` (`accounts.rs`, `account_detail.rs`, aides communes dans `mod.rs`), `account_dialog.rs`, `charts/` (Cairo : `sparkline.rs`, `share_bar.rs`, `line.rs` ; couleurs lues dans le thème par `charts::theme_color`), `preferences.rs`, `settings.rs`.
+- Largeur étroite : la fenêtre prévient les pages (`set_narrow`) quand le point de rupture s'applique ; la pile racine n'est pas homogène pour que la page d'accueil masquée n'impose pas sa largeur.
 - `data/` : `ui/*.ui` (GtkBuilder), `style.css` / `style-dark.css` (couleurs de données reprises de `design/theme.css`, nommées `finaryx_c1`…), icônes, schéma GSettings, `.desktop`, metainfo. Ressources compilées par `build.rs` et intégrées au binaire.
 - Icônes de navigation : générées depuis les tracés de la maquette par `build-aux/gen-icons.py`.
 

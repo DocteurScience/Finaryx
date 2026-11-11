@@ -26,6 +26,8 @@ pub struct MainPage {
     pub has_account_filter: bool,
     /// Step of the work plan that fills the page in.
     pub planned_step: u32,
+    /// Maximum width of the content (mockup: 1040 px, 760 px for Comptes).
+    pub max_width: i32,
 }
 
 // Titles are marked with N_() for xgettext and translated when shown.
@@ -37,6 +39,7 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         icon: "finaryx-overview-symbolic",
         has_account_filter: true,
         planned_step: 5,
+        max_width: 1040,
     },
     MainPage {
         name: "month",
@@ -45,6 +48,7 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         icon: "finaryx-month-symbolic",
         has_account_filter: true,
         planned_step: 5,
+        max_width: 1040,
     },
     MainPage {
         name: "cumulative",
@@ -53,6 +57,7 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         icon: "finaryx-cumulative-symbolic",
         has_account_filter: true,
         planned_step: 5,
+        max_width: 1040,
     },
     MainPage {
         name: "forecast",
@@ -61,6 +66,7 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         icon: "finaryx-forecast-symbolic",
         has_account_filter: true,
         planned_step: 7,
+        max_width: 1040,
     },
     MainPage {
         name: "accounts",
@@ -69,6 +75,7 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         icon: "finaryx-accounts-symbolic",
         has_account_filter: false,
         planned_step: 3,
+        max_width: 760,
     },
 ];
 
@@ -100,13 +107,14 @@ pub struct MainPageWidgets {
 }
 
 /// Builds the content of a main page: the account filter row, then the
-/// page body (a placeholder for now). `filter_master` is the drop-down of
+/// page body: `content`, or a placeholder for views still to build. `filter_master` is the drop-down of
 /// the first page; the others mirror its selection so that the filter
 /// applies to every view.
 pub fn build_main_page(
     page: &MainPage,
     accounts_model: &gtk::StringList,
     filter_master: Option<&gtk::DropDown>,
+    content: Option<&gtk::Widget>,
 ) -> MainPageWidgets {
     let body = gtk::Box::builder()
         .orientation(gtk::Orientation::Vertical)
@@ -145,15 +153,18 @@ pub fn build_main_page(
         summary_label = Some(summary);
     }
 
-    body.append(&coming_soon(
-        page.icon,
-        &gettext(page.title),
-        page.planned_step,
-    ));
+    match content {
+        Some(content) => body.append(content),
+        None => body.append(&coming_soon(
+            page.icon,
+            &gettext(page.title),
+            page.planned_step,
+        )),
+    }
 
     let clamp = adw::Clamp::builder()
-        .maximum_size(1040)
-        .tightening_threshold(1040)
+        .maximum_size(page.max_width)
+        .tightening_threshold(page.max_width)
         .child(&body)
         .build();
     let scrolled = gtk::ScrolledWindow::builder()
@@ -192,4 +203,72 @@ pub fn sidebar_row(name: &str, title: &str, icon: &str) -> gtk::ListBoxRow {
         .build();
     row.update_property(&[gtk::accessible::Property::Label(title)]);
     row
+}
+
+pub mod account_detail;
+pub mod accounts;
+
+use finaryx_core::money::{self, Currency, Sign};
+
+/// Section title ("Vos comptes"), as `<h2>` in the mockup.
+pub fn heading(text: &str) -> gtk::Label {
+    gtk::Label::builder()
+        .label(text)
+        .xalign(0.0)
+        .wrap(true)
+        .css_classes(["heading"])
+        .accessible_role(gtk::AccessibleRole::Heading)
+        .build()
+}
+
+/// Secondary text (dimmed, small).
+pub fn caption(text: &str) -> gtk::Label {
+    gtk::Label::builder()
+        .label(text)
+        .xalign(0.0)
+        .wrap(true)
+        .css_classes(["caption", "dim-label"])
+        .build()
+}
+
+pub fn boxed_list() -> gtk::ListBox {
+    gtk::ListBox::builder()
+        .selection_mode(gtk::SelectionMode::None)
+        .css_classes(["boxed-list"])
+        .build()
+}
+
+/// A section: its title, then `content`, 10 px apart.
+pub fn section(title: &gtk::Widget, content: &impl IsA<gtk::Widget>) -> gtk::Box {
+    let section = gtk::Box::builder()
+        .orientation(gtk::Orientation::Vertical)
+        .spacing(10)
+        .build();
+    section.append(title);
+    section.append(content);
+    section
+}
+
+/// `fr-FR` amount in the given currency ("3 995,12 €").
+pub fn amount(cents: i64, currency: &str, sign: Sign) -> String {
+    let currency = Currency::from_code(currency).unwrap_or(Currency::EUR);
+    money::format_amount(cents, &currency, sign)
+}
+
+/// Amount rounded to whole units ("14 334 €").
+pub fn amount_whole(cents: i64, currency: &str, sign: Sign) -> String {
+    let currency = Currency::from_code(currency).unwrap_or(Currency::EUR);
+    money::format_amount_whole(cents, &currency, sign)
+}
+
+/// "27,9 %" from tenths of a percent.
+pub fn percent_per_mille(per_mille: u32) -> String {
+    format!("{},{}\u{a0}%", per_mille / 10, per_mille % 10)
+}
+
+/// Removes every child of a box.
+pub fn clear(container: &gtk::Box) {
+    while let Some(child) = container.first_child() {
+        container.remove(&child);
+    }
 }

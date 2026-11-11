@@ -190,6 +190,87 @@ pub fn format_amount_whole(minor: i64, currency: &Currency, sign: Sign) -> Strin
     format_amount(rounded, &whole, sign)
 }
 
+/// Why a typed amount was refused.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ParseAmountError {
+    Empty,
+    Invalid,
+    TooManyDecimals,
+    TooLarge,
+}
+
+/// Parses an amount typed by the user, without floating point:
+/// `"1 234,56"`, `"-12.5"`, `"−12,00 €"`, `"+3"`, `"1.234,56"`. A comma or
+/// a dot followed by one or two digits (or as many as the currency has)
+/// is the decimal separator; other dots, spaces and apostrophes group
+/// thousands.
+pub fn parse_amount(text: &str, currency: &Currency) -> Result<i64, ParseAmountError> {
+    let mut s: String = text
+        .trim()
+        .trim_end_matches(currency.symbol)
+        .trim_end_matches(currency.code)
+        .chars()
+        .filter(|c| !c.is_whitespace() && *c != NNBSP && *c != '\'')
+        .collect();
+    if s.is_empty() {
+        return Err(ParseAmountError::Empty);
+    }
+    let negative = s.starts_with('-') || s.starts_with(MINUS);
+    if negative || s.starts_with('+') {
+        s = s.chars().skip(1).collect();
+    }
+    // Decimal separator: the last ',' or '.', if followed by 1..=exponent digits.
+    let (int_part, frac_part) = match s.rfind([',', '.']) {
+        Some(pos) => {
+            let frac = &s[pos + 1..];
+            let is_decimal = currency.exponent > 0
+                && !frac.is_empty()
+                && frac.len() <= currency.exponent as usize
+                && (s[pos..].starts_with(',') || frac.len() != 3);
+            if is_decimal {
+                (s[..pos].to_string(), frac.to_string())
+            } else if frac.len() == 3 {
+                (s.clone(), String::new())
+            } else {
+                return Err(ParseAmountError::TooManyDecimals);
+            }
+        }
+        None => (s.clone(), String::new()),
+    };
+    let int_digits: String = int_part
+        .chars()
+        .filter(|c| *c != '.' && *c != ',')
+        .collect();
+    if int_digits.is_empty() && frac_part.is_empty() {
+        return Err(ParseAmountError::Invalid);
+    }
+    if !int_digits.chars().all(|c| c.is_ascii_digit())
+        || !frac_part.chars().all(|c| c.is_ascii_digit())
+    {
+        return Err(ParseAmountError::Invalid);
+    }
+    let unit = 10i64.pow(currency.exponent);
+    let whole: i64 = if int_digits.is_empty() {
+        0
+    } else {
+        int_digits.parse().map_err(|_| ParseAmountError::TooLarge)?
+    };
+    let mut frac = frac_part;
+    while frac.len() < currency.exponent as usize {
+        frac.push('0');
+    }
+    let cents: i64 = if frac.is_empty() {
+        0
+    } else {
+        frac.parse().map_err(|_| ParseAmountError::Invalid)?
+    };
+    let value = whole
+        .checked_mul(unit)
+        .and_then(|v| v.checked_add(cents))
+        .ok_or(ParseAmountError::TooLarge)?;
+    Ok(if negative { -value } else { value })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -252,6 +333,29 @@ mod tests {
             "12\u{202F}345\u{202F}JPY"
         );
         assert!(Currency::from_code("XXX").is_none());
+    }
+
+    #[test]
+    fn parses_typed_amounts() {
+        let p = |s| parse_amount(s, &Currency::EUR);
+        assert_eq!(p("4 410,00"), Ok(441_000));
+        assert_eq!(p("4410"), Ok(441_000));
+        assert_eq!(p("4\u{202F}410,5\u{202F}€"), Ok(441_050));
+        assert_eq!(p("-12.5"), Ok(-1_250));
+        assert_eq!(p("\u{2212}214,88 €"), Ok(-21_488));
+        assert_eq!(p("+3"), Ok(300));
+        assert_eq!(p("1.234,56"), Ok(123_456));
+        assert_eq!(p("1,234.56"), Ok(123_456));
+        assert_eq!(p("1.234"), Ok(123_400));
+        assert_eq!(p(",5"), Ok(50));
+        assert_eq!(p("0"), Ok(0));
+        assert_eq!(p(""), Err(ParseAmountError::Empty));
+        assert_eq!(p("abc"), Err(ParseAmountError::Invalid));
+        assert_eq!(p("12,3456"), Err(ParseAmountError::TooManyDecimals));
+        assert_eq!(p("-"), Err(ParseAmountError::Invalid));
+        assert_eq!(p("99999999999999999999"), Err(ParseAmountError::TooLarge));
+        let jpy = Currency::from_code("JPY").unwrap();
+        assert_eq!(parse_amount("12 345", &jpy), Ok(12_345));
     }
 
     #[test]

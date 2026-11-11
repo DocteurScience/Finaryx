@@ -3,12 +3,19 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use std::rc::Rc;
+
+use chrono::NaiveDate;
+use finaryx_core::accounts::{self, AccountChanges};
 use finaryx_core::rusqlite::Connection;
 use finaryx_core::{dates, repo};
 use gettextrs::{gettext, ngettext};
 use gtk::{gio, glib};
 
+use crate::account_dialog::{self, Field};
 use crate::database::{self, Source};
+use crate::pages::account_detail::{self, AccountDetailPage};
+use crate::pages::accounts::{self as accounts_page, AccountsPage};
 use crate::pages::{self, MAIN_PAGES};
 
 /// Sidebar index of the "Importer un CSV" row (after the main pages).
@@ -67,6 +74,11 @@ mod imp {
         pub summary_labels: RefCell<Vec<gtk::Label>>,
         /// Open database; `None` until `open_database()` succeeds.
         pub db: RefCell<Option<Connection>>,
+        pub accounts_page: OnceCell<AccountsPage>,
+        /// Account detail currently pushed, if any.
+        pub detail: RefCell<Option<Rc<AccountDetailPage>>>,
+        /// "4 comptes · 3 banques"
+        pub summary: RefCell<String>,
         /// Guards against feedback loops while syncing the sidebar selection.
         pub syncing: Cell<bool>,
     }
@@ -185,6 +197,17 @@ impl FinaryxWindow {
         for label in imp.summary_labels.borrow().iter() {
             label.set_label(&summary);
         }
+        imp.summary.replace(summary);
+        self.sync_with_stack();
+
+        imp.accounts_page.get().unwrap().refresh(conn, today())?;
+        let detail = imp.detail.borrow().clone();
+        if let Some(detail) = detail {
+            if !detail.refresh(conn)? {
+                imp.detail.replace(None);
+                imp.content_nav.pop_to_tag("main");
+            }
+        }
 
         // Sidebar footer: "2 nov. 2026 · Compte courant"
         match repo::last_batch(conn)? {
@@ -232,8 +255,29 @@ impl FinaryxWindow {
         let imp = self.imp();
         let accounts_model = gtk::StringList::new(&[&gettext("Tous les comptes")]);
         let mut master: Option<gtk::DropDown> = None;
+
+        let weak = self.downgrade();
+        let open_account = move |id| {
+            if let Some(w) = weak.upgrade() {
+                w.open_account(id);
+            }
+        };
+        let weak = self.downgrade();
+        let undo_import = move |id| {
+            if let Some(w) = weak.upgrade() {
+                w.confirm_undo_import(id);
+            }
+        };
+        let accounts = AccountsPage::new(accounts_page::Callbacks {
+            open_account: Rc::new(open_account),
+            undo_import: Rc::new(undo_import),
+        });
+
         for page in MAIN_PAGES.iter() {
-            let widgets = pages::build_main_page(page, &accounts_model, master.as_ref());
+            let content: Option<gtk::Widget> =
+                (page.name == "accounts").then(|| accounts.root.clone().upcast());
+            let widgets =
+                pages::build_main_page(page, &accounts_model, master.as_ref(), content.as_ref());
             imp.page_bodies.borrow_mut().push(widgets.body);
             imp.summary_labels.borrow_mut().extend(widgets.summary);
             if master.is_none() {
@@ -245,6 +289,7 @@ impl FinaryxWindow {
             stack_page.set_icon_name(Some(page.icon));
         }
         imp.accounts_model.set(accounts_model).unwrap();
+        let _ = imp.accounts_page.set(accounts);
     }
 
     fn setup_sidebar(&self) {
@@ -306,9 +351,7 @@ impl FinaryxWindow {
             .activate(|window: &Self, _, _| window.show_import())
             .build();
         let add_account = gio::ActionEntry::builder("add-account")
-            .activate(|window: &Self, _, _| {
-                window.toast(&gettext("L’ajout d’un compte arrive à l’étape 3."));
-            })
+            .activate(|window: &Self, _, _| window.show_add_account())
             .build();
         let categories = gio::ActionEntry::builder("categories")
             .activate(|window: &Self, _, _| {
@@ -350,7 +393,8 @@ impl FinaryxWindow {
             self,
             move |_| {
                 window.imp().narrow.set(true);
-                window.sync_with_stack();
+                window.imp().accounts_page.get().unwrap().set_narrow(true);
+                window.reload();
             }
         ));
         imp.narrow_breakpoint.connect_unapply(glib::clone!(
@@ -358,7 +402,8 @@ impl FinaryxWindow {
             self,
             move |_| {
                 window.imp().narrow.set(false);
-                window.sync_with_stack();
+                window.imp().accounts_page.get().unwrap().set_narrow(false);
+                window.reload();
             }
         ));
     }
@@ -413,6 +458,14 @@ impl FinaryxWindow {
         // elsewhere; icon only in the narrow layout (mockup Etroit*).
         let narrow = imp.narrow.get();
         let on_accounts = page.name == "accounts";
+        // Subtitle: "4 comptes · 3 banques" on the accounts page (step 5
+        // adds the month of the other views).
+        let subtitle = if on_accounts {
+            imp.summary.borrow().clone()
+        } else {
+            String::new()
+        };
+        imp.window_title.set_subtitle(&subtitle);
         imp.import_button.set_visible(!on_accounts && !narrow);
         imp.import_icon_button.set_visible(!on_accounts && narrow);
         imp.add_account_button.set_visible(on_accounts && !narrow);
@@ -431,6 +484,7 @@ impl FinaryxWindow {
         let row_index = match imp.content_nav.visible_page().and_then(|p| p.tag()) {
             Some(tag) if tag == "main" => Some(index as i32),
             Some(tag) if tag == "import" => Some(IMPORT_ROW),
+            Some(tag) if tag == account_detail::TAG => Some(ACCOUNTS_ROW),
             _ => None,
         };
         imp.syncing.set(true);
@@ -440,4 +494,256 @@ impl FinaryxWindow {
         }
         imp.syncing.set(false);
     }
+
+    // ----- Database changes ------------------------------------------------
+
+    /// Runs a change on the database, then reloads the views. Errors are
+    /// logged and returned as a message for the user.
+    fn change<R>(
+        &self,
+        f: impl FnOnce(&mut Connection) -> finaryx_core::db::Result<R>,
+    ) -> Result<R, String> {
+        let result = {
+            let mut db = self.imp().db.borrow_mut();
+            let Some(conn) = db.as_mut() else {
+                return Err(gettext("La base de données n’est pas ouverte."));
+            };
+            f(conn)
+        };
+        match result {
+            Ok(value) => {
+                self.reload();
+                Ok(value)
+            }
+            Err(e) => {
+                glib::g_warning!("finaryx", "Database change failed: {e}");
+                Err(
+                    gettext("La modification n’a pas pu être enregistrée : {error}")
+                        .replace("{error}", &e.to_string()),
+                )
+            }
+        }
+    }
+
+    fn read<R>(&self, f: impl FnOnce(&Connection) -> finaryx_core::db::Result<R>) -> Option<R> {
+        let db = self.imp().db.borrow();
+        match f(db.as_ref()?) {
+            Ok(value) => Some(value),
+            Err(e) => {
+                glib::g_warning!("finaryx", "Cannot read the database: {e}");
+                self.toast(&gettext("Impossible de lire la base de données."));
+                None
+            }
+        }
+    }
+
+    // ----- Accounts ----------------------------------------------------------
+
+    pub fn show_add_account(&self) {
+        let weak = self.downgrade();
+        account_dialog::present(self, None, Field::Name, move |changes| {
+            let window = weak.upgrade()?;
+            match window.change(|conn| accounts::create_account(conn, &changes)) {
+                Ok(_) => {
+                    window.show_page("accounts");
+                    window.toast(&gettext("Compte ajouté"));
+                    None
+                }
+                Err(message) => Some(message),
+            }
+        });
+    }
+
+    fn account_changes(&self, id: i64) -> Option<AccountChanges> {
+        let overview = self
+            .read(|conn| accounts::overviews(conn, true))?
+            .into_iter()
+            .find(|o| o.account.id == id)?;
+        let a = overview.account;
+        Some(AccountChanges {
+            name: a.name,
+            bank_name: overview.bank_name.unwrap_or_default(),
+            number: a.number,
+            kind: a.kind,
+            currency: a.currency,
+            opening_balance_cents: a.opening_balance_cents,
+        })
+    }
+
+    fn edit_account(&self, id: i64, field: Field) {
+        let Some(initial) = self.account_changes(id) else {
+            return;
+        };
+        let weak = self.downgrade();
+        account_dialog::present(self, Some(&initial), field, move |changes| {
+            let window = weak.upgrade()?;
+            window
+                .change(|conn| accounts::update_account(conn, id, &changes))
+                .err()
+        });
+    }
+
+    fn set_account_archived(&self, id: i64, archived: bool) {
+        if let Err(message) = self.change(|conn| accounts::set_archived(conn, id, archived)) {
+            self.toast(&message);
+            return;
+        }
+        let toast = adw::Toast::builder()
+            .title(if archived {
+                gettext("Compte archivé")
+            } else {
+                gettext("Compte désarchivé")
+            })
+            .button_label(gettext("Annuler"))
+            .build();
+        let weak = self.downgrade();
+        toast.connect_button_clicked(move |_| {
+            if let Some(window) = weak.upgrade() {
+                let _ = window.change(|conn| accounts::set_archived(conn, id, !archived));
+            }
+        });
+        self.imp().toast_overlay.add_toast(toast);
+    }
+
+    fn confirm_delete_account(&self, id: i64) {
+        let Some(overview) = self
+            .read(|conn| accounts::overviews(conn, true))
+            .and_then(|list| list.into_iter().find(|o| o.account.id == id))
+        else {
+            return;
+        };
+        let n = overview.operation_count.clamp(0, u32::MAX as i64) as u32;
+        let dialog = adw::AlertDialog::new(
+            Some(&gettext("Supprimer « {name} » ?").replace("{name}", &overview.account.name)),
+            Some(
+                &ngettext(
+                    "Le compte, son historique d’import et {n} opération seront effacés définitivement.",
+                    "Le compte, son historique d’import et ses {n} opérations seront effacés définitivement.",
+                    n,
+                )
+                .replace("{n}", &n.to_string()),
+            ),
+        );
+        dialog.add_responses(&[
+            ("cancel", &gettext("Annuler")),
+            ("delete", &gettext("Supprimer")),
+        ]);
+        dialog.set_response_appearance("delete", adw::ResponseAppearance::Destructive);
+        dialog.set_default_response(Some("cancel"));
+        dialog.set_close_response("cancel");
+        let weak = self.downgrade();
+        dialog.connect_response(Some("delete"), move |_, _| {
+            let Some(window) = weak.upgrade() else { return };
+            match window.change(|conn| accounts::delete_account(conn, id)) {
+                Ok(count) => {
+                    window.imp().content_nav.pop_to_tag("main");
+                    let count = count.clamp(0, u32::MAX as i64) as u32;
+                    window.toast(
+                        &ngettext(
+                            "Compte supprimé, {n} opération effacée",
+                            "Compte supprimé, {n} opérations effacées",
+                            count,
+                        )
+                        .replace("{n}", &count.to_string()),
+                    );
+                }
+                Err(message) => window.toast(&message),
+            }
+        });
+        dialog.present(Some(self));
+    }
+
+    fn confirm_undo_import(&self, batch_id: i64) {
+        let Some(entry) = self
+            .read(accounts::import_history)
+            .and_then(|list| list.into_iter().find(|e| e.batch.id == batch_id))
+        else {
+            return;
+        };
+        let n = entry.remaining.clamp(0, u32::MAX as i64) as u32;
+        let file = entry
+            .batch
+            .filename
+            .clone()
+            .unwrap_or_else(|| gettext("sans nom"));
+        let dialog = adw::AlertDialog::new(
+            Some(&gettext("Annuler cet import ?")),
+            Some(
+                &ngettext(
+                    "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés.",
+                    "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés.",
+                    n,
+                )
+                .replace("{n}", &n.to_string())
+                .replace("{file}", &file)
+                .replace("{account}", &entry.account_name),
+            ),
+        );
+        dialog.add_responses(&[
+            ("cancel", &gettext("Garder")),
+            ("undo", &gettext("Supprimer les opérations")),
+        ]);
+        dialog.set_response_appearance("undo", adw::ResponseAppearance::Destructive);
+        dialog.set_default_response(Some("cancel"));
+        dialog.set_close_response("cancel");
+        let weak = self.downgrade();
+        dialog.connect_response(Some("undo"), move |_, _| {
+            let Some(window) = weak.upgrade() else { return };
+            match window.change(|conn| accounts::undo_import(conn, batch_id)) {
+                Ok(_) => window.toast(&gettext("Import annulé")),
+                Err(message) => window.toast(&message),
+            }
+        });
+        dialog.present(Some(self));
+    }
+
+    pub fn open_account(&self, id: i64) {
+        let weak = self.downgrade();
+        let w = move || weak.upgrade();
+        let (w1, w2, w3, w4) = (w.clone(), w.clone(), w.clone(), w);
+        let callbacks = account_detail::Callbacks {
+            edit: Rc::new(move |id, field| {
+                if let Some(window) = w1() {
+                    window.edit_account(id, field);
+                }
+            }),
+            set_archived: Rc::new(move |id, archived| {
+                if let Some(window) = w2() {
+                    window.set_account_archived(id, archived);
+                }
+            }),
+            delete: Rc::new(move |id| {
+                if let Some(window) = w3() {
+                    window.confirm_delete_account(id);
+                }
+            }),
+            see_all: Rc::new(move |_| {
+                if let Some(window) = w4() {
+                    window.push_sub_page(
+                        "operations",
+                        &gettext("Opérations"),
+                        "view-list-bullet-symbolic",
+                        5,
+                    );
+                }
+            }),
+        };
+        let detail = Rc::new(AccountDetailPage::new(id, callbacks));
+        if self.read(|conn| detail.refresh(conn)) != Some(true) {
+            return;
+        }
+        let imp = self.imp();
+        imp.content_nav.pop_to_tag("main");
+        imp.content_nav.push(&detail.page);
+        imp.detail.replace(Some(detail));
+        imp.split_view.set_show_content(true);
+    }
+}
+
+/// Today's date in the local time zone.
+fn today() -> NaiveDate {
+    glib::DateTime::now_local()
+        .ok()
+        .and_then(|d| NaiveDate::from_ymd_opt(d.year(), d.month() as u32, d.day_of_month() as u32))
+        .unwrap_or_default()
 }
