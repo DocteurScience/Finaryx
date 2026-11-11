@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Importer un CSV (Material 3)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/f144b633943ea4fd010c96f78f08121a">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:1500px;background:var(--win);font-family:Roboto,'Roboto Flex',system-ui,sans-serif;font-size:15px;color:var(--fg)">
+
+<aside class="rail" style="flex:0 0 80px;box-sizing:border-box;background:var(--side);display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:12px">
+  <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a href="M3-Import.dc.html" class="fab" aria-label="Importer un CSV" title="Importer un CSV" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+  <nav aria-label="Navigation principale" style="display:flex;flex-direction:column;gap:12px;margin-top:12px;width:100%">
+    <sc-for list="{{nav}}" as="item" hint-placeholder-count="6">
+      <a href="{{item.href}}" aria-current="{{item.current}}" style="display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--fg2)">
+        <span class="ind" style="width:56px;height:32px;border-radius:16px;display:flex;align-items:center;justify-content:center;{{item.tone}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{item.icon}}"/></svg></span>
+        <span>{{item.label}}</span>
+      </a>
+    </sc-for>
+  </nav>
+</aside>
+
+<div style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+
+    <header style="height:64px;box-sizing:border-box;padding:0 4px 0 0;display:flex;align-items:center;gap:4px;background:var(--head)">
+    <a href="M3-Comptes.dc.html" class="flat" aria-label="Retour aux comptes" title="Retour" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <div style="flex:1;min-width:0;line-height:1.25"><div style="font-size:22px;font-weight:400">Importer un CSV</div><div style="font-size:12px;color:var(--dim)">joint_octobre-2026.csv</div></div>
+    <button type="button" class="flat" aria-label="Rechercher" title="Rechercher" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+    <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v.01M12 12v.01M12 19v.01"/></svg></button>
+    <button type="button" class="btn" aria-label="Fermer la fenêtre" title="Fermer" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 12px 0 4px;flex:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </header>
+
+  <main style="box-sizing:border-box;width:100%;max-width:760px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:28px">
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Fichier</h2>
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--dim2)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M6 3h8l5 5v13H6zM14 3v5h5M9 13h6M9 17h6"/></svg>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+            <span style="font-weight:500;overflow-wrap:anywhere">joint_octobre-2026.csv</span>
+            <span style="font-size:13px;color:var(--dim)">27 Ko · 47 lignes · séparateur « ; » · UTF-8</span>
+          </div>
+          <button type="button" class="btn" style="height:44px;padding:0 16px;font-size:14px;font-weight:500">Changer…</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+            <span style="font-weight:500">Compte de destination</span>
+            <span style="font-size:13px;color:var(--dim)">Les opérations seront ajoutées à ce compte</span>
+          </div>
+          <button type="button" class="btn" aria-haspopup="listbox" aria-label="Compte de destination : Joint, Boursorama" style="display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 12px 0 16px;font-size:14px;font-weight:500;white-space:nowrap">
+            Joint · Boursorama
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+            <span style="font-weight:500">Modèle de banque</span>
+            <span style="font-size:13px;color:var(--dim)">Colonnes et formats de date reconnus automatiquement</span>
+          </div>
+          <span style="display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--fg2)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>
+            Boursorama
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <div>
+        <h2 style="margin:0;font-size:16px;font-weight:500">Colonnes du fichier</h2>
+        <div style="font-size:13px;color:var(--dim);margin-top:2px">Vérifiez que chaque colonne va au bon champ</div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{cols}}" as="c" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+              <span style="font-weight:500">{{c.csv}}</span>
+              <span style="font-size:13px;color:var(--dim)">Exemple : {{c.sample}}</span>
+            </div>
+            <button type="button" class="btn" aria-haspopup="listbox" aria-label="Champ pour la colonne {{c.csv}} : {{c.field}}" style="display:inline-flex;align-items:center;justify-content:space-between;gap:10px;height:44px;min-width:176px;padding:0 12px 0 16px;font-size:14px;font-weight:500;color:{{c.ink}}">
+              {{c.field}}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <div>
+        <h2 style="margin:0;font-size:16px;font-weight:500">Aperçu</h2>
+        <div style="font-size:13px;color:var(--dim);margin-top:2px">Cinq premières lignes, catégories proposées automatiquement</div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{preview}}" as="o" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:14px;min-height:60px;padding:6px 16px;border-top:1px solid var(--line);color:{{o.ink}}">
+            <span style="flex:0 0 44px;font-size:13px;color:var(--dim)">{{o.date}}</span>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+              <span style="font-weight:500;overflow-wrap:anywhere">{{o.label}}</span>
+              <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--dim)"><span style="width:10px;height:10px;border-radius:3px;background:{{o.color}};flex:none"></span>{{o.cat}}</span>
+            </div>
+            <span style="flex:0 0 auto;font-variant-numeric:tabular-nums;font-weight:500">{{o.amount}}</span>
+            <span style="flex:0 0 88px;text-align:right"><span style="display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;{{o.badge}}">{{o.status}}</span></span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Résumé</h2>
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px"><span style="color:var(--fg2)">Lignes lues</span><span style="font-weight:700;font-variant-numeric:tabular-nums">47</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px;border-top:1px solid var(--line)"><span style="color:var(--fg2)">Nouvelles opérations</span><span style="font-weight:700;font-variant-numeric:tabular-nums">41</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px;border-top:1px solid var(--line)"><span style="color:var(--fg2)">Doublons ignorés</span><span style="font-weight:700;font-variant-numeric:tabular-nums">4</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px;border-top:1px solid var(--line)"><span style="color:var(--fg2)">À vérifier (sans catégorie)</span><span style="font-weight:700;font-variant-numeric:tabular-nums">2</span></div>
+        <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <label for="remember" style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35;cursor:pointer">
+            <span style="font-weight:500">Retenir ce format</span>
+            <span style="font-size:13px;color:var(--dim)">Pour les prochains imports de ce compte</span>
+          </label>
+          <input id="remember" type="checkbox" role="switch" checked style="width:44px;height:24px;margin:0;accent-color:var(--suggest);flex:none">
+        </div>
+      </div>
+      <div style="font-size:13px;line-height:1.5;color:var(--dim)">Un doublon a la même date, le même libellé et le même montant qu'une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés.</div>
+    </section>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding-bottom:16px">
+      <a href="M3-Comptes.dc.html" style="display:inline-flex;align-items:center;justify-content:center;min-width:260px;height:48px;padding:0 24px;border-radius:999px;background:var(--suggest);color:#fff;font-size:16px;font-weight:500">Importer 41 opérations</a>
+      <a href="M3-Comptes.dc.html" class="flat" style="display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 20px;font-size:15px;font-weight:500">Annuler</a>
+    </div>
+
+  </main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const NAV = [
+      ['M3-Main.dc.html', 'Aperçu', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z', false],
+      ['M3-Mois.dc.html', 'Mois', 'M5 5h14v15H5zM5 10h14M9 3v4M15 3v4', false],
+      ['M3-Cumul.dc.html', 'Cumul', 'M5 20V10M12 20V4M19 20v-7', false],
+      ['M3-Previsions.dc.html', 'Prévisions', 'M3 17l6-6 4 4 8-8M15 7h6v6', false],
+      ['M3-Comptes.dc.html', 'Comptes', 'M3 9l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18', true],
+      ['M3-Import.dc.html', 'Importer', 'M12 4v11M7 10l5 5 5-5M5 20h14', false]
+    ];
+    const ACTIVE = 5;
+    const nav = NAV.map(([href, label, icon, sep], i) => ({
+      href, label, icon, sep, current: i === ACTIVE ? 'page' : 'false',
+      tone: i === ACTIVE ? 'background:var(--sel);font-weight:600;color:var(--fg)' : 'color:var(--fg)'
+    }));
+
+    const cols = [
+      { csv: 'Date opération', sample: '30/10/2026', field: 'Date', ink: 'var(--fg)' },
+      { csv: 'Date valeur', sample: '31/10/2026', field: 'Ignorer', ink: 'var(--dim2)' },
+      { csv: 'Libellé', sample: 'CARTE LIBRAIRIE DU PASSAGE', field: 'Libellé', ink: 'var(--fg)' },
+      { csv: 'Montant', sample: '-64,90', field: 'Montant (signé)', ink: 'var(--fg)' },
+      { csv: 'Solde', sample: '1 954,27', field: 'Solde (contrôle)', ink: 'var(--fg)' }
+    ];
+
+    const bNew = 'background:var(--badge);color:var(--fg)';
+    const bDup = 'background:transparent;color:var(--dim2);border:1px dashed var(--badge-line)';
+    const bChk = 'background:var(--card);color:var(--fg);border:1px solid var(--fg)';
+    const preview = [
+      { date: '30/10', label: 'CARTE LIBRAIRIE DU PASSAGE', cat: 'Shopping', color: 'var(--c5)', amount: '−64,90 €', status: 'Nouveau', badge: bNew, ink: 'var(--fg)' },
+      { date: '26/10', label: 'CARTE SUPERMARCHÉ CENTRE', cat: 'Alimentation', color: 'var(--c2)', amount: '−41,25 €', status: 'Nouveau', badge: bNew, ink: 'var(--fg)' },
+      { date: '22/10', label: 'CARTE DRIVE ALIMENTAIRE', cat: 'Alimentation', color: 'var(--c2)', amount: '−73,48 €', status: 'Doublon', badge: bDup, ink: 'var(--dim2)' },
+      { date: '20/10', label: 'PRLV ASSURANCE HABITATION', cat: 'Logement', color: 'var(--c1)', amount: '−16,40 €', status: 'Nouveau', badge: bNew, ink: 'var(--fg)' },
+      { date: '18/10', label: 'CARTE TERMINAL *0000', cat: 'À classer', color: 'var(--c8)', amount: '−19,90 €', status: 'À vérifier', badge: bChk, ink: 'var(--fg)' }
+    ];
+    return { nav, cols, preview };
+  }
+}
+</script>
+</body>
+</html>

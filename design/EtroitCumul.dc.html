@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Cumul (étroit)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/aa5a12024ce462d0d7fcc343b35e4c84">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-direction:column;min-height:1850px;background:var(--win);font-family:'Adwaita Sans',Inter,system-ui,sans-serif;font-size:15px;color:var(--fg)">
+  <header style="height:56px;box-sizing:border-box;padding:0 6px;display:flex;align-items:center;gap:4px;background:var(--head);border-bottom:1px solid var(--line2)">
+    <a href="Import.dc.html" class="flat" aria-label="Importer un CSV" title="Importer un CSV" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+    <div style="flex:1;text-align:center;line-height:1.25;min-width:0">
+      <div style="font-weight:700">Cumul</div>
+      <div style="font-size:12px;color:var(--dim)">Mai à octobre 2026</div>
+    </div>
+    <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex:none">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </header>
+  <main style="flex:1;box-sizing:border-box;padding:16px 12px 24px;display:flex;flex-direction:column;gap:20px">
+    <div role="group" aria-label="Période" style="display:flex;padding:3px;border-radius:10px;background:var(--seg);gap:2px"><sc-for list="{{periods}}" as="p" hint-placeholder-count="3"><button type="button" aria-pressed="{{p.pressed}}" style="flex:1;height:44px;border-radius:8px;border:0;font:500 14px 'Adwaita Sans',Inter,system-ui,sans-serif;cursor:pointer;{{p.tone}}">{{p.label}}</button></sc-for></div>
+    <section aria-label="Chiffres clés" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+      <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px"><div style="font-size:12px;color:var(--dim)">Total sur 6 mois</div><div style="font-size:19px;font-weight:700">15 973,76 €</div></div><div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px"><div style="font-size:12px;color:var(--dim)">Moyenne par mois</div><div style="font-size:19px;font-weight:700">2 662,29 €</div></div><div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px"><div style="font-size:12px;color:var(--dim)">Mois le plus chargé</div><div style="font-size:19px;font-weight:700">3 042 €</div><div style="font-size:12px;color:var(--dim)">août 2026</div></div><div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px"><div style="font-size:12px;color:var(--dim)">Mois le plus léger</div><div style="font-size:19px;font-weight:700">2 345 €</div><div style="font-size:12px;color:var(--dim)">mai 2026</div></div>
+    </section>
+    <section style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Mois par mois, par catégorie</h2>
+      <div class="card" style="padding:14px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;color:var(--dim)">Part de chaque catégorie dans le mois, en %</div>
+        <div style="display:flex">
+          <div style="position:relative;flex:0 0 46px;height:340px"><sc-for list="{{cY}}" as="t" hint-placeholder-count="4"><span style="position:absolute;right:6px;top:{{t.top}};transform:translateY(-50%);font-size:11px;color:var(--dim);font-variant-numeric:tabular-nums">{{t.label}}</span></sc-for></div>
+          <div style="position:relative;flex:1;height:340px;border-bottom:1px solid var(--axis)" role="img" aria-label="Dépenses mensuelles empilées par catégorie, de mai à octobre">
+            <sc-for list="{{cY}}" as="t" hint-placeholder-count="4"><div style="position:absolute;left:0;right:0;top:{{t.top}};border-top:1px solid var(--line)"></div></sc-for>
+            <sc-for list="{{cSegs}}" as="s" hint-placeholder-count="48"><div title="{{s.tip}}" style="position:absolute;left:{{s.left}};width:{{s.width}};bottom:{{s.bottom}};height:{{s.height}};background:{{s.color}};box-sizing:border-box;border-top:2px solid var(--card);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:{{s.ink}};{{s.radius}}">{{s.label}}</div></sc-for>
+            <sc-for list="{{cTot}}" as="t" hint-placeholder-count="6"><span style="position:absolute;left:{{t.left}};bottom:{{t.bottom}};margin-bottom:4px;transform:translateX(-50%);font-size:10px;font-weight:700;white-space:nowrap">{{t.label}}</span></sc-for>
+          </div>
+        </div>
+        <div style="display:flex;margin:0 0 0 46px"><sc-for list="{{cMonths}}" as="m" hint-placeholder-count="6"><span style="flex:1;text-align:center;font-size:12px;color:var(--dim)">{{m}}</span></sc-for></div>
+      </div>
+    </section>
+    <section style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Part de chaque catégorie</h2>
+      <div class="card" style="padding:4px 14px">
+        <sc-for list="{{trows}}" as="r" hint-placeholder-count="8">
+          <div style="display:flex;align-items:center;gap:10px;min-height:44px;border-top:1px solid var(--line);font-size:14px;font-variant-numeric:tabular-nums">
+            <span style="width:12px;height:12px;border-radius:3px;background:{{r.color}};flex:none"></span>
+            <span style="flex:1;min-width:0">{{r.name}}</span>
+            <span style="font-weight:500">{{r.total}}</span>
+            <span style="flex:0 0 52px;text-align:right;color:var(--dim)">{{r.share}} %</span>
+          </div>
+        </sc-for>
+        <div style="display:flex;align-items:center;gap:10px;min-height:44px;border-top:1px solid var(--line3);font-size:14px;font-weight:700;font-variant-numeric:tabular-nums"><span style="flex:1">Total</span><span>15 973,76 €</span><span style="flex:0 0 52px;text-align:right">100 %</span></div>
+      </div>
+    </section>
+  </main>
+  <nav aria-label="Navigation principale" style="position:sticky;bottom:0;display:flex;background:var(--head);border-top:1px solid var(--line2)">
+    <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+      <a href="{{t.href}}" aria-current="{{t.current}}" style="flex:1;min-width:0;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:12px;{{t.tone}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"/></svg>
+        <span>{{t.label}}</span>
+      </a>
+    </sc-for>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1850}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const fmt = (n, d = 2) => n.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const eur = (n, d = 2) => fmt(n, d) + '\u00a0€';
+    const TABS = [
+      ['Main.dc.html', 'Aperçu', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z'],
+      ['Mois.dc.html', 'Mois', 'M5 5h14v15H5zM5 10h14M9 3v4M15 3v4'],
+      ['Cumul.dc.html', 'Cumul', 'M5 20V10M12 20V4M19 20v-7'],
+      ['Previsions.dc.html', 'Prévisions', 'M3 17l6-6 4 4 8-8M15 7h6v6'],
+      ['Comptes.dc.html', 'Comptes', 'M3 9l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18']
+    ];
+    const ACTIVE = 2;
+    const tabs = TABS.map(([href, label, icon], i) => ({
+      href, label, icon, current: i === ACTIVE ? 'page' : 'false',
+      tone: i === ACTIVE ? 'color:var(--accent);font-weight:700' : 'color:var(--dim2)'
+    }));
+    const seg = (labels, on) => labels.map((label, i) => ({ label, pressed: i === on ? 'true' : 'false',
+      tone: i === on ? 'background:var(--segon);color:var(--fg);box-shadow:var(--segsh)' : 'background:transparent;color:var(--fg2)' }));
+    const periods = seg(['3 mois', '6 mois', '12 mois'], 1);
+    const CATS = ['Logement','Alimentation','Transports','Prêts et crédits','Shopping et animaux','Abonnements et télécoms','Banque et assurances','Autres'];
+    const MONTHS = ['mai', 'juin', 'juil.', 'août', 'sept.', 'oct.'];
+    const DATA = [[735,502.1,188.4,392.15,156.3,84.97,88.5,197.62],[735,531.8,236.9,392.15,204.7,84.97,121.4,301.15],[735,489.6,342.2,392.15,268.9,84.97,54.8,448.3],[735,455.3,371.6,392.15,359.4,84.97,77.2,566.03],[735,527.4,193.1,392.15,221.8,84.97,186.3,197.46],[735,548.3,211.4,392.15,287.6,84.97,102.3,263.18]];
+    const H = 340, cMax = 3500;
+    const mTot = DATA.map(r => r.reduce((a, c) => a + c, 0));
+    const cSegs = [], cTot = [];
+    DATA.forEach((row, m) => {
+      const slot = 100 / 6; const left = m * slot + slot * 0.12; let base = 0;
+      row.forEach((v, k) => {
+        const px = v / cMax * H;
+        cSegs.push({ left: left.toFixed(2) + '%', width: (slot * 0.76).toFixed(2) + '%', bottom: (base / cMax * 100).toFixed(2) + '%', height: (v / cMax * 100).toFixed(2) + '%',
+          color: 'var(--c' + (k + 1) + ')', ink: 'var(--i' + (k + 1) + ')', radius: k === 7 ? 'border-radius:3px 3px 0 0' : '',
+          label: px >= 14 ? fmt(v / mTot[m] * 100, 0) : '', tip: MONTHS[m] + ' · ' + CATS[k] + ' : ' + eur(v) + ' (' + fmt(v / mTot[m] * 100, 1) + ' %)' });
+        base += v;
+      });
+      cTot.push({ left: (m * slot + slot / 2).toFixed(2) + '%', bottom: (base / cMax * 100).toFixed(2) + '%', label: fmt(base / 1000, 1) + ' k' });
+    });
+    const cY = [0, 1000, 2000, 3000].map(v => ({ top: (100 - v / cMax * 100).toFixed(2) + '%', label: fmt(v, 0) }));
+    const sums = CATS.map((c, k) => DATA.reduce((a, row) => a + row[k], 0));
+    const grand = sums.reduce((a, c) => a + c, 0);
+    const trows = CATS.map((name, k) => ({ name, color: 'var(--c' + (k + 1) + ')', total: eur(sums[k]), share: fmt(sums[k] / grand * 100, 1) }));
+    return { tabs, periods, cY, cSegs, cTot, cMonths: MONTHS, trows };
+  }
+}
+</script>
+</body>
+</html>

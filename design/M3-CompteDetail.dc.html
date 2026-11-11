@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Compte courant (Material 3)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/f144b633943ea4fd010c96f78f08121a">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:1560px;background:var(--win);font-family:Roboto,'Roboto Flex',system-ui,sans-serif;font-size:15px;color:var(--fg)">
+
+<aside class="rail" style="flex:0 0 80px;box-sizing:border-box;background:var(--side);display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:12px">
+  <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a href="M3-Import.dc.html" class="fab" aria-label="Importer un CSV" title="Importer un CSV" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+  <nav aria-label="Navigation principale" style="display:flex;flex-direction:column;gap:12px;margin-top:12px;width:100%">
+    <sc-for list="{{nav}}" as="item" hint-placeholder-count="6">
+      <a href="{{item.href}}" aria-current="{{item.current}}" style="display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--fg2)">
+        <span class="ind" style="width:56px;height:32px;border-radius:16px;display:flex;align-items:center;justify-content:center;{{item.tone}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{item.icon}}"/></svg></span>
+        <span>{{item.label}}</span>
+      </a>
+    </sc-for>
+  </nav>
+</aside>
+
+<div style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+
+    <header style="height:64px;box-sizing:border-box;padding:0 4px 0 0;display:flex;align-items:center;gap:4px;background:var(--head)">
+    <a href="M3-Comptes.dc.html" class="flat" aria-label="Retour" title="Retour" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <div style="flex:1;min-width:0;line-height:1.25"><div style="font-size:22px;font-weight:400">Compte courant</div><div style="font-size:12px;color:var(--dim)">Crédit Agricole</div></div>
+    <button type="button" class="flat" aria-label="Rechercher" title="Rechercher" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+    <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v.01M12 12v.01M12 19v.01"/></svg></button>
+    <button type="button" class="btn" aria-label="Fermer la fenêtre" title="Fermer" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 12px 0 4px;flex:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </header>
+
+  <main style="box-sizing:border-box;width:100%;max-width:760px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:24px">
+
+    <section class="card" style="padding:20px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="width:48px;height:48px;border-radius:50%;background:var(--a1);color:var(--card);display:flex;align-items:center;justify-content:center;font-weight:700">CA</span>
+          <div style="line-height:1.3">
+            <div style="font-size:13px;color:var(--dim)">Solde au 31 octobre 2026</div>
+            <div style="font-size:32px;font-weight:400">2 871,46 €</div>
+          </div>
+        </div>
+        <div style="text-align:right;line-height:1.35;font-size:13px;color:var(--dim)">−61,35 € ce mois-ci<br>268 opérations enregistrées</div>
+      </div>
+      <div style="position:relative;height:150px" role="img" aria-label="Solde du compte courant sur 6 mois : de 3 240 € en mai à 2 871 € en octobre">
+        <sc-for list="{{gy}}" as="t" hint-placeholder-count="3">
+          <div style="position:absolute;left:0;right:0;top:{{t.top}};border-top:1px solid var(--line)"></div>
+        </sc-for>
+        <sc-for list="{{gy}}" as="t" hint-placeholder-count="3">
+          <span style="position:absolute;left:0;top:{{t.top}};transform:translateY(-110%);font-size:12px;color:var(--dim)">{{t.label}}</span>
+        </sc-for>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible">
+          <path d="{{line}}" style="fill:none;stroke:var(--s1);stroke-width:2;stroke-linejoin:round;stroke-linecap:round" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <sc-for list="{{zones}}" as="z" hint-placeholder-count="26">
+          <div title="{{z.tip}}" style="position:absolute;top:0;bottom:0;left:{{z.left}};width:{{z.w}};cursor:crosshair"></div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--dim)"><span>mai</span><span>juil.</span><span>sept.</span><span>oct.</span></div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Réglages du compte</h2>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{rows}}" as="r" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px;border-top:1px solid var(--line)">
+            <span style="flex:1;line-height:1.3"><span style="display:block">{{r.title}}</span><span style="display:block;font-size:13px;color:var(--dim)">{{r.sub}}</span></span>
+            <button type="button" class="btn" style="height:36px;padding:0 14px;font-size:14px">Modifier</button>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2 style="margin:0;font-size:16px;font-weight:500">Dernières opérations</h2>
+        <a href="M3-Operations.dc.html" class="flat" style="display:inline-flex;align-items:center;gap:4px;height:44px;padding:0 10px;font-size:14px;font-weight:500;color:var(--accent)">Tout voir
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{ops}}" as="o" hint-placeholder-count="5">
+          <div class="listrow" style="display:flex;align-items:center;gap:12px;min-height:56px;padding:6px 16px;border-top:1px solid var(--line)">
+            <span style="flex:0 0 56px;font-size:13px;color:var(--dim)">{{o.date}}</span>
+            <span style="flex:1;min-width:0;line-height:1.3"><span style="display:block;font-weight:500">{{o.label}}</span><span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--dim)"><span style="width:10px;height:10px;border-radius:3px;background:{{o.color}}"></span>{{o.cat}}</span></span>
+            <span style="font-weight:700;font-variant-numeric:tabular-nums">{{o.amount}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Zone sensible</h2>
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 16px">
+          <span style="flex:1;line-height:1.3"><span style="display:block">Archiver le compte</span><span style="display:block;font-size:13px;color:var(--dim)">Il disparaît des totaux, ses opérations restent consultables.</span></span>
+          <button type="button" class="btn" style="height:36px;padding:0 14px;font-size:14px">Archiver</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <span style="flex:1;line-height:1.3"><span style="display:block">Supprimer le compte et ses opérations</span><span style="display:block;font-size:13px;color:var(--dim)">Action définitive, 268 opérations seraient effacées.</span></span>
+          <button type="button" class="btn" style="height:36px;padding:0 14px;font-size:14px;color:var(--err);font-weight:600">Supprimer…</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  </main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const fmt = (n, d = 2) => n.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const eur = (n, d = 2) => fmt(n, d) + ' €';
+    const NAV = [
+      ['M3-Main.dc.html', 'Aperçu', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z', false],
+      ['M3-Mois.dc.html', 'Mois', 'M5 5h14v15H5zM5 10h14M9 3v4M15 3v4', false],
+      ['M3-Cumul.dc.html', 'Cumul', 'M5 20V10M12 20V4M19 20v-7', false],
+      ['M3-Previsions.dc.html', 'Prévisions', 'M3 17l6-6 4 4 8-8M15 7h6v6', false],
+      ['M3-Comptes.dc.html', 'Comptes', 'M3 9l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18', true],
+      ['M3-Import.dc.html', 'Importer', 'M12 4v11M7 10l5 5 5-5M5 20h14', false]
+    ];
+    const ACTIVE = 4;
+    const nav = NAV.map(([href, label, icon, sep], i) => ({
+      href, label, icon, sep, current: i === ACTIVE ? 'page' : 'false',
+      tone: i === ACTIVE ? 'background:var(--sel);font-weight:600;color:var(--fg)' : 'color:var(--fg)'
+    }));
+    const MN = ['mai','juin','juil.','août','sept.','oct.'];
+    const pts = [3240,3276,3207,3131,3093,3079,3131,3181,3213,3240,3299,3217,3162,3134,3217,3161,3057,3024,3057,2960,3031,3032,3055,3046,3027,2871];
+    const lo = 2700, hi = 3400; const Y = (v) => 100 - (v - lo) / (hi - lo) * 100;
+    const line = pts.map((v, i) => (i ? 'L' : 'M') + (i / 25 * 100).toFixed(2) + ' ' + Y(v).toFixed(2)).join(' ');
+    const gy = [3300, 3000, 2700].map(v => ({ top: Y(v).toFixed(2) + '%', label: fmt(v, 0) + ' €' }));
+    const zones = pts.map((v, i) => ({ left: Math.max(0, i / 25 * 100 - 2).toFixed(2) + '%', w: '4%', tip: 'Semaine ' + (i + 1) + ' : ' + eur(v) }));
+    const rows = [
+      { title: 'Nom', sub: 'Compte courant' },
+      { title: 'Banque', sub: 'Crédit Agricole' },
+      { title: 'Type', sub: 'Compte courant' },
+      { title: 'Solde avant la première opération importée', sub: '3 240,00 €' }
+    ];
+    const ops = [
+      ['31 oct.', 'BOULANGERIE DES LILAS', 'Alimentation', 'var(--c2)', 18.40],
+      ['28 oct.', 'PHARMACIE DE LA GARE', 'Santé', 'var(--c6)', 33.60],
+      ['27 oct.', 'STATION DU PONT', 'Transports', 'var(--c3)', 68.45],
+      ['24 oct.', 'SERVICE DE STREAMING', 'Abonnements', 'var(--c7)', 11.99],
+      ['21 oct.', 'ÉPICERIE BIO', 'Alimentation', 'var(--c2)', 52.80]
+    ].map(([date, label, cat, color, a]) => ({ date, label, cat, color, amount: '−' + eur(a) }));
+    return { nav, gy, line, zones, rows, ops };
+  }
+}
+</script>
+</body>
+</html>

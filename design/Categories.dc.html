@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Catégories et règles</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/aa5a12024ce462d0d7fcc343b35e4c84">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-direction:column;min-height:2200px;background:var(--win);font-family:'Adwaita Sans',Inter,system-ui,sans-serif;font-size:15px;color:var(--fg)">
+
+  <header style="height:56px;box-sizing:border-box;padding:0 6px;display:flex;align-items:center;gap:8px;background:var(--head);border-bottom:1px solid var(--line2)">
+    <div style="flex:1;display:flex;align-items:center">
+      <a href="Main.dc.html" class="flat" aria-label="Retour" title="Retour" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </a>
+    </div>
+    <div style="flex:2;text-align:center;font-weight:700">Catégories et règles</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:flex-end">
+      <button type="button" class="btn" aria-label="Fermer la fenêtre" title="Fermer" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 8px 0 4px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main style="flex:1;box-sizing:border-box;width:100%;max-width:900px;margin:0 auto;padding:32px 24px;display:flex;flex-direction:column;gap:32px">
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <h2 style="margin:0;font-size:15px;font-weight:700">Catégories</h2>
+        <button type="button" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:22px;border:0;background:var(--suggest);color:#ffffff;font:700 15px 'Adwaita Sans',Inter,system-ui,sans-serif;cursor:pointer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Nouvelle catégorie</button>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{cats}}" as="c" hint-placeholder-count="14">
+          <div class="listrow" style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+            <span style="flex:none;width:16px;height:16px;border-radius:4px;box-sizing:border-box;{{c.swatch}}"></span>
+            <span style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3">
+              <span style="font-weight:500">{{c.name}}</span>
+              <span style="font-size:13px;color:var(--dim)">{{c.sub}}</span>
+            </span>
+            <button type="button" class="flat" aria-label="{{c.aria}}" title="Modifier" style="flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-size:13px;line-height:1.5;color:var(--dim)">Les graphiques distinguent au plus 7 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en supprimant ou en fusionnant une autre catégorie.</div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Règles de catégorisation</h2>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{rules}}" as="r" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:14px;min-height:60px;padding:6px 16px;border-top:1px solid var(--line)">
+            <span style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3">
+              <span style="font-weight:500">Le libellé contient « {{r.pattern}} »</span>
+              <span style="font-size:13px;color:var(--dim)">{{r.count}}</span>
+            </span>
+            <span style="flex:none;display:inline-flex;align-items:center;gap:8px;font-size:14px"><span style="width:10px;height:10px;border-radius:3px;background:{{r.color}}"></span>{{r.cat}}</span>
+            <button type="button" class="flat" aria-label="{{r.aria}}" title="Supprimer la règle" style="flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:var(--err,#c01c28)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13M10 11v6M14 11v6"/></svg>
+            </button>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-size:13px;line-height:1.5;color:var(--dim)">Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées.</div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Fenêtres associées</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+
+        <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:13px;color:var(--dim)">Depuis la liste des opérations : clic sur la catégorie d'une ligne</div>
+          <div class="card" role="dialog" aria-label="Choisir une catégorie" style="padding:6px;display:flex;flex-direction:column;box-shadow:0 6px 24px rgba(0,0,0,.18)">
+            <sc-for list="{{pick}}" as="p" hint-placeholder-count="10">
+              <div class="listrow" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-radius:8px">
+                <span style="width:10px;height:10px;border-radius:3px;box-sizing:border-box;{{p.swatch}}"></span>
+                <span style="flex:1">{{p.name}}</span>
+                <sc-if value="{{p.on}}" hint-placeholder-val="{{false}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Catégorie actuelle"><path d="M5 12l5 5 9-10"/></svg></sc-if>
+              </div>
+            </sc-for>
+            <div style="height:1px;background:var(--line2);margin:6px 4px"></div>
+            <div class="listrow" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-radius:8px;font-weight:500">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Nouvelle catégorie…
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:13px;color:var(--dim)">Nouvelle catégorie (aucune couleur libre)</div>
+          <div class="card" role="dialog" aria-label="Nouvelle catégorie" style="padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:0 6px 24px rgba(0,0,0,.18)">
+            <div style="font-size:18px;font-weight:700">Nouvelle catégorie</div>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--dim)">Nom
+              <input type="text" value="Voyages" style="height:44px;box-sizing:border-box;padding:0 14px;border-radius:8px;border:0;background:var(--btn);font:15px 'Adwaita Sans',Inter,system-ui,sans-serif;color:var(--fg)">
+            </label>
+            <div role="radiogroup" aria-label="Couleur dans les graphiques" style="display:flex;flex-direction:column;gap:2px">
+              <div style="font-size:13px;color:var(--dim);margin-bottom:4px">Couleur dans les graphiques</div>
+              <sc-for list="{{colors}}" as="k" hint-placeholder-count="8">
+                <div role="radio" aria-checked="{{k.checked}}" aria-disabled="{{k.disabled}}" style="display:flex;align-items:center;gap:12px;min-height:40px;padding:0 10px;border-radius:8px;{{k.tone}}">
+                  <span style="width:16px;height:16px;border-radius:4px;box-sizing:border-box;{{k.swatch}}"></span>
+                  <span style="flex:1;font-size:14px">{{k.label}}</span>
+                  <span style="font-size:12px;color:var(--dim)">{{k.note}}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-size:12px;line-height:1.5;color:var(--dim)">Toutes les couleurs sont prises. « Voyages » sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs.</div>
+            <div style="display:flex;justify-content:flex-end;gap:10px">
+              <button type="button" class="btn" style="height:44px;padding:0 20px;font-weight:500">Annuler</button>
+              <button type="button" style="height:44px;padding:0 22px;border-radius:8px;border:0;background:var(--suggest);color:#ffffff;font:700 15px 'Adwaita Sans',Inter,system-ui,sans-serif;cursor:pointer">Créer</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:13px;color:var(--dim)">Après un changement de catégorie</div>
+          <div class="card" role="alertdialog" aria-label="Créer une règle" style="padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 6px 24px rgba(0,0,0,.18)">
+            <div style="font-size:18px;font-weight:700">Créer une règle ?</div>
+            <div style="line-height:1.5;color:var(--fg2)">Les libellés qui contiennent <b>SUPERMARCHÉ CENTRE</b> seront classés en <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600"><span style="width:10px;height:10px;border-radius:3px;background:var(--c2)"></span>Alimentation</span> lors des prochains imports.</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px">
+              <span style="line-height:1.35"><span style="display:block;font-weight:500">Appliquer aux opérations existantes</span><span style="display:block;font-size:13px;color:var(--dim)">9 opérations seront modifiées, sauf celles corrigées à la main.</span></span>
+              <span role="switch" aria-checked="true" aria-label="Appliquer aux opérations existantes" style="flex:none;position:relative;width:48px;height:28px;border-radius:14px;background:var(--suggest)"><span style="position:absolute;top:3px;left:23px;width:22px;height:22px;border-radius:50%;background:#ffffff"></span></span>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:10px">
+              <button type="button" class="btn" style="height:44px;padding:0 20px;font-weight:500">Seulement cette opération</button>
+              <button type="button" style="height:44px;padding:0 22px;border-radius:8px;border:0;background:var(--suggest);color:#ffffff;font:700 15px 'Adwaita Sans',Inter,system-ui,sans-serif;cursor:pointer">Créer la règle</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:13px;color:var(--dim)">Depuis un graphique : clic sur la part « Autres »</div>
+          <div class="card" role="dialog" aria-label="Détail de Autres" style="padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 6px 24px rgba(0,0,0,.18)">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <div style="font-size:18px;font-weight:700">Détail de « Autres »</div>
+              <div style="font-size:13px;color:var(--dim)">Octobre 2026</div>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <span style="color:var(--fg2)">Total regroupé</span>
+              <span style="font-size:22px;font-weight:700;font-variant-numeric:tabular-nums">263,18 €</span>
+            </div>
+            <div style="border-top:1px solid var(--line)">
+              <sc-for list="{{autres}}" as="a" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;gap:12px;min-height:48px;border-bottom:1px solid var(--line)">
+                  <span style="flex:none;width:12px;height:12px;border-radius:3px;box-sizing:border-box;{{a.swatch}}"></span>
+                  <span style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3"><span style="font-weight:500">{{a.name}}</span><span style="font-size:12px;color:var(--dim)">{{a.sub}}</span></span>
+                  <span style="flex:none;text-align:right;line-height:1.3;font-variant-numeric:tabular-nums"><span style="display:block;font-weight:700">{{a.amount}}</span><span style="display:block;font-size:12px;color:var(--dim)">{{a.share}}</span></span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-size:12px;line-height:1.5;color:var(--dim)">Ces catégories n'ont pas de couleur de graphique. Elles restent séparées dans les listes, les filtres et les tableaux.</div>
+            <div style="display:flex;justify-content:space-between;gap:10px">
+              <button type="button" class="btn" style="height:44px;padding:0 18px;font-weight:500">Gérer les couleurs…</button>
+              <button type="button" class="btn" style="height:44px;padding:0 20px;font-weight:500">Fermer</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":2000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const NAMES = ['Logement','Alimentation','Transports','Prêts et crédits','Shopping et animaux','Abonnements et télécoms','Banque et assurances','Autres'];
+    const EXTRA = ['Sorties et loisirs','Santé','Impôts et taxes','Administratif et éducation'];
+    const OPS = [31, 52, 24, 6, 27, 15, 17, 13];
+    const OPS_EXTRA = [22, 11, 4, 7];
+    const NOCOLOR = 'border:2px dashed var(--dim)';
+    const sw = (k) => k < 8 ? 'background:var(--c' + (k + 1) + ')' : NOCOLOR;
+    const cats = NAMES.map((name, k) => ({
+      name, swatch: sw(k), sub: OPS[k] + ' opérations · ' + (k === 7 ? 'catégorie par défaut, non supprimable' : 'couleur de graphique ' + (k + 1)),
+      aria: 'Modifier la catégorie ' + name
+    }));
+    EXTRA.forEach((name, j) => cats.push({ name, swatch: NOCOLOR, sub: OPS_EXTRA[j] + ' opérations · sans couleur, regroupée dans « Autres » dans les graphiques', aria: 'Modifier la catégorie ' + name }));
+    cats.push({ name: 'Revenus', swatch: NOCOLOR, sub: '21 opérations · catégorie spéciale, comptée en revenus', aria: 'Modifier la catégorie Revenus' });
+    cats.push({ name: 'Virement interne', swatch: NOCOLOR, sub: '18 opérations · catégorie spéciale, exclue des statistiques', aria: 'Modifier la catégorie Virement interne' });
+    const rules = [
+      ['SUPERMARCHE', 1, '10 opérations'], ['HYPERMARCHE', 1, '8 opérations'], ['TRAIN', 2, '5 opérations'],
+      ['STREAMING', 5, '6 opérations'], ['VETO', 4, '3 opérations']
+    ].map(([pattern, k, count]) => ({ pattern, count, cat: NAMES[k], color: 'var(--c' + (k + 1) + ')', aria: 'Supprimer la règle ' + pattern }));
+    const pick = NAMES.concat(EXTRA).map((name, k) => ({ name, swatch: sw(k), on: k === 1 }));
+    const colors = NAMES.slice(0, 7).map((name, k) => ({
+      label: 'Couleur ' + (k + 1), note: 'Utilisée par ' + name, swatch: sw(k), checked: 'false', disabled: 'true', tone: 'opacity:.55'
+    }));
+    colors.push({ label: 'Aucune couleur', note: 'Regroupée dans « Autres »', swatch: NOCOLOR, checked: 'true', disabled: 'false', tone: 'background:var(--sel);box-shadow:inset 0 0 0 2px var(--accent);font-weight:600' });
+    const autres = [
+      { name: 'Sorties et loisirs', sub: '5 opérations', swatch: NOCOLOR, amount: '104,60 €', share: '39,7 %' },
+      { name: 'Santé', sub: '3 opérations', swatch: NOCOLOR, amount: '71,25 €', share: '27,1 %' },
+      { name: 'Impôts et taxes', sub: '1 opération', swatch: NOCOLOR, amount: '48,00 €', share: '18,2 %' },
+      { name: 'Administratif et éducation', sub: '2 opérations', swatch: NOCOLOR, amount: '25,50 €', share: '9,7 %' },
+      { name: 'Autres', sub: '2 opérations · à vérifier', swatch: 'background:var(--c8)', amount: '13,83 €', share: '5,3 %' }
+    ];
+    return { cats, rules, pick, colors, autres };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Vue étroite (Material 3)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/f144b633943ea4fd010c96f78f08121a">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-direction:column;min-height:1960px;background:var(--win);font-family:Roboto,'Roboto Flex',system-ui,sans-serif;font-size:15px;color:var(--fg)">
+
+  <header style="height:64px;box-sizing:border-box;padding:0 6px;display:flex;align-items:center;gap:4px;background:var(--head)">
+    <a href="M3-Import.dc.html" class="flat" aria-label="Importer un CSV" title="Importer un CSV" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+    </a>
+    <div style="flex:1;text-align:left;line-height:1.25;min-width:0">
+      <div style="font-size:22px;font-weight:400">Vue d'ensemble</div>
+      <div style="font-size:12px;color:var(--dim)">Octobre 2026</div>
+    </div>
+    <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </header>
+
+  <main style="flex:1;box-sizing:border-box;padding:16px 12px 24px;display:flex;flex-direction:column;gap:20px">
+
+    <button type="button" class="btn" aria-haspopup="listbox" aria-label="Compte affiché : tous les comptes" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 14px 0 16px;font-size:15px;font-weight:500">
+      Tous les comptes
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+
+    <section aria-label="Chiffres clés" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+      <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:12px;color:var(--dim)">Solde total</div>
+        <div style="font-size:22px;font-weight:400">11 968,58 €</div>
+      </div>
+      <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:12px;color:var(--dim)">Dépenses d'octobre</div>
+        <div style="font-size:22px;font-weight:400">2 624,90 €</div>
+      </div>
+      <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:12px;color:var(--dim)">Revenus d'octobre</div>
+        <div style="font-size:22px;font-weight:400">2 541,00 €</div>
+      </div>
+      <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:12px;color:var(--dim)">Fin novembre (prévu)</div>
+        <div style="font-size:22px;font-weight:400">11 918,58 €</div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Évolution du mois</h2>
+      <div class="card" style="padding:14px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:16px;font-size:12px;color:var(--fg2);flex-wrap:wrap">
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:0;border-top:2px solid var(--s1)"></span>Octobre</span>
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:0;border-top:2px dashed var(--ghost)"></span>Septembre</span>
+        </div>
+        <div>
+          <div style="display:flex">
+            <div style="position:relative;flex:0 0 52px;height:180px">
+              <sc-for list="{{aY}}" as="t" hint-placeholder-count="4">
+                <span style="position:absolute;right:6px;top:{{t.top}};transform:translateY(-50%);font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums">{{t.label}}</span>
+              </sc-for>
+            </div>
+            <div style="position:relative;flex:1;height:180px;margin-right:62px">
+              <sc-for list="{{aY}}" as="t" hint-placeholder-count="4">
+                <div style="position:absolute;left:0;right:0;top:{{t.top}};border-top:1px solid var(--line)"></div>
+              </sc-for>
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Solde total en octobre : de 14 405 € à 11 969 €, comparé à septembre" style="position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible">
+                <path d="{{aGhost}}" style="fill:none;stroke:var(--ghost);stroke-width:2;stroke-dasharray:5 4;stroke-linejoin:round" vector-effect="non-scaling-stroke"/>
+                <path d="{{aLine}}" style="fill:none;stroke:var(--s1);stroke-width:2;stroke-linejoin:round;stroke-linecap:round" vector-effect="non-scaling-stroke"/>
+              </svg>
+              <div style="position:absolute;left:100%;top:{{aEnd}};width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--s1);border:2px solid var(--card);box-sizing:border-box"></div>
+              <div style="position:absolute;left:100%;top:{{aEnd}};transform:translateY(-50%);margin-left:10px;font-size:13px;font-weight:700;white-space:nowrap">11 969 €</div>
+                <sc-for list="{{aTips}}" as="z" hint-placeholder-count="31">
+                  <div title="{{z.tip}}" style="position:absolute;top:0;bottom:0;left:{{z.left}};width:{{z.w}};cursor:crosshair"></div>
+                </sc-for>
+            </div>
+          </div>
+          <div style="position:relative;height:20px;margin:8px 62px 0 52px">
+            <sc-for list="{{aX}}" as="t" hint-placeholder-count="5">
+              <span style="position:absolute;left:{{t.left}};top:0;transform:translateX(-50%);font-size:12px;color:var(--dim);white-space:nowrap">{{t.label}}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Où part l'argent</h2>
+      <div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:12px;color:var(--dim)">Octobre 2026 · 2 624,90 € dépensés</div>
+        <div style="display:flex;justify-content:center;padding-top:28px">
+          <div style="position:relative;flex:none;width:190px;height:190px;border-radius:50%;background:{{pieBg}}" role="img" aria-label="Anneau des dépenses d'octobre par catégorie, le détail est dans la liste">
+            <sc-for list="{{pieSeps}}" as="s" hint-placeholder-count="8">
+              <div style="position:absolute;left:50%;top:50%;width:97px;height:3px;margin-top:-1.5px;transform-origin:0 50%;transform:{{s.tf}};background:var(--card)"></div>
+            </sc-for>
+            <sc-for list="{{pieLbls}}" as="p" hint-placeholder-count="8">
+              <span style="position:absolute;left:{{p.left}};top:{{p.top}};transform:translate(-50%,-50%);font-size:12px;font-weight:700;line-height:1;white-space:nowrap;color:{{p.ink}};font-variant-numeric:tabular-nums">{{p.t}}</span>
+            </sc-for>
+            <div style="position:absolute;left:50%;top:50%;width:104px;height:104px;margin:-52px 0 0 -52px;border-radius:50%;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.25">
+              <span style="font-size:17px;font-weight:700;font-variant-numeric:tabular-nums">2 624,90 €</span>
+              <span style="font-size:12px;color:var(--dim)">dépensés</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{rows}}" as="r" hint-placeholder-count="8">
+            <div style="display:flex;align-items:center;gap:10px;min-height:40px;border-top:1px solid var(--line);font-size:14px;font-variant-numeric:tabular-nums">
+              <span style="width:12px;height:12px;border-radius:3px;background:{{r.color}};flex:none"></span>
+              <span style="flex:1;min-width:0">{{r.name}}</span>
+              <span style="font-weight:500">{{r.amount}}</span>
+              <span style="flex:0 0 48px;text-align:right;color:var(--dim)">{{r.pct}} %</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Prévision à 6 mois</h2>
+      <div class="card" style="padding:14px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:16px;font-size:12px;color:var(--fg2);flex-wrap:wrap">
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:0;border-top:2px solid var(--s1)"></span>Réel</span>
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:0;border-top:2px dashed var(--s1)"></span>Prévu</span>
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:10px;background:var(--band)"></span>Fourchette</span>
+        </div>
+        <div>
+          <div style="display:flex">
+            <div style="position:relative;flex:0 0 52px;height:180px">
+              <sc-for list="{{dY}}" as="t" hint-placeholder-count="5">
+                <span style="position:absolute;right:6px;top:{{t.top}};transform:translateY(-50%);font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums">{{t.label}}</span>
+              </sc-for>
+            </div>
+            <div style="position:relative;flex:1;height:180px;margin-right:62px">
+              <sc-for list="{{dY}}" as="t" hint-placeholder-count="5">
+                <div style="position:absolute;left:0;right:0;top:{{t.top}};border-top:1px solid var(--line)"></div>
+              </sc-for>
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Solde en fin de mois : 11 969 € en octobre, prévu à 11 319 € en avril" style="position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible">
+                <path d="{{dBand}}" style="fill:var(--band);stroke:none"/>
+                <path d="{{dHist}}" style="fill:none;stroke:var(--s1);stroke-width:2;stroke-linejoin:round" vector-effect="non-scaling-stroke"/>
+                <path d="{{dFore}}" style="fill:none;stroke:var(--s1);stroke-width:2;stroke-dasharray:5 4;stroke-linejoin:round" vector-effect="non-scaling-stroke"/>
+              </svg>
+              <div style="position:absolute;left:100%;top:{{dEnd}};width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--card);border:2px solid var(--s1);box-sizing:border-box"></div>
+              <div style="position:absolute;left:100%;top:{{dEnd}};transform:translateY(-50%);margin-left:10px;font-size:13px;font-weight:700;white-space:nowrap">11 319 €</div>
+            </div>
+          </div>
+          <div style="position:relative;height:20px;margin:8px 62px 0 52px">
+            <sc-for list="{{dX}}" as="t" hint-placeholder-count="4">
+              <span style="position:absolute;left:{{t.left}};top:0;transform:translateX(-50%);font-size:12px;color:var(--dim);white-space:nowrap">{{t.label}}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav aria-label="Navigation principale" style="position:sticky;bottom:0;display:flex;background:var(--navbar);padding:12px 0 16px">
+    <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+      <a href="{{t.href}}" aria-current="{{t.current}}" style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:500;{{t.tone}}">
+        <span style="width:64px;height:32px;border-radius:16px;display:flex;align-items:center;justify-content:center;{{t.pill}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"/></svg></span>
+        <span>{{t.label}}</span>
+      </a>
+    </sc-for>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1960}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const fmt = (n, d = 2) => n.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const eur = (n, d = 2) => fmt(n, d) + ' €';
+
+    const TABS = [
+      ['M3-Main.dc.html', 'Aperçu', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z'],
+      ['M3-Mois.dc.html', 'Mois', 'M5 5h14v15H5zM5 10h14M9 3v4M15 3v4'],
+      ['M3-Cumul.dc.html', 'Cumul', 'M5 20V10M12 20V4M19 20v-7'],
+      ['M3-Previsions.dc.html', 'Prévisions', 'M3 17l6-6 4 4 8-8M15 7h6v6'],
+      ['M3-Comptes.dc.html', 'Comptes', 'M3 9l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18']
+    ];
+    const tabs = TABS.map(([href, label, icon], i) => ({
+      href, label, icon, current: i === 0 ? 'page' : 'false',
+      tone: i === 0 ? 'font-weight:600;color:var(--fg)' : 'color:var(--fg2)',
+      pill: i === 0 ? 'background:var(--sel)' : ''
+    }));
+
+    const exp = [62.23,119.19,51.47,63.73,712.40,109.71,25.94,95.79,18.59,65.84,29.31,45.18,26.65,80.50,74.28,22.15,35.58,22.73,65.08,83.00,48.22,104.76,120.16,60.12,82.05,41.17,107.70,66.65,91.82,64.54,28.36];
+    const inc = { 1: 2415, 11: 57, 23: 69 };
+    let b = 12052.48; const bal = [];
+    exp.forEach((e, i) => { b += (inc[i + 1] || 0) - e; bal.push(b); });
+    const yMin = 11500, yMax = 15000;
+    const Y = (v) => 100 - (v - yMin) / (yMax - yMin) * 100;
+    const X = (i, n) => i / (n - 1) * 100;
+    const line = (arr, n) => arr.map((v, i) => (i ? 'L' : 'M') + X(i, n).toFixed(2) + ' ' + Y(v).toFixed(2)).join(' ');
+    const ghost = []; for (let d = 1; d <= 30; d++) ghost.push(14268.36 - 2215.88 * Math.pow((d - 1) / 29, 0.85));
+    const aTips = bal.map((v, i) => ({ left: Math.max(0, X(i, 31) - 100 / 60).toFixed(2) + '%', w: (100 / 30).toFixed(2) + '%', tip: (i + 1) + ' oct. : solde ' + eur(v) + ' · dépenses du jour ' + eur(exp[i]) }));
+    const aY = [12000, 13000, 14000, 15000].map(v => ({ top: Y(v).toFixed(2) + '%', label: fmt(v, 0) + ' €' }));
+    const aX = [[1, '1 oct.'], [15, '15'], [29, '29']].map(([d, label]) => ({ left: ((d - 1) / 30 * 100).toFixed(2) + '%', label }));
+
+    const CATS = ['Logement','Alimentation','Transports','Loisirs','Shopping','Santé','Abonnements','Autres'];
+    const OCT = [735, 548.3, 211.4, 392.15, 287.6, 84.97, 102.3, 263.18];
+    const tot = OCT.reduce((a, c) => a + c, 0);
+    const order = OCT.map((v, i) => i).sort((p, q) => OCT[q] - OCT[p]);
+    const rows = order.map(i => ({ name: CATS[i], color: 'var(--c' + (i + 1) + ')', amount: eur(OCT[i]), pct: fmt(OCT[i] / tot * 100, 1) }));
+    let acc = 0; const stops = [], pieSeps = [], pieLbls = [];
+    order.forEach(i => {
+      const s = acc / tot * 360; acc += OCT[i]; const e = acc / tot * 360;
+      stops.push('var(--c' + (i + 1) + ') ' + s.toFixed(3) + 'deg ' + e.toFixed(3) + 'deg');
+      pieSeps.push({ tf: 'rotate(' + (e - 90).toFixed(3) + 'deg)' });
+      const th = (s + e) / 2 * Math.PI / 180, small = OCT[i] / tot < 0.05, MR = small ? 113 : 73.5;
+      pieLbls.push({ left: 'calc(50% + ' + (MR * Math.sin(th)).toFixed(1) + 'px)', top: 'calc(50% - ' + (MR * Math.cos(th)).toFixed(1) + 'px)', ink: small ? 'var(--fg2)' : 'var(--i' + (i + 1) + ')', t: fmt(OCT[i] / tot * 100, 0) + '\u00a0%' });
+    });
+    const pieBg = 'conic-gradient(' + stops.join(',') + ')';
+
+    const hist = [12353.23, 12112.31, 11865.66, 12052.48, 11968.58];
+    const fore = [11918.58, 11428.58, 11408.58, 11428.58, 11388.58, 11318.58];
+    const band = [180, 340, 470, 590, 700, 800];
+    const fMin = 9500, fMax = 14000;
+    const FY = (v) => 100 - (v - fMin) / (fMax - fMin) * 100;
+    const FX = (i) => i / 10 * 100;
+    const dHist = hist.map((v, i) => (i ? 'L' : 'M') + FX(i).toFixed(2) + ' ' + FY(v).toFixed(2)).join(' ');
+    const dFore = [hist[4]].concat(fore).map((v, i) => (i ? 'L' : 'M') + FX(i + 4).toFixed(2) + ' ' + FY(v).toFixed(2)).join(' ');
+    const upper = fore.map((v, i) => 'L' + FX(i + 5).toFixed(2) + ' ' + FY(v + band[i]).toFixed(2));
+    const lower = fore.map((v, i) => 'L' + FX(i + 5).toFixed(2) + ' ' + FY(v - band[i]).toFixed(2)).reverse();
+    const dBand = 'M' + FX(4).toFixed(2) + ' ' + FY(hist[4]).toFixed(2) + ' ' + upper.join(' ') + ' ' + lower.join(' ') + ' Z';
+    const dY = [10000, 11000, 12000, 13000, 14000].map(v => ({ top: FY(v).toFixed(2) + '%', label: fmt(v, 0) + ' €' }));
+    const dX = [[0, 'juin'], [4, 'oct.'], [8, 'févr.'], [10, 'avr.']].map(([i, label]) => ({ left: FX(i).toFixed(2) + '%', label }));
+
+    return { tabs, aY, aX, aTips, aLine: line(bal, 31), aGhost: line(ghost, 31), aEnd: Y(bal[30]).toFixed(2) + '%', pieBg, pieSeps, pieLbls, rows, dY, dX, dHist, dFore, dBand, dEnd: FY(11318.58).toFixed(2) + '%' };
+  }
+}
+</script>
+</body>
+</html>

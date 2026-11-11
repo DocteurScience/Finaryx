@@ -1,0 +1,43 @@
+bank_category,bank_subcategory,carnet_category,needs_review
+A categoriser - rentree d'argent,Remise de cheque - a categoriser,Revenus,1
+A categoriser - rentree d'argent,Virement recu - a categoriser,Revenus,1
+A categoriser - sortie d'argent,Cheque - a categoriser,Autres,1
+A categoriser - sortie d'argent,Prelevement - a categoriser,Autres,1
+A categoriser - sortie d'argent,Retrait d'especes - a categoriser,Autres,1
+A categoriser - sortie d'argent,Virement emis - a categoriser,Autres,1
+Alimentation,Alimentation - autre,Alimentation,0
+Alimentation,Hyper/supermarche,Alimentation,0
+Alimentation,Petit commercant,Alimentation,0
+Alimentation,Restaurant,Sorties et loisirs,0
+Alimentation,Restauration rapide,Sorties et loisirs,0
+Banque et assurances,Banque et assurance - autre,Banque et assurances,1
+Banque et assurances,Frais bancaires,Banque et assurances,0
+Education et famille,Soutien scolaire,Administratif et éducation,0
+Impots et taxes,Impots et taxes - autre,Impôts et taxes,0
+Juridique et administratif,Juridique et administratif - autre,Administratif et éducation,0
+Logement - maison,Ameublement et appareil,Logement,0
+Logement - maison,Assurance habitation,Logement,0
+Logement - maison,"Energie eau, gaz, electricite, fioul",Logement,0
+Logement - maison,Internet et telephonie,Abonnements et télécoms,0
+Logement - maison,Travaux - Entretien,Logement,0
+Loisirs et vacances,Bar,Sorties et loisirs,0
+Loisirs et vacances,"Expo, musee, cinema",Sorties et loisirs,0
+Loisirs et vacances,Hotel,Sorties et loisirs,0
+Loisirs et vacances,"Livres, Magazines",Sorties et loisirs,0
+Loisirs et vacances,Loisirs et vacances - autre,Sorties et loisirs,0
+Loisirs et vacances,"Video, Musique et jeux",Abonnements et télécoms,0
+Revenus et rentrees d'argent,Salaires,Revenus,0
+Sante,Mutuelle,Santé,0
+Sante,Pharmacie,Santé,0
+Shopping et services,Animaux domestiques,Shopping et animaux,0
+Shopping et services,Cadeaux et dons,Sorties et loisirs,0
+Shopping et services,High-Tech/Electromenager,Shopping et animaux,0
+Shopping et services,Poste et colis,Shopping et animaux,0
+Shopping et services,Shopping et services - autre,Shopping et animaux,0
+Shopping et services,Vetements et chaussures,Shopping et animaux,0
+Transaction exclue,Virement interne,(exclue),0
+Transports,Carburant,Transports,0
+Transports,Entretien de vehicule,Transports,0
+Transports,Peage et Stationnement,Transports,0
+Transports,"Trains, avions et ferrys",Transports,0
+Transports,Transports en commun,Transports,0

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Prévisions (étroit)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/aa5a12024ce462d0d7fcc343b35e4c84">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-direction:column;min-height:2150px;background:var(--win);font-family:'Adwaita Sans',Inter,system-ui,sans-serif;font-size:15px;color:var(--fg)">
+  <header style="height:56px;box-sizing:border-box;padding:0 6px;display:flex;align-items:center;gap:4px;background:var(--head);border-bottom:1px solid var(--line2)">
+    <a href="Import.dc.html" class="flat" aria-label="Importer un CSV" title="Importer un CSV" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+    <div style="flex:1;text-align:center;line-height:1.25;min-width:0">
+      <div style="font-weight:700">Prévisions</div>
+      <div style="font-size:12px;color:var(--dim)">Novembre 2026 à avril 2027</div>
+    </div>
+    <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex:none">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </header>
+  <main style="flex:1;box-sizing:border-box;padding:16px 12px 24px;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:var(--dim)">Habitudes calculées sur</span><div role="group" aria-label="Période de référence" style="display:flex;padding:3px;border-radius:10px;background:var(--seg);gap:2px"><sc-for list="{{basis}}" as="p" hint-placeholder-count="3"><button type="button" aria-pressed="{{p.pressed}}" style="flex:1;height:44px;border-radius:8px;border:0;font:500 14px 'Adwaita Sans',Inter,system-ui,sans-serif;cursor:pointer;{{p.tone}}">{{p.label}}</button></sc-for></div></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:var(--dim)">Horizon</span><div role="group" aria-label="Horizon de prévision" style="display:flex;padding:3px;border-radius:10px;background:var(--seg);gap:2px"><sc-for list="{{horizon}}" as="p" hint-placeholder-count="3"><button type="button" aria-pressed="{{p.pressed}}" style="flex:1;height:44px;border-radius:8px;border:0;font:500 14px 'Adwaita Sans',Inter,system-ui,sans-serif;cursor:pointer;{{p.tone}}">{{p.label}}</button></sc-for></div></div>
+    </div>
+    <section style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px"><div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px"><div style="font-size:12px;color:var(--dim)">Fin avril (prévu)</div><div style="font-size:19px;font-weight:700">11 318,58 €</div><div style="font-size:12px;color:var(--dim)">10 519 à 12 119 €</div></div><div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px"><div style="font-size:12px;color:var(--dim)">Dépenses prévues</div><div style="font-size:19px;font-weight:700">2 668 € / mois</div></div><div style="grid-column:1 / -1;display:contents"></div></section>
+    <section style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Solde en fin de mois</h2>
+      <div class="card" style="padding:14px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:16px;font-size:12px;color:var(--fg2);flex-wrap:wrap">
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:0;border-top:2px solid var(--s1)"></span>Réel</span>
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:0;border-top:2px dashed var(--s1)"></span>Prévu</span>
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:10px;background:var(--band)"></span>Fourchette</span>
+        </div>
+        <div style="display:flex">
+          <div style="position:relative;flex:0 0 52px;height:220px"><sc-for list="{{fY}}" as="t" hint-placeholder-count="5"><span style="position:absolute;right:6px;top:{{t.top}};transform:translateY(-50%);font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums">{{t.label}}</span></sc-for></div>
+          <div style="position:relative;flex:1;height:220px;margin-right:62px">
+            <sc-for list="{{fY}}" as="t" hint-placeholder-count="5"><div style="position:absolute;left:0;right:0;top:{{t.top}};border-top:1px solid var(--line)"></div></sc-for>
+            <div style="position:absolute;left:{{nowX}};top:0;bottom:0;border-left:1px solid var(--axis)"></div>
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Solde en fin de mois : 11 969 € en octobre, prévu à 11 319 € en avril" style="position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible">
+              <path d="{{fBand}}" style="fill:var(--band);stroke:none"/>
+              <path d="{{fHist}}" style="fill:none;stroke:var(--s1);stroke-width:2;stroke-linejoin:round" vector-effect="non-scaling-stroke"/>
+              <path d="{{fFore}}" style="fill:none;stroke:var(--s1);stroke-width:2;stroke-dasharray:6 4;stroke-linejoin:round" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <sc-for list="{{dots}}" as="d" hint-placeholder-count="11"><div title="{{d.tip}}" style="position:absolute;left:{{d.left}};top:{{d.top}};width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;box-sizing:border-box;{{d.look}}"></div></sc-for>
+            <div style="position:absolute;left:100%;top:{{endTop}};transform:translateY(-50%);margin-left:10px;font-size:13px;font-weight:700;white-space:nowrap">11 319 €</div>
+          </div>
+        </div>
+        <div style="position:relative;height:20px;margin:-4px 62px 0 52px"><sc-for list="{{fX}}" as="t" hint-placeholder-count="4"><span style="position:absolute;left:{{t.left}};top:0;transform:translateX(-50%);font-size:12px;color:var(--dim);white-space:nowrap">{{t.label}}</span></sc-for></div>
+        <div style="font-size:12px;line-height:1.5;color:var(--dim)">Estimation d'après vos charges récurrentes et vos dépenses moyennes. La fourchette s'élargit avec l'horizon.</div>
+      </div>
+    </section>
+    <section style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Mois par mois</h2>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{table}}" as="r" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:10px;min-height:60px;padding:6px 14px;border-top:1px solid var(--line)">
+            <span style="flex:1;min-width:0;line-height:1.3"><span style="display:block;font-weight:500">{{r.month}}</span><span style="font-size:12px;color:var(--dim)">{{r.exp}} de dépenses</span></span>
+            <span style="display:flex;flex-direction:column;align-items:flex-end;line-height:1.3;font-variant-numeric:tabular-nums"><span style="font-weight:700">{{r.bal}}</span><span style="font-size:12px;color:var(--dim)">{{r.net}}</span></span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Charges récurrentes détectées</h2>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{recur}}" as="r" hint-placeholder-count="7">
+          <div style="display:flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border-top:1px solid var(--line);font-size:14px"><span style="flex:1">{{r.label}}</span><span style="color:var(--dim)">{{r.day}}</span><span style="flex:0 0 76px;text-align:right;font-weight:500;font-variant-numeric:tabular-nums">{{r.amount}}</span></div>
+        </sc-for>
+        <div style="display:flex;align-items:center;min-height:44px;padding:0 14px;border-top:1px solid var(--line3);font-size:14px;font-weight:700"><span style="flex:1">Charges fixes</span><span>839,27 € / mois</span></div>
+      </div>
+    </section>
+  </main>
+  <nav aria-label="Navigation principale" style="position:sticky;bottom:0;display:flex;background:var(--head);border-top:1px solid var(--line2)">
+    <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+      <a href="{{t.href}}" aria-current="{{t.current}}" style="flex:1;min-width:0;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:12px;{{t.tone}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"/></svg>
+        <span>{{t.label}}</span>
+      </a>
+    </sc-for>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2150}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const fmt = (n, d = 2) => n.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const eur = (n, d = 2) => fmt(n, d) + '\u00a0€';
+    const TABS = [
+      ['Main.dc.html', 'Aperçu', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z'],
+      ['Mois.dc.html', 'Mois', 'M5 5h14v15H5zM5 10h14M9 3v4M15 3v4'],
+      ['Cumul.dc.html', 'Cumul', 'M5 20V10M12 20V4M19 20v-7'],
+      ['Previsions.dc.html', 'Prévisions', 'M3 17l6-6 4 4 8-8M15 7h6v6'],
+      ['Comptes.dc.html', 'Comptes', 'M3 9l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18']
+    ];
+    const ACTIVE = 3;
+    const tabs = TABS.map(([href, label, icon], i) => ({
+      href, label, icon, current: i === ACTIVE ? 'page' : 'false',
+      tone: i === ACTIVE ? 'color:var(--accent);font-weight:700' : 'color:var(--dim2)'
+    }));
+    const seg = (labels, on) => labels.map((label, i) => ({ label, pressed: i === on ? 'true' : 'false',
+      tone: i === on ? 'background:var(--segon);color:var(--fg);box-shadow:var(--segsh)' : 'background:transparent;color:var(--fg2)' }));
+    const basis = seg(['3 mois', '6 mois', '12 mois'], 1);
+    const horizon = seg(['3 mois', '6 mois', '12 mois'], 1);
+    const hist = [12353.23, 12112.31, 11865.66, 12052.48, 11968.58];
+    const fore = [11918.58, 11428.58, 11408.58, 11428.58, 11388.58, 11318.58];
+    const band = [180, 340, 470, 590, 700, 800];
+    const fMin = 9500, fMax = 14000;
+    const FY = (v) => 100 - (v - fMin) / (fMax - fMin) * 100;
+    const FX = (i) => i / 10 * 100;
+    const p = (x, y) => x.toFixed(2) + ' ' + y.toFixed(2);
+    const fHist = hist.map((v, i) => (i ? 'L' : 'M') + p(FX(i), FY(v))).join(' ');
+    const fFore = [hist[4]].concat(fore).map((v, i) => (i ? 'L' : 'M') + p(FX(i + 4), FY(v))).join(' ');
+    const upper = fore.map((v, i) => 'L' + p(FX(i + 5), FY(v + band[i])));
+    const lower = fore.map((v, i) => 'L' + p(FX(i + 5), FY(v - band[i]))).reverse();
+    const fBand = 'M' + p(FX(4), FY(hist[4])) + ' ' + upper.join(' ') + ' ' + lower.join(' ') + ' Z';
+    const fY = [10000, 11000, 12000, 13000, 14000].map(v => ({ top: FY(v).toFixed(2) + '%', label: fmt(v, 0) + ' €' }));
+    const MONTHS = ['juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.', 'janv.', 'févr.', 'mars', 'avr.'];
+    const fX = [[0, 'juin'], [4, 'oct.'], [8, 'févr.'], [10, 'avr.']].map(([i, label]) => ({ left: FX(i).toFixed(2) + '%', label }));
+    const dots = hist.concat(fore).map((v, i) => ({ left: FX(i).toFixed(2) + '%', top: FY(v).toFixed(2) + '%', tip: MONTHS[i] + ' : ' + eur(v) + (i > 4 ? ' (prévu)' : ''),
+      look: i <= 4 ? 'background:var(--s1);border:2px solid var(--card)' : 'background:var(--card);border:2px solid var(--s1)' }));
+    const labels = ['Novembre 2026', 'Décembre 2026', 'Janvier 2027', 'Février 2027', 'Mars 2027', 'Avril 2027'];
+    const expF = [2610, 3050, 2580, 2540, 2600, 2630];
+    const table = labels.map((month, i) => ({ month, exp: eur(expF[i], 0), net: (2560 - expF[i] < 0 ? '−' : '+') + fmt(Math.abs(2560 - expF[i]), 0) + ' €', bal: eur(fore[i]) }));
+    const recur = [['Loyer','le 5','690,00 €'],['Électricité','le 10','45,00 €'],['Assurance habitation','le 12','16,40 €'],['Mobile','le 14','12,99 €'],['Salle de sport','le 18','29,90 €'],['Streaming','le 20','9,99 €'],['Internet','le 23','34,99 €']].map(([label, day, amount]) => ({ label, day, amount }));
+    return { tabs, basis, horizon, fY, fX, fHist, fFore, fBand, dots, table, recur, nowX: FX(4).toFixed(2) + '%', endTop: FY(fore[5]).toFixed(2) + '%' };
+  }
+}
+</script>
+</body>
+</html>

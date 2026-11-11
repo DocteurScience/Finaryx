@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Premier lancement (Material 3)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/f144b633943ea4fd010c96f78f08121a">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-direction:column;min-height:1000px;background:var(--win);font-family:Roboto,'Roboto Flex',system-ui,sans-serif;font-size:15px;color:var(--fg)">
+
+    <header style="height:64px;box-sizing:border-box;padding:0 4px 0 24px;display:flex;align-items:center;gap:4px;background:var(--head)">
+    
+    <div style="flex:1;min-width:0;line-height:1.25"><div style="font-size:22px;font-weight:400">Finaryx</div></div>
+    <button type="button" class="flat" aria-label="Rechercher" title="Rechercher" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+    <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v.01M12 12v.01M12 19v.01"/></svg></button>
+    <button type="button" class="btn" aria-label="Fermer la fenêtre" title="Fermer" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 12px 0 4px;flex:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </header>
+
+  <main style="flex:1;box-sizing:border-box;width:100%;max-width:760px;margin:0 auto;padding:56px 24px 32px;display:flex;flex-direction:column;align-items:center;gap:40px">
+
+    <section style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;max-width:520px">
+      <span style="width:96px;height:96px;border-radius:50%;background:var(--btn);display:flex;align-items:center;justify-content:center;color:var(--dim)">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18"/></svg>
+      </span>
+      <h1 style="margin:0;font-size:28px;line-height:1.2">Bienvenue dans Finaryx</h1>
+      <p style="margin:0;line-height:1.5;color:var(--fg2)">Importez l'export CSV d'un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n'est envoyé en ligne.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:10px">
+        <a href="M3-Import.dc.html" style="display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 28px;border-radius:24px;background:var(--suggest);color:var(--onsuggest);font-weight:700">Importer un CSV</a>
+        <a href="M3-Comptes.dc.html" class="btn" style="display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 24px;border-radius:24px;font-weight:500">Ajouter un compte d'abord</a>
+      </div>
+    </section>
+
+    <section style="width:100%;display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Pour commencer</h2>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:16px;min-height:72px;padding:10px 16px;border-top:1px solid var(--line)">
+            <span style="flex:none;width:32px;height:32px;border-radius:50%;background:var(--btn);display:flex;align-items:center;justify-content:center;font-weight:700">{{s.n}}</span>
+            <span style="flex:1;line-height:1.35"><span style="display:block;font-weight:500">{{s.title}}</span><span style="display:block;font-size:13px;color:var(--dim)">{{s.sub}}</span></span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="width:100%;display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Quand il manque des données</h2>
+      <div class="card" style="padding:28px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px">
+        <span style="width:56px;height:56px;border-radius:50%;background:var(--btn);display:flex;align-items:center;justify-content:center;color:var(--dim)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>
+        </span>
+        <div style="font-weight:700">Pas encore assez de données pour une prévision</div>
+        <div style="max-width:420px;line-height:1.5;color:var(--fg2)">Finaryx a besoin d'au moins 3 mois d'opérations pour repérer vos habitudes. Il vous en manque 2 : importez un export plus ancien pour débloquer cette vue.</div>
+        <a href="M3-Import.dc.html" class="btn" style="margin-top:8px;display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:22px;font-weight:500">Importer un export plus ancien</a>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const steps = [
+      { n: '1', title: 'Exportez vos opérations en CSV', sub: 'Depuis le site ou l\'application de votre banque, choisissez la période la plus longue possible.' },
+      { n: '2', title: 'Importez le fichier dans Finaryx', sub: 'Le format est reconnu pour Boursorama, Crédit Agricole et Revolut, sinon vous associez les colonnes une seule fois.' },
+      { n: '3', title: 'Vérifiez les catégories', sub: 'Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle.' }
+    ];
+    return { steps };
+  }
+}
+</script>
+</body>
+</html>

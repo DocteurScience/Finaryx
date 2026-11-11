@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Importer un CSV</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/aa5a12024ce462d0d7fcc343b35e4c84">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:2700px;background:var(--win);font-family:'Adwaita Sans',Inter,system-ui,sans-serif;font-size:15px;color:var(--fg)">
+
+<aside style="flex:0 0 260px;box-sizing:border-box;background:var(--side);border-right:1px solid var(--line2);display:flex;flex-direction:column">
+  <div style="height:56px;box-sizing:border-box;padding:0 6px 0 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)">
+    <span style="font-weight:700">Finaryx</span>
+    <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+  </div>
+  <nav aria-label="Navigation principale" style="padding:8px;display:flex;flex-direction:column;gap:2px">
+    <sc-for list="{{nav}}" as="item" hint-placeholder-count="6">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <sc-if value="{{item.sep}}" hint-placeholder-val="{{false}}"><div style="height:1px;background:var(--line2);margin:8px 6px"></div></sc-if>
+        <a href="{{item.href}}" class="navrow" aria-current="{{item.current}}" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-radius:8px;box-sizing:border-box;{{item.tone}}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{item.icon}}"></path></svg>
+          <span>{{item.label}}</span>
+        </a>
+      </div>
+    </sc-for>
+  </nav>
+  <div style="margin-top:auto;padding:16px 18px;font-size:13px;line-height:1.45;color:var(--dim2)">
+    <div style="font-weight:700;color:var(--fg)">Dernier import</div>
+    <div>2 nov. 2026 · Compte courant</div>
+  </div>
+</aside>
+
+<div style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+
+  <header style="height:56px;box-sizing:border-box;padding:0 6px;display:flex;align-items:center;gap:8px;background:var(--head);border-bottom:1px solid var(--line2)">
+    <div style="flex:1;display:flex;align-items:center;gap:4px">
+      <a href="Comptes.dc.html" class="flat" aria-label="Retour aux comptes" title="Retour" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+      </a>
+    </div>
+    <div style="flex:2;text-align:center;line-height:1.25">
+      <div style="font-weight:700">Importer un CSV</div>
+      <div style="font-size:12px;color:var(--dim)">export_banque_populaire.csv</div>
+    </div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:4px">
+      <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
+      <button type="button" class="btn" aria-label="Fermer la fenêtre" title="Fermer" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 8px 0 4px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <main style="box-sizing:border-box;width:100%;max-width:760px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:28px">
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Fichier</h2>
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--dim2)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M6 3h8l5 5v13H6zM14 3v5h5M9 13h6M9 17h6"></path></svg>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+            <span style="font-weight:500;overflow-wrap:anywhere">export_banque_populaire.csv</span>
+            <span style="font-size:13px;color:var(--dim)">38 Ko · 214 lignes · 13 colonnes</span>
+          </div>
+          <button type="button" class="btn" style="height:44px;padding:0 16px;font-size:14px;font-weight:500">Changer…</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+            <span style="font-weight:500">Compte de destination</span>
+            <span style="font-size:13px;color:var(--dim)">Les opérations seront ajoutées à ce compte</span>
+          </div>
+          <button type="button" class="btn" aria-haspopup="listbox" aria-label="Compte de destination : Compte courant, Banque Populaire" style="display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 12px 0 16px;font-size:14px;font-weight:500;white-space:nowrap">
+            Compte courant · Banque Populaire
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+            <span style="font-weight:500">Modèle de banque</span>
+            <span style="font-size:13px;color:var(--dim)">Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois.</span>
+          </div>
+          <span style="flex:none;display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;background:var(--card);color:var(--fg);border:1px solid var(--fg)">Nouveau format</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <div>
+        <h2 style="margin:0;font-size:15px;font-weight:700">Format du fichier</h2>
+        <div style="font-size:13px;color:var(--dim);margin-top:2px">Détecté automatiquement, à corriger si la lecture est mauvaise</div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{fmts}}" as="f" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:14px;min-height:56px;padding:6px 16px;border-top:1px solid var(--line)">
+            <span style="flex:1;min-width:0;font-weight:500">{{f.label}}</span>
+            <span style="flex:none;font-size:12px;color:var(--dim)">Détecté</span>
+            <button type="button" class="btn" aria-haspopup="listbox" aria-label="{{f.aria}}" style="display:inline-flex;align-items:center;justify-content:space-between;gap:10px;height:40px;min-width:176px;padding:0 12px 0 16px;font-size:14px;font-weight:500">
+              {{f.value}}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <div>
+        <h2 style="margin:0;font-size:15px;font-weight:700">Colonnes du fichier</h2>
+        <div style="font-size:13px;color:var(--dim);margin-top:2px">Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer ».</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px">
+        <span style="font-weight:500">Comment le montant est écrit</span>
+        <div role="group" aria-label="Écriture du montant" style="display:inline-flex;padding:3px;border-radius:10px;background:var(--seg);gap:2px">
+          <sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+            <button type="button" aria-pressed="{{m.pressed}}" style="height:40px;padding:0 14px;border-radius:8px;border:0;font:500 14px 'Adwaita Sans',Inter,system-ui,sans-serif;cursor:pointer;{{m.tone}}">{{m.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{cols}}" as="c" hint-placeholder-count="13">
+          <div style="display:flex;align-items:center;gap:14px;min-height:56px;padding:6px 16px;border-top:1px solid var(--line)">
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+              <span style="font-weight:500">{{c.csv}}</span>
+              <span style="font-size:13px;color:var(--dim)">Exemple : {{c.sample}}</span>
+            </div>
+            <button type="button" class="btn" aria-haspopup="listbox" aria-label="Champ pour la colonne {{c.csv}} : {{c.field}}" style="display:inline-flex;align-items:center;justify-content:space-between;gap:10px;height:44px;min-width:176px;padding:0 12px 0 16px;font-size:14px;font-weight:500;color:{{c.ink}}">
+              {{c.field}}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <div>
+        <h2 style="margin:0;font-size:15px;font-weight:700">Catégories de la banque</h2>
+        <div style="font-size:13px;color:var(--dim);margin-top:2px">La banque classe déjà ses opérations. Choisissez la catégorie de Finaryx qui correspond à chacune.</div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{bankCats}}" as="b" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+              <span style="font-weight:500;overflow-wrap:anywhere">{{b.bank}}</span>
+              <span style="font-size:13px;color:var(--dim)">{{b.sub}} · {{b.count}}</span>
+            </div>
+            <span style="flex:none;display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;{{b.badge}}">{{b.status}}</span>
+            <button type="button" class="btn" aria-haspopup="listbox" aria-label="{{b.aria}}" style="display:inline-flex;align-items:center;justify-content:space-between;gap:10px;height:44px;min-width:200px;padding:0 12px 0 16px;font-size:14px;font-weight:500">
+              <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:3px;box-sizing:border-box;flex:none;{{b.swatch}}"></span>{{b.target}}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+          </div>
+        </sc-for>
+        <button type="button" class="flat" style="width:100%;height:48px;border-top:1px solid var(--line);border-radius:0;font:500 14px 'Adwaita Sans',Inter,system-ui,sans-serif;color:var(--accent)">Voir les 42 correspondances</button>
+      </div>
+      <div style="font-size:13px;line-height:1.5;color:var(--dim)">Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici.</div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <div>
+        <h2 style="margin:0;font-size:15px;font-weight:700">Aperçu</h2>
+        <div style="font-size:13px;color:var(--dim);margin-top:2px">Cinq premières lignes, catégories d'après la correspondance ci-dessus</div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <sc-for list="{{preview}}" as="o" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:14px;min-height:60px;padding:6px 16px;border-top:1px solid var(--line);color:{{o.ink}}">
+            <span style="flex:0 0 44px;font-size:13px;color:var(--dim)">{{o.date}}</span>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35">
+              <span style="font-weight:500;overflow-wrap:anywhere">{{o.label}}</span>
+              <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--dim)"><span style="width:10px;height:10px;border-radius:3px;background:{{o.color}};flex:none"></span>{{o.cat}}</span>
+            </div>
+            <span style="flex:0 0 auto;font-variant-numeric:tabular-nums;font-weight:500">{{o.amount}}</span>
+            <span style="flex:0 0 88px;text-align:right"><span style="display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;{{o.badge}}">{{o.status}}</span></span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Résumé</h2>
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px"><span style="color:var(--fg2)">Lignes lues</span><span style="font-weight:700;font-variant-numeric:tabular-nums">214</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px;border-top:1px solid var(--line)"><span style="color:var(--fg2)">Nouvelles opérations</span><span style="font-weight:700;font-variant-numeric:tabular-nums">214</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px;border-top:1px solid var(--line)"><span style="color:var(--fg2)">Doublons ignorés</span><span style="font-weight:700;font-variant-numeric:tabular-nums">0</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px;border-top:1px solid var(--line)"><span style="color:var(--fg2)">À vérifier (catégorie incertaine)</span><span style="font-weight:700;font-variant-numeric:tabular-nums">31</span></div>
+        <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <label for="remember" style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35;cursor:pointer">
+            <span style="font-weight:500">Retenir ce format</span>
+            <span style="font-size:13px;color:var(--dim)">Le prochain fichier de cette banque sera lu sans rien demander</span>
+          </label>
+          <input id="remember" type="checkbox" role="switch" checked="" style="width:44px;height:24px;margin:0;accent-color:var(--suggest);flex:none">
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <label for="fname" style="flex:1;min-width:0;font-weight:500">Nom du format</label>
+          <input id="fname" type="text" value="Banque Populaire" style="width:220px;height:44px;box-sizing:border-box;padding:0 14px;border-radius:8px;border:0;background:var(--btn);font:15px 'Adwaita Sans',Inter,system-ui,sans-serif;color:var(--fg)">
+        </div>
+      </div>
+      <div style="font-size:13px;line-height:1.5;color:var(--dim)">Un doublon a la même date, le même libellé, le même montant et la même référence qu'une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés.</div>
+    </section>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding-bottom:16px">
+      <a href="Comptes.dc.html" style="display:inline-flex;align-items:center;justify-content:center;min-width:260px;height:48px;padding:0 24px;border-radius:999px;background:var(--suggest);color:#fff;font-size:15px;font-weight:700">Importer 214 opérations</a>
+      <a href="Comptes.dc.html" class="flat" style="display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 20px;font-size:15px;font-weight:500">Annuler</a>
+    </div>
+
+  </main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const NAV = [
+      ['Main.dc.html', "Vue d'ensemble", 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z', false],
+      ['Mois.dc.html', 'Liste des opérations', 'M5 5h14v15H5zM5 10h14M9 3v4M15 3v4', false],
+      ['Cumul.dc.html', 'Cumul', 'M5 20V10M12 20V4M19 20v-7', false],
+      ['Previsions.dc.html', 'Prévisions', 'M3 17l6-6 4 4 8-8M15 7h6v6', false],
+      ['Comptes.dc.html', 'Comptes', 'M3 9l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18', true],
+      ['Import.dc.html', 'Importer un CSV', 'M12 4v11M7 10l5 5 5-5M5 20h14', false]
+    ];
+    const ACTIVE = 5;
+    const nav = NAV.map(([href, label, icon, sep], i) => ({
+      href, label, icon, sep, current: i === ACTIVE ? 'page' : 'false',
+      tone: i === ACTIVE ? 'background:var(--sel);font-weight:600;color:var(--fg)' : 'color:var(--fg)'
+    }));
+
+    const fmts = [
+      ['Encodage', 'ISO-8859-1', 'Encodage du fichier'],
+      ['Séparateur de colonnes', 'Point-virgule ( ; )', 'Séparateur de colonnes'],
+      ['Ligne des en-têtes', 'Ligne 1', 'Ligne des en-têtes'],
+      ['Format des dates', 'JJ/MM/AAAA', 'Format des dates'],
+      ['Séparateur décimal', 'Virgule ( , )', 'Séparateur décimal']
+    ].map(([label, value, name]) => ({ label, value, aria: name + ' : ' + value }));
+    const modes = ['Une colonne', 'Débit et crédit', 'Montant et sens'].map((label, i) => ({
+      label, pressed: i === 1 ? 'true' : 'false',
+      tone: i === 1 ? 'background:var(--segon);color:var(--fg);box-shadow:var(--segsh)' : 'background:transparent;color:var(--fg2)'
+    }));
+    const IGN = 'Ignorer';
+    const cols = [
+      ['Date de comptabilisation', '30/10/2026', 'Date de comptabilisation'],
+      ['Libelle simplifie', 'PARKING CENTRE', 'Libellé'],
+      ['Libelle operation', 'Parking Centre SARL', 'Détail du libellé'],
+      ['Reference', 'REF0001', 'Référence de la banque'],
+      ['Informations complementaires', '301026 CB****0000-', IGN],
+      ['Type operation', 'Carte bancaire', IGN],
+      ['Categorie', 'Transports', 'Catégorie de la banque'],
+      ['Sous categorie', 'Peage et Stationnement', 'Sous-catégorie de la banque'],
+      ['Debit', '-2,40', 'Débit'],
+      ['Credit', '(vide)', 'Crédit'],
+      ['Date operation', '30/10/2026', 'Date de l\'opération'],
+      ['Date de valeur', '30/10/2026', IGN],
+      ['Pointage operation', '0', IGN]
+    ].map(([csv, sample, field]) => ({ csv, sample, field, ink: field === IGN ? 'var(--dim2)' : 'var(--fg)' }));
+
+    const sw = (k) => k === 0 ? 'border:2px dashed var(--dim)' : 'background:var(--c' + k + ')';
+    const bOk = 'background:var(--badge);color:var(--fg)';
+    const bChk = 'background:var(--card);color:var(--fg);border:1px solid var(--fg)';
+    const bankCats = [
+      ['Alimentation', 'Hyper/supermarche', 38, 'Alimentation', 2, 'Reconnue', bOk],
+      ['Transports', 'Carburant', 12, 'Transports', 3, 'Reconnue', bOk],
+      ['Logement - maison', 'Internet et telephonie', 6, 'Abonnements et télécoms', 6, 'Reconnue', bOk],
+      ['Banque et assurances', 'Banque et assurance - autre', 9, 'Banque et assurances', 7, 'À vérifier', bChk],
+      ['A categoriser - sortie d\'argent', 'Virement emis - a categoriser', 7, 'Autres', 8, 'À vérifier', bChk],
+      ['Transaction exclue', 'Virement interne', 11, 'Virement interne (exclu)', 0, 'Exclue', bOk]
+    ].map(([bank, sub, n, target, k, status, badge]) => ({
+      bank, sub, count: n + ' opérations', target, swatch: sw(k), status, badge,
+      aria: 'Catégorie de Finaryx pour ' + bank + ', ' + sub + ' : ' + target
+    }));
+
+    const bNew = 'background:var(--badge);color:var(--fg)';
+    const preview = [
+      { date: '30/10', label: 'CLUB DE SPORT', cat: 'Sorties et loisirs', color: 'var(--c8)', amount: '−12,00 €', status: 'Nouveau', badge: bNew, ink: 'var(--fg)' },
+      { date: '30/10', label: 'PARKING CENTRE', cat: 'Transports', color: 'var(--c3)', amount: '−2,40 €', status: 'Nouveau', badge: bNew, ink: 'var(--fg)' },
+      { date: '28/10', label: 'SUPERMARCHÉ CENTRE', cat: 'Transports', color: 'var(--c3)', amount: '−64,12 €', status: 'Nouveau', badge: bNew, ink: 'var(--fg)' },
+      { date: '28/10', label: 'ÉPICERIE DU MARCHÉ', cat: 'Alimentation', color: 'var(--c2)', amount: '−9,35 €', status: 'Nouveau', badge: bNew, ink: 'var(--fg)' },
+      { date: '05/10', label: 'ÉCHÉANCE PRÊT IMMOBILIER', cat: 'Banque et assurances', color: 'var(--c7)', amount: '−392,15 €', status: 'À vérifier', badge: bChk, ink: 'var(--fg)' }
+    ];
+    return { nav, fmts, modes, cols, bankCats, preview };
+  }
+}
+</script>
+</body>
+</html>

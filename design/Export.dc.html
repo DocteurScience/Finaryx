@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Exporter les données</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/aa5a12024ce462d0d7fcc343b35e4c84">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-direction:column;min-height:1100px;background:var(--win);font-family:'Adwaita Sans',Inter,system-ui,sans-serif;font-size:15px;color:var(--fg)">
+
+  <header style="height:56px;box-sizing:border-box;padding:0 6px;display:flex;align-items:center;gap:8px;background:var(--head);border-bottom:1px solid var(--line2)">
+    <div style="flex:1;display:flex;align-items:center">
+      <a href="Main.dc.html" class="flat" aria-label="Retour" title="Retour" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </a>
+    </div>
+    <div style="flex:2;text-align:center;font-weight:700">Exporter les données</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:flex-end">
+      <button type="button" class="btn" aria-label="Fermer la fenêtre" title="Fermer" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 8px 0 4px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main style="flex:1;box-sizing:border-box;width:100%;max-width:760px;margin:0 auto;padding:32px 24px;display:flex;flex-direction:column;gap:28px">
+
+    <p style="margin:0;line-height:1.5;color:var(--fg2)">Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n'est envoyé en ligne.</p>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Sauvegarde complète</h2>
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;align-items:center;gap:16px;min-height:80px;padding:12px 16px">
+          <span style="flex:none;width:40px;height:40px;border-radius:50%;background:var(--btn);display:flex;align-items:center;justify-content:center;color:var(--dim)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg>
+          </span>
+          <span style="flex:1;line-height:1.35"><span style="display:block;font-weight:500">Exporter la base de données</span><span style="display:block;font-size:13px;color:var(--dim)">Copie fidèle du fichier <span style="font-family:monospace">finaryx.db</span> (SQLite) : comptes, opérations, catégories et règles. 268 opérations · 1,2 Mo.</span></span>
+          <button type="button" class="btn" style="flex:none;height:44px;padding:0 20px;font-weight:700;background:var(--suggest);color:#ffffff">Exporter…</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <span style="flex:1;line-height:1.35"><span style="display:block;font-weight:500">Restaurer une sauvegarde</span><span style="display:block;font-size:13px;color:var(--dim)">Remplace les données actuelles. Une copie de sécurité est faite avant.</span></span>
+          <button type="button" class="btn" style="flex:none;height:44px;padding:0 20px;font-weight:500">Restaurer…</button>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Exporter en CSV</h2>
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 16px">
+          <span style="font-weight:500">Comptes</span>
+          <button type="button" class="btn" aria-haspopup="listbox" aria-label="Comptes à exporter : tous les comptes" style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 14px 0 16px;font-weight:500">Tous les comptes
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:0 16px;border-top:1px solid var(--line)">
+          <span style="font-weight:500">Période</span>
+          <button type="button" class="btn" aria-haspopup="listbox" aria-label="Période à exporter : toutes les opérations" style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 14px 0 16px;font-weight:500">Toutes les opérations
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <span style="line-height:1.35"><span style="display:block;font-weight:500">Séparateur et décimales</span><span style="display:block;font-size:13px;color:var(--dim)">Point-virgule et virgule décimale : s'ouvre directement dans un tableur en français.</span></span>
+          <div role="group" aria-label="Format du CSV" style="display:inline-flex;padding:3px;border-radius:10px;background:var(--seg);gap:2px;flex:none">
+            <sc-for list="{{fmts}}" as="p" hint-placeholder-count="2">
+              <button type="button" aria-pressed="{{p.pressed}}" style="height:36px;padding:0 14px;border-radius:8px;border:0;font:500 14px 'Adwaita Sans',Inter,system-ui,sans-serif;cursor:pointer;{{p.tone}}">{{p.label}}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;min-height:64px;padding:8px 16px;border-top:1px solid var(--line)">
+          <span style="flex:1;line-height:1.35"><span style="display:block;font-weight:500">Opérations</span><span style="display:block;font-size:13px;color:var(--dim)">Date, libellé, montant, catégorie, compte, banque. 268 lignes avec ces réglages.</span></span>
+          <button type="button" class="btn" style="flex:none;height:44px;padding:0 20px;font-weight:500">Exporter en CSV…</button>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:15px;font-weight:700">Sauvegarde automatique</h2>
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:8px 16px">
+          <span style="line-height:1.35"><span style="display:block;font-weight:500">Copier la base après chaque import</span><span style="display:block;font-size:13px;color:var(--dim)">Garde les 5 dernières copies dans ~/.local/share/finaryx/sauvegardes.</span></span>
+          <span role="switch" aria-checked="true" aria-label="Copier la base après chaque import" style="flex:none;position:relative;width:48px;height:28px;border-radius:14px;background:var(--suggest)"><span style="position:absolute;top:3px;left:23px;width:22px;height:22px;border-radius:50%;background:#ffffff"></span></span>
+        </div>
+      </div>
+    </section>
+
+    <div style="font-size:12px;line-height:1.5;color:var(--dim)">La base n'est pas chiffrée : gardez les exports dans un dossier privé.</div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":1100}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const fmts = ['Français (;)', 'Standard (,)'].map((label, i) => ({
+      label, pressed: i === 0 ? 'true' : 'false',
+      tone: i === 0 ? 'background:var(--segon);color:var(--fg);box-shadow:var(--segsh)' : 'background:transparent;color:var(--fg2)'
+    }));
+    return { fmts };
+  }
+}
+</script>
+</body>
+</html>

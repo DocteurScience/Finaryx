@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+build/
+.flatpak-builder/
+*.db
+*.db-journal
+.pytest_cache/

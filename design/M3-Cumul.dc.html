@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Finaryx — Cumul (Material 3)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/f144b633943ea4fd010c96f78f08121a">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:1640px;background:var(--win);font-family:Roboto,'Roboto Flex',system-ui,sans-serif;font-size:15px;color:var(--fg)">
+
+<aside class="rail" style="flex:0 0 80px;box-sizing:border-box;background:var(--side);display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:12px">
+  <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a href="M3-Import.dc.html" class="fab" aria-label="Importer un CSV" title="Importer un CSV" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+  <nav aria-label="Navigation principale" style="display:flex;flex-direction:column;gap:12px;margin-top:12px;width:100%">
+    <sc-for list="{{nav}}" as="item" hint-placeholder-count="6">
+      <a href="{{item.href}}" aria-current="{{item.current}}" style="display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--fg2)">
+        <span class="ind" style="width:56px;height:32px;border-radius:16px;display:flex;align-items:center;justify-content:center;{{item.tone}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{item.icon}}"/></svg></span>
+        <span>{{item.label}}</span>
+      </a>
+    </sc-for>
+  </nav>
+</aside>
+
+<div style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+
+    <header style="height:64px;box-sizing:border-box;padding:0 4px 0 24px;display:flex;align-items:center;gap:4px;background:var(--head)">
+    
+    <div style="flex:1;min-width:0;line-height:1.25"><div style="font-size:22px;font-weight:400">Cumul</div><div style="font-size:12px;color:var(--dim)">Mai à octobre 2026</div></div>
+    <button type="button" class="flat" aria-label="Rechercher" title="Rechercher" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+    <button type="button" class="flat" aria-label="Menu principal" title="Menu principal" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v.01M12 12v.01M12 19v.01"/></svg></button>
+    <button type="button" class="btn" aria-label="Fermer la fenêtre" title="Fermer" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 12px 0 4px;flex:none"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </header>
+
+  <main style="box-sizing:border-box;width:100%;max-width:1040px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:24px">
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+      <button type="button" class="btn" aria-haspopup="listbox" aria-label="Compte affiché : tous les comptes" style="display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 14px 0 16px;font-size:15px;font-weight:500">
+        Tous les comptes
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div role="group" aria-label="Période" style="display:inline-flex;padding:0;border-radius:20px;border:1px solid var(--outline);gap:0;overflow:hidden">
+        <sc-for list="{{periods}}" as="p" hint-placeholder-count="3">
+          <button type="button" aria-pressed="{{p.pressed}}" style="height:44px;min-width:84px;padding:0 16px;border-radius:0;border:0;font:500 14px Roboto,'Roboto Flex',system-ui,sans-serif;cursor:pointer;{{p.tone}}">{{p.label}}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <section aria-label="Chiffres clés" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px">
+      <div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:13px;color:var(--dim)">Total sur 6 mois</div>
+        <div style="font-size:28px;font-weight:400">15 973,76 €</div>
+      </div>
+      <div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:13px;color:var(--dim)">Moyenne par mois</div>
+        <div style="font-size:28px;font-weight:400">2 662,29 €</div>
+      </div>
+      <div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:13px;color:var(--dim)">Mois le plus chargé</div>
+        <div style="font-size:28px;font-weight:400">3 042 €</div>
+        <div style="font-size:12px;color:var(--dim)">août 2026</div>
+      </div>
+      <div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:13px;color:var(--dim)">Mois le plus léger</div>
+        <div style="font-size:28px;font-weight:400">2 345 €</div>
+        <div style="font-size:12px;color:var(--dim)">mai 2026</div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px;min-width:0">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Mois par mois, par catégorie</h2>
+      <div class="card" style="padding:20px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-size:13px;color:var(--dim)">Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px">
+          <sc-for list="{{legend}}" as="l" hint-placeholder-count="8">
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:12px;height:12px;border-radius:3px;background:{{l.color}}"></span>{{l.name}}</span>
+          </sc-for>
+        </div>
+        <div>
+          <div style="display:flex">
+            <div style="position:relative;flex:0 0 64px;height:600px">
+              <sc-for list="{{cY}}" as="t" hint-placeholder-count="7">
+                <span style="position:absolute;right:10px;top:{{t.top}};transform:translateY(-50%);font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums">{{t.label}}</span>
+              </sc-for>
+            </div>
+            <div style="position:relative;flex:1;height:600px;border-bottom:1px solid var(--axis)" role="img" aria-label="Dépenses mensuelles empilées par catégorie avec la part de chaque catégorie, de mai à octobre 2026">
+              <sc-for list="{{cY}}" as="t" hint-placeholder-count="7">
+                <div style="position:absolute;left:0;right:0;top:{{t.top}};border-top:1px solid var(--line)"></div>
+              </sc-for>
+              <sc-for list="{{cSegs}}" as="s" hint-placeholder-count="48">
+                <div title="{{s.tip}}" style="position:absolute;left:{{s.left}};width:{{s.width}};bottom:{{s.bottom}};height:{{s.height}};background:{{s.color}};box-sizing:border-box;border-top:2px solid var(--card);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:{{s.ink}};font-variant-numeric:tabular-nums;{{s.radius}}">{{s.label}}</div>
+              </sc-for>
+              <sc-for list="{{cTot}}" as="t" hint-placeholder-count="6">
+                <span style="position:absolute;left:{{t.left}};bottom:{{t.bottom}};margin-bottom:6px;transform:translateX(-50%);font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap">{{t.label}}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;margin:8px 0 0 64px">
+            <sc-for list="{{cMonths}}" as="m" hint-placeholder-count="6">
+              <span style="flex:1;text-align:center;font-size:13px;color:var(--dim)">{{m}}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:10px;min-width:0">
+      <h2 style="margin:0;font-size:16px;font-weight:500">Part de chaque catégorie</h2>
+      <div class="card" style="padding:8px 4px;overflow-x:auto">
+        <div style="min-width:820px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;font-size:12px;font-weight:700;color:var(--dim)">
+            <span style="flex:1">Catégorie</span>
+            <sc-for list="{{cMonths}}" as="m" hint-placeholder-count="6"><span style="flex:0 0 58px;text-align:right">{{m}}</span></sc-for>
+            <span style="flex:0 0 76px;text-align:right">6 mois</span>
+            <span style="flex:0 0 104px;text-align:right">Cumul</span>
+            <span style="flex:0 0 96px;text-align:right">Par mois</span>
+          </div>
+          <sc-for list="{{trows}}" as="r" hint-placeholder-count="8">
+            <div style="display:flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;border-top:1px solid var(--line);font-size:14px;font-variant-numeric:tabular-nums">
+              <span style="flex:1;display:flex;align-items:center;gap:10px"><span style="width:12px;height:12px;border-radius:3px;background:{{r.color}};flex:none"></span>{{r.name}}</span>
+              <sc-for list="{{r.cells}}" as="c" hint-placeholder-count="6"><span style="flex:0 0 58px;text-align:right;color:var(--fg2)">{{c}}</span></sc-for>
+              <span style="flex:0 0 76px;text-align:right;font-weight:700">{{r.share}} %</span>
+              <span style="flex:0 0 104px;text-align:right;font-weight:500">{{r.total}}</span>
+              <span style="flex:0 0 96px;text-align:right;color:var(--fg2)">{{r.avg}}</span>
+            </div>
+          </sc-for>
+          <div style="display:flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;border-top:1px solid var(--line3);font-size:14px;font-weight:700;font-variant-numeric:tabular-nums">
+            <span style="flex:1">Total</span>
+            <sc-for list="{{totals}}" as="c" hint-placeholder-count="6"><span style="flex:0 0 58px;text-align:right">{{c}}</span></sc-for>
+            <span style="flex:0 0 76px;text-align:right">100 %</span>
+            <span style="flex:0 0 104px;text-align:right">15 973,76 €</span>
+            <span style="flex:0 0 96px;text-align:right">2 662,29 €</span>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--dim)">Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois en euros.</div>
+    </section>
+
+  </main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":1640}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const fmt = (n, d = 2) => n.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const eur = (n, d = 2) => fmt(n, d) + ' €';
+
+    const NAV = [
+      ['M3-Main.dc.html', 'Aperçu', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z', false],
+      ['M3-Mois.dc.html', 'Mois', 'M5 5h14v15H5zM5 10h14M9 3v4M15 3v4', false],
+      ['M3-Cumul.dc.html', 'Cumul', 'M5 20V10M12 20V4M19 20v-7', false],
+      ['M3-Previsions.dc.html', 'Prévisions', 'M3 17l6-6 4 4 8-8M15 7h6v6', false],
+      ['M3-Comptes.dc.html', 'Comptes', 'M3 9l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18', true],
+      ['M3-Import.dc.html', 'Importer', 'M12 4v11M7 10l5 5 5-5M5 20h14', false]
+    ];
+    const ACTIVE = 2;
+    const nav = NAV.map(([href, label, icon, sep], i) => ({
+      href, label, icon, sep, current: i === ACTIVE ? 'page' : 'false',
+      tone: i === ACTIVE ? 'background:var(--sel);font-weight:600;color:var(--fg)' : 'color:var(--fg)'
+    }));
+    const periods = ['3 mois', '6 mois', '12 mois'].map((label, i) => ({
+      label, pressed: i === 1 ? 'true' : 'false',
+      tone: i === 1 ? 'background:var(--segon);color:var(--fg);box-shadow:var(--segsh)' : 'background:transparent;color:var(--fg2)'
+    }));
+
+    const CATS = ['Logement','Alimentation','Transports','Loisirs','Shopping','Santé','Abonnements','Autres'];
+    const MONTHS = ['mai', 'juin', 'juil.', 'août', 'sept.', 'oct.'];
+    const DATA = [
+      [735,502.1,188.4,392.15,156.3,84.97,88.5,197.62],
+      [735,531.8,236.9,392.15,204.7,84.97,121.4,301.15],
+      [735,489.6,342.2,392.15,268.9,84.97,54.8,448.3],
+      [735,455.3,371.6,392.15,359.4,84.97,77.2,566.03],
+      [735,527.4,193.1,392.15,221.8,84.97,186.3,197.46],
+      [735,548.3,211.4,392.15,287.6,84.97,102.3,263.18]
+    ];
+    const H = 600, cMax = 3500;
+    const mTot = DATA.map(r => r.reduce((a, c) => a + c, 0));
+    const cSegs = [], cTot = [];
+    DATA.forEach((row, m) => {
+      const slot = 100 / 6; const left = m * slot + slot * 0.16; let base = 0;
+      row.forEach((v, k) => {
+        const px = v / cMax * H;
+        cSegs.push({
+          left: left.toFixed(2) + '%', width: (slot * 0.68).toFixed(2) + '%',
+          bottom: (base / cMax * 100).toFixed(2) + '%', height: (v / cMax * 100).toFixed(2) + '%',
+          color: 'var(--c' + (k + 1) + ')', ink: 'var(--i' + (k + 1) + ')', radius: k === 7 ? 'border-radius:3px 3px 0 0' : '',
+          tip: MONTHS[m] + ' · ' + CATS[k] + ' : ' + eur(v) + ' (' + fmt(v / mTot[m] * 100, 1) + ' %)',
+          label: px >= 16 ? fmt(v / mTot[m] * 100, 0) + ' %' : ''
+        });
+        base += v;
+      });
+      cTot.push({ left: (m * slot + slot / 2).toFixed(2) + '%', bottom: (base / cMax * 100).toFixed(2) + '%', label: fmt(base, 0) + ' €' });
+    });
+    const cY = [0, 500, 1000, 1500, 2000, 2500, 3000].map(v => ({ top: (100 - v / cMax * 100).toFixed(2) + '%', label: fmt(v, 0) + ' €' }));
+
+    const sums = CATS.map((c, k) => DATA.reduce((a, row) => a + row[k], 0));
+    const grand = sums.reduce((a, c) => a + c, 0);
+    const trows = CATS.map((name, k) => ({
+      name, color: 'var(--c' + (k + 1) + ')',
+      cells: DATA.map((row, m) => fmt(row[k] / mTot[m] * 100, 1) + ' %'),
+      share: fmt(sums[k] / grand * 100, 1), total: eur(sums[k]), avg: eur(sums[k] / 6)
+    }));
+    const totals = mTot.map(t => fmt(t, 0) + ' €');
+    const legend = CATS.map((name, i) => ({ name, color: 'var(--c' + (i + 1) + ')' }));
+
+    return { nav, periods, cY, cSegs, cTot, cMonths: MONTHS, trows, totals, legend };
+  }
+}
+</script>
+</body>
+</html>

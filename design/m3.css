@@ -1,0 +1,59 @@
+/* Finaryx — thème Material 3 (clair / sombre), mêmes noms de variables que theme.css */
+:root{
+  color-scheme:light;
+  --win:#f9f9ff; --card:#edeef4; --head:#f9f9ff; --side:#f9f9ff; --navbar:#edeef4;
+  --fg:#191c20; --fg2:#44474e; --dim:#50535b; --dim2:#44474e;
+  --line:rgba(25,28,32,.1); --line2:rgba(25,28,32,.14); --line3:rgba(25,28,32,.24); --axis:rgba(25,28,32,.4); --outline:#74777f;
+  --btn:#dbe2f9; --btn-h:#ccd4ec; --hover:rgba(65,95,145,.1); --sel:#dbe2f9; --navh:rgba(65,95,145,.08); --rowh:rgba(65,95,145,.06);
+  --seg:transparent; --segon:#dbe2f9; --segsh:none;
+  --accent:#415f91; --suggest:#415f91; --onsuggest:#ffffff; --badge:#e2e2e9; --badge-line:#74777f;
+  --err:#ba1a1a; --secc:#dbe2f9; --onsecc:#131c2b; --primc:#d6e3ff; --onprimc:#001b3e;
+  --s1:#2a78d6; --band:rgba(42,120,214,.16); --ghost:#898781; --bars:#52514e;
+  --shadow:none;
+  --c1:#2a78d6; --c2:#eb6834; --c3:#1baf7a; --c4:#eda100; --c5:#e87ba4; --c6:#008300; --c7:#6250d6; --c8:#898781;
+  --i1:#ffffff; --i2:#0b0b0b; --i3:#0b0b0b; --i4:#0b0b0b; --i5:#0b0b0b; --i6:#ffffff; --i7:#ffffff; --i8:#0b0b0b;
+  --a1:#2e2e30; --a2:#5e5e60; --a3:#929294; --a4:#c4c6d0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+  color-scheme:dark;
+  --win:#111318; --card:#1d2024; --head:#111318; --side:#111318; --navbar:#1d2024;
+  --fg:#e2e2e9; --fg2:#c4c6d0; --dim:#aeb1ba; --dim2:#c4c6d0;
+  --line:rgba(255,255,255,.1); --line2:rgba(255,255,255,.14); --line3:rgba(255,255,255,.24); --axis:rgba(255,255,255,.34); --outline:#8e9099;
+  --btn:#3f4759; --btn-h:#4b5468; --hover:rgba(170,199,255,.1); --sel:#3f4759; --navh:rgba(170,199,255,.08); --rowh:rgba(170,199,255,.06);
+  --seg:transparent; --segon:#3f4759; --segsh:none;
+  --accent:#aac7ff; --suggest:#aac7ff; --onsuggest:#0a305f; --badge:#33353a; --badge-line:#8e9099;
+  --err:#ffb4ab; --secc:#3f4759; --onsecc:#dbe2f9; --primc:#284777; --onprimc:#d6e3ff;
+  --s1:#3987e5; --band:rgba(57,135,229,.22); --ghost:#929294; --bars:#a8a8a8;
+  --shadow:none;
+  --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181; --c6:#008300; --c7:#9085e9; --c8:#898781;
+  --i1:#0b0b0b; --i2:#0b0b0b; --i3:#0b0b0b; --i4:#0b0b0b; --i5:#0b0b0b; --i6:#ffffff; --i7:#0b0b0b; --i8:#0b0b0b;
+  --a1:#e2e2e9; --a2:#c0c0c8; --a3:#8c8c94; --a4:#5a5c64;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --win:#111318; --card:#1d2024; --head:#111318; --side:#111318; --navbar:#1d2024;
+  --fg:#e2e2e9; --fg2:#c4c6d0; --dim:#aeb1ba; --dim2:#c4c6d0;
+  --line:rgba(255,255,255,.1); --line2:rgba(255,255,255,.14); --line3:rgba(255,255,255,.24); --axis:rgba(255,255,255,.34); --outline:#8e9099;
+  --btn:#3f4759; --btn-h:#4b5468; --hover:rgba(170,199,255,.1); --sel:#3f4759; --navh:rgba(170,199,255,.08); --rowh:rgba(170,199,255,.06);
+  --seg:transparent; --segon:#3f4759; --segsh:none;
+  --accent:#aac7ff; --suggest:#aac7ff; --onsuggest:#0a305f; --badge:#33353a; --badge-line:#8e9099;
+  --err:#ffb4ab; --secc:#3f4759; --onsecc:#dbe2f9; --primc:#284777; --onprimc:#d6e3ff;
+  --s1:#3987e5; --band:rgba(57,135,229,.22); --ghost:#929294; --bars:#a8a8a8;
+  --shadow:none;
+  --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181; --c6:#008300; --c7:#9085e9; --c8:#898781;
+  --i1:#0b0b0b; --i2:#0b0b0b; --i3:#0b0b0b; --i4:#0b0b0b; --i5:#0b0b0b; --i6:#ffffff; --i7:#0b0b0b; --i8:#0b0b0b;
+  --a1:#e2e2e9; --a2:#c0c0c8; --a3:#8c8c94; --a4:#5a5c64;
+}
+body{margin:0;background:var(--win);color:var(--fg);font-family:Roboto,'Roboto Flex',system-ui,sans-serif;letter-spacing:.01em}
+a{color:inherit;text-decoration:none}
+.card{background:var(--card);border-radius:12px;box-shadow:none}
+.flat{border:0;background:transparent;color:var(--fg);border-radius:20px;cursor:pointer}
+.flat:hover{background:var(--hover)}
+.btn{border:0;background:var(--btn);color:var(--fg);border-radius:20px;cursor:pointer;font-family:inherit;font-weight:500}
+.btn:hover{background:var(--btn-h)}
+.navrow:hover{background:var(--navh)}
+.listrow:hover{background:var(--rowh)}
+.fab{background:var(--primc);color:var(--onprimc);border:0;border-radius:16px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.3),0 4px 8px 3px rgba(0,0,0,.15)}
+.rail a:hover .ind{background:var(--navh)}
