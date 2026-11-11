@@ -1,4 +1,4 @@
-# Carnet — cahier des charges pour Claude Code
+# Finaryx — cahier des charges pour Claude Code
 
 Application de bureau GNOME de suivi de comptes bancaires. Elle importe des exports CSV d'un ou plusieurs comptes (banques différentes), enregistre les opérations dans sa propre base locale et les affiche en graphiques : évolution du mois, répartition des dépenses par mois, cumul sur plusieurs mois, prévision d'après les habitudes.
 
@@ -14,7 +14,7 @@ La maquette de référence est dans `design/` (pages `.dc.html` + `theme.css`). 
 |---|---|
 | Langage | Python 3.12 |
 | Interface | GTK 4 + libadwaita 1.5+ (PyGObject), conformité GNOME HIG |
-| Base | SQLite (module `sqlite3`), fichier dans `GLib.get_user_data_dir()/carnet/carnet.db` |
+| Base | SQLite (module `sqlite3`), fichier dans `GLib.get_user_data_dir()/finaryx/finaryx.db` |
 | Graphiques | dessin maison avec `Gtk.DrawingArea` + Cairo (pas de bibliothèque web ni matplotlib) |
 | Packaging | Meson + Flatpak (`org.gnome.Platform`) |
 | Tests | pytest (logique) ; pas de test d'interface au début |
@@ -25,7 +25,7 @@ Si le projet existe déjà dans un autre langage (Rust/gtk-rs, Vala), garder la 
 Séparer strictement : `core/` (sans GTK, testable) et `ui/` (GTK).
 
 ```
-carnet/
+finaryx/
   core/
     db.py            # connexion, migrations
     models.py        # dataclasses Account, Transaction, Category, ImportBatch
@@ -132,7 +132,7 @@ Flux (écran « Importer un CSV », page `Import.dc.html`) :
    - **Catégorie de la banque** et **Sous-catégorie de la banque** (facultatives, voir étape 5) ;
    - **Ignorer** (par défaut pour toute colonne non reconnue).
    Validation avant de continuer : date, libellé et montant sont mappés ; les 20 premières lignes se lisent sans erreur ; message clair sinon (« 3 lignes ont une date illisible : ligne 12, 40, 41 »).
-5. **Catégories de la banque** (si une colonne catégorie est mappée) : l'application liste les valeurs distinctes (ou couples catégorie + sous-catégorie) avec le nombre de lignes, et propose une catégorie de Carnet pour chacune d'après le nom (correspondance exacte, puis mots proches, sinon « À vérifier »). L'utilisateur corrige dans la liste ; la correspondance est enregistrée avec le profil et réutilisée aux imports suivants. Les valeurs nouvelles apparaissant plus tard sont proposées au même endroit. Possibilité de marquer une valeur de la banque comme « Virement interne » (ni dépense ni revenu).
+5. **Catégories de la banque** (si une colonne catégorie est mappée) : l'application liste les valeurs distinctes (ou couples catégorie + sous-catégorie) avec le nombre de lignes, et propose une catégorie de Finaryx pour chacune d'après le nom (correspondance exacte, puis mots proches, sinon « À vérifier »). L'utilisateur corrige dans la liste ; la correspondance est enregistrée avec le profil et réutilisée aux imports suivants. Les valeurs nouvelles apparaissant plus tard sont proposées au même endroit. Possibilité de marquer une valeur de la banque comme « Virement interne » (ni dépense ni revenu).
 6. Choisir le compte de destination (proposer d'en créer un). Le profil est lié à une banque, pas à un compte : on peut le réutiliser pour plusieurs comptes.
 7. Aperçu : chaque ligne reçoit un état **Nouveau**, **Doublon** ou **À vérifier** (date invalide, montant illisible, catégorie incertaine). Le solde de contrôle, s'il est mappé, doit rester cohérent d'une ligne à l'autre ; sinon avertir sans bloquer.
 8. Résumé : lignes lues / nouvelles / doublons / à vérifier ; champ « Enregistrer ce format sous : » (nom proposé d'après le fichier, modifiable) et interrupteur « Retenir ce format » (écrit `import_profile`).
@@ -156,7 +156,7 @@ Formats connus. **Seul le premier a été vérifié sur un vrai export ; les aut
 
 **Catégorisation** (`categorize.py`), par ordre : catégorie manuelle déjà connue pour le même `label_norm` → règles utilisateur (`rule`) → catégorie fournie par la banque, convertie par une table de correspondance → mots-clés intégrés → « Autres » avec `needs_review = 1`. Une correction manuelle propose de créer une règle.
 
-**Table de correspondance Banque Populaire** (fichier `data/banque_populaire_category_map.csv`, 42 couples catégorie + sous-catégorie, colonnes `bank_category, bank_subcategory, carnet_category, needs_review`). Il faut partir du **couple** et non de la catégorie seule, car la banque mélange des choses différentes. Règles de la table :
+**Table de correspondance Banque Populaire** (fichier `data/banque_populaire_category_map.csv`, 42 couples catégorie + sous-catégorie, colonnes `bank_category, bank_subcategory, finaryx_category, needs_review`). Il faut partir du **couple** et non de la catégorie seule, car la banque mélange des choses différentes. Règles de la table :
 - « Logement - maison » → Logement, sauf la sous-catégorie « Internet et telephonie » → Abonnements et télécoms ; « Video, Musique et jeux » → Abonnements et télécoms.
 - « Alimentation » → Alimentation, sauf « Restaurant » et « Restauration rapide » → Sorties et loisirs.
 - « Shopping et services » (animaux domestiques compris) → Shopping et animaux ; « Cadeaux et dons » → Sorties et loisirs.
@@ -199,7 +199,7 @@ Liste complète, atteinte depuis « Tout voir ». Champ de recherche (libellé),
 Atteint depuis une ligne de la page Comptes (bouton retour vers Comptes). Carte solde + courbe des 6 derniers mois (une valeur par semaine, info-bulle au survol). Groupe « Réglages du compte » (nom, banque, type, solde initial, chacun avec un bouton Modifier). 5 dernières opérations + « Tout voir ». « Zone sensible » : Archiver (retire le compte des totaux) et Supprimer (action destructive, couleur rouge, confirmation obligatoire avec le nombre d'opérations effacées).
 
 ### Premier lancement et états vides (`Accueil.dc.html`)
-Aucun compte : `AdwStatusPage` « Bienvenue dans Carnet », bouton suggéré « Importer un CSV », bouton secondaire « Ajouter un compte d'abord », liste « Pour commencer » en 3 étapes. Même page : état « pas assez de données pour une prévision » (moins de 3 mois d'historique), avec action « Importer un export plus ancien ». Prévoir le même principe pour toute vue sans données (mois vide, catégorie vide).
+Aucun compte : `AdwStatusPage` « Bienvenue dans Finaryx », bouton suggéré « Importer un CSV », bouton secondaire « Ajouter un compte d'abord », liste « Pour commencer » en 3 étapes. Même page : état « pas assez de données pour une prévision » (moins de 3 mois d'historique), avec action « Importer un export plus ancien ». Prévoir le même principe pour toute vue sans données (mois vide, catégorie vide).
 
 ### Comptes (`Comptes.dc.html`)
 Carte du total avec barre de répartition par compte (info-bulle par compte). Liste des comptes : avatar à initiales, banque, mini-courbe, solde, nombre d'opérations, état de la dernière importation, chevron vers le détail. « Ajouter » (nom, banque, type, solde initial). Historique des imports (fichier, compte, date, compteurs) ; action « Annuler cet import » = supprimer les `txn` du lot (avec confirmation).
@@ -209,9 +209,9 @@ Carte du total avec barre de répartition par compte (info-bulle par compte). Li
 ### Export des données (`Export.dc.html`)
 Page ouverte depuis le menu principal (« Exporter les données… »), fenêtre avec bouton retour. Trois groupes :
 
-1. **Sauvegarde complète** : « Exporter la base de données » copie le fichier SQLite. Utiliser l'API de sauvegarde SQLite (`sqlite3.Connection.backup`), pas une simple copie de fichier, pour obtenir une copie cohérente même si l'application écrit. Sélecteur de fichier `Gtk.FileDialog`, nom proposé `carnet-AAAA-MM-JJ.db`. « Restaurer une sauvegarde… » : vérifier que le fichier est une base Carnet (`PRAGMA application_id` propre à Carnet et `PRAGMA user_version` non supérieur à celui de l'application (à définir dans le schéma, avec les migrations)), faire une copie de sécurité de la base actuelle, demander confirmation (`AdwAlertDialog`, action destructive), remplacer, puis recharger les vues.
+1. **Sauvegarde complète** : « Exporter la base de données » copie le fichier SQLite. Utiliser l'API de sauvegarde SQLite (`sqlite3.Connection.backup`), pas une simple copie de fichier, pour obtenir une copie cohérente même si l'application écrit. Sélecteur de fichier `Gtk.FileDialog`, nom proposé `carnet-AAAA-MM-JJ.db`. « Restaurer une sauvegarde… » : vérifier que le fichier est une base Finaryx (`PRAGMA application_id` propre à Finaryx et `PRAGMA user_version` non supérieur à celui de l'application (à définir dans le schéma, avec les migrations)), faire une copie de sécurité de la base actuelle, demander confirmation (`AdwAlertDialog`, action destructive), remplacer, puis recharger les vues.
 2. **Export CSV des opérations** : filtres compte (tous ou un compte) et période (tout, mois, 3/6/12 mois, plage libre). Colonnes : `date` (ISO `AAAA-MM-JJ`), `libelle`, `montant`, `categorie`, `compte`, `banque`. Deux formats : « Français » (séparateur `;`, virgule décimale, UTF-8 avec BOM pour Excel) et « Standard » (séparateur `,`, point décimal, UTF-8). Montants convertis depuis les centimes sans passer par un flottant. Le CSV exporté doit pouvoir être réimporté (réimport = 0 nouvelle opération grâce à l'anti-doublon).
-3. **Sauvegarde automatique** (interrupteur, activé par défaut) : copie de la base après chaque import, 5 copies conservées dans `~/.local/share/carnet/sauvegardes` (ou le dossier de données Flatpak).
+3. **Sauvegarde automatique** (interrupteur, activé par défaut) : copie de la base après chaque import, 5 copies conservées dans `~/.local/share/finaryx/sauvegardes` (ou le dossier de données Flatpak).
 
 Retour utilisateur : `AdwToast` « Base exportée » avec action « Ouvrir le dossier » ; message d'erreur clair si le disque est plein ou le dossier non modifiable. L'export n'envoie rien en ligne. La base n'est pas chiffrée : le rappeler en bas de page.
 Tests : l'export puis la restauration redonnent une base identique (mêmes agrégats) ; le CSV français s'ouvre avec les bons montants ; export puis réimport = 0 nouvelle opération ; restauration d'un fichier invalide refusée sans toucher à la base.

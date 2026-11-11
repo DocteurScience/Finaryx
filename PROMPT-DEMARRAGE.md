@@ -1,10 +1,10 @@
 # Premier message à donner à Claude Code
 
-Copiez le texte ci-dessous dans une session Claude Code lancée à la racine du dossier du projet (celui qui contient `CARNET-SPEC.md`, `CLAUDE.md`, `design/` et `reference/`).
+Copiez le texte ci-dessous dans une session Claude Code lancée à la racine du dossier du projet (celui qui contient `FINARYX-SPEC.md`, `CLAUDE.md`, `design/` et `reference/`).
 
 ---
 
-Lis `CLAUDE.md` puis `CARNET-SPEC.md` en entier, et regarde `design/` et `reference/tooltips.png`.
+Lis `CLAUDE.md` puis `FINARYX-SPEC.md` en entier, et regarde `design/` et `reference/tooltips.png`.
 
 Avant d'écrire du code, pose-moi en une seule fois les questions de la section 9 du cahier des charges (pile technique, multi-devises, virements entre mes comptes, chiffrement) et demande-moi des exemples de CSV anonymisés de mes banques.
 

@@ -1,11 +1,11 @@
-# Carnet
+# Finaryx
 
 Application GNOME de suivi de comptes bancaires (import CSV, base SQLite locale, graphiques, prévision). Interface en français, code et commentaires en anglais.
 
 ## À lire en premier
-- `CARNET-SPEC.md` : cahier des charges complet (données, import, écrans, prévision, design, plan de travail). C'est la référence.
+- `FINARYX-SPEC.md` : cahier des charges complet (données, import, écrans, prévision, design, plan de travail). C'est la référence.
 - `design/` : sources de la maquette (balisage et styles en ligne, `theme.css` pour les couleurs). À lire comme des plans, pas à ouvrir dans un navigateur.
-- `data/banque_populaire_category_map.csv` : table de correspondance catégories de la banque → catégories de Carnet.
+- `data/banque_populaire_category_map.csv` : table de correspondance catégories de la banque → catégories de Finaryx.
 - `reference/tooltips.png` : rendu cible des info-bulles.
 
 ## Règles du projet
@@ -19,7 +19,7 @@ Application GNOME de suivi de comptes bancaires (import CSV, base SQLite locale,
 - Textes de l'interface en français, majuscule en début de phrase seulement, montants au format `fr-FR`.
 
 ## Avant de coder les importeurs
-Le format **Banque Populaire** est vérifié sur un export réel (voir `CARNET-SPEC.md`, section Import CSV, et `data/banque_populaire_category_map.csv`). Pour **Boursorama** et **Revolut**, demander à l'utilisateur un exemple anonymisé : leurs en-têtes dans le cahier des charges ne sont pas vérifiés. Ne jamais committer un export bancaire réel.
+Le format **Banque Populaire** est vérifié sur un export réel (voir `FINARYX-SPEC.md`, section Import CSV, et `data/banque_populaire_category_map.csv`). Pour **Boursorama** et **Revolut**, demander à l'utilisateur un exemple anonymisé : leurs en-têtes dans le cahier des charges ne sont pas vérifiés. Ne jamais committer un export bancaire réel.
 
 ## Commandes
 À compléter après le squelette Meson : lancer l'application, lancer `pytest`, construire le Flatpak.

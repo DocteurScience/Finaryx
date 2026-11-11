@@ -5,10 +5,10 @@ Finaryx is a modern, open-source personal finance application for Linux. Track b
 
 Application GNOME de suivi de comptes bancaires : import de CSV de n'importe quelle banque (mappage des colonnes), base SQLite locale, évolution du mois, répartition des dépenses, cumul, prévision, catégories personnalisées, export de la base. Interface en français. Aucune donnée n'est envoyée en ligne.
 
-État : **maquettes et cahier des charges, pas encore de code.** Dans les documents, l'application s'appelle encore « Carnet » (nom de travail).
+État : **maquettes et cahier des charges, pas encore de code.**
 
 ## Contenu
-- `CARNET-SPEC.md` : cahier des charges (données, import générique, écrans, prévision, export, catégories, design, plan de travail).
+- `FINARYX-SPEC.md` : cahier des charges (données, import générique, écrans, prévision, export, catégories, design, plan de travail).
 - `CLAUDE.md` : consignes pour Claude Code.
 - `PROMPT-DEMARRAGE.md` : premier message à donner à Claude Code.
 - `data/` : table de correspondance des catégories de la Banque Populaire vers celles de l'application.
