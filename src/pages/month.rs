@@ -313,16 +313,17 @@ impl MonthPage {
             row.set_tooltip_text(Some(&n_ops(c.operations)));
             table.append(&row);
         }
-        let body = gtk::Box::builder()
-            .orientation(if narrow {
-                gtk::Orientation::Vertical
-            } else {
-                gtk::Orientation::Horizontal
-            })
-            .spacing(if narrow { 16 } else { 40 })
+        // Ring beside the table when there is room, above it otherwise.
+        let body = gtk::FlowBox::builder()
+            .selection_mode(gtk::SelectionMode::None)
+            .min_children_per_line(1)
+            .max_children_per_line(if narrow { 1 } else { 2 })
+            .column_spacing(40)
+            .row_spacing(16)
             .build();
         body.append(&ring);
         body.append(&table);
+        super::unfocusable_children(&body);
         let card = chart_card(&[body.upcast_ref()]);
         self.root
             .append(&section(&gettext("Où part l’argent"), None, &card));

@@ -1,6 +1,8 @@
 # Source language is French; translations go in po/<lang>.po.
+core/src/categories.rs
 core/src/importers/format.rs
 core/src/importers/mapping.rs
+core/src/transfers.rs
 data/io.github.docteurscience.Finaryx.desktop.in
 data/io.github.docteurscience.Finaryx.gschema.xml
 data/io.github.docteurscience.Finaryx.metainfo.xml.in
@@ -8,9 +10,11 @@ data/ui/help-overlay.ui
 data/ui/window.ui
 src/account_dialog.rs
 src/application.rs
+src/category_dialog.rs
 src/database.rs
 src/pages/account_detail.rs
 src/pages/accounts.rs
+src/pages/categories.rs
 src/pages/cumulative.rs
 src/pages/import.rs
 src/pages/mod.rs

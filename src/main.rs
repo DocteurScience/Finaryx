@@ -1,5 +1,6 @@
 mod account_dialog;
 mod application;
+mod category_dialog;
 mod charts;
 mod config;
 mod database;

@@ -374,7 +374,7 @@ impl OverviewPage {
         let kpis = gtk::FlowBox::builder()
             .selection_mode(gtk::SelectionMode::None)
             .homogeneous(true)
-            .min_children_per_line(if narrow { 2 } else { 4 })
+            .min_children_per_line(if narrow { 2 } else { 1 })
             .max_children_per_line(4)
             .column_spacing(12)
             .row_spacing(12)

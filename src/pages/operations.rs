@@ -99,8 +99,8 @@ impl OperationsPage {
         content.append(&summary);
         content.append(&list_box);
         content.append(&caption(&gettext(
-            "Choisir une autre catégorie corrige l’opération ; la proposition de règle pour les libellés identiques \
-             arrive avec la page Catégories et règles.",
+            "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les \
+             libellés identiques.",
         )));
         let clamp = adw::Clamp::builder()
             .maximum_size(1040)
@@ -482,6 +482,16 @@ impl OperationsPage {
             row.set_widget_name(&c.id.to_string());
             popover_list.append(&row);
         }
+        let new_row = gtk::ListBoxRow::builder()
+            .child(
+                &gtk::Label::builder()
+                    .label(gettext("Nouvelle catégorie…"))
+                    .xalign(0.0)
+                    .build(),
+            )
+            .build();
+        new_row.set_widget_name("new");
+        popover_list.append(&new_row);
         let scroller = gtk::ScrolledWindow::builder()
             .hscrollbar_policy(gtk::PolicyType::Never)
             .propagate_natural_height(true)
@@ -503,26 +513,26 @@ impl OperationsPage {
         let weak = Rc::downgrade(self);
         let txn = op.id;
         let pop = popover.clone();
+        let label = op.label.clone();
         popover_list.connect_row_activated(move |_, row| {
             pop.popdown();
-            let (Some(this), Ok(category)) = (weak.upgrade(), row.widget_name().parse::<Id>())
-            else {
-                return;
-            };
+            let Some(this) = weak.upgrade() else { return };
             let Some(window) = this.window.upgrade() else {
                 return;
             };
-            match window.change(|c| stats::set_category(c, txn, category)) {
-                Ok(()) => {
-                    window.toast(&gettext("Catégorie modifiée"));
-                    let weak = Rc::downgrade(&this);
-                    glib::idle_add_local_once(move || {
-                        if let Some(this) = weak.upgrade() {
-                            this.refresh_list();
-                        }
-                    });
-                }
-                Err(message) => window.toast(&message),
+            if row.widget_name() == "new" {
+                // Create a category, then give it to the operation.
+                let weak = Rc::downgrade(&this);
+                let label = label.clone();
+                crate::category_dialog::present(&window, None, move |category| {
+                    if let Some(this) = weak.upgrade() {
+                        this.apply_category(txn, &label, category);
+                    }
+                });
+                return;
+            }
+            if let Ok(category) = row.widget_name().parse::<Id>() {
+                this.apply_category(txn, &label, category);
             }
         });
         line.append(&button);
@@ -539,5 +549,97 @@ impl OperationsPage {
             .child(&line)
             .activatable(false)
             .build()
+    }
+}
+
+impl OperationsPage {
+    /// Sets the category of an operation by hand, then proposes a rule for
+    /// the same labels ("Créer une règle ?").
+    fn apply_category(self: &Rc<Self>, txn: Id, label: &str, category: Id) {
+        let Some(window) = self.window.upgrade() else {
+            return;
+        };
+        if let Err(message) = window.change(|c| stats::set_category(c, txn, category)) {
+            window.toast(&message);
+            return;
+        }
+        let categories = self.categories();
+        let name = categories
+            .iter()
+            .find(|c| c.id == category)
+            .map(|c| c.name.clone())
+            .unwrap_or_default();
+        let pattern = finaryx_core::categories::pattern_from_label(label);
+        let changeable = window
+            .read(|c| {
+                Ok(finaryx_core::categories::matching_operations(
+                    c,
+                    &pattern,
+                    false,
+                    Some(category),
+                )?
+                .1
+                .len())
+            })
+            .unwrap_or(0);
+        let alert = adw::AlertDialog::builder()
+            .heading(gettext("Créer une règle ?"))
+            .body(
+                gettext(
+                    "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports.",
+                )
+                .replace("{pattern}", &glib::markup_escape_text(&pattern))
+                .replace("{category}", &glib::markup_escape_text(&name)),
+            )
+            .body_use_markup(true)
+            .build();
+        let apply = adw::SwitchRow::builder()
+            .title(gettext("Appliquer aux opérations existantes"))
+            .subtitle(
+                ngettext(
+                    "{n} opération sera modifiée, sauf celles corrigées à la main.",
+                    "{n} opérations seront modifiées, sauf celles corrigées à la main.",
+                    changeable as u32,
+                )
+                .replace("{n}", &changeable.to_string()),
+            )
+            .active(true)
+            .build();
+        if changeable > 0 {
+            let list = boxed_list();
+            list.append(&apply);
+            alert.set_extra_child(Some(&list));
+        }
+        alert.add_responses(&[
+            ("only", &gettext("Seulement cette opération")),
+            ("rule", &gettext("Créer la règle")),
+        ]);
+        alert.set_response_appearance("rule", adw::ResponseAppearance::Suggested);
+        alert.set_default_response(Some("rule"));
+        alert.set_close_response("only");
+        let w = self.window.clone();
+        alert.connect_response(None, move |_, response| {
+            let Some(window) = w.upgrade() else { return };
+            if response == "rule" {
+                let all = changeable > 0 && apply.is_active();
+                match window
+                    .change(|c| finaryx_core::categories::create_rule(c, &pattern, category, all))
+                {
+                    Ok((_, n)) if n > 0 => window.toast(
+                        &ngettext(
+                            "Règle créée, {n} autre opération classée",
+                            "Règle créée, {n} autres opérations classées",
+                            n as u32,
+                        )
+                        .replace("{n}", &n.to_string()),
+                    ),
+                    Ok(_) => window.toast(&gettext("Règle créée")),
+                    Err(m) => window.toast(&m),
+                }
+            } else {
+                window.toast(&gettext("Catégorie modifiée"));
+            }
+        });
+        alert.present(Some(&window));
     }
 }

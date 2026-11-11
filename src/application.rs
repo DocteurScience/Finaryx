@@ -149,7 +149,8 @@ impl FinaryxApplication {
     }
 
     fn show_preferences(&self) {
-        let dialog = crate::preferences::preferences_dialog();
+        let window = self.active_window().and_downcast::<FinaryxWindow>();
+        let dialog = crate::preferences::preferences_dialog(window.as_ref());
         dialog.present(self.active_window().as_ref());
     }
 }

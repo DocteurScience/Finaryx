@@ -16,6 +16,7 @@ use crate::account_dialog::{self, Field};
 use crate::database::{self, Source};
 use crate::pages::account_detail::{self, AccountDetailPage};
 use crate::pages::accounts::{self as accounts_page, AccountsPage};
+use crate::pages::categories::CategoriesPage;
 use crate::pages::cumulative::CumulativePage;
 use crate::pages::import::ImportPage;
 use crate::pages::month::MonthPage;
@@ -41,6 +42,8 @@ mod imp {
         pub split_view: TemplateChild<adw::NavigationSplitView>,
         #[template_child]
         pub narrow_breakpoint: TemplateChild<adw::Breakpoint>,
+        #[template_child]
+        pub compact_breakpoint: TemplateChild<adw::Breakpoint>,
         #[template_child]
         pub sidebar_list: TemplateChild<gtk::ListBox>,
         #[template_child]
@@ -74,7 +77,10 @@ mod imp {
 
         pub settings: OnceCell<gio::Settings>,
         pub accounts_model: OnceCell<gtk::StringList>,
+        /// Compact page layout (narrow content).
         pub narrow: Cell<bool>,
+        /// Which breakpoint is applied: (compact, narrow).
+        pub breakpoints: Cell<(bool, bool)>,
         pub page_bodies: RefCell<Vec<gtk::Box>>,
         pub summary_labels: RefCell<Vec<gtk::Label>>,
         /// Open database; `None` until `open_database()` succeeds.
@@ -94,6 +100,7 @@ mod imp {
         pub filter_rows: RefCell<Vec<gtk::Box>>,
         /// Header subtitle of each main page.
         pub subtitles: RefCell<std::collections::HashMap<&'static str, String>>,
+        pub categories_page: RefCell<Option<Rc<CategoriesPage>>>,
         /// Import page currently pushed, if any.
         pub import_page: RefCell<Option<Rc<ImportPage>>>,
         /// "4 comptes · 3 banques"
@@ -182,6 +189,14 @@ impl FinaryxWindow {
             self.toast(&gettext("Impossible de lire la base de données."));
         }
         self.refresh_views();
+        let categories = self.imp().categories_page.borrow().clone();
+        if let Some(page) = categories {
+            page.refresh();
+        }
+        let operations = self.imp().operations_page.borrow().clone();
+        if let Some(page) = operations {
+            page.refresh_list();
+        }
     }
 
     fn try_reload(&self) -> finaryx_core::db::Result<()> {
@@ -439,6 +454,41 @@ impl FinaryxWindow {
         }
     }
 
+    pub fn show_categories(&self) {
+        let imp = self.imp();
+        imp.root_stack.set_visible_child_name("main");
+        let page = CategoriesPage::new(self);
+        imp.content_nav.pop_to_tag("main");
+        imp.content_nav.push(&page.page);
+        imp.categories_page.replace(Some(page));
+        imp.split_view.set_show_content(true);
+    }
+
+    /// After an import: tells how many transfers between the user's
+    /// accounts wait for a confirmation.
+    pub fn signal_transfer_proposals(&self) {
+        let Some(n) = self.read(|c| Ok(finaryx_core::transfers::proposals(c)?.len())) else {
+            return;
+        };
+        if n == 0 {
+            return;
+        }
+        let toast = adw::Toast::builder()
+            .title(
+                ngettext(
+                    "{n} virement entre vos comptes à confirmer",
+                    "{n} virements entre vos comptes à confirmer",
+                    n as u32,
+                )
+                .replace("{n}", &n.to_string()),
+            )
+            .button_label(gettext("Voir"))
+            .action_name("win.categories")
+            .timeout(8)
+            .build();
+        self.imp().toast_overlay.add_toast(toast);
+    }
+
     /// Opens the list of operations with these filters.
     pub fn show_operations(
         &self,
@@ -517,14 +567,7 @@ impl FinaryxWindow {
             .activate(|window: &Self, _, _| window.show_add_account())
             .build();
         let categories = gio::ActionEntry::builder("categories")
-            .activate(|window: &Self, _, _| {
-                window.push_sub_page(
-                    "categories",
-                    &gettext("Catégories et règles"),
-                    "view-list-bullet-symbolic",
-                    6,
-                );
-            })
+            .activate(|window: &Self, _, _| window.show_categories())
             .build();
         let export = gio::ActionEntry::builder("export")
             .activate(|window: &Self, _, _| {
@@ -551,30 +594,44 @@ impl FinaryxWindow {
             self,
             move |_| window.sync_with_stack()
         ));
-        imp.narrow_breakpoint.connect_apply(glib::clone!(
-            #[weak(rename_to = window)]
-            self,
-            move |_| {
-                window.imp().narrow.set(true);
-                window.imp().accounts_page.get().unwrap().set_narrow(true);
-                if let Some(page) = window.imp().import_page.borrow().clone() {
-                    page.set_narrow(true);
+        for (breakpoint, narrow) in [
+            (&*imp.compact_breakpoint, false),
+            (&*imp.narrow_breakpoint, true),
+        ] {
+            for applied in [true, false] {
+                let weak = self.downgrade();
+                let handler = move |_: &adw::Breakpoint| {
+                    let Some(window) = weak.upgrade() else { return };
+                    let (mut compact, mut collapsed) = window.imp().breakpoints.get();
+                    if narrow {
+                        collapsed = applied;
+                    } else {
+                        compact = applied;
+                    }
+                    window.imp().breakpoints.set((compact, collapsed));
+                    window.set_layout_narrow(compact || collapsed);
+                };
+                if applied {
+                    breakpoint.connect_apply(handler);
+                } else {
+                    breakpoint.connect_unapply(handler);
                 }
-                window.reload();
             }
-        ));
-        imp.narrow_breakpoint.connect_unapply(glib::clone!(
-            #[weak(rename_to = window)]
-            self,
-            move |_| {
-                window.imp().narrow.set(false);
-                window.imp().accounts_page.get().unwrap().set_narrow(false);
-                if let Some(page) = window.imp().import_page.borrow().clone() {
-                    page.set_narrow(false);
-                }
-                window.reload();
-            }
-        ));
+        }
+    }
+
+    /// Switches the pages between their full and compact layouts.
+    fn set_layout_narrow(&self, narrow: bool) {
+        let imp = self.imp();
+        if imp.narrow.replace(narrow) == narrow {
+            self.sync_with_stack();
+            return;
+        }
+        imp.accounts_page.get().unwrap().set_narrow(narrow);
+        if let Some(page) = imp.import_page.borrow().clone() {
+            page.set_narrow(narrow);
+        }
+        self.reload();
     }
 
     /// Shows a main page: back to the root of the content, page selected.
@@ -946,5 +1003,14 @@ fn today() -> NaiveDate {
     glib::DateTime::now_local()
         .ok()
         .and_then(|d| NaiveDate::from_ymd_opt(d.year(), d.month() as u32, d.day_of_month() as u32))
+        .unwrap_or_default()
+}
+
+/// Local date and time, ISO 8601 ("2026-11-11T10:00:00").
+pub fn now_iso() -> String {
+    glib::DateTime::now_local()
+        .ok()
+        .and_then(|d| d.format("%Y-%m-%dT%H:%M:%S").ok())
+        .map(|s| s.to_string())
         .unwrap_or_default()
 }

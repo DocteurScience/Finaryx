@@ -102,14 +102,6 @@ fn string_list(items: &[String]) -> gtk::StringList {
     gtk::StringList::new(&refs)
 }
 
-fn now_iso() -> String {
-    glib::DateTime::now_local()
-        .ok()
-        .and_then(|d| d.format("%Y-%m-%dT%H:%M:%S").ok())
-        .map(|s| s.to_string())
-        .unwrap_or_default()
-}
-
 impl ImportPage {
     pub fn new(window: &FinaryxWindow) -> Rc<Self> {
         let title = adw::WindowTitle::new(&gettext("Importer un CSV"), "");
@@ -1287,7 +1279,7 @@ impl ImportPage {
                     &s.analysis.mapping,
                     plan,
                     &options,
-                    &now_iso(),
+                    &crate::window::now_iso(),
                 )
             })
         };
@@ -1311,6 +1303,7 @@ impl ImportPage {
                 self.state.replace(None);
                 window.show_page("accounts");
                 window.toast(&text);
+                window.signal_transfer_proposals();
             }
             Err(message) => window.toast(&message),
         }

@@ -80,7 +80,7 @@ pub fn proposals(conn: &Connection) -> Result<Vec<Proposal>> {
         used.insert(p.credit.id);
         out.push(p);
     }
-    out.sort_by(|a, b| b.debit.booked_on.cmp(&a.debit.booked_on));
+    out.sort_by_key(|p| std::cmp::Reverse(p.debit.booked_on));
     Ok(out)
 }
 

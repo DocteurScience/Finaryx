@@ -8,7 +8,93 @@ use crate::settings;
 
 const SCHEMES: [&str; 3] = ["default", "light", "dark"];
 
-pub fn preferences_dialog() -> adw::PreferencesDialog {
+/// "Noms du foyer": transfers from these people are proposed as
+/// "Virement interne" (page Catégories et règles).
+fn household_group(window: &crate::window::FinaryxWindow) -> adw::PreferencesGroup {
+    let group = adw::PreferencesGroup::builder()
+        .title(gettext("Noms du foyer"))
+        .description(gettext(
+            "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé \
+             comme virement interne : ni dépense, ni revenu.",
+        ))
+        .build();
+    fill_household(&group, window);
+    group
+}
+
+fn fill_household(group: &adw::PreferencesGroup, window: &crate::window::FinaryxWindow) {
+    let names = window
+        .read(finaryx_core::transfers::household_names)
+        .unwrap_or_default();
+    let list = gtk::ListBox::builder()
+        .selection_mode(gtk::SelectionMode::None)
+        .css_classes(["boxed-list"])
+        .build();
+    for (id, name) in names {
+        let row = adw::ActionRow::builder()
+            .title(glib::markup_escape_text(&name))
+            .build();
+        let remove = gtk::Button::builder()
+            .icon_name("user-trash-symbolic")
+            .tooltip_text(gettext("Retirer ce nom"))
+            .valign(gtk::Align::Center)
+            .css_classes(["flat"])
+            .build();
+        let (w, g) = (window.downgrade(), group.downgrade());
+        remove.connect_clicked(move |_| {
+            if let (Some(window), Some(group)) = (w.upgrade(), g.upgrade()) {
+                if window
+                    .change(|c| finaryx_core::transfers::remove_household_name(c, id))
+                    .is_ok()
+                {
+                    refill(&group, &window);
+                }
+            }
+        });
+        row.add_suffix(&remove);
+        list.append(&row);
+    }
+    let add = adw::EntryRow::builder()
+        .title(gettext("Ajouter un nom"))
+        .show_apply_button(true)
+        .build();
+    let (w, g) = (window.downgrade(), group.downgrade());
+    add.connect_apply(move |e| {
+        let text = e.text().to_string();
+        if let (Some(window), Some(group)) = (w.upgrade(), g.upgrade()) {
+            match window.change(|c| finaryx_core::transfers::add_household_name(c, &text)) {
+                Ok(_) => refill(&group, &window),
+                Err(m) => window.toast(&m),
+            }
+        }
+    });
+    list.append(&add);
+    list.set_widget_name("household-list");
+    group.add(&list);
+}
+
+fn refill(group: &adw::PreferencesGroup, window: &crate::window::FinaryxWindow) {
+    // Remove the previous list, then build it again.
+    fn find(w: &gtk::Widget) -> Option<gtk::Widget> {
+        if w.widget_name() == "household-list" {
+            return Some(w.clone());
+        }
+        let mut child = w.first_child();
+        while let Some(c) = child {
+            if let Some(found) = find(&c) {
+                return Some(found);
+            }
+            child = c.next_sibling();
+        }
+        None
+    }
+    if let Some(list) = find(group.upcast_ref()) {
+        group.remove(&list);
+    }
+    fill_household(group, window);
+}
+
+pub fn preferences_dialog(window: Option<&crate::window::FinaryxWindow>) -> adw::PreferencesDialog {
     let settings = settings::settings();
 
     let style_row = adw::ComboRow::builder()
@@ -56,6 +142,9 @@ pub fn preferences_dialog() -> adw::PreferencesDialog {
         .icon_name("preferences-system-symbolic")
         .build();
     page.add(&appearance);
+    if let Some(window) = window {
+        page.add(&household_group(window));
+    }
     page.add(&privacy);
 
     let dialog = adw::PreferencesDialog::builder()
