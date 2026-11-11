@@ -16,6 +16,7 @@ use crate::account_dialog::{self, Field};
 use crate::database::{self, Source};
 use crate::pages::account_detail::{self, AccountDetailPage};
 use crate::pages::accounts::{self as accounts_page, AccountsPage};
+use crate::pages::import::ImportPage;
 use crate::pages::{self, MAIN_PAGES};
 
 /// Sidebar index of the "Importer un CSV" row (after the main pages).
@@ -77,6 +78,8 @@ mod imp {
         pub accounts_page: OnceCell<AccountsPage>,
         /// Account detail currently pushed, if any.
         pub detail: RefCell<Option<Rc<AccountDetailPage>>>,
+        /// Import page currently pushed, if any.
+        pub import_page: RefCell<Option<Rc<ImportPage>>>,
         /// "4 comptes · 3 banques"
         pub summary: RefCell<String>,
         /// Guards against feedback loops while syncing the sidebar selection.
@@ -394,6 +397,9 @@ impl FinaryxWindow {
             move |_| {
                 window.imp().narrow.set(true);
                 window.imp().accounts_page.get().unwrap().set_narrow(true);
+                if let Some(page) = window.imp().import_page.borrow().clone() {
+                    page.set_narrow(true);
+                }
                 window.reload();
             }
         ));
@@ -403,6 +409,9 @@ impl FinaryxWindow {
             move |_| {
                 window.imp().narrow.set(false);
                 window.imp().accounts_page.get().unwrap().set_narrow(false);
+                if let Some(page) = window.imp().import_page.borrow().clone() {
+                    page.set_narrow(false);
+                }
                 window.reload();
             }
         ));
@@ -417,13 +426,22 @@ impl FinaryxWindow {
     }
 
     pub fn show_import(&self) {
-        self.imp().root_stack.set_visible_child_name("main");
-        self.push_sub_page(
-            "import",
-            &gettext(pages::IMPORT_TITLE),
-            pages::IMPORT_ICON,
-            4,
-        );
+        let imp = self.imp();
+        imp.root_stack.set_visible_child_name("main");
+        let page = ImportPage::new(self);
+        page.set_narrow(imp.narrow.get());
+        imp.content_nav.pop_to_tag("main");
+        imp.content_nav.push(&page.page);
+        imp.import_page.replace(Some(page));
+        imp.split_view.set_show_content(true);
+    }
+
+    /// Opens the import page on a file (command line, file manager).
+    pub fn import_file(&self, file: gtk::gio::File) {
+        self.show_import();
+        if let Some(page) = self.imp().import_page.borrow().clone() {
+            page.load_file(file);
+        }
     }
 
     /// Pushes a sub-page with a back button, replacing any other sub-page.
@@ -499,7 +517,7 @@ impl FinaryxWindow {
 
     /// Runs a change on the database, then reloads the views. Errors are
     /// logged and returned as a message for the user.
-    fn change<R>(
+    pub(crate) fn change<R>(
         &self,
         f: impl FnOnce(&mut Connection) -> finaryx_core::db::Result<R>,
     ) -> Result<R, String> {
@@ -525,7 +543,10 @@ impl FinaryxWindow {
         }
     }
 
-    fn read<R>(&self, f: impl FnOnce(&Connection) -> finaryx_core::db::Result<R>) -> Option<R> {
+    pub(crate) fn read<R>(
+        &self,
+        f: impl FnOnce(&Connection) -> finaryx_core::db::Result<R>,
+    ) -> Option<R> {
         let db = self.imp().db.borrow();
         match f(db.as_ref()?) {
             Ok(value) => Some(value),
@@ -540,13 +561,34 @@ impl FinaryxWindow {
     // ----- Accounts ----------------------------------------------------------
 
     pub fn show_add_account(&self) {
+        self.add_account_then(
+            None,
+            glib::clone!(
+                #[weak(rename_to = window)]
+                self,
+                move |_| window.show_page("accounts")
+            ),
+        );
+    }
+
+    /// Opens the "Ajouter un compte" dialog (bank pre-filled if given) and
+    /// calls `on_created` with the new account.
+    pub fn add_account_then(&self, bank: Option<String>, on_created: impl Fn(i64) + 'static) {
         let weak = self.downgrade();
-        account_dialog::present(self, None, Field::Name, move |changes| {
+        let initial = bank.map(|bank_name| AccountChanges {
+            name: String::new(),
+            bank_name,
+            number: None,
+            kind: finaryx_core::models::AccountKind::Checking,
+            currency: "EUR".into(),
+            opening_balance_cents: 0,
+        });
+        account_dialog::present_new(self, initial.as_ref(), move |changes| {
             let window = weak.upgrade()?;
             match window.change(|conn| accounts::create_account(conn, &changes)) {
-                Ok(_) => {
-                    window.show_page("accounts");
+                Ok(id) => {
                     window.toast(&gettext("Compte ajouté"));
+                    on_created(id);
                     None
                 }
                 Err(message) => Some(message),

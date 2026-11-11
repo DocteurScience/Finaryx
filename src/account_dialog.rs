@@ -26,7 +26,25 @@ pub fn present(
     focus: Field,
     on_save: impl Fn(AccountChanges) -> Option<String> + 'static,
 ) {
-    let adding = initial.is_none();
+    present_full(parent, initial, initial.is_none(), focus, on_save);
+}
+
+/// Opens the dialog to add an account, with some fields already filled.
+pub fn present_new(
+    parent: &impl IsA<gtk::Widget>,
+    initial: Option<&AccountChanges>,
+    on_save: impl Fn(AccountChanges) -> Option<String> + 'static,
+) {
+    present_full(parent, initial, true, Field::Name, on_save);
+}
+
+fn present_full(
+    parent: &impl IsA<gtk::Widget>,
+    initial: Option<&AccountChanges>,
+    adding: bool,
+    focus: Field,
+    on_save: impl Fn(AccountChanges) -> Option<String> + 'static,
+) {
     let default = AccountChanges {
         name: String::new(),
         bank_name: String::new(),

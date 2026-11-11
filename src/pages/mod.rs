@@ -207,6 +207,7 @@ pub fn sidebar_row(name: &str, title: &str, icon: &str) -> gtk::ListBoxRow {
 
 pub mod account_detail;
 pub mod accounts;
+pub mod import;
 
 use finaryx_core::money::{self, Currency, Sign};
 

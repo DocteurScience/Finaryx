@@ -51,6 +51,16 @@ mod imp {
             self.parent_handle_local_options(options)
         }
 
+        fn open(&self, files: &[gio::File], _hint: &str) {
+            self.activate();
+            let app = self.obj();
+            if let (Some(window), Some(file)) = (app.active_window(), files.first()) {
+                if let Ok(window) = window.downcast::<FinaryxWindow>() {
+                    window.import_file(file.clone());
+                }
+            }
+        }
+
         fn activate(&self) {
             let app = self.obj();
             let window = app.active_window().unwrap_or_else(|| {
@@ -94,6 +104,7 @@ impl FinaryxApplication {
         glib::Object::builder()
             .property("application-id", config::APP_ID)
             .property("resource-base-path", config::RESOURCE_BASE)
+            .property("flags", gio::ApplicationFlags::HANDLES_OPEN)
             .build()
     }
 

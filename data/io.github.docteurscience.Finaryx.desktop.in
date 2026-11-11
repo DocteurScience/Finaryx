@@ -1,11 +1,12 @@
 [Desktop Entry]
 Name=Finaryx
 Comment=Suivez vos comptes bancaires, sans rien envoyer en ligne
-Exec=finaryx
+Exec=finaryx %F
 Icon=@APP_ID@
 Terminal=false
 Type=Application
 Categories=Office;Finance;GTK;GNOME;
 Keywords=banque;budget;compte;dépenses;finances;CSV;
 StartupNotify=true
+MimeType=text/csv;
 DBusActivatable=false
