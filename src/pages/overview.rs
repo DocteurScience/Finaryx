@@ -15,14 +15,20 @@ use gtk::glib;
 
 use super::{
     amount, amount_whole, capitalized, caption, chart_card, clear, empty_state, kpi_card,
-    legend_item, pct0, pct1, section_header, KpiSize,
+    legend_item, pct1, section_header, KpiSize,
 };
+use super::{pct0_label, pct1_label};
 use crate::charts::{self, columns, donut, line, LegendMark, Tip, TipMark};
 use crate::window::FinaryxWindow;
+use finaryx_core::locale;
 
-/// "d’octobre", "de mai".
+/// "d’octobre", "de mai" in French (elision); the month name alone in the
+/// other languages, whose translations place it ("Spending in {of_month}").
 pub fn of_month(month: u32) -> String {
     let name = dates::month_name(month);
+    if finaryx_core::locale::current().code != "fr" {
+        return name.to_owned();
+    }
     if name.starts_with(['a', 'o', 'é', 'e', 'i', 'u']) {
         format!("d’{name}")
     } else {
@@ -169,7 +175,7 @@ pub fn month_donut(
                 .row(
                     TipMark::None,
                     gettext("Part des dépenses"),
-                    format!("{}\u{a0}%", pct1(p.amount, total)),
+                    pct1_label(p.amount, total),
                 )
                 .row(
                     TipMark::None,
@@ -184,7 +190,7 @@ pub fn month_donut(
             donut::Part {
                 slot: p.slot,
                 amount: p.amount,
-                label: format!("{}\u{a0}%", pct0(p.amount, total)),
+                label: pct0_label(p.amount, total),
                 tooltip,
             }
         })
@@ -234,7 +240,7 @@ pub fn months_columns(
                 total_label: amount_whole(total, cur, Sign::Negative),
                 segment_labels: std::array::from_fn(|k| {
                     if segment_labels && row[k] > 0 {
-                        format!("{}\u{a0}%", pct0(row[k], total))
+                        pct0_label(row[k], total)
                     } else {
                         String::new()
                     }
@@ -253,7 +259,7 @@ pub fn months_columns(
                     .row(
                         TipMark::None,
                         gettext("Part du mois"),
-                        format!("{}\u{a0}%", pct1(row[k], total)),
+                        pct1_label(row[k], total),
                     )
                     .row(
                         TipMark::None,
@@ -265,9 +271,9 @@ pub fn months_columns(
                         let prev = stats::previous_month(*m);
                         let change = if before > 0 {
                             format!(
-                                " ({}{}\u{a0}%)",
+                                " ({}{})",
                                 if row[k] >= before { "+" } else { "\u{2212}" },
-                                pct0((row[k] - before).abs(), before)
+                                pct0_label((row[k] - before).abs(), before)
                             )
                         } else {
                             String::new()
@@ -306,7 +312,7 @@ pub fn months_columns(
 /// Names of the 13 chart groups: the category holding each colour
 /// (empty when the colour is free), then "Autres".
 pub fn slot_names(conn: &Connection) -> Result<[String; CHART_GROUPS]> {
-    let categories = finaryx_core::repo::list_categories(conn)?;
+    let categories = finaryx_core::categories::list_for_display(conn)?;
     Ok(std::array::from_fn(|k| {
         let group = k as u8 + 1;
         if group == OTHERS_GROUP {
@@ -353,7 +359,7 @@ pub fn part_row(
     );
     row.append(
         &gtk::Label::builder()
-            .label(format!("{pct}\u{a0}%"))
+            .label(locale::current().percent_of(pct))
             .width_chars(7)
             .xalign(1.0)
             .css_classes(["dim-label", "numeric"])
@@ -457,6 +463,7 @@ impl OverviewPage {
             String::new()
         };
         kpis.append(&kpi_card(
+            // TRANSLATORS: {of_month} is the name of the month ("d’octobre" in French).
             &gettext("Dépenses {of_month}").replace("{of_month}", &of_month(month.month())),
             &amount(totals.spending, cur, Sign::Negative),
             &spending_note,

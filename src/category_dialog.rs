@@ -39,6 +39,7 @@ pub fn present(
     let creating = existing.is_none();
     let current_id = existing.as_ref().map(|u| u.category.id);
     let current_slot = existing.as_ref().and_then(|u| u.category.slot);
+    let shown_name = existing.as_ref().map(|u| u.category.name.clone());
 
     let name = adw::EntryRow::builder()
         .title(gettext("Nom"))
@@ -288,7 +289,11 @@ pub fn present(
             let result = window.change(|c| match current_id {
                 None => categories::create_category(c, &text, slot),
                 Some(id) => {
-                    categories::rename_category(c, id, &text)?;
+                    // The field shows the translated name of a built-in
+                    // category: unchanged, it is not written.
+                    if Some(text.trim()) != shown_name.as_deref() {
+                        categories::rename_category(c, id, &text)?;
+                    }
                     if id != builtin::OTHERS {
                         categories::set_slot(c, id, slot)?;
                     }

@@ -425,7 +425,7 @@ pub fn recent_operations(
     limit: usize,
 ) -> Result<Vec<OperationRow>> {
     let mut stmt = conn.prepare(
-        "SELECT t.id, t.booked_on, t.label, t.amount_cents, c.name, c.slot, t.needs_review
+        "SELECT t.id, t.booked_on, t.label, t.amount_cents, c.name, c.slot, t.needs_review, c.id
          FROM txn t LEFT JOIN category c ON c.id = t.category_id
          WHERE t.account_id = ?1
          ORDER BY t.booked_on DESC, t.id DESC LIMIT ?2",
@@ -436,7 +436,10 @@ pub fn recent_operations(
             booked_on: r.get(1)?,
             label: r.get(2)?,
             amount_cents: r.get(3)?,
-            category_name: r.get(4)?,
+            category_name: match (r.get::<_, Option<Id>>(7)?, r.get::<_, Option<String>>(4)?) {
+                (Some(id), Some(name)) => Some(crate::categories::display_name(id, &name)),
+                (_, name) => name,
+            },
             category_slot: r.get(5)?,
             needs_review: r.get(6)?,
         })

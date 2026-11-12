@@ -10,8 +10,9 @@
 use chrono::{Datelike, NaiveDate};
 use rusqlite::{params_from_iter, Connection};
 
-use crate::categories::{CHART_GROUPS, COLOR_SLOTS, OTHERS_GROUP};
+use crate::categories::{display_name, CHART_GROUPS, COLOR_SLOTS, OTHERS_GROUP};
 use crate::db::Result;
+use crate::i18n::gettext;
 use crate::models::{builtin, Id};
 
 /// Accounts taken into account by a view.
@@ -319,7 +320,7 @@ pub fn spending_by_category(
     let rows = stmt.query_map(rusqlite::params![from, to], |r| {
         Ok(CategorySpending {
             category_id: r.get(0)?,
-            name: r.get(1)?,
+            name: display_name(r.get(0)?, &r.get::<_, String>(1)?),
             slot: r.get(2)?,
             amount: r.get(3)?,
             operations: r.get(4)?,
@@ -349,7 +350,7 @@ pub fn chart_parts(categories: &[CategorySpending]) -> Vec<ChartPart> {
     for c in categories {
         let slot = chart_group(c.slot);
         let name = if slot == OTHERS_GROUP {
-            "Autres".to_owned()
+            gettext("Autres")
         } else {
             c.name.clone()
         };
@@ -538,7 +539,10 @@ pub fn operations(
                 account_name: r.get(3)?,
                 bank_name: r.get(4)?,
                 category_id: r.get(5)?,
-                category_name: r.get(6)?,
+                category_name: match (r.get::<_, Option<Id>>(5)?, r.get::<_, Option<String>>(6)?) {
+                    (Some(id), Some(name)) => Some(display_name(id, &name)),
+                    (_, name) => name,
+                },
                 category_slot: r.get(7)?,
                 amount_cents: r.get(8)?,
                 needs_review: r.get(9)?,

@@ -77,12 +77,7 @@ fn n_text(singular: &str, plural: &str, n: usize) -> String {
 
 /// "38 Ko", "1,2 Mo"
 fn file_size(bytes: usize) -> String {
-    if bytes < 1024 * 1024 {
-        format!("{} Ko", bytes.div_ceil(1024).max(1))
-    } else {
-        let tenths = (bytes * 10).div_ceil(1024 * 1024);
-        format!("{},{} Mo", tenths / 10, tenths % 10)
-    }
+    super::file_size(bytes as u64)
 }
 
 fn badge(text: &str, late: bool) -> gtk::Label {
@@ -822,7 +817,13 @@ impl ImportPage {
             return None;
         }
         let list = boxed_list();
+        // Stored names identify the category; the drop-down shows them
+        // translated.
         let names: Vec<String> = categories.iter().map(|c| c.name.clone()).collect();
+        let labels: Vec<String> = categories
+            .iter()
+            .map(|c| finaryx_core::categories::display_name(c.id, &c.name))
+            .collect();
         let shown = if s.show_all_categories {
             uses.len()
         } else {
@@ -853,7 +854,7 @@ impl ImportPage {
             row.add_suffix(&badge(&text, late));
 
             let dropdown = gtk::DropDown::builder()
-                .model(&string_list(&names))
+                .model(&string_list(&labels))
                 .valign(gtk::Align::Center)
                 .selected(
                     names
@@ -975,7 +976,7 @@ impl ImportPage {
         };
         let categories = self
             .window()
-            .and_then(|w| w.read(repo::list_categories))
+            .and_then(|w| w.read(finaryx_core::categories::list_for_display))
             .unwrap_or_default();
         let currency = self.account_currency(s.account_id);
 

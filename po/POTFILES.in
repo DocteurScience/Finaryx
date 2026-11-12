@@ -4,6 +4,7 @@ core/src/categories.rs
 core/src/importers/format.rs
 core/src/importers/mapping.rs
 core/src/importers/plan.rs
+core/src/stats.rs
 data/io.github.docteurscience.Finaryx.desktop.in
 data/io.github.docteurscience.Finaryx.gschema.xml
 data/io.github.docteurscience.Finaryx.metainfo.xml.in
@@ -13,6 +14,7 @@ src/account_dialog.rs
 src/application.rs
 src/category_dialog.rs
 src/database.rs
+src/main.rs
 src/pages/account_detail.rs
 src/pages/accounts.rs
 src/pages/categories.rs

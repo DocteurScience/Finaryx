@@ -1,0 +1,1702 @@
+# Finaryx — English
+# Generated from po/translations.csv by build-aux/translations.py: edit the table.
+msgid ""
+msgstr ""
+"Project-Id-Version: finaryx\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "fr"
+msgstr "en"
+
+msgid "Aucun import"
+msgstr "No import"
+
+msgid "À jour"
+msgstr "Up to date"
+
+msgid "À mettre à jour"
+msgstr "Needs updating"
+
+msgid "{month} à importer"
+msgstr "{month} to import"
+
+msgid "Logement"
+msgstr "Housing"
+
+msgid "Alimentation"
+msgstr "Food"
+
+msgid "Transports"
+msgstr "Transport"
+
+msgid "Prêts et crédits"
+msgstr "Loans and Credit"
+
+msgid "Shopping et animaux"
+msgstr "Shopping and Pets"
+
+msgid "Abonnements et télécoms"
+msgstr "Subscriptions and Telecoms"
+
+msgid "Banque et assurances"
+msgstr "Banking and Insurance"
+
+msgid "Autres"
+msgstr "Other"
+
+msgid "Sorties et loisirs"
+msgstr "Going Out and Leisure"
+
+msgid "Santé"
+msgstr "Health"
+
+msgid "Impôts et taxes"
+msgstr "Taxes"
+
+msgid "Administratif et éducation"
+msgstr "Administration and Education"
+
+msgid "Revenus"
+msgstr "Income"
+
+msgid "Virement interne"
+msgstr "Internal Transfer"
+
+msgid "Donnez un nom à la catégorie."
+msgstr "Give the category a name."
+
+msgid "La catégorie « {name} » existe déjà."
+msgstr "The category “{name}” already exists."
+
+msgid "Cette couleur est déjà utilisée par « {name} »."
+msgstr "This color is already used by “{name}”."
+
+msgid "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée."
+msgstr "Finaryx needs this category to work: it cannot be deleted."
+
+msgid "« Autres » garde toujours le gris."
+msgstr "“Other” always keeps the gray."
+
+msgid "Le motif de la règle est vide."
+msgstr "The rule pattern is empty."
+
+msgid "Point-virgule ( ; )"
+msgstr "Semicolon ( ; )"
+
+msgid "Virgule ( , )"
+msgstr "Comma ( , )"
+
+msgid "Tabulation"
+msgstr "Tab"
+
+msgid "Barre verticale ( | )"
+msgstr "Vertical Bar ( | )"
+
+msgid "JJ/MM/AAAA"
+msgstr "DD/MM/YYYY"
+
+msgid "AAAA-MM-JJ"
+msgstr "YYYY-MM-DD"
+
+msgid "JJ-MM-AA"
+msgstr "DD-MM-YY"
+
+msgid "MM/JJ/AAAA"
+msgstr "MM/DD/YYYY"
+
+msgid "Ignorer"
+msgstr "Ignore"
+
+msgid "Date de l’opération"
+msgstr "Transaction Date"
+
+msgid "Date de comptabilisation"
+msgstr "Posting Date"
+
+msgid "Date de valeur"
+msgstr "Value Date"
+
+msgid "Libellé"
+msgstr "Description"
+
+msgid "Détail du libellé"
+msgstr "Description Details"
+
+msgid "Montant"
+msgstr "Amount"
+
+msgid "Débit"
+msgstr "Debit"
+
+msgid "Crédit"
+msgstr "Credit"
+
+msgid "Sens (débit ou crédit)"
+msgstr "Direction (Debit or Credit)"
+
+msgid "Référence de la banque"
+msgstr "Bank Reference"
+
+msgid "Solde après l’opération"
+msgstr "Balance After the Transaction"
+
+msgid "Devise"
+msgstr "Currency"
+
+msgid "Catégorie de la banque"
+msgstr "Bank Category"
+
+msgid "Sous-catégorie de la banque"
+msgstr "Bank Subcategory"
+
+msgid "Une colonne"
+msgstr "One Column"
+
+msgid "Débit et crédit"
+msgstr "Debit and Credit"
+
+msgid "Montant et sens"
+msgstr "Amount and Direction"
+
+msgid "une date illisible"
+msgstr "an unreadable date"
+
+msgid "un libellé vide"
+msgstr "an empty description"
+
+msgid "un montant illisible"
+msgstr "an unreadable amount"
+
+msgid "un sens (débit ou crédit) inconnu"
+msgstr "an unknown direction (debit or credit)"
+
+msgid "une autre devise que celle du compte"
+msgstr "a currency other than the account’s"
+
+msgid "Associez une colonne à : {fields}."
+msgstr "Assign a column to: {fields}."
+
+msgid "{n} ligne a {problem} : ligne {lines}"
+msgid_plural "{n} lignes ont {problem} : lignes {lines}"
+msgstr[0] "{n} row has {problem}: row {lines}"
+msgstr[1] "{n} rows have {problem}: rows {lines}"
+
+msgid "Finaryx"
+msgstr "Finaryx"
+
+msgid "Suivez vos comptes bancaires, sans rien envoyer en ligne"
+msgstr "Track your bank accounts without sending anything online"
+
+msgid "banque;budget;compte;dépenses;finances;CSV;"
+msgstr "bank;budget;account;expenses;finance;money;CSV;"
+
+msgid "Style"
+msgstr "Style"
+
+msgid "Suivre le style du système, ou forcer le style clair ou sombre."
+msgstr "Follow the system style, or force the light or dark style."
+
+msgid "Largeur de la fenêtre"
+msgstr "Window width"
+
+msgid "Hauteur de la fenêtre"
+msgstr "Window height"
+
+msgid "Sauvegarde automatique"
+msgstr "Automatic backup"
+
+msgid "Copier la base après chaque import et garder les 5 dernières copies."
+msgstr "Copy the database after each import and keep the last 5 copies."
+
+msgid "Fenêtre maximisée"
+msgstr "Window maximized"
+
+msgid "Suivez vos comptes bancaires"
+msgstr "Track your bank accounts"
+
+msgid "Finaryx importe les exports CSV de vos banques, les range dans une base locale et vous montre où part votre argent. Plusieurs comptes et plusieurs banques se suivent au même endroit, chacun dans sa devise."
+msgstr "Finaryx imports the CSV exports of your banks, stores them in a local database and shows you where your money goes. Several accounts and several banks are followed in one place, each in its own currency."
+
+msgid "Évolution du solde jour après jour, comparée au mois précédent"
+msgstr "Balance day after day, compared with the previous month"
+
+msgid "Répartition des dépenses par catégorie et cumul sur 3, 6 ou 12 mois"
+msgstr "Spending by category and totals over 3, 6 or 12 months"
+
+msgid "Prévision du solde d’après vos charges récurrentes et vos habitudes, avec sa fourchette"
+msgstr "Balance forecast from your recurring expenses and habits, with its range"
+
+msgid "Import guidé : détection du format, aperçu, doublons ignorés, annulation possible"
+msgstr "Guided import: format detection, preview, duplicates skipped, undo"
+
+msgid "Catégories, règles de classement et virements entre vos comptes"
+msgstr "Categories, sorting rules and transfers between your accounts"
+
+msgid "Sauvegarde, restauration et export CSV des opérations"
+msgstr "Backup, restore and CSV export of the transactions"
+
+msgid "Vos données restent sur votre ordinateur : Finaryx ne fait aucune requête réseau et n’envoie aucune statistique d’usage."
+msgstr "Your data stays on your computer: Finaryx makes no network request and sends no usage statistics."
+
+msgid "DocteurScience"
+msgstr "DocteurScience"
+
+msgid "banque"
+msgstr "bank"
+
+msgid "budget"
+msgstr "budget"
+
+msgid "compte"
+msgstr "account"
+
+msgid "dépenses"
+msgstr "expenses"
+
+msgid "finances"
+msgstr "finance"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "Vue d’ensemble du mois"
+msgstr "Overview of the month"
+
+msgid "Prévision du solde d’après vos habitudes"
+msgstr "Balance forecast from your habits"
+
+msgid "Le mois en détail"
+msgstr "The month in detail"
+
+msgid "Cumul des dépenses par catégorie"
+msgstr "Spending totals by category"
+
+msgid "Vos comptes et l’historique des imports"
+msgstr "Your accounts and the import history"
+
+msgid "Thème sombre"
+msgstr "Dark style"
+
+msgid "Première version."
+msgstr "First release."
+
+msgid "Import CSV avec profil Banque Populaire et mappage manuel pour les autres banques"
+msgstr "CSV import with a Banque Populaire profile and manual mapping for other banks"
+
+msgid "Vue d’ensemble, mois en détail, cumul et prévisions"
+msgstr "Overview, month in detail, totals and forecast"
+
+msgid "Catégories, règles et virements entre vos comptes"
+msgstr "Categories, rules and transfers between your accounts"
+
+msgid "Sauvegarde, restauration et export CSV"
+msgstr "Backup, restore and CSV export"
+
+msgid "Général"
+msgstr "General"
+
+msgid "Importer un CSV"
+msgstr "Import CSV"
+
+msgid "Préférences"
+msgstr "Preferences"
+
+msgid "Raccourcis clavier"
+msgstr "Keyboard Shortcuts"
+
+msgid "Fermer la fenêtre"
+msgstr "Close Window"
+
+msgid "Quitter"
+msgstr "Quit"
+
+msgid "Navigation"
+msgstr "Navigation"
+
+msgid "Vue d'ensemble"
+msgstr "Overview"
+
+msgid "Mois en détail"
+msgstr "Month in Detail"
+
+msgid "Cumul"
+msgstr "Totals"
+
+msgid "Prévisions"
+msgstr "Forecast"
+
+msgid "Comptes"
+msgstr "Accounts"
+
+msgid "Opérations"
+msgstr "Transactions"
+
+msgid "Rechercher un libellé"
+msgstr "Search Descriptions"
+
+msgid "Catégories et règles…"
+msgstr "Categories and Rules…"
+
+msgid "Exporter les données…"
+msgstr "Export Data…"
+
+msgid "À propos de Finaryx"
+msgstr "About Finaryx"
+
+msgid "Menu principal"
+msgstr "Main Menu"
+
+msgid "Navigation principale"
+msgstr "Main navigation"
+
+msgid "Dernier import"
+msgstr "Last import"
+
+msgid "Importer"
+msgstr "Import"
+
+msgid "Ajouter un compte"
+msgstr "Add Account"
+
+msgid "Ajouter"
+msgstr "Add"
+
+msgid "Démonstration : rien n’est enregistré"
+msgstr "Demo: nothing is saved"
+
+msgid "Bienvenue dans Finaryx"
+msgstr "Welcome to Finaryx"
+
+msgid "Importez l’export CSV d’un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n’est envoyé en ligne."
+msgstr "Import the CSV export of an account to see where your money goes. Everything stays on your computer, nothing is sent online."
+
+msgid "Ajouter un compte d’abord"
+msgstr "Add an Account First"
+
+msgid "Pour commencer"
+msgstr "Getting started"
+
+msgid "Exportez vos opérations en CSV"
+msgstr "Export your transactions as CSV"
+
+msgid "Depuis le site ou l’application de votre banque, choisissez la période la plus longue possible."
+msgstr "From your bank’s website or app, choose the longest period possible."
+
+msgid "Importez le fichier dans Finaryx"
+msgstr "Import the file into Finaryx"
+
+msgid "Le format Banque Populaire est reconnu. Pour les autres banques, vous associez les colonnes une seule fois."
+msgstr "The Banque Populaire format is recognized. For other banks, you match the columns once."
+
+msgid "Vérifiez les catégories"
+msgstr "Check the categories"
+
+msgid "Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle."
+msgstr "Uncertain transactions are marked “To review”. A correction can become a rule."
+
+msgid "Impossible d’ouvrir la base de données"
+msgstr "Unable to Open the Database"
+
+msgid "Nom"
+msgstr "Name"
+
+msgid "Banque"
+msgstr "Bank"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Compte courant"
+msgstr "Checking"
+
+msgid "Épargne"
+msgstr "Savings"
+
+msgid "Les totaux sont calculés séparément pour chaque devise."
+msgstr "Totals are calculated separately for each currency."
+
+msgid "Numéro de compte (facultatif)"
+msgstr "Account number (optional)"
+
+msgid "Solde avant la première opération importée"
+msgstr "Balance before the first imported transaction"
+
+msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
+msgstr "Leave the balance empty if it is zero. If the imported file has a balance column, Finaryx will offer to adjust it."
+
+msgid "Annuler"
+msgstr "Cancel"
+
+msgid "Enregistrer"
+msgstr "Save"
+
+msgid "Modifier le compte"
+msgstr "Edit Account"
+
+msgid "Ouvrir des données de démonstration (rien n’est enregistré)"
+msgstr "Open demo data (nothing is saved)"
+
+msgid "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée."
+msgstr "Bank account tracking. Your data stays on this computer: no network request, no telemetry. The database is not encrypted."
+
+msgid "Couleur dans les graphiques"
+msgstr "Color in charts"
+
+msgid "Couleur {n}"
+msgstr "Color {n}"
+
+msgid "Utilisée par {name}"
+msgstr "Used by {name}"
+
+msgid "Libre"
+msgstr "Free"
+
+msgid "Aucune couleur"
+msgstr "No color"
+
+msgid "Regroupée dans « Autres » dans les graphiques"
+msgstr "Grouped into “Other” in charts"
+
+msgid "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie."
+msgstr "All the colors are taken. This category will be counted in “Other” in charts and kept separate everywhere else. Free a color by removing it from another category."
+
+msgid "Créer"
+msgstr "Create"
+
+msgid "Nouvelle catégorie"
+msgstr "New Category"
+
+msgid "Modifier la catégorie"
+msgstr "Edit Category"
+
+msgid "Fusionner dans"
+msgstr "Merge into"
+
+msgid "Les opérations et les règles passent dans la catégorie choisie"
+msgstr "Transactions and rules move to the chosen category"
+
+msgid "Fusionner…"
+msgstr "Merge…"
+
+msgid "Supprimer la catégorie"
+msgstr "Delete Category"
+
+msgid "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées."
+msgstr[0] "Its transaction will move to “Other”, to review; its rules will be deleted."
+msgstr[1] "Its {n} transactions will move to “Other”, to review; its rules will be deleted."
+
+msgid "Supprimer…"
+msgstr "Delete…"
+
+msgid "Fusionner « {from} » dans « {into} » ?"
+msgstr "Merge “{from}” into “{into}”?"
+
+msgid "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgid_plural "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgstr[0] "{n} transaction and the rules of “{from}” will move to “{into}”. Totals do not change."
+msgstr[1] "{n} transactions and the rules of “{from}” will move to “{into}”. Totals do not change."
+
+msgid "Fusionner"
+msgstr "Merge"
+
+msgid "Catégories fusionnées"
+msgstr "Categories merged"
+
+msgid "Supprimer « {name} » ?"
+msgstr "Delete “{name}”?"
+
+msgid "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées."
+msgstr[0] "Its transaction will move to “Other”, marked “To review”. Its rules will be deleted."
+msgstr[1] "Its {n} transactions will move to “Other”, marked “To review”. Its rules will be deleted."
+
+msgid "Supprimer"
+msgstr "Delete"
+
+msgid "Catégorie supprimée"
+msgstr "Category deleted"
+
+msgid "Compte"
+msgstr "Account"
+
+msgid "Solde au {date}"
+msgstr "Balance on {date}"
+
+msgid "Solde"
+msgstr "Balance"
+
+msgid "{amount} en {month}"
+msgstr "{amount} in {month}"
+
+msgid "{n} opération enregistrée"
+msgid_plural "{n} opérations enregistrées"
+msgstr[0] "{n} transaction recorded"
+msgstr[1] "{n} transactions recorded"
+
+msgid "Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}"
+msgstr "Account balance over 6 months: from {start} in {from} to {end} in {to}"
+
+msgid "Aucune"
+msgstr "None"
+
+msgid "Modifier"
+msgstr "Edit"
+
+msgid "Modifier : {field}"
+msgstr "Edit: {field}"
+
+msgid "Réglages du compte"
+msgstr "Account Settings"
+
+msgid "Dernières opérations"
+msgstr "Latest transactions"
+
+msgid "Tout voir"
+msgstr "See All"
+
+msgid "Aucune opération"
+msgstr "No transactions"
+
+msgid "Sans catégorie"
+msgstr "Uncategorized"
+
+msgid "À vérifier"
+msgstr "To review"
+
+msgid "Désarchiver le compte"
+msgstr "Unarchive Account"
+
+msgid "Il revient dans les totaux."
+msgstr "It comes back into the totals."
+
+msgid "Désarchiver"
+msgstr "Unarchive"
+
+msgid "Archiver le compte"
+msgstr "Archive Account"
+
+msgid "Il disparaît des totaux, ses opérations restent consultables."
+msgstr "It leaves the totals; its transactions can still be viewed."
+
+msgid "Archiver"
+msgstr "Archive"
+
+msgid "Supprimer le compte et ses opérations"
+msgstr "Delete the account and its transactions"
+
+msgid "Action définitive, {n} opération serait effacée."
+msgid_plural "Action définitive, {n} opérations seraient effacées."
+msgstr[0] "Permanent: {n} transaction would be erased."
+msgstr[1] "Permanent: {n} transactions would be erased."
+
+msgid "Zone sensible"
+msgstr "Danger zone"
+
+msgid "compte courant"
+msgstr "checking"
+
+msgid "épargne"
+msgstr "savings"
+
+msgid "Solde de tous les comptes"
+msgstr "Balance of all accounts"
+
+msgid "Solde des comptes en {currency}"
+msgstr "Balance of the {currency} accounts"
+
+msgid "Vos comptes"
+msgstr "Your accounts"
+
+msgid "Comptes archivés"
+msgstr "Archived accounts"
+
+msgid "Ils ne comptent pas dans les totaux."
+msgstr "They do not count in the totals."
+
+msgid "{n} opération"
+msgid_plural "{n} opérations"
+msgstr[0] "{n} transaction"
+msgstr[1] "{n} transactions"
+
+msgid "Importé le {date}"
+msgstr "Imported {date}"
+
+msgid "Dernier import le {date}"
+msgstr "Last import {date}"
+
+msgid "Ajoutez un export CSV pour voir ses opérations"
+msgstr "Add a CSV export to see its transactions"
+
+msgid "Évolution du solde sur 6 mois : en hausse de {amount}"
+msgstr "Balance over 6 months: up {amount}"
+
+msgid "Évolution du solde sur 6 mois : en baisse de {amount}"
+msgstr "Balance over 6 months: down {amount}"
+
+msgid "Historique des imports"
+msgstr "Import history"
+
+msgid "Les doublons ne sont jamais enregistrés deux fois"
+msgstr "Duplicates are never recorded twice"
+
+msgid "Importer un CSV…"
+msgstr "Import CSV…"
+
+msgid "Aucun import pour l’instant"
+msgstr "No import yet"
+
+msgid "{n} nouvelle"
+msgid_plural "{n} nouvelles"
+msgstr[0] "{n} new"
+msgstr[1] "{n} new"
+
+msgid "{n} ajoutée"
+msgid_plural "{n} ajoutées"
+msgstr[0] "{n} added"
+msgstr[1] "{n} added"
+
+msgid "{n} doublon"
+msgid_plural "{n} doublons"
+msgstr[0] "{n} duplicate"
+msgstr[1] "{n} duplicates"
+
+msgid "Annuler cet import"
+msgstr "Undo This Import"
+
+msgid "Part du total"
+msgstr "Share of the total"
+
+msgid "Part de chaque compte dans le solde total : {list}"
+msgstr "Share of each account in the total balance: {list}"
+
+msgid "catégorie par défaut, non supprimable"
+msgstr "default category, cannot be deleted"
+
+msgid "catégorie spéciale, comptée en revenus"
+msgstr "special category, counted as income"
+
+msgid "catégorie spéciale, exclue des statistiques"
+msgstr "special category, excluded from statistics"
+
+msgid "couleur de graphique {n}"
+msgstr "chart color {n}"
+
+msgid "sans couleur, regroupée dans « Autres » dans les graphiques"
+msgstr "no color, grouped into “Other” in charts"
+
+msgid "Catégories et règles"
+msgstr "Categories and Rules"
+
+msgid "Catégories"
+msgstr "Categories"
+
+msgid "Modifier la catégorie {name}"
+msgstr "Edit category {name}"
+
+msgid "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en la retirant à une autre catégorie."
+msgstr "Charts show at most 12 colors, plus “Other” in gray. A category without a color is counted in “Other” in charts, but stays separate in lists, filters and tables. Clicking “Other” in a chart shows its details. To give a category a color, free one by removing it from another category."
+
+msgid "Le libellé correspond à « {pattern} »"
+msgstr "The description matches “{pattern}”"
+
+msgid "Le libellé contient « {pattern} »"
+msgstr "The description contains “{pattern}”"
+
+msgid "Supprimer la règle"
+msgstr "Delete Rule"
+
+msgid "Règle supprimée"
+msgstr "Rule deleted"
+
+msgid "Aucune règle pour l’instant"
+msgstr "No rules yet"
+
+msgid "Changez la catégorie d’une opération pour en créer une."
+msgstr "Change the category of a transaction to create one."
+
+msgid "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées."
+msgstr "A manual correction on a transaction comes before the rules. Deleting a rule does not change transactions already sorted."
+
+msgid "Règles de catégorisation"
+msgstr "Sorting rules"
+
+msgid "Virements entre vos comptes"
+msgstr "Transfers between your accounts"
+
+msgid "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils ne comptent ni en dépenses ni en revenus."
+msgstr "A debit and a credit of the same amount on two of your accounts, at most 3 days apart. Once confirmed, they count neither as spending nor as income."
+
+msgid "Tout confirmer"
+msgstr "Confirm All"
+
+msgid "{n} virement confirmé"
+msgid_plural "{n} virements confirmés"
+msgstr[0] "{n} transfer confirmed"
+msgstr[1] "{n} transfers confirmed"
+
+msgid "Ce n’est pas un virement"
+msgstr "Not a Transfer"
+
+msgid "Confirmer"
+msgstr "Confirm"
+
+msgid "Virement confirmé"
+msgstr "Transfer confirmed"
+
+msgid "Aucun virement à confirmer"
+msgstr "No transfers to confirm"
+
+msgid "Noms du foyer"
+msgstr "Household names"
+
+msgid "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer en « Virement interne »."
+msgstr "Transfers from a member of the household are not real income. Finaryx offers to file them as “Internal Transfer”."
+
+msgid "Modifier les noms…"
+msgstr "Edit Names…"
+
+msgid "{n} opération contient « {name} »"
+msgid_plural "{n} opérations contiennent « {name} »"
+msgstr[0] "{n} transaction contains “{name}”"
+msgstr[1] "{n} transactions contain “{name}”"
+
+msgid "Crée la règle « le libellé contient {name} → Virement interne »"
+msgstr "Creates the rule “the description contains {name} → Internal Transfer”"
+
+msgid "Classer en virement interne"
+msgstr "File as Internal Transfer"
+
+msgid "Règle créée, {n} opération classée"
+msgid_plural "Règle créée, {n} opérations classées"
+msgstr[0] "Rule created, {n} transaction sorted"
+msgstr[1] "Rule created, {n} transactions sorted"
+
+msgid "Aucun nom du foyer pour l’instant"
+msgstr "No household names yet"
+
+msgid "Aucune opération à classer"
+msgstr "No transactions to sort"
+
+msgid "Ajoutez-les dans les préférences, par exemple votre nom et celui de votre conjoint."
+msgstr "Add them in the preferences, for example your name and your partner’s."
+
+msgid "Les opérations de ces noms sont déjà des virements internes."
+msgstr "The transactions of these names are already internal transfers."
+
+msgid "Période"
+msgstr "Period"
+
+msgid "{n} mois"
+msgstr "{n} months"
+
+msgid "Total sur {n} mois"
+msgstr "Total over {n} months"
+
+msgid "Moyenne par mois"
+msgstr "Monthly average"
+
+msgid "Mois le plus chargé"
+msgstr "Busiest month"
+
+msgid "Mois le plus léger"
+msgstr "Lightest month"
+
+msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
+msgstr "The percentage is the category’s share of the month’s spending. Shares too thin to be written are in the table below."
+
+msgid "Mois par mois, par catégorie"
+msgstr "Month by month, by category"
+
+msgid "Catégorie"
+msgstr "Category"
+
+msgid "Par mois"
+msgstr "Per month"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Part de chaque catégorie sur la période et montant cumulé."
+msgstr "Share of each category over the period and total amount."
+
+msgid "Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois."
+msgstr "The month columns give the category’s share; the Total row gives the month’s spending."
+
+msgid "Part de chaque catégorie"
+msgstr "Share of each category"
+
+msgid "{from} à {to}"
+msgstr "{from} to {to}"
+
+msgid "Ce fichier n’est pas une sauvegarde Finaryx."
+msgstr "This file is not a Finaryx backup."
+
+msgid "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir."
+msgstr "This backup comes from a newer version of Finaryx: update the application to open it."
+
+msgid "Ce fichier n’est pas une base de données lisible."
+msgstr "This file is not a readable database."
+
+msgid "Le fichier n’a pas pu être écrit ou lu : {error}"
+msgstr "The file could not be written or read: {error}"
+
+msgid "Exporter les données"
+msgstr "Export Data"
+
+msgid "Toutes les opérations"
+msgstr "All transactions"
+
+msgid "Dernier mois"
+msgstr "Last month"
+
+msgid "{n} derniers mois"
+msgstr "Last {n} months"
+
+msgid "Période choisie"
+msgstr "Chosen period"
+
+msgid "Français"
+msgstr "French"
+
+msgid "Du (JJ/MM/AAAA)"
+msgstr "From (DD/MM/YYYY)"
+
+msgid "Au (JJ/MM/AAAA)"
+msgstr "To (DD/MM/YYYY)"
+
+msgid "Exporter la base de données"
+msgstr "Export the database"
+
+msgid "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne."
+msgstr "Your data stays on your computer. An export creates a copy in the folder of your choice; nothing is sent online."
+
+msgid "Sauvegarde complète"
+msgstr "Full backup"
+
+msgid "Exporter…"
+msgstr "Export…"
+
+msgid "Restaurer une sauvegarde"
+msgstr "Restore a backup"
+
+msgid "Remplace les données actuelles. Une copie de sécurité est faite avant."
+msgstr "Replaces the current data. A safety copy is made first."
+
+msgid "Restaurer…"
+msgstr "Restore…"
+
+msgid "Exporter en CSV"
+msgstr "Export as CSV"
+
+msgid "Séparateur et décimales"
+msgstr "Separator and decimals"
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid "Format du CSV"
+msgstr "CSV format"
+
+msgid "Exporter en CSV…"
+msgstr "Export as CSV…"
+
+msgid "Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français."
+msgstr "Semicolon and decimal comma: opens directly in a spreadsheet set to French."
+
+msgid "Virgule et point décimal : le format le plus courant hors de France."
+msgstr "Comma and decimal point: the most common format outside France."
+
+msgid "Copier la base après chaque import"
+msgstr "Copy the database after each import"
+
+msgid "Garde les {n} dernières copies dans {dir}."
+msgstr "Keeps the last {n} copies in {dir}."
+
+msgid "Désactivée en démonstration : rien n’est enregistré."
+msgstr "Off in the demo: nothing is saved."
+
+msgid "La base n’est pas chiffrée : gardez les exports dans un dossier privé."
+msgstr "The database is not encrypted: keep the exports in a private folder."
+
+msgid "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles."
+msgstr "Exact copy of the finaryx.db file (SQLite): accounts, transactions, categories and rules."
+
+msgid "Tous les comptes"
+msgstr "All accounts"
+
+msgid "Date, libellé, montant, catégorie, compte, banque."
+msgstr "Date, description, amount, category, account, bank."
+
+msgid "Choisissez les deux dates."
+msgstr "Choose both dates."
+
+msgid "depuis {month}"
+msgstr "since {month}"
+
+msgid "{n} ligne avec ces réglages"
+msgid_plural "{n} lignes avec ces réglages"
+msgstr[0] "{n} row with these settings"
+msgstr[1] "{n} rows with these settings"
+
+msgid "Base exportée"
+msgstr "Database exported"
+
+msgid "Choisissez les deux dates de la période."
+msgstr "Choose both dates of the period."
+
+msgid "{n} opération exportée"
+msgid_plural "{n} opérations exportées"
+msgstr[0] "{n} transaction exported"
+msgstr[1] "{n} transactions exported"
+
+msgid "Sauvegardes Finaryx"
+msgstr "Finaryx backups"
+
+msgid "Ouvrir le dossier"
+msgstr "Open Folder"
+
+msgid "Cette sauvegarde contient {accounts} compte et {operations}."
+msgid_plural "Cette sauvegarde contient {accounts} comptes et {operations}."
+msgstr[0] "This backup contains {accounts} account and {operations}."
+msgstr[1] "This backup contains {accounts} accounts and {operations}."
+
+msgid "Les données actuelles seront remplacées. Une copie de sécurité est d’abord enregistrée dans {dir}."
+msgstr "The current data will be replaced. A safety copy is first saved in {dir}."
+
+msgid "Les données de démonstration seront remplacées, en mémoire seulement."
+msgstr "The demo data will be replaced, in memory only."
+
+msgid "Restaurer cette sauvegarde ?"
+msgstr "Restore This Backup?"
+
+msgid "Restaurer"
+msgstr "Restore"
+
+msgid "Sauvegarde restaurée"
+msgstr "Backup restored"
+
+msgid "le 1er"
+msgstr "on day 1"
+
+msgid "le {day}"
+msgstr "on day {day}"
+
+msgid "Solde en fin de mois"
+msgstr "End-of-month balance"
+
+msgid "{month} · prévu"
+msgstr "{month} · forecast"
+
+msgid "Fourchette"
+msgstr "Range"
+
+msgid "Dépenses attendues <b>{spending}</b> · revenus <b>{income}</b>"
+msgstr "Expected spending <b>{spending}</b> · income <b>{income}</b>"
+
+msgid "Aujourd’hui"
+msgstr "Today"
+
+msgid "Dernière opération"
+msgstr "Last transaction"
+
+msgid "{month} : pic de dépenses\nattendu ({amount})"
+msgstr "{month}: expected\nspending peak ({amount})"
+
+msgid "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}"
+msgstr "End-of-month balance: {real} in {month}, forecast at {end} in {last}, with a range from {low} to {high}"
+
+msgid "Prévu"
+msgstr "Forecast"
+
+msgid "Fourchette probable"
+msgstr "Likely range"
+
+msgid "Pas encore assez de données pour une prévision"
+msgstr "Not Enough Data for a Forecast Yet"
+
+msgid "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgid_plural "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgstr[0] "Finaryx needs at least 3 months of transactions to learn your habits. {n} more month is needed: import an older export to unlock this view."
+msgstr[1] "Finaryx needs at least 3 months of transactions to learn your habits. {n} more months are needed: import an older export to unlock this view."
+
+msgid "Importer un export plus ancien"
+msgstr "Import an Older Export"
+
+msgid "Habitudes calculées sur"
+msgstr "Habits based on"
+
+msgid "Période de référence"
+msgstr "Reference period"
+
+msgid "Horizon"
+msgstr "Horizon"
+
+msgid "Horizon de prévision"
+msgstr "Forecast horizon"
+
+msgid "{low} à {high}"
+msgstr "{low} to {high}"
+
+msgid "Fin {month} (prévu)"
+msgstr "End of {month} (forecast)"
+
+msgid "Solde fin {month} (prévu)"
+msgstr "Balance at end of {month} (forecast)"
+
+msgid "Fourchette : {range}"
+msgstr "Range: {range}"
+
+msgid "Dépenses prévues"
+msgstr "Expected spending"
+
+msgid "{amount} / mois"
+msgstr "{amount} / month"
+
+msgid "Moyenne sur le mois à venir"
+msgid_plural "Moyenne sur les {n} mois à venir"
+msgstr[0] "Average over the coming month"
+msgstr[1] "Average over the next {n} months"
+
+msgid "Salaire détecté {day} du mois"
+msgstr "Salary detected {day} of the month"
+
+msgid "{label} détecté {day} du mois"
+msgstr "{label} detected {day} of the month"
+
+msgid "Aucun revenu régulier détecté"
+msgstr "No regular income detected"
+
+msgid "Revenus réguliers"
+msgstr "Regular income"
+
+msgid "Réel de {from} à {to}, prévu de {first} à {last}"
+msgstr "Actual from {from} to {to}, forecast from {first} to {last}"
+
+msgid "Réel"
+msgstr "Actual"
+
+msgid "Estimation d’après vos charges récurrentes et vos dépenses moyennes. La fourchette s’élargit avec l’horizon."
+msgstr "Estimate from your recurring expenses and average spending. The range widens with the horizon."
+
+msgid "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre."
+msgstr "Estimate based on your recurring expenses and the average of your variable spending. The range widens with the horizon: the further ahead, the less certain the forecast."
+
+msgid "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgid_plural "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgstr[0] "Habits based on {n} month: the history does not go back further."
+msgstr[1] "Habits based on {n} months: the history does not go back further."
+
+msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
+msgstr "Seasonality not taken into account: less than 12 months of history."
+
+msgid "{month} (en cours)"
+msgstr "{month} (in progress)"
+
+msgid "{amount} de dépenses"
+msgstr "{amount} spending"
+
+msgid "{income} de revenus · {spending}"
+msgstr "{income} income · {spending}"
+
+msgid "{amount} sur le mois"
+msgstr "{amount} over the month"
+
+msgid "Charges fixes"
+msgstr "Fixed expenses"
+
+msgid "Aucune charge récurrente détectée"
+msgstr "No recurring expenses detected"
+
+msgid "Une charge est récurrente quand le même libellé revient chaque mois, pour un montant proche."
+msgstr "An expense is recurring when the same description comes back every month, for a similar amount."
+
+msgid "Mois par mois"
+msgstr "Month by month"
+
+msgid "Charges récurrentes détectées"
+msgstr "Recurring expenses detected"
+
+msgid "Choisir un fichier…"
+msgstr "Choose a File…"
+
+msgid "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est enregistré avant votre confirmation."
+msgstr "Choose the CSV export of an account, or drop it here. The file is never modified and nothing is saved before you confirm."
+
+msgid "Fichiers CSV"
+msgstr "CSV files"
+
+msgid "Tous les fichiers"
+msgstr "All files"
+
+msgid "Choisir un export CSV"
+msgstr "Choose a CSV Export"
+
+msgid "fichier"
+msgstr "file"
+
+msgid "Impossible de lire le fichier : {error}"
+msgstr "Unable to read the file: {error}"
+
+msgid "Le fichier ne se lit pas encore correctement"
+msgstr "The file cannot be read correctly yet"
+
+msgid "{n} ligne"
+msgid_plural "{n} lignes"
+msgstr[0] "{n} row"
+msgstr[1] "{n} rows"
+
+msgid "{n} colonne"
+msgid_plural "{n} colonnes"
+msgstr[0] "{n} column"
+msgstr[1] "{n} columns"
+
+msgid "Changer…"
+msgstr "Change…"
+
+msgid "Compte de destination"
+msgstr "Destination account"
+
+msgid "Aucun compte pour l’instant : créez celui qui recevra ces opérations."
+msgstr "No account yet: create the one that will receive these transactions."
+
+msgid "Créer un compte…"
+msgstr "Create an Account…"
+
+msgid "Nouveau compte…"
+msgstr "New Account…"
+
+msgid "Les opérations seront ajoutées à ce compte"
+msgstr "The transactions will be added to this account"
+
+msgid "Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin."
+msgstr "Recognized format: {name}. The columns are matched; check them if needed."
+
+msgid "Reconnu"
+msgstr "Recognized"
+
+msgid "Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."
+msgstr "Format never imported: match the columns below. It will be recognized next time."
+
+msgid "Nouveau format"
+msgstr "New format"
+
+msgid "Modèle de banque"
+msgstr "Bank format"
+
+msgid "Fichier"
+msgstr "File"
+
+msgid "Encodage"
+msgstr "Encoding"
+
+msgid "Séparateur de colonnes"
+msgstr "Column separator"
+
+msgid "Ligne des en-têtes"
+msgstr "Header row"
+
+msgid "Ligne {n}"
+msgstr "Row {n}"
+
+msgid "Format des dates"
+msgstr "Date format"
+
+msgid "À vérifier : les jours et les mois peuvent être inversés"
+msgstr "To check: days and months may be swapped"
+
+msgid "Séparateur décimal"
+msgstr "Decimal separator"
+
+msgid "Point ( . )"
+msgstr "Period ( . )"
+
+msgid "Format du fichier"
+msgstr "File format"
+
+msgid "Détecté automatiquement, à corriger si la lecture est mauvaise"
+msgstr "Detected automatically, correct it if the file reads badly"
+
+msgid "Colonnes du fichier"
+msgstr "File columns"
+
+msgid "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer »."
+msgstr "Say what each column of the file is for. Unneeded columns stay on “Ignore”."
+
+msgid "Comment le montant est écrit"
+msgstr "How the amount is written"
+
+msgid "Écriture du montant"
+msgstr "Amount format"
+
+msgid "Exemple : (vide)"
+msgstr "Example: (empty)"
+
+msgid "Exemple : {value}"
+msgstr "Example: {value}"
+
+msgid "Champ pour la colonne {column}"
+msgstr "Field for column {column}"
+
+msgid "Valeurs pour un débit"
+msgstr "Values for a debit"
+
+msgid "Valeurs pour un crédit"
+msgstr "Values for a credit"
+
+msgid "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas."
+msgstr "Separate the values with commas; case and accents do not matter."
+
+msgid "Exclue"
+msgstr "Excluded"
+
+msgid "Reconnue"
+msgstr "Recognized"
+
+msgid "Proposée"
+msgstr "Suggested"
+
+msgid "Catégorie de Finaryx pour {bank}"
+msgstr "Finaryx category for {bank}"
+
+msgid "Afficher moins"
+msgstr "Show Less"
+
+msgid "Voir la correspondance"
+msgid_plural "Voir les {n} correspondances"
+msgstr[0] "See the Match"
+msgstr[1] "See the {n} Matches"
+
+msgid "Catégories de la banque"
+msgstr "Bank categories"
+
+msgid "La banque classe déjà ses opérations. Choisissez la catégorie de Finaryx qui correspond à chacune."
+msgstr "The bank already sorts its transactions. Choose the matching Finaryx category for each one."
+
+msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
+msgstr "This match is saved with the format. A bank category that shows up later will be asked here."
+
+msgid "Aperçu"
+msgstr "Preview"
+
+msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
+msgstr "First five rows, categories from the match above"
+
+msgid "Choisissez ou créez le compte de destination pour voir l’aperçu."
+msgstr "Choose or create the destination account to see the preview."
+
+msgid "L’aperçu apparaîtra quand les colonnes obligatoires seront associées."
+msgstr "The preview will appear when the required columns are matched."
+
+msgid "Nouveau"
+msgstr "New"
+
+msgid "Doublon"
+msgstr "Duplicate"
+
+msgid "Aucune ligne lisible"
+msgstr "No readable rows"
+
+msgid "Ces lignes ne seront pas importées."
+msgstr "These rows will not be imported."
+
+msgid "La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible."
+msgstr "The balance column does not follow the amounts: row {lines}. You can still import."
+
+msgid "À savoir avant d’importer"
+msgstr "Before importing"
+
+msgid "Lignes lues"
+msgstr "Rows read"
+
+msgid "Nouvelles opérations"
+msgstr "New transactions"
+
+msgid "Doublons ignorés"
+msgstr "Duplicates skipped"
+
+msgid "À vérifier (catégorie incertaine)"
+msgstr "To review (uncertain category)"
+
+msgid "Lignes illisibles, non importées"
+msgstr "Unreadable rows, not imported"
+
+msgid "Recaler le solde initial"
+msgstr "Adjust the Opening Balance"
+
+msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
+msgstr "According to the balance column, the balance before the first imported transaction becomes {amount}."
+
+msgid "Retenir ce format"
+msgstr "Remember This Format"
+
+msgid "Le prochain fichier de cette banque sera lu sans rien demander"
+msgstr "The next file from this bank will be read without asking anything"
+
+msgid "Nom du format"
+msgstr "Format name"
+
+msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
+msgstr "A duplicate has the same date, description, amount and reference as a transaction already recorded. Your files are never modified."
+
+msgid "Résumé"
+msgstr "Summary"
+
+msgid "Aucune nouvelle opération"
+msgstr "No new transactions"
+
+msgid "Importer {n} opération"
+msgid_plural "Importer {n} opérations"
+msgstr[0] "Import {n} Transaction"
+msgstr[1] "Import {n} Transactions"
+
+msgid "{n} opération importée"
+msgid_plural "{n} opérations importées"
+msgstr[0] "{n} transaction imported"
+msgstr[1] "{n} transactions imported"
+
+msgid "{n} doublon ignoré"
+msgid_plural "{n} doublons ignorés"
+msgstr[0] "{n} duplicate skipped"
+msgstr[1] "{n} duplicates skipped"
+
+msgid "Mois"
+msgstr "Month"
+
+msgid "Compte affiché"
+msgstr "Displayed account"
+
+msgid "{n} Ko"
+msgstr "{n} KB"
+
+msgid "{n} Mo"
+msgstr "{n} MB"
+
+msgid "Non classé"
+msgstr "Uncategorized"
+
+msgid "{month} · {amount} regroupés dans « Autres » dans les graphiques"
+msgstr "{month} · {amount} grouped into “Other” in charts"
+
+msgid "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et les tableaux les montrent séparément."
+msgstr "Charts show at most 12 colors, plus “Other” in gray. Categories without a color are counted here; lists and tables show them separately."
+
+msgid "Gérer les couleurs…"
+msgstr "Manage Colors…"
+
+msgid "Fermer"
+msgstr "Close"
+
+msgid "Détail de « Autres »"
+msgstr "Details of “Other”"
+
+msgid "Mois précédent : {month}"
+msgstr "Previous month: {month}"
+
+msgid "Mois suivant : {month}"
+msgstr "Next month: {month}"
+
+msgid "{first} le 1er, {last} au {day} {month}"
+msgstr "{first} on day 1, {last} on {month} {day}"
+
+msgid "Solde {of_month}"
+msgstr "Balance in {of_month}"
+
+msgid "Dépenses du jour"
+msgstr "Spending of the day"
+
+msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
+msgstr "Spending of each day in {of_month}; on day {day}, {peak} stands out"
+
+msgid "Dépenses de chaque jour du mois"
+msgstr "Spending of each day of the month"
+
+msgid "Évolution du solde"
+msgstr "Balance trend"
+
+msgid "Part"
+msgstr "Share"
+
+msgid "vs {month}"
+msgstr "vs {month}"
+
+msgid "Où part l’argent"
+msgstr "Where the Money Goes"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "No transactions this month"
+
+msgid "Rechercher une opération"
+msgstr "Search for a transaction"
+
+msgid "Filtrer par catégorie"
+msgstr "Filter by category"
+
+msgid "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les libellés identiques."
+msgstr "Clicking a category changes the category of the transaction and offers to make it a rule for identical descriptions."
+
+msgid "Toute la période"
+msgstr "All time"
+
+msgid "Toutes"
+msgstr "All"
+
+msgid "toute la période"
+msgstr "all time"
+
+msgid "{pct} % des dépenses"
+msgstr "{pct}% of spending"
+
+msgid "Aucune opération ne correspond à ces filtres"
+msgstr "No transactions match these filters"
+
+msgid "Afficher la suivante"
+msgid_plural "Afficher les {n} suivantes"
+msgstr[0] "Show the Next One"
+msgstr[1] "Show the Next {n}"
+
+msgid "Nouvelle catégorie…"
+msgstr "New Category…"
+
+msgid "Changer la catégorie de {label} (actuellement {category})"
+msgstr "Change the category of {label} (currently {category})"
+
+msgid "Créer une règle ?"
+msgstr "Create a Rule?"
+
+msgid "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports."
+msgstr "Descriptions that contain <b>{pattern}</b> will be filed under <b>{category}</b> in future imports."
+
+msgid "Appliquer aux opérations existantes"
+msgstr "Apply to existing transactions"
+
+msgid "{n} opération sera modifiée, sauf celles corrigées à la main."
+msgid_plural "{n} opérations seront modifiées, sauf celles corrigées à la main."
+msgstr[0] "{n} transaction will be changed, except those corrected by hand."
+msgstr[1] "{n} transactions will be changed, except those corrected by hand."
+
+msgid "Seulement cette opération"
+msgstr "Only This Transaction"
+
+msgid "Créer la règle"
+msgstr "Create Rule"
+
+msgid "Règle créée, {n} autre opération classée"
+msgid_plural "Règle créée, {n} autres opérations classées"
+msgstr[0] "Rule created, {n} other transaction sorted"
+msgstr[1] "Rule created, {n} other transactions sorted"
+
+msgid "Règle créée"
+msgstr "Rule created"
+
+msgid "Catégorie modifiée"
+msgstr "Category changed"
+
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Spending of the day <b>{amount}</b>"
+
+msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
+msgstr "Balance in {month}: from {start} on day 1 to {end} on day {day}, compared with {previous}"
+
+msgid "Part des dépenses"
+msgstr "Share of spending"
+
+msgid "Écart vs {month}"
+msgstr "Change vs {month}"
+
+msgid "cliquez pour le détail"
+msgstr "click for details"
+
+msgid "Anneau des dépenses {of_month} par catégorie, le détail est dans la liste"
+msgstr "Ring of {of_month} spending by category; the details are in the list"
+
+msgid "dépensés"
+msgstr "spent"
+
+msgid "Part du mois"
+msgstr "Share of the month"
+
+msgid "Total du mois"
+msgstr "Month total"
+
+msgid "Dépenses mensuelles empilées par catégorie, de {from} à {to}"
+msgstr "Monthly spending stacked by category, from {from} to {to}"
+
+msgid "Solde total"
+msgstr "Total balance"
+
+msgid "{amount} depuis le 1er {month}"
+msgstr "{amount} since {month} 1"
+
+msgid "{pct} % par rapport à {month}"
+msgstr "{pct}% compared with {month}"
+
+msgid "Dépenses {of_month}"
+msgstr "Spending in {of_month}"
+
+msgid "dont salaire {amount}"
+msgstr "including salary {amount}"
+
+msgid "dont {label} : {amount}"
+msgstr "including {label}: {amount}"
+
+msgid "Revenus {of_month}"
+msgstr "Income in {of_month}"
+
+msgid "{arrow} {amount} selon vos habitudes"
+msgstr "{arrow} {amount} based on your habits"
+
+msgid "Pas encore assez de données"
+msgstr "Not enough data yet"
+
+msgid "Solde de tous les comptes, jour après jour"
+msgstr "Balance of all accounts, day after day"
+
+msgid "Solde du compte, jour après jour"
+msgstr "Account balance, day after day"
+
+msgid "Évolution du mois"
+msgstr "Month Trend"
+
+msgid "Détail du mois"
+msgstr "Month Details"
+
+msgid "{amount} dépensés de {from} à {to}"
+msgstr "{amount} spent from {from} to {to}"
+
+msgid "Cumul sur 6 mois"
+msgstr "Totals Over 6 Months"
+
+msgid "Voir le cumul"
+msgstr "See Totals"
+
+msgid "{month} · {amount} dépensés"
+msgstr "{month} · {amount} spent"
+
+msgid "Par catégorie"
+msgstr "By Category"
+
+msgid "D’après vos dépenses du dernier mois"
+msgid_plural "D’après vos dépenses des {n} derniers mois"
+msgstr[0] "Based on your spending of the last month"
+msgstr[1] "Based on your spending of the last {n} months"
+
+msgid "Solde fin de mois"
+msgstr "End-of-month balance"
+
+msgid "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgid_plural "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgstr[0] "A forecast needs at least 3 months of transactions. {n} more month is needed."
+msgstr[1] "A forecast needs at least 3 months of transactions. {n} more months are needed."
+
+msgid "Prévision à 6 mois"
+msgstr "6-Month Forecast"
+
+msgid "Pas encore d’opérations"
+msgstr "No Transactions Yet"
+
+msgid "Importez l’export CSV d’un compte pour voir cette vue."
+msgstr "Import the CSV export of an account to see this view."
+
+msgid "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé comme virement interne : ni dépense, ni revenu."
+msgstr "Your name, your partner’s… A transfer whose description contains one of these names is offered as an internal transfer: neither spending nor income."
+
+msgid "Retirer ce nom"
+msgstr "Remove This Name"
+
+msgid "Ajouter un nom"
+msgstr "Add a name"
+
+msgid "Suivre le système"
+msgstr "Follow System"
+
+msgid "Clair"
+msgstr "Light"
+
+msgid "Sombre"
+msgstr "Dark"
+
+msgid "Apparence"
+msgstr "Appearance"
+
+msgid "Confidentialité"
+msgstr "Privacy"
+
+msgid "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune requête réseau. La base de données n’est pas chiffrée."
+msgstr "All your data stays on this computer. Finaryx makes no network request. The database is not encrypted."
+
+msgid "Impossible de lire la base de données."
+msgstr "Unable to read the database."
+
+msgid "{n} compte"
+msgid_plural "{n} comptes"
+msgstr[0] "{n} account"
+msgstr[1] "{n} accounts"
+
+msgid "{n} banque"
+msgid_plural "{n} banques"
+msgstr[0] "{n} bank"
+msgstr[1] "{n} banks"
+
+msgid "{n} virement entre vos comptes à confirmer"
+msgid_plural "{n} virements entre vos comptes à confirmer"
+msgstr[0] "{n} transfer between your accounts to confirm"
+msgstr[1] "{n} transfers between your accounts to confirm"
+
+msgid "Voir"
+msgstr "View"
+
+msgid "La copie de sauvegarde automatique a échoué : {error}"
+msgstr "The automatic backup copy failed: {error}"
+
+msgid "La base de données n’est pas ouverte."
+msgstr "The database is not open."
+
+msgid "La modification n’a pas pu être enregistrée : {error}"
+msgstr "The change could not be saved: {error}"
+
+msgid "Compte ajouté"
+msgstr "Account added"
+
+msgid "Compte archivé"
+msgstr "Account archived"
+
+msgid "Compte désarchivé"
+msgstr "Account unarchived"
+
+msgid "Le compte, son historique d’import et {n} opération seront effacés définitivement."
+msgid_plural "Le compte, son historique d’import et ses {n} opérations seront effacés définitivement."
+msgstr[0] "The account, its import history and {n} transaction will be permanently erased."
+msgstr[1] "The account, its import history and its {n} transactions will be permanently erased."
+
+msgid "Compte supprimé, {n} opération effacée"
+msgid_plural "Compte supprimé, {n} opérations effacées"
+msgstr[0] "Account deleted, {n} transaction erased"
+msgstr[1] "Account deleted, {n} transactions erased"
+
+msgid "sans nom"
+msgstr "unnamed"
+
+msgid "Annuler cet import ?"
+msgstr "Undo This Import?"
+
+msgid "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés."
+msgid_plural "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés."
+msgstr[0] "{n} transaction added by “{file}” to {account} will be deleted. Other imports are not changed."
+msgstr[1] "The {n} transactions added by “{file}” to {account} will be deleted. Other imports are not changed."
+
+msgid "Garder"
+msgstr "Keep"
+
+msgid "Supprimer les opérations"
+msgstr "Delete Transactions"
+
+msgid "Import annulé"
+msgstr "Import undone"

@@ -754,7 +754,7 @@ impl FinaryxWindow {
         if let Err(e) = self.read_result(|c| finaryx_core::export::auto_backup(c, &dir, &now)) {
             glib::g_warning!("finaryx", "Automatic backup failed: {e}");
             self.toast(
-                &gettext("La copie de sauvegarde automatique a échoué : {error}")
+                &gettext("La copie de sauvegarde automatique a échoué : {error}")
                     .replace("{error}", &e.to_string()),
             );
         }

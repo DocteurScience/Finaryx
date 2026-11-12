@@ -4,6 +4,7 @@
 //! an `AdwStatusPage` until its content is implemented.
 
 use adw::prelude::*;
+use finaryx_core::locale;
 use gettextrs::gettext;
 
 /// Marks a string for extraction without translating it (xgettext keyword `N_`).
@@ -234,9 +235,37 @@ pub fn amount_range(low: i64, high: i64, currency: &str) -> String {
     format!("{} – {high}", low.strip_suffix(&suffix).unwrap_or(&low))
 }
 
-/// "27,9 %" from tenths of a percent.
+/// "27,9 %" from tenths of a percent, in the active language.
 pub fn percent_per_mille(per_mille: u32) -> String {
-    format!("{},{}\u{a0}%", per_mille / 10, per_mille % 10)
+    locale::current().percent_tenths(per_mille as i64)
+}
+
+/// "20,9 %": [`pct1`] with the language's percent sign.
+pub fn pct1_label(part: i64, total: i64) -> String {
+    locale::current().percent_of(&pct1(part, total))
+}
+
+/// "21 %": [`pct0`] with the language's percent sign.
+pub fn pct0_label(part: i64, total: i64) -> String {
+    locale::current().percent_of(&pct0(part, total))
+}
+
+/// "1,2 Mo" / "1.2 MB": a size in the language's units and decimal mark.
+pub fn file_size(bytes: u64) -> String {
+    if bytes < 1024 * 1024 {
+        gettext("{n} Ko").replace("{n}", &bytes.div_ceil(1024).max(1).to_string())
+    } else {
+        let tenths = (bytes * 10).div_ceil(1024 * 1024);
+        gettext("{n} Mo").replace(
+            "{n}",
+            &format!(
+                "{}{}{}",
+                tenths / 10,
+                locale::current().decimal,
+                tenths % 10
+            ),
+        )
+    }
 }
 
 /// Removes every child of a box.
@@ -255,15 +284,16 @@ pub mod operations;
 pub mod overview;
 
 /// Percentage of `part` in `total` with one decimal, "20,9" (integer
-/// arithmetic, half up).
+/// arithmetic, half up, decimal mark of the active language).
 pub fn pct1(part: i64, total: i64) -> String {
+    let decimal = locale::current().decimal;
     if total == 0 {
-        return "0,0".into();
+        return format!("0{decimal}0");
     }
     let tenths = (part as i128 * 1000 + total as i128 / 2) / total as i128;
     let sign = if tenths < 0 { "\u{2212}" } else { "" };
     let t = tenths.abs();
-    format!("{sign}{},{}", t / 10, t % 10)
+    format!("{sign}{}{decimal}{}", t / 10, t % 10)
 }
 
 /// Percentage without decimals, "21".
@@ -436,9 +466,9 @@ pub fn show_others_dialog(
         row.add_suffix(
             &gtk::Label::builder()
                 .label(format!(
-                    "{}   {}\u{a0}%",
+                    "{}   {}",
                     amount(m.amount, currency, Sign::Negative),
-                    pct1(m.amount, part.amount)
+                    pct1_label(m.amount, part.amount)
                 ))
                 .css_classes(["numeric"])
                 .build(),

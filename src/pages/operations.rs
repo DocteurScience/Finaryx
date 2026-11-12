@@ -240,7 +240,7 @@ impl OperationsPage {
     fn categories(&self) -> Vec<Category> {
         self.window
             .upgrade()
-            .and_then(|w| w.read(repo::list_categories))
+            .and_then(|w| w.read(finaryx_core::categories::list_for_display))
             .unwrap_or_default()
     }
 

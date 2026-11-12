@@ -24,7 +24,7 @@ Dépendances : GTK ≥ 4.14, libadwaita ≥ 1.5, Meson, Rust stable.
 L’application n’a jamais accès au réseau : ses fichiers passent par les portails (sélecteur de fichiers).
 
 ## Traduire
-La langue source est le français. Le modèle se régénère avec `meson compile -C build finaryx-pot` (`po/finaryx.pot`). Pour une nouvelle langue : `msginit -i po/finaryx.pot -o po/<code>.po -l <code>`, ajouter le code dans `po/LINGUAS`, puis traduire. Les dates et les montants gardent pour l’instant le format `fr-FR`.
+Français (langue source) et anglais complets. Le tableau `po/translations.csv` prépare seize autres langues : une ligne par texte, une colonne par langue, à remplir dans un tableur. Les dates et les montants suivent la langue. Mode d’emploi : `po/README.md`.
 
 ## Contenu
 - `FINARYX-SPEC.md` : cahier des charges (données, import générique, écrans, prévision, export, catégories, design, plan de travail).

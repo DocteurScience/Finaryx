@@ -58,16 +58,6 @@ impl std::fmt::Debug for ExportPage {
     }
 }
 
-/// "1,2 Mo"
-fn file_size(bytes: u64) -> String {
-    if bytes < 1024 * 1024 {
-        gettext("{n} Ko").replace("{n}", &bytes.div_ceil(1024).to_string())
-    } else {
-        let tenths = (bytes * 10).div_ceil(1024 * 1024);
-        gettext("{n} Mo").replace("{n}", &format!("{},{}", tenths / 10, tenths % 10))
-    }
-}
-
 /// "JJ/MM/AAAA" or "AAAA-MM-JJ".
 fn parse_date(text: &str) -> Option<NaiveDate> {
     let t = text.trim();
@@ -81,11 +71,11 @@ fn error_message(e: &db::Error) -> String {
     match e {
         db::Error::NotFinaryx { .. } => gettext("Ce fichier n’est pas une sauvegarde Finaryx."),
         db::Error::TooNew { .. } => gettext(
-            "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir.",
+            "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir.",
         ),
         db::Error::Sqlite(_) => gettext("Ce fichier n’est pas une base de données lisible."),
         db::Error::Invalid(m) => {
-            gettext("Le fichier n’a pas pu être écrit ou lu : {error}").replace("{error}", m)
+            gettext("Le fichier n’a pas pu être écrit ou lu : {error}").replace("{error}", m)
         }
     }
 }
@@ -181,7 +171,7 @@ impl ExportPage {
         };
         clear(&self.content);
         self.content.append(&caption(&gettext(
-            "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne.",
+            "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne.",
         )));
 
         // Full backup.
@@ -250,9 +240,9 @@ impl ExportPage {
             let (format_row, french) = (format_row.clone(), self.french.clone());
             move || {
                 format_row.set_subtitle(&if french.is_active() {
-                    gettext("Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français.")
+                    gettext("Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français.")
                 } else {
-                    gettext("Virgule et point décimal : le format le plus courant hors de France.")
+                    gettext("Virgule et point décimal : le format le plus courant hors de France.")
                 });
             }
         };
@@ -300,7 +290,7 @@ impl ExportPage {
             ),
             None => {
                 switch.set_subtitle(&gettext(
-                    "Désactivée en démonstration : rien n’est enregistré.",
+                    "Désactivée en démonstration : rien n’est enregistré.",
                 ));
                 switch.set_sensitive(false);
             }
@@ -309,7 +299,7 @@ impl ExportPage {
         self.content.append(&auto);
 
         self.content.append(&caption(&gettext(
-            "La base n’est pas chiffrée : gardez les exports dans un dossier privé.",
+            "La base n’est pas chiffrée : gardez les exports dans un dossier privé.",
         )));
     }
 
@@ -333,9 +323,9 @@ impl ExportPage {
         let size = window
             .database_path()
             .and_then(|p| std::fs::metadata(p).ok())
-            .map(|m| file_size(m.len()));
+            .map(|m| super::file_size(m.len()));
         let mut subtitle = gettext(
-            "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles.",
+            "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles.",
         );
         subtitle.push(' ');
         subtitle.push_str(&super::n_ops(count));
@@ -570,7 +560,7 @@ fn confirm_restore(window: &FinaryxWindow, path: PathBuf, info: export::BackupIn
         .replace("{dir}", &display_path(&dir)),
         None => gettext("Les données de démonstration seront remplacées, en mémoire seulement."),
     });
-    let alert = adw::AlertDialog::new(Some(&gettext("Restaurer cette sauvegarde ?")), Some(&body));
+    let alert = adw::AlertDialog::new(Some(&gettext("Restaurer cette sauvegarde ?")), Some(&body));
     alert.add_responses(&[
         ("cancel", &gettext("Annuler")),
         ("restore", &gettext("Restaurer")),

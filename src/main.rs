@@ -20,6 +20,11 @@ fn main() -> glib::ExitCode {
     gettextrs::bind_textdomain_codeset(config::GETTEXT_PACKAGE, "UTF-8")
         .expect("Unable to set the text domain encoding");
     gettextrs::textdomain(config::GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
+    // Formats of dates and amounts follow the language of the messages
+    // actually shown: each translation gives its code here
+    // (build-aux/translations.py fills it in). TRANSLATORS: do not
+    // translate, write your language code (en, de, pt_BR…).
+    finaryx_core::locale::set(&gettextrs::gettext("fr"));
 
     gio::resources_register_include!("finaryx.gresource").expect("Failed to register resources");
 

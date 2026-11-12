@@ -12,6 +12,7 @@ pub mod export;
 pub mod forecast;
 pub mod i18n;
 pub mod importers;
+pub mod locale;
 pub mod models;
 pub mod money;
 pub mod normalize;

@@ -15,11 +15,11 @@ use gettextrs::gettext;
 use gtk::glib;
 
 use super::overview::{months_columns, no_operations, section, slot_names};
-use super::{
-    amount, amount_whole, capitalized, caption, chart_card, clear, kpi_card, pct1, KpiSize,
-};
+use super::pct1_label;
+use super::{amount, amount_whole, capitalized, caption, chart_card, clear, kpi_card, KpiSize};
 use crate::charts;
 use crate::window::FinaryxWindow;
+use finaryx_core::locale;
 
 pub const PERIODS: [usize; 3] = [3, 6, 12];
 
@@ -282,7 +282,7 @@ impl CumulativePage {
                 for (i, v) in row.months.iter().enumerate() {
                     cell(
                         &grid,
-                        &format!("{}\u{a0}%", pct1(*v, totals[i])),
+                        &pct1_label(*v, totals[i]),
                         i as i32 + 1,
                         y,
                         1.0,
@@ -290,14 +290,7 @@ impl CumulativePage {
                     );
                 }
             }
-            cell(
-                &grid,
-                &format!("{}\u{a0}%", pct1(row.total, grand)),
-                share_col,
-                y,
-                1.0,
-                &[],
-            );
+            cell(&grid, &pct1_label(row.total, grand), share_col, y, 1.0, &[]);
             cell(
                 &grid,
                 &amount(row.total, cur, Sign::Negative),
@@ -331,7 +324,14 @@ impl CumulativePage {
                 );
             }
         }
-        cell(&grid, "100\u{a0}%", share_col, y, 1.0, &["heading"]);
+        cell(
+            &grid,
+            &locale::current().percent_whole(100),
+            share_col,
+            y,
+            1.0,
+            &["heading"],
+        );
         cell(
             &grid,
             &amount(grand, cur, Sign::Negative),
@@ -358,9 +358,9 @@ impl CumulativePage {
             .build();
         let card = chart_card(&[scroller.upcast_ref()]);
         let note = caption(&if narrow {
-            gettext("Part de chaque catégorie sur la période et cumul en euros.")
+            gettext("Part de chaque catégorie sur la période et montant cumulé.")
         } else {
-            gettext("Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois en euros.")
+            gettext("Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois.")
         });
         let body = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)

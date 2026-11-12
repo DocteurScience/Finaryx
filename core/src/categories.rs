@@ -10,7 +10,7 @@ use regex::Regex;
 use rusqlite::{params, Connection};
 
 use crate::db::{Error, Result};
-use crate::i18n::gettext;
+use crate::i18n::{gettext, N_};
 use crate::models::{builtin, Category, Id};
 use crate::normalize::label_norm;
 use crate::repo;
@@ -25,6 +25,50 @@ pub const OTHERS_GROUP: u8 = COLOR_SLOTS + 1;
 /// Number of chart groups: the 12 colours, then "Autres".
 pub const CHART_GROUPS: usize = OTHERS_GROUP as usize;
 
+/// Names of the built-in categories as stored in the database (ids 1 to
+/// 14, migration 1), marked for translation. They stay French in the
+/// database (bank categories and rules match them); the interface shows
+/// [`display_name`].
+pub const BUILTIN_NAMES: [&str; 14] = [
+    N_("Logement"),
+    N_("Alimentation"),
+    N_("Transports"),
+    N_("Prêts et crédits"),
+    N_("Shopping et animaux"),
+    N_("Abonnements et télécoms"),
+    N_("Banque et assurances"),
+    N_("Autres"),
+    N_("Sorties et loisirs"),
+    N_("Santé"),
+    N_("Impôts et taxes"),
+    N_("Administratif et éducation"),
+    N_("Revenus"),
+    N_("Virement interne"),
+];
+
+/// Name of a category as shown: a built-in category that the user has
+/// not renamed is translated; any other name is shown as written.
+pub fn display_name(id: Id, stored: &str) -> String {
+    match usize::try_from(id - 1)
+        .ok()
+        .and_then(|i| BUILTIN_NAMES.get(i))
+    {
+        Some(original) if *original == stored => gettext(*original),
+        _ => stored.to_owned(),
+    }
+}
+
+/// Categories in their fixed order, with the names shown to the user.
+pub fn list_for_display(conn: &Connection) -> Result<Vec<Category>> {
+    Ok(repo::list_categories(conn)?
+        .into_iter()
+        .map(|mut c| {
+            c.name = display_name(c.id, &c.name);
+            c
+        })
+        .collect())
+}
+
 /// A category with its number of operations.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CategoryUse {
@@ -38,7 +82,7 @@ pub fn list_with_counts(conn: &Connection) -> Result<Vec<CategoryUse>> {
         .prepare("SELECT category_id, count(*) FROM txn WHERE category_id IS NOT NULL GROUP BY 1")?
         .query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?
         .collect::<rusqlite::Result<_>>()?;
-    Ok(repo::list_categories(conn)?
+    Ok(list_for_display(conn)?
         .into_iter()
         .map(|c| CategoryUse {
             operations: counts.get(&c.id).copied().unwrap_or(0),
@@ -50,7 +94,7 @@ pub fn list_with_counts(conn: &Connection) -> Result<Vec<CategoryUse>> {
 /// Name of the category using each slot 1..=12 (index 0 = slot 1).
 pub fn slot_owners(conn: &Connection) -> Result<[Option<(Id, String)>; COLOR_SLOTS as usize]> {
     let mut owners: [Option<(Id, String)>; COLOR_SLOTS as usize] = Default::default();
-    for c in repo::list_categories(conn)? {
+    for c in list_for_display(conn)? {
         if let Some(slot) = c.slot.filter(|s| (1..=COLOR_SLOTS).contains(s)) {
             owners[slot as usize - 1] = Some((c.id, c.name));
         }
@@ -105,11 +149,12 @@ pub fn check_name(
     }
     let wanted = label_norm(name);
     let existing = repo::list_categories(conn).map_err(|_| CategoryError::EmptyName)?;
-    if let Some(c) = existing
-        .iter()
-        .find(|c| Some(c.id) != except && label_norm(&c.name) == wanted)
-    {
-        return Err(CategoryError::DuplicateName(c.name.clone()));
+    // Both the stored and the shown name are taken.
+    if let Some(c) = existing.iter().find(|c| {
+        Some(c.id) != except
+            && (label_norm(&c.name) == wanted || label_norm(&display_name(c.id, &c.name)) == wanted)
+    }) {
+        return Err(CategoryError::DuplicateName(display_name(c.id, &c.name)));
     }
     Ok(name.to_owned())
 }
@@ -245,7 +290,7 @@ pub fn list_rules(conn: &Connection) -> Result<Vec<Rule>> {
             pattern: r.get(1)?,
             is_regex: r.get(2)?,
             category_id: r.get(3)?,
-            category_name: r.get(4)?,
+            category_name: display_name(r.get(3)?, &r.get::<_, String>(4)?),
             category_slot: r.get(5)?,
             priority: r.get(6)?,
         })
