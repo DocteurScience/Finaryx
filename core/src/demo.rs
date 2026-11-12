@@ -30,6 +30,12 @@ use crate::models::*;
 use crate::repo;
 
 const YEAR: i32 = 2026;
+
+/// "Today" in the demonstration: the day of its last import, so that the
+/// views (import status, forecast) do not depend on the clock.
+pub fn today() -> NaiveDate {
+    NaiveDate::from_ymd_opt(YEAR, 11, 2).unwrap()
+}
 /// May to October.
 const MONTHS: [u32; 6] = [5, 6, 7, 8, 9, 10];
 

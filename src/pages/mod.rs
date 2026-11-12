@@ -276,6 +276,7 @@ pub fn clear(container: &gtk::Box) {
 
 pub mod categories;
 pub mod cumulative;
+pub mod forecast;
 pub mod month;
 pub mod operations;
 pub mod overview;

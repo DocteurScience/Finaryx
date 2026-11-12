@@ -112,6 +112,7 @@ pub fn rounded_rect(cr: &gtk::cairo::Context, x: f64, y: f64, w: f64, h: f64, r:
 /// Anchor of a text drawn with [`draw_text`].
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Align {
+    StartTop,
     StartMiddle,
     StartBottom,
     EndMiddle,
@@ -126,6 +127,8 @@ pub enum TextStyle {
     Dim,
     /// Bold, 13 px (values).
     Bold,
+    /// Primary text, 12 px (notes on a chart).
+    Plain,
     /// Bold, 12 px, in the given colour (labels inside parts).
     OnColor(gdk::RGBA),
     /// Large bold (centre of the ring).
@@ -146,6 +149,7 @@ pub fn draw_text(
     let (w, h) = layout.pixel_size();
     let (w, h) = (w as f64, h as f64);
     let (dx, dy) = match align {
+        Align::StartTop => (0.0, 0.0),
         Align::StartMiddle => (0.0, -h / 2.0),
         Align::StartBottom => (0.0, -h),
         Align::EndMiddle => (-w, -h / 2.0),
@@ -180,6 +184,10 @@ fn styled_layout(
             c.set_alpha(0.7);
             c
         }
+        TextStyle::Plain => {
+            attrs.insert(pango::AttrFloat::new_scale(0.8));
+            widget.as_ref().color()
+        }
         TextStyle::Bold => {
             attrs.insert(pango::AttrFloat::new_scale(0.87));
             attrs.insert(pango::AttrInt::new_weight(pango::Weight::Bold));
@@ -207,13 +215,11 @@ pub enum LegendMark {
     Line,
     /// Dashed grey line of the previous period.
     Ghost,
-    /// Dashed line of the main series (forecast, step 7).
-    #[allow(dead_code)]
+    /// Dashed line of the main series (forecast).
     Dashed,
     /// Square of the daily bars.
     Bars,
-    /// Square of the forecast range (step 7).
-    #[allow(dead_code)]
+    /// Square of the forecast range.
     Band,
 }
 

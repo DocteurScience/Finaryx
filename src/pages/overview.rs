@@ -5,11 +5,12 @@ use adw::prelude::*;
 use chrono::{Datelike, NaiveDate};
 use finaryx_core::categories::{CHART_GROUPS, OTHERS_GROUP};
 use finaryx_core::db::Result;
+use finaryx_core::forecast::{self, Outcome};
 use finaryx_core::money::Sign;
 use finaryx_core::rusqlite::Connection;
 use finaryx_core::stats::{self, ChartPart, Scope};
 use finaryx_core::{dates, scale};
-use gettextrs::gettext;
+use gettextrs::{gettext, ngettext};
 use gtk::glib;
 
 use super::{
@@ -121,6 +122,7 @@ pub fn month_line(
         x_labels,
         end_label: end.map(|e| amount_whole(e, cur, Sign::Negative)),
         gutter: true,
+        ..Default::default()
     };
     let description = match (current.balances.first(), end) {
         (Some(first), Some(end)) => {
@@ -359,6 +361,7 @@ impl OverviewPage {
         conn: &Connection,
         scope: Option<&Scope>,
         narrow: bool,
+        today: NaiveDate,
     ) -> Result<String> {
         clear(&self.root);
         let Some(scope) = scope else {
@@ -449,11 +452,33 @@ impl OverviewPage {
                 KpiSize::Medium
             },
         ));
-        let next = stats::next_month(month);
+        let prediction = forecast::forecast(conn, scope, today, 6, 6)?;
+        let (title, value, note) = match &prediction {
+            Outcome::Ready(f) => {
+                let m = &f.months[0];
+                let change = m.balance - balance;
+                (
+                    gettext("Fin {month} (prévu)")
+                        .replace("{month}", dates::month_name(m.month.month())),
+                    amount(m.balance, cur, Sign::Negative),
+                    gettext("{arrow} {amount} selon vos habitudes")
+                        .replace("{arrow}", if change < 0 { "↘" } else { "↗" })
+                        .replace("{amount}", &amount_whole(change, cur, Sign::Always)),
+                )
+            }
+            Outcome::NotEnoughData { .. } => (
+                gettext("Fin {month} (prévu)").replace(
+                    "{month}",
+                    dates::month_name(stats::next_month(month).month()),
+                ),
+                "—".to_owned(),
+                gettext("Pas encore assez de données"),
+            ),
+        };
         kpis.append(&kpi_card(
-            &gettext("Fin {month} (prévu)").replace("{month}", dates::month_name(next.month())),
-            "—",
-            &gettext("Prévision bientôt disponible"),
+            &title,
+            &value,
+            &note,
             if narrow {
                 KpiSize::Small
             } else {
@@ -466,7 +491,7 @@ impl OverviewPage {
         // Two columns (one in the narrow layout).
         let columns = gtk::FlowBox::builder()
             .selection_mode(gtk::SelectionMode::None)
-            .homogeneous(true)
+            .homogeneous(!narrow)
             .min_children_per_line(1)
             .max_children_per_line(if narrow { 1 } else { 2 })
             .column_spacing(24)
@@ -596,11 +621,45 @@ impl OverviewPage {
             &card,
         ));
 
-        // Forecast (step 7).
-        let forecast = caption(&gettext(
-            "La prévision d’après vos habitudes arrive avec la page Prévisions (étape 7 du plan de travail).",
-        ));
-        let card = chart_card(&[forecast.upcast_ref()]);
+        // Forecast.
+        let card = match &prediction {
+            Outcome::Ready(f) => {
+                let text = ngettext(
+                    "D’après vos dépenses du dernier mois",
+                    "D’après vos dépenses des {n} derniers mois",
+                    f.basis as u32,
+                )
+                .replace("{n}", &f.basis.to_string());
+                let chart = super::forecast::balance_chart(
+                    f,
+                    cur,
+                    &super::forecast::ChartOptions {
+                        height: 200,
+                        detailed: false,
+                        narrow,
+                        today,
+                    },
+                );
+                chart_card(&[
+                    caption(&text).upcast_ref(),
+                    super::forecast::chart_legend(narrow, true, &gettext("Solde fin de mois"))
+                        .upcast_ref(),
+                    chart.upcast_ref(),
+                ])
+            }
+            Outcome::NotEnoughData { months } => {
+                let missing = forecast::MIN_MONTHS.saturating_sub(*months);
+                chart_card(&[caption(
+                    &ngettext(
+                        "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}.",
+                        "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}.",
+                        missing as u32,
+                    )
+                    .replace("{n}", &missing.to_string()),
+                )
+                .upcast_ref()])
+            }
+        };
         right.append(&section(
             &gettext("Prévision à 6 mois"),
             Some((&gettext("Prévisions"), self.go("forecast"))),

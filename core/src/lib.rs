@@ -8,6 +8,7 @@ pub mod categorize;
 pub mod dates;
 pub mod db;
 pub mod demo;
+pub mod forecast;
 pub mod importers;
 pub mod models;
 pub mod money;

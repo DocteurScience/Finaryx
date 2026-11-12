@@ -1,6 +1,7 @@
 //! Balance curves: grid lines with labels, optional previous period in
 //! dashed grey (5/4), a 12 px dot on the last point with its value, and a
-//! tooltip on hover.
+//! tooltip on hover. A forecast continues the real values: dashed line,
+//! translucent range, hollow dots, and a "today" marker.
 
 use std::cell::Cell;
 use std::rc::Rc;
@@ -28,6 +29,18 @@ pub struct LineChart {
     /// Labels of the grid lines in a left gutter (overview, month) rather
     /// than above each line (account detail).
     pub gutter: bool,
+    /// Forecast, after `values` (dashed, from the last real point).
+    pub forecast: Vec<i64>,
+    /// Probable range of each forecast point: (low, high).
+    pub band: Vec<(i64, i64)>,
+    /// A dot on every point: filled for real values, hollow for the
+    /// forecast.
+    pub dots: bool,
+    /// Vertical marker at a position (may fall between two points), with
+    /// its label at the top ("Aujourd'hui").
+    pub marker: Option<(f64, String)>,
+    /// Note written under the range at a position (one or more lines).
+    pub annotation: Option<(usize, String)>,
 }
 
 const X_LABELS_HEIGHT: f64 = 22.0;
@@ -49,7 +62,7 @@ impl Geometry {
         let slots = if c.slots > 0 {
             c.slots
         } else {
-            c.values.len().max(c.ghost.as_ref().map_or(0, Vec::len))
+            (c.values.len() + c.forecast.len()).max(c.ghost.as_ref().map_or(0, Vec::len))
         };
         if slots < 2 || c.ticks.len() < 2 {
             return None;
@@ -73,7 +86,11 @@ impl Geometry {
     }
 
     fn x(&self, i: usize) -> f64 {
-        self.left + i as f64 / (self.slots - 1) as f64 * (self.right - self.left)
+        self.xf(i as f64)
+    }
+
+    fn xf(&self, i: f64) -> f64 {
+        self.left + i / (self.slots - 1) as f64 * (self.right - self.left)
     }
 
     fn y(&self, v: i64) -> f64 {
@@ -87,12 +104,17 @@ impl Geometry {
 }
 
 fn stroke_series(cr: &gtk::cairo::Context, g: &Geometry, values: &[i64]) {
+    stroke_from(cr, g, 0, values);
+}
+
+/// Strokes `values` placed from position `start`.
+fn stroke_from(cr: &gtk::cairo::Context, g: &Geometry, start: usize, values: &[i64]) {
     if values.is_empty() {
         return;
     }
-    cr.move_to(g.x(0), g.y(values[0]));
+    cr.move_to(g.x(start), g.y(values[0]));
     for (i, v) in values.iter().enumerate().skip(1) {
-        cr.line_to(g.x(i), g.y(*v));
+        cr.line_to(g.x(start + i), g.y(*v));
     }
     cr.set_line_width(2.0);
     cr.set_line_cap(gtk::cairo::LineCap::Round);
@@ -167,18 +189,104 @@ pub fn line_chart(chart: LineChart, height: i32, accessible_label: &str) -> gtk:
             cr.set_dash(&[], 0.0);
         }
         let s1 = theme_color(area, "finaryx_s1");
+        let card = theme_color(area, "card_bg_color");
+        let n_real = c.values.len();
+
+        // Forecast range: from the last real point, between the bounds.
+        if let (Some(last), false) = (c.values.last(), c.band.is_empty()) {
+            set_source(cr, &theme_color(area, "finaryx_band"));
+            cr.move_to(g.x(n_real - 1), g.y(*last));
+            for (i, (_, hi)) in c.band.iter().enumerate() {
+                cr.line_to(g.x(n_real + i), g.y(*hi));
+            }
+            for (i, (lo, _)) in c.band.iter().enumerate().rev() {
+                cr.line_to(g.x(n_real + i), g.y(*lo));
+            }
+            cr.close_path();
+            let _ = cr.fill();
+        }
+        if let Some((pos, label)) = &c.marker {
+            let mut axis = area.color();
+            axis.set_alpha(0.35);
+            set_source(cr, &axis);
+            cr.set_line_width(1.0);
+            let x = g.xf(*pos).round() + 0.5;
+            cr.move_to(x, g.top);
+            cr.line_to(x, g.bottom);
+            let _ = cr.stroke();
+            draw_text(
+                area,
+                cr,
+                label,
+                x + 8.0,
+                g.top,
+                Align::StartTop,
+                TextStyle::Dim,
+            );
+        }
+
         set_source(cr, &s1);
         stroke_series(cr, &g, &c.values);
+        if let (Some(last), false) = (c.values.last(), c.forecast.is_empty()) {
+            let joined: Vec<i64> = std::iter::once(*last)
+                .chain(c.forecast.iter().copied())
+                .collect();
+            cr.set_dash(&[6.0, 4.0], 0.0);
+            stroke_from(cr, &g, n_real - 1, &joined);
+            cr.set_dash(&[], 0.0);
+        }
+        if c.dots {
+            for (i, v) in c.values.iter().chain(&c.forecast).enumerate() {
+                let (x, y) = (g.x(i), g.y(*v));
+                set_source(cr, &card);
+                cr.arc(x, y, 5.0, 0.0, std::f64::consts::TAU);
+                let _ = cr.fill();
+                set_source(cr, &s1);
+                if i < n_real {
+                    cr.arc(x, y, 4.0, 0.0, std::f64::consts::TAU);
+                    let _ = cr.fill();
+                } else {
+                    cr.set_line_width(2.0);
+                    cr.arc(x, y, 4.0, 0.0, std::f64::consts::TAU);
+                    let _ = cr.stroke();
+                }
+            }
+        }
+        if let Some((i, text)) = &c.annotation {
+            if let Some((lo, _)) = i.checked_sub(n_real).and_then(|k| c.band.get(k)) {
+                let mut y = g.y(*lo) + 12.0;
+                for line in text.lines() {
+                    draw_text(
+                        area,
+                        cr,
+                        line,
+                        g.x(*i),
+                        y,
+                        Align::CenterTop,
+                        TextStyle::Plain,
+                    );
+                    y += 17.0;
+                }
+            }
+        }
 
-        // 12 px dot on the last point, with its value.
-        if let (Some(label), Some(last)) = (&c.end_label, c.values.last()) {
-            let (x, y) = (g.x(c.values.len() - 1), g.y(*last));
-            set_source(cr, &theme_color(area, "card_bg_color"));
+        // 12 px dot on the last point, with its value (hollow for a
+        // forecast).
+        let last = c.forecast.last().or(c.values.last());
+        if let (Some(label), Some(last)) = (&c.end_label, last) {
+            let (x, y) = (g.x(n_real + c.forecast.len() - 1), g.y(*last));
+            set_source(cr, &card);
             cr.arc(x, y, 6.0, 0.0, std::f64::consts::TAU);
             let _ = cr.fill();
             set_source(cr, &s1);
-            cr.arc(x, y, 4.0, 0.0, std::f64::consts::TAU);
-            let _ = cr.fill();
+            if c.forecast.is_empty() {
+                cr.arc(x, y, 4.0, 0.0, std::f64::consts::TAU);
+                let _ = cr.fill();
+            } else {
+                cr.set_line_width(2.0);
+                cr.arc(x, y, 5.0, 0.0, std::f64::consts::TAU);
+                let _ = cr.stroke();
+            }
             draw_text(
                 area,
                 cr,
@@ -205,7 +313,7 @@ pub fn line_chart(chart: LineChart, height: i32, accessible_label: &str) -> gtk:
                 cr.arc(g.x(i), g.y(*v), 4.0, 0.0, std::f64::consts::TAU);
                 let _ = cr.fill();
             }
-            if let Some(v) = c.values.get(i) {
+            if let Some(v) = c.values.get(i).or_else(|| c.forecast.get(i - n_real)) {
                 set_source(cr, &s1);
                 cr.arc(g.x(i), g.y(*v), 5.0, 0.0, std::f64::consts::TAU);
                 let _ = cr.fill();

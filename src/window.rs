@@ -18,6 +18,7 @@ use crate::pages::account_detail::{self, AccountDetailPage};
 use crate::pages::accounts::{self as accounts_page, AccountsPage};
 use crate::pages::categories::CategoriesPage;
 use crate::pages::cumulative::CumulativePage;
+use crate::pages::forecast::ForecastPage;
 use crate::pages::import::ImportPage;
 use crate::pages::month::MonthPage;
 use crate::pages::operations::OperationsPage;
@@ -91,6 +92,9 @@ mod imp {
         pub overview_page: OnceCell<OverviewPage>,
         pub month_page: OnceCell<MonthPage>,
         pub cumulative_page: OnceCell<CumulativePage>,
+        pub forecast_page: OnceCell<ForecastPage>,
+        /// Demonstration data: "today" is fixed.
+        pub demo: Cell<bool>,
         pub operations_page: RefCell<Option<Rc<OperationsPage>>>,
         /// Drop-down of the account filter shared by the views.
         pub filter_master: OnceCell<gtk::DropDown>,
@@ -169,6 +173,7 @@ impl FinaryxWindow {
     fn open_database(&self, source: &Source) {
         let imp = self.imp();
         imp.demo_banner.set_revealed(source.is_demo());
+        imp.demo.set(source.is_demo());
         match database::open(source) {
             Ok(conn) => {
                 imp.db.replace(Some(conn));
@@ -237,7 +242,10 @@ impl FinaryxWindow {
 
         imp.filter_ids
             .replace(accounts.iter().map(|a| a.id).collect());
-        imp.accounts_page.get().unwrap().refresh(conn, today())?;
+        imp.accounts_page
+            .get()
+            .unwrap()
+            .refresh(conn, self.today())?;
         let detail = imp.detail.borrow().clone();
         if let Some(detail) = detail {
             if !detail.refresh(conn)? {
@@ -313,6 +321,7 @@ impl FinaryxWindow {
         let overview = OverviewPage::new(self);
         let month = MonthPage::new(self);
         let cumulative = CumulativePage::new(self);
+        let forecast = ForecastPage::new(self);
 
         for page in MAIN_PAGES.iter() {
             let content: Option<gtk::Widget> = match page.name {
@@ -320,6 +329,7 @@ impl FinaryxWindow {
                 "overview" => Some(overview.root.clone().upcast()),
                 "month" => Some(month.root.clone().upcast()),
                 "cumulative" => Some(cumulative.root.clone().upcast()),
+                "forecast" => Some(forecast.root.clone().upcast()),
                 _ => None,
             };
             let widgets =
@@ -329,6 +339,7 @@ impl FinaryxWindow {
             let extra: Option<gtk::Widget> = match page.name {
                 "month" => Some(month.navigation.clone().upcast()),
                 "cumulative" => Some(cumulative.periods.clone().upcast()),
+                "forecast" => Some(forecast.controls.clone().upcast()),
                 _ => None,
             };
             if let Some(row) = widgets
@@ -363,6 +374,7 @@ impl FinaryxWindow {
         let _ = imp.overview_page.set(overview);
         let _ = imp.month_page.set(month);
         let _ = imp.cumulative_page.set(cumulative);
+        let _ = imp.forecast_page.set(forecast);
         if let Some(master) = master {
             master.connect_selected_notify(glib::clone!(
                 #[weak(rename_to = window)]
@@ -382,7 +394,7 @@ impl FinaryxWindow {
             .and_then(|i| imp.filter_ids.borrow().get(i).copied())
     }
 
-    /// Rebuilds the overview, month and cumulative views.
+    /// Rebuilds the overview, month, cumulative and forecast views.
     pub fn refresh_views(&self) {
         let imp = self.imp();
         let narrow = imp.narrow.get();
@@ -406,13 +418,17 @@ impl FinaryxWindow {
             }
         }
         let selected = self.selected_account();
+        let today = self.today();
         let result = self.read(|conn| {
             let scope = finaryx_core::stats::scope(conn, selected)?;
             let s = scope.as_ref();
             Ok([
                 (
                     "overview",
-                    imp.overview_page.get().unwrap().refresh(conn, s, narrow)?,
+                    imp.overview_page
+                        .get()
+                        .unwrap()
+                        .refresh(conn, s, narrow, today)?,
                 ),
                 (
                     "month",
@@ -424,6 +440,13 @@ impl FinaryxWindow {
                         .get()
                         .unwrap()
                         .refresh(conn, s, narrow)?,
+                ),
+                (
+                    "forecast",
+                    imp.forecast_page
+                        .get()
+                        .unwrap()
+                        .refresh(conn, s, narrow, today)?,
                 ),
             ])
         });
@@ -451,6 +474,30 @@ impl FinaryxWindow {
         let page = self.imp().cumulative_page.get().unwrap();
         if page.months.replace(n) != n {
             self.refresh_views();
+        }
+    }
+
+    /// Learning period and/or horizon of the forecast.
+    pub fn set_forecast_periods(&self, basis: Option<usize>, horizon: Option<usize>) {
+        let page = self.imp().forecast_page.get().unwrap();
+        let mut changed = false;
+        if let Some(n) = basis {
+            changed |= page.basis.replace(n) != n;
+        }
+        if let Some(n) = horizon {
+            changed |= page.horizon.replace(n) != n;
+        }
+        if changed {
+            self.refresh_views();
+        }
+    }
+
+    /// Today's date; fixed for the demonstration data.
+    pub fn today(&self) -> NaiveDate {
+        if self.imp().demo.get() {
+            finaryx_core::demo::today()
+        } else {
+            today()
         }
     }
 

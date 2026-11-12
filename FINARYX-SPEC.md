@@ -244,6 +244,15 @@ Entrée : opérations des `N` derniers mois complets (N = période d'apprentissa
 
 Tests unitaires obligatoires : série mensuelle parfaite → prévision exacte ; une dépense exceptionnelle isolée n'est pas projetée ; moins de 3 mois d'historique → message « pas assez de données » plutôt qu'un graphique.
 
+**Précisions retenues à l'implémentation** (`core/src/forecast.rs`) :
+- Le mois de la dernière opération sert à l'apprentissage seulement s'il est terminé (la date du jour est passée au mois suivant). Sinon, c'est le premier mois prévu : les opérations déjà passées sont gardées, et seul le reste est projeté (séries récurrentes pas encore vues ce mois-ci, reste des dépenses variables et des revenus ponctuels).
+- Le premier mois de l'historique compte seulement si sa première opération tombe au plus tard le 7 : un export qui commence en milieu de mois est incomplet. La période d'apprentissage est réduite à l'historique disponible, et l'interface le signale.
+- Une série récurrente doit encore être active : sa dernière occurrence date de moins de 45 jours avant la fin de la période. L'intervalle médian accepté va de 25 à 35 jours (28–32 ± 3).
+- Les virements internes (catégorie « Virement interne ») ne sont ni des charges ni des revenus. Ils sont projetés avec leur moyenne mensuelle dans le solde : à peu près zéro pour tous les comptes, le virement d'épargne pour un seul compte.
+- Saisonnalité : facteur calculé sur les 12 derniers mois complets, appliqué aux dépenses variables (les charges récurrentes sont fixes).
+- `σ` est la moyenne quadratique des erreurs mensuelles du modèle rejoué sur la période d'apprentissage (sur le solde net du mois).
+- Pic annoté sur le graphique : le mois le plus chargé de l'horizon, s'il dépasse d'au moins 5 % la moyenne des mois prévus.
+
 ---
 
 ## 6. Design
