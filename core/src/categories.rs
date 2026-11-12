@@ -10,6 +10,7 @@ use regex::Regex;
 use rusqlite::{params, Connection};
 
 use crate::db::{Error, Result};
+use crate::i18n::gettext;
 use crate::models::{builtin, Category, Id};
 use crate::normalize::label_norm;
 use crate::repo;
@@ -73,12 +74,16 @@ pub enum CategoryError {
 impl CategoryError {
     pub fn message(&self) -> String {
         match self {
-            CategoryError::EmptyName => "Donnez un nom à la catégorie.".into(),
-            CategoryError::DuplicateName(n) => format!("La catégorie « {n} » existe déjà."),
-            CategoryError::SlotTaken(n) => format!("Cette couleur est déjà utilisée par « {n} »."),
-            CategoryError::Protected => {
-                "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée.".into()
+            CategoryError::EmptyName => gettext("Donnez un nom à la catégorie."),
+            CategoryError::DuplicateName(n) => {
+                gettext("La catégorie « {name} » existe déjà.").replace("{name}", n)
             }
+            CategoryError::SlotTaken(n) => {
+                gettext("Cette couleur est déjà utilisée par « {name} ».").replace("{name}", n)
+            }
+            CategoryError::Protected => gettext(
+                "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée.",
+            ),
         }
     }
 }
@@ -145,7 +150,9 @@ pub fn rename_category(conn: &Connection, id: Id, name: &str) -> Result<()> {
 /// recolours another category. "Autres" keeps its grey.
 pub fn set_slot(conn: &Connection, id: Id, slot: Option<u8>) -> Result<()> {
     if id == builtin::OTHERS {
-        return Err(Error::Invalid("« Autres » garde toujours le gris.".into()));
+        return Err(Error::Invalid(gettext(
+            "« Autres » garde toujours le gris.",
+        )));
     }
     check_slot(conn, slot, Some(id))?;
     conn.execute(
@@ -287,7 +294,7 @@ pub fn create_rule(
 ) -> Result<(Id, usize)> {
     let pattern = pattern.trim();
     if label_norm(pattern).is_empty() {
-        return Err(Error::Invalid("Le motif de la règle est vide.".into()));
+        return Err(Error::Invalid(gettext("Le motif de la règle est vide.")));
     }
     let tx = conn.transaction()?;
     // A newer rule for the same words replaces the older one.

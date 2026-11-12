@@ -9,8 +9,9 @@ description = "Finaryx business logic (no GTK dependency)"
 [dependencies]
 chrono = { version = "0.4.45", default-features = false, features = ["std"] }
 csv = "1.4.0"
+gettext-rs = { version = "0.7", features = ["gettext-system"] }
 regex = "1.13.1"
-rusqlite = { version = "0.40.2", features = ["bundled", "chrono"] }
+rusqlite = { version = "0.40.2", features = ["backup", "bundled", "chrono"] }
 serde = { version = "1.0.229", features = ["derive"] }
 serde_json = "1.0.154"
 sha1 = "0.10.7"

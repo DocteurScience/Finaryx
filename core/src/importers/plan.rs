@@ -16,6 +16,7 @@ use super::mapping::{
 use super::profiles::{self, Profile};
 use crate::categorize::Categorizer;
 use crate::db::{Error, Result};
+use crate::i18n::{gettext, ngettext_n};
 use crate::models::{Category, Id, NewTransaction};
 use crate::repo;
 
@@ -199,7 +200,10 @@ pub fn bank_category_uses(
 pub fn validate(table: &Table, mapping: &Mapping) -> Vec<String> {
     let missing = mapping.missing_fields();
     if !missing.is_empty() {
-        return vec![format!("Associez une colonne à : {}.", missing.join(", "))];
+        let names: Vec<String> = missing.iter().map(|f| gettext(*f)).collect();
+        return vec![
+            gettext("Associez une colonne à : {fields}.").replace("{fields}", &names.join(", "))
+        ];
     }
     let mut problems: BTreeMap<RowProblem, Vec<usize>> = BTreeMap::new();
     for (line, row) in table.rows.iter().take(20) {
@@ -217,16 +221,14 @@ pub fn validate(table: &Table, mapping: &Mapping) -> Vec<String> {
 pub fn problem_message(problem: RowProblem, lines: &[usize]) -> String {
     let shown: Vec<String> = lines.iter().take(10).map(|l| l.to_string()).collect();
     let more = if lines.len() > 10 { " …" } else { "" };
-    if lines.len() == 1 {
-        format!("1 ligne a {} : ligne {}", problem.label(), shown[0])
-    } else {
-        format!(
-            "{} lignes ont {} : ligne {}{more}",
-            lines.len(),
-            problem.label(),
-            shown.join(", ")
-        )
-    }
+    ngettext_n(
+        "{n} ligne a {problem} : ligne {lines}",
+        "{n} lignes ont {problem} : lignes {lines}",
+        lines.len(),
+    )
+    .replace("{n}", &lines.len().to_string())
+    .replace("{problem}", &gettext(problem.label()))
+    .replace("{lines}", &format!("{}{more}", shown.join(", ")))
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

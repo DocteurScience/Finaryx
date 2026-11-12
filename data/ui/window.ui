@@ -322,7 +322,7 @@
                                     <child>
                                       <object class="AdwActionRow">
                                         <property name="title" translatable="yes">Importez le fichier dans Finaryx</property>
-                                        <property name="subtitle" translatable="yes">Le format est reconnu pour Boursorama, Banque Populaire et Revolut, sinon vous associez les colonnes une seule fois.</property>
+                                        <property name="subtitle" translatable="yes">Le format Banque Populaire est reconnu. Pour les autres banques, vous associez les colonnes une seule fois.</property>
                                         <child type="prefix">
                                           <object class="GtkLabel">
                                             <property name="label">2</property>

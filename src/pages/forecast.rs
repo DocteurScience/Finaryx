@@ -535,8 +535,7 @@ impl ForecastPage {
             gettext("Estimation d’après vos charges récurrentes et vos dépenses moyennes. La fourchette s’élargit avec l’horizon.")
         } else {
             gettext(
-                "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. \
-                 La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre.",
+                "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre.",
             )
         }];
         if f.basis < basis {

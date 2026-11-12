@@ -102,8 +102,7 @@ impl OperationsPage {
         content.append(&summary);
         content.append(&list_box);
         content.append(&caption(&gettext(
-            "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les \
-             libellés identiques.",
+            "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les libellés identiques.",
         )));
         let clamp = adw::Clamp::builder()
             .maximum_size(1040)

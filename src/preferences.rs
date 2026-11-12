@@ -14,8 +14,7 @@ fn household_group(window: &crate::window::FinaryxWindow) -> adw::PreferencesGro
     let group = adw::PreferencesGroup::builder()
         .title(gettext("Noms du foyer"))
         .description(gettext(
-            "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé \
-             comme virement interne : ni dépense, ni revenu.",
+            "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé comme virement interne : ni dépense, ni revenu.",
         ))
         .build();
     fill_household(&group, window);
@@ -132,8 +131,7 @@ pub fn preferences_dialog(window: Option<&crate::window::FinaryxWindow>) -> adw:
     let privacy = adw::PreferencesGroup::builder()
         .title(gettext("Confidentialité"))
         .description(gettext(
-            "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune \
-             requête réseau. La base de données n’est pas chiffrée.",
+            "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune requête réseau. La base de données n’est pas chiffrée.",
         ))
         .build();
 

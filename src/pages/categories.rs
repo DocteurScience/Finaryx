@@ -190,10 +190,7 @@ impl CategoriesPage {
             .build();
         body.append(&list);
         body.append(&caption(&gettext(
-            "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est \
-             comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les \
-             tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une \
-             catégorie, libérez-en une en la retirant à une autre catégorie.",
+            "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en la retirant à une autre catégorie.",
         )));
         section(header.upcast_ref(), &body)
     }
@@ -274,8 +271,7 @@ impl CategoriesPage {
             .build();
         body.append(&list);
         body.append(&caption(&gettext(
-            "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas \
-             les opérations déjà classées.",
+            "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées.",
         )));
         section(
             heading(&gettext("Règles de catégorisation")).upcast_ref(),
@@ -291,8 +287,7 @@ impl CategoriesPage {
             .build();
         titles.append(&heading(&gettext("Virements entre vos comptes")));
         titles.append(&caption(&gettext(
-            "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils \
-             ne comptent ni en dépenses ni en revenus.",
+            "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils ne comptent ni en dépenses ni en revenus.",
         )));
         header.append(&titles);
         if proposals.len() > 1 {
@@ -401,8 +396,7 @@ impl CategoriesPage {
             .build();
         titles.append(&heading(&gettext("Noms du foyer")));
         titles.append(&caption(&gettext(
-            "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer \
-             en « Virement interne ».",
+            "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer en « Virement interne ».",
         )));
         header.append(&titles);
         let edit = gtk::Button::builder()

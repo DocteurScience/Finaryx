@@ -19,6 +19,11 @@
       <default>820</default>
       <summary>Hauteur de la fenêtre</summary>
     </key>
+    <key name="auto-backup" type="b">
+      <default>true</default>
+      <summary>Sauvegarde automatique</summary>
+      <description>Copier la base après chaque import et garder les 5 dernières copies.</description>
+    </key>
     <key name="window-maximized" type="b">
       <default>false</default>
       <summary>Fenêtre maximisée</summary>

@@ -5,6 +5,8 @@
 use chrono::NaiveDate;
 use serde::{Deserialize, Serialize};
 
+use crate::i18n::N_;
+
 /// Text encoding of the file.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Encoding {
@@ -72,10 +74,10 @@ pub const SEPARATORS: [char; 4] = [';', ',', '\t', '|'];
 
 pub fn separator_label(sep: char) -> &'static str {
     match sep {
-        ';' => "Point-virgule ( ; )",
-        ',' => "Virgule ( , )",
-        '\t' => "Tabulation",
-        '|' => "Barre verticale ( | )",
+        ';' => N_("Point-virgule ( ; )"),
+        ',' => N_("Virgule ( , )"),
+        '\t' => N_("Tabulation"),
+        '|' => N_("Barre verticale ( | )"),
         _ => "?",
     }
 }
@@ -206,10 +208,10 @@ impl DateFormat {
 
     pub fn label(self) -> &'static str {
         match self {
-            DateFormat::DayMonthYear => "JJ/MM/AAAA",
-            DateFormat::Iso => "AAAA-MM-JJ",
-            DateFormat::DayMonthShortYear => "JJ-MM-AA",
-            DateFormat::MonthDayYear => "MM/JJ/AAAA",
+            DateFormat::DayMonthYear => N_("JJ/MM/AAAA"),
+            DateFormat::Iso => N_("AAAA-MM-JJ"),
+            DateFormat::DayMonthShortYear => N_("JJ-MM-AA"),
+            DateFormat::MonthDayYear => N_("MM/JJ/AAAA"),
         }
     }
 

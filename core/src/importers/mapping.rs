@@ -8,6 +8,7 @@ use serde::{Deserialize, Serialize};
 use sha1::{Digest, Sha1};
 
 use super::format::{DateFormat, Encoding};
+use crate::i18n::N_;
 use crate::normalize::label_norm;
 
 /// What a column of the file is used for.
@@ -63,21 +64,21 @@ impl Field {
 
     pub fn label(self) -> &'static str {
         match self {
-            Field::Ignore => "Ignorer",
-            Field::BookedOn => "Date de l’opération",
-            Field::PostedOn => "Date de comptabilisation",
-            Field::ValueOn => "Date de valeur",
-            Field::Label => "Libellé",
-            Field::Detail => "Détail du libellé",
-            Field::Amount => "Montant",
-            Field::Debit => "Débit",
-            Field::Credit => "Crédit",
-            Field::Direction => "Sens (débit ou crédit)",
-            Field::Reference => "Référence de la banque",
-            Field::Balance => "Solde après l’opération",
-            Field::Currency => "Devise",
-            Field::BankCategory => "Catégorie de la banque",
-            Field::BankSubcategory => "Sous-catégorie de la banque",
+            Field::Ignore => N_("Ignorer"),
+            Field::BookedOn => N_("Date de l’opération"),
+            Field::PostedOn => N_("Date de comptabilisation"),
+            Field::ValueOn => N_("Date de valeur"),
+            Field::Label => N_("Libellé"),
+            Field::Detail => N_("Détail du libellé"),
+            Field::Amount => N_("Montant"),
+            Field::Debit => N_("Débit"),
+            Field::Credit => N_("Crédit"),
+            Field::Direction => N_("Sens (débit ou crédit)"),
+            Field::Reference => N_("Référence de la banque"),
+            Field::Balance => N_("Solde après l’opération"),
+            Field::Currency => N_("Devise"),
+            Field::BankCategory => N_("Catégorie de la banque"),
+            Field::BankSubcategory => N_("Sous-catégorie de la banque"),
         }
     }
 }
@@ -102,9 +103,9 @@ impl AmountMode {
 
     pub fn label(self) -> &'static str {
         match self {
-            AmountMode::Signed => "Une colonne",
-            AmountMode::DebitCredit => "Débit et crédit",
-            AmountMode::AmountAndDirection => "Montant et sens",
+            AmountMode::Signed => N_("Une colonne"),
+            AmountMode::DebitCredit => N_("Débit et crédit"),
+            AmountMode::AmountAndDirection => N_("Montant et sens"),
         }
     }
 }
@@ -385,11 +386,11 @@ impl RowProblem {
     /// "date illisible"
     pub fn label(self) -> &'static str {
         match self {
-            RowProblem::UnreadableDate => "une date illisible",
-            RowProblem::MissingLabel => "un libellé vide",
-            RowProblem::UnreadableAmount => "un montant illisible",
-            RowProblem::UnknownDirection => "un sens (débit ou crédit) inconnu",
-            RowProblem::OtherCurrency => "une autre devise que celle du compte",
+            RowProblem::UnreadableDate => N_("une date illisible"),
+            RowProblem::MissingLabel => N_("un libellé vide"),
+            RowProblem::UnreadableAmount => N_("un montant illisible"),
+            RowProblem::UnknownDirection => N_("un sens (débit ou crédit) inconnu"),
+            RowProblem::OtherCurrency => N_("une autre devise que celle du compte"),
         }
     }
 }

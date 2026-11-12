@@ -110,8 +110,7 @@ pub fn present(
         colors.set_description(Some(&gettext("« Autres » garde toujours le gris.")));
     } else if free == 0 {
         colors.set_description(Some(&gettext(
-            "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et \
-             séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie.",
+            "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie.",
         )));
     }
 

@@ -141,8 +141,7 @@ impl FinaryxApplication {
             .issue_url("https://github.com/DocteurScience/Finaryx/issues")
             .license_type(gtk::License::Agpl30)
             .comments(gettext(
-                "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : \
-                 aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée.",
+                "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée.",
             ))
             .build();
         dialog.present(self.active_window().as_ref());

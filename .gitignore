@@ -12,3 +12,5 @@ po/*.pot
 *.db-journal
 *.db-wal
 *.db-shm
+/*.csv
+*.partial

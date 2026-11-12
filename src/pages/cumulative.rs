@@ -186,8 +186,7 @@ impl CumulativePage {
         super::unfocusable_children(&legend);
         let card = chart_card(&[
             caption(&gettext(
-                "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être \
-                 écrites sont dans le tableau en dessous.",
+                "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous.",
             ))
             .upcast_ref(),
             legend.upcast_ref(),

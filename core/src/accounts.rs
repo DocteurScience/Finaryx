@@ -6,6 +6,7 @@ use rusqlite::{params, Connection, OptionalExtension};
 
 use crate::dates;
 use crate::db::{Error, Result};
+use crate::i18n::gettext;
 use crate::models::*;
 use crate::repo;
 
@@ -129,9 +130,9 @@ pub fn import_status(
 /// Text of the badge, e.g. "Octobre à importer".
 pub fn import_status_label(status: ImportStatus) -> String {
     match status {
-        ImportStatus::NeverImported => "Aucun import".into(),
-        ImportStatus::UpToDate => "À jour".into(),
-        ImportStatus::Stale => "À mettre à jour".into(),
+        ImportStatus::NeverImported => gettext("Aucun import"),
+        ImportStatus::UpToDate => gettext("À jour"),
+        ImportStatus::Stale => gettext("À mettre à jour"),
         ImportStatus::MonthMissing(month) => {
             let name = dates::month_name(month.month());
             let mut chars = name.chars();
@@ -139,7 +140,7 @@ pub fn import_status_label(status: ImportStatus) -> String {
                 .next()
                 .map(|c| c.to_uppercase().collect::<String>())
                 .unwrap_or_default();
-            format!("{first}{} à importer", chars.as_str())
+            gettext("{month} à importer").replace("{month}", &format!("{first}{}", chars.as_str()))
         }
     }
 }

@@ -105,6 +105,9 @@ mod imp {
         /// Header subtitle of each main page.
         pub subtitles: RefCell<std::collections::HashMap<&'static str, String>>,
         pub categories_page: RefCell<Option<Rc<CategoriesPage>>>,
+        pub export_page: RefCell<Option<Rc<crate::pages::export::ExportPage>>>,
+        /// Database file (`None` for the demonstration data).
+        pub db_path: RefCell<Option<std::path::PathBuf>>,
         /// Import page currently pushed, if any.
         pub import_page: RefCell<Option<Rc<ImportPage>>>,
         /// "4 comptes · 3 banques"
@@ -174,6 +177,10 @@ impl FinaryxWindow {
         let imp = self.imp();
         imp.demo_banner.set_revealed(source.is_demo());
         imp.demo.set(source.is_demo());
+        imp.db_path.replace(match source {
+            Source::File(path) => Some(path.clone()),
+            Source::Demo => None,
+        });
         match database::open(source) {
             Ok(conn) => {
                 imp.db.replace(Some(conn));
@@ -196,6 +203,10 @@ impl FinaryxWindow {
         self.refresh_views();
         let categories = self.imp().categories_page.borrow().clone();
         if let Some(page) = categories {
+            page.refresh();
+        }
+        let export = self.imp().export_page.borrow().clone();
+        if let Some(page) = export {
             page.refresh();
         }
         let operations = self.imp().operations_page.borrow().clone();
@@ -618,14 +629,7 @@ impl FinaryxWindow {
             .activate(|window: &Self, _, _| window.show_categories())
             .build();
         let export = gio::ActionEntry::builder("export")
-            .activate(|window: &Self, _, _| {
-                window.push_sub_page(
-                    "export",
-                    &gettext("Exporter les données"),
-                    "document-send-symbolic",
-                    4,
-                );
-            })
+            .activate(|window: &Self, _, _| window.show_export())
             .build();
         self.add_action_entries([show_page, import, add_account, categories, export]);
     }
@@ -716,16 +720,52 @@ impl FinaryxWindow {
     }
 
     /// Pushes a sub-page with a back button, replacing any other sub-page.
-    fn push_sub_page(&self, tag: &str, title: &str, icon: &str, step: u32) {
+    pub fn show_export(&self) {
         let imp = self.imp();
+        imp.root_stack.set_visible_child_name("main");
+        let page = crate::pages::export::ExportPage::new(self);
         imp.content_nav.pop_to_tag("main");
-        imp.content_nav
-            .push(&pages::build_sub_page(tag, title, icon, step));
+        imp.content_nav.push(&page.page);
+        imp.export_page.replace(Some(page));
         imp.split_view.set_show_content(true);
+    }
+
+    /// Database file, `None` for the demonstration data.
+    pub fn database_path(&self) -> Option<std::path::PathBuf> {
+        self.imp().db_path.borrow().clone()
+    }
+
+    /// Folder of the automatic backups and safety copies, next to the
+    /// database; `None` for the demonstration data (nothing is written).
+    pub fn backup_dir(&self) -> Option<std::path::PathBuf> {
+        self.database_path().and_then(|p| {
+            p.parent()
+                .map(|d| d.join(finaryx_core::export::AUTO_BACKUP_DIR))
+        })
+    }
+
+    /// After an import: copy of the database if the automatic backup is on.
+    pub fn auto_backup(&self) {
+        if !crate::settings::settings().boolean("auto-backup") {
+            return;
+        }
+        let Some(dir) = self.backup_dir() else { return };
+        let now = now_iso();
+        if let Err(e) = self.read_result(|c| finaryx_core::export::auto_backup(c, &dir, &now)) {
+            glib::g_warning!("finaryx", "Automatic backup failed: {e}");
+            self.toast(
+                &gettext("La copie de sauvegarde automatique a échoué : {error}")
+                    .replace("{error}", &e.to_string()),
+            );
+        }
     }
 
     pub fn toast(&self, title: &str) {
         self.imp().toast_overlay.add_toast(adw::Toast::new(title));
+    }
+
+    pub fn add_toast(&self, toast: adw::Toast) {
+        self.imp().toast_overlay.add_toast(toast);
     }
 
     /// Updates the header bar and the sidebar selection after a change of
@@ -816,6 +856,40 @@ impl FinaryxWindow {
                 )
             }
         }
+    }
+
+    /// Like [`Self::read`], but hands the error to the caller.
+    pub(crate) fn read_result<R>(
+        &self,
+        f: impl FnOnce(&Connection) -> finaryx_core::db::Result<R>,
+    ) -> finaryx_core::db::Result<R> {
+        let db = self.imp().db.borrow();
+        match db.as_ref() {
+            Some(conn) => f(conn),
+            None => Err(finaryx_core::db::Error::Invalid(gettext(
+                "La base de données n’est pas ouverte.",
+            ))),
+        }
+    }
+
+    /// Like [`Self::change`], but hands the error to the caller.
+    pub(crate) fn change_result<R>(
+        &self,
+        f: impl FnOnce(&mut Connection) -> finaryx_core::db::Result<R>,
+    ) -> finaryx_core::db::Result<R> {
+        let result = {
+            let mut db = self.imp().db.borrow_mut();
+            match db.as_mut() {
+                Some(conn) => f(conn),
+                None => Err(finaryx_core::db::Error::Invalid(gettext(
+                    "La base de données n’est pas ouverte.",
+                ))),
+            }
+        };
+        if result.is_ok() {
+            self.reload();
+        }
+        result
     }
 
     pub(crate) fn read<R>(

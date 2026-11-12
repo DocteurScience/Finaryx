@@ -8,11 +8,20 @@
   <description>
     <p>
       Finaryx importe les exports CSV de vos banques, les range dans une base locale
-      et vous montre l’évolution du mois, la répartition des dépenses, le cumul sur
-      plusieurs mois et une prévision d’après vos habitudes.
+      et vous montre où part votre argent. Plusieurs comptes et plusieurs banques
+      se suivent au même endroit, chacun dans sa devise.
     </p>
+    <ul>
+      <li>Évolution du solde jour après jour, comparée au mois précédent</li>
+      <li>Répartition des dépenses par catégorie et cumul sur 3, 6 ou 12 mois</li>
+      <li>Prévision du solde d’après vos charges récurrentes et vos habitudes, avec sa fourchette</li>
+      <li>Import guidé : détection du format, aperçu, doublons ignorés, annulation possible</li>
+      <li>Catégories, règles de classement et virements entre vos comptes</li>
+      <li>Sauvegarde, restauration et export CSV des opérations</li>
+    </ul>
     <p>
-      Aucune donnée n’est envoyée en ligne.
+      Vos données restent sur votre ordinateur : Finaryx ne fait aucune requête réseau
+      et n’envoie aucune statistique d’usage.
     </p>
   </description>
   <developer id="io.github.docteurscience">
@@ -20,9 +29,17 @@
   </developer>
   <url type="homepage">https://github.com/DocteurScience/Finaryx</url>
   <url type="bugtracker">https://github.com/DocteurScience/Finaryx/issues</url>
+  <url type="vcs-browser">https://github.com/DocteurScience/Finaryx</url>
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
   <translation type="gettext">finaryx</translation>
   <content_rating type="oars-1.1"/>
+  <branding>
+    <color type="primary" scheme_preference="light">#99c1f1</color>
+    <color type="primary" scheme_preference="dark">#1a5fb4</color>
+  </branding>
+  <provides>
+    <mediatype>text/csv</mediatype>
+  </provides>
   <requires>
     <display_length compare="ge">360</display_length>
   </requires>
@@ -31,10 +48,50 @@
     <control>pointing</control>
     <control>touch</control>
   </supports>
+  <keywords>
+    <keyword>banque</keyword>
+    <keyword>budget</keyword>
+    <keyword>compte</keyword>
+    <keyword>dépenses</keyword>
+    <keyword>finances</keyword>
+    <keyword>CSV</keyword>
+  </keywords>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Vue d’ensemble du mois</caption>
+      <image>https://raw.githubusercontent.com/DocteurScience/Finaryx/main/data/screenshots/vue-ensemble.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Prévision du solde d’après vos habitudes</caption>
+      <image>https://raw.githubusercontent.com/DocteurScience/Finaryx/main/data/screenshots/previsions.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Le mois en détail</caption>
+      <image>https://raw.githubusercontent.com/DocteurScience/Finaryx/main/data/screenshots/mois.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Cumul des dépenses par catégorie</caption>
+      <image>https://raw.githubusercontent.com/DocteurScience/Finaryx/main/data/screenshots/cumul.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Vos comptes et l’historique des imports</caption>
+      <image>https://raw.githubusercontent.com/DocteurScience/Finaryx/main/data/screenshots/comptes.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Thème sombre</caption>
+      <image>https://raw.githubusercontent.com/DocteurScience/Finaryx/main/data/screenshots/previsions-sombre.png</image>
+    </screenshot>
+  </screenshots>
   <releases>
-    <release version="0.1.0" date="2026-11-11">
+    <release version="0.1.0" date="2026-11-12">
       <description>
-        <p>Squelette de l’application : fenêtre, navigation et thème clair ou sombre.</p>
+        <p>Première version.</p>
+        <ul>
+          <li>Import CSV avec profil Banque Populaire et mappage manuel pour les autres banques</li>
+          <li>Vue d’ensemble, mois en détail, cumul et prévisions</li>
+          <li>Catégories, règles et virements entre vos comptes</li>
+          <li>Sauvegarde, restauration et export CSV</li>
+        </ul>
       </description>
     </release>
   </releases>

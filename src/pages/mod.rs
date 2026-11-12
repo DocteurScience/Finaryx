@@ -24,8 +24,6 @@ pub struct MainPage {
     pub icon: &'static str,
     /// Whether the page shows the account filter (all except Accounts).
     pub has_account_filter: bool,
-    /// Step of the work plan that fills the page in.
-    pub planned_step: u32,
     /// Maximum width of the content (mockup: 1040 px, 760 px for Comptes).
     pub max_width: i32,
 }
@@ -38,7 +36,6 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         short_title: N_("Aperçu"),
         icon: "finaryx-overview-symbolic",
         has_account_filter: true,
-        planned_step: 5,
         max_width: 1040,
     },
     MainPage {
@@ -47,7 +44,6 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         short_title: N_("Mois"),
         icon: "finaryx-month-symbolic",
         has_account_filter: true,
-        planned_step: 5,
         max_width: 1040,
     },
     MainPage {
@@ -56,7 +52,6 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         short_title: N_("Cumul"),
         icon: "finaryx-cumulative-symbolic",
         has_account_filter: true,
-        planned_step: 5,
         max_width: 1040,
     },
     MainPage {
@@ -65,7 +60,6 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         short_title: N_("Prévisions"),
         icon: "finaryx-forecast-symbolic",
         has_account_filter: true,
-        planned_step: 7,
         max_width: 1040,
     },
     MainPage {
@@ -74,7 +68,6 @@ pub const MAIN_PAGES: [MainPage; 5] = [
         short_title: N_("Comptes"),
         icon: "finaryx-accounts-symbolic",
         has_account_filter: false,
-        planned_step: 3,
         max_width: 760,
     },
 ];
@@ -82,18 +75,6 @@ pub const MAIN_PAGES: [MainPage; 5] = [
 /// Sidebar entry that is not a stack page.
 pub const IMPORT_TITLE: &str = N_("Importer un CSV");
 pub const IMPORT_ICON: &str = "finaryx-import-symbolic";
-
-fn coming_soon(icon: &str, title: &str, step: u32) -> adw::StatusPage {
-    adw::StatusPage::builder()
-        .icon_name(icon)
-        .title(title)
-        .description(
-            gettext("Cette vue sera construite à l’étape {step} du plan de travail.")
-                .replace("{step}", &step.to_string()),
-        )
-        .vexpand(true)
-        .build()
-}
 
 /// Widgets of a main page that the window updates.
 pub struct MainPageWidgets {
@@ -153,13 +134,8 @@ pub fn build_main_page(
         summary_label = Some(summary);
     }
 
-    match content {
-        Some(content) => body.append(content),
-        None => body.append(&coming_soon(
-            page.icon,
-            &gettext(page.title),
-            page.planned_step,
-        )),
+    if let Some(content) = content {
+        body.append(content);
     }
 
     let clamp = adw::Clamp::builder()
@@ -177,19 +153,6 @@ pub fn build_main_page(
         account_filter: dropdown,
         summary: summary_label,
     }
-}
-
-/// A page pushed on top of the main view, with its own header bar and
-/// back button (Import, Categories and rules, Export…).
-pub fn build_sub_page(tag: &str, title: &str, icon: &str, step: u32) -> adw::NavigationPage {
-    let toolbar = adw::ToolbarView::new();
-    toolbar.add_top_bar(&adw::HeaderBar::new());
-    toolbar.set_content(Some(&coming_soon(icon, title, step)));
-    adw::NavigationPage::builder()
-        .tag(tag)
-        .title(title)
-        .child(&toolbar)
-        .build()
 }
 
 /// Builds a sidebar row: icon and label.
@@ -285,6 +248,7 @@ pub fn clear(container: &gtk::Box) {
 
 pub mod categories;
 pub mod cumulative;
+pub mod export;
 pub mod forecast;
 pub mod month;
 pub mod operations;
@@ -496,8 +460,7 @@ pub fn show_others_dialog(
     ));
     content.append(&list);
     content.append(&caption(&gettext(
-        "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et \
-         les tableaux les montrent séparément.",
+        "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et les tableaux les montrent séparément.",
     )));
     let buttons = gtk::Box::builder()
         .spacing(12)

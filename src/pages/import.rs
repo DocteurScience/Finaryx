@@ -143,8 +143,7 @@ impl ImportPage {
             .icon_name("finaryx-import-symbolic")
             .title(gettext("Importer un CSV"))
             .description(gettext(
-                "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est \
-                 enregistré avant votre confirmation.",
+                "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est enregistré avant votre confirmation.",
             ))
             .child(&choose)
             .vexpand(true)
@@ -945,8 +944,7 @@ impl ImportPage {
             .build();
         body.append(&list);
         body.append(&caption(&gettext(
-            "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard \
-             vous sera demandée ici.",
+            "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici.",
         )));
         Some(section(title.upcast_ref(), &body))
     }
@@ -1167,8 +1165,7 @@ impl ImportPage {
             .build();
         body.append(&list);
         body.append(&caption(&gettext(
-            "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà \
-             enregistrée. Vos fichiers ne sont jamais modifiés.",
+            "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés.",
         )));
         section(heading(&gettext("Résumé")).upcast_ref(), &body)
     }
@@ -1301,6 +1298,7 @@ impl ImportPage {
                     );
                 }
                 self.state.replace(None);
+                window.auto_backup();
                 window.show_page("accounts");
                 window.toast(&text);
                 window.signal_transfer_proposals();

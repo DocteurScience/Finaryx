@@ -134,8 +134,7 @@ fn present_full(
     }
     let hint = gtk::Label::builder()
         .label(gettext(
-            "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, \
-             Finaryx proposera de le recaler.",
+            "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler.",
         ))
         .wrap(true)
         .xalign(0.0)

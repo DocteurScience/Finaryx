@@ -234,6 +234,7 @@ version = "0.1.0"
 dependencies = [
  "chrono",
  "csv",
+ "gettext-rs",
  "regex",
  "rusqlite",
  "serde",
