@@ -6,6 +6,7 @@ use std::cell::Cell;
 
 use adw::prelude::*;
 use chrono::{Datelike, NaiveDate};
+use finaryx_core::categories::OTHERS_GROUP;
 use finaryx_core::db::Result;
 use finaryx_core::money::Sign;
 use finaryx_core::rusqlite::Connection;
@@ -251,10 +252,11 @@ impl MonthPage {
             cur,
             if narrow { 220 } else { 300 },
             move |slot| {
-                if slot == 8 {
-                    if let (Some(w), Some(p)) =
-                        (weak.upgrade(), parts_for_click.iter().find(|p| p.slot == 8))
-                    {
+                if slot == OTHERS_GROUP {
+                    if let (Some(w), Some(p)) = (
+                        weak.upgrade(),
+                        parts_for_click.iter().find(|p| p.slot == OTHERS_GROUP),
+                    ) {
                         super::show_others_dialog(&w, p, month, &currency);
                     }
                 }
@@ -304,7 +306,7 @@ impl MonthPage {
                 .map_or(0, |p| p.amount);
             let delta = amount(c.amount - before, cur, Sign::Always);
             let row = part_row(
-                Some(c.slot.unwrap_or(8)),
+                c.slot,
                 &c.name,
                 &amount(c.amount, cur, Sign::Negative),
                 &pct1(c.amount, total),

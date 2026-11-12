@@ -63,7 +63,7 @@ CREATE TABLE account (
 );
 CREATE TABLE category (
   id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE,
-  slot INTEGER,                                              -- 1..7 → --c1..--c7, 8 = « Autres » (gris) ; NULL = sans couleur de graphique
+  slot INTEGER,                                              -- 1..12 → couleurs 1 à 12 ; NULL = sans couleur de graphique (« Autres » elle-même : NULL, toujours en gris)
   is_income INTEGER NOT NULL DEFAULT 0,
   is_builtin INTEGER NOT NULL DEFAULT 0,                     -- catégories d'origine ; « Autres » ne peut pas être supprimée
   exclude_from_stats INTEGER NOT NULL DEFAULT 0              -- 1 pour « Virement interne » : ni dépense ni revenu
@@ -220,8 +220,8 @@ Tests : l'export puis la restauration redonnent une base identique (mêmes agré
 Page ouverte depuis le menu principal (« Catégories et règles… »). Elle contient :
 
 - **Liste des catégories** (celles d'origine, puis celles créées par l'utilisateur) : pastille de couleur, nom, nombre d'opérations, accès au détail. Bouton suggéré « Nouvelle catégorie ». Une catégorie peut être renommée, recolorée, supprimée ou **fusionnée** dans une autre (les opérations et les règles sont réaffectées, avec confirmation). « Autres » est la catégorie de repli et n'est pas supprimable.
-- **Création** (`AdwAlertDialog`) : nom (unique, insensible à la casse, non vide) et couleur de graphique. Choix parmi les 7 teintes `--c1` à `--c7` ; une teinte déjà prise est grisée avec le nom de la catégorie qui l'utilise ; option « Aucune couleur ».
-- **Règle de couleur (important)** : les graphiques ne montrent jamais plus de 8 couleurs (7 teintes + « Autres » en gris), conformément à la palette validée. Une catégorie sans couleur est **comptée dans « Autres » dans les graphiques** (camembert, colonnes empilées, cumul) ; son détail apparaît dans l'info-bulle de « Autres », dans une fenêtre « Détail de « Autres » » ouverte par un clic sur la part « Autres » (graphique ou légende), et dans le tableau et les listes, qui la montrent séparément. La couleur suit la catégorie, jamais son rang. Libérer une teinte (suppression ou fusion) ne recolore aucune autre catégorie ; l'utilisateur peut l'attribuer à une catégorie sans couleur. Ne pas générer de teinte supplémentaire. **Le nombre de catégories n'est pas limité** (noms, règles, filtres, listes, tableaux, export) : seule la couleur de graphique l'est.
+- **Création** (`AdwAlertDialog`) : nom (unique, insensible à la casse, non vide) et couleur de graphique. Choix parmi les 12 teintes (couleurs 1 à 12) ; une teinte déjà prise est grisée avec le nom de la catégorie qui l'utilise ; option « Aucune couleur ».
+- **Règle de couleur (important)** : les graphiques ne montrent jamais plus de 13 couleurs (12 teintes + « Autres » en gris, toujours en dernier), conformément à la palette validée. Une catégorie sans couleur est **comptée dans « Autres » dans les graphiques** (camembert, colonnes empilées, cumul) ; son détail apparaît dans l'info-bulle de « Autres », dans une fenêtre « Détail de « Autres » » ouverte par un clic sur la part « Autres » (graphique ou légende), et dans le tableau et les listes, qui la montrent séparément. La couleur suit la catégorie, jamais son rang. Libérer une teinte (suppression ou fusion) ne recolore aucune autre catégorie ; l'utilisateur peut l'attribuer à une catégorie sans couleur. Ne pas générer de teinte supplémentaire. **Le nombre de catégories n'est pas limité** (noms, règles, filtres, listes, tableaux, export) : seule la couleur de graphique l'est.
 - **Fenêtre « Détail de « Autres » »** : total regroupé du mois (ou de la période affichée), puis la liste des catégories qu'elle contient, triée par montant décroissant, avec nombre d'opérations, montant et part du total regroupé ; la ligne « Non classé » (opérations « À vérifier » restées dans Autres) est incluse. Boutons « Gérer les couleurs… » (ouvre la page Catégories) et « Fermer ». Clavier : la part « Autres » est un bouton focusable ; la fenêtre est aussi atteignable depuis le tableau.
 - **Menu de choix de catégorie** (depuis une ligne de `Operations.dc.html`) : liste de toutes les catégories avec une coche sur l'actuelle, puis « Nouvelle catégorie… » qui ouvre le dialogue de création et applique la catégorie créée à l'opération.
 - **« Créer une règle ? »** après un changement de catégorie : texte « Les libellés qui contiennent SUPERMARCHE seront classés en Alimentation », interrupteur « Appliquer aux opérations existantes » (activé ; n'écrase pas les opérations corrigées à la main), boutons « Seulement cette opération » et « Créer la règle ».
@@ -256,12 +256,12 @@ Cibles tactiles ≥ 44 px dans la maquette ; libadwaita en met 34 px par défaut
 ### Variante Material 3 (optionnelle)
 Une seconde série de maquettes `design/M3-*.dc.html` (15 pages, mêmes contenus et mêmes données) suit **Material 3** (https://m3.material.io/). **Le design GNOME reste la référence** pour l'application GTK4/libadwaita native ; la variante M3 n'est à implémenter que si l'utilisateur la demande.
 
-- Feuille de style `design/m3.css` : mêmes noms de variables que la version GNOME, mappés sur les rôles M3 (surface, conteneur de surface, primary, secondary container, primary container, error, outline). Les couleurs de données (catégories c1 à c8, comptes a1 à a4) ne changent pas.
+- Feuille de style `design/m3.css` : mêmes noms de variables que la version GNOME, mappés sur les rôles M3 (surface, conteneur de surface, primary, secondary container, primary container, error, outline). Les couleurs de données (catégories c1 à c12 et gris « Autres », comptes a1 à a4) ne changent pas.
 - Composants : rail de navigation 80 px (indicateur en pilule 56x32, FAB « Importer »), barre d'application supérieure 64 px (titre 22 px, sous-titre 12 px), boutons segmentés, puces de filtre (rayon 8 px), barre de navigation inférieure en étroit (indicateur 64x32), boutons tonals. Police Roboto.
 - Limites : libadwaita ne fournit aucun de ces composants ; il faudrait des widgets GTK personnalisés (CSS + `Gtk.Box`/`Gtk.Button` stylés) et l'application s'écarterait du HIG GNOME. Pas d'états d'élévation ni d'ondulation dans les maquettes.
 
 ### Couleurs
-Dans `style.css`, reprendre exactement les variables de `design/theme.css` (clair par défaut, sombre selon `AdwStyleManager`). Les graphiques lisent ces valeurs (ne pas coder de couleur en dur dans le code Cairo ; passer par une table de couleurs construite à partir du thème courant et recalculée à `notify::dark`).
+Dans `style.css`, reprendre exactement les variables de `design/theme.css`, complétées par les couleurs 8 à 12 ci-dessous, absentes de la maquette (clair par défaut, sombre selon `AdwStyleManager`). Les graphiques lisent ces valeurs (ne pas coder de couleur en dur dans le code Cairo ; passer par une table de couleurs construite à partir du thème courant et recalculée à `notify::dark`).
 
 Catégories (identité fixe, ordre fixe) :
 
@@ -274,11 +274,18 @@ Catégories (identité fixe, ordre fixe) :
 | 5 | Shopping et animaux | #e87ba4 | #d55181 | #0b0b0b / #0b0b0b |
 | 6 | Abonnements et télécoms | #008300 | #008300 | #ffffff / #ffffff |
 | 7 | Banque et assurances | #6250d6 | #9085e9 | #ffffff / #0b0b0b |
-| 8 | Autres | #898781 | #898781 | #0b0b0b / #0b0b0b |
+| 8 | (libre) | #b83a9e | #b83a9e | #ffffff / #ffffff |
+| 9 | (libre) | #7f9a12 | #7f9a12 | #0b0b0b / #ffffff |
+| 10 | (libre) | #b8304d | #b8304d | #ffffff / #ffffff |
+| 11 | (libre) | #1793b0 | #1793b0 | #ffffff / #ffffff |
+| 12 | (libre) | #3949ab | #4558bb | #ffffff / #ffffff |
+| — | Autres (et catégories sans couleur) | #898781 | #898781 | #0b0b0b / #0b0b0b |
+
+Les couleurs 1 à 7 et le gris viennent de la maquette (`--c1` à `--c8`, où `--c8` est le gris). Dans l'application, elles s'appellent `finaryx_c1` à `finaryx_c12`, et `finaryx_c13` pour le gris ; les encres s'appellent `finaryx_i1` à `finaryx_i13`. Les couleurs 8 à 12 sont libres à l'installation : l'utilisateur les attribue aux catégories de son choix.
 
 Comptes (parts de la barre de répartition) : `--a1..--a4`. Série principale des courbes : `--s1`. Mois précédent : `--ghost`, pointillé 5/4. Fourchette de prévision : `--band`.
 
-**Validation de la palette** (script de validation, clair et sombre) : séparation pour le daltonisme et écart en vision normale réussis. Deux points à connaître : le gris « Autres » est volontairement neutre (échec attendu du seuil de saturation) ; en mode clair, le vert Transports, le jaune Loisirs et le rose Shopping ont un contraste inférieur à 3:1 avec le fond. Pour cette raison, le nom, le montant et le pourcentage sont toujours écrits (liste, tableau, étiquettes) : ne jamais faire reposer une information sur la couleur seule.
+**Validation de la palette** (script de validation, clair et sombre, 12 couleurs dans l'ordre ci-dessus) : séparation pour le daltonisme (au moins 8) et écart en vision normale (au moins 15) réussis pour les couleurs voisines. Sur toutes les paires, certaines couleurs non voisines restent proches pour un daltonien, comme c'était déjà le cas avec 7 couleurs. Sur fond sombre, le magenta, le cramoisi et le marine ont un contraste inférieur à 3:1. À connaître aussi : le gris « Autres » est volontairement neutre (échec attendu du seuil de saturation) ; en mode clair, le vert Transports, le jaune Loisirs et le rose Shopping ont un contraste inférieur à 3:1 avec le fond. Pour cette raison, le nom, le montant et le pourcentage sont toujours écrits (liste, tableau, étiquettes) : ne jamais faire reposer une information sur la couleur seule.
 
 ### Règles de graphiques
 - Courbes : trait 2 px, extrémités arrondies, une pastille de 12 px au dernier point avec la valeur finale à côté. Grille 1 px très discrète, axe sans cadre.

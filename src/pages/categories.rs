@@ -5,9 +5,9 @@
 use std::rc::Rc;
 
 use adw::prelude::*;
-use finaryx_core::categories::{self, CategoryUse};
+use finaryx_core::categories::{self, CategoryUse, OTHERS_GROUP};
 use finaryx_core::dates;
-use finaryx_core::models::builtin;
+use finaryx_core::models::{builtin, Id};
 use finaryx_core::money::Sign;
 use finaryx_core::transfers;
 use gettextrs::{gettext, ngettext};
@@ -45,6 +45,11 @@ fn describe(u: &CategoryUse) -> String {
         },
     };
     format!("{} · {what}", n_ops(u.operations))
+}
+
+/// Swatch slot of a category: its colour, the grey for "Autres".
+fn swatch_slot(id: Id, slot: Option<u8>) -> Option<u8> {
+    slot.or((id == builtin::OTHERS).then_some(OTHERS_GROUP))
 }
 
 /// Colour swatch of a category; a dashed outline when it has none.
@@ -161,7 +166,11 @@ impl CategoriesPage {
                 .subtitle_lines(2)
                 .activatable(true)
                 .build();
-            row.add_prefix(&swatch(u.category.slot, 14, special));
+            row.add_prefix(&swatch(
+                swatch_slot(u.category.id, u.category.slot),
+                14,
+                special,
+            ));
             let edit = gtk::Image::from_icon_name("document-edit-symbolic");
             row.add_suffix(&edit);
             row.update_property(&[gtk::accessible::Property::Label(
@@ -181,7 +190,7 @@ impl CategoriesPage {
             .build();
         body.append(&list);
         body.append(&caption(&gettext(
-            "Les graphiques distinguent au plus 7 couleurs, plus « Autres » en gris. Une catégorie sans couleur est \
+            "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est \
              comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les \
              tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une \
              catégorie, libérez-en une en la retirant à une autre catégorie.",
@@ -224,7 +233,11 @@ impl CategoriesPage {
                 .spacing(6)
                 .valign(gtk::Align::Center)
                 .build();
-            cat.append(&swatch(r.category_slot, 10, false));
+            cat.append(&swatch(
+                swatch_slot(r.category_id, r.category_slot),
+                10,
+                false,
+            ));
             cat.append(&gtk::Label::new(Some(&r.category_name)));
             row.add_suffix(&cat);
             let delete = gtk::Button::builder()

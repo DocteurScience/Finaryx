@@ -67,8 +67,9 @@ pub struct NewAccount {
 pub struct Category {
     pub id: Id,
     pub name: String,
-    /// Chart colour: 1..=7 (`finaryx_c1`…), 8 = "Autres" (grey), `None` =
-    /// no colour of its own (grouped into "Autres" in charts only).
+    /// Chart colour: 1..=12 (`finaryx_c1`…), `None` = no colour of its own
+    /// (grouped into "Autres", in grey, in charts only; "Autres" itself
+    /// has none).
     pub slot: Option<u8>,
     pub is_income: bool,
     pub is_builtin: bool,

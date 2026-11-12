@@ -273,7 +273,7 @@ impl CumulativePage {
         for (r, row) in rows.iter().enumerate() {
             let y = r as i32 + 1;
             let name = gtk::Box::builder().spacing(8).build();
-            let slot = Some(row.slot.unwrap_or(8));
+            let slot = row.slot;
             name.append(&charts::color_swatch(12, move |w| {
                 charts::category_color(w, slot)
             }));

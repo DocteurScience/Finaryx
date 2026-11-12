@@ -16,7 +16,7 @@ pub const APPLICATION_ID: i32 = 0x464E_5258;
 /// Ordered list of migrations. Migration `i` (0-based) brings the schema
 /// from version `i` to `i + 1`. Never edit a migration that has shipped:
 /// append a new one.
-pub const MIGRATIONS: &[&str] = &[MIGRATION_1, MIGRATION_2];
+pub const MIGRATIONS: &[&str] = &[MIGRATION_1, MIGRATION_2, MIGRATION_3];
 
 /// Schema version written by this build of the application.
 pub const SCHEMA_VERSION: i32 = MIGRATIONS.len() as i32;
@@ -119,14 +119,37 @@ pub fn check_identity(conn: &Connection) -> Result<()> {
 /// Applies the missing migrations, each in its own transaction.
 pub fn migrate(conn: &mut Connection) -> Result<()> {
     let current = schema_version(conn)?;
-    for (index, sql) in MIGRATIONS.iter().enumerate().skip(current as usize) {
-        let tx = conn.transaction()?;
-        tx.execute_batch(sql)?;
-        tx.pragma_update(None, "application_id", APPLICATION_ID)?;
-        tx.pragma_update(None, "user_version", index as i32 + 1)?;
-        tx.commit()?;
+    // Some migrations rebuild a table that others reference: foreign keys
+    // are switched off meanwhile (it cannot be done inside a transaction)
+    // and checked before each commit.
+    let pending = MIGRATIONS.len() > current as usize;
+    if pending {
+        conn.pragma_update(None, "foreign_keys", false)?;
     }
-    Ok(())
+    let result = (|| -> Result<()> {
+        for (index, sql) in MIGRATIONS.iter().enumerate().skip(current as usize) {
+            let tx = conn.transaction()?;
+            tx.execute_batch(sql)?;
+            let broken: i64 =
+                tx.query_row("SELECT count(*) FROM pragma_foreign_key_check", [], |r| {
+                    r.get(0)
+                })?;
+            if broken > 0 {
+                return Err(Error::Invalid(format!(
+                    "migration {} breaks foreign keys",
+                    index + 1
+                )));
+            }
+            tx.pragma_update(None, "application_id", APPLICATION_ID)?;
+            tx.pragma_update(None, "user_version", index as i32 + 1)?;
+            tx.commit()?;
+        }
+        Ok(())
+    })();
+    if pending {
+        conn.pragma_update(None, "foreign_keys", true)?;
+    }
+    result
 }
 
 /// Version 1: schema of the specification (section 2), plus
@@ -269,6 +292,32 @@ CREATE TABLE transfer_rejection (
 );
 "#;
 
+/// Version 3: twelve chart colours instead of seven. "Autres" no longer
+/// holds a colour slot: it is always drawn last, in grey. The table is
+/// rebuilt because SQLite cannot change a CHECK constraint in place.
+const MIGRATION_3: &str = r#"
+CREATE TABLE category_new (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE COLLATE NOCASE CHECK (trim(name) <> ''),
+  slot INTEGER CHECK (slot BETWEEN 1 AND 12),
+  is_income INTEGER NOT NULL DEFAULT 0 CHECK (is_income IN (0, 1)),
+  is_builtin INTEGER NOT NULL DEFAULT 0 CHECK (is_builtin IN (0, 1)),
+  exclude_from_stats INTEGER NOT NULL DEFAULT 0 CHECK (exclude_from_stats IN (0, 1))
+);
+INSERT INTO category_new (id, name, slot, is_income, is_builtin, exclude_from_stats)
+  SELECT id, name, CASE WHEN id = 8 THEN NULL ELSE slot END,
+         is_income, is_builtin, exclude_from_stats
+  FROM category;
+DROP TABLE category;
+ALTER TABLE category_new RENAME TO category;
+CREATE UNIQUE INDEX category_slot ON category(slot) WHERE slot IS NOT NULL;
+CREATE TRIGGER category_keep_others BEFORE DELETE ON category
+WHEN OLD.id = 8
+BEGIN
+  SELECT RAISE(ABORT, 'the "Autres" category cannot be deleted');
+END;
+"#;
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -299,8 +348,13 @@ mod tests {
                 .unwrap();
             tx.pragma_update(None, "user_version", 1).unwrap();
             tx.commit().unwrap();
-            conn.execute("INSERT INTO bank (name) VALUES ('Banque A')", [])
-                .unwrap();
+            conn.execute_batch(
+                "INSERT INTO bank (id, name) VALUES (1, 'Banque A');
+                 INSERT INTO account (id, bank_id, name) VALUES (1, 1, 'Courant');
+                 INSERT INTO txn (account_id, booked_on, amount_cents, label, label_norm, dedupe_key, category_id)
+                   VALUES (1, '2026-01-02', -500, 'X', 'X', 'k', 8);",
+            )
+            .unwrap();
         }
         let conn = open(&path).unwrap();
         assert_eq!(schema_version(&conn).unwrap(), SCHEMA_VERSION);
@@ -310,6 +364,22 @@ mod tests {
             .query_row("SELECT count(*) FROM bank", [], |r| r.get(0))
             .unwrap();
         assert_eq!(n, 1);
+        // Version 3: "Autres" lost its colour, operations kept their category.
+        let slot: Option<i64> = conn
+            .query_row("SELECT slot FROM category WHERE id = 8", [], |r| r.get(0))
+            .unwrap();
+        assert_eq!(slot, None);
+        let cat: i64 = conn
+            .query_row("SELECT category_id FROM txn", [], |r| r.get(0))
+            .unwrap();
+        assert_eq!(cat, 8);
+        assert!(conn
+            .execute("DELETE FROM category WHERE id = 8", [])
+            .is_err());
+        let fk: bool = conn
+            .pragma_query_value(None, "foreign_keys", |r| r.get(0))
+            .unwrap();
+        assert!(fk);
     }
 
     #[test]
@@ -318,8 +388,13 @@ mod tests {
         let path = dir.path().join("finaryx.db");
         {
             let conn = open(&path).unwrap();
-            conn.execute("INSERT INTO bank (name) VALUES ('Banque A')", [])
-                .unwrap();
+            conn.execute_batch(
+                "INSERT INTO bank (id, name) VALUES (1, 'Banque A');
+                 INSERT INTO account (id, bank_id, name) VALUES (1, 1, 'Courant');
+                 INSERT INTO txn (account_id, booked_on, amount_cents, label, label_norm, dedupe_key, category_id)
+                   VALUES (1, '2026-01-02', -500, 'X', 'X', 'k', 8);",
+            )
+            .unwrap();
         }
         let conn = open(&path).unwrap();
         assert_eq!(schema_version(&conn).unwrap(), SCHEMA_VERSION);
@@ -393,7 +468,6 @@ mod tests {
                 "Shopping et animaux",
                 "Abonnements et télécoms",
                 "Banque et assurances",
-                "Autres"
             ]
         );
         assert_eq!(rows.len(), 14);
@@ -408,6 +482,11 @@ mod tests {
         assert!(conn
             .execute("UPDATE category SET slot = 1 WHERE id = 9", [])
             .is_err());
+        assert!(conn
+            .execute("UPDATE category SET slot = 13 WHERE id = 9", [])
+            .is_err());
+        conn.execute("UPDATE category SET slot = 12 WHERE id = 9", [])
+            .unwrap();
         assert!(conn
             .execute("INSERT INTO category (name) VALUES ('logement')", [])
             .is_err());

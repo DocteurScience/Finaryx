@@ -1,8 +1,8 @@
 //! Categories and rules (specification §4, "Catégories et règles").
 //!
-//! Charts never show more than 8 colours: 7 slots plus "Autres". A
-//! category without a slot is grouped into "Autres" in charts only. The
-//! number of categories is not limited.
+//! Charts never show more than 13 colours: 12 slots plus "Autres", in
+//! grey. A category without a slot is grouped into "Autres" in charts
+//! only. The number of categories is not limited.
 
 use std::collections::HashMap;
 
@@ -14,8 +14,15 @@ use crate::models::{builtin, Category, Id};
 use crate::normalize::label_norm;
 use crate::repo;
 
-/// Number of chart colours that categories can take (slot 8 is "Autres").
-pub const COLOR_SLOTS: u8 = 7;
+/// Number of chart colours that categories can take.
+pub const COLOR_SLOTS: u8 = 12;
+
+/// Chart group of "Autres" and of the categories without a colour: drawn
+/// last, in grey (`finaryx_c13`). It is not stored in the database.
+pub const OTHERS_GROUP: u8 = COLOR_SLOTS + 1;
+
+/// Number of chart groups: the 12 colours, then "Autres".
+pub const CHART_GROUPS: usize = OTHERS_GROUP as usize;
 
 /// A category with its number of operations.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -39,9 +46,9 @@ pub fn list_with_counts(conn: &Connection) -> Result<Vec<CategoryUse>> {
         .collect())
 }
 
-/// Name of the category using each slot 1..=7 (index 0 = slot 1).
-pub fn slot_owners(conn: &Connection) -> Result<[Option<(Id, String)>; 7]> {
-    let mut owners: [Option<(Id, String)>; 7] = Default::default();
+/// Name of the category using each slot 1..=12 (index 0 = slot 1).
+pub fn slot_owners(conn: &Connection) -> Result<[Option<(Id, String)>; COLOR_SLOTS as usize]> {
+    let mut owners: [Option<(Id, String)>; COLOR_SLOTS as usize] = Default::default();
     for c in repo::list_categories(conn)? {
         if let Some(slot) = c.slot.filter(|s| (1..=COLOR_SLOTS).contains(s)) {
             owners[slot as usize - 1] = Some((c.id, c.name));
@@ -365,9 +372,16 @@ mod tests {
         assert!(create_category(&conn, "voyages", None).is_err());
         assert!(create_category(&conn, "SANTE", None).is_err());
         assert!(create_category(&conn, "   ", None).is_err());
-        // All 7 colours are taken by the built-in categories.
+        // Colours 1 to 7 are taken by the built-in categories, 8 to 12 are free.
         assert!(create_category(&conn, "Vacances", Some(3)).is_err());
-        assert!(slot_owners(&conn).unwrap().iter().all(Option::is_some));
+        let owners = slot_owners(&conn).unwrap();
+        assert!(owners[..7].iter().all(Option::is_some));
+        assert!(owners[7..].iter().all(Option::is_none));
+        assert!(create_category(&conn, "Vacances", Some(13)).is_err());
+        assert!(create_category(&conn, "Vacances", Some(0)).is_err());
+        let holidays = create_category(&conn, "Vacances", Some(12)).unwrap();
+        assert!(create_category(&conn, "Week-ends", Some(12)).is_err());
+        set_slot(&conn, holidays, None).unwrap();
         // Freeing a colour does not recolour anybody.
         set_slot(&conn, builtin::BANK_INSURANCE, None).unwrap();
         assert!(slot_owners(&conn).unwrap()[6].is_none());

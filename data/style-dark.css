@@ -1,8 +1,11 @@
 /* Finaryx — dark theme.
  *
- * Data colours copied verbatim from design/theme.css. Chart code reads
- * them by name (finaryx_c1 … finaryx_c8 for the fixed category slots,
- * finaryx_i1 … finaryx_i8 for text drawn on them, finaryx_a1 … finaryx_a4
+ * Data colours: c1 … c7 and the grey are copied verbatim from
+ * design/theme.css (where the grey is --c8); c8 … c12 extend the palette
+ * to 12 colours (checked for colour-blind separation of neighbours, in
+ * this order). Chart code reads them by name (finaryx_c1 … finaryx_c12
+ * for the fixed category slots, finaryx_c13 for "Autres", finaryx_i1 …
+ * finaryx_i13 for text drawn on them, finaryx_a1 … finaryx_a4
  * for accounts, finaryx_s1 / _band / _ghost / _bars for line charts).
  * Never hard-code these values in Rust code.
  *
@@ -21,7 +24,12 @@
 @define-color finaryx_c5 #d55181;
 @define-color finaryx_c6 #008300;
 @define-color finaryx_c7 #9085e9;
-@define-color finaryx_c8 #898781;
+@define-color finaryx_c8 #b83a9e;
+@define-color finaryx_c9 #7f9a12;
+@define-color finaryx_c10 #b8304d;
+@define-color finaryx_c11 #1793b0;
+@define-color finaryx_c12 #4558bb;
+@define-color finaryx_c13 #898781;
 @define-color finaryx_i1 #0b0b0b;
 @define-color finaryx_i2 #0b0b0b;
 @define-color finaryx_i3 #0b0b0b;
@@ -29,7 +37,12 @@
 @define-color finaryx_i5 #0b0b0b;
 @define-color finaryx_i6 #ffffff;
 @define-color finaryx_i7 #0b0b0b;
-@define-color finaryx_i8 #0b0b0b;
+@define-color finaryx_i8 #ffffff;
+@define-color finaryx_i9 #ffffff;
+@define-color finaryx_i10 #ffffff;
+@define-color finaryx_i11 #ffffff;
+@define-color finaryx_i12 #ffffff;
+@define-color finaryx_i13 #0b0b0b;
 @define-color finaryx_a1 #f0f0f0;
 @define-color finaryx_a2 #c0c0c0;
 @define-color finaryx_a3 #8c8c8c;

@@ -486,7 +486,7 @@ pub fn show_others_dialog(
     ));
     content.append(&list);
     content.append(&caption(&gettext(
-        "Les graphiques montrent au plus 8 couleurs. Les catégories sans couleur sont comptées ici ; les listes et \
+        "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et \
          les tableaux les montrent séparément.",
     )));
     let buttons = gtk::Box::builder()

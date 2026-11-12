@@ -10,6 +10,7 @@
 use chrono::{Datelike, NaiveDate};
 use rusqlite::{params_from_iter, Connection};
 
+use crate::categories::{CHART_GROUPS, COLOR_SLOTS, OTHERS_GROUP};
 use crate::db::Result;
 use crate::models::{builtin, Id};
 
@@ -327,10 +328,10 @@ pub fn spending_by_category(
     Ok(rows.collect::<rusqlite::Result<_>>()?)
 }
 
-/// A part of a chart: one of the 8 colours.
+/// A part of a chart: one of the 12 colours, or "Autres".
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ChartPart {
-    /// 1..=8 (8 = "Autres").
+    /// 1..=12, or [`OTHERS_GROUP`] (13) for "Autres".
     pub slot: u8,
     pub name: String,
     pub amount: i64,
@@ -340,14 +341,14 @@ pub struct ChartPart {
     pub members: Vec<CategorySpending>,
 }
 
-/// Groups categories for charts: never more than 8 colours. Categories
+/// Groups categories for charts: never more than 13 colours. Categories
 /// without a colour join "Autres". Parts are sorted by amount, largest
 /// first; tables keep the categories separate.
 pub fn chart_parts(categories: &[CategorySpending]) -> Vec<ChartPart> {
     let mut parts: Vec<ChartPart> = Vec::new();
     for c in categories {
-        let slot = c.slot.unwrap_or(8);
-        let name = if slot == 8 {
+        let slot = chart_group(c.slot);
+        let name = if slot == OTHERS_GROUP {
             "Autres".to_owned()
         } else {
             c.name.clone()
@@ -375,19 +376,27 @@ pub fn chart_parts(categories: &[CategorySpending]) -> Vec<ChartPart> {
     parts
 }
 
-/// Spending per chart slot (index 0 = slot 1 … index 7 = "Autres") for
-/// each month, oldest first.
+/// Chart group of a category colour: its slot, or "Autres" without one.
+pub fn chart_group(slot: Option<u8>) -> u8 {
+    match slot {
+        Some(s) if (1..=COLOR_SLOTS).contains(&s) => s,
+        _ => OTHERS_GROUP,
+    }
+}
+
+/// Spending per chart group (index 0 = slot 1 … index 11 = slot 12,
+/// index 12 = "Autres") for each month, oldest first.
 pub fn monthly_by_slot(
     conn: &Connection,
     scope: &Scope,
     months: &[NaiveDate],
-) -> Result<Vec<[i64; 8]>> {
+) -> Result<Vec<[i64; CHART_GROUPS]>> {
     months
         .iter()
         .map(|m| {
-            let mut row = [0i64; 8];
+            let mut row = [0i64; CHART_GROUPS];
             for c in spending_by_category(conn, scope, first_of_month(*m), next_month(*m))? {
-                row[c.slot.unwrap_or(8).clamp(1, 8) as usize - 1] += c.amount;
+                row[chart_group(c.slot) as usize - 1] += c.amount;
             }
             Ok(row)
         })
@@ -603,11 +612,12 @@ mod tests {
         assert!(cats
             .iter()
             .any(|c| c.name == "Sorties et loisirs" && c.slot.is_none()));
-        // …and grouped into "Autres" (slot 8) for charts.
+        // …and grouped into "Autres" for charts.
         let parts = chart_parts(&cats);
-        assert!(parts.len() <= 8);
+        assert!(parts.len() <= CHART_GROUPS);
         assert_eq!(parts.iter().map(|p| p.amount).sum::<i64>(), 262_490);
-        let others = parts.iter().find(|p| p.slot == 8).unwrap();
+        let others = parts.iter().find(|p| p.slot == OTHERS_GROUP).unwrap();
+        assert_eq!(others.name, "Autres");
         assert_eq!(others.amount, 26_318);
         assert!(others.members.len() > 1);
         assert_eq!(parts[0].name, "Logement");
@@ -620,7 +630,7 @@ mod tests {
         assert_eq!(months[0], d("2026-05-01"));
         let by_slot = monthly_by_slot(&conn, &s, &months).unwrap();
         for (row, expected) in by_slot.iter().zip(demo::MONTHLY_SPENDING.iter()) {
-            assert_eq!(row, expected);
+            assert_eq!(demo::chart_row(expected), *row);
         }
         let table = monthly_by_category(&conn, &s, &months).unwrap();
         assert_eq!(table[0].name, "Logement");

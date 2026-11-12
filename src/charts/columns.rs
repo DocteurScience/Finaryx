@@ -8,23 +8,24 @@ use std::cell::Cell;
 use std::rc::Rc;
 
 use adw::prelude::*;
+use finaryx_core::categories::CHART_GROUPS;
 
 use super::{
-    category_color, draw_text, redraw_on_theme_change, rounded_rect, set_source, theme_color,
-    Align, TextStyle,
+    category_color, category_ink, draw_text, redraw_on_theme_change, rounded_rect, set_source,
+    theme_color, Align, TextStyle,
 };
 
 #[derive(Debug, Clone)]
 pub struct Column {
     pub label: String,
-    /// Amount per slot 1..=8 (index 0 = slot 1).
-    pub values: [i64; 8],
+    /// Amount per chart group (index 0 = slot 1 … index 12 = "Autres").
+    pub values: [i64; CHART_GROUPS],
     /// Total written above the column.
     pub total_label: String,
     /// Share written in each segment ("31 %").
-    pub segment_labels: [String; 8],
+    pub segment_labels: [String; CHART_GROUPS],
     /// Tooltip (markup) of each segment.
-    pub tooltips: [String; 8],
+    pub tooltips: [String; CHART_GROUPS],
 }
 
 #[derive(Debug, Clone)]
@@ -153,7 +154,7 @@ pub fn stacked_columns(chart: Columns, height: i32, accessible_label: &str) -> g
                     let _ = cr.fill();
                 }
                 if y0 - y1 >= MIN_LABEL_HEIGHT && !col.segment_labels[k].is_empty() {
-                    let ink = theme_color(area, &format!("finaryx_i{}", k + 1));
+                    let ink = category_ink(area, Some(k as u8 + 1));
                     draw_text(
                         area,
                         cr,

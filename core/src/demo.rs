@@ -23,6 +23,7 @@
 use chrono::{Datelike, NaiveDate};
 use rusqlite::Connection;
 
+use crate::categories::CHART_GROUPS;
 use crate::db::Result;
 use crate::models::builtin::*;
 use crate::models::*;
@@ -49,6 +50,15 @@ pub const MONTHLY_SPENDING: [[i64; 8]; 6] = [
         73_500, 54_830, 21_140, 39_215, 28_760, 8_497, 10_230, 26_318,
     ],
 ];
+
+/// A row of [`MONTHLY_SPENDING`] laid out as chart groups: the 7 coloured
+/// categories in slots 1 to 7, colours 8 to 12 unused, then "Autres".
+pub fn chart_row(row: &[i64; 8]) -> [i64; CHART_GROUPS] {
+    let mut out = [0; CHART_GROUPS];
+    out[..7].copy_from_slice(&row[..7]);
+    out[CHART_GROUPS - 1] = row[7];
+    out
+}
 
 /// Income besides the salary, per month: (day, label, cents).
 const EXTRA_INCOME: [&[(u32, &str, i64)]; 6] = [
@@ -526,13 +536,13 @@ mod tests {
         (conn, ids)
     }
 
-    /// Spending of a month per chart slot (categories without a colour
-    /// count in slot 8, "Autres"), from SQL.
-    fn spending_by_slot(conn: &Connection, month: &str) -> [i64; 8] {
-        let mut out = [0; 8];
+    /// Spending of a month per chart group (categories without a colour
+    /// count in "Autres"), from SQL.
+    fn spending_by_slot(conn: &Connection, month: &str) -> [i64; CHART_GROUPS] {
+        let mut out = [0; CHART_GROUPS];
         let mut stmt = conn
             .prepare(
-                "SELECT coalesce(c.slot, 8), -sum(t.amount_cents)
+                "SELECT coalesce(c.slot, 13), -sum(t.amount_cents)
                  FROM txn t JOIN category c ON c.id = t.category_id
                  WHERE c.is_income = 0 AND c.exclude_from_stats = 0
                    AND substr(t.booked_on, 1, 7) = ?1
@@ -569,7 +579,7 @@ mod tests {
             let key = format!("2026-{month:02}");
             assert_eq!(
                 spending_by_slot(&conn, &key),
-                MONTHLY_SPENDING[m],
+                chart_row(&MONTHLY_SPENDING[m]),
                 "month {key}"
             );
             total += MONTHLY_SPENDING[m].iter().sum::<i64>();

@@ -11,12 +11,13 @@ use std::rc::Rc;
 use adw::prelude::*;
 
 use super::{
-    category_color, draw_text, redraw_on_theme_change, set_source, theme_color, Align, TextStyle,
+    category_color, category_ink, draw_text, redraw_on_theme_change, set_source, text_size,
+    theme_color, Align, TextStyle,
 };
 
 #[derive(Debug, Clone)]
 pub struct Part {
-    /// Colour slot 1..=8.
+    /// Chart group: colour slot 1..=12, or 13 for "Autres".
     pub slot: u8,
     pub amount: i64,
     /// Percentage written in the part ("31 %").
@@ -124,8 +125,10 @@ pub fn donut(
             }
         }
         // Percentages: inside, in the text colour of the category; under
-        // 5 %, just outside, in secondary text.
+        // 5 %, just outside, in secondary text, unless it would overlap
+        // another label (the table beside the ring gives every share).
         let total: i64 = c.parts.iter().map(|p| p.amount.max(0)).sum();
+        let mut placed: Vec<(f64, f64, f64, f64)> = Vec::new();
         for (p, (s, e)) in c.parts.iter().zip(&spans) {
             if total == 0 || p.label.is_empty() {
                 continue;
@@ -140,20 +143,26 @@ pub fn donut(
             let style = if small {
                 TextStyle::Dim
             } else {
-                TextStyle::OnColor(theme_color(
-                    area,
-                    &format!("finaryx_i{}", p.slot.clamp(1, 8)),
-                ))
+                TextStyle::OnColor(category_ink(area, Some(p.slot)))
             };
-            draw_text(
-                area,
-                cr,
-                &p.label,
-                cx + r * mid.cos(),
-                cy + r * mid.sin(),
-                Align::Center,
-                style,
-            );
+            let (x, y) = (cx + r * mid.cos(), cy + r * mid.sin());
+            if small {
+                let (tw, th) = text_size(area, &p.label, style);
+                let rect = (
+                    x - tw / 2.0 - 2.0,
+                    y - th / 2.0,
+                    x + tw / 2.0 + 2.0,
+                    y + th / 2.0,
+                );
+                if placed
+                    .iter()
+                    .any(|o| rect.0 < o.2 && o.0 < rect.2 && rect.1 < o.3 && o.1 < rect.3)
+                {
+                    continue;
+                }
+                placed.push(rect);
+            }
+            draw_text(area, cr, &p.label, x, y, Align::Center, style);
         }
         draw_text(
             area,

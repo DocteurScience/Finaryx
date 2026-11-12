@@ -9,6 +9,7 @@ pub mod share_bar;
 pub mod sparkline;
 
 use adw::prelude::*;
+use finaryx_core::stats::chart_group;
 use gtk::gdk;
 
 /// Looks a named colour up in the theme (`@define-color`), e.g.
@@ -30,12 +31,15 @@ pub fn account_color(widget: &impl IsA<gtk::Widget>, slot: u8) -> gdk::RGBA {
     theme_color(widget, &format!("finaryx_a{}", slot.clamp(1, 4)))
 }
 
-/// Colour of a category slot (1..=8; no slot = "Autres", 8).
+/// Colour of a category slot (1..=12) or chart group (13 or no slot =
+/// "Autres", in grey).
 pub fn category_color(widget: &impl IsA<gtk::Widget>, slot: Option<u8>) -> gdk::RGBA {
-    theme_color(
-        widget,
-        &format!("finaryx_c{}", slot.unwrap_or(8).clamp(1, 8)),
-    )
+    theme_color(widget, &format!("finaryx_c{}", chart_group(slot)))
+}
+
+/// Colour of text drawn on a category colour.
+pub fn category_ink(widget: &impl IsA<gtk::Widget>, slot: Option<u8>) -> gdk::RGBA {
+    theme_color(widget, &format!("finaryx_i{}", chart_group(slot)))
 }
 
 pub fn set_source(cr: &gtk::cairo::Context, color: &gdk::RGBA) {
@@ -138,6 +142,33 @@ pub fn draw_text(
     align: Align,
     style: TextStyle,
 ) {
+    let (layout, color) = styled_layout(widget, text, style);
+    let (w, h) = layout.pixel_size();
+    let (w, h) = (w as f64, h as f64);
+    let (dx, dy) = match align {
+        Align::StartMiddle => (0.0, -h / 2.0),
+        Align::StartBottom => (0.0, -h),
+        Align::EndMiddle => (-w, -h / 2.0),
+        Align::CenterTop => (-w / 2.0, 0.0),
+        Align::CenterBottom => (-w / 2.0, -h),
+        Align::Center => (-w / 2.0, -h / 2.0),
+    };
+    set_source(cr, &color);
+    cr.move_to(x + dx, y + dy);
+    pangocairo::functions::show_layout(cr, &layout);
+}
+
+/// Size in pixels of a text as [`draw_text`] would draw it.
+pub fn text_size(widget: &impl IsA<gtk::Widget>, text: &str, style: TextStyle) -> (f64, f64) {
+    let (w, h) = styled_layout(widget, text, style).0.pixel_size();
+    (w as f64, h as f64)
+}
+
+fn styled_layout(
+    widget: &impl IsA<gtk::Widget>,
+    text: &str,
+    style: TextStyle,
+) -> (gtk::pango::Layout, gdk::RGBA) {
     use gtk::pango;
     let layout = widget.as_ref().create_pango_layout(Some(text));
     let attrs = pango::AttrList::new();
@@ -166,19 +197,7 @@ pub fn draw_text(
         }
     };
     layout.set_attributes(Some(&attrs));
-    let (w, h) = layout.pixel_size();
-    let (w, h) = (w as f64, h as f64);
-    let (dx, dy) = match align {
-        Align::StartMiddle => (0.0, -h / 2.0),
-        Align::StartBottom => (0.0, -h),
-        Align::EndMiddle => (-w, -h / 2.0),
-        Align::CenterTop => (-w / 2.0, 0.0),
-        Align::CenterBottom => (-w / 2.0, -h),
-        Align::Center => (-w / 2.0, -h / 2.0),
-    };
-    set_source(cr, &color);
-    cr.move_to(x + dx, y + dy);
-    pangocairo::functions::show_layout(cr, &layout);
+    (layout, color)
 }
 
 /// Mark of a legend item.

@@ -3,6 +3,7 @@
 
 use adw::prelude::*;
 use chrono::{Datelike, NaiveDate};
+use finaryx_core::categories::{CHART_GROUPS, OTHERS_GROUP};
 use finaryx_core::db::Result;
 use finaryx_core::money::Sign;
 use finaryx_core::rusqlite::Connection;
@@ -201,7 +202,7 @@ pub fn months_columns(
     months: &[NaiveDate],
     height: i32,
     segment_labels: bool,
-) -> Result<(gtk::DrawingArea, Vec<[i64; 8]>)> {
+) -> Result<(gtk::DrawingArea, Vec<[i64; CHART_GROUPS]>)> {
     let data = stats::monthly_by_slot(conn, scope, months)?;
     let names = slot_names(conn)?;
     let cur = &scope.currency;
@@ -262,15 +263,20 @@ pub fn months_columns(
     Ok((columns::stacked_columns(chart, height, &description), data))
 }
 
-/// Names of the 8 chart slots (slot 8 is "Autres").
-pub fn slot_names(conn: &Connection) -> Result<[String; 8]> {
+/// Names of the 13 chart groups: the category holding each colour
+/// (empty when the colour is free), then "Autres".
+pub fn slot_names(conn: &Connection) -> Result<[String; CHART_GROUPS]> {
     let categories = finaryx_core::repo::list_categories(conn)?;
     Ok(std::array::from_fn(|k| {
+        let group = k as u8 + 1;
+        if group == OTHERS_GROUP {
+            return gettext("Autres");
+        }
         categories
             .iter()
-            .find(|c| c.slot == Some(k as u8 + 1))
+            .find(|c| c.slot == Some(group))
             .map(|c| c.name.clone())
-            .unwrap_or_else(|| gettext("Autres"))
+            .unwrap_or_default()
     }))
 }
 
@@ -546,10 +552,11 @@ impl OverviewPage {
             cur,
             if narrow { 220 } else { 284 },
             move |slot| {
-                if slot == 8 {
-                    if let (Some(w), Some(p)) =
-                        (weak.upgrade(), parts_for_click.iter().find(|p| p.slot == 8))
-                    {
+                if slot == OTHERS_GROUP {
+                    if let (Some(w), Some(p)) = (
+                        weak.upgrade(),
+                        parts_for_click.iter().find(|p| p.slot == OTHERS_GROUP),
+                    ) {
                         super::show_others_dialog(&w, p, month_for_click, &currency);
                     }
                 }

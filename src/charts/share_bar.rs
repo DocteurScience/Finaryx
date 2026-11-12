@@ -51,7 +51,7 @@ pub fn share_bar(segments: Vec<Segment>, accessible_label: &str) -> gtk::Drawing
         rounded_rect(cr, 0.0, 0.0, w, h, RADIUS);
         cr.clip();
         if segs.iter().all(|s| s.per_mille == 0) {
-            set_source(cr, &theme_color(area, "finaryx_c8"));
+            set_source(cr, &theme_color(area, "finaryx_c13"));
             let _ = cr.paint();
             return;
         }

@@ -1,5 +1,5 @@
 //! "Nouvelle catégorie" and category settings (design/Categories.dc.html):
-//! name, chart colour among the 7 shades (a taken one is greyed with the
+//! name, chart colour among the 12 shades (a taken one is greyed with the
 //! name of its category) or none; merge and delete for an existing one.
 
 use std::rc::Rc;
@@ -52,7 +52,7 @@ pub fn present(
     let name_group = adw::PreferencesGroup::new();
     name_group.add(&name);
 
-    // Chart colour: 7 shades, then "Aucune couleur".
+    // Chart colour: 12 shades, then "Aucune couleur".
     let colors = adw::PreferencesGroup::builder()
         .title(gettext("Couleur dans les graphiques"))
         .build();
@@ -98,7 +98,7 @@ pub fn present(
         .build();
     let none_check = gtk::CheckButton::builder()
         .valign(gtk::Align::Center)
-        .active(current_slot.is_none() || current_slot == Some(8))
+        .active(current_slot.is_none())
         .group(first.as_ref().unwrap())
         .build();
     none_row.add_prefix(&none_check);
