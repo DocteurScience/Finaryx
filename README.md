@@ -30,7 +30,7 @@ GitHub Actions construit le Flatpak à chaque push (workflow `Flatpak`, paquet d
 2. Sur GitHub : *Actions* → *Flatpak* → *Run workflow* sur `main`, avec l’étiquette (par exemple `v0.1.0`). Le run construit le Flatpak, crée l’étiquette et la version, et y joint `finaryx.flatpak`. Il refuse une étiquette qui ne correspond pas à `Cargo.toml`.
 
 ## Traduire
-Français (langue source) et anglais complets. Le tableau `po/translations.csv` prépare seize autres langues : une ligne par texte, une colonne par langue, à remplir dans un tableur. Les dates et les montants suivent la langue. Mode d’emploi : `po/README.md`.
+Français (langue source), anglais, allemand, espagnol, italien, portugais du Brésil et néerlandais complets (traductions à faire relire par des locuteurs natifs). Le tableau `po/translations.csv` prépare les autres langues : une ligne par texte, une colonne par langue, à remplir dans un tableur. Les dates et les montants suivent la langue. Mode d’emploi : `po/README.md`.
 
 ## Contenu
 - `FINARYX-SPEC.md` : cahier des charges (données, import générique, écrans, prévision, export, catégories, design, plan de travail).

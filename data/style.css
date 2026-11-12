@@ -135,3 +135,10 @@
   font-weight: 700;
   font-feature-settings: "tnum";
 }
+
+/* Period selectors (3 / 6 / 12 months): narrow padding so that the
+ * longest translations fit in three buttons at 360 px. */
+button.period {
+  padding-left: 6px;
+  padding-right: 6px;
+}

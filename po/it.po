@@ -1,0 +1,1702 @@
+# Finaryx — Italiano
+# Generated from po/translations.csv by build-aux/translations.py: edit the table.
+msgid ""
+msgstr ""
+"Project-Id-Version: finaryx\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Italiano\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "fr"
+msgstr "it"
+
+msgid "Aucun import"
+msgstr "Nessuna importazione"
+
+msgid "À jour"
+msgstr "Aggiornato"
+
+msgid "À mettre à jour"
+msgstr "Da aggiornare"
+
+msgid "{month} à importer"
+msgstr "{month} da importare"
+
+msgid "Logement"
+msgstr "Casa"
+
+msgid "Alimentation"
+msgstr "Alimentari"
+
+msgid "Transports"
+msgstr "Trasporti"
+
+msgid "Prêts et crédits"
+msgstr "Prestiti e crediti"
+
+msgid "Shopping et animaux"
+msgstr "Shopping e animali"
+
+msgid "Abonnements et télécoms"
+msgstr "Abbonamenti e telefonia"
+
+msgid "Banque et assurances"
+msgstr "Banca e assicurazioni"
+
+msgid "Autres"
+msgstr "Altro"
+
+msgid "Sorties et loisirs"
+msgstr "Uscite e tempo libero"
+
+msgid "Santé"
+msgstr "Salute"
+
+msgid "Impôts et taxes"
+msgstr "Imposte e tasse"
+
+msgid "Administratif et éducation"
+msgstr "Amministrazione e istruzione"
+
+msgid "Revenus"
+msgstr "Entrate"
+
+msgid "Virement interne"
+msgstr "Giroconto interno"
+
+msgid "Donnez un nom à la catégorie."
+msgstr "Dai un nome alla categoria."
+
+msgid "La catégorie « {name} » existe déjà."
+msgstr "La categoria «{name}» esiste già."
+
+msgid "Cette couleur est déjà utilisée par « {name} »."
+msgstr "Questo colore è già usato da «{name}»."
+
+msgid "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée."
+msgstr "Finaryx ha bisogno di questa categoria: non può essere eliminata."
+
+msgid "« Autres » garde toujours le gris."
+msgstr "«Altro» mantiene sempre il grigio."
+
+msgid "Le motif de la règle est vide."
+msgstr "Il modello della regola è vuoto."
+
+msgid "Point-virgule ( ; )"
+msgstr "Punto e virgola ( ; )"
+
+msgid "Virgule ( , )"
+msgstr "Virgola ( , )"
+
+msgid "Tabulation"
+msgstr "Tabulazione"
+
+msgid "Barre verticale ( | )"
+msgstr "Barra verticale ( | )"
+
+msgid "JJ/MM/AAAA"
+msgstr "GG/MM/AAAA"
+
+msgid "AAAA-MM-JJ"
+msgstr "AAAA-MM-GG"
+
+msgid "JJ-MM-AA"
+msgstr "GG-MM-AA"
+
+msgid "MM/JJ/AAAA"
+msgstr "MM/GG/AAAA"
+
+msgid "Ignorer"
+msgstr "Ignora"
+
+msgid "Date de l’opération"
+msgstr "Data del movimento"
+
+msgid "Date de comptabilisation"
+msgstr "Data contabile"
+
+msgid "Date de valeur"
+msgstr "Data valuta"
+
+msgid "Libellé"
+msgstr "Descrizione"
+
+msgid "Détail du libellé"
+msgstr "Dettaglio della descrizione"
+
+msgid "Montant"
+msgstr "Importo"
+
+msgid "Débit"
+msgstr "Addebito"
+
+msgid "Crédit"
+msgstr "Accredito"
+
+msgid "Sens (débit ou crédit)"
+msgstr "Segno (addebito o accredito)"
+
+msgid "Référence de la banque"
+msgstr "Riferimento della banca"
+
+msgid "Solde après l’opération"
+msgstr "Saldo dopo il movimento"
+
+msgid "Devise"
+msgstr "Valuta"
+
+msgid "Catégorie de la banque"
+msgstr "Categoria della banca"
+
+msgid "Sous-catégorie de la banque"
+msgstr "Sottocategoria della banca"
+
+msgid "Une colonne"
+msgstr "Una colonna"
+
+msgid "Débit et crédit"
+msgstr "Addebito e accredito"
+
+msgid "Montant et sens"
+msgstr "Importo e segno"
+
+msgid "une date illisible"
+msgstr "una data illeggibile"
+
+msgid "un libellé vide"
+msgstr "una descrizione vuota"
+
+msgid "un montant illisible"
+msgstr "un importo illeggibile"
+
+msgid "un sens (débit ou crédit) inconnu"
+msgstr "un segno (addebito o accredito) sconosciuto"
+
+msgid "une autre devise que celle du compte"
+msgstr "una valuta diversa da quella del conto"
+
+msgid "Associez une colonne à : {fields}."
+msgstr "Associa una colonna a: {fields}."
+
+msgid "{n} ligne a {problem} : ligne {lines}"
+msgid_plural "{n} lignes ont {problem} : lignes {lines}"
+msgstr[0] "{n} riga ha {problem}: riga {lines}"
+msgstr[1] "{n} righe hanno {problem}: righe {lines}"
+
+msgid "Finaryx"
+msgstr "Finaryx"
+
+msgid "Suivez vos comptes bancaires, sans rien envoyer en ligne"
+msgstr "Segui i tuoi conti bancari senza inviare nulla online"
+
+msgid "banque;budget;compte;dépenses;finances;CSV;"
+msgstr "banca;budget;conto;spese;finanze;denaro;CSV;"
+
+msgid "Style"
+msgstr "Stile"
+
+msgid "Suivre le style du système, ou forcer le style clair ou sombre."
+msgstr "Segui lo stile del sistema o forza lo stile chiaro o scuro."
+
+msgid "Largeur de la fenêtre"
+msgstr "Larghezza della finestra"
+
+msgid "Hauteur de la fenêtre"
+msgstr "Altezza della finestra"
+
+msgid "Sauvegarde automatique"
+msgstr "Backup automatico"
+
+msgid "Copier la base après chaque import et garder les 5 dernières copies."
+msgstr "Copia il database dopo ogni importazione e conserva le ultime 5 copie."
+
+msgid "Fenêtre maximisée"
+msgstr "Finestra massimizzata"
+
+msgid "Suivez vos comptes bancaires"
+msgstr "Segui i tuoi conti bancari"
+
+msgid "Finaryx importe les exports CSV de vos banques, les range dans une base locale et vous montre où part votre argent. Plusieurs comptes et plusieurs banques se suivent au même endroit, chacun dans sa devise."
+msgstr "Finaryx importa le esportazioni CSV delle tue banche, le salva in un database locale e ti mostra dove vanno i tuoi soldi. Più conti e più banche si seguono in un unico posto, ognuno nella propria valuta."
+
+msgid "Évolution du solde jour après jour, comparée au mois précédent"
+msgstr "Saldo giorno per giorno, confrontato con il mese precedente"
+
+msgid "Répartition des dépenses par catégorie et cumul sur 3, 6 ou 12 mois"
+msgstr "Spese per categoria e totali su 3, 6 o 12 mesi"
+
+msgid "Prévision du solde d’après vos charges récurrentes et vos habitudes, avec sa fourchette"
+msgstr "Previsione del saldo in base alle spese ricorrenti e alle tue abitudini, con il suo intervallo"
+
+msgid "Import guidé : détection du format, aperçu, doublons ignorés, annulation possible"
+msgstr "Importazione guidata: riconoscimento del formato, anteprima, duplicati ignorati, annullamento"
+
+msgid "Catégories, règles de classement et virements entre vos comptes"
+msgstr "Categorie, regole di classificazione e giroconti tra i tuoi conti"
+
+msgid "Sauvegarde, restauration et export CSV des opérations"
+msgstr "Backup, ripristino ed esportazione CSV dei movimenti"
+
+msgid "Vos données restent sur votre ordinateur : Finaryx ne fait aucune requête réseau et n’envoie aucune statistique d’usage."
+msgstr "I tuoi dati restano sul tuo computer: Finaryx non fa richieste di rete e non invia statistiche d’uso."
+
+msgid "DocteurScience"
+msgstr "DocteurScience"
+
+msgid "banque"
+msgstr "banca"
+
+msgid "budget"
+msgstr "budget"
+
+msgid "compte"
+msgstr "conto"
+
+msgid "dépenses"
+msgstr "spese"
+
+msgid "finances"
+msgstr "finanze"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "Vue d’ensemble du mois"
+msgstr "Panoramica del mese"
+
+msgid "Prévision du solde d’après vos habitudes"
+msgstr "Previsione del saldo in base alle tue abitudini"
+
+msgid "Le mois en détail"
+msgstr "Il mese in dettaglio"
+
+msgid "Cumul des dépenses par catégorie"
+msgstr "Totale delle spese per categoria"
+
+msgid "Vos comptes et l’historique des imports"
+msgstr "I tuoi conti e la cronologia delle importazioni"
+
+msgid "Thème sombre"
+msgstr "Stile scuro"
+
+msgid "Première version."
+msgstr "Prima versione."
+
+msgid "Import CSV avec profil Banque Populaire et mappage manuel pour les autres banques"
+msgstr "Importazione CSV con profilo Banque Populaire e associazione manuale per le altre banche"
+
+msgid "Vue d’ensemble, mois en détail, cumul et prévisions"
+msgstr "Panoramica, mese in dettaglio, totali e previsione"
+
+msgid "Catégories, règles et virements entre vos comptes"
+msgstr "Categorie, regole e giroconti tra i tuoi conti"
+
+msgid "Sauvegarde, restauration et export CSV"
+msgstr "Backup, ripristino ed esportazione CSV"
+
+msgid "Général"
+msgstr "Generale"
+
+msgid "Importer un CSV"
+msgstr "Importa CSV"
+
+msgid "Préférences"
+msgstr "Preferenze"
+
+msgid "Raccourcis clavier"
+msgstr "Scorciatoie da tastiera"
+
+msgid "Fermer la fenêtre"
+msgstr "Chiudi la finestra"
+
+msgid "Quitter"
+msgstr "Esci"
+
+msgid "Navigation"
+msgstr "Navigazione"
+
+msgid "Vue d'ensemble"
+msgstr "Panoramica"
+
+msgid "Mois en détail"
+msgstr "Mese in dettaglio"
+
+msgid "Cumul"
+msgstr "Totali"
+
+msgid "Prévisions"
+msgstr "Previsione"
+
+msgid "Comptes"
+msgstr "Conti"
+
+msgid "Opérations"
+msgstr "Movimenti"
+
+msgid "Rechercher un libellé"
+msgstr "Cerca una descrizione"
+
+msgid "Catégories et règles…"
+msgstr "Categorie e regole…"
+
+msgid "Exporter les données…"
+msgstr "Esporta i dati…"
+
+msgid "À propos de Finaryx"
+msgstr "Informazioni su Finaryx"
+
+msgid "Menu principal"
+msgstr "Menu principale"
+
+msgid "Navigation principale"
+msgstr "Navigazione principale"
+
+msgid "Dernier import"
+msgstr "Ultima importazione"
+
+msgid "Importer"
+msgstr "Importa"
+
+msgid "Ajouter un compte"
+msgstr "Aggiungi un conto"
+
+msgid "Ajouter"
+msgstr "Aggiungi"
+
+msgid "Démonstration : rien n’est enregistré"
+msgstr "Dimostrazione: non viene salvato nulla"
+
+msgid "Bienvenue dans Finaryx"
+msgstr "Benvenuto in Finaryx"
+
+msgid "Importez l’export CSV d’un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n’est envoyé en ligne."
+msgstr "Importa l’esportazione CSV di un conto per vedere dove vanno i tuoi soldi. Tutto resta sul tuo computer, nulla viene inviato online."
+
+msgid "Ajouter un compte d’abord"
+msgstr "Prima aggiungi un conto"
+
+msgid "Pour commencer"
+msgstr "Per iniziare"
+
+msgid "Exportez vos opérations en CSV"
+msgstr "Esporta i tuoi movimenti in CSV"
+
+msgid "Depuis le site ou l’application de votre banque, choisissez la période la plus longue possible."
+msgstr "Dal sito o dall’app della tua banca, scegli il periodo più lungo possibile."
+
+msgid "Importez le fichier dans Finaryx"
+msgstr "Importa il file in Finaryx"
+
+msgid "Le format Banque Populaire est reconnu. Pour les autres banques, vous associez les colonnes une seule fois."
+msgstr "Il formato Banque Populaire viene riconosciuto. Per le altre banche, associ le colonne una sola volta."
+
+msgid "Vérifiez les catégories"
+msgstr "Controlla le categorie"
+
+msgid "Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle."
+msgstr "I movimenti incerti sono segnati «Da verificare». Una correzione può diventare una regola."
+
+msgid "Impossible d’ouvrir la base de données"
+msgstr "Impossibile aprire il database"
+
+msgid "Nom"
+msgstr "Nome"
+
+msgid "Banque"
+msgstr "Banca"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Compte courant"
+msgstr "Conto corrente"
+
+msgid "Épargne"
+msgstr "Risparmio"
+
+msgid "Les totaux sont calculés séparément pour chaque devise."
+msgstr "I totali sono calcolati separatamente per ogni valuta."
+
+msgid "Numéro de compte (facultatif)"
+msgstr "Numero di conto (facoltativo)"
+
+msgid "Solde avant la première opération importée"
+msgstr "Saldo prima del primo movimento importato"
+
+msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
+msgstr "Lascia vuoto il saldo se è zero. Se il file importato ha una colonna del saldo, Finaryx proporrà di riallinearlo."
+
+msgid "Annuler"
+msgstr "Annulla"
+
+msgid "Enregistrer"
+msgstr "Salva"
+
+msgid "Modifier le compte"
+msgstr "Modifica il conto"
+
+msgid "Ouvrir des données de démonstration (rien n’est enregistré)"
+msgstr "Apri i dati di dimostrazione (non viene salvato nulla)"
+
+msgid "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée."
+msgstr "Monitoraggio dei conti bancari. I tuoi dati restano su questo computer: nessuna richiesta di rete, nessuna telemetria. Il database non è cifrato."
+
+msgid "Couleur dans les graphiques"
+msgstr "Colore nei grafici"
+
+msgid "Couleur {n}"
+msgstr "Colore {n}"
+
+msgid "Utilisée par {name}"
+msgstr "Usato da {name}"
+
+msgid "Libre"
+msgstr "Libero"
+
+msgid "Aucune couleur"
+msgstr "Nessun colore"
+
+msgid "Regroupée dans « Autres » dans les graphiques"
+msgstr "Raggruppata in «Altro» nei grafici"
+
+msgid "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie."
+msgstr "Tutti i colori sono occupati. Questa categoria sarà conteggiata in «Altro» nei grafici e separata ovunque altrove. Libera un colore togliendolo a un’altra categoria."
+
+msgid "Créer"
+msgstr "Crea"
+
+msgid "Nouvelle catégorie"
+msgstr "Nuova categoria"
+
+msgid "Modifier la catégorie"
+msgstr "Modifica la categoria"
+
+msgid "Fusionner dans"
+msgstr "Unisci a"
+
+msgid "Les opérations et les règles passent dans la catégorie choisie"
+msgstr "I movimenti e le regole passano alla categoria scelta"
+
+msgid "Fusionner…"
+msgstr "Unisci…"
+
+msgid "Supprimer la catégorie"
+msgstr "Elimina la categoria"
+
+msgid "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées."
+msgstr[0] "Il suo movimento passerà in «Altro», da verificare; le sue regole saranno eliminate."
+msgstr[1] "I suoi {n} movimenti passeranno in «Altro», da verificare; le sue regole saranno eliminate."
+
+msgid "Supprimer…"
+msgstr "Elimina…"
+
+msgid "Fusionner « {from} » dans « {into} » ?"
+msgstr "Unire «{from}» a «{into}»?"
+
+msgid "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgid_plural "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgstr[0] "{n} movimento e le regole di «{from}» passeranno a «{into}». I totali non cambiano."
+msgstr[1] "{n} movimenti e le regole di «{from}» passeranno a «{into}». I totali non cambiano."
+
+msgid "Fusionner"
+msgstr "Unisci"
+
+msgid "Catégories fusionnées"
+msgstr "Categorie unite"
+
+msgid "Supprimer « {name} » ?"
+msgstr "Eliminare «{name}»?"
+
+msgid "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées."
+msgstr[0] "Il suo movimento passerà in «Altro», segnato «Da verificare». Le sue regole saranno eliminate."
+msgstr[1] "I suoi {n} movimenti passeranno in «Altro», segnati «Da verificare». Le sue regole saranno eliminate."
+
+msgid "Supprimer"
+msgstr "Elimina"
+
+msgid "Catégorie supprimée"
+msgstr "Categoria eliminata"
+
+msgid "Compte"
+msgstr "Conto"
+
+msgid "Solde au {date}"
+msgstr "Saldo al {date}"
+
+msgid "Solde"
+msgstr "Saldo"
+
+msgid "{amount} en {month}"
+msgstr "{amount} a {month}"
+
+msgid "{n} opération enregistrée"
+msgid_plural "{n} opérations enregistrées"
+msgstr[0] "{n} movimento registrato"
+msgstr[1] "{n} movimenti registrati"
+
+msgid "Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}"
+msgstr "Saldo del conto in 6 mesi: da {start} a {from} a {end} a {to}"
+
+msgid "Aucune"
+msgstr "Nessuna"
+
+msgid "Modifier"
+msgstr "Modifica"
+
+msgid "Modifier : {field}"
+msgstr "Modifica: {field}"
+
+msgid "Réglages du compte"
+msgstr "Impostazioni del conto"
+
+msgid "Dernières opérations"
+msgstr "Ultimi movimenti"
+
+msgid "Tout voir"
+msgstr "Vedi tutto"
+
+msgid "Aucune opération"
+msgstr "Nessun movimento"
+
+msgid "Sans catégorie"
+msgstr "Senza categoria"
+
+msgid "À vérifier"
+msgstr "Da verificare"
+
+msgid "Désarchiver le compte"
+msgstr "Ripristina il conto"
+
+msgid "Il revient dans les totaux."
+msgstr "Torna nei totali."
+
+msgid "Désarchiver"
+msgstr "Ripristina"
+
+msgid "Archiver le compte"
+msgstr "Archivia il conto"
+
+msgid "Il disparaît des totaux, ses opérations restent consultables."
+msgstr "Esce dai totali; i suoi movimenti restano consultabili."
+
+msgid "Archiver"
+msgstr "Archivia"
+
+msgid "Supprimer le compte et ses opérations"
+msgstr "Elimina il conto e i suoi movimenti"
+
+msgid "Action définitive, {n} opération serait effacée."
+msgid_plural "Action définitive, {n} opérations seraient effacées."
+msgstr[0] "Definitivo: verrebbe cancellato {n} movimento."
+msgstr[1] "Definitivo: verrebbero cancellati {n} movimenti."
+
+msgid "Zone sensible"
+msgstr "Zona pericolosa"
+
+msgid "compte courant"
+msgstr "conto corrente"
+
+msgid "épargne"
+msgstr "risparmio"
+
+msgid "Solde de tous les comptes"
+msgstr "Saldo di tutti i conti"
+
+msgid "Solde des comptes en {currency}"
+msgstr "Saldo dei conti in {currency}"
+
+msgid "Vos comptes"
+msgstr "I tuoi conti"
+
+msgid "Comptes archivés"
+msgstr "Conti archiviati"
+
+msgid "Ils ne comptent pas dans les totaux."
+msgstr "Non contano nei totali."
+
+msgid "{n} opération"
+msgid_plural "{n} opérations"
+msgstr[0] "{n} movimento"
+msgstr[1] "{n} movimenti"
+
+msgid "Importé le {date}"
+msgstr "Importato il {date}"
+
+msgid "Dernier import le {date}"
+msgstr "Ultima importazione il {date}"
+
+msgid "Ajoutez un export CSV pour voir ses opérations"
+msgstr "Aggiungi un’esportazione CSV per vederne i movimenti"
+
+msgid "Évolution du solde sur 6 mois : en hausse de {amount}"
+msgstr "Saldo in 6 mesi: in aumento di {amount}"
+
+msgid "Évolution du solde sur 6 mois : en baisse de {amount}"
+msgstr "Saldo in 6 mesi: in calo di {amount}"
+
+msgid "Historique des imports"
+msgstr "Cronologia delle importazioni"
+
+msgid "Les doublons ne sont jamais enregistrés deux fois"
+msgstr "I duplicati non vengono mai registrati due volte"
+
+msgid "Importer un CSV…"
+msgstr "Importa CSV…"
+
+msgid "Aucun import pour l’instant"
+msgstr "Ancora nessuna importazione"
+
+msgid "{n} nouvelle"
+msgid_plural "{n} nouvelles"
+msgstr[0] "{n} nuovo"
+msgstr[1] "{n} nuovi"
+
+msgid "{n} ajoutée"
+msgid_plural "{n} ajoutées"
+msgstr[0] "{n} aggiunto"
+msgstr[1] "{n} aggiunti"
+
+msgid "{n} doublon"
+msgid_plural "{n} doublons"
+msgstr[0] "{n} duplicato"
+msgstr[1] "{n} duplicati"
+
+msgid "Annuler cet import"
+msgstr "Annulla questa importazione"
+
+msgid "Part du total"
+msgstr "Quota del totale"
+
+msgid "Part de chaque compte dans le solde total : {list}"
+msgstr "Quota di ogni conto nel saldo totale: {list}"
+
+msgid "catégorie par défaut, non supprimable"
+msgstr "categoria predefinita, non eliminabile"
+
+msgid "catégorie spéciale, comptée en revenus"
+msgstr "categoria speciale, conteggiata nelle entrate"
+
+msgid "catégorie spéciale, exclue des statistiques"
+msgstr "categoria speciale, esclusa dalle statistiche"
+
+msgid "couleur de graphique {n}"
+msgstr "colore del grafico {n}"
+
+msgid "sans couleur, regroupée dans « Autres » dans les graphiques"
+msgstr "senza colore, raggruppata in «Altro» nei grafici"
+
+msgid "Catégories et règles"
+msgstr "Categorie e regole"
+
+msgid "Catégories"
+msgstr "Categorie"
+
+msgid "Modifier la catégorie {name}"
+msgstr "Modifica la categoria {name}"
+
+msgid "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en la retirant à une autre catégorie."
+msgstr "I grafici mostrano al massimo 12 colori, più «Altro» in grigio. Una categoria senza colore è conteggiata in «Altro» nei grafici, ma resta separata in elenchi, filtri e tabelle. Un clic su «Altro» in un grafico ne mostra il dettaglio. Per dare un colore a una categoria, liberane uno togliendolo a un’altra."
+
+msgid "Le libellé correspond à « {pattern} »"
+msgstr "La descrizione corrisponde a «{pattern}»"
+
+msgid "Le libellé contient « {pattern} »"
+msgstr "La descrizione contiene «{pattern}»"
+
+msgid "Supprimer la règle"
+msgstr "Elimina la regola"
+
+msgid "Règle supprimée"
+msgstr "Regola eliminata"
+
+msgid "Aucune règle pour l’instant"
+msgstr "Ancora nessuna regola"
+
+msgid "Changez la catégorie d’une opération pour en créer une."
+msgstr "Cambia la categoria di un movimento per crearne una."
+
+msgid "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées."
+msgstr "Una correzione manuale su un movimento ha la precedenza sulle regole. Eliminare una regola non cambia i movimenti già classificati."
+
+msgid "Règles de catégorisation"
+msgstr "Regole di classificazione"
+
+msgid "Virements entre vos comptes"
+msgstr "Giroconti tra i tuoi conti"
+
+msgid "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils ne comptent ni en dépenses ni en revenus."
+msgstr "Un addebito e un accredito dello stesso importo su due tuoi conti, a non più di 3 giorni di distanza. Una volta confermati, non contano né come spese né come entrate."
+
+msgid "Tout confirmer"
+msgstr "Conferma tutti"
+
+msgid "{n} virement confirmé"
+msgid_plural "{n} virements confirmés"
+msgstr[0] "{n} giroconto confermato"
+msgstr[1] "{n} giroconti confermati"
+
+msgid "Ce n’est pas un virement"
+msgstr "Non è un giroconto"
+
+msgid "Confirmer"
+msgstr "Conferma"
+
+msgid "Virement confirmé"
+msgstr "Giroconto confermato"
+
+msgid "Aucun virement à confirmer"
+msgstr "Nessun giroconto da confermare"
+
+msgid "Noms du foyer"
+msgstr "Nomi della famiglia"
+
+msgid "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer en « Virement interne »."
+msgstr "I bonifici di un membro della famiglia non sono vere entrate. Finaryx propone di classificarli come «Giroconto interno»."
+
+msgid "Modifier les noms…"
+msgstr "Modifica i nomi…"
+
+msgid "{n} opération contient « {name} »"
+msgid_plural "{n} opérations contiennent « {name} »"
+msgstr[0] "{n} movimento contiene «{name}»"
+msgstr[1] "{n} movimenti contengono «{name}»"
+
+msgid "Crée la règle « le libellé contient {name} → Virement interne »"
+msgstr "Crea la regola «la descrizione contiene {name} → Giroconto interno»"
+
+msgid "Classer en virement interne"
+msgstr "Classifica come giroconto interno"
+
+msgid "Règle créée, {n} opération classée"
+msgid_plural "Règle créée, {n} opérations classées"
+msgstr[0] "Regola creata, {n} movimento classificato"
+msgstr[1] "Regola creata, {n} movimenti classificati"
+
+msgid "Aucun nom du foyer pour l’instant"
+msgstr "Ancora nessun nome della famiglia"
+
+msgid "Aucune opération à classer"
+msgstr "Nessun movimento da classificare"
+
+msgid "Ajoutez-les dans les préférences, par exemple votre nom et celui de votre conjoint."
+msgstr "Aggiungili nelle preferenze, per esempio il tuo nome e quello del tuo partner."
+
+msgid "Les opérations de ces noms sont déjà des virements internes."
+msgstr "I movimenti di questi nomi sono già giroconti interni."
+
+msgid "Période"
+msgstr "Periodo"
+
+msgid "{n} mois"
+msgstr "{n} mesi"
+
+msgid "Total sur {n} mois"
+msgstr "Totale su {n} mesi"
+
+msgid "Moyenne par mois"
+msgstr "Media mensile"
+
+msgid "Mois le plus chargé"
+msgstr "Mese più costoso"
+
+msgid "Mois le plus léger"
+msgstr "Mese più leggero"
+
+msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
+msgstr "La percentuale è la quota della categoria nelle spese del mese. Le quote troppo piccole per essere scritte sono nella tabella sotto."
+
+msgid "Mois par mois, par catégorie"
+msgstr "Mese per mese, per categoria"
+
+msgid "Catégorie"
+msgstr "Categoria"
+
+msgid "Par mois"
+msgstr "Al mese"
+
+msgid "Total"
+msgstr "Totale"
+
+msgid "Part de chaque catégorie sur la période et montant cumulé."
+msgstr "Quota di ogni categoria nel periodo e importo cumulato."
+
+msgid "Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois."
+msgstr "Le colonne dei mesi indicano la quota della categoria; la riga Totale indica le spese del mese."
+
+msgid "Part de chaque catégorie"
+msgstr "Quota di ogni categoria"
+
+msgid "{from} à {to}"
+msgstr "Da {from} a {to}"
+
+msgid "Ce fichier n’est pas une sauvegarde Finaryx."
+msgstr "Questo file non è un backup di Finaryx."
+
+msgid "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir."
+msgstr "Questo backup proviene da una versione più recente di Finaryx: aggiorna l’applicazione per aprirlo."
+
+msgid "Ce fichier n’est pas une base de données lisible."
+msgstr "Questo file non è un database leggibile."
+
+msgid "Le fichier n’a pas pu être écrit ou lu : {error}"
+msgstr "Impossibile scrivere o leggere il file: {error}"
+
+msgid "Exporter les données"
+msgstr "Esporta i dati"
+
+msgid "Toutes les opérations"
+msgstr "Tutti i movimenti"
+
+msgid "Dernier mois"
+msgstr "Ultimo mese"
+
+msgid "{n} derniers mois"
+msgstr "Ultimi {n} mesi"
+
+msgid "Période choisie"
+msgstr "Periodo scelto"
+
+msgid "Français"
+msgstr "Francese"
+
+msgid "Du (JJ/MM/AAAA)"
+msgstr "Dal (GG/MM/AAAA)"
+
+msgid "Au (JJ/MM/AAAA)"
+msgstr "Al (GG/MM/AAAA)"
+
+msgid "Exporter la base de données"
+msgstr "Esporta il database"
+
+msgid "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne."
+msgstr "I tuoi dati restano sul tuo computer. Un’esportazione crea una copia nella cartella che scegli; nulla viene inviato online."
+
+msgid "Sauvegarde complète"
+msgstr "Backup completo"
+
+msgid "Exporter…"
+msgstr "Esporta…"
+
+msgid "Restaurer une sauvegarde"
+msgstr "Ripristina un backup"
+
+msgid "Remplace les données actuelles. Une copie de sécurité est faite avant."
+msgstr "Sostituisce i dati attuali. Prima viene fatta una copia di sicurezza."
+
+msgid "Restaurer…"
+msgstr "Ripristina…"
+
+msgid "Exporter en CSV"
+msgstr "Esporta in CSV"
+
+msgid "Séparateur et décimales"
+msgstr "Separatore e decimali"
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid "Format du CSV"
+msgstr "Formato del CSV"
+
+msgid "Exporter en CSV…"
+msgstr "Esporta in CSV…"
+
+msgid "Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français."
+msgstr "Punto e virgola e virgola decimale: si apre direttamente in un foglio di calcolo in francese."
+
+msgid "Virgule et point décimal : le format le plus courant hors de France."
+msgstr "Virgola e punto decimale: il formato più diffuso fuori dalla Francia."
+
+msgid "Copier la base après chaque import"
+msgstr "Copia il database dopo ogni importazione"
+
+msgid "Garde les {n} dernières copies dans {dir}."
+msgstr "Conserva le ultime {n} copie in {dir}."
+
+msgid "Désactivée en démonstration : rien n’est enregistré."
+msgstr "Disattivato nella dimostrazione: non viene salvato nulla."
+
+msgid "La base n’est pas chiffrée : gardez les exports dans un dossier privé."
+msgstr "Il database non è cifrato: conserva le esportazioni in una cartella privata."
+
+msgid "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles."
+msgstr "Copia esatta del file finaryx.db (SQLite): conti, movimenti, categorie e regole."
+
+msgid "Tous les comptes"
+msgstr "Tutti i conti"
+
+msgid "Date, libellé, montant, catégorie, compte, banque."
+msgstr "Data, descrizione, importo, categoria, conto, banca."
+
+msgid "Choisissez les deux dates."
+msgstr "Scegli le due date."
+
+msgid "depuis {month}"
+msgstr "da {month}"
+
+msgid "{n} ligne avec ces réglages"
+msgid_plural "{n} lignes avec ces réglages"
+msgstr[0] "{n} riga con queste impostazioni"
+msgstr[1] "{n} righe con queste impostazioni"
+
+msgid "Base exportée"
+msgstr "Database esportato"
+
+msgid "Choisissez les deux dates de la période."
+msgstr "Scegli le due date del periodo."
+
+msgid "{n} opération exportée"
+msgid_plural "{n} opérations exportées"
+msgstr[0] "{n} movimento esportato"
+msgstr[1] "{n} movimenti esportati"
+
+msgid "Sauvegardes Finaryx"
+msgstr "Backup di Finaryx"
+
+msgid "Ouvrir le dossier"
+msgstr "Apri la cartella"
+
+msgid "Cette sauvegarde contient {accounts} compte et {operations}."
+msgid_plural "Cette sauvegarde contient {accounts} comptes et {operations}."
+msgstr[0] "Questo backup contiene {accounts} conto e {operations}."
+msgstr[1] "Questo backup contiene {accounts} conti e {operations}."
+
+msgid "Les données actuelles seront remplacées. Une copie de sécurité est d’abord enregistrée dans {dir}."
+msgstr "I dati attuali saranno sostituiti. Prima viene salvata una copia di sicurezza in {dir}."
+
+msgid "Les données de démonstration seront remplacées, en mémoire seulement."
+msgstr "I dati di dimostrazione saranno sostituiti, solo in memoria."
+
+msgid "Restaurer cette sauvegarde ?"
+msgstr "Ripristinare questo backup?"
+
+msgid "Restaurer"
+msgstr "Ripristina"
+
+msgid "Sauvegarde restaurée"
+msgstr "Backup ripristinato"
+
+msgid "le 1er"
+msgstr "il giorno 1"
+
+msgid "le {day}"
+msgstr "il giorno {day}"
+
+msgid "Solde en fin de mois"
+msgstr "Saldo a fine mese"
+
+msgid "{month} · prévu"
+msgstr "{month} · previsto"
+
+msgid "Fourchette"
+msgstr "Intervallo"
+
+msgid "Dépenses attendues <b>{spending}</b> · revenus <b>{income}</b>"
+msgstr "Spese previste <b>{spending}</b> · entrate <b>{income}</b>"
+
+msgid "Aujourd’hui"
+msgstr "Oggi"
+
+msgid "Dernière opération"
+msgstr "Ultimo movimento"
+
+msgid "{month} : pic de dépenses\nattendu ({amount})"
+msgstr "{month}: picco di spese\nprevisto ({amount})"
+
+msgid "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}"
+msgstr "Saldo a fine mese: {real} a {month}, previsto a {end} a {last}, con un intervallo da {low} a {high}"
+
+msgid "Prévu"
+msgstr "Previsto"
+
+msgid "Fourchette probable"
+msgstr "Intervallo probabile"
+
+msgid "Pas encore assez de données pour une prévision"
+msgstr "Non ci sono ancora dati sufficienti per una previsione"
+
+msgid "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgid_plural "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgstr[0] "Finaryx ha bisogno di almeno 3 mesi di movimenti per conoscere le tue abitudini. Manca {n} mese: importa un’esportazione più vecchia per sbloccare questa vista."
+msgstr[1] "Finaryx ha bisogno di almeno 3 mesi di movimenti per conoscere le tue abitudini. Mancano {n} mesi: importa un’esportazione più vecchia per sbloccare questa vista."
+
+msgid "Importer un export plus ancien"
+msgstr "Importa un’esportazione più vecchia"
+
+msgid "Habitudes calculées sur"
+msgstr "Abitudini calcolate su"
+
+msgid "Période de référence"
+msgstr "Periodo di riferimento"
+
+msgid "Horizon"
+msgstr "Orizzonte"
+
+msgid "Horizon de prévision"
+msgstr "Orizzonte della previsione"
+
+msgid "{low} à {high}"
+msgstr "Da {low} a {high}"
+
+msgid "Fin {month} (prévu)"
+msgstr "Fine {month} (previsto)"
+
+msgid "Solde fin {month} (prévu)"
+msgstr "Saldo a fine {month} (previsto)"
+
+msgid "Fourchette : {range}"
+msgstr "Intervallo: {range}"
+
+msgid "Dépenses prévues"
+msgstr "Spese previste"
+
+msgid "{amount} / mois"
+msgstr "{amount} / mese"
+
+msgid "Moyenne sur le mois à venir"
+msgid_plural "Moyenne sur les {n} mois à venir"
+msgstr[0] "Media del prossimo mese"
+msgstr[1] "Media dei prossimi {n} mesi"
+
+msgid "Salaire détecté {day} du mois"
+msgstr "Stipendio rilevato {day} del mese"
+
+msgid "{label} détecté {day} du mois"
+msgstr "{label} rilevato {day} del mese"
+
+msgid "Aucun revenu régulier détecté"
+msgstr "Nessuna entrata regolare rilevata"
+
+msgid "Revenus réguliers"
+msgstr "Entrate regolari"
+
+msgid "Réel de {from} à {to}, prévu de {first} à {last}"
+msgstr "Reale da {from} a {to}, previsto da {first} a {last}"
+
+msgid "Réel"
+msgstr "Reale"
+
+msgid "Estimation d’après vos charges récurrentes et vos dépenses moyennes. La fourchette s’élargit avec l’horizon."
+msgstr "Stima basata sulle spese ricorrenti e sulle spese medie. L’intervallo si allarga con l’orizzonte."
+
+msgid "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre."
+msgstr "Stima calcolata dalle tue spese ricorrenti e dalla media delle tue spese variabili. L’intervallo si allarga con l’orizzonte: più si guarda lontano, meno la previsione è sicura."
+
+msgid "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgid_plural "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgstr[0] "Abitudini calcolate su {n} mese: la cronologia non va più indietro."
+msgstr[1] "Abitudini calcolate su {n} mesi: la cronologia non va più indietro."
+
+msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
+msgstr "Stagionalità non considerata: meno di 12 mesi di cronologia."
+
+msgid "{month} (en cours)"
+msgstr "{month} (in corso)"
+
+msgid "{amount} de dépenses"
+msgstr "{amount} di spese"
+
+msgid "{income} de revenus · {spending}"
+msgstr "{income} di entrate · {spending}"
+
+msgid "{amount} sur le mois"
+msgstr "{amount} nel mese"
+
+msgid "Charges fixes"
+msgstr "Spese fisse"
+
+msgid "Aucune charge récurrente détectée"
+msgstr "Nessuna spesa ricorrente rilevata"
+
+msgid "Une charge est récurrente quand le même libellé revient chaque mois, pour un montant proche."
+msgstr "Una spesa è ricorrente quando la stessa descrizione torna ogni mese con un importo simile."
+
+msgid "Mois par mois"
+msgstr "Mese per mese"
+
+msgid "Charges récurrentes détectées"
+msgstr "Spese ricorrenti rilevate"
+
+msgid "Choisir un fichier…"
+msgstr "Scegli un file…"
+
+msgid "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est enregistré avant votre confirmation."
+msgstr "Scegli l’esportazione CSV di un conto o trascinala qui. Il file non viene mai modificato e nulla viene salvato prima della tua conferma."
+
+msgid "Fichiers CSV"
+msgstr "File CSV"
+
+msgid "Tous les fichiers"
+msgstr "Tutti i file"
+
+msgid "Choisir un export CSV"
+msgstr "Scegli un’esportazione CSV"
+
+msgid "fichier"
+msgstr "file"
+
+msgid "Impossible de lire le fichier : {error}"
+msgstr "Impossibile leggere il file: {error}"
+
+msgid "Le fichier ne se lit pas encore correctement"
+msgstr "Il file non si legge ancora correttamente"
+
+msgid "{n} ligne"
+msgid_plural "{n} lignes"
+msgstr[0] "{n} riga"
+msgstr[1] "{n} righe"
+
+msgid "{n} colonne"
+msgid_plural "{n} colonnes"
+msgstr[0] "{n} colonna"
+msgstr[1] "{n} colonne"
+
+msgid "Changer…"
+msgstr "Cambia…"
+
+msgid "Compte de destination"
+msgstr "Conto di destinazione"
+
+msgid "Aucun compte pour l’instant : créez celui qui recevra ces opérations."
+msgstr "Ancora nessun conto: crea quello che riceverà questi movimenti."
+
+msgid "Créer un compte…"
+msgstr "Crea un conto…"
+
+msgid "Nouveau compte…"
+msgstr "Nuovo conto…"
+
+msgid "Les opérations seront ajoutées à ce compte"
+msgstr "I movimenti saranno aggiunti a questo conto"
+
+msgid "Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin."
+msgstr "Formato riconosciuto: {name}. Le colonne sono associate; controllale se serve."
+
+msgid "Reconnu"
+msgstr "Riconosciuto"
+
+msgid "Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."
+msgstr "Formato mai importato: associa le colonne qui sotto. La prossima volta sarà riconosciuto."
+
+msgid "Nouveau format"
+msgstr "Nuovo formato"
+
+msgid "Modèle de banque"
+msgstr "Formato della banca"
+
+msgid "Fichier"
+msgstr "File"
+
+msgid "Encodage"
+msgstr "Codifica"
+
+msgid "Séparateur de colonnes"
+msgstr "Separatore di colonne"
+
+msgid "Ligne des en-têtes"
+msgstr "Riga delle intestazioni"
+
+msgid "Ligne {n}"
+msgstr "Riga {n}"
+
+msgid "Format des dates"
+msgstr "Formato delle date"
+
+msgid "À vérifier : les jours et les mois peuvent être inversés"
+msgstr "Da verificare: giorni e mesi potrebbero essere invertiti"
+
+msgid "Séparateur décimal"
+msgstr "Separatore decimale"
+
+msgid "Point ( . )"
+msgstr "Punto ( . )"
+
+msgid "Format du fichier"
+msgstr "Formato del file"
+
+msgid "Détecté automatiquement, à corriger si la lecture est mauvaise"
+msgstr "Rilevato automaticamente; correggilo se il file viene letto male"
+
+msgid "Colonnes du fichier"
+msgstr "Colonne del file"
+
+msgid "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer »."
+msgstr "Indica a cosa serve ogni colonna del file. Le colonne inutili restano su «Ignora»."
+
+msgid "Comment le montant est écrit"
+msgstr "Come è scritto l’importo"
+
+msgid "Écriture du montant"
+msgstr "Scrittura dell’importo"
+
+msgid "Exemple : (vide)"
+msgstr "Esempio: (vuoto)"
+
+msgid "Exemple : {value}"
+msgstr "Esempio: {value}"
+
+msgid "Champ pour la colonne {column}"
+msgstr "Campo per la colonna {column}"
+
+msgid "Valeurs pour un débit"
+msgstr "Valori per un addebito"
+
+msgid "Valeurs pour un crédit"
+msgstr "Valori per un accredito"
+
+msgid "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas."
+msgstr "Separa i valori con virgole; maiuscole e accenti non contano."
+
+msgid "Exclue"
+msgstr "Esclusa"
+
+msgid "Reconnue"
+msgstr "Riconosciuta"
+
+msgid "Proposée"
+msgstr "Proposta"
+
+msgid "Catégorie de Finaryx pour {bank}"
+msgstr "Categoria di Finaryx per {bank}"
+
+msgid "Afficher moins"
+msgstr "Mostra meno"
+
+msgid "Voir la correspondance"
+msgid_plural "Voir les {n} correspondances"
+msgstr[0] "Vedi la corrispondenza"
+msgstr[1] "Vedi le {n} corrispondenze"
+
+msgid "Catégories de la banque"
+msgstr "Categorie della banca"
+
+msgid "La banque classe déjà ses opérations. Choisissez la catégorie de Finaryx qui correspond à chacune."
+msgstr "La banca classifica già i suoi movimenti. Scegli la categoria di Finaryx che corrisponde a ciascuna."
+
+msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
+msgstr "Questa corrispondenza è salvata con il formato. Una categoria della banca che comparirà in seguito ti sarà chiesta qui."
+
+msgid "Aperçu"
+msgstr "Anteprima"
+
+msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
+msgstr "Prime cinque righe, categorie secondo la corrispondenza sopra"
+
+msgid "Choisissez ou créez le compte de destination pour voir l’aperçu."
+msgstr "Scegli o crea il conto di destinazione per vedere l’anteprima."
+
+msgid "L’aperçu apparaîtra quand les colonnes obligatoires seront associées."
+msgstr "L’anteprima comparirà quando le colonne obbligatorie saranno associate."
+
+msgid "Nouveau"
+msgstr "Nuovo"
+
+msgid "Doublon"
+msgstr "Duplicato"
+
+msgid "Aucune ligne lisible"
+msgstr "Nessuna riga leggibile"
+
+msgid "Ces lignes ne seront pas importées."
+msgstr "Queste righe non saranno importate."
+
+msgid "La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible."
+msgstr "La colonna del saldo non segue gli importi: riga {lines}. L’importazione resta possibile."
+
+msgid "À savoir avant d’importer"
+msgstr "Prima di importare"
+
+msgid "Lignes lues"
+msgstr "Righe lette"
+
+msgid "Nouvelles opérations"
+msgstr "Nuovi movimenti"
+
+msgid "Doublons ignorés"
+msgstr "Duplicati ignorati"
+
+msgid "À vérifier (catégorie incertaine)"
+msgstr "Da verificare (categoria incerta)"
+
+msgid "Lignes illisibles, non importées"
+msgstr "Righe illeggibili, non importate"
+
+msgid "Recaler le solde initial"
+msgstr "Riallinea il saldo iniziale"
+
+msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
+msgstr "Secondo la colonna del saldo, il saldo prima del primo movimento importato diventa {amount}."
+
+msgid "Retenir ce format"
+msgstr "Ricorda questo formato"
+
+msgid "Le prochain fichier de cette banque sera lu sans rien demander"
+msgstr "Il prossimo file di questa banca sarà letto senza chiedere nulla"
+
+msgid "Nom du format"
+msgstr "Nome del formato"
+
+msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
+msgstr "Un duplicato ha la stessa data, la stessa descrizione, lo stesso importo e lo stesso riferimento di un movimento già registrato. I tuoi file non vengono mai modificati."
+
+msgid "Résumé"
+msgstr "Riepilogo"
+
+msgid "Aucune nouvelle opération"
+msgstr "Nessun nuovo movimento"
+
+msgid "Importer {n} opération"
+msgid_plural "Importer {n} opérations"
+msgstr[0] "Importa {n} movimento"
+msgstr[1] "Importa {n} movimenti"
+
+msgid "{n} opération importée"
+msgid_plural "{n} opérations importées"
+msgstr[0] "{n} movimento importato"
+msgstr[1] "{n} movimenti importati"
+
+msgid "{n} doublon ignoré"
+msgid_plural "{n} doublons ignorés"
+msgstr[0] "{n} duplicato ignorato"
+msgstr[1] "{n} duplicati ignorati"
+
+msgid "Mois"
+msgstr "Mese"
+
+msgid "Compte affiché"
+msgstr "Conto visualizzato"
+
+msgid "{n} Ko"
+msgstr "{n} KB"
+
+msgid "{n} Mo"
+msgstr "{n} MB"
+
+msgid "Non classé"
+msgstr "Non classificato"
+
+msgid "{month} · {amount} regroupés dans « Autres » dans les graphiques"
+msgstr "{month} · {amount} raggruppati in «Altro» nei grafici"
+
+msgid "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et les tableaux les montrent séparément."
+msgstr "I grafici mostrano al massimo 12 colori, più «Altro» in grigio. Le categorie senza colore sono conteggiate qui; elenchi e tabelle le mostrano separate."
+
+msgid "Gérer les couleurs…"
+msgstr "Gestisci i colori…"
+
+msgid "Fermer"
+msgstr "Chiudi"
+
+msgid "Détail de « Autres »"
+msgstr "Dettaglio di «Altro»"
+
+msgid "Mois précédent : {month}"
+msgstr "Mese precedente: {month}"
+
+msgid "Mois suivant : {month}"
+msgstr "Mese successivo: {month}"
+
+msgid "{first} le 1er, {last} au {day} {month}"
+msgstr "{first} il giorno 1, {last} il {day} {month}"
+
+msgid "Solde {of_month}"
+msgstr "Saldo di {of_month}"
+
+msgid "Dépenses du jour"
+msgstr "Spese del giorno"
+
+msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
+msgstr "Spese di ogni giorno di {of_month}; il giorno {day} spicca {peak}"
+
+msgid "Dépenses de chaque jour du mois"
+msgstr "Spese di ogni giorno del mese"
+
+msgid "Évolution du solde"
+msgstr "Andamento del saldo"
+
+msgid "Part"
+msgstr "Quota"
+
+msgid "vs {month}"
+msgstr "rispetto a {month}"
+
+msgid "Où part l’argent"
+msgstr "Dove vanno i soldi"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Nessun movimento questo mese"
+
+msgid "Rechercher une opération"
+msgstr "Cerca un movimento"
+
+msgid "Filtrer par catégorie"
+msgstr "Filtra per categoria"
+
+msgid "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les libellés identiques."
+msgstr "Un clic su una categoria cambia la categoria del movimento e propone di farne una regola per le descrizioni identiche."
+
+msgid "Toute la période"
+msgstr "Tutto il periodo"
+
+msgid "Toutes"
+msgstr "Tutte"
+
+msgid "toute la période"
+msgstr "tutto il periodo"
+
+msgid "{pct} % des dépenses"
+msgstr "{pct}% delle spese"
+
+msgid "Aucune opération ne correspond à ces filtres"
+msgstr "Nessun movimento corrisponde a questi filtri"
+
+msgid "Afficher la suivante"
+msgid_plural "Afficher les {n} suivantes"
+msgstr[0] "Mostra il successivo"
+msgstr[1] "Mostra i {n} successivi"
+
+msgid "Nouvelle catégorie…"
+msgstr "Nuova categoria…"
+
+msgid "Changer la catégorie de {label} (actuellement {category})"
+msgstr "Cambia la categoria di {label} (attuale: {category})"
+
+msgid "Créer une règle ?"
+msgstr "Creare una regola?"
+
+msgid "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports."
+msgstr "Le descrizioni che contengono <b>{pattern}</b> saranno classificate in <b>{category}</b> nelle prossime importazioni."
+
+msgid "Appliquer aux opérations existantes"
+msgstr "Applica ai movimenti esistenti"
+
+msgid "{n} opération sera modifiée, sauf celles corrigées à la main."
+msgid_plural "{n} opérations seront modifiées, sauf celles corrigées à la main."
+msgstr[0] "Sarà modificato {n} movimento, tranne quelli corretti a mano."
+msgstr[1] "Saranno modificati {n} movimenti, tranne quelli corretti a mano."
+
+msgid "Seulement cette opération"
+msgstr "Solo questo movimento"
+
+msgid "Créer la règle"
+msgstr "Crea la regola"
+
+msgid "Règle créée, {n} autre opération classée"
+msgid_plural "Règle créée, {n} autres opérations classées"
+msgstr[0] "Regola creata, {n} altro movimento classificato"
+msgstr[1] "Regola creata, altri {n} movimenti classificati"
+
+msgid "Règle créée"
+msgstr "Regola creata"
+
+msgid "Catégorie modifiée"
+msgstr "Categoria modificata"
+
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Spese del giorno <b>{amount}</b>"
+
+msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
+msgstr "Saldo di {month}: da {start} il giorno 1 a {end} il giorno {day}, confrontato con {previous}"
+
+msgid "Part des dépenses"
+msgstr "Quota delle spese"
+
+msgid "Écart vs {month}"
+msgstr "Differenza rispetto a {month}"
+
+msgid "cliquez pour le détail"
+msgstr "fai clic per il dettaglio"
+
+msgid "Anneau des dépenses {of_month} par catégorie, le détail est dans la liste"
+msgstr "Anello delle spese di {of_month} per categoria; il dettaglio è nell’elenco"
+
+msgid "dépensés"
+msgstr "spesi"
+
+msgid "Part du mois"
+msgstr "Quota del mese"
+
+msgid "Total du mois"
+msgstr "Totale del mese"
+
+msgid "Dépenses mensuelles empilées par catégorie, de {from} à {to}"
+msgstr "Spese mensili impilate per categoria, da {from} a {to}"
+
+msgid "Solde total"
+msgstr "Saldo totale"
+
+msgid "{amount} depuis le 1er {month}"
+msgstr "{amount} dal 1° {month}"
+
+msgid "{pct} % par rapport à {month}"
+msgstr "{pct}% rispetto a {month}"
+
+msgid "Dépenses {of_month}"
+msgstr "Spese di {of_month}"
+
+msgid "dont salaire {amount}"
+msgstr "di cui stipendio {amount}"
+
+msgid "dont {label} : {amount}"
+msgstr "di cui {label}: {amount}"
+
+msgid "Revenus {of_month}"
+msgstr "Entrate di {of_month}"
+
+msgid "{arrow} {amount} selon vos habitudes"
+msgstr "{arrow} {amount} secondo le tue abitudini"
+
+msgid "Pas encore assez de données"
+msgstr "Non ci sono ancora dati sufficienti"
+
+msgid "Solde de tous les comptes, jour après jour"
+msgstr "Saldo di tutti i conti, giorno per giorno"
+
+msgid "Solde du compte, jour après jour"
+msgstr "Saldo del conto, giorno per giorno"
+
+msgid "Évolution du mois"
+msgstr "Andamento del mese"
+
+msgid "Détail du mois"
+msgstr "Dettaglio del mese"
+
+msgid "{amount} dépensés de {from} à {to}"
+msgstr "{amount} spesi da {from} a {to}"
+
+msgid "Cumul sur 6 mois"
+msgstr "Totali su 6 mesi"
+
+msgid "Voir le cumul"
+msgstr "Vedi i totali"
+
+msgid "{month} · {amount} dépensés"
+msgstr "{month} · {amount} spesi"
+
+msgid "Par catégorie"
+msgstr "Per categoria"
+
+msgid "D’après vos dépenses du dernier mois"
+msgid_plural "D’après vos dépenses des {n} derniers mois"
+msgstr[0] "In base alle tue spese dell’ultimo mese"
+msgstr[1] "In base alle tue spese degli ultimi {n} mesi"
+
+msgid "Solde fin de mois"
+msgstr "Saldo a fine mese"
+
+msgid "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgid_plural "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgstr[0] "Una previsione richiede almeno 3 mesi di movimenti. Manca {n} mese."
+msgstr[1] "Una previsione richiede almeno 3 mesi di movimenti. Mancano {n} mesi."
+
+msgid "Prévision à 6 mois"
+msgstr "Previsione a 6 mesi"
+
+msgid "Pas encore d’opérations"
+msgstr "Ancora nessun movimento"
+
+msgid "Importez l’export CSV d’un compte pour voir cette vue."
+msgstr "Importa l’esportazione CSV di un conto per vedere questa vista."
+
+msgid "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé comme virement interne : ni dépense, ni revenu."
+msgstr "Il tuo nome, quello del tuo partner… Un bonifico la cui descrizione contiene uno di questi nomi è proposto come giroconto interno: né spesa né entrata."
+
+msgid "Retirer ce nom"
+msgstr "Rimuovi questo nome"
+
+msgid "Ajouter un nom"
+msgstr "Aggiungi un nome"
+
+msgid "Suivre le système"
+msgstr "Segui il sistema"
+
+msgid "Clair"
+msgstr "Chiaro"
+
+msgid "Sombre"
+msgstr "Scuro"
+
+msgid "Apparence"
+msgstr "Aspetto"
+
+msgid "Confidentialité"
+msgstr "Riservatezza"
+
+msgid "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune requête réseau. La base de données n’est pas chiffrée."
+msgstr "Tutti i tuoi dati restano su questo computer. Finaryx non fa richieste di rete. Il database non è cifrato."
+
+msgid "Impossible de lire la base de données."
+msgstr "Impossibile leggere il database."
+
+msgid "{n} compte"
+msgid_plural "{n} comptes"
+msgstr[0] "{n} conto"
+msgstr[1] "{n} conti"
+
+msgid "{n} banque"
+msgid_plural "{n} banques"
+msgstr[0] "{n} banca"
+msgstr[1] "{n} banche"
+
+msgid "{n} virement entre vos comptes à confirmer"
+msgid_plural "{n} virements entre vos comptes à confirmer"
+msgstr[0] "{n} giroconto tra i tuoi conti da confermare"
+msgstr[1] "{n} giroconti tra i tuoi conti da confermare"
+
+msgid "Voir"
+msgstr "Vedi"
+
+msgid "La copie de sauvegarde automatique a échoué : {error}"
+msgstr "Il backup automatico non è riuscito: {error}"
+
+msgid "La base de données n’est pas ouverte."
+msgstr "Il database non è aperto."
+
+msgid "La modification n’a pas pu être enregistrée : {error}"
+msgstr "Impossibile salvare la modifica: {error}"
+
+msgid "Compte ajouté"
+msgstr "Conto aggiunto"
+
+msgid "Compte archivé"
+msgstr "Conto archiviato"
+
+msgid "Compte désarchivé"
+msgstr "Conto ripristinato"
+
+msgid "Le compte, son historique d’import et {n} opération seront effacés définitivement."
+msgid_plural "Le compte, son historique d’import et ses {n} opérations seront effacés définitivement."
+msgstr[0] "Il conto, la sua cronologia di importazione e {n} movimento saranno cancellati definitivamente."
+msgstr[1] "Il conto, la sua cronologia di importazione e i suoi {n} movimenti saranno cancellati definitivamente."
+
+msgid "Compte supprimé, {n} opération effacée"
+msgid_plural "Compte supprimé, {n} opérations effacées"
+msgstr[0] "Conto eliminato, {n} movimento cancellato"
+msgstr[1] "Conto eliminato, {n} movimenti cancellati"
+
+msgid "sans nom"
+msgstr "senza nome"
+
+msgid "Annuler cet import ?"
+msgstr "Annullare questa importazione?"
+
+msgid "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés."
+msgid_plural "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés."
+msgstr[0] "Sarà eliminato {n} movimento aggiunto da «{file}» su {account}. Le altre importazioni non cambiano."
+msgstr[1] "Saranno eliminati i {n} movimenti aggiunti da «{file}» su {account}. Le altre importazioni non cambiano."
+
+msgid "Garder"
+msgstr "Mantieni"
+
+msgid "Supprimer les opérations"
+msgstr "Elimina i movimenti"
+
+msgid "Import annulé"
+msgstr "Importazione annullata"

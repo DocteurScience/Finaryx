@@ -52,6 +52,7 @@ impl CumulativePage {
         for n in PERIODS {
             let button = gtk::ToggleButton::builder()
                 .label(gettext("{n} mois").replace("{n}", &n.to_string()))
+                .css_classes(["period"])
                 .active(n == 6)
                 .build();
             if let Some(f) = &first {

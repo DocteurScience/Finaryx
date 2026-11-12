@@ -1,0 +1,1702 @@
+# Finaryx — Nederlands
+# Generated from po/translations.csv by build-aux/translations.py: edit the table.
+msgid ""
+msgstr ""
+"Project-Id-Version: finaryx\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Nederlands\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "fr"
+msgstr "nl"
+
+msgid "Aucun import"
+msgstr "Geen import"
+
+msgid "À jour"
+msgstr "Bijgewerkt"
+
+msgid "À mettre à jour"
+msgstr "Bijwerken"
+
+msgid "{month} à importer"
+msgstr "{month} importeren"
+
+msgid "Logement"
+msgstr "Wonen"
+
+msgid "Alimentation"
+msgstr "Boodschappen"
+
+msgid "Transports"
+msgstr "Vervoer"
+
+msgid "Prêts et crédits"
+msgstr "Leningen en kredieten"
+
+msgid "Shopping et animaux"
+msgstr "Winkelen en huisdieren"
+
+msgid "Abonnements et télécoms"
+msgstr "Abonnementen en telecom"
+
+msgid "Banque et assurances"
+msgstr "Bank en verzekeringen"
+
+msgid "Autres"
+msgstr "Overig"
+
+msgid "Sorties et loisirs"
+msgstr "Uitgaan en vrije tijd"
+
+msgid "Santé"
+msgstr "Gezondheid"
+
+msgid "Impôts et taxes"
+msgstr "Belastingen en heffingen"
+
+msgid "Administratif et éducation"
+msgstr "Administratie en onderwijs"
+
+msgid "Revenus"
+msgstr "Inkomsten"
+
+msgid "Virement interne"
+msgstr "Interne overboeking"
+
+msgid "Donnez un nom à la catégorie."
+msgstr "Geef de categorie een naam."
+
+msgid "La catégorie « {name} » existe déjà."
+msgstr "De categorie ‘{name}’ bestaat al."
+
+msgid "Cette couleur est déjà utilisée par « {name} »."
+msgstr "Deze kleur wordt al gebruikt door ‘{name}’."
+
+msgid "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée."
+msgstr "Finaryx heeft deze categorie nodig: ze kan niet worden verwijderd."
+
+msgid "« Autres » garde toujours le gris."
+msgstr "‘Overig’ houdt altijd het grijs."
+
+msgid "Le motif de la règle est vide."
+msgstr "Het patroon van de regel is leeg."
+
+msgid "Point-virgule ( ; )"
+msgstr "Puntkomma ( ; )"
+
+msgid "Virgule ( , )"
+msgstr "Komma ( , )"
+
+msgid "Tabulation"
+msgstr "Tab"
+
+msgid "Barre verticale ( | )"
+msgstr "Verticale streep ( | )"
+
+msgid "JJ/MM/AAAA"
+msgstr "DD-MM-JJJJ"
+
+msgid "AAAA-MM-JJ"
+msgstr "JJJJ-MM-DD"
+
+msgid "JJ-MM-AA"
+msgstr "DD-MM-JJ"
+
+msgid "MM/JJ/AAAA"
+msgstr "MM/DD/JJJJ"
+
+msgid "Ignorer"
+msgstr "Negeren"
+
+msgid "Date de l’opération"
+msgstr "Transactiedatum"
+
+msgid "Date de comptabilisation"
+msgstr "Boekingsdatum"
+
+msgid "Date de valeur"
+msgstr "Valutadatum"
+
+msgid "Libellé"
+msgstr "Omschrijving"
+
+msgid "Détail du libellé"
+msgstr "Details van de omschrijving"
+
+msgid "Montant"
+msgstr "Bedrag"
+
+msgid "Débit"
+msgstr "Af"
+
+msgid "Crédit"
+msgstr "Bij"
+
+msgid "Sens (débit ou crédit)"
+msgstr "Richting (af of bij)"
+
+msgid "Référence de la banque"
+msgstr "Referentie van de bank"
+
+msgid "Solde après l’opération"
+msgstr "Saldo na de transactie"
+
+msgid "Devise"
+msgstr "Valuta"
+
+msgid "Catégorie de la banque"
+msgstr "Categorie van de bank"
+
+msgid "Sous-catégorie de la banque"
+msgstr "Subcategorie van de bank"
+
+msgid "Une colonne"
+msgstr "Eén kolom"
+
+msgid "Débit et crédit"
+msgstr "Af en bij"
+
+msgid "Montant et sens"
+msgstr "Bedrag en richting"
+
+msgid "une date illisible"
+msgstr "een onleesbare datum"
+
+msgid "un libellé vide"
+msgstr "een lege omschrijving"
+
+msgid "un montant illisible"
+msgstr "een onleesbaar bedrag"
+
+msgid "un sens (débit ou crédit) inconnu"
+msgstr "een onbekende richting (af of bij)"
+
+msgid "une autre devise que celle du compte"
+msgstr "een andere valuta dan die van de rekening"
+
+msgid "Associez une colonne à : {fields}."
+msgstr "Koppel een kolom aan: {fields}."
+
+msgid "{n} ligne a {problem} : ligne {lines}"
+msgid_plural "{n} lignes ont {problem} : lignes {lines}"
+msgstr[0] "{n} regel heeft {problem}: regel {lines}"
+msgstr[1] "{n} regels hebben {problem}: regels {lines}"
+
+msgid "Finaryx"
+msgstr "Finaryx"
+
+msgid "Suivez vos comptes bancaires, sans rien envoyer en ligne"
+msgstr "Volg uw bankrekeningen zonder iets online te versturen"
+
+msgid "banque;budget;compte;dépenses;finances;CSV;"
+msgstr "bank;budget;rekening;uitgaven;financiën;geld;CSV;"
+
+msgid "Style"
+msgstr "Stijl"
+
+msgid "Suivre le style du système, ou forcer le style clair ou sombre."
+msgstr "De systeemstijl volgen of de lichte of donkere stijl afdwingen."
+
+msgid "Largeur de la fenêtre"
+msgstr "Vensterbreedte"
+
+msgid "Hauteur de la fenêtre"
+msgstr "Vensterhoogte"
+
+msgid "Sauvegarde automatique"
+msgstr "Automatische back-up"
+
+msgid "Copier la base après chaque import et garder les 5 dernières copies."
+msgstr "De database na elke import kopiëren en de laatste 5 kopieën bewaren."
+
+msgid "Fenêtre maximisée"
+msgstr "Venster gemaximaliseerd"
+
+msgid "Suivez vos comptes bancaires"
+msgstr "Volg uw bankrekeningen"
+
+msgid "Finaryx importe les exports CSV de vos banques, les range dans une base locale et vous montre où part votre argent. Plusieurs comptes et plusieurs banques se suivent au même endroit, chacun dans sa devise."
+msgstr "Finaryx importeert de CSV-exports van uw banken, bewaart ze in een lokale database en laat zien waar uw geld naartoe gaat. Meerdere rekeningen en banken volgt u op één plek, elk in zijn eigen valuta."
+
+msgid "Évolution du solde jour après jour, comparée au mois précédent"
+msgstr "Saldo dag na dag, vergeleken met de vorige maand"
+
+msgid "Répartition des dépenses par catégorie et cumul sur 3, 6 ou 12 mois"
+msgstr "Uitgaven per categorie en totalen over 3, 6 of 12 maanden"
+
+msgid "Prévision du solde d’après vos charges récurrentes et vos habitudes, avec sa fourchette"
+msgstr "Prognose van het saldo op basis van uw vaste lasten en gewoonten, met marge"
+
+msgid "Import guidé : détection du format, aperçu, doublons ignorés, annulation possible"
+msgstr "Begeleide import: herkenning van het formaat, voorbeeld, dubbele overgeslagen, ongedaan maken"
+
+msgid "Catégories, règles de classement et virements entre vos comptes"
+msgstr "Categorieën, sorteerregels en overboekingen tussen uw rekeningen"
+
+msgid "Sauvegarde, restauration et export CSV des opérations"
+msgstr "Back-up, herstel en CSV-export van de transacties"
+
+msgid "Vos données restent sur votre ordinateur : Finaryx ne fait aucune requête réseau et n’envoie aucune statistique d’usage."
+msgstr "Uw gegevens blijven op uw computer: Finaryx doet geen netwerkverzoeken en verstuurt geen gebruiksstatistieken."
+
+msgid "DocteurScience"
+msgstr "DocteurScience"
+
+msgid "banque"
+msgstr "bank"
+
+msgid "budget"
+msgstr "budget"
+
+msgid "compte"
+msgstr "rekening"
+
+msgid "dépenses"
+msgstr "uitgaven"
+
+msgid "finances"
+msgstr "financiën"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "Vue d’ensemble du mois"
+msgstr "Overzicht van de maand"
+
+msgid "Prévision du solde d’après vos habitudes"
+msgstr "Prognose van het saldo op basis van uw gewoonten"
+
+msgid "Le mois en détail"
+msgstr "De maand in detail"
+
+msgid "Cumul des dépenses par catégorie"
+msgstr "Totaal van de uitgaven per categorie"
+
+msgid "Vos comptes et l’historique des imports"
+msgstr "Uw rekeningen en de importgeschiedenis"
+
+msgid "Thème sombre"
+msgstr "Donkere stijl"
+
+msgid "Première version."
+msgstr "Eerste versie."
+
+msgid "Import CSV avec profil Banque Populaire et mappage manuel pour les autres banques"
+msgstr "CSV-import met een profiel voor Banque Populaire en handmatige koppeling voor andere banken"
+
+msgid "Vue d’ensemble, mois en détail, cumul et prévisions"
+msgstr "Overzicht, maand in detail, totalen en prognose"
+
+msgid "Catégories, règles et virements entre vos comptes"
+msgstr "Categorieën, regels en overboekingen tussen uw rekeningen"
+
+msgid "Sauvegarde, restauration et export CSV"
+msgstr "Back-up, herstel en CSV-export"
+
+msgid "Général"
+msgstr "Algemeen"
+
+msgid "Importer un CSV"
+msgstr "CSV importeren"
+
+msgid "Préférences"
+msgstr "Voorkeuren"
+
+msgid "Raccourcis clavier"
+msgstr "Sneltoetsen"
+
+msgid "Fermer la fenêtre"
+msgstr "Venster sluiten"
+
+msgid "Quitter"
+msgstr "Afsluiten"
+
+msgid "Navigation"
+msgstr "Navigatie"
+
+msgid "Vue d'ensemble"
+msgstr "Overzicht"
+
+msgid "Mois en détail"
+msgstr "Maand in detail"
+
+msgid "Cumul"
+msgstr "Totalen"
+
+msgid "Prévisions"
+msgstr "Prognose"
+
+msgid "Comptes"
+msgstr "Rekeningen"
+
+msgid "Opérations"
+msgstr "Transacties"
+
+msgid "Rechercher un libellé"
+msgstr "Omschrijving zoeken"
+
+msgid "Catégories et règles…"
+msgstr "Categorieën en regels…"
+
+msgid "Exporter les données…"
+msgstr "Gegevens exporteren…"
+
+msgid "À propos de Finaryx"
+msgstr "Over Finaryx"
+
+msgid "Menu principal"
+msgstr "Hoofdmenu"
+
+msgid "Navigation principale"
+msgstr "Hoofdnavigatie"
+
+msgid "Dernier import"
+msgstr "Laatste import"
+
+msgid "Importer"
+msgstr "Importeren"
+
+msgid "Ajouter un compte"
+msgstr "Rekening toevoegen"
+
+msgid "Ajouter"
+msgstr "Toevoegen"
+
+msgid "Démonstration : rien n’est enregistré"
+msgstr "Demo: er wordt niets opgeslagen"
+
+msgid "Bienvenue dans Finaryx"
+msgstr "Welkom bij Finaryx"
+
+msgid "Importez l’export CSV d’un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n’est envoyé en ligne."
+msgstr "Importeer de CSV-export van een rekening om te zien waar uw geld naartoe gaat. Alles blijft op uw computer, er wordt niets online verstuurd."
+
+msgid "Ajouter un compte d’abord"
+msgstr "Eerst een rekening toevoegen"
+
+msgid "Pour commencer"
+msgstr "Aan de slag"
+
+msgid "Exportez vos opérations en CSV"
+msgstr "Exporteer uw transacties als CSV"
+
+msgid "Depuis le site ou l’application de votre banque, choisissez la période la plus longue possible."
+msgstr "Kies op de website of in de app van uw bank de langst mogelijke periode."
+
+msgid "Importez le fichier dans Finaryx"
+msgstr "Importeer het bestand in Finaryx"
+
+msgid "Le format Banque Populaire est reconnu. Pour les autres banques, vous associez les colonnes une seule fois."
+msgstr "Het formaat van Banque Populaire wordt herkend. Voor andere banken koppelt u de kolommen één keer."
+
+msgid "Vérifiez les catégories"
+msgstr "Controleer de categorieën"
+
+msgid "Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle."
+msgstr "Onzekere transacties zijn gemarkeerd als ‘Te controleren’. Een correctie kan een regel worden."
+
+msgid "Impossible d’ouvrir la base de données"
+msgstr "Kan de database niet openen"
+
+msgid "Nom"
+msgstr "Naam"
+
+msgid "Banque"
+msgstr "Bank"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Compte courant"
+msgstr "Betaalrekening"
+
+msgid "Épargne"
+msgstr "Spaarrekening"
+
+msgid "Les totaux sont calculés séparément pour chaque devise."
+msgstr "Totalen worden voor elke valuta apart berekend."
+
+msgid "Numéro de compte (facultatif)"
+msgstr "Rekeningnummer (optioneel)"
+
+msgid "Solde avant la première opération importée"
+msgstr "Saldo vóór de eerste geïmporteerde transactie"
+
+msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
+msgstr "Laat het saldo leeg als het nul is. Als het geïmporteerde bestand een saldokolom heeft, stelt Finaryx voor het aan te passen."
+
+msgid "Annuler"
+msgstr "Annuleren"
+
+msgid "Enregistrer"
+msgstr "Opslaan"
+
+msgid "Modifier le compte"
+msgstr "Rekening bewerken"
+
+msgid "Ouvrir des données de démonstration (rien n’est enregistré)"
+msgstr "Demogegevens openen (er wordt niets opgeslagen)"
+
+msgid "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée."
+msgstr "Bankrekeningen bijhouden. Uw gegevens blijven op deze computer: geen netwerkverzoeken, geen telemetrie. De database is niet versleuteld."
+
+msgid "Couleur dans les graphiques"
+msgstr "Kleur in grafieken"
+
+msgid "Couleur {n}"
+msgstr "Kleur {n}"
+
+msgid "Utilisée par {name}"
+msgstr "Gebruikt door {name}"
+
+msgid "Libre"
+msgstr "Vrij"
+
+msgid "Aucune couleur"
+msgstr "Geen kleur"
+
+msgid "Regroupée dans « Autres » dans les graphiques"
+msgstr "In grafieken gegroepeerd onder ‘Overig’"
+
+msgid "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie."
+msgstr "Alle kleuren zijn bezet. Deze categorie wordt in grafieken onder ‘Overig’ geteld en overal elders apart gehouden. Maak een kleur vrij door die van een andere categorie af te halen."
+
+msgid "Créer"
+msgstr "Maken"
+
+msgid "Nouvelle catégorie"
+msgstr "Nieuwe categorie"
+
+msgid "Modifier la catégorie"
+msgstr "Categorie bewerken"
+
+msgid "Fusionner dans"
+msgstr "Samenvoegen met"
+
+msgid "Les opérations et les règles passent dans la catégorie choisie"
+msgstr "Transacties en regels gaan naar de gekozen categorie"
+
+msgid "Fusionner…"
+msgstr "Samenvoegen…"
+
+msgid "Supprimer la catégorie"
+msgstr "Categorie verwijderen"
+
+msgid "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées."
+msgstr[0] "Haar transactie gaat naar ‘Overig’, te controleren; haar regels worden verwijderd."
+msgstr[1] "Haar {n} transacties gaan naar ‘Overig’, te controleren; haar regels worden verwijderd."
+
+msgid "Supprimer…"
+msgstr "Verwijderen…"
+
+msgid "Fusionner « {from} » dans « {into} » ?"
+msgstr "‘{from}’ samenvoegen met ‘{into}’?"
+
+msgid "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgid_plural "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgstr[0] "{n} transactie en de regels van ‘{from}’ gaan naar ‘{into}’. De totalen veranderen niet."
+msgstr[1] "{n} transacties en de regels van ‘{from}’ gaan naar ‘{into}’. De totalen veranderen niet."
+
+msgid "Fusionner"
+msgstr "Samenvoegen"
+
+msgid "Catégories fusionnées"
+msgstr "Categorieën samengevoegd"
+
+msgid "Supprimer « {name} » ?"
+msgstr "‘{name}’ verwijderen?"
+
+msgid "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées."
+msgstr[0] "Haar transactie gaat naar ‘Overig’, gemarkeerd als ‘Te controleren’. Haar regels worden verwijderd."
+msgstr[1] "Haar {n} transacties gaan naar ‘Overig’, gemarkeerd als ‘Te controleren’. Haar regels worden verwijderd."
+
+msgid "Supprimer"
+msgstr "Verwijderen"
+
+msgid "Catégorie supprimée"
+msgstr "Categorie verwijderd"
+
+msgid "Compte"
+msgstr "Rekening"
+
+msgid "Solde au {date}"
+msgstr "Saldo op {date}"
+
+msgid "Solde"
+msgstr "Saldo"
+
+msgid "{amount} en {month}"
+msgstr "{amount} in {month}"
+
+msgid "{n} opération enregistrée"
+msgid_plural "{n} opérations enregistrées"
+msgstr[0] "{n} transactie opgeslagen"
+msgstr[1] "{n} transacties opgeslagen"
+
+msgid "Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}"
+msgstr "Saldo van de rekening over 6 maanden: van {start} in {from} tot {end} in {to}"
+
+msgid "Aucune"
+msgstr "Geen"
+
+msgid "Modifier"
+msgstr "Bewerken"
+
+msgid "Modifier : {field}"
+msgstr "Bewerken: {field}"
+
+msgid "Réglages du compte"
+msgstr "Rekeninginstellingen"
+
+msgid "Dernières opérations"
+msgstr "Laatste transacties"
+
+msgid "Tout voir"
+msgstr "Alles bekijken"
+
+msgid "Aucune opération"
+msgstr "Geen transacties"
+
+msgid "Sans catégorie"
+msgstr "Zonder categorie"
+
+msgid "À vérifier"
+msgstr "Te controleren"
+
+msgid "Désarchiver le compte"
+msgstr "Rekening dearchiveren"
+
+msgid "Il revient dans les totaux."
+msgstr "Ze telt weer mee in de totalen."
+
+msgid "Désarchiver"
+msgstr "Dearchiveren"
+
+msgid "Archiver le compte"
+msgstr "Rekening archiveren"
+
+msgid "Il disparaît des totaux, ses opérations restent consultables."
+msgstr "Ze telt niet meer mee in de totalen; haar transacties blijven zichtbaar."
+
+msgid "Archiver"
+msgstr "Archiveren"
+
+msgid "Supprimer le compte et ses opérations"
+msgstr "Rekening en haar transacties verwijderen"
+
+msgid "Action définitive, {n} opération serait effacée."
+msgid_plural "Action définitive, {n} opérations seraient effacées."
+msgstr[0] "Definitief: {n} transactie zou worden gewist."
+msgstr[1] "Definitief: {n} transacties zouden worden gewist."
+
+msgid "Zone sensible"
+msgstr "Gevarenzone"
+
+msgid "compte courant"
+msgstr "betaalrekening"
+
+msgid "épargne"
+msgstr "spaarrekening"
+
+msgid "Solde de tous les comptes"
+msgstr "Saldo van alle rekeningen"
+
+msgid "Solde des comptes en {currency}"
+msgstr "Saldo van de rekeningen in {currency}"
+
+msgid "Vos comptes"
+msgstr "Uw rekeningen"
+
+msgid "Comptes archivés"
+msgstr "Gearchiveerde rekeningen"
+
+msgid "Ils ne comptent pas dans les totaux."
+msgstr "Ze tellen niet mee in de totalen."
+
+msgid "{n} opération"
+msgid_plural "{n} opérations"
+msgstr[0] "{n} transactie"
+msgstr[1] "{n} transacties"
+
+msgid "Importé le {date}"
+msgstr "Geïmporteerd op {date}"
+
+msgid "Dernier import le {date}"
+msgstr "Laatste import op {date}"
+
+msgid "Ajoutez un export CSV pour voir ses opérations"
+msgstr "Voeg een CSV-export toe om de transacties te zien"
+
+msgid "Évolution du solde sur 6 mois : en hausse de {amount}"
+msgstr "Saldo over 6 maanden: {amount} omhoog"
+
+msgid "Évolution du solde sur 6 mois : en baisse de {amount}"
+msgstr "Saldo over 6 maanden: {amount} omlaag"
+
+msgid "Historique des imports"
+msgstr "Importgeschiedenis"
+
+msgid "Les doublons ne sont jamais enregistrés deux fois"
+msgstr "Dubbele transacties worden nooit twee keer opgeslagen"
+
+msgid "Importer un CSV…"
+msgstr "CSV importeren…"
+
+msgid "Aucun import pour l’instant"
+msgstr "Nog geen import"
+
+msgid "{n} nouvelle"
+msgid_plural "{n} nouvelles"
+msgstr[0] "{n} nieuw"
+msgstr[1] "{n} nieuw"
+
+msgid "{n} ajoutée"
+msgid_plural "{n} ajoutées"
+msgstr[0] "{n} toegevoegd"
+msgstr[1] "{n} toegevoegd"
+
+msgid "{n} doublon"
+msgid_plural "{n} doublons"
+msgstr[0] "{n} dubbele"
+msgstr[1] "{n} dubbele"
+
+msgid "Annuler cet import"
+msgstr "Deze import ongedaan maken"
+
+msgid "Part du total"
+msgstr "Aandeel in het totaal"
+
+msgid "Part de chaque compte dans le solde total : {list}"
+msgstr "Aandeel van elke rekening in het totale saldo: {list}"
+
+msgid "catégorie par défaut, non supprimable"
+msgstr "standaardcategorie, kan niet worden verwijderd"
+
+msgid "catégorie spéciale, comptée en revenus"
+msgstr "speciale categorie, telt als inkomsten"
+
+msgid "catégorie spéciale, exclue des statistiques"
+msgstr "speciale categorie, buiten de statistieken"
+
+msgid "couleur de graphique {n}"
+msgstr "grafiekkleur {n}"
+
+msgid "sans couleur, regroupée dans « Autres » dans les graphiques"
+msgstr "geen kleur, in grafieken onder ‘Overig’"
+
+msgid "Catégories et règles"
+msgstr "Categorieën en regels"
+
+msgid "Catégories"
+msgstr "Categorieën"
+
+msgid "Modifier la catégorie {name}"
+msgstr "Categorie {name} bewerken"
+
+msgid "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en la retirant à une autre catégorie."
+msgstr "Grafieken tonen maximaal 12 kleuren, plus ‘Overig’ in grijs. Een categorie zonder kleur telt in grafieken onder ‘Overig’, maar blijft apart in lijsten, filters en tabellen. Een klik op ‘Overig’ in een grafiek toont de details. Om een categorie een kleur te geven, maakt u er een vrij door die van een andere categorie af te halen."
+
+msgid "Le libellé correspond à « {pattern} »"
+msgstr "De omschrijving komt overeen met ‘{pattern}’"
+
+msgid "Le libellé contient « {pattern} »"
+msgstr "De omschrijving bevat ‘{pattern}’"
+
+msgid "Supprimer la règle"
+msgstr "Regel verwijderen"
+
+msgid "Règle supprimée"
+msgstr "Regel verwijderd"
+
+msgid "Aucune règle pour l’instant"
+msgstr "Nog geen regels"
+
+msgid "Changez la catégorie d’une opération pour en créer une."
+msgstr "Wijzig de categorie van een transactie om er een te maken."
+
+msgid "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées."
+msgstr "Een handmatige correctie van een transactie gaat voor de regels. Een regel verwijderen verandert al ingedeelde transacties niet."
+
+msgid "Règles de catégorisation"
+msgstr "Sorteerregels"
+
+msgid "Virements entre vos comptes"
+msgstr "Overboekingen tussen uw rekeningen"
+
+msgid "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils ne comptent ni en dépenses ni en revenus."
+msgstr "Een afschrijving en een bijschrijving van hetzelfde bedrag op twee van uw rekeningen, hoogstens 3 dagen uit elkaar. Eenmaal bevestigd tellen ze niet als uitgave of inkomsten."
+
+msgid "Tout confirmer"
+msgstr "Alles bevestigen"
+
+msgid "{n} virement confirmé"
+msgid_plural "{n} virements confirmés"
+msgstr[0] "{n} overboeking bevestigd"
+msgstr[1] "{n} overboekingen bevestigd"
+
+msgid "Ce n’est pas un virement"
+msgstr "Geen overboeking"
+
+msgid "Confirmer"
+msgstr "Bevestigen"
+
+msgid "Virement confirmé"
+msgstr "Overboeking bevestigd"
+
+msgid "Aucun virement à confirmer"
+msgstr "Geen overboekingen te bevestigen"
+
+msgid "Noms du foyer"
+msgstr "Namen in het huishouden"
+
+msgid "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer en « Virement interne »."
+msgstr "Overboekingen van een lid van het huishouden zijn geen echte inkomsten. Finaryx stelt voor ze in te delen als ‘Interne overboeking’."
+
+msgid "Modifier les noms…"
+msgstr "Namen bewerken…"
+
+msgid "{n} opération contient « {name} »"
+msgid_plural "{n} opérations contiennent « {name} »"
+msgstr[0] "{n} transactie bevat ‘{name}’"
+msgstr[1] "{n} transacties bevatten ‘{name}’"
+
+msgid "Crée la règle « le libellé contient {name} → Virement interne »"
+msgstr "Maakt de regel ‘omschrijving bevat {name} → Interne overboeking’"
+
+msgid "Classer en virement interne"
+msgstr "Indelen als interne overboeking"
+
+msgid "Règle créée, {n} opération classée"
+msgid_plural "Règle créée, {n} opérations classées"
+msgstr[0] "Regel gemaakt, {n} transactie ingedeeld"
+msgstr[1] "Regel gemaakt, {n} transacties ingedeeld"
+
+msgid "Aucun nom du foyer pour l’instant"
+msgstr "Nog geen namen in het huishouden"
+
+msgid "Aucune opération à classer"
+msgstr "Geen transacties in te delen"
+
+msgid "Ajoutez-les dans les préférences, par exemple votre nom et celui de votre conjoint."
+msgstr "Voeg ze toe in de voorkeuren, bijvoorbeeld uw naam en die van uw partner."
+
+msgid "Les opérations de ces noms sont déjà des virements internes."
+msgstr "De transacties van deze namen zijn al interne overboekingen."
+
+msgid "Période"
+msgstr "Periode"
+
+msgid "{n} mois"
+msgstr "{n} maanden"
+
+msgid "Total sur {n} mois"
+msgstr "Totaal over {n} maanden"
+
+msgid "Moyenne par mois"
+msgstr "Gemiddelde per maand"
+
+msgid "Mois le plus chargé"
+msgstr "Duurste maand"
+
+msgid "Mois le plus léger"
+msgstr "Goedkoopste maand"
+
+msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
+msgstr "Het percentage is het aandeel van de categorie in de uitgaven van de maand. Te kleine aandelen staan in de tabel eronder."
+
+msgid "Mois par mois, par catégorie"
+msgstr "Maand na maand, per categorie"
+
+msgid "Catégorie"
+msgstr "Categorie"
+
+msgid "Par mois"
+msgstr "Per maand"
+
+msgid "Total"
+msgstr "Totaal"
+
+msgid "Part de chaque catégorie sur la période et montant cumulé."
+msgstr "Aandeel van elke categorie over de periode en het totaalbedrag."
+
+msgid "Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois."
+msgstr "De maandkolommen geven het aandeel van de categorie; de rij Totaal geeft de uitgaven van de maand."
+
+msgid "Part de chaque catégorie"
+msgstr "Aandeel van elke categorie"
+
+msgid "{from} à {to}"
+msgstr "{from} tot {to}"
+
+msgid "Ce fichier n’est pas une sauvegarde Finaryx."
+msgstr "Dit bestand is geen back-up van Finaryx."
+
+msgid "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir."
+msgstr "Deze back-up komt uit een nieuwere versie van Finaryx: werk de toepassing bij om hem te openen."
+
+msgid "Ce fichier n’est pas une base de données lisible."
+msgstr "Dit bestand is geen leesbare database."
+
+msgid "Le fichier n’a pas pu être écrit ou lu : {error}"
+msgstr "Het bestand kon niet worden geschreven of gelezen: {error}"
+
+msgid "Exporter les données"
+msgstr "Gegevens exporteren"
+
+msgid "Toutes les opérations"
+msgstr "Alle transacties"
+
+msgid "Dernier mois"
+msgstr "Laatste maand"
+
+msgid "{n} derniers mois"
+msgstr "Laatste {n} maanden"
+
+msgid "Période choisie"
+msgstr "Gekozen periode"
+
+msgid "Français"
+msgstr "Frans"
+
+msgid "Du (JJ/MM/AAAA)"
+msgstr "Van (DD/MM/JJJJ)"
+
+msgid "Au (JJ/MM/AAAA)"
+msgstr "Tot (DD/MM/JJJJ)"
+
+msgid "Exporter la base de données"
+msgstr "Database exporteren"
+
+msgid "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne."
+msgstr "Uw gegevens blijven op uw computer. Een export maakt een kopie in de map van uw keuze; er wordt niets online verstuurd."
+
+msgid "Sauvegarde complète"
+msgstr "Volledige back-up"
+
+msgid "Exporter…"
+msgstr "Exporteren…"
+
+msgid "Restaurer une sauvegarde"
+msgstr "Back-up herstellen"
+
+msgid "Remplace les données actuelles. Une copie de sécurité est faite avant."
+msgstr "Vervangt de huidige gegevens. Eerst wordt een veiligheidskopie gemaakt."
+
+msgid "Restaurer…"
+msgstr "Herstellen…"
+
+msgid "Exporter en CSV"
+msgstr "Exporteren als CSV"
+
+msgid "Séparateur et décimales"
+msgstr "Scheidingsteken en decimalen"
+
+msgid "Standard"
+msgstr "Standaard"
+
+msgid "Format du CSV"
+msgstr "CSV-formaat"
+
+msgid "Exporter en CSV…"
+msgstr "Exporteren als CSV…"
+
+msgid "Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français."
+msgstr "Puntkomma en decimale komma: opent direct in een Franstalige spreadsheet."
+
+msgid "Virgule et point décimal : le format le plus courant hors de France."
+msgstr "Komma en decimale punt: het meest gangbare formaat buiten Frankrijk."
+
+msgid "Copier la base après chaque import"
+msgstr "De database na elke import kopiëren"
+
+msgid "Garde les {n} dernières copies dans {dir}."
+msgstr "Bewaart de laatste {n} kopieën in {dir}."
+
+msgid "Désactivée en démonstration : rien n’est enregistré."
+msgstr "Uit in de demo: er wordt niets opgeslagen."
+
+msgid "La base n’est pas chiffrée : gardez les exports dans un dossier privé."
+msgstr "De database is niet versleuteld: bewaar exports in een privémap."
+
+msgid "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles."
+msgstr "Exacte kopie van het bestand finaryx.db (SQLite): rekeningen, transacties, categorieën en regels."
+
+msgid "Tous les comptes"
+msgstr "Alle rekeningen"
+
+msgid "Date, libellé, montant, catégorie, compte, banque."
+msgstr "Datum, omschrijving, bedrag, categorie, rekening, bank."
+
+msgid "Choisissez les deux dates."
+msgstr "Kies beide datums."
+
+msgid "depuis {month}"
+msgstr "sinds {month}"
+
+msgid "{n} ligne avec ces réglages"
+msgid_plural "{n} lignes avec ces réglages"
+msgstr[0] "{n} regel met deze instellingen"
+msgstr[1] "{n} regels met deze instellingen"
+
+msgid "Base exportée"
+msgstr "Database geëxporteerd"
+
+msgid "Choisissez les deux dates de la période."
+msgstr "Kies beide datums van de periode."
+
+msgid "{n} opération exportée"
+msgid_plural "{n} opérations exportées"
+msgstr[0] "{n} transactie geëxporteerd"
+msgstr[1] "{n} transacties geëxporteerd"
+
+msgid "Sauvegardes Finaryx"
+msgstr "Back-ups van Finaryx"
+
+msgid "Ouvrir le dossier"
+msgstr "Map openen"
+
+msgid "Cette sauvegarde contient {accounts} compte et {operations}."
+msgid_plural "Cette sauvegarde contient {accounts} comptes et {operations}."
+msgstr[0] "Deze back-up bevat {accounts} rekening en {operations}."
+msgstr[1] "Deze back-up bevat {accounts} rekeningen en {operations}."
+
+msgid "Les données actuelles seront remplacées. Une copie de sécurité est d’abord enregistrée dans {dir}."
+msgstr "De huidige gegevens worden vervangen. Eerst wordt een veiligheidskopie opgeslagen in {dir}."
+
+msgid "Les données de démonstration seront remplacées, en mémoire seulement."
+msgstr "De demogegevens worden vervangen, alleen in het geheugen."
+
+msgid "Restaurer cette sauvegarde ?"
+msgstr "Deze back-up herstellen?"
+
+msgid "Restaurer"
+msgstr "Herstellen"
+
+msgid "Sauvegarde restaurée"
+msgstr "Back-up hersteld"
+
+msgid "le 1er"
+msgstr "op dag 1"
+
+msgid "le {day}"
+msgstr "op dag {day}"
+
+msgid "Solde en fin de mois"
+msgstr "Saldo aan het eind van de maand"
+
+msgid "{month} · prévu"
+msgstr "{month} · prognose"
+
+msgid "Fourchette"
+msgstr "Marge"
+
+msgid "Dépenses attendues <b>{spending}</b> · revenus <b>{income}</b>"
+msgstr "Verwachte uitgaven <b>{spending}</b> · inkomsten <b>{income}</b>"
+
+msgid "Aujourd’hui"
+msgstr "Vandaag"
+
+msgid "Dernière opération"
+msgstr "Laatste transactie"
+
+msgid "{month} : pic de dépenses\nattendu ({amount})"
+msgstr "{month}: verwachte\nuitgavenpiek ({amount})"
+
+msgid "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}"
+msgstr "Saldo aan het eind van de maand: {real} in {month}, verwacht {end} in {last}, met een marge van {low} tot {high}"
+
+msgid "Prévu"
+msgstr "Prognose"
+
+msgid "Fourchette probable"
+msgstr "Waarschijnlijke marge"
+
+msgid "Pas encore assez de données pour une prévision"
+msgstr "Nog niet genoeg gegevens voor een prognose"
+
+msgid "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgid_plural "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgstr[0] "Finaryx heeft minstens 3 maanden aan transacties nodig om uw gewoonten te leren. Er ontbreekt nog {n} maand: importeer een oudere export om deze weergave te ontgrendelen."
+msgstr[1] "Finaryx heeft minstens 3 maanden aan transacties nodig om uw gewoonten te leren. Er ontbreken nog {n} maanden: importeer een oudere export om deze weergave te ontgrendelen."
+
+msgid "Importer un export plus ancien"
+msgstr "Een oudere export importeren"
+
+msgid "Habitudes calculées sur"
+msgstr "Gewoonten berekend over"
+
+msgid "Période de référence"
+msgstr "Referentieperiode"
+
+msgid "Horizon"
+msgstr "Horizon"
+
+msgid "Horizon de prévision"
+msgstr "Horizon van de prognose"
+
+msgid "{low} à {high}"
+msgstr "{low} tot {high}"
+
+msgid "Fin {month} (prévu)"
+msgstr "Eind {month} (prognose)"
+
+msgid "Solde fin {month} (prévu)"
+msgstr "Saldo eind {month} (prognose)"
+
+msgid "Fourchette : {range}"
+msgstr "Marge: {range}"
+
+msgid "Dépenses prévues"
+msgstr "Verwachte uitgaven"
+
+msgid "{amount} / mois"
+msgstr "{amount} / maand"
+
+msgid "Moyenne sur le mois à venir"
+msgid_plural "Moyenne sur les {n} mois à venir"
+msgstr[0] "Gemiddelde over de komende maand"
+msgstr[1] "Gemiddelde over de komende {n} maanden"
+
+msgid "Salaire détecté {day} du mois"
+msgstr "Salaris gevonden {day} van de maand"
+
+msgid "{label} détecté {day} du mois"
+msgstr "{label} gevonden {day} van de maand"
+
+msgid "Aucun revenu régulier détecté"
+msgstr "Geen vaste inkomsten gevonden"
+
+msgid "Revenus réguliers"
+msgstr "Vaste inkomsten"
+
+msgid "Réel de {from} à {to}, prévu de {first} à {last}"
+msgstr "Werkelijk van {from} tot {to}, prognose van {first} tot {last}"
+
+msgid "Réel"
+msgstr "Werkelijk"
+
+msgid "Estimation d’après vos charges récurrentes et vos dépenses moyennes. La fourchette s’élargit avec l’horizon."
+msgstr "Schatting op basis van uw vaste lasten en gemiddelde uitgaven. De marge wordt groter met de horizon."
+
+msgid "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre."
+msgstr "Schatting op basis van uw vaste lasten en het gemiddelde van uw variabele uitgaven. De marge wordt groter met de horizon: hoe verder vooruit, hoe onzekerder de prognose."
+
+msgid "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgid_plural "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgstr[0] "Gewoonten berekend over {n} maand: de geschiedenis gaat niet verder terug."
+msgstr[1] "Gewoonten berekend over {n} maanden: de geschiedenis gaat niet verder terug."
+
+msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
+msgstr "Seizoensinvloed niet meegenomen: minder dan 12 maanden geschiedenis."
+
+msgid "{month} (en cours)"
+msgstr "{month} (lopend)"
+
+msgid "{amount} de dépenses"
+msgstr "{amount} uitgaven"
+
+msgid "{income} de revenus · {spending}"
+msgstr "{income} inkomsten · {spending}"
+
+msgid "{amount} sur le mois"
+msgstr "{amount} over de maand"
+
+msgid "Charges fixes"
+msgstr "Vaste lasten"
+
+msgid "Aucune charge récurrente détectée"
+msgstr "Geen vaste lasten gevonden"
+
+msgid "Une charge est récurrente quand le même libellé revient chaque mois, pour un montant proche."
+msgstr "Een uitgave is terugkerend als dezelfde omschrijving elke maand terugkomt, met een vergelijkbaar bedrag."
+
+msgid "Mois par mois"
+msgstr "Maand na maand"
+
+msgid "Charges récurrentes détectées"
+msgstr "Gevonden vaste lasten"
+
+msgid "Choisir un fichier…"
+msgstr "Bestand kiezen…"
+
+msgid "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est enregistré avant votre confirmation."
+msgstr "Kies de CSV-export van een rekening of sleep hem hierheen. Het bestand wordt nooit gewijzigd en er wordt niets opgeslagen voordat u bevestigt."
+
+msgid "Fichiers CSV"
+msgstr "CSV-bestanden"
+
+msgid "Tous les fichiers"
+msgstr "Alle bestanden"
+
+msgid "Choisir un export CSV"
+msgstr "CSV-export kiezen"
+
+msgid "fichier"
+msgstr "bestand"
+
+msgid "Impossible de lire le fichier : {error}"
+msgstr "Kan het bestand niet lezen: {error}"
+
+msgid "Le fichier ne se lit pas encore correctement"
+msgstr "Het bestand wordt nog niet goed gelezen"
+
+msgid "{n} ligne"
+msgid_plural "{n} lignes"
+msgstr[0] "{n} regel"
+msgstr[1] "{n} regels"
+
+msgid "{n} colonne"
+msgid_plural "{n} colonnes"
+msgstr[0] "{n} kolom"
+msgstr[1] "{n} kolommen"
+
+msgid "Changer…"
+msgstr "Wijzigen…"
+
+msgid "Compte de destination"
+msgstr "Doelrekening"
+
+msgid "Aucun compte pour l’instant : créez celui qui recevra ces opérations."
+msgstr "Nog geen rekening: maak de rekening aan die deze transacties ontvangt."
+
+msgid "Créer un compte…"
+msgstr "Rekening aanmaken…"
+
+msgid "Nouveau compte…"
+msgstr "Nieuwe rekening…"
+
+msgid "Les opérations seront ajoutées à ce compte"
+msgstr "De transacties worden aan deze rekening toegevoegd"
+
+msgid "Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin."
+msgstr "Formaat herkend: {name}. De kolommen zijn gekoppeld; controleer ze zo nodig."
+
+msgid "Reconnu"
+msgstr "Herkend"
+
+msgid "Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."
+msgstr "Formaat nooit eerder geïmporteerd: koppel de kolommen hieronder. De volgende keer wordt het herkend."
+
+msgid "Nouveau format"
+msgstr "Nieuw formaat"
+
+msgid "Modèle de banque"
+msgstr "Bankformaat"
+
+msgid "Fichier"
+msgstr "Bestand"
+
+msgid "Encodage"
+msgstr "Codering"
+
+msgid "Séparateur de colonnes"
+msgstr "Kolomscheidingsteken"
+
+msgid "Ligne des en-têtes"
+msgstr "Kopregel"
+
+msgid "Ligne {n}"
+msgstr "Regel {n}"
+
+msgid "Format des dates"
+msgstr "Datumformaat"
+
+msgid "À vérifier : les jours et les mois peuvent être inversés"
+msgstr "Te controleren: dagen en maanden kunnen verwisseld zijn"
+
+msgid "Séparateur décimal"
+msgstr "Decimaalteken"
+
+msgid "Point ( . )"
+msgstr "Punt ( . )"
+
+msgid "Format du fichier"
+msgstr "Bestandsformaat"
+
+msgid "Détecté automatiquement, à corriger si la lecture est mauvaise"
+msgstr "Automatisch herkend; corrigeer het als het bestand verkeerd wordt gelezen"
+
+msgid "Colonnes du fichier"
+msgstr "Kolommen van het bestand"
+
+msgid "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer »."
+msgstr "Geef aan waarvoor elke kolom van het bestand dient. Overbodige kolommen blijven op ‘Negeren’."
+
+msgid "Comment le montant est écrit"
+msgstr "Hoe het bedrag is geschreven"
+
+msgid "Écriture du montant"
+msgstr "Schrijfwijze van het bedrag"
+
+msgid "Exemple : (vide)"
+msgstr "Voorbeeld: (leeg)"
+
+msgid "Exemple : {value}"
+msgstr "Voorbeeld: {value}"
+
+msgid "Champ pour la colonne {column}"
+msgstr "Veld voor kolom {column}"
+
+msgid "Valeurs pour un débit"
+msgstr "Waarden voor een afschrijving"
+
+msgid "Valeurs pour un crédit"
+msgstr "Waarden voor een bijschrijving"
+
+msgid "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas."
+msgstr "Scheid de waarden met komma’s; hoofdletters en accenten maken niet uit."
+
+msgid "Exclue"
+msgstr "Uitgesloten"
+
+msgid "Reconnue"
+msgstr "Herkend"
+
+msgid "Proposée"
+msgstr "Voorgesteld"
+
+msgid "Catégorie de Finaryx pour {bank}"
+msgstr "Finaryx-categorie voor {bank}"
+
+msgid "Afficher moins"
+msgstr "Minder tonen"
+
+msgid "Voir la correspondance"
+msgid_plural "Voir les {n} correspondances"
+msgstr[0] "De koppeling bekijken"
+msgstr[1] "De {n} koppelingen bekijken"
+
+msgid "Catégories de la banque"
+msgstr "Categorieën van de bank"
+
+msgid "La banque classe déjà ses opérations. Choisissez la catégorie de Finaryx qui correspond à chacune."
+msgstr "De bank deelt haar transacties al in. Kies voor elke categorie de bijpassende Finaryx-categorie."
+
+msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
+msgstr "Deze koppeling wordt met het formaat opgeslagen. Naar een bankcategorie die later verschijnt, wordt hier gevraagd."
+
+msgid "Aperçu"
+msgstr "Voorbeeld"
+
+msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
+msgstr "Eerste vijf regels, categorieën volgens de koppeling hierboven"
+
+msgid "Choisissez ou créez le compte de destination pour voir l’aperçu."
+msgstr "Kies of maak de doelrekening om het voorbeeld te zien."
+
+msgid "L’aperçu apparaîtra quand les colonnes obligatoires seront associées."
+msgstr "Het voorbeeld verschijnt zodra de verplichte kolommen zijn gekoppeld."
+
+msgid "Nouveau"
+msgstr "Nieuw"
+
+msgid "Doublon"
+msgstr "Dubbel"
+
+msgid "Aucune ligne lisible"
+msgstr "Geen leesbare regels"
+
+msgid "Ces lignes ne seront pas importées."
+msgstr "Deze regels worden niet geïmporteerd."
+
+msgid "La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible."
+msgstr "De saldokolom volgt de bedragen niet: regel {lines}. Importeren blijft mogelijk."
+
+msgid "À savoir avant d’importer"
+msgstr "Voor het importeren"
+
+msgid "Lignes lues"
+msgstr "Gelezen regels"
+
+msgid "Nouvelles opérations"
+msgstr "Nieuwe transacties"
+
+msgid "Doublons ignorés"
+msgstr "Overgeslagen dubbele"
+
+msgid "À vérifier (catégorie incertaine)"
+msgstr "Te controleren (onzekere categorie)"
+
+msgid "Lignes illisibles, non importées"
+msgstr "Onleesbare regels, niet geïmporteerd"
+
+msgid "Recaler le solde initial"
+msgstr "Beginsaldo aanpassen"
+
+msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
+msgstr "Volgens de saldokolom wordt het saldo vóór de eerste geïmporteerde transactie {amount}."
+
+msgid "Retenir ce format"
+msgstr "Dit formaat onthouden"
+
+msgid "Le prochain fichier de cette banque sera lu sans rien demander"
+msgstr "Het volgende bestand van deze bank wordt gelezen zonder iets te vragen"
+
+msgid "Nom du format"
+msgstr "Naam van het formaat"
+
+msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
+msgstr "Een dubbele transactie heeft dezelfde datum, omschrijving, hetzelfde bedrag en dezelfde referentie als een al opgeslagen transactie. Uw bestanden worden nooit gewijzigd."
+
+msgid "Résumé"
+msgstr "Samenvatting"
+
+msgid "Aucune nouvelle opération"
+msgstr "Geen nieuwe transacties"
+
+msgid "Importer {n} opération"
+msgid_plural "Importer {n} opérations"
+msgstr[0] "{n} transactie importeren"
+msgstr[1] "{n} transacties importeren"
+
+msgid "{n} opération importée"
+msgid_plural "{n} opérations importées"
+msgstr[0] "{n} transactie geïmporteerd"
+msgstr[1] "{n} transacties geïmporteerd"
+
+msgid "{n} doublon ignoré"
+msgid_plural "{n} doublons ignorés"
+msgstr[0] "{n} dubbele overgeslagen"
+msgstr[1] "{n} dubbele overgeslagen"
+
+msgid "Mois"
+msgstr "Maand"
+
+msgid "Compte affiché"
+msgstr "Getoonde rekening"
+
+msgid "{n} Ko"
+msgstr "{n} kB"
+
+msgid "{n} Mo"
+msgstr "{n} MB"
+
+msgid "Non classé"
+msgstr "Niet ingedeeld"
+
+msgid "{month} · {amount} regroupés dans « Autres » dans les graphiques"
+msgstr "{month} · {amount} in grafieken gegroepeerd onder ‘Overig’"
+
+msgid "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et les tableaux les montrent séparément."
+msgstr "Grafieken tonen maximaal 12 kleuren, plus ‘Overig’ in grijs. Categorieën zonder kleur worden hier geteld; lijsten en tabellen tonen ze apart."
+
+msgid "Gérer les couleurs…"
+msgstr "Kleuren beheren…"
+
+msgid "Fermer"
+msgstr "Sluiten"
+
+msgid "Détail de « Autres »"
+msgstr "Details van ‘Overig’"
+
+msgid "Mois précédent : {month}"
+msgstr "Vorige maand: {month}"
+
+msgid "Mois suivant : {month}"
+msgstr "Volgende maand: {month}"
+
+msgid "{first} le 1er, {last} au {day} {month}"
+msgstr "{first} op dag 1, {last} op {day} {month}"
+
+msgid "Solde {of_month}"
+msgstr "Saldo in {of_month}"
+
+msgid "Dépenses du jour"
+msgstr "Uitgaven van de dag"
+
+msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
+msgstr "Uitgaven van elke dag in {of_month}; op dag {day} springt {peak} eruit"
+
+msgid "Dépenses de chaque jour du mois"
+msgstr "Uitgaven van elke dag van de maand"
+
+msgid "Évolution du solde"
+msgstr "Verloop van het saldo"
+
+msgid "Part"
+msgstr "Aandeel"
+
+msgid "vs {month}"
+msgstr "t.o.v. {month}"
+
+msgid "Où part l’argent"
+msgstr "Waar het geld naartoe gaat"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Geen transacties deze maand"
+
+msgid "Rechercher une opération"
+msgstr "Transactie zoeken"
+
+msgid "Filtrer par catégorie"
+msgstr "Filteren op categorie"
+
+msgid "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les libellés identiques."
+msgstr "Een klik op een categorie wijzigt de categorie van de transactie en stelt voor er een regel van te maken voor gelijke omschrijvingen."
+
+msgid "Toute la période"
+msgstr "Hele periode"
+
+msgid "Toutes"
+msgstr "Alle"
+
+msgid "toute la période"
+msgstr "hele periode"
+
+msgid "{pct} % des dépenses"
+msgstr "{pct}% van de uitgaven"
+
+msgid "Aucune opération ne correspond à ces filtres"
+msgstr "Geen transacties voldoen aan deze filters"
+
+msgid "Afficher la suivante"
+msgid_plural "Afficher les {n} suivantes"
+msgstr[0] "De volgende tonen"
+msgstr[1] "De volgende {n} tonen"
+
+msgid "Nouvelle catégorie…"
+msgstr "Nieuwe categorie…"
+
+msgid "Changer la catégorie de {label} (actuellement {category})"
+msgstr "Categorie van {label} wijzigen (nu {category})"
+
+msgid "Créer une règle ?"
+msgstr "Een regel maken?"
+
+msgid "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports."
+msgstr "Omschrijvingen die <b>{pattern}</b> bevatten, worden bij volgende imports ingedeeld onder <b>{category}</b>."
+
+msgid "Appliquer aux opérations existantes"
+msgstr "Toepassen op bestaande transacties"
+
+msgid "{n} opération sera modifiée, sauf celles corrigées à la main."
+msgid_plural "{n} opérations seront modifiées, sauf celles corrigées à la main."
+msgstr[0] "{n} transactie wordt gewijzigd, behalve handmatig gecorrigeerde."
+msgstr[1] "{n} transacties worden gewijzigd, behalve handmatig gecorrigeerde."
+
+msgid "Seulement cette opération"
+msgstr "Alleen deze transactie"
+
+msgid "Créer la règle"
+msgstr "Regel maken"
+
+msgid "Règle créée, {n} autre opération classée"
+msgid_plural "Règle créée, {n} autres opérations classées"
+msgstr[0] "Regel gemaakt, nog {n} transactie ingedeeld"
+msgstr[1] "Regel gemaakt, nog {n} transacties ingedeeld"
+
+msgid "Règle créée"
+msgstr "Regel gemaakt"
+
+msgid "Catégorie modifiée"
+msgstr "Categorie gewijzigd"
+
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Uitgaven van de dag <b>{amount}</b>"
+
+msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
+msgstr "Saldo in {month}: van {start} op dag 1 tot {end} op dag {day}, vergeleken met {previous}"
+
+msgid "Part des dépenses"
+msgstr "Aandeel in de uitgaven"
+
+msgid "Écart vs {month}"
+msgstr "Verschil t.o.v. {month}"
+
+msgid "cliquez pour le détail"
+msgstr "klik voor details"
+
+msgid "Anneau des dépenses {of_month} par catégorie, le détail est dans la liste"
+msgstr "Ring van de uitgaven in {of_month} per categorie; de details staan in de lijst"
+
+msgid "dépensés"
+msgstr "uitgegeven"
+
+msgid "Part du mois"
+msgstr "Aandeel in de maand"
+
+msgid "Total du mois"
+msgstr "Totaal van de maand"
+
+msgid "Dépenses mensuelles empilées par catégorie, de {from} à {to}"
+msgstr "Maandelijkse uitgaven gestapeld per categorie, van {from} tot {to}"
+
+msgid "Solde total"
+msgstr "Totaal saldo"
+
+msgid "{amount} depuis le 1er {month}"
+msgstr "{amount} sinds 1 {month}"
+
+msgid "{pct} % par rapport à {month}"
+msgstr "{pct}% ten opzichte van {month}"
+
+msgid "Dépenses {of_month}"
+msgstr "Uitgaven in {of_month}"
+
+msgid "dont salaire {amount}"
+msgstr "waarvan salaris {amount}"
+
+msgid "dont {label} : {amount}"
+msgstr "waarvan {label}: {amount}"
+
+msgid "Revenus {of_month}"
+msgstr "Inkomsten in {of_month}"
+
+msgid "{arrow} {amount} selon vos habitudes"
+msgstr "{arrow} {amount} volgens uw gewoonten"
+
+msgid "Pas encore assez de données"
+msgstr "Nog niet genoeg gegevens"
+
+msgid "Solde de tous les comptes, jour après jour"
+msgstr "Saldo van alle rekeningen, dag na dag"
+
+msgid "Solde du compte, jour après jour"
+msgstr "Saldo van de rekening, dag na dag"
+
+msgid "Évolution du mois"
+msgstr "Verloop van de maand"
+
+msgid "Détail du mois"
+msgstr "Details van de maand"
+
+msgid "{amount} dépensés de {from} à {to}"
+msgstr "{amount} uitgegeven van {from} tot {to}"
+
+msgid "Cumul sur 6 mois"
+msgstr "Totalen over 6 maanden"
+
+msgid "Voir le cumul"
+msgstr "Totalen bekijken"
+
+msgid "{month} · {amount} dépensés"
+msgstr "{month} · {amount} uitgegeven"
+
+msgid "Par catégorie"
+msgstr "Per categorie"
+
+msgid "D’après vos dépenses du dernier mois"
+msgid_plural "D’après vos dépenses des {n} derniers mois"
+msgstr[0] "Op basis van uw uitgaven van de laatste maand"
+msgstr[1] "Op basis van uw uitgaven van de laatste {n} maanden"
+
+msgid "Solde fin de mois"
+msgstr "Saldo aan het eind van de maand"
+
+msgid "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgid_plural "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgstr[0] "Een prognose vraagt minstens 3 maanden aan transacties. Er ontbreekt nog {n} maand."
+msgstr[1] "Een prognose vraagt minstens 3 maanden aan transacties. Er ontbreken nog {n} maanden."
+
+msgid "Prévision à 6 mois"
+msgstr "Prognose over 6 maanden"
+
+msgid "Pas encore d’opérations"
+msgstr "Nog geen transacties"
+
+msgid "Importez l’export CSV d’un compte pour voir cette vue."
+msgstr "Importeer de CSV-export van een rekening om deze weergave te zien."
+
+msgid "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé comme virement interne : ni dépense, ni revenu."
+msgstr "Uw naam, die van uw partner… Een overboeking waarvan de omschrijving een van deze namen bevat, wordt voorgesteld als interne overboeking: geen uitgave en geen inkomsten."
+
+msgid "Retirer ce nom"
+msgstr "Deze naam verwijderen"
+
+msgid "Ajouter un nom"
+msgstr "Naam toevoegen"
+
+msgid "Suivre le système"
+msgstr "Systeem volgen"
+
+msgid "Clair"
+msgstr "Licht"
+
+msgid "Sombre"
+msgstr "Donker"
+
+msgid "Apparence"
+msgstr "Uiterlijk"
+
+msgid "Confidentialité"
+msgstr "Privacy"
+
+msgid "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune requête réseau. La base de données n’est pas chiffrée."
+msgstr "Al uw gegevens blijven op deze computer. Finaryx doet geen netwerkverzoeken. De database is niet versleuteld."
+
+msgid "Impossible de lire la base de données."
+msgstr "Kan de database niet lezen."
+
+msgid "{n} compte"
+msgid_plural "{n} comptes"
+msgstr[0] "{n} rekening"
+msgstr[1] "{n} rekeningen"
+
+msgid "{n} banque"
+msgid_plural "{n} banques"
+msgstr[0] "{n} bank"
+msgstr[1] "{n} banken"
+
+msgid "{n} virement entre vos comptes à confirmer"
+msgid_plural "{n} virements entre vos comptes à confirmer"
+msgstr[0] "{n} overboeking tussen uw rekeningen te bevestigen"
+msgstr[1] "{n} overboekingen tussen uw rekeningen te bevestigen"
+
+msgid "Voir"
+msgstr "Bekijken"
+
+msgid "La copie de sauvegarde automatique a échoué : {error}"
+msgstr "De automatische back-up is mislukt: {error}"
+
+msgid "La base de données n’est pas ouverte."
+msgstr "De database is niet geopend."
+
+msgid "La modification n’a pas pu être enregistrée : {error}"
+msgstr "De wijziging kon niet worden opgeslagen: {error}"
+
+msgid "Compte ajouté"
+msgstr "Rekening toegevoegd"
+
+msgid "Compte archivé"
+msgstr "Rekening gearchiveerd"
+
+msgid "Compte désarchivé"
+msgstr "Rekening gedearchiveerd"
+
+msgid "Le compte, son historique d’import et {n} opération seront effacés définitivement."
+msgid_plural "Le compte, son historique d’import et ses {n} opérations seront effacés définitivement."
+msgstr[0] "De rekening, haar importgeschiedenis en {n} transactie worden definitief gewist."
+msgstr[1] "De rekening, haar importgeschiedenis en haar {n} transacties worden definitief gewist."
+
+msgid "Compte supprimé, {n} opération effacée"
+msgid_plural "Compte supprimé, {n} opérations effacées"
+msgstr[0] "Rekening verwijderd, {n} transactie gewist"
+msgstr[1] "Rekening verwijderd, {n} transacties gewist"
+
+msgid "sans nom"
+msgstr "zonder naam"
+
+msgid "Annuler cet import ?"
+msgstr "Deze import ongedaan maken?"
+
+msgid "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés."
+msgid_plural "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés."
+msgstr[0] "{n} transactie die ‘{file}’ aan {account} heeft toegevoegd, wordt verwijderd. Andere imports blijven ongewijzigd."
+msgstr[1] "De {n} transacties die ‘{file}’ aan {account} heeft toegevoegd, worden verwijderd. Andere imports blijven ongewijzigd."
+
+msgid "Garder"
+msgstr "Behouden"
+
+msgid "Supprimer les opérations"
+msgstr "Transacties verwijderen"
+
+msgid "Import annulé"
+msgstr "Import ongedaan gemaakt"

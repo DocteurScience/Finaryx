@@ -1,7 +1,10 @@
 # Traduire Finaryx
 
-La langue source est le français. L’anglais est complet. Le tableau
-`translations.csv` prépare seize autres langues :
+La langue source est le français. L’anglais, l’allemand, l’espagnol,
+l’italien, le portugais du Brésil et le néerlandais sont complets. Ces
+traductions, anglais compris, n’ont pas encore été relues par des locuteurs
+natifs : les corrections sont bienvenues. Le tableau `translations.csv`
+prépare les autres langues :
 
 | Code | Langue | Formes plurielles (form 0 / 1 / 2) |
 |---|---|---|

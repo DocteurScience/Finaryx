@@ -327,6 +327,10 @@ pub fn kpi_card(title: &str, value: &str, note: &str, size: KpiSize) -> gtk::Box
         &gtk::Label::builder()
             .label(value)
             .xalign(0.0)
+            // Long translations ("2.616 € / Monat") go to the next line
+            // between words rather than widening the page.
+            .wrap(true)
+            .wrap_mode(gtk::pango::WrapMode::Word)
             .css_classes([match size {
                 KpiSize::Large => "amount-large",
                 KpiSize::Medium => "amount-medium",
