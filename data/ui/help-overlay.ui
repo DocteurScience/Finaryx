@@ -76,6 +76,17 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes">Opérations</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes">Rechercher un libellé</property>
+                <property name="accelerator">&lt;Control&gt;f</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </object>

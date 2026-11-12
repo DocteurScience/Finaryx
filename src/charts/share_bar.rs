@@ -3,6 +3,7 @@
 use adw::prelude::*;
 
 use super::{account_color, rounded_rect, set_source, theme_color};
+use super::{tip::TipCache, Tip};
 
 /// One segment: share in tenths of a percent, account colour slot, and
 /// the tooltip text.
@@ -10,7 +11,7 @@ use super::{account_color, rounded_rect, set_source, theme_color};
 pub struct Segment {
     pub per_mille: u32,
     pub color_slot: u8,
-    pub tooltip: String,
+    pub tooltip: Tip,
 }
 
 const HEIGHT: i32 = 16;
@@ -65,12 +66,12 @@ pub fn share_bar(segments: Vec<Segment>, accessible_label: &str) -> gtk::Drawing
         }
     });
 
+    let cache = TipCache::default();
     area.connect_query_tooltip(move |area, x, _y, _kb, tooltip| {
         let width = area.width() as f64;
-        for (s, (sx, sw)) in segments.iter().zip(layout(&segments, width)) {
+        for (i, (s, (sx, sw))) in segments.iter().zip(layout(&segments, width)).enumerate() {
             if sw > 0.0 && (x as f64) >= sx && (x as f64) <= sx + sw {
-                tooltip.set_text(Some(&s.tooltip));
-                return true;
+                return cache.show(tooltip, i, &s.tooltip);
             }
         }
         false

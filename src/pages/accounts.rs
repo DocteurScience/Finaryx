@@ -233,9 +233,9 @@ impl AccountsPage {
         if o.operation_count > 0 && !narrow {
             let delta = series.last().unwrap() - series.first().unwrap();
             let trend = if delta >= 0 {
-                gettext("Évolution du solde sur 6 mois : en hausse de {amount}")
+                gettext("Évolution du solde sur 6 mois : en hausse de {amount}")
             } else {
-                gettext("Évolution du solde sur 6 mois : en baisse de {amount}")
+                gettext("Évolution du solde sur 6 mois : en baisse de {amount}")
             }
             .replace(
                 "{amount}",
@@ -451,12 +451,17 @@ fn total_card(title: &str, currency: &str, group: &[&AccountOverview]) -> gtk::B
         .map(|(o, s)| share_bar::Segment {
             per_mille: *s,
             color_slot: o.account.color_slot,
-            tooltip: format!(
-                "{} : {} ({})",
-                o.account.name,
-                amount(o.balance_cents, currency, Sign::Negative),
-                percent_per_mille(*s)
-            ),
+            tooltip: crate::charts::Tip::new(&o.account.name)
+                .row(
+                    crate::charts::TipMark::Account(o.account.color_slot),
+                    gettext("Solde"),
+                    amount(o.balance_cents, currency, Sign::Negative),
+                )
+                .row(
+                    crate::charts::TipMark::None,
+                    gettext("Part du total"),
+                    percent_per_mille(*s),
+                ),
         })
         .collect();
     let description = group
@@ -467,7 +472,7 @@ fn total_card(title: &str, currency: &str, group: &[&AccountOverview]) -> gtk::B
         .join(", ");
     card.append(&share_bar::share_bar(
         segments,
-        &gettext("Part de chaque compte dans le solde total : {list}")
+        &gettext("Part de chaque compte dans le solde total : {list}")
             .replace("{list}", &description),
     ));
 

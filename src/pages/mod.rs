@@ -262,6 +262,15 @@ pub fn amount_whole(cents: i64, currency: &str, sign: Sign) -> String {
     money::format_amount_whole(cents, &currency, sign)
 }
 
+/// A range of whole amounts, the symbol written once ("10 939 – 11 879 €").
+pub fn amount_range(low: i64, high: i64, currency: &str) -> String {
+    let c = Currency::from_code(currency).unwrap_or(Currency::EUR);
+    let low = money::format_amount_whole(low, &c, Sign::Negative);
+    let high = money::format_amount_whole(high, &c, Sign::Negative);
+    let suffix = format!("{}{}", money::NNBSP, c.symbol);
+    format!("{} – {high}", low.strip_suffix(&suffix).unwrap_or(&low))
+}
+
 /// "27,9 %" from tenths of a percent.
 pub fn percent_per_mille(per_mille: u32) -> String {
     format!("{},{}\u{a0}%", per_mille / 10, per_mille % 10)
@@ -441,7 +450,7 @@ pub fn n_ops(n: i64) -> String {
     .replace("{n}", &n.to_string())
 }
 
-/// "Détail de « Autres »": the categories grouped in grey in the charts.
+/// "Détail de « Autres »": the categories grouped in grey in the charts.
 pub fn show_others_dialog(
     parent: &impl IsA<gtk::Widget>,
     part: &finaryx_core::stats::ChartPart,
@@ -481,13 +490,13 @@ pub fn show_others_dialog(
         .margin_end(12)
         .build();
     content.append(&caption(
-        &gettext("{month} · {amount} regroupés dans « Autres » dans les graphiques")
+        &gettext("{month} · {amount} regroupés dans « Autres » dans les graphiques")
             .replace("{month}", &capitalized(&chrono_month(month)))
             .replace("{amount}", &amount(part.amount, currency, Sign::Negative)),
     ));
     content.append(&list);
     content.append(&caption(&gettext(
-        "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et \
+        "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et \
          les tableaux les montrent séparément.",
     )));
     let buttons = gtk::Box::builder()
@@ -509,7 +518,7 @@ pub fn show_others_dialog(
     toolbar.add_top_bar(&adw::HeaderBar::new());
     toolbar.set_content(Some(&content));
     let dialog = adw::Dialog::builder()
-        .title(gettext("Détail de « Autres »"))
+        .title(gettext("Détail de « Autres »"))
         .content_width(440)
         .child(&toolbar)
         .build();

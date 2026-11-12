@@ -8,7 +8,10 @@ use std::rc::Rc;
 
 use adw::prelude::*;
 
-use super::{draw_text, redraw_on_theme_change, set_source, theme_color, Align, TextStyle};
+use super::{
+    draw_text, redraw_on_theme_change, set_source, text_size, theme_color, Align, TextStyle,
+};
+use super::{tip::TipCache, Tip};
 
 #[derive(Debug, Clone, Default)]
 pub struct LineChart {
@@ -18,8 +21,8 @@ pub struct LineChart {
     pub ghost: Option<Vec<i64>>,
     /// Number of positions on the x axis (0: the longest series).
     pub slots: usize,
-    /// Tooltip (Pango markup) for each position.
-    pub tooltips: Vec<String>,
+    /// Tooltip of each position.
+    pub tooltips: Vec<Tip>,
     /// Grid lines: (value, label), lowest first.
     pub ticks: Vec<(i64, String)>,
     /// Labels under the chart: (position, label).
@@ -139,7 +142,7 @@ pub fn line_chart(chart: LineChart, height: i32, accessible_label: &str) -> gtk:
             return;
         };
         let mut line_color = area.color();
-        line_color.set_alpha(0.08);
+        line_color.set_alpha(super::grid_alpha());
 
         for (value, label) in &c.ticks {
             let yy = g.y(*value).round() + 0.5;
@@ -171,13 +174,16 @@ pub fn line_chart(chart: LineChart, height: i32, accessible_label: &str) -> gtk:
             }
         }
         for (i, label) in &c.x_labels {
+            // Centred on its point, but kept inside the chart.
+            let (tw, _) = text_size(area, label, TextStyle::Dim);
+            let x = (g.x(*i) - tw / 2.0).clamp(0.0, (w as f64 - tw).max(0.0));
             draw_text(
                 area,
                 cr,
                 label,
-                g.x(*i),
+                x,
                 g.bottom + 6.0,
-                Align::CenterTop,
+                Align::StartTop,
                 TextStyle::Dim,
             );
         }
@@ -313,10 +319,19 @@ pub fn line_chart(chart: LineChart, height: i32, accessible_label: &str) -> gtk:
                 cr.arc(g.x(i), g.y(*v), 4.0, 0.0, std::f64::consts::TAU);
                 let _ = cr.fill();
             }
-            if let Some(v) = c.values.get(i).or_else(|| c.forecast.get(i - n_real)) {
+            if let Some(v) = c.values.get(i) {
                 set_source(cr, &s1);
                 cr.arc(g.x(i), g.y(*v), 5.0, 0.0, std::f64::consts::TAU);
                 let _ = cr.fill();
+            } else if let Some(v) = c.forecast.get(i - n_real) {
+                // Forecast: a larger hollow ring.
+                set_source(cr, &card);
+                cr.arc(g.x(i), g.y(*v), 8.0, 0.0, std::f64::consts::TAU);
+                let _ = cr.fill();
+                set_source(cr, &s1);
+                cr.set_line_width(2.0);
+                cr.arc(g.x(i), g.y(*v), 7.0, 0.0, std::f64::consts::TAU);
+                let _ = cr.stroke();
             }
         }
     });
@@ -340,15 +355,14 @@ pub fn line_chart(chart: LineChart, height: i32, accessible_label: &str) -> gtk:
     area.add_controller(motion);
 
     let c = chart.clone();
+    let cache = TipCache::default();
     area.connect_query_tooltip(move |area, px, _py, _kb, tooltip| {
         let Some(g) = Geometry::new(&c, area.width() as f64, area.height() as f64) else {
             return false;
         };
-        match c.tooltips.get(g.nearest(px as f64)) {
-            Some(text) => {
-                tooltip.set_markup(Some(text));
-                true
-            }
+        let i = g.nearest(px as f64);
+        match c.tooltips.get(i) {
+            Some(tip) => cache.show(tooltip, i, tip),
             None => false,
         }
     });

@@ -7,10 +7,13 @@ pub mod donut;
 pub mod line;
 pub mod share_bar;
 pub mod sparkline;
+pub mod tip;
+
+pub use tip::{Tip, TipMark};
 
 use adw::prelude::*;
 use finaryx_core::stats::chart_group;
-use gtk::gdk;
+use gtk::{gdk, glib};
 
 /// Looks a named colour up in the theme (`@define-color`), e.g.
 /// `"finaryx_a1"`.
@@ -51,21 +54,38 @@ pub fn set_source(cr: &gtk::cairo::Context, color: &gdk::RGBA) {
     );
 }
 
-/// Redraws `area` when the style switches between light and dark.
+/// Redraws `area` when the style switches between light and dark, or
+/// in and out of high contrast.
 pub fn redraw_on_theme_change(area: &gtk::DrawingArea) {
-    let weak = area.downgrade();
-    let handler = adw::StyleManager::default().connect_dark_notify(move |_| {
-        if let Some(area) = weak.upgrade() {
-            area.queue_draw();
-        }
-    });
+    let manager = adw::StyleManager::default();
+    let handlers: Vec<glib::SignalHandlerId> = ["notify::dark", "notify::high-contrast"]
+        .iter()
+        .map(|signal| {
+            let weak = area.downgrade();
+            manager.connect_local(signal, false, move |_| {
+                if let Some(area) = weak.upgrade() {
+                    area.queue_draw();
+                }
+                None
+            })
+        })
+        .collect();
     // Disconnect once the widget is gone.
-    let handler = std::cell::RefCell::new(Some(handler));
+    let handlers = std::cell::RefCell::new(handlers);
     area.connect_destroy(move |_| {
-        if let Some(h) = handler.borrow_mut().take() {
+        for h in handlers.borrow_mut().drain(..) {
             adw::StyleManager::default().disconnect(h);
         }
     });
+}
+
+/// Opacity of the grid lines: discreet, stronger in high contrast.
+pub fn grid_alpha() -> f32 {
+    if adw::StyleManager::default().is_high_contrast() {
+        0.35
+    } else {
+        0.08
+    }
 }
 
 /// A small coloured square used in legends and lists (12 px by default).
@@ -256,6 +276,15 @@ pub fn legend_mark(kind: LegendMark) -> gtk::DrawingArea {
                 set_source(cr, &theme_color(area, color));
                 cr.rectangle(0.0, 0.0, w, h);
                 let _ = cr.fill();
+                if kind == LegendMark::Band {
+                    // Outline: the range stays visible on any background.
+                    let mut edge = theme_color(area, "finaryx_s1");
+                    edge.set_alpha(0.6);
+                    set_source(cr, &edge);
+                    cr.set_line_width(1.0);
+                    cr.rectangle(0.5, 0.5, w - 1.0, h - 1.0);
+                    let _ = cr.stroke();
+                }
             }
         }
     });

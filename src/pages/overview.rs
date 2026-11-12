@@ -17,7 +17,7 @@ use super::{
     amount, amount_whole, capitalized, caption, chart_card, clear, empty_state, kpi_card,
     legend_item, pct0, pct1, section_header, KpiSize,
 };
-use crate::charts::{self, columns, donut, line, LegendMark};
+use crate::charts::{self, columns, donut, line, LegendMark, Tip, TipMark};
 use crate::window::FinaryxWindow;
 
 /// "d’octobre", "de mai".
@@ -74,28 +74,28 @@ pub fn month_line(
     let tooltips = (0..stats::days_in_month(month) as usize)
         .map(|i| {
             let day = month.with_day(i as u32 + 1).unwrap();
-            let mut lines = vec![format!("<b>{}</b>", dates::day_month_year(day))];
+            let mut tip = Tip::new(dates::day_month_year(day));
             if let Some(v) = current.balances.get(i) {
-                lines.push(format!(
-                    "{} : {}",
+                tip = tip.row(
+                    TipMark::Legend(LegendMark::Line),
                     capitalized(dates::month_name(month.month())),
-                    amount(*v, cur, Sign::Negative)
-                ));
+                    amount(*v, cur, Sign::Negative),
+                );
             }
             if let Some(v) = previous.balances.get(i) {
-                lines.push(format!(
-                    "{} : {}",
+                tip = tip.row(
+                    TipMark::Legend(LegendMark::Ghost),
                     capitalized(dates::month_name(prev_month.month())),
-                    amount(*v, cur, Sign::Negative)
-                ));
+                    amount(*v, cur, Sign::Negative),
+                );
             }
             if let Some(s) = current.spending.get(i) {
-                lines.push(
-                    gettext("Dépenses du jour : <b>{amount}</b>")
+                tip = tip.footer(
+                    gettext("Dépenses du jour <b>{amount}</b>")
                         .replace("{amount}", &amount(*s, cur, Sign::Negative)),
                 );
             }
-            lines.join("\n")
+            tip
         })
         .collect();
     let x_labels = x_days
@@ -126,7 +126,7 @@ pub fn month_line(
     };
     let description = match (current.balances.first(), end) {
         (Some(first), Some(end)) => {
-            gettext("Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}")
+            gettext("Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}")
                 .replace("{month}", dates::month_name(month.month()))
                 .replace("{start}", &amount_whole(*first, cur, Sign::Negative))
                 .replace("{end}", &amount_whole(end, cur, Sign::Negative))
@@ -160,20 +160,27 @@ pub fn month_donut(
                 .iter()
                 .find(|q| q.slot == p.slot)
                 .map_or(0, |q| q.amount);
-            let tooltip = format!(
-                "<b>{}</b>\n{}\n{}\n{}\n{}",
-                glib::markup_escape_text(&p.name),
-                gettext("Montant : {amount}")
-                    .replace("{amount}", &amount(p.amount, currency, Sign::Negative)),
-                gettext("Part des dépenses : {pct} %").replace("{pct}", &pct1(p.amount, total)),
-                gettext("Écart vs {month} : {amount}")
-                    .replace("{month}", prev_name)
-                    .replace(
-                        "{amount}",
-                        &amount(p.amount - before, currency, Sign::Always)
-                    ),
-                super::n_ops(p.operations),
-            );
+            let mut tooltip = Tip::new(&p.name)
+                .row(
+                    TipMark::Category(Some(p.slot)),
+                    gettext("Montant"),
+                    amount(p.amount, currency, Sign::Negative),
+                )
+                .row(
+                    TipMark::None,
+                    gettext("Part des dépenses"),
+                    format!("{}\u{a0}%", pct1(p.amount, total)),
+                )
+                .row(
+                    TipMark::None,
+                    gettext("Écart vs {month}").replace("{month}", prev_name),
+                    amount(p.amount - before, currency, Sign::Always),
+                );
+            let mut footer = super::n_ops(p.operations);
+            if p.slot == OTHERS_GROUP {
+                footer = format!("{footer} · {}", gettext("cliquez pour le détail"));
+            }
+            tooltip = tooltip.footer(glib::markup_escape_text(&footer).to_string());
             donut::Part {
                 slot: p.slot,
                 amount: p.amount,
@@ -217,7 +224,8 @@ pub fn months_columns(
     let columns = months
         .iter()
         .zip(&data)
-        .map(|(m, row)| {
+        .enumerate()
+        .map(|(i, (m, row))| {
             let total: i64 = row.iter().sum();
             let month_name = dates::month_short(m.month());
             columns::Column {
@@ -232,16 +240,46 @@ pub fn months_columns(
                     }
                 }),
                 tooltips: std::array::from_fn(|k| {
-                    format!(
-                        "<b>{} · {}</b>\n{}\n{}\n{}",
-                        capitalized(month_name),
-                        glib::markup_escape_text(&names[k]),
-                        gettext("Montant : {amount}")
-                            .replace("{amount}", &amount(row[k], cur, Sign::Negative)),
-                        gettext("Part du mois : {pct} %").replace("{pct}", &pct1(row[k], total)),
-                        gettext("Total du mois : {amount}")
-                            .replace("{amount}", &amount(total, cur, Sign::Negative)),
+                    let mut tip = Tip::new(format!(
+                        "{} · {}",
+                        capitalized(dates::month_name(m.month())),
+                        names[k]
+                    ))
+                    .row(
+                        TipMark::Category(Some(k as u8 + 1)),
+                        gettext("Montant"),
+                        amount(row[k], cur, Sign::Negative),
                     )
+                    .row(
+                        TipMark::None,
+                        gettext("Part du mois"),
+                        format!("{}\u{a0}%", pct1(row[k], total)),
+                    )
+                    .row(
+                        TipMark::None,
+                        gettext("Total du mois"),
+                        amount(total, cur, Sign::Negative),
+                    );
+                    // Same category the month before.
+                    if let Some(before) = i.checked_sub(1).map(|j| data[j][k]) {
+                        let prev = stats::previous_month(*m);
+                        let change = if before > 0 {
+                            format!(
+                                " ({}{}\u{a0}%)",
+                                if row[k] >= before { "+" } else { "\u{2212}" },
+                                pct0((row[k] - before).abs(), before)
+                            )
+                        } else {
+                            String::new()
+                        };
+                        tip = tip.footer(format!(
+                            "{} : {}{}",
+                            capitalized(dates::month_name(prev.month())),
+                            amount(before, cur, Sign::Negative),
+                            change
+                        ));
+                    }
+                    tip
                 }),
             }
         })
@@ -435,7 +473,7 @@ impl OverviewPage {
                     gettext("dont salaire {amount}")
                         .replace("{amount}", &amount(*value, cur, Sign::Negative))
                 } else {
-                    gettext("dont {label} : {amount}")
+                    gettext("dont {label} : {amount}")
                         .replace("{label}", label)
                         .replace("{amount}", &amount(*value, cur, Sign::Negative))
                 }

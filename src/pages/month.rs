@@ -116,10 +116,10 @@ impl MonthPage {
         self.previous.set_sensitive(month > earliest);
         self.next.set_sensitive(month < latest);
         self.previous.set_tooltip_text(Some(
-            &gettext("Mois précédent : {month}").replace("{month}", &dates::month_year(prev)),
+            &gettext("Mois précédent : {month}").replace("{month}", &dates::month_year(prev)),
         ));
         self.next.set_tooltip_text(Some(
-            &gettext("Mois suivant : {month}")
+            &gettext("Mois suivant : {month}")
                 .replace("{month}", &dates::month_year(stats::next_month(month))),
         ));
         self.previous
@@ -197,17 +197,16 @@ impl MonthPage {
             .iter()
             .enumerate()
             .map(|(i, v)| {
-                format!(
-                    "<b>{}</b>\n{}",
-                    dates::day_month(month.with_day(i as u32 + 1).unwrap()),
-                    gettext("{amount} dépensés")
-                        .replace("{amount}", &amount(*v, cur, Sign::Negative))
+                charts::Tip::new(dates::day_month_year(month.with_day(i as u32 + 1).unwrap())).row(
+                    charts::TipMark::Legend(LegendMark::Bars),
+                    gettext("Dépenses du jour"),
+                    amount(*v, cur, Sign::Negative),
                 )
             })
             .collect();
         let description = match (&peak_label, peak_day) {
             (Some(p), Some(i)) => {
-                gettext("Dépenses de chaque jour {of_month} ; le {day}, {peak} domine")
+                gettext("Dépenses de chaque jour {of_month} ; le {day}, {peak} domine")
                     .replace("{of_month}", &super::overview::of_month(month.month()))
                     .replace("{day}", &(i + 1).to_string())
                     .replace("{peak}", p)

@@ -22,7 +22,7 @@ use super::{
     amount, amount_whole, boxed_list, capitalized, caption, chart_card, clear, empty_state,
     kpi_card, legend, legend_item, KpiSize,
 };
-use crate::charts::{line, LegendMark};
+use crate::charts::{line, LegendMark, Tip, TipMark};
 use crate::window::FinaryxWindow;
 
 pub struct ForecastPage {
@@ -150,34 +150,40 @@ pub fn balance_chart(f: &Forecast, currency: &str, o: &ChartOptions) -> gtk::Dra
         .map(|(i, m)| (i, dates::month_short(m.month()).to_string()))
         .collect();
 
-    let mut tooltips: Vec<String> = f
+    let mut tooltips: Vec<Tip> = f
         .history
         .iter()
         .map(|(m, b)| {
-            format!(
-                "<b>{}</b>\n{}",
-                month_title(*m),
-                gettext("Solde fin de mois : {amount}")
-                    .replace("{amount}", &amount(*b, currency, Sign::Negative))
+            Tip::new(month_title(*m)).row(
+                TipMark::Legend(LegendMark::Line),
+                gettext("Solde en fin de mois"),
+                amount(*b, currency, Sign::Negative),
             )
         })
         .collect();
     tooltips.extend(f.months.iter().map(|m| {
-        format!(
-            "<b>{}</b>\n{}\n{}",
-            gettext("{month} (prévu)").replace("{month}", &month_title(m.month)),
-            gettext("Solde fin de mois : {amount}")
-                .replace("{amount}", &amount(m.balance, currency, Sign::Negative)),
-            gettext("Fourchette : {low} à {high}")
-                .replace(
-                    "{low}",
-                    &amount_whole(m.balance - m.half_width, currency, Sign::Negative),
-                )
-                .replace(
-                    "{high}",
-                    &amount_whole(m.balance + m.half_width, currency, Sign::Negative),
-                ),
-        )
+        Tip::new(gettext("{month} · prévu").replace("{month}", &month_title(m.month)))
+            .row(
+                TipMark::Legend(LegendMark::Dashed),
+                gettext("Solde en fin de mois"),
+                amount(m.balance, currency, Sign::Negative),
+            )
+            .row(
+                TipMark::Legend(LegendMark::Band),
+                gettext("Fourchette"),
+                super::amount_range(m.balance - m.half_width, m.balance + m.half_width, currency),
+            )
+            .footer(
+                gettext("Dépenses attendues <b>{spending}</b> · revenus <b>{income}</b>")
+                    .replace(
+                        "{spending}",
+                        &amount_whole(m.spending, currency, Sign::Negative),
+                    )
+                    .replace(
+                        "{income}",
+                        &amount_whole(m.income, currency, Sign::Negative),
+                    ),
+            )
     }));
 
     let n_real = real.len();
@@ -202,7 +208,7 @@ pub fn balance_chart(f: &Forecast, currency: &str, o: &ChartOptions) -> gtk::Dra
             let i = f.months.iter().position(|m| m.month == p.month)?;
             Some((
                 n_real + i,
-                gettext("{month} : pic de dépenses\nattendu ({amount})")
+                gettext("{month} : pic de dépenses\nattendu ({amount})")
                     .replace("{month}", &capitalized(dates::month_name(p.month.month())))
                     .replace(
                         "{amount}",
@@ -234,7 +240,7 @@ pub fn balance_chart(f: &Forecast, currency: &str, o: &ChartOptions) -> gtk::Dra
     };
     let description = match (f.history.last(), end) {
         (Some((m0, b0)), Some(e)) => gettext(
-            "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}",
+            "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}",
         )
         .replace("{real}", &amount_whole(*b0, currency, Sign::Negative))
         .replace("{month}", dates::month_name(m0.month()))
@@ -285,8 +291,8 @@ pub fn not_enough_data(months: usize) -> adw::StatusPage {
         "finaryx-forecast-symbolic",
         &gettext("Pas encore assez de données pour une prévision"),
         &ngettext(
-            "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue.",
-            "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue.",
+            "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue.",
+            "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue.",
             missing as u32,
         )
         .replace("{n}", &missing.to_string()),
@@ -449,7 +455,7 @@ impl ForecastPage {
             &if narrow {
                 range
             } else {
-                gettext("Fourchette : {range}").replace("{range}", &range)
+                gettext("Fourchette : {range}").replace("{range}", &range)
             },
             size,
         ));
@@ -530,14 +536,14 @@ impl ForecastPage {
         } else {
             gettext(
                 "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. \
-                 La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre.",
+                 La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre.",
             )
         }];
         if f.basis < basis {
             notes.push(
                 ngettext(
-                    "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin.",
-                    "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin.",
+                    "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin.",
+                    "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin.",
                     f.basis as u32,
                 )
                 .replace("{n}", &f.basis.to_string()),
@@ -545,7 +551,7 @@ impl ForecastPage {
         }
         if !f.seasonal {
             notes.push(gettext(
-                "Saisonnalité non prise en compte : moins de 12 mois d’historique.",
+                "Saisonnalité non prise en compte : moins de 12 mois d’historique.",
             ));
         }
         let card = if narrow {

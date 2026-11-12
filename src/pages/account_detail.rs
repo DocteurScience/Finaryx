@@ -37,6 +37,8 @@ pub struct AccountDetailPage {
     title: adw::WindowTitle,
     content: gtk::Box,
     callbacks: Callbacks,
+    /// Narrow layout: the side figures go under the balance.
+    pub narrow: std::cell::Cell<bool>,
 }
 
 pub const TAG: &str = "account";
@@ -77,6 +79,7 @@ impl AccountDetailPage {
             title,
             content,
             callbacks,
+            narrow: std::cell::Cell::new(false),
         }
     }
 
@@ -136,17 +139,19 @@ impl AccountDetailPage {
         );
         top.append(&main);
 
+        let narrow = self.narrow.get();
         let side = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)
             .valign(gtk::Align::Center)
             .build();
+        let side_x = if narrow { 0.0 } else { 1.0 };
         if let Some(last) = o.last_operation {
             let change = accounts::month_change(conn, a.id, last)?;
             let text = gettext("{amount} en {month}")
                 .replace("{amount}", &amount(change, &a.currency, Sign::Always))
                 .replace("{month}", dates::month_name(last.month()));
             let l = caption(&text);
-            l.set_xalign(1.0);
+            l.set_xalign(side_x);
             side.append(&l);
         }
         let count = ngettext(
@@ -156,9 +161,13 @@ impl AccountDetailPage {
         )
         .replace("{n}", &o.operation_count.to_string());
         let l = caption(&count);
-        l.set_xalign(1.0);
+        l.set_xalign(side_x);
         side.append(&l);
-        top.append(&side);
+        if narrow {
+            main.append(&side);
+        } else {
+            top.append(&side);
+        }
         card.append(&top);
 
         // Weekly balance over the last 6 months.
@@ -196,10 +205,10 @@ impl AccountDetailPage {
                     tooltips: points
                         .iter()
                         .map(|(d, v)| {
-                            format!(
-                                "{} : {}",
-                                dates::day_month_year(*d),
-                                amount(*v, &a.currency, Sign::Negative)
+                            crate::charts::Tip::new(dates::day_month_year(*d)).row(
+                                crate::charts::TipMark::Legend(crate::charts::LegendMark::Line),
+                                gettext("Solde"),
+                                amount(*v, &a.currency, Sign::Negative),
                             )
                         })
                         .collect(),
@@ -212,7 +221,7 @@ impl AccountDetailPage {
                     ..Default::default()
                 };
                 let description =
-                    gettext("Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}")
+                    gettext("Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}")
                         .replace(
                             "{start}",
                             &amount_whole(values[0], &a.currency, Sign::Negative),
@@ -261,7 +270,7 @@ impl AccountDetailPage {
                 .valign(gtk::Align::Center)
                 .build();
             button.update_property(&[gtk::accessible::Property::Label(
-                &gettext("Modifier : {field}").replace("{field}", &title),
+                &gettext("Modifier : {field}").replace("{field}", &title),
             )]);
             let edit = self.callbacks.edit.clone();
             let id = a.id;

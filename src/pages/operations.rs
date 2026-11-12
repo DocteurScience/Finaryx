@@ -29,7 +29,10 @@ pub struct OperationsPage {
     account: gtk::DropDown,
     period: gtk::DropDown,
     chips: gtk::Box,
+    filters: gtk::FlowBox,
     summary: gtk::Box,
+    /// Narrow layout: one filter per line, compact rows.
+    narrow: Cell<bool>,
     list_box: gtk::Box,
     /// Account ids of the account drop-down (index 0: all).
     account_ids: RefCell<Vec<Option<Id>>>,
@@ -120,6 +123,19 @@ impl OperationsPage {
             .title(gettext("Opérations"))
             .child(&toolbar)
             .build();
+        // Ctrl+F, or typing anywhere in the page, goes to the search.
+        search.set_key_capture_widget(Some(&page));
+        let shortcuts = gtk::ShortcutController::new();
+        shortcuts.set_scope(gtk::ShortcutScope::Managed);
+        let entry = search.clone();
+        shortcuts.add_shortcut(gtk::Shortcut::new(
+            gtk::ShortcutTrigger::parse_string("<Control>f"),
+            Some(gtk::CallbackAction::new(move |_, _| {
+                entry.grab_focus();
+                glib::Propagation::Stop
+            })),
+        ));
+        page.add_controller(shortcuts);
 
         let this = Rc::new(OperationsPage {
             page,
@@ -129,7 +145,9 @@ impl OperationsPage {
             account,
             period,
             chips,
+            filters,
             summary,
+            narrow: Cell::new(false),
             list_box,
             account_ids: RefCell::default(),
             months: RefCell::default(),
@@ -293,6 +311,19 @@ impl OperationsPage {
     }
 
     /// Re-reads the operations with the current filters.
+    pub fn set_narrow(self: &Rc<Self>, narrow: bool) {
+        self.narrow.set(narrow);
+        self.filters
+            .set_max_children_per_line(if narrow { 1 } else { 3 });
+        self.summary.set_orientation(if narrow {
+            gtk::Orientation::Vertical
+        } else {
+            gtk::Orientation::Horizontal
+        });
+        self.summary.set_spacing(if narrow { 4 } else { 12 });
+        self.refresh_list();
+    }
+
     pub fn refresh_list(self: &Rc<Self>) {
         let Some(window) = self.window.upgrade() else {
             return;
@@ -334,6 +365,7 @@ impl OperationsPage {
         let left = caption(&parts.join(" · "));
         left.set_hexpand(true);
         self.summary.append(&left);
+        let narrow = self.narrow.get();
         let mut total_text = amount(page.total, &cur, Sign::Negative);
         let is_spending = categories
             .iter()
@@ -348,6 +380,8 @@ impl OperationsPage {
         self.summary.append(
             &gtk::Label::builder()
                 .label(total_text)
+                .xalign(if narrow { 0.0 } else { 1.0 })
+                .wrap(true)
                 .css_classes(["heading", "numeric"])
                 .build(),
         );
@@ -400,17 +434,20 @@ impl OperationsPage {
         categories: &[Category],
         currency: &str,
     ) -> gtk::ListBoxRow {
+        let narrow = self.narrow.get();
         let line = gtk::Box::builder()
             .spacing(12)
             .margin_top(6)
             .margin_bottom(6)
-            .margin_start(16)
+            .margin_start(if narrow { 12 } else { 16 })
             .margin_end(12)
             .build();
-        let date = caption(&dates::day_month(op.booked_on));
-        date.set_width_request(52);
-        date.set_wrap(false);
-        line.append(&date);
+        if !narrow {
+            let date = caption(&dates::day_month(op.booked_on));
+            date.set_width_request(52);
+            date.set_wrap(false);
+            line.append(&date);
+        }
         let text = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)
             .hexpand(true)
@@ -424,10 +461,13 @@ impl OperationsPage {
                 .css_classes(["heading"])
                 .build(),
         );
-        let account = match &op.bank_name {
+        let mut account = match &op.bank_name {
             Some(b) => format!("{} · {}", op.account_name, b),
             None => op.account_name.clone(),
         };
+        if narrow {
+            account = format!("{} · {}", dates::day_month(op.booked_on), op.account_name);
+        }
         let sub = gtk::Box::builder().spacing(8).build();
         sub.append(&caption(&account));
         if op.needs_review {
@@ -535,14 +575,24 @@ impl OperationsPage {
                 this.apply_category(txn, &label, category);
             }
         });
-        line.append(&button);
+        if narrow {
+            // Under the label, aligned with its text.
+            button.set_halign(gtk::Align::Start);
+            text.append(&button);
+        } else {
+            line.append(&button);
+        }
         line.append(
             &gtk::Label::builder()
                 .label(amount(op.amount_cents, currency, Sign::Negative))
-                .width_chars(11)
+                .width_chars(if narrow { 0 } else { 11 })
                 .xalign(1.0)
                 .css_classes(["heading", "numeric"])
-                .valign(gtk::Align::Center)
+                .valign(if narrow {
+                    gtk::Align::Start
+                } else {
+                    gtk::Align::Center
+                })
                 .build(),
         );
         gtk::ListBoxRow::builder()
@@ -554,7 +604,7 @@ impl OperationsPage {
 
 impl OperationsPage {
     /// Sets the category of an operation by hand, then proposes a rule for
-    /// the same labels ("Créer une règle ?").
+    /// the same labels ("Créer une règle ?").
     fn apply_category(self: &Rc<Self>, txn: Id, label: &str, category: Id) {
         let Some(window) = self.window.upgrade() else {
             return;
@@ -583,7 +633,7 @@ impl OperationsPage {
             })
             .unwrap_or(0);
         let alert = adw::AlertDialog::builder()
-            .heading(gettext("Créer une règle ?"))
+            .heading(gettext("Créer une règle ?"))
             .body(
                 gettext(
                     "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports.",

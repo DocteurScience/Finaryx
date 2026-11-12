@@ -15,7 +15,7 @@ fn household_group(window: &crate::window::FinaryxWindow) -> adw::PreferencesGro
         .title(gettext("Noms du foyer"))
         .description(gettext(
             "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé \
-             comme virement interne : ni dépense, ni revenu.",
+             comme virement interne : ni dépense, ni revenu.",
         ))
         .build();
     fill_household(&group, window);

@@ -257,7 +257,7 @@ fn unreadable_rows_are_reported_not_imported() {
     assert_eq!(a.mapping.columns["Devise"], Field::Currency);
     let messages = plan::validate(&a.table, &a.mapping);
     assert!(
-        messages.contains(&"1 ligne a un montant illisible : ligne 3".to_string()),
+        messages.contains(&"1 ligne a un montant illisible\u{a0}: ligne 3".to_string()),
         "{messages:?}"
     );
     let p = plan::plan(&conn, &a.table, &a.mapping, account).unwrap();

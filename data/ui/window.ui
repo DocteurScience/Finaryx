@@ -222,7 +222,7 @@
                             </child>
                             <child type="top">
                               <object class="AdwBanner" id="demo_banner">
-                                <property name="title" translatable="yes">Démonstration : rien n’est enregistré</property>
+                                <property name="title" translatable="yes">Démonstration : rien n’est enregistré</property>
                               </object>
                             </child>
                             <property name="content">
@@ -337,7 +337,7 @@
                                     <child>
                                       <object class="AdwActionRow">
                                         <property name="title" translatable="yes">Vérifiez les catégories</property>
-                                        <property name="subtitle" translatable="yes">Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle.</property>
+                                        <property name="subtitle" translatable="yes">Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle.</property>
                                         <child type="prefix">
                                           <object class="GtkLabel">
                                             <property name="label">3</property>

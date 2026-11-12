@@ -548,6 +548,7 @@ impl FinaryxWindow {
         imp.content_nav.pop_to_tag("main");
         imp.content_nav.push(&page.page);
         page.setup(account, month, category);
+        page.set_narrow(imp.narrow.get());
         imp.operations_page.replace(Some(page));
         imp.split_view.set_show_content(true);
     }
@@ -675,6 +676,12 @@ impl FinaryxWindow {
             return;
         }
         imp.accounts_page.get().unwrap().set_narrow(narrow);
+        if let Some(page) = imp.detail.borrow().as_ref() {
+            page.narrow.set(narrow);
+        }
+        if let Some(page) = imp.operations_page.borrow().clone() {
+            page.set_narrow(narrow);
+        }
         if let Some(page) = imp.import_page.borrow().clone() {
             page.set_narrow(narrow);
         }
@@ -804,7 +811,7 @@ impl FinaryxWindow {
             Err(e) => {
                 glib::g_warning!("finaryx", "Database change failed: {e}");
                 Err(
-                    gettext("La modification n’a pas pu être enregistrée : {error}")
+                    gettext("La modification n’a pas pu être enregistrée : {error}")
                         .replace("{error}", &e.to_string()),
                 )
             }
@@ -924,7 +931,7 @@ impl FinaryxWindow {
         };
         let n = overview.operation_count.clamp(0, u32::MAX as i64) as u32;
         let dialog = adw::AlertDialog::new(
-            Some(&gettext("Supprimer « {name} » ?").replace("{name}", &overview.account.name)),
+            Some(&gettext("Supprimer « {name} » ?").replace("{name}", &overview.account.name)),
             Some(
                 &ngettext(
                     "Le compte, son historique d’import et {n} opération seront effacés définitivement.",
@@ -977,11 +984,11 @@ impl FinaryxWindow {
             .clone()
             .unwrap_or_else(|| gettext("sans nom"));
         let dialog = adw::AlertDialog::new(
-            Some(&gettext("Annuler cet import ?")),
+            Some(&gettext("Annuler cet import ?")),
             Some(
                 &ngettext(
-                    "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés.",
-                    "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés.",
+                    "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés.",
+                    "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés.",
                     n,
                 )
                 .replace("{n}", &n.to_string())
@@ -1034,6 +1041,7 @@ impl FinaryxWindow {
             }),
         };
         let detail = Rc::new(AccountDetailPage::new(id, callbacks));
+        detail.narrow.set(self.imp().narrow.get());
         if self.read(|conn| detail.refresh(conn)) != Some(true) {
             return;
         }

@@ -250,7 +250,7 @@ impl ImportPage {
                 Err(e) => {
                     if let Some(w) = this.window() {
                         w.toast(
-                            &gettext("Impossible de lire le fichier : {error}")
+                            &gettext("Impossible de lire le fichier : {error}")
                                 .replace("{error}", e.message()),
                         );
                     }
@@ -413,7 +413,7 @@ impl ImportPage {
             let row = adw::ActionRow::builder()
                 .title(gettext("Compte de destination"))
                 .subtitle(gettext(
-                    "Aucun compte pour l’instant : créez celui qui recevra ces opérations.",
+                    "Aucun compte pour l’instant : créez celui qui recevra ces opérations.",
                 ))
                 .subtitle_lines(2)
                 .build();
@@ -470,13 +470,13 @@ impl ImportPage {
         // Recognised model or new format.
         let (subtitle, badge_text, late) = match &s.analysis.profile {
             Some(p) => (
-                gettext("Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin.")
+                gettext("Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin.")
                     .replace("{name}", &p.name),
                 gettext("Reconnu"),
                 false,
             ),
             None => (
-                gettext("Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."),
+                gettext("Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."),
                 gettext("Nouveau format"),
                 true,
             ),
@@ -549,7 +549,7 @@ impl ImportPage {
         );
         if s.analysis.date_ambiguous {
             dates.set_subtitle(&gettext(
-                "À vérifier : les jours et les mois peuvent être inversés",
+                "À vérifier : les jours et les mois peuvent être inversés",
             ));
             dates.add_css_class("warning");
         }
@@ -635,7 +635,7 @@ impl ImportPage {
             .build();
         title.append(&heading(&gettext("Colonnes du fichier")));
         title.append(&caption(&gettext(
-            "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer ».",
+            "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer ».",
         )));
 
         let body = gtk::Box::builder()
@@ -711,9 +711,9 @@ impl ImportPage {
             let row = adw::ComboRow::builder()
                 .title(header)
                 .subtitle(if example.is_empty() {
-                    gettext("Exemple : (vide)")
+                    gettext("Exemple : (vide)")
                 } else {
-                    gettext("Exemple : {value}").replace("{value}", &example)
+                    gettext("Exemple : {value}").replace("{value}", &example)
                 })
                 .model(&string_list(&fields))
                 .build();
@@ -807,7 +807,7 @@ impl ImportPage {
             }
             body.append(&values);
             body.append(&caption(&gettext(
-                "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas.",
+                "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas.",
             )));
         }
         section(title.upcast_ref(), &body)
@@ -1064,7 +1064,7 @@ impl ImportPage {
                 .map(|l| l.to_string())
                 .collect();
             warnings.push(
-                gettext("La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible.")
+                gettext("La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible.")
                     .replace("{lines}", &lines.join(", ")),
             );
         }

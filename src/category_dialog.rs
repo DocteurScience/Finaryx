@@ -94,7 +94,7 @@ pub fn present(
     }
     let none_row = adw::ActionRow::builder()
         .title(gettext("Aucune couleur"))
-        .subtitle(gettext("Regroupée dans « Autres » dans les graphiques"))
+        .subtitle(gettext("Regroupée dans « Autres » dans les graphiques"))
         .build();
     let none_check = gtk::CheckButton::builder()
         .valign(gtk::Align::Center)
@@ -107,10 +107,10 @@ pub fn present(
     checks.push((None, none_check));
     if current_id == Some(builtin::OTHERS) {
         colors.set_sensitive(false);
-        colors.set_description(Some(&gettext("« Autres » garde toujours le gris.")));
+        colors.set_description(Some(&gettext("« Autres » garde toujours le gris.")));
     } else if free == 0 {
         colors.set_description(Some(&gettext(
-            "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et \
+            "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et \
              séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie.",
         )));
     }
@@ -191,8 +191,8 @@ pub fn present(
             .title(gettext("Supprimer la catégorie"))
             .subtitle(
                 ngettext(
-                    "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées.",
-                    "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées.",
+                    "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées.",
+                    "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées.",
                     u.operations.clamp(0, u32::MAX as i64) as u32,
                 )
                 .replace("{n}", &u.operations.to_string()),
@@ -216,10 +216,10 @@ pub fn present(
             let Some(window) = w.upgrade() else { return };
             confirm(
                 &window,
-                &gettext("Fusionner « {from} » dans « {into} » ?").replace("{from}", &name_now).replace("{into}", &into_name),
+                &gettext("Fusionner « {from} » dans « {into} » ?").replace("{from}", &name_now).replace("{into}", &into_name),
                 &ngettext(
-                    "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas.",
-                    "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas.",
+                    "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas.",
+                    "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas.",
                     count.clamp(0, u32::MAX as i64) as u32,
                 )
                 .replace("{n}", &count.to_string())
@@ -244,10 +244,10 @@ pub fn present(
             let Some(window) = w.upgrade() else { return };
             confirm(
                 &window,
-                &gettext("Supprimer « {name} » ?").replace("{name}", &name_now),
+                &gettext("Supprimer « {name} » ?").replace("{name}", &name_now),
                 &ngettext(
-                    "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées.",
-                    "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées.",
+                    "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées.",
+                    "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées.",
                     count.clamp(0, u32::MAX as i64) as u32,
                 )
                 .replace("{n}", &count.to_string()),

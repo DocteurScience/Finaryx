@@ -41,7 +41,7 @@ fn describe(u: &CategoryUse) -> String {
         builtin::INTERNAL_TRANSFER => gettext("catégorie spéciale, exclue des statistiques"),
         _ => match c.slot {
             Some(slot) => gettext("couleur de graphique {n}").replace("{n}", &slot.to_string()),
-            None => gettext("sans couleur, regroupée dans « Autres » dans les graphiques"),
+            None => gettext("sans couleur, regroupée dans « Autres » dans les graphiques"),
         },
     };
     format!("{} · {what}", n_ops(u.operations))
@@ -190,9 +190,9 @@ impl CategoriesPage {
             .build();
         body.append(&list);
         body.append(&caption(&gettext(
-            "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est \
-             comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les \
-             tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une \
+            "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est \
+             comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les \
+             tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une \
              catégorie, libérez-en une en la retirant à une autre catégorie.",
         )));
         section(header.upcast_ref(), &body)
@@ -220,9 +220,9 @@ impl CategoriesPage {
             .unwrap_or_default();
         for (i, r) in rules.iter().enumerate() {
             let title = if r.is_regex {
-                gettext("Le libellé correspond à « {pattern} »")
+                gettext("Le libellé correspond à « {pattern} »")
             } else {
-                gettext("Le libellé contient « {pattern} »")
+                gettext("Le libellé contient « {pattern} »")
             }
             .replace("{pattern}", &r.pattern);
             let row = adw::ActionRow::builder()
@@ -402,7 +402,7 @@ impl CategoriesPage {
         titles.append(&heading(&gettext("Noms du foyer")));
         titles.append(&caption(&gettext(
             "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer \
-             en « Virement interne ».",
+             en « Virement interne ».",
         )));
         header.append(&titles);
         let edit = gtk::Button::builder()
@@ -416,15 +416,15 @@ impl CategoriesPage {
             let row = adw::ActionRow::builder()
                 .title(glib::markup_escape_text(
                     &ngettext(
-                        "{n} opération contient « {name} »",
-                        "{n} opérations contiennent « {name} »",
+                        "{n} opération contient « {name} »",
+                        "{n} opérations contiennent « {name} »",
                         m.operations as u32,
                     )
                     .replace("{n}", &m.operations.to_string())
                     .replace("{name}", &m.name),
                 ))
                 .subtitle(
-                    gettext("Crée la règle « le libellé contient {name} → Virement interne »")
+                    gettext("Crée la règle « le libellé contient {name} → Virement interne »")
                         .replace("{name}", &m.name),
                 )
                 .build();

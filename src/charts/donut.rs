@@ -14,6 +14,7 @@ use super::{
     category_color, category_ink, draw_text, redraw_on_theme_change, set_source, text_size,
     theme_color, Align, TextStyle,
 };
+use super::{tip::TipCache, Tip};
 
 #[derive(Debug, Clone)]
 pub struct Part {
@@ -22,8 +23,7 @@ pub struct Part {
     pub amount: i64,
     /// Percentage written in the part ("31 %").
     pub label: String,
-    /// Tooltip (Pango markup).
-    pub tooltip: String,
+    pub tooltip: Tip,
 }
 
 #[derive(Debug, Clone)]
@@ -215,6 +215,7 @@ pub fn donut(
     area.add_controller(click);
 
     let c = chart.clone();
+    let cache = TipCache::default();
     area.connect_query_tooltip(move |area, x, y, _kb, tooltip| {
         match part_at(
             &c.parts,
@@ -223,10 +224,7 @@ pub fn donut(
             x as f64,
             y as f64,
         ) {
-            Some(i) => {
-                tooltip.set_markup(Some(&c.parts[i].tooltip));
-                true
-            }
+            Some(i) => cache.show(tooltip, i, &c.parts[i].tooltip),
             None => false,
         }
     });

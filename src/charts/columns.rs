@@ -14,6 +14,7 @@ use super::{
     category_color, category_ink, draw_text, redraw_on_theme_change, rounded_rect, set_source,
     theme_color, Align, TextStyle,
 };
+use super::{tip::TipCache, Tip};
 
 #[derive(Debug, Clone)]
 pub struct Column {
@@ -24,8 +25,8 @@ pub struct Column {
     pub total_label: String,
     /// Share written in each segment ("31 %").
     pub segment_labels: [String; CHART_GROUPS],
-    /// Tooltip (markup) of each segment.
-    pub tooltips: [String; CHART_GROUPS],
+    /// Tooltip of each segment.
+    pub tooltips: [Tip; CHART_GROUPS],
 }
 
 #[derive(Debug, Clone)]
@@ -103,7 +104,7 @@ pub fn stacked_columns(chart: Columns, height: i32, accessible_label: &str) -> g
             n: c.columns.len(),
         };
         let mut grid = area.color();
-        grid.set_alpha(0.08);
+        grid.set_alpha(super::grid_alpha());
         for (value, label) in &c.ticks {
             let yy = g.y(*value as f64).round() + 0.5;
             set_source(cr, &grid);
@@ -222,6 +223,7 @@ pub fn stacked_columns(chart: Columns, height: i32, accessible_label: &str) -> g
     area.add_controller(motion);
 
     let c = chart.clone();
+    let cache = TipCache::default();
     area.connect_query_tooltip(move |area, x, y, _kb, tooltip| {
         let g = Geometry {
             w: area.width() as f64,
@@ -230,10 +232,7 @@ pub fn stacked_columns(chart: Columns, height: i32, accessible_label: &str) -> g
             n: c.columns.len().max(1),
         };
         match g.hit(&c, x as f64, y as f64) {
-            Some((m, k)) => {
-                tooltip.set_markup(Some(&c.columns[m].tooltips[k]));
-                true
-            }
+            Some((m, k)) => cache.show(tooltip, m * CHART_GROUPS + k, &c.columns[m].tooltips[k]),
             None => false,
         }
     });

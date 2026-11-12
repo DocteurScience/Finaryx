@@ -6,6 +6,7 @@ use std::rc::Rc;
 use adw::prelude::*;
 
 use super::{draw_text, redraw_on_theme_change, set_source, theme_color, Align, TextStyle};
+use super::{tip::TipCache, Tip};
 
 #[derive(Debug, Clone)]
 pub struct Bars {
@@ -15,8 +16,8 @@ pub struct Bars {
     pub ticks: Vec<(i64, String)>,
     /// Text above the largest bar ("Loyer 690 €").
     pub peak_label: Option<String>,
-    /// Tooltip (markup) of each bar.
-    pub tooltips: Vec<String>,
+    /// Tooltip of each bar.
+    pub tooltips: Vec<Tip>,
 }
 
 const GUTTER: f64 = 64.0;
@@ -46,7 +47,7 @@ pub fn bars(chart: Bars, height: i32, accessible_label: &str) -> gtk::DrawingAre
         let y = |v: f64| bottom - v / max * (bottom - TOP);
         let slot = (w - GUTTER - END_MARGIN) / c.slots.max(1) as f64;
         let mut grid = area.color();
-        grid.set_alpha(0.08);
+        grid.set_alpha(super::grid_alpha());
         for (value, label) in &c.ticks {
             let yy = y(*value as f64).round() + 0.5;
             set_source(cr, &grid);
@@ -93,12 +94,11 @@ pub fn bars(chart: Bars, height: i32, accessible_label: &str) -> gtk::DrawingAre
         }
     });
     let c = chart.clone();
+    let cache = TipCache::default();
     area.connect_query_tooltip(move |area, x, _y, _kb, tooltip| {
-        match bar_at(&c, area.width() as f64, x as f64) {
-            Some(i) => {
-                tooltip.set_markup(c.tooltips.get(i).map(String::as_str));
-                true
-            }
+        match bar_at(&c, area.width() as f64, x as f64).and_then(|i| Some((i, c.tooltips.get(i)?)))
+        {
+            Some((i, tip)) => cache.show(tooltip, i, tip),
             None => false,
         }
     });

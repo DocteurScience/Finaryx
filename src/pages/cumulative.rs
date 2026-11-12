@@ -361,7 +361,7 @@ impl CumulativePage {
         let note = caption(&if narrow {
             gettext("Part de chaque catégorie sur la période et cumul en euros.")
         } else {
-            gettext("Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois en euros.")
+            gettext("Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois en euros.")
         });
         let body = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)

@@ -74,8 +74,8 @@ impl CategoryError {
     pub fn message(&self) -> String {
         match self {
             CategoryError::EmptyName => "Donnez un nom à la catégorie.".into(),
-            CategoryError::DuplicateName(n) => format!("La catégorie « {n} » existe déjà."),
-            CategoryError::SlotTaken(n) => format!("Cette couleur est déjà utilisée par « {n} »."),
+            CategoryError::DuplicateName(n) => format!("La catégorie « {n} » existe déjà."),
+            CategoryError::SlotTaken(n) => format!("Cette couleur est déjà utilisée par « {n} »."),
             CategoryError::Protected => {
                 "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée.".into()
             }
@@ -145,7 +145,7 @@ pub fn rename_category(conn: &Connection, id: Id, name: &str) -> Result<()> {
 /// recolours another category. "Autres" keeps its grey.
 pub fn set_slot(conn: &Connection, id: Id, slot: Option<u8>) -> Result<()> {
     if id == builtin::OTHERS {
-        return Err(Error::Invalid("« Autres » garde toujours le gris.".into()));
+        return Err(Error::Invalid("« Autres » garde toujours le gris.".into()));
     }
     check_slot(conn, slot, Some(id))?;
     conn.execute(

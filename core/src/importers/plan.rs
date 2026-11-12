@@ -42,7 +42,7 @@ impl Table {
             .collect()
     }
 
-    /// First non-empty value of a column, for the "Exemple : …" text.
+    /// First non-empty value of a column, for the "Exemple : …" text.
     pub fn example(&self, column: &str) -> Option<&str> {
         self.samples(column, 1).first().copied()
     }
@@ -72,7 +72,7 @@ pub struct Analysis {
     /// Format and mapping (from a profile, or proposed).
     pub mapping: Mapping,
     pub table: Table,
-    /// Recognised profile, if any ("Modèle reconnu : …").
+    /// Recognised profile, if any ("Modèle reconnu : …").
     pub profile: Option<Profile>,
     /// The dates could be JJ/MM or MM/JJ: the user must choose.
     pub date_ambiguous: bool,
@@ -199,7 +199,7 @@ pub fn bank_category_uses(
 pub fn validate(table: &Table, mapping: &Mapping) -> Vec<String> {
     let missing = mapping.missing_fields();
     if !missing.is_empty() {
-        return vec![format!("Associez une colonne à : {}.", missing.join(", "))];
+        return vec![format!("Associez une colonne à : {}.", missing.join(", "))];
     }
     let mut problems: BTreeMap<RowProblem, Vec<usize>> = BTreeMap::new();
     for (line, row) in table.rows.iter().take(20) {
@@ -213,15 +213,15 @@ pub fn validate(table: &Table, mapping: &Mapping) -> Vec<String> {
         .collect()
 }
 
-/// "3 lignes ont une date illisible : ligne 12, 40, 41"
+/// "3 lignes ont une date illisible : ligne 12, 40, 41"
 pub fn problem_message(problem: RowProblem, lines: &[usize]) -> String {
     let shown: Vec<String> = lines.iter().take(10).map(|l| l.to_string()).collect();
     let more = if lines.len() > 10 { " …" } else { "" };
     if lines.len() == 1 {
-        format!("1 ligne a {} : ligne {}", problem.label(), shown[0])
+        format!("1 ligne a {} : ligne {}", problem.label(), shown[0])
     } else {
         format!(
-            "{} lignes ont {} : ligne {}{more}",
+            "{} lignes ont {} : ligne {}{more}",
             lines.len(),
             problem.label(),
             shown.join(", ")
