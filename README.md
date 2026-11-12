@@ -23,6 +23,12 @@ Dépendances : GTK ≥ 4.14, libadwaita ≥ 1.5, Meson, Rust stable.
 
 L’application n’a jamais accès au réseau : ses fichiers passent par les portails (sélecteur de fichiers).
 
+GitHub Actions construit le Flatpak à chaque push (workflow `Flatpak`, paquet dans les « Artifacts » du run).
+
+## Publier une version
+1. Mettre à jour le numéro (`Cargo.toml`, `meson.build`, metainfo, étiquette du manifeste de publication) et le texte de `.github/release-notes.md`.
+2. Sur GitHub : *Actions* → *Flatpak* → *Run workflow* sur `main`, avec l’étiquette (par exemple `v0.1.0`). Le run construit le Flatpak, crée l’étiquette et la version, et y joint `finaryx.flatpak`. Il refuse une étiquette qui ne correspond pas à `Cargo.toml`.
+
 ## Traduire
 Français (langue source) et anglais complets. Le tableau `po/translations.csv` prépare seize autres langues : une ligne par texte, une colonne par langue, à remplir dans un tableur. Les dates et les montants suivent la langue. Mode d’emploi : `po/README.md`.
 
