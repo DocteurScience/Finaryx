@@ -1,0 +1,1669 @@
+# Finaryx — 简体中文
+# Generated from po/translations.csv by build-aux/translations.py: edit the table.
+msgid ""
+msgstr ""
+"Project-Id-Version: finaryx\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: 简体中文\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "fr"
+msgstr "zh_CN"
+
+msgid "Aucun import"
+msgstr "未导入"
+
+msgid "À jour"
+msgstr "最新"
+
+msgid "À mettre à jour"
+msgstr "待更新"
+
+msgid "{month} à importer"
+msgstr "导入{month}"
+
+msgid "Logement"
+msgstr "住房"
+
+msgid "Alimentation"
+msgstr "餐饮"
+
+msgid "Transports"
+msgstr "交通"
+
+msgid "Prêts et crédits"
+msgstr "贷款与信用"
+
+msgid "Shopping et animaux"
+msgstr "购物与宠物"
+
+msgid "Abonnements et télécoms"
+msgstr "订阅与通信"
+
+msgid "Banque et assurances"
+msgstr "银行与保险"
+
+msgid "Autres"
+msgstr "其他"
+
+msgid "Sorties et loisirs"
+msgstr "外出与休闲"
+
+msgid "Santé"
+msgstr "健康"
+
+msgid "Impôts et taxes"
+msgstr "税费"
+
+msgid "Administratif et éducation"
+msgstr "行政与教育"
+
+msgid "Revenus"
+msgstr "收入"
+
+msgid "Virement interne"
+msgstr "账户间转账"
+
+msgid "Donnez un nom à la catégorie."
+msgstr "请为分类命名。"
+
+msgid "La catégorie « {name} » existe déjà."
+msgstr "分类“{name}”已存在。"
+
+msgid "Cette couleur est déjà utilisée par « {name} »."
+msgstr "此颜色已被“{name}”使用。"
+
+msgid "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée."
+msgstr "Finaryx 需要此分类，无法删除。"
+
+msgid "« Autres » garde toujours le gris."
+msgstr "“其他”始终为灰色。"
+
+msgid "Le motif de la règle est vide."
+msgstr "规则的匹配内容为空。"
+
+msgid "Point-virgule ( ; )"
+msgstr "分号 ( ; )"
+
+msgid "Virgule ( , )"
+msgstr "逗号 ( , )"
+
+msgid "Tabulation"
+msgstr "制表符"
+
+msgid "Barre verticale ( | )"
+msgstr "竖线 ( | )"
+
+msgid "JJ/MM/AAAA"
+msgstr "DD/MM/YYYY"
+
+msgid "AAAA-MM-JJ"
+msgstr "YYYY-MM-DD"
+
+msgid "JJ-MM-AA"
+msgstr "DD-MM-YY"
+
+msgid "MM/JJ/AAAA"
+msgstr "MM/DD/YYYY"
+
+msgid "Ignorer"
+msgstr "忽略"
+
+msgid "Date de l’opération"
+msgstr "交易日期"
+
+msgid "Date de comptabilisation"
+msgstr "记账日期"
+
+msgid "Date de valeur"
+msgstr "起息日"
+
+msgid "Libellé"
+msgstr "摘要"
+
+msgid "Détail du libellé"
+msgstr "摘要详情"
+
+msgid "Montant"
+msgstr "金额"
+
+msgid "Débit"
+msgstr "支出"
+
+msgid "Crédit"
+msgstr "收入"
+
+msgid "Sens (débit ou crédit)"
+msgstr "方向 (支出或收入)"
+
+msgid "Référence de la banque"
+msgstr "银行参考号"
+
+msgid "Solde après l’opération"
+msgstr "交易后余额"
+
+msgid "Devise"
+msgstr "货币"
+
+msgid "Catégorie de la banque"
+msgstr "银行分类"
+
+msgid "Sous-catégorie de la banque"
+msgstr "银行子分类"
+
+msgid "Une colonne"
+msgstr "单列"
+
+msgid "Débit et crédit"
+msgstr "支出和收入"
+
+msgid "Montant et sens"
+msgstr "金额和方向"
+
+msgid "une date illisible"
+msgstr "无法读取的日期"
+
+msgid "un libellé vide"
+msgstr "空摘要"
+
+msgid "un montant illisible"
+msgstr "无法读取的金额"
+
+msgid "un sens (débit ou crédit) inconnu"
+msgstr "未知方向 (支出或收入)"
+
+msgid "une autre devise que celle du compte"
+msgstr "货币与账户不同"
+
+msgid "Associez une colonne à : {fields}."
+msgstr "请为以下项目指定列：{fields}。"
+
+msgid "{n} ligne a {problem} : ligne {lines}"
+msgid_plural "{n} lignes ont {problem} : lignes {lines}"
+msgstr[0] "{n} 行存在{problem}：第 {lines} 行"
+
+msgid "Finaryx"
+msgstr "Finaryx"
+
+msgid "Suivez vos comptes bancaires, sans rien envoyer en ligne"
+msgstr "管理银行账户，不向网络发送任何数据"
+
+msgid "banque;budget;compte;dépenses;finances;CSV;"
+msgstr "银行;预算;账户;支出;记账;钱;CSV;"
+
+msgid "Style"
+msgstr "样式"
+
+msgid "Suivre le style du système, ou forcer le style clair ou sombre."
+msgstr "跟随系统样式，或固定为浅色或深色。"
+
+msgid "Largeur de la fenêtre"
+msgstr "窗口宽度"
+
+msgid "Hauteur de la fenêtre"
+msgstr "窗口高度"
+
+msgid "Sauvegarde automatique"
+msgstr "自动备份"
+
+msgid "Copier la base après chaque import et garder les 5 dernières copies."
+msgstr "每次导入时复制数据库，保留最近 5 份。"
+
+msgid "Fenêtre maximisée"
+msgstr "窗口最大化"
+
+msgid "Suivez vos comptes bancaires"
+msgstr "管理您的银行账户"
+
+msgid "Finaryx importe les exports CSV de vos banques, les range dans une base locale et vous montre où part votre argent. Plusieurs comptes et plusieurs banques se suivent au même endroit, chacun dans sa devise."
+msgstr "Finaryx 读取银行导出的 CSV 文件，将其保存在本地数据库中，并显示您的钱花在哪里。来自不同银行的多个账户可在同一处管理，每个账户使用自己的货币。"
+
+msgid "Évolution du solde jour après jour, comparée au mois précédent"
+msgstr "与上月对比的每日余额"
+
+msgid "Répartition des dépenses par catégorie et cumul sur 3, 6 ou 12 mois"
+msgstr "按分类统计的支出，以及 3、6、12 个月的累计"
+
+msgid "Prévision du solde d’après vos charges récurrentes et vos habitudes, avec sa fourchette"
+msgstr "根据固定支出和消费习惯预测余额，并给出区间"
+
+msgid "Import guidé : détection du format, aperçu, doublons ignorés, annulation possible"
+msgstr "引导式导入：识别格式、预览、跳过重复、撤销"
+
+msgid "Catégories, règles de classement et virements entre vos comptes"
+msgstr "分类、归类规则和账户间转账"
+
+msgid "Sauvegarde, restauration et export CSV des opérations"
+msgstr "交易的备份、恢复和 CSV 导出"
+
+msgid "Vos données restent sur votre ordinateur : Finaryx ne fait aucune requête réseau et n’envoie aucune statistique d’usage."
+msgstr "您的数据不会离开您的电脑：Finaryx 不连接网络，也不发送任何使用统计。"
+
+msgid "DocteurScience"
+msgstr "DocteurScience"
+
+msgid "banque"
+msgstr "银行"
+
+msgid "budget"
+msgstr "预算"
+
+msgid "compte"
+msgstr "账户"
+
+msgid "dépenses"
+msgstr "支出"
+
+msgid "finances"
+msgstr "记账"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "Vue d’ensemble du mois"
+msgstr "月度概览"
+
+msgid "Prévision du solde d’après vos habitudes"
+msgstr "根据习惯预测余额"
+
+msgid "Le mois en détail"
+msgstr "月度明细"
+
+msgid "Cumul des dépenses par catégorie"
+msgstr "按分类累计的支出"
+
+msgid "Vos comptes et l’historique des imports"
+msgstr "账户和导入记录"
+
+msgid "Thème sombre"
+msgstr "深色样式"
+
+msgid "Première version."
+msgstr "首个版本。"
+
+msgid "Import CSV avec profil Banque Populaire et mappage manuel pour les autres banques"
+msgstr "CSV 导入，提供 Banque Populaire 配置，其他银行可手动指定列"
+
+msgid "Vue d’ensemble, mois en détail, cumul et prévisions"
+msgstr "概览、月度明细、累计和预测"
+
+msgid "Catégories, règles et virements entre vos comptes"
+msgstr "分类、规则和账户间转账"
+
+msgid "Sauvegarde, restauration et export CSV"
+msgstr "备份、恢复和 CSV 导出"
+
+msgid "Général"
+msgstr "常规"
+
+msgid "Importer un CSV"
+msgstr "导入 CSV"
+
+msgid "Préférences"
+msgstr "首选项"
+
+msgid "Raccourcis clavier"
+msgstr "键盘快捷键"
+
+msgid "Fermer la fenêtre"
+msgstr "关闭窗口"
+
+msgid "Quitter"
+msgstr "退出"
+
+msgid "Navigation"
+msgstr "导航"
+
+msgid "Vue d'ensemble"
+msgstr "概览"
+
+msgid "Mois en détail"
+msgstr "月度明细"
+
+msgid "Cumul"
+msgstr "累计"
+
+msgid "Prévisions"
+msgstr "预测"
+
+msgid "Comptes"
+msgstr "账户"
+
+msgid "Opérations"
+msgstr "交易"
+
+msgid "Rechercher un libellé"
+msgstr "搜索摘要"
+
+msgid "Catégories et règles…"
+msgstr "分类和规则…"
+
+msgid "Exporter les données…"
+msgstr "导出数据…"
+
+msgid "À propos de Finaryx"
+msgstr "关于 Finaryx"
+
+msgid "Menu principal"
+msgstr "主菜单"
+
+msgid "Navigation principale"
+msgstr "主导航"
+
+msgid "Dernier import"
+msgstr "上次导入"
+
+msgid "Importer"
+msgstr "导入"
+
+msgid "Ajouter un compte"
+msgstr "添加账户"
+
+msgid "Ajouter"
+msgstr "添加"
+
+msgid "Démonstration : rien n’est enregistré"
+msgstr "演示：不会保存任何内容"
+
+msgid "Bienvenue dans Finaryx"
+msgstr "欢迎使用 Finaryx"
+
+msgid "Importez l’export CSV d’un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n’est envoyé en ligne."
+msgstr "导入账户的 CSV 文件，看看您的钱花在哪里。所有数据都保存在您的电脑上，不会上传到网络。"
+
+msgid "Ajouter un compte d’abord"
+msgstr "先添加账户"
+
+msgid "Pour commencer"
+msgstr "开始使用"
+
+msgid "Exportez vos opérations en CSV"
+msgstr "将交易导出为 CSV"
+
+msgid "Depuis le site ou l’application de votre banque, choisissez la période la plus longue possible."
+msgstr "在银行网站或应用中，选择尽可能长的时间段。"
+
+msgid "Importez le fichier dans Finaryx"
+msgstr "将文件导入 Finaryx"
+
+msgid "Le format Banque Populaire est reconnu. Pour les autres banques, vous associez les colonnes une seule fois."
+msgstr "Banque Populaire 格式可自动识别。其他银行只需指定一次列。"
+
+msgid "Vérifiez les catégories"
+msgstr "检查分类"
+
+msgid "Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle."
+msgstr "不确定的交易会标记为“待核对”。修改可以保存为规则。"
+
+msgid "Impossible d’ouvrir la base de données"
+msgstr "无法打开数据库"
+
+msgid "Nom"
+msgstr "名称"
+
+msgid "Banque"
+msgstr "银行"
+
+msgid "Type"
+msgstr "类型"
+
+msgid "Compte courant"
+msgstr "活期账户"
+
+msgid "Épargne"
+msgstr "储蓄"
+
+msgid "Les totaux sont calculés séparément pour chaque devise."
+msgstr "合计按货币分别计算。"
+
+msgid "Numéro de compte (facultatif)"
+msgstr "账号 (可选)"
+
+msgid "Solde avant la première opération importée"
+msgstr "首笔导入交易之前的余额"
+
+msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
+msgstr "如果余额为 0，请留空。如果导入的文件有余额列，Finaryx 会建议调整。"
+
+msgid "Annuler"
+msgstr "取消"
+
+msgid "Enregistrer"
+msgstr "保存"
+
+msgid "Modifier le compte"
+msgstr "编辑账户"
+
+msgid "Ouvrir des données de démonstration (rien n’est enregistré)"
+msgstr "打开演示数据 (不会保存任何内容)"
+
+msgid "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée."
+msgstr "管理您的银行账户。数据不会离开这台电脑：不连接网络，没有遥测。数据库未加密。"
+
+msgid "Couleur dans les graphiques"
+msgstr "图表颜色"
+
+msgid "Couleur {n}"
+msgstr "颜色 {n}"
+
+msgid "Utilisée par {name}"
+msgstr "已被 {name} 使用"
+
+msgid "Libre"
+msgstr "可用"
+
+msgid "Aucune couleur"
+msgstr "无颜色"
+
+msgid "Regroupée dans « Autres » dans les graphiques"
+msgstr "在图表中归入“其他”"
+
+msgid "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie."
+msgstr "所有颜色均已使用。此分类在图表中归入“其他”，其他地方仍单独显示。取消另一个分类的颜色即可空出一个。"
+
+msgid "Créer"
+msgstr "创建"
+
+msgid "Nouvelle catégorie"
+msgstr "新建分类"
+
+msgid "Modifier la catégorie"
+msgstr "编辑分类"
+
+msgid "Fusionner dans"
+msgstr "合并到"
+
+msgid "Les opérations et les règles passent dans la catégorie choisie"
+msgstr "交易和规则将移至所选分类"
+
+msgid "Fusionner…"
+msgstr "合并…"
+
+msgid "Supprimer la catégorie"
+msgstr "删除分类"
+
+msgid "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées."
+msgstr[0] "{n} 笔交易将移至“其他”并标记为待核对，规则将被删除。"
+
+msgid "Supprimer…"
+msgstr "删除…"
+
+msgid "Fusionner « {from} » dans « {into} » ?"
+msgstr "将“{from}”合并到“{into}”？"
+
+msgid "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgid_plural "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgstr[0] "{n} 笔交易和“{from}”的规则将移至“{into}”。总额不变。"
+
+msgid "Fusionner"
+msgstr "合并"
+
+msgid "Catégories fusionnées"
+msgstr "分类已合并"
+
+msgid "Supprimer « {name} » ?"
+msgstr "删除“{name}”？"
+
+msgid "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées."
+msgstr[0] "{n} 笔交易将移至“其他”，并标记为“待核对”。规则将被删除。"
+
+msgid "Supprimer"
+msgstr "删除"
+
+msgid "Catégorie supprimée"
+msgstr "分类已删除"
+
+msgid "Compte"
+msgstr "账户"
+
+msgid "Solde au {date}"
+msgstr "{date} 的余额"
+
+msgid "Solde"
+msgstr "余额"
+
+msgid "{amount} en {month}"
+msgstr "{month}：{amount}"
+
+msgid "{n} opération enregistrée"
+msgid_plural "{n} opérations enregistrées"
+msgstr[0] "已记录 {n} 笔交易"
+
+msgid "Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}"
+msgstr "6 个月账户余额：从 {from} 的 {start} 到 {to} 的 {end}"
+
+msgid "Aucune"
+msgstr "无"
+
+msgid "Modifier"
+msgstr "编辑"
+
+msgid "Modifier : {field}"
+msgstr "编辑：{field}"
+
+msgid "Réglages du compte"
+msgstr "账户设置"
+
+msgid "Dernières opérations"
+msgstr "最近交易"
+
+msgid "Tout voir"
+msgstr "查看全部"
+
+msgid "Aucune opération"
+msgstr "无交易"
+
+msgid "Sans catégorie"
+msgstr "无分类"
+
+msgid "À vérifier"
+msgstr "待核对"
+
+msgid "Désarchiver le compte"
+msgstr "取消归档账户"
+
+msgid "Il revient dans les totaux."
+msgstr "将重新计入合计。"
+
+msgid "Désarchiver"
+msgstr "取消归档"
+
+msgid "Archiver le compte"
+msgstr "归档账户"
+
+msgid "Il disparaît des totaux, ses opérations restent consultables."
+msgstr "不再计入合计，但交易仍可查看。"
+
+msgid "Archiver"
+msgstr "归档"
+
+msgid "Supprimer le compte et ses opérations"
+msgstr "删除账户及其交易"
+
+msgid "Action définitive, {n} opération serait effacée."
+msgid_plural "Action définitive, {n} opérations seraient effacées."
+msgstr[0] "此操作无法撤销：将清除 {n} 笔交易。"
+
+msgid "Zone sensible"
+msgstr "危险操作"
+
+msgid "compte courant"
+msgstr "活期账户"
+
+msgid "épargne"
+msgstr "储蓄"
+
+msgid "Solde de tous les comptes"
+msgstr "所有账户余额"
+
+msgid "Solde des comptes en {currency}"
+msgstr "{currency} 账户余额"
+
+msgid "Vos comptes"
+msgstr "账户"
+
+msgid "Comptes archivés"
+msgstr "已归档账户"
+
+msgid "Ils ne comptent pas dans les totaux."
+msgstr "不计入合计。"
+
+msgid "{n} opération"
+msgid_plural "{n} opérations"
+msgstr[0] "{n} 笔交易"
+
+msgid "Importé le {date}"
+msgstr "导入于 {date}"
+
+msgid "Dernier import le {date}"
+msgstr "上次导入 {date}"
+
+msgid "Ajoutez un export CSV pour voir ses opérations"
+msgstr "添加 CSV 导出文件以查看交易"
+
+msgid "Évolution du solde sur 6 mois : en hausse de {amount}"
+msgstr "6 个月余额：增加 {amount}"
+
+msgid "Évolution du solde sur 6 mois : en baisse de {amount}"
+msgstr "6 个月余额：减少 {amount}"
+
+msgid "Historique des imports"
+msgstr "导入记录"
+
+msgid "Les doublons ne sont jamais enregistrés deux fois"
+msgstr "重复交易不会被记录两次"
+
+msgid "Importer un CSV…"
+msgstr "导入 CSV…"
+
+msgid "Aucun import pour l’instant"
+msgstr "尚未导入"
+
+msgid "{n} nouvelle"
+msgid_plural "{n} nouvelles"
+msgstr[0] "{n} 笔新交易"
+
+msgid "{n} ajoutée"
+msgid_plural "{n} ajoutées"
+msgstr[0] "已添加 {n} 笔"
+
+msgid "{n} doublon"
+msgid_plural "{n} doublons"
+msgstr[0] "{n} 笔重复"
+
+msgid "Annuler cet import"
+msgstr "撤销此次导入"
+
+msgid "Part du total"
+msgstr "占总额比例"
+
+msgid "Part de chaque compte dans le solde total : {list}"
+msgstr "各账户占总余额的比例：{list}"
+
+msgid "catégorie par défaut, non supprimable"
+msgstr "内置分类 (无法删除)"
+
+msgid "catégorie spéciale, comptée en revenus"
+msgstr "特殊分类 (计为收入)"
+
+msgid "catégorie spéciale, exclue des statistiques"
+msgstr "特殊分类 (不计入统计)"
+
+msgid "couleur de graphique {n}"
+msgstr "图表颜色 {n}"
+
+msgid "sans couleur, regroupée dans « Autres » dans les graphiques"
+msgstr "无颜色 (图表中归入“其他”)"
+
+msgid "Catégories et règles"
+msgstr "分类和规则"
+
+msgid "Catégories"
+msgstr "分类"
+
+msgid "Modifier la catégorie {name}"
+msgstr "编辑分类 {name}"
+
+msgid "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en la retirant à une autre catégorie."
+msgstr "图表最多显示 12 种颜色，外加灰色的“其他”。无颜色的分类在图表中归入“其他”，但在列表、筛选和表格中单独显示。点击图表中的“其他”可查看明细。要为某个分类设置颜色，请先取消另一个分类的颜色。"
+
+msgid "Le libellé correspond à « {pattern} »"
+msgstr "摘要等于“{pattern}”"
+
+msgid "Le libellé contient « {pattern} »"
+msgstr "摘要包含“{pattern}”"
+
+msgid "Supprimer la règle"
+msgstr "删除规则"
+
+msgid "Règle supprimée"
+msgstr "规则已删除"
+
+msgid "Aucune règle pour l’instant"
+msgstr "暂无规则"
+
+msgid "Changez la catégorie d’une opération pour en créer une."
+msgstr "修改交易的分类即可创建规则。"
+
+msgid "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées."
+msgstr "对交易的手动修改优先于规则。删除规则不会改变已归类的交易。"
+
+msgid "Règles de catégorisation"
+msgstr "归类规则"
+
+msgid "Virements entre vos comptes"
+msgstr "账户间转账"
+
+msgid "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils ne comptent ni en dépenses ni en revenus."
+msgstr "两个账户之间金额相同、方向相反且相隔不超过 3 天的支出和收入。确认后，它们既不计为支出，也不计为收入。"
+
+msgid "Tout confirmer"
+msgstr "全部确认"
+
+msgid "{n} virement confirmé"
+msgid_plural "{n} virements confirmés"
+msgstr[0] "已确认 {n} 笔转账"
+
+msgid "Ce n’est pas un virement"
+msgstr "不是转账"
+
+msgid "Confirmer"
+msgstr "确认"
+
+msgid "Virement confirmé"
+msgstr "转账已确认"
+
+msgid "Aucun virement à confirmer"
+msgstr "没有待确认的转账"
+
+msgid "Noms du foyer"
+msgstr "家庭成员姓名"
+
+msgid "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer en « Virement interne »."
+msgstr "来自家庭成员的转入并非真正的收入：Finaryx 会建议将其归入“账户间转账”。"
+
+msgid "Modifier les noms…"
+msgstr "编辑姓名…"
+
+msgid "{n} opération contient « {name} »"
+msgid_plural "{n} opérations contiennent « {name} »"
+msgstr[0] "{n} 笔交易包含“{name}”"
+
+msgid "Crée la règle « le libellé contient {name} → Virement interne »"
+msgstr "将创建规则“摘要包含 {name} → 账户间转账”"
+
+msgid "Classer en virement interne"
+msgstr "归入账户间转账"
+
+msgid "Règle créée, {n} opération classée"
+msgid_plural "Règle créée, {n} opérations classées"
+msgstr[0] "规则已创建，已归类 {n} 笔交易"
+
+msgid "Aucun nom du foyer pour l’instant"
+msgstr "暂无家庭成员姓名"
+
+msgid "Aucune opération à classer"
+msgstr "没有需要归类的交易"
+
+msgid "Ajoutez-les dans les préférences, par exemple votre nom et celui de votre conjoint."
+msgstr "请在首选项中添加，例如您和伴侣的姓名。"
+
+msgid "Les opérations de ces noms sont déjà des virements internes."
+msgstr "含有这些姓名的交易已经是账户间转账。"
+
+msgid "Période"
+msgstr "时间段"
+
+msgid "{n} mois"
+msgstr "{n} 个月"
+
+msgid "Total sur {n} mois"
+msgstr "{n} 个月累计"
+
+msgid "Moyenne par mois"
+msgstr "月均"
+
+msgid "Mois le plus chargé"
+msgstr "支出最多的月份"
+
+msgid "Mois le plus léger"
+msgstr "支出最少的月份"
+
+msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
+msgstr "比例为该分类占当月支出的份额。太小无法标注的比例见下表。"
+
+msgid "Mois par mois, par catégorie"
+msgstr "按月份和分类"
+
+msgid "Catégorie"
+msgstr "分类"
+
+msgid "Par mois"
+msgstr "每月"
+
+msgid "Total"
+msgstr "合计"
+
+msgid "Part de chaque catégorie sur la période et montant cumulé."
+msgstr "所选时间段内各分类的比例和累计金额。"
+
+msgid "Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois."
+msgstr "月份列显示各分类的比例，“合计”行显示当月支出。"
+
+msgid "Part de chaque catégorie"
+msgstr "各分类的比例"
+
+msgid "{from} à {to}"
+msgstr "{from}至{to}"
+
+msgid "Ce fichier n’est pas une sauvegarde Finaryx."
+msgstr "此文件不是 Finaryx 备份。"
+
+msgid "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir."
+msgstr "此备份由更新版本的 Finaryx 创建。请更新应用后再打开。"
+
+msgid "Ce fichier n’est pas une base de données lisible."
+msgstr "此文件不是可读取的数据库。"
+
+msgid "Le fichier n’a pas pu être écrit ou lu : {error}"
+msgstr "无法写入或读取文件：{error}"
+
+msgid "Exporter les données"
+msgstr "导出数据"
+
+msgid "Toutes les opérations"
+msgstr "全部交易"
+
+msgid "Dernier mois"
+msgstr "上个月"
+
+msgid "{n} derniers mois"
+msgstr "最近 {n} 个月"
+
+msgid "Période choisie"
+msgstr "自定义时间段"
+
+msgid "Français"
+msgstr "法式"
+
+msgid "Du (JJ/MM/AAAA)"
+msgstr "开始日期 (DD/MM/YYYY)"
+
+msgid "Au (JJ/MM/AAAA)"
+msgstr "结束日期 (DD/MM/YYYY)"
+
+msgid "Exporter la base de données"
+msgstr "导出数据库"
+
+msgid "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne."
+msgstr "您的数据保存在您的电脑上。导出会在所选文件夹中创建一份副本，不会上传到网络。"
+
+msgid "Sauvegarde complète"
+msgstr "完整备份"
+
+msgid "Exporter…"
+msgstr "导出…"
+
+msgid "Restaurer une sauvegarde"
+msgstr "恢复备份"
+
+msgid "Remplace les données actuelles. Une copie de sécurité est faite avant."
+msgstr "替换当前数据。会先创建一份安全副本。"
+
+msgid "Restaurer…"
+msgstr "恢复…"
+
+msgid "Exporter en CSV"
+msgstr "导出为 CSV"
+
+msgid "Séparateur et décimales"
+msgstr "分隔符和小数点"
+
+msgid "Standard"
+msgstr "标准"
+
+msgid "Format du CSV"
+msgstr "CSV 格式"
+
+msgid "Exporter en CSV…"
+msgstr "导出为 CSV…"
+
+msgid "Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français."
+msgstr "分号和小数逗号：可直接用法语设置的电子表格打开。"
+
+msgid "Virgule et point décimal : le format le plus courant hors de France."
+msgstr "逗号和小数点：法国以外最常见的格式。"
+
+msgid "Copier la base après chaque import"
+msgstr "每次导入时复制数据库"
+
+msgid "Garde les {n} dernières copies dans {dir}."
+msgstr "在 {dir} 中保留最近 {n} 份。"
+
+msgid "Désactivée en démonstration : rien n’est enregistré."
+msgstr "演示中不可用：不会保存任何内容。"
+
+msgid "La base n’est pas chiffrée : gardez les exports dans un dossier privé."
+msgstr "数据库未加密：请将导出文件保存在私人文件夹中。"
+
+msgid "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles."
+msgstr "finaryx.db 文件 (SQLite) 的完整副本：账户、交易、分类、规则。"
+
+msgid "Tous les comptes"
+msgstr "所有账户"
+
+msgid "Date, libellé, montant, catégorie, compte, banque."
+msgstr "日期、摘要、金额、分类、账户、银行。"
+
+msgid "Choisissez les deux dates."
+msgstr "请选择两个日期。"
+
+msgid "depuis {month}"
+msgstr "自{month}起"
+
+msgid "{n} ligne avec ces réglages"
+msgid_plural "{n} lignes avec ces réglages"
+msgstr[0] "此设置下共 {n} 行"
+
+msgid "Base exportée"
+msgstr "数据库已导出"
+
+msgid "Choisissez les deux dates de la période."
+msgstr "请选择时间段的两个日期。"
+
+msgid "{n} opération exportée"
+msgid_plural "{n} opérations exportées"
+msgstr[0] "已导出 {n} 笔交易"
+
+msgid "Sauvegardes Finaryx"
+msgstr "Finaryx 备份"
+
+msgid "Ouvrir le dossier"
+msgstr "打开文件夹"
+
+msgid "Cette sauvegarde contient {accounts} compte et {operations}."
+msgid_plural "Cette sauvegarde contient {accounts} comptes et {operations}."
+msgstr[0] "此备份包含 {accounts} 个账户和{operations}。"
+
+msgid "Les données actuelles seront remplacées. Une copie de sécurité est d’abord enregistrée dans {dir}."
+msgstr "当前数据将被替换。会先在 {dir} 中保存一份安全副本。"
+
+msgid "Les données de démonstration seront remplacées, en mémoire seulement."
+msgstr "演示数据将被替换 (仅在内存中)。"
+
+msgid "Restaurer cette sauvegarde ?"
+msgstr "恢复此备份？"
+
+msgid "Restaurer"
+msgstr "恢复"
+
+msgid "Sauvegarde restaurée"
+msgstr "备份已恢复"
+
+msgid "le 1er"
+msgstr "1 日"
+
+msgid "le {day}"
+msgstr "{day} 日"
+
+msgid "Solde en fin de mois"
+msgstr "月末余额"
+
+msgid "{month} · prévu"
+msgstr "{month} · 预测"
+
+msgid "Fourchette"
+msgstr "区间"
+
+msgid "Dépenses attendues <b>{spending}</b> · revenus <b>{income}</b>"
+msgstr "预计支出 <b>{spending}</b> · 收入 <b>{income}</b>"
+
+msgid "Aujourd’hui"
+msgstr "今天"
+
+msgid "Dernière opération"
+msgstr "最后一笔交易"
+
+msgid "{month} : pic de dépenses\nattendu ({amount})"
+msgstr "{month}：预计的\n支出高峰 ({amount})"
+
+msgid "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}"
+msgstr "月末余额：{month} 为 {real}，{last} 预测为 {end} (区间 {low} 至 {high})"
+
+msgid "Prévu"
+msgstr "预测"
+
+msgid "Fourchette probable"
+msgstr "可能区间"
+
+msgid "Pas encore assez de données pour une prévision"
+msgstr "数据还不足以进行预测"
+
+msgid "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgid_plural "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgstr[0] "Finaryx 需要至少 3 个月的交易才能了解您的习惯，还差 {n} 个月。导入更早的导出文件即可使用此页面。"
+
+msgid "Importer un export plus ancien"
+msgstr "导入更早的导出文件"
+
+msgid "Habitudes calculées sur"
+msgstr "习惯计算周期"
+
+msgid "Période de référence"
+msgstr "参考周期"
+
+msgid "Horizon"
+msgstr "预测范围"
+
+msgid "Horizon de prévision"
+msgstr "预测的时间范围"
+
+msgid "{low} à {high}"
+msgstr "{low}至{high}"
+
+msgid "Fin {month} (prévu)"
+msgstr "{month}末 (预测)"
+
+msgid "Solde fin {month} (prévu)"
+msgstr "{month}末余额 (预测)"
+
+msgid "Fourchette : {range}"
+msgstr "区间：{range}"
+
+msgid "Dépenses prévues"
+msgstr "预计支出"
+
+msgid "{amount} / mois"
+msgstr "{amount} / 月"
+
+msgid "Moyenne sur le mois à venir"
+msgid_plural "Moyenne sur les {n} mois à venir"
+msgstr[0] "未来 {n} 个月的平均值"
+
+msgid "Salaire détecté {day} du mois"
+msgstr "检测到工资：每月{day}"
+
+msgid "{label} détecté {day} du mois"
+msgstr "检测到{label}：每月{day}"
+
+msgid "Aucun revenu régulier détecté"
+msgstr "未找到固定收入"
+
+msgid "Revenus réguliers"
+msgstr "固定收入"
+
+msgid "Réel de {from} à {to}, prévu de {first} à {last}"
+msgstr "实际 {from}至{to}，预测 {first}至{last}"
+
+msgid "Réel"
+msgstr "实际"
+
+msgid "Estimation d’après vos charges récurrentes et vos dépenses moyennes. La fourchette s’élargit avec l’horizon."
+msgstr "根据固定支出和平均支出估算。预测时间越长，区间越宽。"
+
+msgid "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre."
+msgstr "根据固定支出和可变支出的平均值估算。预测时间越长，区间越宽，越往后越不确定。"
+
+msgid "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgid_plural "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgstr[0] "习惯根据 {n} 个月的数据计算：历史记录无法追溯到更早。"
+
+msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
+msgstr "未考虑季节性：历史记录不足 12 个月。"
+
+msgid "{month} (en cours)"
+msgstr "{month} (进行中)"
+
+msgid "{amount} de dépenses"
+msgstr "支出 {amount}"
+
+msgid "{income} de revenus · {spending}"
+msgstr "收入 {income} · {spending}"
+
+msgid "{amount} sur le mois"
+msgstr "每月 {amount}"
+
+msgid "Charges fixes"
+msgstr "固定支出"
+
+msgid "Aucune charge récurrente détectée"
+msgstr "未找到固定支出"
+
+msgid "Une charge est récurrente quand le même libellé revient chaque mois, pour un montant proche."
+msgstr "相同摘要每月以相近金额出现时，即视为固定支出。"
+
+msgid "Mois par mois"
+msgstr "按月"
+
+msgid "Charges récurrentes détectées"
+msgstr "检测到的固定支出"
+
+msgid "Choisir un fichier…"
+msgstr "选择文件…"
+
+msgid "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est enregistré avant votre confirmation."
+msgstr "选择账户的 CSV 导出文件，或拖放到此处。文件不会被修改，确认前不会保存任何内容。"
+
+msgid "Fichiers CSV"
+msgstr "CSV 文件"
+
+msgid "Tous les fichiers"
+msgstr "所有文件"
+
+msgid "Choisir un export CSV"
+msgstr "选择 CSV 导出文件"
+
+msgid "fichier"
+msgstr "文件"
+
+msgid "Impossible de lire le fichier : {error}"
+msgstr "无法读取文件：{error}"
+
+msgid "Le fichier ne se lit pas encore correctement"
+msgstr "文件尚未被正确读取"
+
+msgid "{n} ligne"
+msgid_plural "{n} lignes"
+msgstr[0] "{n} 行"
+
+msgid "{n} colonne"
+msgid_plural "{n} colonnes"
+msgstr[0] "{n} 列"
+
+msgid "Changer…"
+msgstr "更改…"
+
+msgid "Compte de destination"
+msgstr "目标账户"
+
+msgid "Aucun compte pour l’instant : créez celui qui recevra ces opérations."
+msgstr "还没有账户。请创建一个账户来接收这些交易。"
+
+msgid "Créer un compte…"
+msgstr "创建账户…"
+
+msgid "Nouveau compte…"
+msgstr "新建账户…"
+
+msgid "Les opérations seront ajoutées à ce compte"
+msgstr "交易将添加到此账户"
+
+msgid "Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin."
+msgstr "已识别格式：{name}。列已自动指定，如有需要请检查。"
+
+msgid "Reconnu"
+msgstr "已识别"
+
+msgid "Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."
+msgstr "首次遇到此格式：请在下方指定列。下次将自动识别。"
+
+msgid "Nouveau format"
+msgstr "新格式"
+
+msgid "Modèle de banque"
+msgstr "银行格式"
+
+msgid "Fichier"
+msgstr "文件"
+
+msgid "Encodage"
+msgstr "编码"
+
+msgid "Séparateur de colonnes"
+msgstr "列分隔符"
+
+msgid "Ligne des en-têtes"
+msgstr "标题行"
+
+msgid "Ligne {n}"
+msgstr "第 {n} 行"
+
+msgid "Format des dates"
+msgstr "日期格式"
+
+msgid "À vérifier : les jours et les mois peuvent être inversés"
+msgstr "请检查：日和月可能颠倒"
+
+msgid "Séparateur décimal"
+msgstr "小数点"
+
+msgid "Point ( . )"
+msgstr "句点 ( . )"
+
+msgid "Format du fichier"
+msgstr "文件格式"
+
+msgid "Détecté automatiquement, à corriger si la lecture est mauvaise"
+msgstr "已自动识别。如读取有误，请修改"
+
+msgid "Colonnes du fichier"
+msgstr "文件的列"
+
+msgid "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer »."
+msgstr "请指明文件中每一列的用途。不需要的列保持“忽略”即可。"
+
+msgid "Comment le montant est écrit"
+msgstr "金额的表示方式"
+
+msgid "Écriture du montant"
+msgstr "金额格式"
+
+msgid "Exemple : (vide)"
+msgstr "示例：(空)"
+
+msgid "Exemple : {value}"
+msgstr "示例：{value}"
+
+msgid "Champ pour la colonne {column}"
+msgstr "第 {column} 列的项目"
+
+msgid "Valeurs pour un débit"
+msgstr "表示支出的值"
+
+msgid "Valeurs pour un crédit"
+msgstr "表示收入的值"
+
+msgid "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas."
+msgstr "多个值用逗号分隔，不区分大小写和重音。"
+
+msgid "Exclue"
+msgstr "排除"
+
+msgid "Reconnue"
+msgstr "已识别"
+
+msgid "Proposée"
+msgstr "建议"
+
+msgid "Catégorie de Finaryx pour {bank}"
+msgstr "与 {bank} 对应的 Finaryx 分类"
+
+msgid "Afficher moins"
+msgstr "收起"
+
+msgid "Voir la correspondance"
+msgid_plural "Voir les {n} correspondances"
+msgstr[0] "显示 {n} 项对应"
+
+msgid "Catégories de la banque"
+msgstr "银行分类"
+
+msgid "La banque classe déjà ses opérations. Choisissez la catégorie de Finaryx qui correspond à chacune."
+msgstr "银行已经对交易进行了分类。请为每个分类选择对应的 Finaryx 分类。"
+
+msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
+msgstr "此对应关系会随格式一起保存。之后出现的银行分类会在这里核对。"
+
+msgid "Aperçu de l’import"
+msgstr "导入预览"
+
+msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
+msgstr "前 5 行 (分类根据上方的对应关系)"
+
+msgid "Choisissez ou créez le compte de destination pour voir l’aperçu."
+msgstr "选择或创建目标账户后即可预览。"
+
+msgid "L’aperçu apparaîtra quand les colonnes obligatoires seront associées."
+msgstr "指定必需的列后即可预览。"
+
+msgid "Nouveau"
+msgstr "新"
+
+msgid "Doublon"
+msgstr "重复"
+
+msgid "Aucune ligne lisible"
+msgstr "无法读取的行"
+
+msgid "Ces lignes ne seront pas importées."
+msgstr "这些行不会被导入。"
+
+msgid "La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible."
+msgstr "余额列与金额不符：第 {lines} 行。仍可导入。"
+
+msgid "À savoir avant d’importer"
+msgstr "导入之前"
+
+msgid "Lignes lues"
+msgstr "已读取的行"
+
+msgid "Nouvelles opérations"
+msgstr "新交易"
+
+msgid "Doublons ignorés"
+msgstr "已跳过的重复"
+
+msgid "À vérifier (catégorie incertaine)"
+msgstr "待核对 (分类不确定)"
+
+msgid "Lignes illisibles, non importées"
+msgstr "无法读取的行 (不导入)"
+
+msgid "Recaler le solde initial"
+msgstr "调整期初余额"
+
+msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
+msgstr "根据余额列，首笔导入交易之前的余额为 {amount}。"
+
+msgid "Retenir ce format"
+msgstr "记住此格式"
+
+msgid "Le prochain fichier de cette banque sera lu sans rien demander"
+msgstr "此银行的下一个文件将直接读取，无需检查"
+
+msgid "Nom du format"
+msgstr "格式名称"
+
+msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
+msgstr "重复交易是指日期、摘要、金额和参考号与已记录交易完全相同的交易。文件不会被修改。"
+
+msgid "Résumé"
+msgstr "摘要"
+
+msgid "Aucune nouvelle opération"
+msgstr "没有新交易"
+
+msgid "Importer {n} opération"
+msgid_plural "Importer {n} opérations"
+msgstr[0] "导入 {n} 笔交易"
+
+msgid "{n} opération importée"
+msgid_plural "{n} opérations importées"
+msgstr[0] "已导入 {n} 笔交易"
+
+msgid "{n} doublon ignoré"
+msgid_plural "{n} doublons ignorés"
+msgstr[0] "已跳过 {n} 笔重复"
+
+msgid "Aperçu"
+msgstr "概览"
+
+msgid "Mois"
+msgstr "月份"
+
+msgid "Compte affiché"
+msgstr "显示的账户"
+
+msgid "{n} Ko"
+msgstr "{n} KB"
+
+msgid "{n} Mo"
+msgstr "{n} MB"
+
+msgid "Non classé"
+msgstr "未分类"
+
+msgid "{month} · {amount} regroupés dans « Autres » dans les graphiques"
+msgstr "{month} · 图表中归入“其他”的 {amount}"
+
+msgid "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et les tableaux les montrent séparément."
+msgstr "图表最多显示 12 种颜色，外加灰色的“其他”。无颜色的分类归入此处，在列表和表格中仍单独显示。"
+
+msgid "Gérer les couleurs…"
+msgstr "管理颜色…"
+
+msgid "Fermer"
+msgstr "关闭"
+
+msgid "Détail de « Autres »"
+msgstr "“其他”明细"
+
+msgid "Mois précédent : {month}"
+msgstr "上个月：{month}"
+
+msgid "Mois suivant : {month}"
+msgstr "下个月：{month}"
+
+msgid "{first} le 1er, {last} au {day} {month}"
+msgstr "{first} (1 日)，{last} ({month}{day} 日)"
+
+msgid "Solde {of_month}"
+msgstr "余额：{of_month}"
+
+msgid "Dépenses du jour"
+msgstr "当日支出"
+
+msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
+msgstr "{of_month}的每日支出。{day} 日的 {peak} 较为突出"
+
+msgid "Dépenses de chaque jour du mois"
+msgstr "当月每日支出"
+
+msgid "Évolution du solde"
+msgstr "余额变化"
+
+msgid "Part"
+msgstr "比例"
+
+msgid "vs {month}"
+msgstr "与{month}对比"
+
+msgid "Où part l’argent"
+msgstr "您的钱花在哪里"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "本月没有交易"
+
+msgid "Rechercher une opération"
+msgstr "搜索交易"
+
+msgid "Filtrer par catégorie"
+msgstr "按分类筛选"
+
+msgid "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les libellés identiques."
+msgstr "点击分类即可更改交易的分类，并建议为相同摘要创建规则。"
+
+msgid "Toute la période"
+msgstr "全部时间"
+
+msgid "Toutes"
+msgstr "全部"
+
+msgid "toute la période"
+msgstr "全部时间"
+
+msgid "{pct} % des dépenses"
+msgstr "占支出的 {pct}%"
+
+msgid "Aucune opération ne correspond à ces filtres"
+msgstr "没有符合条件的交易"
+
+msgid "Afficher la suivante"
+msgid_plural "Afficher les {n} suivantes"
+msgstr[0] "显示后 {n} 笔"
+
+msgid "Nouvelle catégorie…"
+msgstr "新建分类…"
+
+msgid "Changer la catégorie de {label} (actuellement {category})"
+msgstr "更改 {label} 的分类 (当前：{category})"
+
+msgid "Créer une règle ?"
+msgstr "创建规则？"
+
+msgid "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports."
+msgstr "含有 <b>{pattern}</b> 的摘要，在今后的导入中将归入 <b>{category}</b>。"
+
+msgid "Appliquer aux opérations existantes"
+msgstr "同时应用于现有交易"
+
+msgid "{n} opération sera modifiée, sauf celles corrigées à la main."
+msgid_plural "{n} opérations seront modifiées, sauf celles corrigées à la main."
+msgstr[0] "将修改 {n} 笔交易 (手动修改过的除外)。"
+
+msgid "Seulement cette opération"
+msgstr "仅此交易"
+
+msgid "Créer la règle"
+msgstr "创建规则"
+
+msgid "Règle créée, {n} autre opération classée"
+msgid_plural "Règle créée, {n} autres opérations classées"
+msgstr[0] "规则已创建，另有 {n} 笔交易已归类"
+
+msgid "Règle créée"
+msgstr "规则已创建"
+
+msgid "Catégorie modifiée"
+msgstr "分类已更改"
+
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "当日支出 <b>{amount}</b>"
+
+msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
+msgstr "{month}余额：从 1 日的 {start} 到 {day} 日的 {end} (与{previous}对比)"
+
+msgid "Part des dépenses"
+msgstr "占支出比例"
+
+msgid "Écart vs {month}"
+msgstr "与{month}的差额"
+
+msgid "cliquez pour le détail"
+msgstr "点击查看明细"
+
+msgid "Anneau des dépenses {of_month} par catégorie, le détail est dans la liste"
+msgstr "{of_month}支出按分类的环形图，明细见列表"
+
+msgid "dépensés"
+msgstr "支出"
+
+msgid "Part du mois"
+msgstr "占当月比例"
+
+msgid "Total du mois"
+msgstr "当月合计"
+
+msgid "Dépenses mensuelles empilées par catégorie, de {from} à {to}"
+msgstr "按分类堆叠的每月支出 ({from}至{to})"
+
+msgid "Solde total"
+msgstr "总余额"
+
+msgid "{amount} depuis le 1er {month}"
+msgstr "自{month}1 日起 {amount}"
+
+msgid "{pct} % par rapport à {month}"
+msgstr "与{month}相比 {pct}%"
+
+msgid "Dépenses {of_month}"
+msgstr "{of_month}支出"
+
+msgid "dont salaire {amount}"
+msgstr "其中工资 {amount}"
+
+msgid "dont {label} : {amount}"
+msgstr "其中 {label}：{amount}"
+
+msgid "Revenus {of_month}"
+msgstr "{of_month}收入"
+
+msgid "{arrow} {amount} selon vos habitudes"
+msgstr "{arrow} {amount} (根据习惯)"
+
+msgid "Pas encore assez de données"
+msgstr "数据尚不足"
+
+msgid "Solde de tous les comptes, jour après jour"
+msgstr "所有账户的每日余额"
+
+msgid "Solde du compte, jour après jour"
+msgstr "账户的每日余额"
+
+msgid "Évolution du mois"
+msgstr "月度变化"
+
+msgid "Détail du mois"
+msgstr "月度明细"
+
+msgid "{amount} dépensés de {from} à {to}"
+msgstr "{from}至{to}的支出 {amount}"
+
+msgid "Cumul sur 6 mois"
+msgstr "6 个月累计"
+
+msgid "Voir le cumul"
+msgstr "查看累计"
+
+msgid "{month} · {amount} dépensés"
+msgstr "{month} · 支出 {amount}"
+
+msgid "Par catégorie"
+msgstr "按分类"
+
+msgid "D’après vos dépenses du dernier mois"
+msgid_plural "D’après vos dépenses des {n} derniers mois"
+msgstr[0] "根据最近 {n} 个月的支出"
+
+msgid "Solde fin de mois"
+msgstr "月末余额"
+
+msgid "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgid_plural "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgstr[0] "预测至少需要 3 个月的交易，还差 {n} 个月。"
+
+msgid "Prévision à 6 mois"
+msgstr "6 个月预测"
+
+msgid "Pas encore d’opérations"
+msgstr "暂无交易"
+
+msgid "Importez l’export CSV d’un compte pour voir cette vue."
+msgstr "导入账户的 CSV 导出文件即可显示此页面。"
+
+msgid "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé comme virement interne : ni dépense, ni revenu."
+msgstr "您的姓名、伴侣的姓名… 摘要中含有这些姓名的转账会被建议为账户间转账 (既非支出也非收入)。"
+
+msgid "Retirer ce nom"
+msgstr "删除此姓名"
+
+msgid "Ajouter un nom"
+msgstr "添加姓名"
+
+msgid "Suivre le système"
+msgstr "跟随系统"
+
+msgid "Clair"
+msgstr "浅色"
+
+msgid "Sombre"
+msgstr "深色"
+
+msgid "Apparence"
+msgstr "外观"
+
+msgid "Confidentialité"
+msgstr "隐私"
+
+msgid "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune requête réseau. La base de données n’est pas chiffrée."
+msgstr "所有数据都保存在这台电脑上。Finaryx 不连接网络。数据库未加密。"
+
+msgid "Impossible de lire la base de données."
+msgstr "无法读取数据库。"
+
+msgid "{n} compte"
+msgid_plural "{n} comptes"
+msgstr[0] "{n} 个账户"
+
+msgid "{n} banque"
+msgid_plural "{n} banques"
+msgstr[0] "{n} 家银行"
+
+msgid "{n} virement entre vos comptes à confirmer"
+msgid_plural "{n} virements entre vos comptes à confirmer"
+msgstr[0] "有 {n} 笔账户间转账待确认"
+
+msgid "Voir"
+msgstr "查看"
+
+msgid "La copie de sauvegarde automatique a échoué : {error}"
+msgstr "自动备份失败：{error}"
+
+msgid "La base de données n’est pas ouverte."
+msgstr "未打开数据库。"
+
+msgid "La modification n’a pas pu être enregistrée : {error}"
+msgstr "无法保存更改：{error}"
+
+msgid "Compte ajouté"
+msgstr "账户已添加"
+
+msgid "Compte archivé"
+msgstr "账户已归档"
+
+msgid "Compte désarchivé"
+msgstr "账户已取消归档"
+
+msgid "Le compte, son historique d’import et {n} opération seront effacés définitivement."
+msgid_plural "Le compte, son historique d’import et ses {n} opérations seront effacés définitivement."
+msgstr[0] "账户、导入记录和 {n} 笔交易将被永久清除。"
+
+msgid "Compte supprimé, {n} opération effacée"
+msgid_plural "Compte supprimé, {n} opérations effacées"
+msgstr[0] "账户已删除，已清除 {n} 笔交易"
+
+msgid "sans nom"
+msgstr "未命名"
+
+msgid "Annuler cet import ?"
+msgstr "撤销此次导入？"
+
+msgid "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés."
+msgid_plural "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés."
+msgstr[0] "将删除“{file}”添加到 {account} 的 {n} 笔交易。其他导入不受影响。"
+
+msgid "Garder"
+msgstr "保留"
+
+msgid "Supprimer les opérations"
+msgstr "删除交易"
+
+msgid "Import annulé"
+msgstr "导入已撤销"

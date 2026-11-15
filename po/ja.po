@@ -1,0 +1,1669 @@
+# Finaryx — 日本語
+# Generated from po/translations.csv by build-aux/translations.py: edit the table.
+msgid ""
+msgstr ""
+"Project-Id-Version: finaryx\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: 日本語\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "fr"
+msgstr "ja"
+
+msgid "Aucun import"
+msgstr "インポートなし"
+
+msgid "À jour"
+msgstr "最新"
+
+msgid "À mettre à jour"
+msgstr "要更新"
+
+msgid "{month} à importer"
+msgstr "{month}をインポート"
+
+msgid "Logement"
+msgstr "住居"
+
+msgid "Alimentation"
+msgstr "食費"
+
+msgid "Transports"
+msgstr "交通"
+
+msgid "Prêts et crédits"
+msgstr "ローン・クレジット"
+
+msgid "Shopping et animaux"
+msgstr "買い物・ペット"
+
+msgid "Abonnements et télécoms"
+msgstr "サブスク・通信"
+
+msgid "Banque et assurances"
+msgstr "銀行・保険"
+
+msgid "Autres"
+msgstr "その他"
+
+msgid "Sorties et loisirs"
+msgstr "外出・レジャー"
+
+msgid "Santé"
+msgstr "健康"
+
+msgid "Impôts et taxes"
+msgstr "税金・公課"
+
+msgid "Administratif et éducation"
+msgstr "行政・教育"
+
+msgid "Revenus"
+msgstr "収入"
+
+msgid "Virement interne"
+msgstr "口座間振替"
+
+msgid "Donnez un nom à la catégorie."
+msgstr "カテゴリーに名前を付けてください。"
+
+msgid "La catégorie « {name} » existe déjà."
+msgstr "カテゴリー「{name}」はすでにあります。"
+
+msgid "Cette couleur est déjà utilisée par « {name} »."
+msgstr "この色はすでに「{name}」が使っています。"
+
+msgid "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée."
+msgstr "Finaryx はこのカテゴリーを必要とするため削除できません。"
+
+msgid "« Autres » garde toujours le gris."
+msgstr "「その他」は常に灰色のままです。"
+
+msgid "Le motif de la règle est vide."
+msgstr "ルールのパターンが空です。"
+
+msgid "Point-virgule ( ; )"
+msgstr "セミコロン ( ; )"
+
+msgid "Virgule ( , )"
+msgstr "カンマ ( , )"
+
+msgid "Tabulation"
+msgstr "タブ"
+
+msgid "Barre verticale ( | )"
+msgstr "縦棒 ( | )"
+
+msgid "JJ/MM/AAAA"
+msgstr "DD/MM/YYYY"
+
+msgid "AAAA-MM-JJ"
+msgstr "YYYY-MM-DD"
+
+msgid "JJ-MM-AA"
+msgstr "DD-MM-YY"
+
+msgid "MM/JJ/AAAA"
+msgstr "MM/DD/YYYY"
+
+msgid "Ignorer"
+msgstr "無視"
+
+msgid "Date de l’opération"
+msgstr "取引日"
+
+msgid "Date de comptabilisation"
+msgstr "記帳日"
+
+msgid "Date de valeur"
+msgstr "起算日"
+
+msgid "Libellé"
+msgstr "摘要"
+
+msgid "Détail du libellé"
+msgstr "摘要の詳細"
+
+msgid "Montant"
+msgstr "金額"
+
+msgid "Débit"
+msgstr "出金"
+
+msgid "Crédit"
+msgstr "入金"
+
+msgid "Sens (débit ou crédit)"
+msgstr "区分 (出金または入金)"
+
+msgid "Référence de la banque"
+msgstr "銀行の参照番号"
+
+msgid "Solde après l’opération"
+msgstr "取引後の残高"
+
+msgid "Devise"
+msgstr "通貨"
+
+msgid "Catégorie de la banque"
+msgstr "銀行のカテゴリー"
+
+msgid "Sous-catégorie de la banque"
+msgstr "銀行のサブカテゴリー"
+
+msgid "Une colonne"
+msgstr "1 列"
+
+msgid "Débit et crédit"
+msgstr "出金と入金"
+
+msgid "Montant et sens"
+msgstr "金額と区分"
+
+msgid "une date illisible"
+msgstr "読めない日付"
+
+msgid "un libellé vide"
+msgstr "空の摘要"
+
+msgid "un montant illisible"
+msgstr "読めない金額"
+
+msgid "un sens (débit ou crédit) inconnu"
+msgstr "不明な区分 (出金または入金)"
+
+msgid "une autre devise que celle du compte"
+msgstr "口座と異なる通貨"
+
+msgid "Associez une colonne à : {fields}."
+msgstr "次の項目に列を割り当ててください: {fields}。"
+
+msgid "{n} ligne a {problem} : ligne {lines}"
+msgid_plural "{n} lignes ont {problem} : lignes {lines}"
+msgstr[0] "{n} 行に{problem}があります: {lines} 行目"
+
+msgid "Finaryx"
+msgstr "Finaryx"
+
+msgid "Suivez vos comptes bancaires, sans rien envoyer en ligne"
+msgstr "何もオンラインに送らずに銀行口座を管理"
+
+msgid "banque;budget;compte;dépenses;finances;CSV;"
+msgstr "銀行;予算;口座;支出;家計;お金;CSV;"
+
+msgid "Style"
+msgstr "スタイル"
+
+msgid "Suivre le style du système, ou forcer le style clair ou sombre."
+msgstr "システムのスタイルに従うか、ライトまたはダークに固定します。"
+
+msgid "Largeur de la fenêtre"
+msgstr "ウィンドウの幅"
+
+msgid "Hauteur de la fenêtre"
+msgstr "ウィンドウの高さ"
+
+msgid "Sauvegarde automatique"
+msgstr "自動バックアップ"
+
+msgid "Copier la base après chaque import et garder les 5 dernières copies."
+msgstr "インポートのたびにデータベースをコピーし、最新の 5 件を残します。"
+
+msgid "Fenêtre maximisée"
+msgstr "ウィンドウの最大化"
+
+msgid "Suivez vos comptes bancaires"
+msgstr "銀行口座を管理"
+
+msgid "Finaryx importe les exports CSV de vos banques, les range dans une base locale et vous montre où part votre argent. Plusieurs comptes et plusieurs banques se suivent au même endroit, chacun dans sa devise."
+msgstr "Finaryx は銀行の CSV エクスポートを取り込み、ローカルのデータベースに保存して、お金の行き先を表示します。複数の銀行の複数の口座を、それぞれの通貨のまま 1 か所で管理できます。"
+
+msgid "Évolution du solde jour après jour, comparée au mois précédent"
+msgstr "前月と比べた日ごとの残高"
+
+msgid "Répartition des dépenses par catégorie et cumul sur 3, 6 ou 12 mois"
+msgstr "カテゴリー別の支出と 3・6・12 か月の合計"
+
+msgid "Prévision du solde d’après vos charges récurrentes et vos habitudes, avec sa fourchette"
+msgstr "定期的な支出と習慣にもとづく残高予測 (幅つき)"
+
+msgid "Import guidé : détection du format, aperçu, doublons ignorés, annulation possible"
+msgstr "ガイド付きインポート: 形式の判別、プレビュー、重複のスキップ、取り消し"
+
+msgid "Catégories, règles de classement et virements entre vos comptes"
+msgstr "カテゴリー、分類ルール、口座間振替"
+
+msgid "Sauvegarde, restauration et export CSV des opérations"
+msgstr "取引のバックアップ、復元、CSV エクスポート"
+
+msgid "Vos données restent sur votre ordinateur : Finaryx ne fait aucune requête réseau et n’envoie aucune statistique d’usage."
+msgstr "データはお使いのコンピューターから出ません。Finaryx はネットワークに接続せず、利用統計も送りません。"
+
+msgid "DocteurScience"
+msgstr "DocteurScience"
+
+msgid "banque"
+msgstr "銀行"
+
+msgid "budget"
+msgstr "予算"
+
+msgid "compte"
+msgstr "口座"
+
+msgid "dépenses"
+msgstr "支出"
+
+msgid "finances"
+msgstr "家計"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "Vue d’ensemble du mois"
+msgstr "月の概要"
+
+msgid "Prévision du solde d’après vos habitudes"
+msgstr "習慣にもとづく残高予測"
+
+msgid "Le mois en détail"
+msgstr "月の詳細"
+
+msgid "Cumul des dépenses par catégorie"
+msgstr "カテゴリー別の支出合計"
+
+msgid "Vos comptes et l’historique des imports"
+msgstr "口座とインポート履歴"
+
+msgid "Thème sombre"
+msgstr "ダークスタイル"
+
+msgid "Première version."
+msgstr "最初のバージョンです。"
+
+msgid "Import CSV avec profil Banque Populaire et mappage manuel pour les autres banques"
+msgstr "Banque Populaire のプロファイルと、その他の銀行向けの手動割り当てによる CSV インポート"
+
+msgid "Vue d’ensemble, mois en détail, cumul et prévisions"
+msgstr "概要、月の詳細、合計、予測"
+
+msgid "Catégories, règles et virements entre vos comptes"
+msgstr "カテゴリー、ルール、口座間振替"
+
+msgid "Sauvegarde, restauration et export CSV"
+msgstr "バックアップ、復元、CSV エクスポート"
+
+msgid "Général"
+msgstr "全般"
+
+msgid "Importer un CSV"
+msgstr "CSV をインポート"
+
+msgid "Préférences"
+msgstr "設定"
+
+msgid "Raccourcis clavier"
+msgstr "キーボードショートカット"
+
+msgid "Fermer la fenêtre"
+msgstr "ウィンドウを閉じる"
+
+msgid "Quitter"
+msgstr "終了"
+
+msgid "Navigation"
+msgstr "ナビゲーション"
+
+msgid "Vue d'ensemble"
+msgstr "概要"
+
+msgid "Mois en détail"
+msgstr "月の詳細"
+
+msgid "Cumul"
+msgstr "合計"
+
+msgid "Prévisions"
+msgstr "予測"
+
+msgid "Comptes"
+msgstr "口座"
+
+msgid "Opérations"
+msgstr "取引"
+
+msgid "Rechercher un libellé"
+msgstr "摘要を検索"
+
+msgid "Catégories et règles…"
+msgstr "カテゴリーとルール…"
+
+msgid "Exporter les données…"
+msgstr "データをエクスポート…"
+
+msgid "À propos de Finaryx"
+msgstr "Finaryx について"
+
+msgid "Menu principal"
+msgstr "メインメニュー"
+
+msgid "Navigation principale"
+msgstr "メインナビゲーション"
+
+msgid "Dernier import"
+msgstr "最終インポート"
+
+msgid "Importer"
+msgstr "インポート"
+
+msgid "Ajouter un compte"
+msgstr "口座を追加"
+
+msgid "Ajouter"
+msgstr "追加"
+
+msgid "Démonstration : rien n’est enregistré"
+msgstr "デモ: 何も保存されません"
+
+msgid "Bienvenue dans Finaryx"
+msgstr "Finaryx へようこそ"
+
+msgid "Importez l’export CSV d’un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n’est envoyé en ligne."
+msgstr "口座の CSV エクスポートをインポートすると、お金の行き先がわかります。すべてお使いのコンピューターに残り、オンラインには何も送られません。"
+
+msgid "Ajouter un compte d’abord"
+msgstr "先に口座を追加"
+
+msgid "Pour commencer"
+msgstr "はじめに"
+
+msgid "Exportez vos opérations en CSV"
+msgstr "取引を CSV でエクスポート"
+
+msgid "Depuis le site ou l’application de votre banque, choisissez la période la plus longue possible."
+msgstr "銀行のサイトまたはアプリで、できるだけ長い期間を選んでください。"
+
+msgid "Importez le fichier dans Finaryx"
+msgstr "ファイルを Finaryx にインポート"
+
+msgid "Le format Banque Populaire est reconnu. Pour les autres banques, vous associez les colonnes une seule fois."
+msgstr "Banque Populaire の形式は自動で認識されます。その他の銀行は、列の割り当てを一度だけ行います。"
+
+msgid "Vérifiez les catégories"
+msgstr "カテゴリーを確認"
+
+msgid "Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle."
+msgstr "不確かな取引には「要確認」が付きます。修正はルールにできます。"
+
+msgid "Impossible d’ouvrir la base de données"
+msgstr "データベースを開けません"
+
+msgid "Nom"
+msgstr "名前"
+
+msgid "Banque"
+msgstr "銀行"
+
+msgid "Type"
+msgstr "種類"
+
+msgid "Compte courant"
+msgstr "普通預金"
+
+msgid "Épargne"
+msgstr "貯蓄"
+
+msgid "Les totaux sont calculés séparément pour chaque devise."
+msgstr "合計は通貨ごとに別々に計算されます。"
+
+msgid "Numéro de compte (facultatif)"
+msgstr "口座番号 (任意)"
+
+msgid "Solde avant la première opération importée"
+msgstr "最初にインポートした取引の前の残高"
+
+msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
+msgstr "残高が 0 なら空欄のままにしてください。インポートしたファイルに残高の列があれば、Finaryx が調整を提案します。"
+
+msgid "Annuler"
+msgstr "キャンセル"
+
+msgid "Enregistrer"
+msgstr "保存"
+
+msgid "Modifier le compte"
+msgstr "口座を編集"
+
+msgid "Ouvrir des données de démonstration (rien n’est enregistré)"
+msgstr "デモデータを開く (何も保存されません)"
+
+msgid "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée."
+msgstr "銀行口座の管理。データはこのコンピューターから出ません。ネットワーク接続もテレメトリーもありません。データベースは暗号化されていません。"
+
+msgid "Couleur dans les graphiques"
+msgstr "グラフの色"
+
+msgid "Couleur {n}"
+msgstr "色 {n}"
+
+msgid "Utilisée par {name}"
+msgstr "使用中: {name}"
+
+msgid "Libre"
+msgstr "空き"
+
+msgid "Aucune couleur"
+msgstr "色なし"
+
+msgid "Regroupée dans « Autres » dans les graphiques"
+msgstr "グラフでは「その他」にまとめます"
+
+msgid "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie."
+msgstr "すべての色が使用中です。このカテゴリーはグラフでは「その他」に含まれ、それ以外では別に表示されます。ほかのカテゴリーの色を外すと空きができます。"
+
+msgid "Créer"
+msgstr "作成"
+
+msgid "Nouvelle catégorie"
+msgstr "新しいカテゴリー"
+
+msgid "Modifier la catégorie"
+msgstr "カテゴリーを編集"
+
+msgid "Fusionner dans"
+msgstr "統合先"
+
+msgid "Les opérations et les règles passent dans la catégorie choisie"
+msgstr "取引とルールが選んだカテゴリーに移ります"
+
+msgid "Fusionner…"
+msgstr "統合…"
+
+msgid "Supprimer la catégorie"
+msgstr "カテゴリーを削除"
+
+msgid "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées."
+msgstr[0] "{n} 件の取引は要確認として「その他」に移り、ルールは削除されます。"
+
+msgid "Supprimer…"
+msgstr "削除…"
+
+msgid "Fusionner « {from} » dans « {into} » ?"
+msgstr "「{from}」を「{into}」に統合しますか?"
+
+msgid "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgid_plural "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgstr[0] "{n} 件の取引と「{from}」のルールが「{into}」に移ります。合計は変わりません。"
+
+msgid "Fusionner"
+msgstr "統合"
+
+msgid "Catégories fusionnées"
+msgstr "カテゴリーを統合しました"
+
+msgid "Supprimer « {name} » ?"
+msgstr "「{name}」を削除しますか?"
+
+msgid "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées."
+msgstr[0] "{n} 件の取引は「要確認」として「その他」に移ります。ルールは削除されます。"
+
+msgid "Supprimer"
+msgstr "削除"
+
+msgid "Catégorie supprimée"
+msgstr "カテゴリーを削除しました"
+
+msgid "Compte"
+msgstr "口座"
+
+msgid "Solde au {date}"
+msgstr "{date} 時点の残高"
+
+msgid "Solde"
+msgstr "残高"
+
+msgid "{amount} en {month}"
+msgstr "{month}: {amount}"
+
+msgid "{n} opération enregistrée"
+msgid_plural "{n} opérations enregistrées"
+msgstr[0] "{n} 件の取引を記録済み"
+
+msgid "Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}"
+msgstr "6 か月の口座残高: {from} の {start} から {to} の {end}"
+
+msgid "Aucune"
+msgstr "なし"
+
+msgid "Modifier"
+msgstr "編集"
+
+msgid "Modifier : {field}"
+msgstr "編集: {field}"
+
+msgid "Réglages du compte"
+msgstr "口座の設定"
+
+msgid "Dernières opérations"
+msgstr "最近の取引"
+
+msgid "Tout voir"
+msgstr "すべて表示"
+
+msgid "Aucune opération"
+msgstr "取引なし"
+
+msgid "Sans catégorie"
+msgstr "カテゴリーなし"
+
+msgid "À vérifier"
+msgstr "要確認"
+
+msgid "Désarchiver le compte"
+msgstr "口座のアーカイブを解除"
+
+msgid "Il revient dans les totaux."
+msgstr "合計に再び含まれます。"
+
+msgid "Désarchiver"
+msgstr "アーカイブを解除"
+
+msgid "Archiver le compte"
+msgstr "口座をアーカイブ"
+
+msgid "Il disparaît des totaux, ses opérations restent consultables."
+msgstr "合計から外れますが、取引は引き続き表示できます。"
+
+msgid "Archiver"
+msgstr "アーカイブ"
+
+msgid "Supprimer le compte et ses opérations"
+msgstr "口座と取引を削除"
+
+msgid "Action définitive, {n} opération serait effacée."
+msgid_plural "Action définitive, {n} opérations seraient effacées."
+msgstr[0] "元に戻せません: {n} 件の取引が消去されます。"
+
+msgid "Zone sensible"
+msgstr "危険な操作"
+
+msgid "compte courant"
+msgstr "普通預金"
+
+msgid "épargne"
+msgstr "貯蓄"
+
+msgid "Solde de tous les comptes"
+msgstr "全口座の残高"
+
+msgid "Solde des comptes en {currency}"
+msgstr "{currency} 口座の残高"
+
+msgid "Vos comptes"
+msgstr "口座"
+
+msgid "Comptes archivés"
+msgstr "アーカイブした口座"
+
+msgid "Ils ne comptent pas dans les totaux."
+msgstr "合計には含まれません。"
+
+msgid "{n} opération"
+msgid_plural "{n} opérations"
+msgstr[0] "{n} 件の取引"
+
+msgid "Importé le {date}"
+msgstr "{date} にインポート"
+
+msgid "Dernier import le {date}"
+msgstr "最終インポート {date}"
+
+msgid "Ajoutez un export CSV pour voir ses opérations"
+msgstr "CSV エクスポートを追加すると取引が表示されます"
+
+msgid "Évolution du solde sur 6 mois : en hausse de {amount}"
+msgstr "6 か月の残高: {amount} 増加"
+
+msgid "Évolution du solde sur 6 mois : en baisse de {amount}"
+msgstr "6 か月の残高: {amount} 減少"
+
+msgid "Historique des imports"
+msgstr "インポート履歴"
+
+msgid "Les doublons ne sont jamais enregistrés deux fois"
+msgstr "重複が二重に記録されることはありません"
+
+msgid "Importer un CSV…"
+msgstr "CSV をインポート…"
+
+msgid "Aucun import pour l’instant"
+msgstr "まだインポートしていません"
+
+msgid "{n} nouvelle"
+msgid_plural "{n} nouvelles"
+msgstr[0] "{n} 件の新規"
+
+msgid "{n} ajoutée"
+msgid_plural "{n} ajoutées"
+msgstr[0] "{n} 件追加"
+
+msgid "{n} doublon"
+msgid_plural "{n} doublons"
+msgstr[0] "{n} 件の重複"
+
+msgid "Annuler cet import"
+msgstr "このインポートを取り消す"
+
+msgid "Part du total"
+msgstr "全体に占める割合"
+
+msgid "Part de chaque compte dans le solde total : {list}"
+msgstr "総残高に占める各口座の割合: {list}"
+
+msgid "catégorie par défaut, non supprimable"
+msgstr "既定のカテゴリー (削除不可)"
+
+msgid "catégorie spéciale, comptée en revenus"
+msgstr "特別なカテゴリー (収入として計算)"
+
+msgid "catégorie spéciale, exclue des statistiques"
+msgstr "特別なカテゴリー (統計から除外)"
+
+msgid "couleur de graphique {n}"
+msgstr "グラフの色 {n}"
+
+msgid "sans couleur, regroupée dans « Autres » dans les graphiques"
+msgstr "色なし (グラフでは「その他」)"
+
+msgid "Catégories et règles"
+msgstr "カテゴリーとルール"
+
+msgid "Catégories"
+msgstr "カテゴリー"
+
+msgid "Modifier la catégorie {name}"
+msgstr "カテゴリー {name} を編集"
+
+msgid "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en la retirant à une autre catégorie."
+msgstr "グラフに表示できる色は最大 12 色で、ほかに灰色の「その他」があります。色のないカテゴリーはグラフでは「その他」に含まれますが、リスト、フィルター、表では別に表示されます。グラフの「その他」をクリックすると内訳が表示されます。カテゴリーに色を付けるには、ほかのカテゴリーの色を外して空きを作ってください。"
+
+msgid "Le libellé correspond à « {pattern} »"
+msgstr "摘要が「{pattern}」に一致"
+
+msgid "Le libellé contient « {pattern} »"
+msgstr "摘要に「{pattern}」を含む"
+
+msgid "Supprimer la règle"
+msgstr "ルールを削除"
+
+msgid "Règle supprimée"
+msgstr "ルールを削除しました"
+
+msgid "Aucune règle pour l’instant"
+msgstr "ルールはまだありません"
+
+msgid "Changez la catégorie d’une opération pour en créer une."
+msgstr "取引のカテゴリーを変更するとルールを作成できます。"
+
+msgid "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées."
+msgstr "取引の手動修正はルールより優先されます。ルールを削除しても、分類済みの取引は変わりません。"
+
+msgid "Règles de catégorisation"
+msgstr "分類ルール"
+
+msgid "Virements entre vos comptes"
+msgstr "口座間振替"
+
+msgid "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils ne comptent ni en dépenses ni en revenus."
+msgstr "2 つの口座で同じ金額の出金と入金が 3 日以内にあるものです。確認すると、支出にも収入にも数えません。"
+
+msgid "Tout confirmer"
+msgstr "すべて確認"
+
+msgid "{n} virement confirmé"
+msgid_plural "{n} virements confirmés"
+msgstr[0] "{n} 件の振替を確認しました"
+
+msgid "Ce n’est pas un virement"
+msgstr "振替ではない"
+
+msgid "Confirmer"
+msgstr "確認"
+
+msgid "Virement confirmé"
+msgstr "振替を確認しました"
+
+msgid "Aucun virement à confirmer"
+msgstr "確認する振替はありません"
+
+msgid "Noms du foyer"
+msgstr "世帯の名前"
+
+msgid "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer en « Virement interne »."
+msgstr "世帯のメンバーからの振込は実際の収入ではありません。Finaryx は「口座間振替」への分類を提案します。"
+
+msgid "Modifier les noms…"
+msgstr "名前を編集…"
+
+msgid "{n} opération contient « {name} »"
+msgid_plural "{n} opérations contiennent « {name} »"
+msgstr[0] "{n} 件の取引に「{name}」が含まれます"
+
+msgid "Crée la règle « le libellé contient {name} → Virement interne »"
+msgstr "ルール「摘要に {name} を含む → 口座間振替」を作成します"
+
+msgid "Classer en virement interne"
+msgstr "口座間振替に分類"
+
+msgid "Règle créée, {n} opération classée"
+msgid_plural "Règle créée, {n} opérations classées"
+msgstr[0] "ルールを作成し、{n} 件の取引を分類しました"
+
+msgid "Aucun nom du foyer pour l’instant"
+msgstr "世帯の名前はまだありません"
+
+msgid "Aucune opération à classer"
+msgstr "分類する取引はありません"
+
+msgid "Ajoutez-les dans les préférences, par exemple votre nom et celui de votre conjoint."
+msgstr "設定で追加してください。たとえばご自身とパートナーの名前です。"
+
+msgid "Les opérations de ces noms sont déjà des virements internes."
+msgstr "これらの名前の取引はすでに口座間振替です。"
+
+msgid "Période"
+msgstr "期間"
+
+msgid "{n} mois"
+msgstr "{n} か月"
+
+msgid "Total sur {n} mois"
+msgstr "{n} か月の合計"
+
+msgid "Moyenne par mois"
+msgstr "月平均"
+
+msgid "Mois le plus chargé"
+msgstr "支出が最も多い月"
+
+msgid "Mois le plus léger"
+msgstr "支出が最も少ない月"
+
+msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
+msgstr "割合は、その月の支出に占めるカテゴリーの比率です。書き込めないほど小さな割合は下の表にあります。"
+
+msgid "Mois par mois, par catégorie"
+msgstr "月別・カテゴリー別"
+
+msgid "Catégorie"
+msgstr "カテゴリー"
+
+msgid "Par mois"
+msgstr "月あたり"
+
+msgid "Total"
+msgstr "合計"
+
+msgid "Part de chaque catégorie sur la période et montant cumulé."
+msgstr "期間中の各カテゴリーの割合と累計額です。"
+
+msgid "Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois."
+msgstr "月の列はカテゴリーの割合、「合計」の行はその月の支出を示します。"
+
+msgid "Part de chaque catégorie"
+msgstr "各カテゴリーの割合"
+
+msgid "{from} à {to}"
+msgstr "{from}～{to}"
+
+msgid "Ce fichier n’est pas une sauvegarde Finaryx."
+msgstr "このファイルは Finaryx のバックアップではありません。"
+
+msgid "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir."
+msgstr "このバックアップは新しいバージョンの Finaryx で作成されました。開くにはアプリを更新してください。"
+
+msgid "Ce fichier n’est pas une base de données lisible."
+msgstr "このファイルは読み取れるデータベースではありません。"
+
+msgid "Le fichier n’a pas pu être écrit ou lu : {error}"
+msgstr "ファイルを書き込めないか読み込めません: {error}"
+
+msgid "Exporter les données"
+msgstr "データをエクスポート"
+
+msgid "Toutes les opérations"
+msgstr "すべての取引"
+
+msgid "Dernier mois"
+msgstr "先月"
+
+msgid "{n} derniers mois"
+msgstr "過去 {n} か月"
+
+msgid "Période choisie"
+msgstr "指定した期間"
+
+msgid "Français"
+msgstr "フランス式"
+
+msgid "Du (JJ/MM/AAAA)"
+msgstr "開始日 (DD/MM/YYYY)"
+
+msgid "Au (JJ/MM/AAAA)"
+msgstr "終了日 (DD/MM/YYYY)"
+
+msgid "Exporter la base de données"
+msgstr "データベースをエクスポート"
+
+msgid "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne."
+msgstr "データはお使いのコンピューターに残ります。エクスポートすると、選んだフォルダーにコピーが作られます。オンラインには何も送られません。"
+
+msgid "Sauvegarde complète"
+msgstr "完全バックアップ"
+
+msgid "Exporter…"
+msgstr "エクスポート…"
+
+msgid "Restaurer une sauvegarde"
+msgstr "バックアップを復元"
+
+msgid "Remplace les données actuelles. Une copie de sécurité est faite avant."
+msgstr "現在のデータを置き換えます。先に安全のためのコピーを作ります。"
+
+msgid "Restaurer…"
+msgstr "復元…"
+
+msgid "Exporter en CSV"
+msgstr "CSV でエクスポート"
+
+msgid "Séparateur et décimales"
+msgstr "区切り文字と小数点"
+
+msgid "Standard"
+msgstr "標準"
+
+msgid "Format du CSV"
+msgstr "CSV 形式"
+
+msgid "Exporter en CSV…"
+msgstr "CSV でエクスポート…"
+
+msgid "Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français."
+msgstr "セミコロンと小数点のカンマ: フランス語設定の表計算ソフトでそのまま開けます。"
+
+msgid "Virgule et point décimal : le format le plus courant hors de France."
+msgstr "カンマと小数点のピリオド: フランス以外で最も一般的な形式です。"
+
+msgid "Copier la base après chaque import"
+msgstr "インポートのたびにデータベースをコピー"
+
+msgid "Garde les {n} dernières copies dans {dir}."
+msgstr "最新の {n} 件を {dir} に残します。"
+
+msgid "Désactivée en démonstration : rien n’est enregistré."
+msgstr "デモでは無効です。何も保存されません。"
+
+msgid "La base n’est pas chiffrée : gardez les exports dans un dossier privé."
+msgstr "データベースは暗号化されていません。エクスポートは非公開のフォルダーに保管してください。"
+
+msgid "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles."
+msgstr "finaryx.db ファイル (SQLite) の完全なコピー: 口座、取引、カテゴリー、ルール。"
+
+msgid "Tous les comptes"
+msgstr "すべての口座"
+
+msgid "Date, libellé, montant, catégorie, compte, banque."
+msgstr "日付、摘要、金額、カテゴリー、口座、銀行。"
+
+msgid "Choisissez les deux dates."
+msgstr "両方の日付を選んでください。"
+
+msgid "depuis {month}"
+msgstr "{month}から"
+
+msgid "{n} ligne avec ces réglages"
+msgid_plural "{n} lignes avec ces réglages"
+msgstr[0] "この設定で {n} 行"
+
+msgid "Base exportée"
+msgstr "データベースをエクスポートしました"
+
+msgid "Choisissez les deux dates de la période."
+msgstr "期間の両方の日付を選んでください。"
+
+msgid "{n} opération exportée"
+msgid_plural "{n} opérations exportées"
+msgstr[0] "{n} 件の取引をエクスポートしました"
+
+msgid "Sauvegardes Finaryx"
+msgstr "Finaryx のバックアップ"
+
+msgid "Ouvrir le dossier"
+msgstr "フォルダーを開く"
+
+msgid "Cette sauvegarde contient {accounts} compte et {operations}."
+msgid_plural "Cette sauvegarde contient {accounts} comptes et {operations}."
+msgstr[0] "このバックアップには {accounts} 件の口座と{operations}が含まれます。"
+
+msgid "Les données actuelles seront remplacées. Une copie de sécurité est d’abord enregistrée dans {dir}."
+msgstr "現在のデータが置き換えられます。先に安全のためのコピーを {dir} に保存します。"
+
+msgid "Les données de démonstration seront remplacées, en mémoire seulement."
+msgstr "デモデータが置き換えられます (メモリー上のみ)。"
+
+msgid "Restaurer cette sauvegarde ?"
+msgstr "このバックアップを復元しますか?"
+
+msgid "Restaurer"
+msgstr "復元"
+
+msgid "Sauvegarde restaurée"
+msgstr "バックアップを復元しました"
+
+msgid "le 1er"
+msgstr "1 日"
+
+msgid "le {day}"
+msgstr "{day} 日"
+
+msgid "Solde en fin de mois"
+msgstr "月末の残高"
+
+msgid "{month} · prévu"
+msgstr "{month} · 予測"
+
+msgid "Fourchette"
+msgstr "幅"
+
+msgid "Dépenses attendues <b>{spending}</b> · revenus <b>{income}</b>"
+msgstr "予想支出 <b>{spending}</b> · 収入 <b>{income}</b>"
+
+msgid "Aujourd’hui"
+msgstr "今日"
+
+msgid "Dernière opération"
+msgstr "最後の取引"
+
+msgid "{month} : pic de dépenses\nattendu ({amount})"
+msgstr "{month}: 支出のピーク\nの見込み ({amount})"
+
+msgid "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}"
+msgstr "月末の残高: {month} は {real}、{last} の予測は {end} (幅 {low}～{high})"
+
+msgid "Prévu"
+msgstr "予測"
+
+msgid "Fourchette probable"
+msgstr "見込みの幅"
+
+msgid "Pas encore assez de données pour une prévision"
+msgstr "予測に必要なデータがまだ足りません"
+
+msgid "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgid_plural "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgstr[0] "Finaryx が習慣を把握するには 3 か月以上の取引が必要です。あと {n} か月分足りません。古いエクスポートをインポートすると、この画面を利用できます。"
+
+msgid "Importer un export plus ancien"
+msgstr "古いエクスポートをインポート"
+
+msgid "Habitudes calculées sur"
+msgstr "習慣の計算期間"
+
+msgid "Période de référence"
+msgstr "基準期間"
+
+msgid "Horizon"
+msgstr "予測期間"
+
+msgid "Horizon de prévision"
+msgstr "予測する期間"
+
+msgid "{low} à {high}"
+msgstr "{low}～{high}"
+
+msgid "Fin {month} (prévu)"
+msgstr "{month}末 (予測)"
+
+msgid "Solde fin {month} (prévu)"
+msgstr "{month}末の残高 (予測)"
+
+msgid "Fourchette : {range}"
+msgstr "幅: {range}"
+
+msgid "Dépenses prévues"
+msgstr "予想支出"
+
+msgid "{amount} / mois"
+msgstr "{amount} / 月"
+
+msgid "Moyenne sur le mois à venir"
+msgid_plural "Moyenne sur les {n} mois à venir"
+msgstr[0] "今後 {n} か月の平均"
+
+msgid "Salaire détecté {day} du mois"
+msgstr "給与を検出: 毎月{day}"
+
+msgid "{label} détecté {day} du mois"
+msgstr "{label}を検出: 毎月{day}"
+
+msgid "Aucun revenu régulier détecté"
+msgstr "定期的な収入は見つかりません"
+
+msgid "Revenus réguliers"
+msgstr "定期的な収入"
+
+msgid "Réel de {from} à {to}, prévu de {first} à {last}"
+msgstr "実績 {from}～{to}、予測 {first}～{last}"
+
+msgid "Réel"
+msgstr "実績"
+
+msgid "Estimation d’après vos charges récurrentes et vos dépenses moyennes. La fourchette s’élargit avec l’horizon."
+msgstr "定期的な支出と平均支出にもとづく推定です。予測期間が長いほど幅が広がります。"
+
+msgid "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre."
+msgstr "定期的な支出と変動支出の平均から計算した推定です。予測期間が長いほど幅が広がり、先になるほど不確かになります。"
+
+msgid "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgid_plural "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgstr[0] "習慣は {n} か月分から計算しています。履歴はそれより前にさかのぼれません。"
+
+msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
+msgstr "季節変動は考慮していません: 履歴が 12 か月未満です。"
+
+msgid "{month} (en cours)"
+msgstr "{month} (途中)"
+
+msgid "{amount} de dépenses"
+msgstr "支出 {amount}"
+
+msgid "{income} de revenus · {spending}"
+msgstr "収入 {income} · {spending}"
+
+msgid "{amount} sur le mois"
+msgstr "月間 {amount}"
+
+msgid "Charges fixes"
+msgstr "固定費"
+
+msgid "Aucune charge récurrente détectée"
+msgstr "定期的な支出は見つかりません"
+
+msgid "Une charge est récurrente quand le même libellé revient chaque mois, pour un montant proche."
+msgstr "同じ摘要が毎月ほぼ同じ金額で現れると、定期的な支出とみなします。"
+
+msgid "Mois par mois"
+msgstr "月別"
+
+msgid "Charges récurrentes détectées"
+msgstr "検出した定期的な支出"
+
+msgid "Choisir un fichier…"
+msgstr "ファイルを選択…"
+
+msgid "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est enregistré avant votre confirmation."
+msgstr "口座の CSV エクスポートを選ぶか、ここにドロップしてください。ファイルが変更されることはなく、確認するまで何も保存されません。"
+
+msgid "Fichiers CSV"
+msgstr "CSV ファイル"
+
+msgid "Tous les fichiers"
+msgstr "すべてのファイル"
+
+msgid "Choisir un export CSV"
+msgstr "CSV エクスポートを選択"
+
+msgid "fichier"
+msgstr "ファイル"
+
+msgid "Impossible de lire le fichier : {error}"
+msgstr "ファイルを読み込めません: {error}"
+
+msgid "Le fichier ne se lit pas encore correctement"
+msgstr "ファイルがまだ正しく読み込めていません"
+
+msgid "{n} ligne"
+msgid_plural "{n} lignes"
+msgstr[0] "{n} 行"
+
+msgid "{n} colonne"
+msgid_plural "{n} colonnes"
+msgstr[0] "{n} 列"
+
+msgid "Changer…"
+msgstr "変更…"
+
+msgid "Compte de destination"
+msgstr "取り込み先の口座"
+
+msgid "Aucun compte pour l’instant : créez celui qui recevra ces opérations."
+msgstr "口座がまだありません。これらの取引を受け取る口座を作成してください。"
+
+msgid "Créer un compte…"
+msgstr "口座を作成…"
+
+msgid "Nouveau compte…"
+msgstr "新しい口座…"
+
+msgid "Les opérations seront ajoutées à ce compte"
+msgstr "取引はこの口座に追加されます"
+
+msgid "Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin."
+msgstr "認識した形式: {name}。列は割り当て済みです。必要に応じて確認してください。"
+
+msgid "Reconnu"
+msgstr "認識済み"
+
+msgid "Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."
+msgstr "初めての形式です。下で列を割り当ててください。次回からは自動で認識されます。"
+
+msgid "Nouveau format"
+msgstr "新しい形式"
+
+msgid "Modèle de banque"
+msgstr "銀行の形式"
+
+msgid "Fichier"
+msgstr "ファイル"
+
+msgid "Encodage"
+msgstr "文字コード"
+
+msgid "Séparateur de colonnes"
+msgstr "列の区切り文字"
+
+msgid "Ligne des en-têtes"
+msgstr "見出しの行"
+
+msgid "Ligne {n}"
+msgstr "{n} 行目"
+
+msgid "Format des dates"
+msgstr "日付の形式"
+
+msgid "À vérifier : les jours et les mois peuvent être inversés"
+msgstr "要確認: 日と月が逆の可能性があります"
+
+msgid "Séparateur décimal"
+msgstr "小数点"
+
+msgid "Point ( . )"
+msgstr "ピリオド ( . )"
+
+msgid "Format du fichier"
+msgstr "ファイルの形式"
+
+msgid "Détecté automatiquement, à corriger si la lecture est mauvaise"
+msgstr "自動で判別しました。正しく読めない場合は修正してください"
+
+msgid "Colonnes du fichier"
+msgstr "ファイルの列"
+
+msgid "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer »."
+msgstr "ファイルの各列の用途を指定してください。不要な列は「無視」のままにします。"
+
+msgid "Comment le montant est écrit"
+msgstr "金額の書き方"
+
+msgid "Écriture du montant"
+msgstr "金額の形式"
+
+msgid "Exemple : (vide)"
+msgstr "例: (空)"
+
+msgid "Exemple : {value}"
+msgstr "例: {value}"
+
+msgid "Champ pour la colonne {column}"
+msgstr "列 {column} の項目"
+
+msgid "Valeurs pour un débit"
+msgstr "出金を表す値"
+
+msgid "Valeurs pour un crédit"
+msgstr "入金を表す値"
+
+msgid "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas."
+msgstr "値はカンマで区切ってください。大文字・小文字とアクセントは区別しません。"
+
+msgid "Exclue"
+msgstr "除外"
+
+msgid "Reconnue"
+msgstr "認識済み"
+
+msgid "Proposée"
+msgstr "提案"
+
+msgid "Catégorie de Finaryx pour {bank}"
+msgstr "{bank} に対応する Finaryx のカテゴリー"
+
+msgid "Afficher moins"
+msgstr "表示を減らす"
+
+msgid "Voir la correspondance"
+msgid_plural "Voir les {n} correspondances"
+msgstr[0] "{n} 件の対応を表示"
+
+msgid "Catégories de la banque"
+msgstr "銀行のカテゴリー"
+
+msgid "La banque classe déjà ses opérations. Choisissez la catégorie de Finaryx qui correspond à chacune."
+msgstr "銀行はすでに取引を分類しています。それぞれに対応する Finaryx のカテゴリーを選んでください。"
+
+msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
+msgstr "この対応は形式と一緒に保存されます。後から現れる銀行のカテゴリーはここで確認します。"
+
+msgid "Aperçu de l’import"
+msgstr "インポートのプレビュー"
+
+msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
+msgstr "最初の 5 行 (カテゴリーは上の対応による)"
+
+msgid "Choisissez ou créez le compte de destination pour voir l’aperçu."
+msgstr "取り込み先の口座を選ぶか作成すると、プレビューが表示されます。"
+
+msgid "L’aperçu apparaîtra quand les colonnes obligatoires seront associées."
+msgstr "必須の列を割り当てると、プレビューが表示されます。"
+
+msgid "Nouveau"
+msgstr "新規"
+
+msgid "Doublon"
+msgstr "重複"
+
+msgid "Aucune ligne lisible"
+msgstr "読み取れる行がありません"
+
+msgid "Ces lignes ne seront pas importées."
+msgstr "これらの行はインポートされません。"
+
+msgid "La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible."
+msgstr "残高の列が金額と一致しません: {lines} 行目。インポートは可能です。"
+
+msgid "À savoir avant d’importer"
+msgstr "インポートの前に"
+
+msgid "Lignes lues"
+msgstr "読み込んだ行"
+
+msgid "Nouvelles opérations"
+msgstr "新しい取引"
+
+msgid "Doublons ignorés"
+msgstr "スキップした重複"
+
+msgid "À vérifier (catégorie incertaine)"
+msgstr "要確認 (カテゴリーが不確か)"
+
+msgid "Lignes illisibles, non importées"
+msgstr "読めない行 (インポートしません)"
+
+msgid "Recaler le solde initial"
+msgstr "開始残高を調整"
+
+msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
+msgstr "残高の列によると、最初にインポートした取引の前の残高は {amount} になります。"
+
+msgid "Retenir ce format"
+msgstr "この形式を記憶"
+
+msgid "Le prochain fichier de cette banque sera lu sans rien demander"
+msgstr "この銀行の次のファイルは確認なしで読み込みます"
+
+msgid "Nom du format"
+msgstr "形式の名前"
+
+msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
+msgstr "重複とは、記録済みの取引と日付・摘要・金額・参照番号がすべて同じ取引です。ファイルが変更されることはありません。"
+
+msgid "Résumé"
+msgstr "概要"
+
+msgid "Aucune nouvelle opération"
+msgstr "新しい取引はありません"
+
+msgid "Importer {n} opération"
+msgid_plural "Importer {n} opérations"
+msgstr[0] "{n} 件の取引をインポート"
+
+msgid "{n} opération importée"
+msgid_plural "{n} opérations importées"
+msgstr[0] "{n} 件の取引をインポートしました"
+
+msgid "{n} doublon ignoré"
+msgid_plural "{n} doublons ignorés"
+msgstr[0] "{n} 件の重複をスキップしました"
+
+msgid "Aperçu"
+msgstr "概要"
+
+msgid "Mois"
+msgstr "月"
+
+msgid "Compte affiché"
+msgstr "表示中の口座"
+
+msgid "{n} Ko"
+msgstr "{n} KB"
+
+msgid "{n} Mo"
+msgstr "{n} MB"
+
+msgid "Non classé"
+msgstr "未分類"
+
+msgid "{month} · {amount} regroupés dans « Autres » dans les graphiques"
+msgstr "{month} · グラフで「その他」にまとめた {amount}"
+
+msgid "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et les tableaux les montrent séparément."
+msgstr "グラフに表示できる色は最大 12 色で、ほかに灰色の「その他」があります。色のないカテゴリーはここに含まれます。リストと表では別に表示されます。"
+
+msgid "Gérer les couleurs…"
+msgstr "色を管理…"
+
+msgid "Fermer"
+msgstr "閉じる"
+
+msgid "Détail de « Autres »"
+msgstr "「その他」の内訳"
+
+msgid "Mois précédent : {month}"
+msgstr "前の月: {month}"
+
+msgid "Mois suivant : {month}"
+msgstr "次の月: {month}"
+
+msgid "{first} le 1er, {last} au {day} {month}"
+msgstr "{first} (1 日)、{last} ({month}{day} 日)"
+
+msgid "Solde {of_month}"
+msgstr "残高: {of_month}"
+
+msgid "Dépenses du jour"
+msgstr "その日の支出"
+
+msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
+msgstr "{of_month}の日ごとの支出。{day} 日は {peak} が目立ちます"
+
+msgid "Dépenses de chaque jour du mois"
+msgstr "月の日ごとの支出"
+
+msgid "Évolution du solde"
+msgstr "残高の推移"
+
+msgid "Part"
+msgstr "割合"
+
+msgid "vs {month}"
+msgstr "{month}との比較"
+
+msgid "Où part l’argent"
+msgstr "お金の行き先"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "今月の取引はありません"
+
+msgid "Rechercher une opération"
+msgstr "取引を検索"
+
+msgid "Filtrer par catégorie"
+msgstr "カテゴリーで絞り込み"
+
+msgid "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les libellés identiques."
+msgstr "カテゴリーをクリックすると取引のカテゴリーが変わり、同じ摘要へのルール作成を提案します。"
+
+msgid "Toute la période"
+msgstr "全期間"
+
+msgid "Toutes"
+msgstr "すべて"
+
+msgid "toute la période"
+msgstr "全期間"
+
+msgid "{pct} % des dépenses"
+msgstr "支出の {pct}%"
+
+msgid "Aucune opération ne correspond à ces filtres"
+msgstr "条件に一致する取引はありません"
+
+msgid "Afficher la suivante"
+msgid_plural "Afficher les {n} suivantes"
+msgstr[0] "次の {n} 件を表示"
+
+msgid "Nouvelle catégorie…"
+msgstr "新しいカテゴリー…"
+
+msgid "Changer la catégorie de {label} (actuellement {category})"
+msgstr "{label} のカテゴリーを変更 (現在: {category})"
+
+msgid "Créer une règle ?"
+msgstr "ルールを作成しますか?"
+
+msgid "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports."
+msgstr "<b>{pattern}</b> を含む摘要は、今後のインポートで <b>{category}</b> に分類されます。"
+
+msgid "Appliquer aux opérations existantes"
+msgstr "既存の取引にも適用"
+
+msgid "{n} opération sera modifiée, sauf celles corrigées à la main."
+msgid_plural "{n} opérations seront modifiées, sauf celles corrigées à la main."
+msgstr[0] "{n} 件の取引を変更します (手動で修正したものを除く)。"
+
+msgid "Seulement cette opération"
+msgstr "この取引のみ"
+
+msgid "Créer la règle"
+msgstr "ルールを作成"
+
+msgid "Règle créée, {n} autre opération classée"
+msgid_plural "Règle créée, {n} autres opérations classées"
+msgstr[0] "ルールを作成し、ほかの {n} 件の取引を分類しました"
+
+msgid "Règle créée"
+msgstr "ルールを作成しました"
+
+msgid "Catégorie modifiée"
+msgstr "カテゴリーを変更しました"
+
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "その日の支出 <b>{amount}</b>"
+
+msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
+msgstr "{month}の残高: 1 日の {start} から {day} 日の {end} ({previous}と比較)"
+
+msgid "Part des dépenses"
+msgstr "支出に占める割合"
+
+msgid "Écart vs {month}"
+msgstr "{month}との差"
+
+msgid "cliquez pour le détail"
+msgstr "クリックで内訳を表示"
+
+msgid "Anneau des dépenses {of_month} par catégorie, le détail est dans la liste"
+msgstr "{of_month}の支出のカテゴリー別円グラフ。内訳はリストにあります"
+
+msgid "dépensés"
+msgstr "支出"
+
+msgid "Part du mois"
+msgstr "月に占める割合"
+
+msgid "Total du mois"
+msgstr "月の合計"
+
+msgid "Dépenses mensuelles empilées par catégorie, de {from} à {to}"
+msgstr "カテゴリー別に積み上げた月ごとの支出 ({from}～{to})"
+
+msgid "Solde total"
+msgstr "総残高"
+
+msgid "{amount} depuis le 1er {month}"
+msgstr "{month}1 日から {amount}"
+
+msgid "{pct} % par rapport à {month}"
+msgstr "{month}と比べて {pct}%"
+
+msgid "Dépenses {of_month}"
+msgstr "{of_month}の支出"
+
+msgid "dont salaire {amount}"
+msgstr "うち給与 {amount}"
+
+msgid "dont {label} : {amount}"
+msgstr "うち {label}: {amount}"
+
+msgid "Revenus {of_month}"
+msgstr "{of_month}の収入"
+
+msgid "{arrow} {amount} selon vos habitudes"
+msgstr "{arrow} {amount} (習慣にもとづく)"
+
+msgid "Pas encore assez de données"
+msgstr "データがまだ足りません"
+
+msgid "Solde de tous les comptes, jour après jour"
+msgstr "全口座の日ごとの残高"
+
+msgid "Solde du compte, jour après jour"
+msgstr "口座の日ごとの残高"
+
+msgid "Évolution du mois"
+msgstr "月の推移"
+
+msgid "Détail du mois"
+msgstr "月の詳細"
+
+msgid "{amount} dépensés de {from} à {to}"
+msgstr "{from}～{to}の支出 {amount}"
+
+msgid "Cumul sur 6 mois"
+msgstr "6 か月の合計"
+
+msgid "Voir le cumul"
+msgstr "合計を表示"
+
+msgid "{month} · {amount} dépensés"
+msgstr "{month} · 支出 {amount}"
+
+msgid "Par catégorie"
+msgstr "カテゴリー別"
+
+msgid "D’après vos dépenses du dernier mois"
+msgid_plural "D’après vos dépenses des {n} derniers mois"
+msgstr[0] "過去 {n} か月の支出にもとづく"
+
+msgid "Solde fin de mois"
+msgstr "月末の残高"
+
+msgid "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgid_plural "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgstr[0] "予測には 3 か月以上の取引が必要です。あと {n} か月分足りません。"
+
+msgid "Prévision à 6 mois"
+msgstr "6 か月の予測"
+
+msgid "Pas encore d’opérations"
+msgstr "まだ取引がありません"
+
+msgid "Importez l’export CSV d’un compte pour voir cette vue."
+msgstr "口座の CSV エクスポートをインポートすると、この画面が表示されます。"
+
+msgid "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé comme virement interne : ni dépense, ni revenu."
+msgstr "ご自身の名前、パートナーの名前… 摘要にこれらの名前を含む振込は、口座間振替 (支出でも収入でもないもの) として提案されます。"
+
+msgid "Retirer ce nom"
+msgstr "この名前を削除"
+
+msgid "Ajouter un nom"
+msgstr "名前を追加"
+
+msgid "Suivre le système"
+msgstr "システムに従う"
+
+msgid "Clair"
+msgstr "ライト"
+
+msgid "Sombre"
+msgstr "ダーク"
+
+msgid "Apparence"
+msgstr "外観"
+
+msgid "Confidentialité"
+msgstr "プライバシー"
+
+msgid "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune requête réseau. La base de données n’est pas chiffrée."
+msgstr "すべてのデータはこのコンピューターに残ります。Finaryx はネットワークに接続しません。データベースは暗号化されていません。"
+
+msgid "Impossible de lire la base de données."
+msgstr "データベースを読み込めません。"
+
+msgid "{n} compte"
+msgid_plural "{n} comptes"
+msgstr[0] "{n} 件の口座"
+
+msgid "{n} banque"
+msgid_plural "{n} banques"
+msgstr[0] "{n} 銀行"
+
+msgid "{n} virement entre vos comptes à confirmer"
+msgid_plural "{n} virements entre vos comptes à confirmer"
+msgstr[0] "確認待ちの口座間振替が {n} 件あります"
+
+msgid "Voir"
+msgstr "表示"
+
+msgid "La copie de sauvegarde automatique a échoué : {error}"
+msgstr "自動バックアップに失敗しました: {error}"
+
+msgid "La base de données n’est pas ouverte."
+msgstr "データベースが開かれていません。"
+
+msgid "La modification n’a pas pu être enregistrée : {error}"
+msgstr "変更を保存できませんでした: {error}"
+
+msgid "Compte ajouté"
+msgstr "口座を追加しました"
+
+msgid "Compte archivé"
+msgstr "口座をアーカイブしました"
+
+msgid "Compte désarchivé"
+msgstr "口座のアーカイブを解除しました"
+
+msgid "Le compte, son historique d’import et {n} opération seront effacés définitivement."
+msgid_plural "Le compte, son historique d’import et ses {n} opérations seront effacés définitivement."
+msgstr[0] "口座、インポート履歴、{n} 件の取引が完全に消去されます。"
+
+msgid "Compte supprimé, {n} opération effacée"
+msgid_plural "Compte supprimé, {n} opérations effacées"
+msgstr[0] "口座を削除し、{n} 件の取引を消去しました"
+
+msgid "sans nom"
+msgstr "名前なし"
+
+msgid "Annuler cet import ?"
+msgstr "このインポートを取り消しますか?"
+
+msgid "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés."
+msgid_plural "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés."
+msgstr[0] "「{file}」が {account} に追加した {n} 件の取引を削除します。ほかのインポートは変わりません。"
+
+msgid "Garder"
+msgstr "残す"
+
+msgid "Supprimer les opérations"
+msgstr "取引を削除"
+
+msgid "Import annulé"
+msgstr "インポートを取り消しました"

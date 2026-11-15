@@ -1283,8 +1283,8 @@ msgstr "El banco ya clasifica sus movimientos. Elija la categoría de Finaryx qu
 msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
 msgstr "Esta correspondencia se guarda con el formato. Una categoría del banco que aparezca más tarde se le preguntará aquí."
 
-msgid "Aperçu"
-msgstr "Vista previa"
+msgid "Aperçu de l’import"
+msgstr "Vista previa de la importación"
 
 msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
 msgstr "Cinco primeras filas, categorías según la correspondencia de arriba"
@@ -1366,6 +1366,9 @@ msgid "{n} doublon ignoré"
 msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} duplicado omitido"
 msgstr[1] "{n} duplicados omitidos"
+
+msgid "Aperçu"
+msgstr "Resumen"
 
 msgid "Mois"
 msgstr "Mes"

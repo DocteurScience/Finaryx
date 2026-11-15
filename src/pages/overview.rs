@@ -349,6 +349,7 @@ pub fn part_row(
             .xalign(0.0)
             .hexpand(true)
             .wrap(true)
+            .wrap_mode(gtk::pango::WrapMode::WordChar)
             .build(),
     );
     row.append(

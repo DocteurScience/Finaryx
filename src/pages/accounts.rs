@@ -489,7 +489,14 @@ fn total_card(title: &str, currency: &str, group: &[&AccountOverview]) -> gtk::B
         item.append(&charts::color_swatch(12, move |w| {
             charts::account_color(w, slot)
         }));
-        item.append(&gtk::Label::new(Some(&o.account.name)));
+        item.append(
+            &gtk::Label::builder()
+                .label(&o.account.name)
+                .wrap(true)
+                .wrap_mode(gtk::pango::WrapMode::WordChar)
+                .xalign(0.0)
+                .build(),
+        );
         let pct = gtk::Label::builder()
             .label(percent_per_mille(*s))
             .css_classes(["dim-label", "numeric"])

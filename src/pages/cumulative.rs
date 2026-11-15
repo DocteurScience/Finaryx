@@ -180,6 +180,9 @@ impl CumulativePage {
                 &gtk::Label::builder()
                     .label(name)
                     .css_classes(["caption"])
+                    .wrap(true)
+                    .wrap_mode(gtk::pango::WrapMode::WordChar)
+                    .xalign(0.0)
                     .build(),
             );
             legend.append(&item);
@@ -277,7 +280,14 @@ impl CumulativePage {
             name.append(&charts::color_swatch(12, move |w| {
                 charts::category_color(w, slot)
             }));
-            name.append(&gtk::Label::builder().label(&row.name).xalign(0.0).build());
+            name.append(
+                &gtk::Label::builder()
+                    .label(&row.name)
+                    .xalign(0.0)
+                    .wrap(true)
+                    .wrap_mode(gtk::pango::WrapMode::WordChar)
+                    .build(),
+            );
             grid.attach(&name, 0, y, 1, 1);
             if !narrow {
                 for (i, v) in row.months.iter().enumerate() {

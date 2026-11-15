@@ -1,0 +1,1705 @@
+# Finaryx — Suomi
+# Generated from po/translations.csv by build-aux/translations.py: edit the table.
+msgid ""
+msgstr ""
+"Project-Id-Version: finaryx\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Suomi\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "fr"
+msgstr "fi"
+
+msgid "Aucun import"
+msgstr "Ei tuontia"
+
+msgid "À jour"
+msgstr "Ajan tasalla"
+
+msgid "À mettre à jour"
+msgstr "Päivitettävä"
+
+msgid "{month} à importer"
+msgstr "Tuotava: {month}"
+
+msgid "Logement"
+msgstr "Asuminen"
+
+msgid "Alimentation"
+msgstr "Ruoka"
+
+msgid "Transports"
+msgstr "Liikenne"
+
+msgid "Prêts et crédits"
+msgstr "Lainat ja luotot"
+
+msgid "Shopping et animaux"
+msgstr "Ostokset ja lemmikit"
+
+msgid "Abonnements et télécoms"
+msgstr "Tilaukset ja tietoliikenne"
+
+msgid "Banque et assurances"
+msgstr "Pankki ja vakuutukset"
+
+msgid "Autres"
+msgstr "Muut"
+
+msgid "Sorties et loisirs"
+msgstr "Ulkona käynti ja vapaa-aika"
+
+msgid "Santé"
+msgstr "Terveys"
+
+msgid "Impôts et taxes"
+msgstr "Verot ja maksut"
+
+msgid "Administratif et éducation"
+msgstr "Hallinto ja koulutus"
+
+msgid "Revenus"
+msgstr "Tulot"
+
+msgid "Virement interne"
+msgstr "Sisäinen siirto"
+
+msgid "Donnez un nom à la catégorie."
+msgstr "Anna luokalle nimi."
+
+msgid "La catégorie « {name} » existe déjà."
+msgstr "Luokka ”{name}” on jo olemassa."
+
+msgid "Cette couleur est déjà utilisée par « {name} »."
+msgstr "Tätä väriä käyttää jo ”{name}”."
+
+msgid "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée."
+msgstr "Finaryx tarvitsee tämän luokan: sitä ei voi poistaa."
+
+msgid "« Autres » garde toujours le gris."
+msgstr "”Muut” pitää aina harmaan värin."
+
+msgid "Le motif de la règle est vide."
+msgstr "Säännön malli on tyhjä."
+
+msgid "Point-virgule ( ; )"
+msgstr "Puolipiste ( ; )"
+
+msgid "Virgule ( , )"
+msgstr "Pilkku ( , )"
+
+msgid "Tabulation"
+msgstr "Sarkain"
+
+msgid "Barre verticale ( | )"
+msgstr "Pystyviiva ( | )"
+
+msgid "JJ/MM/AAAA"
+msgstr "PP.KK.VVVV"
+
+msgid "AAAA-MM-JJ"
+msgstr "VVVV-KK-PP"
+
+msgid "JJ-MM-AA"
+msgstr "PP-KK-VV"
+
+msgid "MM/JJ/AAAA"
+msgstr "KK/PP/VVVV"
+
+msgid "Ignorer"
+msgstr "Ohita"
+
+msgid "Date de l’opération"
+msgstr "Tapahtumapäivä"
+
+msgid "Date de comptabilisation"
+msgstr "Kirjauspäivä"
+
+msgid "Date de valeur"
+msgstr "Arvopäivä"
+
+msgid "Libellé"
+msgstr "Kuvaus"
+
+msgid "Détail du libellé"
+msgstr "Kuvauksen tiedot"
+
+msgid "Montant"
+msgstr "Summa"
+
+msgid "Débit"
+msgstr "Veloitus"
+
+msgid "Crédit"
+msgstr "Hyvitys"
+
+msgid "Sens (débit ou crédit)"
+msgstr "Suunta (veloitus tai hyvitys)"
+
+msgid "Référence de la banque"
+msgstr "Pankin viite"
+
+msgid "Solde après l’opération"
+msgstr "Saldo tapahtuman jälkeen"
+
+msgid "Devise"
+msgstr "Valuutta"
+
+msgid "Catégorie de la banque"
+msgstr "Pankin luokka"
+
+msgid "Sous-catégorie de la banque"
+msgstr "Pankin alaluokka"
+
+msgid "Une colonne"
+msgstr "Yksi sarake"
+
+msgid "Débit et crédit"
+msgstr "Veloitus ja hyvitys"
+
+msgid "Montant et sens"
+msgstr "Summa ja suunta"
+
+msgid "une date illisible"
+msgstr "lukukelvoton päivämäärä"
+
+msgid "un libellé vide"
+msgstr "tyhjä kuvaus"
+
+msgid "un montant illisible"
+msgstr "lukukelvoton summa"
+
+msgid "un sens (débit ou crédit) inconnu"
+msgstr "tuntematon suunta (veloitus tai hyvitys)"
+
+msgid "une autre devise que celle du compte"
+msgstr "eri valuutta kuin tilillä"
+
+msgid "Associez une colonne à : {fields}."
+msgstr "Liitä sarake kenttään: {fields}."
+
+msgid "{n} ligne a {problem} : ligne {lines}"
+msgid_plural "{n} lignes ont {problem} : lignes {lines}"
+msgstr[0] "{n} rivillä on {problem}: rivi {lines}"
+msgstr[1] "{n} rivillä on {problem}: rivit {lines}"
+
+msgid "Finaryx"
+msgstr "Finaryx"
+
+msgid "Suivez vos comptes bancaires, sans rien envoyer en ligne"
+msgstr "Seuraa pankkitilejäsi lähettämättä mitään verkkoon"
+
+msgid "banque;budget;compte;dépenses;finances;CSV;"
+msgstr "pankki;budjetti;tili;menot;talous;raha;CSV;"
+
+msgid "Style"
+msgstr "Tyyli"
+
+msgid "Suivre le style du système, ou forcer le style clair ou sombre."
+msgstr "Noudata järjestelmän tyyliä tai pakota vaalea tai tumma tyyli."
+
+msgid "Largeur de la fenêtre"
+msgstr "Ikkunan leveys"
+
+msgid "Hauteur de la fenêtre"
+msgstr "Ikkunan korkeus"
+
+msgid "Sauvegarde automatique"
+msgstr "Automaattinen varmuuskopio"
+
+msgid "Copier la base après chaque import et garder les 5 dernières copies."
+msgstr "Kopioi tietokanta jokaisen tuonnin jälkeen ja säilytä 5 viimeisintä kopiota."
+
+msgid "Fenêtre maximisée"
+msgstr "Ikkuna suurennettu"
+
+msgid "Suivez vos comptes bancaires"
+msgstr "Seuraa pankkitilejäsi"
+
+msgid "Finaryx importe les exports CSV de vos banques, les range dans une base locale et vous montre où part votre argent. Plusieurs comptes et plusieurs banques se suivent au même endroit, chacun dans sa devise."
+msgstr "Finaryx tuo pankkiesi CSV-viennit, tallentaa ne paikalliseen tietokantaan ja näyttää, mihin rahasi menevät. Useita tilejä ja pankkeja seurataan yhdessä paikassa, kukin omassa valuutassaan."
+
+msgid "Évolution du solde jour après jour, comparée au mois précédent"
+msgstr "Saldo päivä päivältä edelliseen kuukauteen verrattuna"
+
+msgid "Répartition des dépenses par catégorie et cumul sur 3, 6 ou 12 mois"
+msgstr "Menot luokittain ja summat 3, 6 tai 12 kuukaudelta"
+
+msgid "Prévision du solde d’après vos charges récurrentes et vos habitudes, avec sa fourchette"
+msgstr "Saldoennuste toistuvien menojesi ja tapojesi perusteella vaihteluvälin kera"
+
+msgid "Import guidé : détection du format, aperçu, doublons ignorés, annulation possible"
+msgstr "Ohjattu tuonti: muodon tunnistus, esikatselu, kaksoiskappaleiden ohitus, kumoaminen"
+
+msgid "Catégories, règles de classement et virements entre vos comptes"
+msgstr "Luokat, lajittelusäännöt ja siirrot tiliesi välillä"
+
+msgid "Sauvegarde, restauration et export CSV des opérations"
+msgstr "Tapahtumien varmuuskopio, palautus ja CSV-vienti"
+
+msgid "Vos données restent sur votre ordinateur : Finaryx ne fait aucune requête réseau et n’envoie aucune statistique d’usage."
+msgstr "Tietosi pysyvät tietokoneellasi: Finaryx ei tee verkkopyyntöjä eikä lähetä käyttötilastoja."
+
+msgid "DocteurScience"
+msgstr "DocteurScience"
+
+msgid "banque"
+msgstr "pankki"
+
+msgid "budget"
+msgstr "budjetti"
+
+msgid "compte"
+msgstr "tili"
+
+msgid "dépenses"
+msgstr "menot"
+
+msgid "finances"
+msgstr "talous"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "Vue d’ensemble du mois"
+msgstr "Kuukauden yleiskatsaus"
+
+msgid "Prévision du solde d’après vos habitudes"
+msgstr "Saldoennuste tapojesi perusteella"
+
+msgid "Le mois en détail"
+msgstr "Kuukausi tarkemmin"
+
+msgid "Cumul des dépenses par catégorie"
+msgstr "Menojen summa luokittain"
+
+msgid "Vos comptes et l’historique des imports"
+msgstr "Tilisi ja tuontihistoria"
+
+msgid "Thème sombre"
+msgstr "Tumma tyyli"
+
+msgid "Première version."
+msgstr "Ensimmäinen versio."
+
+msgid "Import CSV avec profil Banque Populaire et mappage manuel pour les autres banques"
+msgstr "CSV-tuonti Banque Populairen profiililla ja muiden pankkien käsin liittämisellä"
+
+msgid "Vue d’ensemble, mois en détail, cumul et prévisions"
+msgstr "Yleiskatsaus, kuukausi tarkemmin, summat ja ennuste"
+
+msgid "Catégories, règles et virements entre vos comptes"
+msgstr "Luokat, säännöt ja siirrot tiliesi välillä"
+
+msgid "Sauvegarde, restauration et export CSV"
+msgstr "Varmuuskopio, palautus ja CSV-vienti"
+
+msgid "Général"
+msgstr "Yleiset"
+
+msgid "Importer un CSV"
+msgstr "Tuo CSV"
+
+msgid "Préférences"
+msgstr "Asetukset"
+
+msgid "Raccourcis clavier"
+msgstr "Pikanäppäimet"
+
+msgid "Fermer la fenêtre"
+msgstr "Sulje ikkuna"
+
+msgid "Quitter"
+msgstr "Lopeta"
+
+msgid "Navigation"
+msgstr "Siirtyminen"
+
+msgid "Vue d'ensemble"
+msgstr "Yleiskatsaus"
+
+msgid "Mois en détail"
+msgstr "Kuukausi tarkemmin"
+
+msgid "Cumul"
+msgstr "Summat"
+
+msgid "Prévisions"
+msgstr "Ennuste"
+
+msgid "Comptes"
+msgstr "Tilit"
+
+msgid "Opérations"
+msgstr "Tapahtumat"
+
+msgid "Rechercher un libellé"
+msgstr "Hae kuvausta"
+
+msgid "Catégories et règles…"
+msgstr "Luokat ja säännöt…"
+
+msgid "Exporter les données…"
+msgstr "Vie tiedot…"
+
+msgid "À propos de Finaryx"
+msgstr "Tietoja Finaryxista"
+
+msgid "Menu principal"
+msgstr "Päävalikko"
+
+msgid "Navigation principale"
+msgstr "Päänavigointi"
+
+msgid "Dernier import"
+msgstr "Viimeisin tuonti"
+
+msgid "Importer"
+msgstr "Tuo"
+
+msgid "Ajouter un compte"
+msgstr "Lisää tili"
+
+msgid "Ajouter"
+msgstr "Lisää"
+
+msgid "Démonstration : rien n’est enregistré"
+msgstr "Esittely: mitään ei tallenneta"
+
+msgid "Bienvenue dans Finaryx"
+msgstr "Tervetuloa Finaryxiin"
+
+msgid "Importez l’export CSV d’un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n’est envoyé en ligne."
+msgstr "Tuo tilin CSV-vienti nähdäksesi, mihin rahasi menevät. Kaikki pysyy tietokoneellasi, mitään ei lähetetä verkkoon."
+
+msgid "Ajouter un compte d’abord"
+msgstr "Lisää ensin tili"
+
+msgid "Pour commencer"
+msgstr "Aloittaminen"
+
+msgid "Exportez vos opérations en CSV"
+msgstr "Vie tapahtumasi CSV-muodossa"
+
+msgid "Depuis le site ou l’application de votre banque, choisissez la période la plus longue possible."
+msgstr "Valitse pankkisi verkkosivulla tai sovelluksessa pisin mahdollinen ajanjakso."
+
+msgid "Importez le fichier dans Finaryx"
+msgstr "Tuo tiedosto Finaryxiin"
+
+msgid "Le format Banque Populaire est reconnu. Pour les autres banques, vous associez les colonnes une seule fois."
+msgstr "Banque Populairen muoto tunnistetaan. Muiden pankkien sarakkeet liität vain kerran."
+
+msgid "Vérifiez les catégories"
+msgstr "Tarkista luokat"
+
+msgid "Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle."
+msgstr "Epävarmat tapahtumat merkitään ”Tarkistettava”. Korjauksesta voi tulla sääntö."
+
+msgid "Impossible d’ouvrir la base de données"
+msgstr "Tietokantaa ei voi avata"
+
+msgid "Nom"
+msgstr "Nimi"
+
+msgid "Banque"
+msgstr "Pankki"
+
+msgid "Type"
+msgstr "Tyyppi"
+
+msgid "Compte courant"
+msgstr "Käyttötili"
+
+msgid "Épargne"
+msgstr "Säästötili"
+
+msgid "Les totaux sont calculés séparément pour chaque devise."
+msgstr "Summat lasketaan erikseen kullekin valuutalle."
+
+msgid "Numéro de compte (facultatif)"
+msgstr "Tilinumero (valinnainen)"
+
+msgid "Solde avant la première opération importée"
+msgstr "Saldo ennen ensimmäistä tuotua tapahtumaa"
+
+msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
+msgstr "Jätä saldo tyhjäksi, jos se on nolla. Jos tuodussa tiedostossa on saldosarake, Finaryx ehdottaa sen korjaamista."
+
+msgid "Annuler"
+msgstr "Peru"
+
+msgid "Enregistrer"
+msgstr "Tallenna"
+
+msgid "Modifier le compte"
+msgstr "Muokkaa tiliä"
+
+msgid "Ouvrir des données de démonstration (rien n’est enregistré)"
+msgstr "Avaa esittelytiedot (mitään ei tallenneta)"
+
+msgid "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée."
+msgstr "Pankkitilien seuranta. Tietosi pysyvät tällä tietokoneella: ei verkkopyyntöjä, ei telemetriaa. Tietokantaa ei ole salattu."
+
+msgid "Couleur dans les graphiques"
+msgstr "Väri kaavioissa"
+
+msgid "Couleur {n}"
+msgstr "Väri {n}"
+
+msgid "Utilisée par {name}"
+msgstr "Käyttäjä: {name}"
+
+msgid "Libre"
+msgstr "Vapaa"
+
+msgid "Aucune couleur"
+msgstr "Ei väriä"
+
+msgid "Regroupée dans « Autres » dans les graphiques"
+msgstr "Kaavioissa ryhmässä ”Muut”"
+
+msgid "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie."
+msgstr "Kaikki värit ovat käytössä. Tämä luokka lasketaan kaavioissa ryhmään ”Muut” ja pidetään muualla erillään. Vapauta väri poistamalla se toiselta luokalta."
+
+msgid "Créer"
+msgstr "Luo"
+
+msgid "Nouvelle catégorie"
+msgstr "Uusi luokka"
+
+msgid "Modifier la catégorie"
+msgstr "Muokkaa luokkaa"
+
+msgid "Fusionner dans"
+msgstr "Yhdistä luokkaan"
+
+msgid "Les opérations et les règles passent dans la catégorie choisie"
+msgstr "Tapahtumat ja säännöt siirtyvät valittuun luokkaan"
+
+msgid "Fusionner…"
+msgstr "Yhdistä…"
+
+msgid "Supprimer la catégorie"
+msgstr "Poista luokka"
+
+msgid "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées."
+msgstr[0] "Sen tapahtuma siirtyy luokkaan ”Muut” tarkistettavaksi; sen säännöt poistetaan."
+msgstr[1] "Sen {n} tapahtumaa siirtyy luokkaan ”Muut” tarkistettavaksi; sen säännöt poistetaan."
+
+msgid "Supprimer…"
+msgstr "Poista…"
+
+msgid "Fusionner « {from} » dans « {into} » ?"
+msgstr "Yhdistetäänkö ”{from}” luokkaan ”{into}”?"
+
+msgid "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgid_plural "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgstr[0] "{n} tapahtuma ja luokan ”{from}” säännöt siirtyvät luokkaan ”{into}”. Summat eivät muutu."
+msgstr[1] "{n} tapahtumaa ja luokan ”{from}” säännöt siirtyvät luokkaan ”{into}”. Summat eivät muutu."
+
+msgid "Fusionner"
+msgstr "Yhdistä"
+
+msgid "Catégories fusionnées"
+msgstr "Luokat yhdistetty"
+
+msgid "Supprimer « {name} » ?"
+msgstr "Poistetaanko ”{name}”?"
+
+msgid "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées."
+msgstr[0] "Sen tapahtuma siirtyy luokkaan ”Muut” merkittynä ”Tarkistettava”. Sen säännöt poistetaan."
+msgstr[1] "Sen {n} tapahtumaa siirtyy luokkaan ”Muut” merkittynä ”Tarkistettava”. Sen säännöt poistetaan."
+
+msgid "Supprimer"
+msgstr "Poista"
+
+msgid "Catégorie supprimée"
+msgstr "Luokka poistettu"
+
+msgid "Compte"
+msgstr "Tili"
+
+msgid "Solde au {date}"
+msgstr "Saldo {date}"
+
+msgid "Solde"
+msgstr "Saldo"
+
+msgid "{amount} en {month}"
+msgstr "{month}: {amount}"
+
+msgid "{n} opération enregistrée"
+msgid_plural "{n} opérations enregistrées"
+msgstr[0] "{n} tallennettu tapahtuma"
+msgstr[1] "{n} tallennettua tapahtumaa"
+
+msgid "Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}"
+msgstr "Tilin saldo 6 kuukaudelta: {start} ({from}) – {end} ({to})"
+
+msgid "Aucune"
+msgstr "Ei mitään"
+
+msgid "Modifier"
+msgstr "Muokkaa"
+
+msgid "Modifier : {field}"
+msgstr "Muokkaa: {field}"
+
+msgid "Réglages du compte"
+msgstr "Tilin asetukset"
+
+msgid "Dernières opérations"
+msgstr "Viimeisimmät tapahtumat"
+
+msgid "Tout voir"
+msgstr "Näytä kaikki"
+
+msgid "Aucune opération"
+msgstr "Ei tapahtumia"
+
+msgid "Sans catégorie"
+msgstr "Ei luokkaa"
+
+msgid "À vérifier"
+msgstr "Tarkistettava"
+
+msgid "Désarchiver le compte"
+msgstr "Palauta tili arkistosta"
+
+msgid "Il revient dans les totaux."
+msgstr "Se lasketaan taas summiin."
+
+msgid "Désarchiver"
+msgstr "Palauta arkistosta"
+
+msgid "Archiver le compte"
+msgstr "Arkistoi tili"
+
+msgid "Il disparaît des totaux, ses opérations restent consultables."
+msgstr "Se poistuu summista; sen tapahtumat ovat yhä nähtävissä."
+
+msgid "Archiver"
+msgstr "Arkistoi"
+
+msgid "Supprimer le compte et ses opérations"
+msgstr "Poista tili ja sen tapahtumat"
+
+msgid "Action définitive, {n} opération serait effacée."
+msgid_plural "Action définitive, {n} opérations seraient effacées."
+msgstr[0] "Pysyvä: {n} tapahtuma poistettaisiin."
+msgstr[1] "Pysyvä: {n} tapahtumaa poistettaisiin."
+
+msgid "Zone sensible"
+msgstr "Vaaravyöhyke"
+
+msgid "compte courant"
+msgstr "käyttötili"
+
+msgid "épargne"
+msgstr "säästötili"
+
+msgid "Solde de tous les comptes"
+msgstr "Kaikkien tilien saldo"
+
+msgid "Solde des comptes en {currency}"
+msgstr "Tilien saldo, {currency}"
+
+msgid "Vos comptes"
+msgstr "Tilisi"
+
+msgid "Comptes archivés"
+msgstr "Arkistoidut tilit"
+
+msgid "Ils ne comptent pas dans les totaux."
+msgstr "Niitä ei lasketa summiin."
+
+msgid "{n} opération"
+msgid_plural "{n} opérations"
+msgstr[0] "{n} tapahtuma"
+msgstr[1] "{n} tapahtumaa"
+
+msgid "Importé le {date}"
+msgstr "Tuotu {date}"
+
+msgid "Dernier import le {date}"
+msgstr "Viimeisin tuonti {date}"
+
+msgid "Ajoutez un export CSV pour voir ses opérations"
+msgstr "Lisää CSV-vienti nähdäksesi sen tapahtumat"
+
+msgid "Évolution du solde sur 6 mois : en hausse de {amount}"
+msgstr "Saldo 6 kuukaudessa: nousu {amount}"
+
+msgid "Évolution du solde sur 6 mois : en baisse de {amount}"
+msgstr "Saldo 6 kuukaudessa: lasku {amount}"
+
+msgid "Historique des imports"
+msgstr "Tuontihistoria"
+
+msgid "Les doublons ne sont jamais enregistrés deux fois"
+msgstr "Kaksoiskappaleita ei koskaan tallenneta kahdesti"
+
+msgid "Importer un CSV…"
+msgstr "Tuo CSV…"
+
+msgid "Aucun import pour l’instant"
+msgstr "Ei tuonteja vielä"
+
+msgid "{n} nouvelle"
+msgid_plural "{n} nouvelles"
+msgstr[0] "{n} uusi"
+msgstr[1] "{n} uutta"
+
+msgid "{n} ajoutée"
+msgid_plural "{n} ajoutées"
+msgstr[0] "{n} lisätty"
+msgstr[1] "{n} lisättyä"
+
+msgid "{n} doublon"
+msgid_plural "{n} doublons"
+msgstr[0] "{n} kaksoiskappale"
+msgstr[1] "{n} kaksoiskappaletta"
+
+msgid "Annuler cet import"
+msgstr "Kumoa tämä tuonti"
+
+msgid "Part du total"
+msgstr "Osuus kokonaisuudesta"
+
+msgid "Part de chaque compte dans le solde total : {list}"
+msgstr "Kunkin tilin osuus kokonaissaldosta: {list}"
+
+msgid "catégorie par défaut, non supprimable"
+msgstr "oletusluokka, ei voi poistaa"
+
+msgid "catégorie spéciale, comptée en revenus"
+msgstr "erikoisluokka, lasketaan tuloihin"
+
+msgid "catégorie spéciale, exclue des statistiques"
+msgstr "erikoisluokka, ei tilastoissa"
+
+msgid "couleur de graphique {n}"
+msgstr "kaavion väri {n}"
+
+msgid "sans couleur, regroupée dans « Autres » dans les graphiques"
+msgstr "ei väriä, kaavioissa ryhmässä ”Muut”"
+
+msgid "Catégories et règles"
+msgstr "Luokat ja säännöt"
+
+msgid "Catégories"
+msgstr "Luokat"
+
+msgid "Modifier la catégorie {name}"
+msgstr "Muokkaa luokkaa {name}"
+
+msgid "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en la retirant à une autre catégorie."
+msgstr "Kaaviot näyttävät enintään 12 väriä sekä harmaan ”Muut”. Väritön luokka lasketaan kaavioissa ryhmään ”Muut”, mutta luetteloissa, suodattimissa ja taulukoissa se pysyy erillään. Napsauta kaaviossa ”Muut” nähdäksesi tiedot. Antaaksesi luokalle värin vapauta väri poistamalla se toiselta luokalta."
+
+msgid "Le libellé correspond à « {pattern} »"
+msgstr "Kuvaus vastaa: ”{pattern}”"
+
+msgid "Le libellé contient « {pattern} »"
+msgstr "Kuvaus sisältää: ”{pattern}”"
+
+msgid "Supprimer la règle"
+msgstr "Poista sääntö"
+
+msgid "Règle supprimée"
+msgstr "Sääntö poistettu"
+
+msgid "Aucune règle pour l’instant"
+msgstr "Ei sääntöjä vielä"
+
+msgid "Changez la catégorie d’une opération pour en créer une."
+msgstr "Luo sääntö muuttamalla tapahtuman luokkaa."
+
+msgid "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées."
+msgstr "Tapahtuman käsin tehty korjaus menee sääntöjen edelle. Säännön poistaminen ei muuta jo lajiteltuja tapahtumia."
+
+msgid "Règles de catégorisation"
+msgstr "Lajittelusäännöt"
+
+msgid "Virements entre vos comptes"
+msgstr "Siirrot tiliesi välillä"
+
+msgid "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils ne comptent ni en dépenses ni en revenus."
+msgstr "Saman summan veloitus ja hyvitys kahdella tililläsi enintään 3 päivän välein. Vahvistettuina niitä ei lasketa menoiksi eikä tuloiksi."
+
+msgid "Tout confirmer"
+msgstr "Vahvista kaikki"
+
+msgid "{n} virement confirmé"
+msgid_plural "{n} virements confirmés"
+msgstr[0] "{n} siirto vahvistettu"
+msgstr[1] "{n} siirtoa vahvistettu"
+
+msgid "Ce n’est pas un virement"
+msgstr "Ei siirto"
+
+msgid "Confirmer"
+msgstr "Vahvista"
+
+msgid "Virement confirmé"
+msgstr "Siirto vahvistettu"
+
+msgid "Aucun virement à confirmer"
+msgstr "Ei vahvistettavia siirtoja"
+
+msgid "Noms du foyer"
+msgstr "Kotitalouden nimet"
+
+msgid "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer en « Virement interne »."
+msgstr "Kotitalouden jäsenen siirrot eivät ole todellisia tuloja. Finaryx ehdottaa niiden lajittelua luokkaan ”Sisäinen siirto”."
+
+msgid "Modifier les noms…"
+msgstr "Muokkaa nimiä…"
+
+msgid "{n} opération contient « {name} »"
+msgid_plural "{n} opérations contiennent « {name} »"
+msgstr[0] "{n} tapahtuma sisältää: ”{name}”"
+msgstr[1] "{n} tapahtumaa sisältää: ”{name}”"
+
+msgid "Crée la règle « le libellé contient {name} → Virement interne »"
+msgstr "Luo säännön ”kuvaus sisältää {name} → Sisäinen siirto”"
+
+msgid "Classer en virement interne"
+msgstr "Lajittele sisäiseksi siirroksi"
+
+msgid "Règle créée, {n} opération classée"
+msgid_plural "Règle créée, {n} opérations classées"
+msgstr[0] "Sääntö luotu, {n} tapahtuma lajiteltu"
+msgstr[1] "Sääntö luotu, {n} tapahtumaa lajiteltu"
+
+msgid "Aucun nom du foyer pour l’instant"
+msgstr "Ei kotitalouden nimiä vielä"
+
+msgid "Aucune opération à classer"
+msgstr "Ei lajiteltavia tapahtumia"
+
+msgid "Ajoutez-les dans les préférences, par exemple votre nom et celui de votre conjoint."
+msgstr "Lisää ne asetuksissa, esimerkiksi oma nimesi ja kumppanisi nimi."
+
+msgid "Les opérations de ces noms sont déjà des virements internes."
+msgstr "Näiden nimien tapahtumat ovat jo sisäisiä siirtoja."
+
+msgid "Période"
+msgstr "Ajanjakso"
+
+msgid "{n} mois"
+msgstr "{n} kk"
+
+msgid "Total sur {n} mois"
+msgstr "Summa, {n} kk"
+
+msgid "Moyenne par mois"
+msgstr "Keskiarvo kuukaudessa"
+
+msgid "Mois le plus chargé"
+msgstr "Kallein kuukausi"
+
+msgid "Mois le plus léger"
+msgstr "Edullisin kuukausi"
+
+msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
+msgstr "Prosentti on luokan osuus kuukauden menoista. Liian pienet osuudet ovat alla olevassa taulukossa."
+
+msgid "Mois par mois, par catégorie"
+msgstr "Kuukausittain, luokittain"
+
+msgid "Catégorie"
+msgstr "Luokka"
+
+msgid "Par mois"
+msgstr "Kuukaudessa"
+
+msgid "Total"
+msgstr "Yhteensä"
+
+msgid "Part de chaque catégorie sur la période et montant cumulé."
+msgstr "Kunkin luokan osuus ajanjaksolla ja kokonaissumma."
+
+msgid "Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois."
+msgstr "Kuukausisarakkeet näyttävät luokan osuuden; Yhteensä-rivi näyttää kuukauden menot."
+
+msgid "Part de chaque catégorie"
+msgstr "Kunkin luokan osuus"
+
+msgid "{from} à {to}"
+msgstr "{from} – {to}"
+
+msgid "Ce fichier n’est pas une sauvegarde Finaryx."
+msgstr "Tämä tiedosto ei ole Finaryxin varmuuskopio."
+
+msgid "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir."
+msgstr "Tämä varmuuskopio on Finaryxin uudemmasta versiosta: päivitä sovellus avataksesi sen."
+
+msgid "Ce fichier n’est pas une base de données lisible."
+msgstr "Tämä tiedosto ei ole luettava tietokanta."
+
+msgid "Le fichier n’a pas pu être écrit ou lu : {error}"
+msgstr "Tiedostoa ei voitu kirjoittaa tai lukea: {error}"
+
+msgid "Exporter les données"
+msgstr "Vie tiedot"
+
+msgid "Toutes les opérations"
+msgstr "Kaikki tapahtumat"
+
+msgid "Dernier mois"
+msgstr "Viime kuukausi"
+
+msgid "{n} derniers mois"
+msgstr "Viimeiset {n} kk"
+
+msgid "Période choisie"
+msgstr "Valittu ajanjakso"
+
+msgid "Français"
+msgstr "Ranskalainen"
+
+msgid "Du (JJ/MM/AAAA)"
+msgstr "Alkaen (PP/KK/VVVV)"
+
+msgid "Au (JJ/MM/AAAA)"
+msgstr "Asti (PP/KK/VVVV)"
+
+msgid "Exporter la base de données"
+msgstr "Vie tietokanta"
+
+msgid "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne."
+msgstr "Tietosi pysyvät tietokoneellasi. Vienti luo kopion valitsemaasi kansioon; mitään ei lähetetä verkkoon."
+
+msgid "Sauvegarde complète"
+msgstr "Täysi varmuuskopio"
+
+msgid "Exporter…"
+msgstr "Vie…"
+
+msgid "Restaurer une sauvegarde"
+msgstr "Palauta varmuuskopio"
+
+msgid "Remplace les données actuelles. Une copie de sécurité est faite avant."
+msgstr "Korvaa nykyiset tiedot. Ensin tehdään turvakopio."
+
+msgid "Restaurer…"
+msgstr "Palauta…"
+
+msgid "Exporter en CSV"
+msgstr "Vie CSV-muodossa"
+
+msgid "Séparateur et décimales"
+msgstr "Erotin ja desimaalit"
+
+msgid "Standard"
+msgstr "Vakio"
+
+msgid "Format du CSV"
+msgstr "CSV-muoto"
+
+msgid "Exporter en CSV…"
+msgstr "Vie CSV-muodossa…"
+
+msgid "Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français."
+msgstr "Puolipiste ja desimaalipilkku: aukeaa suoraan ranskankieliseen taulukkolaskentaan."
+
+msgid "Virgule et point décimal : le format le plus courant hors de France."
+msgstr "Pilkku ja desimaalipiste: yleisin muoto Ranskan ulkopuolella."
+
+msgid "Copier la base après chaque import"
+msgstr "Kopioi tietokanta jokaisen tuonnin jälkeen"
+
+msgid "Garde les {n} dernières copies dans {dir}."
+msgstr "Säilyttää {n} viimeisintä kopiota kansiossa {dir}."
+
+msgid "Désactivée en démonstration : rien n’est enregistré."
+msgstr "Pois päältä esittelyssä: mitään ei tallenneta."
+
+msgid "La base n’est pas chiffrée : gardez les exports dans un dossier privé."
+msgstr "Tietokantaa ei ole salattu: säilytä viennit yksityisessä kansiossa."
+
+msgid "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles."
+msgstr "Tarkka kopio tiedostosta finaryx.db (SQLite): tilit, tapahtumat, luokat ja säännöt."
+
+msgid "Tous les comptes"
+msgstr "Kaikki tilit"
+
+msgid "Date, libellé, montant, catégorie, compte, banque."
+msgstr "Päivämäärä, kuvaus, summa, luokka, tili, pankki."
+
+msgid "Choisissez les deux dates."
+msgstr "Valitse molemmat päivämäärät."
+
+msgid "depuis {month}"
+msgstr "alkaen {month}"
+
+msgid "{n} ligne avec ces réglages"
+msgid_plural "{n} lignes avec ces réglages"
+msgstr[0] "{n} rivi näillä asetuksilla"
+msgstr[1] "{n} riviä näillä asetuksilla"
+
+msgid "Base exportée"
+msgstr "Tietokanta viety"
+
+msgid "Choisissez les deux dates de la période."
+msgstr "Valitse ajanjakson molemmat päivämäärät."
+
+msgid "{n} opération exportée"
+msgid_plural "{n} opérations exportées"
+msgstr[0] "{n} tapahtuma viety"
+msgstr[1] "{n} tapahtumaa viety"
+
+msgid "Sauvegardes Finaryx"
+msgstr "Finaryxin varmuuskopiot"
+
+msgid "Ouvrir le dossier"
+msgstr "Avaa kansio"
+
+msgid "Cette sauvegarde contient {accounts} compte et {operations}."
+msgid_plural "Cette sauvegarde contient {accounts} comptes et {operations}."
+msgstr[0] "Tämä varmuuskopio sisältää {accounts} tilin ja {operations}."
+msgstr[1] "Tämä varmuuskopio sisältää {accounts} tiliä ja {operations}."
+
+msgid "Les données actuelles seront remplacées. Une copie de sécurité est d’abord enregistrée dans {dir}."
+msgstr "Nykyiset tiedot korvataan. Ensin turvakopio tallennetaan kansioon {dir}."
+
+msgid "Les données de démonstration seront remplacées, en mémoire seulement."
+msgstr "Esittelytiedot korvataan, vain muistissa."
+
+msgid "Restaurer cette sauvegarde ?"
+msgstr "Palautetaanko tämä varmuuskopio?"
+
+msgid "Restaurer"
+msgstr "Palauta"
+
+msgid "Sauvegarde restaurée"
+msgstr "Varmuuskopio palautettu"
+
+msgid "le 1er"
+msgstr "päivänä 1"
+
+msgid "le {day}"
+msgstr "päivänä {day}"
+
+msgid "Solde en fin de mois"
+msgstr "Saldo kuun lopussa"
+
+msgid "{month} · prévu"
+msgstr "{month} · ennuste"
+
+msgid "Fourchette"
+msgstr "Vaihteluväli"
+
+msgid "Dépenses attendues <b>{spending}</b> · revenus <b>{income}</b>"
+msgstr "Odotetut menot <b>{spending}</b> · tulot <b>{income}</b>"
+
+msgid "Aujourd’hui"
+msgstr "Tänään"
+
+msgid "Dernière opération"
+msgstr "Viimeisin tapahtuma"
+
+msgid "{month} : pic de dépenses\nattendu ({amount})"
+msgstr "{month}: odotettu\nmenopiikki ({amount})"
+
+msgid "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}"
+msgstr "Saldo kuun lopussa: {real} ({month}), ennuste {end} ({last}), vaihteluväli {low} – {high}"
+
+msgid "Prévu"
+msgstr "Ennuste"
+
+msgid "Fourchette probable"
+msgstr "Todennäköinen vaihteluväli"
+
+msgid "Pas encore assez de données pour une prévision"
+msgstr "Ennusteeseen ei ole vielä tarpeeksi tietoja"
+
+msgid "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgid_plural "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgstr[0] "Finaryx tarvitsee vähintään 3 kuukauden tapahtumat oppiakseen tapasi. Puuttuu {n} kuukausi: tuo vanhempi vienti avataksesi tämän näkymän."
+msgstr[1] "Finaryx tarvitsee vähintään 3 kuukauden tapahtumat oppiakseen tapasi. Puuttuu {n} kuukautta: tuo vanhempi vienti avataksesi tämän näkymän."
+
+msgid "Importer un export plus ancien"
+msgstr "Tuo vanhempi vienti"
+
+msgid "Habitudes calculées sur"
+msgstr "Tavat laskettu jaksolta"
+
+msgid "Période de référence"
+msgstr "Vertailujakso"
+
+msgid "Horizon"
+msgstr "Aikaväli"
+
+msgid "Horizon de prévision"
+msgstr "Ennusteen aikaväli"
+
+msgid "{low} à {high}"
+msgstr "{low} – {high}"
+
+msgid "Fin {month} (prévu)"
+msgstr "Loppu: {month} (ennuste)"
+
+msgid "Solde fin {month} (prévu)"
+msgstr "Saldo lopussa: {month} (ennuste)"
+
+msgid "Fourchette : {range}"
+msgstr "Vaihteluväli: {range}"
+
+msgid "Dépenses prévues"
+msgstr "Odotetut menot"
+
+msgid "{amount} / mois"
+msgstr "{amount} / kk"
+
+msgid "Moyenne sur le mois à venir"
+msgid_plural "Moyenne sur les {n} mois à venir"
+msgstr[0] "Keskiarvo tulevana kuukautena"
+msgstr[1] "Keskiarvo seuraavina {n} kuukautena"
+
+msgid "Salaire détecté {day} du mois"
+msgstr "Palkka havaittu {day} kuukaudessa"
+
+msgid "{label} détecté {day} du mois"
+msgstr "{label} havaittu {day} kuukaudessa"
+
+msgid "Aucun revenu régulier détecté"
+msgstr "Säännöllisiä tuloja ei havaittu"
+
+msgid "Revenus réguliers"
+msgstr "Säännölliset tulot"
+
+msgid "Réel de {from} à {to}, prévu de {first} à {last}"
+msgstr "Toteutunut {from} – {to}, ennuste {first} – {last}"
+
+msgid "Réel"
+msgstr "Toteutunut"
+
+msgid "Estimation d’après vos charges récurrentes et vos dépenses moyennes. La fourchette s’élargit avec l’horizon."
+msgstr "Arvio toistuvien ja keskimääräisten menojesi perusteella. Vaihteluväli kasvaa aikavälin myötä."
+
+msgid "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre."
+msgstr "Arvio laskettu toistuvista menoistasi ja muuttuvien menojesi keskiarvosta. Vaihteluväli kasvaa aikavälin myötä: mitä kauemmas katsotaan, sitä epävarmempi ennuste."
+
+msgid "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgid_plural "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgstr[0] "Tavat laskettu {n} kuukaudelta: historia ei ulotu kauemmas."
+msgstr[1] "Tavat laskettu {n} kuukaudelta: historia ei ulotu kauemmas."
+
+msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
+msgstr "Kausivaihtelua ei huomioitu: alle 12 kuukauden historia."
+
+msgid "{month} (en cours)"
+msgstr "{month} (käynnissä)"
+
+msgid "{amount} de dépenses"
+msgstr "Menot {amount}"
+
+msgid "{income} de revenus · {spending}"
+msgstr "Tulot {income} · {spending}"
+
+msgid "{amount} sur le mois"
+msgstr "{amount} kuukaudessa"
+
+msgid "Charges fixes"
+msgstr "Kiinteät menot"
+
+msgid "Aucune charge récurrente détectée"
+msgstr "Toistuvia menoja ei havaittu"
+
+msgid "Une charge est récurrente quand le même libellé revient chaque mois, pour un montant proche."
+msgstr "Meno on toistuva, kun sama kuvaus toistuu joka kuukausi suunnilleen samalla summalla."
+
+msgid "Mois par mois"
+msgstr "Kuukausittain"
+
+msgid "Charges récurrentes détectées"
+msgstr "Havaitut toistuvat menot"
+
+msgid "Choisir un fichier…"
+msgstr "Valitse tiedosto…"
+
+msgid "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est enregistré avant votre confirmation."
+msgstr "Valitse tilin CSV-vienti tai pudota se tähän. Tiedostoa ei koskaan muuteta eikä mitään tallenneta ennen vahvistustasi."
+
+msgid "Fichiers CSV"
+msgstr "CSV-tiedostot"
+
+msgid "Tous les fichiers"
+msgstr "Kaikki tiedostot"
+
+msgid "Choisir un export CSV"
+msgstr "Valitse CSV-vienti"
+
+msgid "fichier"
+msgstr "tiedosto"
+
+msgid "Impossible de lire le fichier : {error}"
+msgstr "Tiedostoa ei voi lukea: {error}"
+
+msgid "Le fichier ne se lit pas encore correctement"
+msgstr "Tiedostoa ei vielä lueta oikein"
+
+msgid "{n} ligne"
+msgid_plural "{n} lignes"
+msgstr[0] "{n} rivi"
+msgstr[1] "{n} riviä"
+
+msgid "{n} colonne"
+msgid_plural "{n} colonnes"
+msgstr[0] "{n} sarake"
+msgstr[1] "{n} saraketta"
+
+msgid "Changer…"
+msgstr "Vaihda…"
+
+msgid "Compte de destination"
+msgstr "Kohdetili"
+
+msgid "Aucun compte pour l’instant : créez celui qui recevra ces opérations."
+msgstr "Ei vielä tiliä: luo tili, joka vastaanottaa nämä tapahtumat."
+
+msgid "Créer un compte…"
+msgstr "Luo tili…"
+
+msgid "Nouveau compte…"
+msgstr "Uusi tili…"
+
+msgid "Les opérations seront ajoutées à ce compte"
+msgstr "Tapahtumat lisätään tälle tilille"
+
+msgid "Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin."
+msgstr "Tunnistettu muoto: {name}. Sarakkeet on liitetty; tarkista ne tarvittaessa."
+
+msgid "Reconnu"
+msgstr "Tunnistettu"
+
+msgid "Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."
+msgstr "Muotoa ei ole tuotu aiemmin: liitä sarakkeet alla. Ensi kerralla se tunnistetaan."
+
+msgid "Nouveau format"
+msgstr "Uusi muoto"
+
+msgid "Modèle de banque"
+msgstr "Pankin muoto"
+
+msgid "Fichier"
+msgstr "Tiedosto"
+
+msgid "Encodage"
+msgstr "Merkistö"
+
+msgid "Séparateur de colonnes"
+msgstr "Sarake-erotin"
+
+msgid "Ligne des en-têtes"
+msgstr "Otsikkorivi"
+
+msgid "Ligne {n}"
+msgstr "Rivi {n}"
+
+msgid "Format des dates"
+msgstr "Päivämäärän muoto"
+
+msgid "À vérifier : les jours et les mois peuvent être inversés"
+msgstr "Tarkistettava: päivät ja kuukaudet voivat olla väärin päin"
+
+msgid "Séparateur décimal"
+msgstr "Desimaalierotin"
+
+msgid "Point ( . )"
+msgstr "Piste ( . )"
+
+msgid "Format du fichier"
+msgstr "Tiedostomuoto"
+
+msgid "Détecté automatiquement, à corriger si la lecture est mauvaise"
+msgstr "Tunnistettu automaattisesti; korjaa, jos tiedosto luetaan väärin"
+
+msgid "Colonnes du fichier"
+msgstr "Tiedoston sarakkeet"
+
+msgid "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer »."
+msgstr "Kerro, mihin kutakin tiedoston saraketta käytetään. Tarpeettomat sarakkeet jäävät tilaan ”Ohita”."
+
+msgid "Comment le montant est écrit"
+msgstr "Miten summa on kirjoitettu"
+
+msgid "Écriture du montant"
+msgstr "Summan kirjoitustapa"
+
+msgid "Exemple : (vide)"
+msgstr "Esimerkki: (tyhjä)"
+
+msgid "Exemple : {value}"
+msgstr "Esimerkki: {value}"
+
+msgid "Champ pour la colonne {column}"
+msgstr "Kenttä sarakkeelle {column}"
+
+msgid "Valeurs pour un débit"
+msgstr "Veloituksen arvot"
+
+msgid "Valeurs pour un crédit"
+msgstr "Hyvityksen arvot"
+
+msgid "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas."
+msgstr "Erota arvot pilkuilla; isoilla kirjaimilla ja aksenteilla ei ole väliä."
+
+msgid "Exclue"
+msgstr "Pois jätetty"
+
+msgid "Reconnue"
+msgstr "Tunnistettu"
+
+msgid "Proposée"
+msgstr "Ehdotettu"
+
+msgid "Catégorie de Finaryx pour {bank}"
+msgstr "Finaryxin luokka pankin luokalle {bank}"
+
+msgid "Afficher moins"
+msgstr "Näytä vähemmän"
+
+msgid "Voir la correspondance"
+msgid_plural "Voir les {n} correspondances"
+msgstr[0] "Näytä vastaavuus"
+msgstr[1] "Näytä {n} vastaavuutta"
+
+msgid "Catégories de la banque"
+msgstr "Pankin luokat"
+
+msgid "La banque classe déjà ses opérations. Choisissez la catégorie de Finaryx qui correspond à chacune."
+msgstr "Pankki lajittelee jo tapahtumansa. Valitse kullekin vastaava Finaryxin luokka."
+
+msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
+msgstr "Tämä vastaavuus tallennetaan muodon mukana. Myöhemmin ilmestyvää pankin luokkaa kysytään täällä."
+
+msgid "Aperçu de l’import"
+msgstr "Tuonnin esikatselu"
+
+msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
+msgstr "Viisi ensimmäistä riviä, luokat yllä olevan vastaavuuden mukaan"
+
+msgid "Choisissez ou créez le compte de destination pour voir l’aperçu."
+msgstr "Valitse tai luo kohdetili nähdäksesi esikatselun."
+
+msgid "L’aperçu apparaîtra quand les colonnes obligatoires seront associées."
+msgstr "Esikatselu näkyy, kun pakolliset sarakkeet on liitetty."
+
+msgid "Nouveau"
+msgstr "Uusi"
+
+msgid "Doublon"
+msgstr "Kaksoiskappale"
+
+msgid "Aucune ligne lisible"
+msgstr "Ei luettavia rivejä"
+
+msgid "Ces lignes ne seront pas importées."
+msgstr "Näitä rivejä ei tuoda."
+
+msgid "La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible."
+msgstr "Saldosarake ei vastaa summia: rivi {lines}. Tuonti on silti mahdollinen."
+
+msgid "À savoir avant d’importer"
+msgstr "Ennen tuontia"
+
+msgid "Lignes lues"
+msgstr "Luetut rivit"
+
+msgid "Nouvelles opérations"
+msgstr "Uudet tapahtumat"
+
+msgid "Doublons ignorés"
+msgstr "Ohitetut kaksoiskappaleet"
+
+msgid "À vérifier (catégorie incertaine)"
+msgstr "Tarkistettava (epävarma luokka)"
+
+msgid "Lignes illisibles, non importées"
+msgstr "Lukukelvottomat rivit, ei tuotu"
+
+msgid "Recaler le solde initial"
+msgstr "Korjaa alkusaldo"
+
+msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
+msgstr "Saldosarakkeen mukaan saldo ennen ensimmäistä tuotua tapahtumaa on {amount}."
+
+msgid "Retenir ce format"
+msgstr "Muista tämä muoto"
+
+msgid "Le prochain fichier de cette banque sera lu sans rien demander"
+msgstr "Tämän pankin seuraava tiedosto luetaan kysymättä mitään"
+
+msgid "Nom du format"
+msgstr "Muodon nimi"
+
+msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
+msgstr "Kaksoiskappaleella on sama päivämäärä, kuvaus, summa ja viite kuin jo tallennetulla tapahtumalla. Tiedostojasi ei koskaan muuteta."
+
+msgid "Résumé"
+msgstr "Yhteenveto"
+
+msgid "Aucune nouvelle opération"
+msgstr "Ei uusia tapahtumia"
+
+msgid "Importer {n} opération"
+msgid_plural "Importer {n} opérations"
+msgstr[0] "Tuo {n} tapahtuma"
+msgstr[1] "Tuo {n} tapahtumaa"
+
+msgid "{n} opération importée"
+msgid_plural "{n} opérations importées"
+msgstr[0] "{n} tapahtuma tuotu"
+msgstr[1] "{n} tapahtumaa tuotu"
+
+msgid "{n} doublon ignoré"
+msgid_plural "{n} doublons ignorés"
+msgstr[0] "{n} kaksoiskappale ohitettu"
+msgstr[1] "{n} kaksoiskappaletta ohitettu"
+
+msgid "Aperçu"
+msgstr "Yleiskuva"
+
+msgid "Mois"
+msgstr "Kuukausi"
+
+msgid "Compte affiché"
+msgstr "Näytettävä tili"
+
+msgid "{n} Ko"
+msgstr "{n} kt"
+
+msgid "{n} Mo"
+msgstr "{n} Mt"
+
+msgid "Non classé"
+msgstr "Lajittelematon"
+
+msgid "{month} · {amount} regroupés dans « Autres » dans les graphiques"
+msgstr "{month} · {amount} kaavioissa ryhmässä ”Muut”"
+
+msgid "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et les tableaux les montrent séparément."
+msgstr "Kaaviot näyttävät enintään 12 väriä sekä harmaan ”Muut”. Värittömät luokat lasketaan tähän; luettelot ja taulukot näyttävät ne erikseen."
+
+msgid "Gérer les couleurs…"
+msgstr "Hallitse värejä…"
+
+msgid "Fermer"
+msgstr "Sulje"
+
+msgid "Détail de « Autres »"
+msgstr "Ryhmän ”Muut” tiedot"
+
+msgid "Mois précédent : {month}"
+msgstr "Edellinen kuukausi: {month}"
+
+msgid "Mois suivant : {month}"
+msgstr "Seuraava kuukausi: {month}"
+
+msgid "{first} le 1er, {last} au {day} {month}"
+msgstr "{first} päivänä 1, {last} {day}. {month}"
+
+msgid "Solde {of_month}"
+msgstr "Saldo: {of_month}"
+
+msgid "Dépenses du jour"
+msgstr "Päivän menot"
+
+msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
+msgstr "Kunkin päivän menot: {of_month}; päivänä {day} erottuu {peak}"
+
+msgid "Dépenses de chaque jour du mois"
+msgstr "Kuukauden kunkin päivän menot"
+
+msgid "Évolution du solde"
+msgstr "Saldon kehitys"
+
+msgid "Part"
+msgstr "Osuus"
+
+msgid "vs {month}"
+msgstr "vs. {month}"
+
+msgid "Où part l’argent"
+msgstr "Mihin rahat menevät"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Ei tapahtumia tässä kuussa"
+
+msgid "Rechercher une opération"
+msgstr "Hae tapahtumaa"
+
+msgid "Filtrer par catégorie"
+msgstr "Suodata luokan mukaan"
+
+msgid "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les libellés identiques."
+msgstr "Luokan napsauttaminen muuttaa tapahtuman luokan ja ehdottaa säännön tekemistä samoille kuvauksille."
+
+msgid "Toute la période"
+msgstr "Koko ajanjakso"
+
+msgid "Toutes"
+msgstr "Kaikki"
+
+msgid "toute la période"
+msgstr "koko ajanjakso"
+
+msgid "{pct} % des dépenses"
+msgstr "{pct} % menoista"
+
+msgid "Aucune opération ne correspond à ces filtres"
+msgstr "Mikään tapahtuma ei vastaa suodattimia"
+
+msgid "Afficher la suivante"
+msgid_plural "Afficher les {n} suivantes"
+msgstr[0] "Näytä seuraava"
+msgstr[1] "Näytä seuraavat {n}"
+
+msgid "Nouvelle catégorie…"
+msgstr "Uusi luokka…"
+
+msgid "Changer la catégorie de {label} (actuellement {category})"
+msgstr "Muuta tapahtuman {label} luokkaa (nyt {category})"
+
+msgid "Créer une règle ?"
+msgstr "Luodaanko sääntö?"
+
+msgid "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports."
+msgstr "Kuvaukset, jotka sisältävät <b>{pattern}</b>, lajitellaan luokkaan <b>{category}</b> tulevissa tuonneissa."
+
+msgid "Appliquer aux opérations existantes"
+msgstr "Käytä olemassa oleviin tapahtumiin"
+
+msgid "{n} opération sera modifiée, sauf celles corrigées à la main."
+msgid_plural "{n} opérations seront modifiées, sauf celles corrigées à la main."
+msgstr[0] "{n} tapahtuma muutetaan, paitsi käsin korjatut."
+msgstr[1] "{n} tapahtumaa muutetaan, paitsi käsin korjatut."
+
+msgid "Seulement cette opération"
+msgstr "Vain tämä tapahtuma"
+
+msgid "Créer la règle"
+msgstr "Luo sääntö"
+
+msgid "Règle créée, {n} autre opération classée"
+msgid_plural "Règle créée, {n} autres opérations classées"
+msgstr[0] "Sääntö luotu, {n} muu tapahtuma lajiteltu"
+msgstr[1] "Sääntö luotu, {n} muuta tapahtumaa lajiteltu"
+
+msgid "Règle créée"
+msgstr "Sääntö luotu"
+
+msgid "Catégorie modifiée"
+msgstr "Luokka muutettu"
+
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Päivän menot <b>{amount}</b>"
+
+msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
+msgstr "Saldo, {month}: {start} päivänä 1 – {end} päivänä {day}, verrattuna: {previous}"
+
+msgid "Part des dépenses"
+msgstr "Osuus menoista"
+
+msgid "Écart vs {month}"
+msgstr "Ero vs. {month}"
+
+msgid "cliquez pour le détail"
+msgstr "napsauta nähdäksesi tiedot"
+
+msgid "Anneau des dépenses {of_month} par catégorie, le détail est dans la liste"
+msgstr "Menojen rengas luokittain: {of_month}; tiedot ovat luettelossa"
+
+msgid "dépensés"
+msgstr "käytetty"
+
+msgid "Part du mois"
+msgstr "Osuus kuukaudesta"
+
+msgid "Total du mois"
+msgstr "Kuukauden summa"
+
+msgid "Dépenses mensuelles empilées par catégorie, de {from} à {to}"
+msgstr "Kuukausimenot luokittain pinottuina, {from} – {to}"
+
+msgid "Solde total"
+msgstr "Kokonaissaldo"
+
+msgid "{amount} depuis le 1er {month}"
+msgstr "{amount} 1. päivästä alkaen ({month})"
+
+msgid "{pct} % par rapport à {month}"
+msgstr "{pct} % verrattuna: {month}"
+
+msgid "Dépenses {of_month}"
+msgstr "Menot: {of_month}"
+
+msgid "dont salaire {amount}"
+msgstr "josta palkka {amount}"
+
+msgid "dont {label} : {amount}"
+msgstr "josta {label}: {amount}"
+
+msgid "Revenus {of_month}"
+msgstr "Tulot: {of_month}"
+
+msgid "{arrow} {amount} selon vos habitudes"
+msgstr "{arrow} {amount} tapojesi mukaan"
+
+msgid "Pas encore assez de données"
+msgstr "Ei vielä tarpeeksi tietoja"
+
+msgid "Solde de tous les comptes, jour après jour"
+msgstr "Kaikkien tilien saldo päivä päivältä"
+
+msgid "Solde du compte, jour après jour"
+msgstr "Tilin saldo päivä päivältä"
+
+msgid "Évolution du mois"
+msgstr "Kuukauden kehitys"
+
+msgid "Détail du mois"
+msgstr "Kuukauden tiedot"
+
+msgid "{amount} dépensés de {from} à {to}"
+msgstr "Käytetty {amount}, {from} – {to}"
+
+msgid "Cumul sur 6 mois"
+msgstr "Summat 6 kuukaudelta"
+
+msgid "Voir le cumul"
+msgstr "Näytä summat"
+
+msgid "{month} · {amount} dépensés"
+msgstr "{month} · käytetty {amount}"
+
+msgid "Par catégorie"
+msgstr "Luokittain"
+
+msgid "D’après vos dépenses du dernier mois"
+msgid_plural "D’après vos dépenses des {n} derniers mois"
+msgstr[0] "Viime kuukauden menojesi perusteella"
+msgstr[1] "Viimeisten {n} kuukauden menojesi perusteella"
+
+msgid "Solde fin de mois"
+msgstr "Saldo kuun lopussa"
+
+msgid "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgid_plural "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgstr[0] "Ennuste tarvitsee vähintään 3 kuukauden tapahtumat. Puuttuu {n} kuukausi."
+msgstr[1] "Ennuste tarvitsee vähintään 3 kuukauden tapahtumat. Puuttuu {n} kuukautta."
+
+msgid "Prévision à 6 mois"
+msgstr "Ennuste 6 kuukaudelle"
+
+msgid "Pas encore d’opérations"
+msgstr "Ei tapahtumia vielä"
+
+msgid "Importez l’export CSV d’un compte pour voir cette vue."
+msgstr "Tuo tilin CSV-vienti nähdäksesi tämän näkymän."
+
+msgid "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé comme virement interne : ni dépense, ni revenu."
+msgstr "Oma nimesi, kumppanisi nimi… Siirto, jonka kuvaus sisältää jonkin näistä nimistä, ehdotetaan sisäiseksi siirroksi: ei meno eikä tulo."
+
+msgid "Retirer ce nom"
+msgstr "Poista tämä nimi"
+
+msgid "Ajouter un nom"
+msgstr "Lisää nimi"
+
+msgid "Suivre le système"
+msgstr "Noudata järjestelmää"
+
+msgid "Clair"
+msgstr "Vaalea"
+
+msgid "Sombre"
+msgstr "Tumma"
+
+msgid "Apparence"
+msgstr "Ulkoasu"
+
+msgid "Confidentialité"
+msgstr "Yksityisyys"
+
+msgid "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune requête réseau. La base de données n’est pas chiffrée."
+msgstr "Kaikki tietosi pysyvät tällä tietokoneella. Finaryx ei tee verkkopyyntöjä. Tietokantaa ei ole salattu."
+
+msgid "Impossible de lire la base de données."
+msgstr "Tietokantaa ei voi lukea."
+
+msgid "{n} compte"
+msgid_plural "{n} comptes"
+msgstr[0] "{n} tili"
+msgstr[1] "{n} tiliä"
+
+msgid "{n} banque"
+msgid_plural "{n} banques"
+msgstr[0] "{n} pankki"
+msgstr[1] "{n} pankkia"
+
+msgid "{n} virement entre vos comptes à confirmer"
+msgid_plural "{n} virements entre vos comptes à confirmer"
+msgstr[0] "{n} vahvistettava siirto tiliesi välillä"
+msgstr[1] "{n} vahvistettavaa siirtoa tiliesi välillä"
+
+msgid "Voir"
+msgstr "Näytä"
+
+msgid "La copie de sauvegarde automatique a échoué : {error}"
+msgstr "Automaattinen varmuuskopio epäonnistui: {error}"
+
+msgid "La base de données n’est pas ouverte."
+msgstr "Tietokantaa ei ole avattu."
+
+msgid "La modification n’a pas pu être enregistrée : {error}"
+msgstr "Muutosta ei voitu tallentaa: {error}"
+
+msgid "Compte ajouté"
+msgstr "Tili lisätty"
+
+msgid "Compte archivé"
+msgstr "Tili arkistoitu"
+
+msgid "Compte désarchivé"
+msgstr "Tili palautettu arkistosta"
+
+msgid "Le compte, son historique d’import et {n} opération seront effacés définitivement."
+msgid_plural "Le compte, son historique d’import et ses {n} opérations seront effacés définitivement."
+msgstr[0] "Tili, sen tuontihistoria ja {n} tapahtuma poistetaan pysyvästi."
+msgstr[1] "Tili, sen tuontihistoria ja sen {n} tapahtumaa poistetaan pysyvästi."
+
+msgid "Compte supprimé, {n} opération effacée"
+msgid_plural "Compte supprimé, {n} opérations effacées"
+msgstr[0] "Tili poistettu, {n} tapahtuma poistettu"
+msgstr[1] "Tili poistettu, {n} tapahtumaa poistettu"
+
+msgid "sans nom"
+msgstr "nimetön"
+
+msgid "Annuler cet import ?"
+msgstr "Kumotaanko tämä tuonti?"
+
+msgid "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés."
+msgid_plural "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés."
+msgstr[0] "{n} tapahtuma, jonka ”{file}” lisäsi tilille {account}, poistetaan. Muut tuonnit eivät muutu."
+msgstr[1] "{n} tapahtumaa, jotka ”{file}” lisäsi tilille {account}, poistetaan. Muut tuonnit eivät muutu."
+
+msgid "Garder"
+msgstr "Säilytä"
+
+msgid "Supprimer les opérations"
+msgstr "Poista tapahtumat"
+
+msgid "Import annulé"
+msgstr "Tuonti kumottu"

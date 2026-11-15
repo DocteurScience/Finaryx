@@ -1,0 +1,1705 @@
+# Finaryx — Norsk bokmål
+# Generated from po/translations.csv by build-aux/translations.py: edit the table.
+msgid ""
+msgstr ""
+"Project-Id-Version: finaryx\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Norsk bokmål\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "fr"
+msgstr "nb"
+
+msgid "Aucun import"
+msgstr "Ingen import"
+
+msgid "À jour"
+msgstr "Oppdatert"
+
+msgid "À mettre à jour"
+msgstr "Må oppdateres"
+
+msgid "{month} à importer"
+msgstr "{month} skal importeres"
+
+msgid "Logement"
+msgstr "Bolig"
+
+msgid "Alimentation"
+msgstr "Mat"
+
+msgid "Transports"
+msgstr "Transport"
+
+msgid "Prêts et crédits"
+msgstr "Lån og kreditt"
+
+msgid "Shopping et animaux"
+msgstr "Shopping og kjæledyr"
+
+msgid "Abonnements et télécoms"
+msgstr "Abonnementer og telefoni"
+
+msgid "Banque et assurances"
+msgstr "Bank og forsikringer"
+
+msgid "Autres"
+msgstr "Annet"
+
+msgid "Sorties et loisirs"
+msgstr "Uteliv og fritid"
+
+msgid "Santé"
+msgstr "Helse"
+
+msgid "Impôts et taxes"
+msgstr "Skatter og avgifter"
+
+msgid "Administratif et éducation"
+msgstr "Administrasjon og utdanning"
+
+msgid "Revenus"
+msgstr "Inntekter"
+
+msgid "Virement interne"
+msgstr "Intern overføring"
+
+msgid "Donnez un nom à la catégorie."
+msgstr "Gi kategorien et navn."
+
+msgid "La catégorie « {name} » existe déjà."
+msgstr "Kategorien «{name}» finnes allerede."
+
+msgid "Cette couleur est déjà utilisée par « {name} »."
+msgstr "Denne fargen brukes allerede av «{name}»."
+
+msgid "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée."
+msgstr "Finaryx trenger denne kategorien: den kan ikke slettes."
+
+msgid "« Autres » garde toujours le gris."
+msgstr "«Annet» beholder alltid den grå fargen."
+
+msgid "Le motif de la règle est vide."
+msgstr "Regelens mønster er tomt."
+
+msgid "Point-virgule ( ; )"
+msgstr "Semikolon ( ; )"
+
+msgid "Virgule ( , )"
+msgstr "Komma ( , )"
+
+msgid "Tabulation"
+msgstr "Tabulator"
+
+msgid "Barre verticale ( | )"
+msgstr "Loddrett strek ( | )"
+
+msgid "JJ/MM/AAAA"
+msgstr "DD.MM.ÅÅÅÅ"
+
+msgid "AAAA-MM-JJ"
+msgstr "ÅÅÅÅ-MM-DD"
+
+msgid "JJ-MM-AA"
+msgstr "DD-MM-ÅÅ"
+
+msgid "MM/JJ/AAAA"
+msgstr "MM/DD/ÅÅÅÅ"
+
+msgid "Ignorer"
+msgstr "Ignorer"
+
+msgid "Date de l’opération"
+msgstr "Transaksjonsdato"
+
+msgid "Date de comptabilisation"
+msgstr "Bokføringsdato"
+
+msgid "Date de valeur"
+msgstr "Valutadato"
+
+msgid "Libellé"
+msgstr "Beskrivelse"
+
+msgid "Détail du libellé"
+msgstr "Detaljer i beskrivelsen"
+
+msgid "Montant"
+msgstr "Beløp"
+
+msgid "Débit"
+msgstr "Debet"
+
+msgid "Crédit"
+msgstr "Kredit"
+
+msgid "Sens (débit ou crédit)"
+msgstr "Retning (debet eller kredit)"
+
+msgid "Référence de la banque"
+msgstr "Bankens referanse"
+
+msgid "Solde après l’opération"
+msgstr "Saldo etter transaksjonen"
+
+msgid "Devise"
+msgstr "Valuta"
+
+msgid "Catégorie de la banque"
+msgstr "Bankens kategori"
+
+msgid "Sous-catégorie de la banque"
+msgstr "Bankens underkategori"
+
+msgid "Une colonne"
+msgstr "Én kolonne"
+
+msgid "Débit et crédit"
+msgstr "Debet og kredit"
+
+msgid "Montant et sens"
+msgstr "Beløp og retning"
+
+msgid "une date illisible"
+msgstr "en uleselig dato"
+
+msgid "un libellé vide"
+msgstr "en tom beskrivelse"
+
+msgid "un montant illisible"
+msgstr "et uleselig beløp"
+
+msgid "un sens (débit ou crédit) inconnu"
+msgstr "en ukjent retning (debet eller kredit)"
+
+msgid "une autre devise que celle du compte"
+msgstr "en annen valuta enn kontoens"
+
+msgid "Associez une colonne à : {fields}."
+msgstr "Knytt en kolonne til: {fields}."
+
+msgid "{n} ligne a {problem} : ligne {lines}"
+msgid_plural "{n} lignes ont {problem} : lignes {lines}"
+msgstr[0] "{n} linje har {problem}: linje {lines}"
+msgstr[1] "{n} linjer har {problem}: linjer {lines}"
+
+msgid "Finaryx"
+msgstr "Finaryx"
+
+msgid "Suivez vos comptes bancaires, sans rien envoyer en ligne"
+msgstr "Følg bankkontoene dine uten å sende noe på nettet"
+
+msgid "banque;budget;compte;dépenses;finances;CSV;"
+msgstr "bank;budsjett;konto;utgifter;økonomi;penger;CSV;"
+
+msgid "Style"
+msgstr "Stil"
+
+msgid "Suivre le style du système, ou forcer le style clair ou sombre."
+msgstr "Følg systemets stil, eller tving lys eller mørk stil."
+
+msgid "Largeur de la fenêtre"
+msgstr "Vindusbredde"
+
+msgid "Hauteur de la fenêtre"
+msgstr "Vindushøyde"
+
+msgid "Sauvegarde automatique"
+msgstr "Automatisk sikkerhetskopi"
+
+msgid "Copier la base après chaque import et garder les 5 dernières copies."
+msgstr "Kopier databasen etter hver import og behold de 5 siste kopiene."
+
+msgid "Fenêtre maximisée"
+msgstr "Vindu maksimert"
+
+msgid "Suivez vos comptes bancaires"
+msgstr "Følg bankkontoene dine"
+
+msgid "Finaryx importe les exports CSV de vos banques, les range dans une base locale et vous montre où part votre argent. Plusieurs comptes et plusieurs banques se suivent au même endroit, chacun dans sa devise."
+msgstr "Finaryx importerer CSV-eksportene fra bankene dine, lagrer dem i en lokal database og viser hvor pengene dine går. Flere kontoer og banker følges på ett sted, hver i sin egen valuta."
+
+msgid "Évolution du solde jour après jour, comparée au mois précédent"
+msgstr "Saldo dag for dag, sammenlignet med forrige måned"
+
+msgid "Répartition des dépenses par catégorie et cumul sur 3, 6 ou 12 mois"
+msgstr "Utgifter per kategori og summer over 3, 6 eller 12 måneder"
+
+msgid "Prévision du solde d’après vos charges récurrentes et vos habitudes, avec sa fourchette"
+msgstr "Prognose for saldoen ut fra de faste utgiftene og vanene dine, med intervall"
+
+msgid "Import guidé : détection du format, aperçu, doublons ignorés, annulation possible"
+msgstr "Veiledet import: gjenkjenning av format, forhåndsvisning, duplikater hoppes over, angre"
+
+msgid "Catégories, règles de classement et virements entre vos comptes"
+msgstr "Kategorier, sorteringsregler og overføringer mellom kontoene dine"
+
+msgid "Sauvegarde, restauration et export CSV des opérations"
+msgstr "Sikkerhetskopi, gjenoppretting og CSV-eksport av transaksjonene"
+
+msgid "Vos données restent sur votre ordinateur : Finaryx ne fait aucune requête réseau et n’envoie aucune statistique d’usage."
+msgstr "Dataene dine blir på datamaskinen din: Finaryx gjør ingen nettverksforespørsler og sender ingen bruksstatistikk."
+
+msgid "DocteurScience"
+msgstr "DocteurScience"
+
+msgid "banque"
+msgstr "bank"
+
+msgid "budget"
+msgstr "budsjett"
+
+msgid "compte"
+msgstr "konto"
+
+msgid "dépenses"
+msgstr "utgifter"
+
+msgid "finances"
+msgstr "økonomi"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "Vue d’ensemble du mois"
+msgstr "Oversikt over måneden"
+
+msgid "Prévision du solde d’après vos habitudes"
+msgstr "Prognose for saldoen ut fra vanene dine"
+
+msgid "Le mois en détail"
+msgstr "Måneden i detalj"
+
+msgid "Cumul des dépenses par catégorie"
+msgstr "Sum utgifter per kategori"
+
+msgid "Vos comptes et l’historique des imports"
+msgstr "Kontoene dine og importhistorikken"
+
+msgid "Thème sombre"
+msgstr "Mørk stil"
+
+msgid "Première version."
+msgstr "Første versjon."
+
+msgid "Import CSV avec profil Banque Populaire et mappage manuel pour les autres banques"
+msgstr "CSV-import med profil for Banque Populaire og manuell tilknytning for andre banker"
+
+msgid "Vue d’ensemble, mois en détail, cumul et prévisions"
+msgstr "Oversikt, måneden i detalj, summer og prognose"
+
+msgid "Catégories, règles et virements entre vos comptes"
+msgstr "Kategorier, regler og overføringer mellom kontoene dine"
+
+msgid "Sauvegarde, restauration et export CSV"
+msgstr "Sikkerhetskopi, gjenoppretting og CSV-eksport"
+
+msgid "Général"
+msgstr "Generelt"
+
+msgid "Importer un CSV"
+msgstr "Importer CSV"
+
+msgid "Préférences"
+msgstr "Innstillinger"
+
+msgid "Raccourcis clavier"
+msgstr "Tastatursnarveier"
+
+msgid "Fermer la fenêtre"
+msgstr "Lukk vinduet"
+
+msgid "Quitter"
+msgstr "Avslutt"
+
+msgid "Navigation"
+msgstr "Navigasjon"
+
+msgid "Vue d'ensemble"
+msgstr "Oversikt"
+
+msgid "Mois en détail"
+msgstr "Måneden i detalj"
+
+msgid "Cumul"
+msgstr "Summer"
+
+msgid "Prévisions"
+msgstr "Prognose"
+
+msgid "Comptes"
+msgstr "Kontoer"
+
+msgid "Opérations"
+msgstr "Transaksjoner"
+
+msgid "Rechercher un libellé"
+msgstr "Søk i beskrivelser"
+
+msgid "Catégories et règles…"
+msgstr "Kategorier og regler…"
+
+msgid "Exporter les données…"
+msgstr "Eksporter data…"
+
+msgid "À propos de Finaryx"
+msgstr "Om Finaryx"
+
+msgid "Menu principal"
+msgstr "Hovedmeny"
+
+msgid "Navigation principale"
+msgstr "Hovednavigasjon"
+
+msgid "Dernier import"
+msgstr "Siste import"
+
+msgid "Importer"
+msgstr "Importer"
+
+msgid "Ajouter un compte"
+msgstr "Legg til konto"
+
+msgid "Ajouter"
+msgstr "Legg til"
+
+msgid "Démonstration : rien n’est enregistré"
+msgstr "Demo: ingenting lagres"
+
+msgid "Bienvenue dans Finaryx"
+msgstr "Velkommen til Finaryx"
+
+msgid "Importez l’export CSV d’un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n’est envoyé en ligne."
+msgstr "Importer CSV-eksporten fra en konto for å se hvor pengene dine går. Alt blir på datamaskinen din, ingenting sendes på nettet."
+
+msgid "Ajouter un compte d’abord"
+msgstr "Legg til en konto først"
+
+msgid "Pour commencer"
+msgstr "Kom i gang"
+
+msgid "Exportez vos opérations en CSV"
+msgstr "Eksporter transaksjonene dine som CSV"
+
+msgid "Depuis le site ou l’application de votre banque, choisissez la période la plus longue possible."
+msgstr "Velg lengst mulig periode på bankens nettsted eller i appen."
+
+msgid "Importez le fichier dans Finaryx"
+msgstr "Importer filen i Finaryx"
+
+msgid "Le format Banque Populaire est reconnu. Pour les autres banques, vous associez les colonnes une seule fois."
+msgstr "Formatet fra Banque Populaire gjenkjennes. For andre banker knytter du kolonnene én gang."
+
+msgid "Vérifiez les catégories"
+msgstr "Kontroller kategoriene"
+
+msgid "Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle."
+msgstr "Usikre transaksjoner er merket «Må sjekkes». En retting kan bli en regel."
+
+msgid "Impossible d’ouvrir la base de données"
+msgstr "Kan ikke åpne databasen"
+
+msgid "Nom"
+msgstr "Navn"
+
+msgid "Banque"
+msgstr "Bank"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Compte courant"
+msgstr "Brukskonto"
+
+msgid "Épargne"
+msgstr "Sparing"
+
+msgid "Les totaux sont calculés séparément pour chaque devise."
+msgstr "Summene regnes ut separat for hver valuta."
+
+msgid "Numéro de compte (facultatif)"
+msgstr "Kontonummer (valgfritt)"
+
+msgid "Solde avant la première opération importée"
+msgstr "Saldo før den første importerte transaksjonen"
+
+msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
+msgstr "La saldoen stå tom hvis den er null. Hvis den importerte filen har en saldokolonne, foreslår Finaryx å justere den."
+
+msgid "Annuler"
+msgstr "Avbryt"
+
+msgid "Enregistrer"
+msgstr "Lagre"
+
+msgid "Modifier le compte"
+msgstr "Rediger konto"
+
+msgid "Ouvrir des données de démonstration (rien n’est enregistré)"
+msgstr "Åpne demodata (ingenting lagres)"
+
+msgid "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée."
+msgstr "Oppfølging av bankkontoer. Dataene dine blir på denne datamaskinen: ingen nettverksforespørsler, ingen telemetri. Databasen er ikke kryptert."
+
+msgid "Couleur dans les graphiques"
+msgstr "Farge i diagrammer"
+
+msgid "Couleur {n}"
+msgstr "Farge {n}"
+
+msgid "Utilisée par {name}"
+msgstr "Brukes av {name}"
+
+msgid "Libre"
+msgstr "Ledig"
+
+msgid "Aucune couleur"
+msgstr "Ingen farge"
+
+msgid "Regroupée dans « Autres » dans les graphiques"
+msgstr "Grupperes under «Annet» i diagrammer"
+
+msgid "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie."
+msgstr "Alle fargene er i bruk. Denne kategorien telles under «Annet» i diagrammer og holdes atskilt alle andre steder. Frigjør en farge ved å ta den fra en annen kategori."
+
+msgid "Créer"
+msgstr "Opprett"
+
+msgid "Nouvelle catégorie"
+msgstr "Ny kategori"
+
+msgid "Modifier la catégorie"
+msgstr "Rediger kategori"
+
+msgid "Fusionner dans"
+msgstr "Slå sammen med"
+
+msgid "Les opérations et les règles passent dans la catégorie choisie"
+msgstr "Transaksjoner og regler flyttes til den valgte kategorien"
+
+msgid "Fusionner…"
+msgstr "Slå sammen…"
+
+msgid "Supprimer la catégorie"
+msgstr "Slett kategori"
+
+msgid "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées."
+msgstr[0] "Transaksjonen dens flyttes til «Annet» til sjekk; reglene dens slettes."
+msgstr[1] "De {n} transaksjonene dens flyttes til «Annet» til sjekk; reglene dens slettes."
+
+msgid "Supprimer…"
+msgstr "Slett…"
+
+msgid "Fusionner « {from} » dans « {into} » ?"
+msgstr "Slå sammen «{from}» med «{into}»?"
+
+msgid "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgid_plural "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgstr[0] "{n} transaksjon og reglene til «{from}» flyttes til «{into}». Summene endres ikke."
+msgstr[1] "{n} transaksjoner og reglene til «{from}» flyttes til «{into}». Summene endres ikke."
+
+msgid "Fusionner"
+msgstr "Slå sammen"
+
+msgid "Catégories fusionnées"
+msgstr "Kategoriene er slått sammen"
+
+msgid "Supprimer « {name} » ?"
+msgstr "Slette «{name}»?"
+
+msgid "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées."
+msgstr[0] "Transaksjonen dens flyttes til «Annet», merket «Må sjekkes». Reglene dens slettes."
+msgstr[1] "De {n} transaksjonene dens flyttes til «Annet», merket «Må sjekkes». Reglene dens slettes."
+
+msgid "Supprimer"
+msgstr "Slett"
+
+msgid "Catégorie supprimée"
+msgstr "Kategorien er slettet"
+
+msgid "Compte"
+msgstr "Konto"
+
+msgid "Solde au {date}"
+msgstr "Saldo per {date}"
+
+msgid "Solde"
+msgstr "Saldo"
+
+msgid "{amount} en {month}"
+msgstr "{amount} i {month}"
+
+msgid "{n} opération enregistrée"
+msgid_plural "{n} opérations enregistrées"
+msgstr[0] "{n} lagret transaksjon"
+msgstr[1] "{n} lagrede transaksjoner"
+
+msgid "Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}"
+msgstr "Kontoens saldo over 6 måneder: fra {start} i {from} til {end} i {to}"
+
+msgid "Aucune"
+msgstr "Ingen"
+
+msgid "Modifier"
+msgstr "Rediger"
+
+msgid "Modifier : {field}"
+msgstr "Rediger: {field}"
+
+msgid "Réglages du compte"
+msgstr "Kontoinnstillinger"
+
+msgid "Dernières opérations"
+msgstr "Siste transaksjoner"
+
+msgid "Tout voir"
+msgstr "Se alle"
+
+msgid "Aucune opération"
+msgstr "Ingen transaksjoner"
+
+msgid "Sans catégorie"
+msgstr "Uten kategori"
+
+msgid "À vérifier"
+msgstr "Må sjekkes"
+
+msgid "Désarchiver le compte"
+msgstr "Ta kontoen ut av arkivet"
+
+msgid "Il revient dans les totaux."
+msgstr "Den telles med i summene igjen."
+
+msgid "Désarchiver"
+msgstr "Ta ut av arkivet"
+
+msgid "Archiver le compte"
+msgstr "Arkiver kontoen"
+
+msgid "Il disparaît des totaux, ses opérations restent consultables."
+msgstr "Den telles ikke lenger med i summene; transaksjonene dens kan fortsatt ses."
+
+msgid "Archiver"
+msgstr "Arkiver"
+
+msgid "Supprimer le compte et ses opérations"
+msgstr "Slett kontoen og transaksjonene dens"
+
+msgid "Action définitive, {n} opération serait effacée."
+msgid_plural "Action définitive, {n} opérations seraient effacées."
+msgstr[0] "Endelig: {n} transaksjon ville bli slettet."
+msgstr[1] "Endelig: {n} transaksjoner ville bli slettet."
+
+msgid "Zone sensible"
+msgstr "Faresone"
+
+msgid "compte courant"
+msgstr "brukskonto"
+
+msgid "épargne"
+msgstr "sparing"
+
+msgid "Solde de tous les comptes"
+msgstr "Saldo for alle kontoer"
+
+msgid "Solde des comptes en {currency}"
+msgstr "Saldo for kontoene i {currency}"
+
+msgid "Vos comptes"
+msgstr "Kontoene dine"
+
+msgid "Comptes archivés"
+msgstr "Arkiverte kontoer"
+
+msgid "Ils ne comptent pas dans les totaux."
+msgstr "De telles ikke med i summene."
+
+msgid "{n} opération"
+msgid_plural "{n} opérations"
+msgstr[0] "{n} transaksjon"
+msgstr[1] "{n} transaksjoner"
+
+msgid "Importé le {date}"
+msgstr "Importert {date}"
+
+msgid "Dernier import le {date}"
+msgstr "Siste import {date}"
+
+msgid "Ajoutez un export CSV pour voir ses opérations"
+msgstr "Legg til en CSV-eksport for å se transaksjonene"
+
+msgid "Évolution du solde sur 6 mois : en hausse de {amount}"
+msgstr "Saldo over 6 måneder: opp {amount}"
+
+msgid "Évolution du solde sur 6 mois : en baisse de {amount}"
+msgstr "Saldo over 6 måneder: ned {amount}"
+
+msgid "Historique des imports"
+msgstr "Importhistorikk"
+
+msgid "Les doublons ne sont jamais enregistrés deux fois"
+msgstr "Duplikater lagres aldri to ganger"
+
+msgid "Importer un CSV…"
+msgstr "Importer CSV…"
+
+msgid "Aucun import pour l’instant"
+msgstr "Ingen import ennå"
+
+msgid "{n} nouvelle"
+msgid_plural "{n} nouvelles"
+msgstr[0] "{n} ny"
+msgstr[1] "{n} nye"
+
+msgid "{n} ajoutée"
+msgid_plural "{n} ajoutées"
+msgstr[0] "{n} lagt til"
+msgstr[1] "{n} lagt til"
+
+msgid "{n} doublon"
+msgid_plural "{n} doublons"
+msgstr[0] "{n} duplikat"
+msgstr[1] "{n} duplikater"
+
+msgid "Annuler cet import"
+msgstr "Angre denne importen"
+
+msgid "Part du total"
+msgstr "Andel av totalen"
+
+msgid "Part de chaque compte dans le solde total : {list}"
+msgstr "Hver kontos andel av totalsaldoen: {list}"
+
+msgid "catégorie par défaut, non supprimable"
+msgstr "standardkategori, kan ikke slettes"
+
+msgid "catégorie spéciale, comptée en revenus"
+msgstr "spesialkategori, telles som inntekt"
+
+msgid "catégorie spéciale, exclue des statistiques"
+msgstr "spesialkategori, utelatt fra statistikken"
+
+msgid "couleur de graphique {n}"
+msgstr "diagramfarge {n}"
+
+msgid "sans couleur, regroupée dans « Autres » dans les graphiques"
+msgstr "ingen farge, under «Annet» i diagrammer"
+
+msgid "Catégories et règles"
+msgstr "Kategorier og regler"
+
+msgid "Catégories"
+msgstr "Kategorier"
+
+msgid "Modifier la catégorie {name}"
+msgstr "Rediger kategorien {name}"
+
+msgid "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en la retirant à une autre catégorie."
+msgstr "Diagrammene viser høyst 12 farger, pluss «Annet» i grått. En kategori uten farge telles under «Annet» i diagrammer, men holdes atskilt i lister, filtre og tabeller. Et klikk på «Annet» i et diagram viser detaljene. For å gi en kategori en farge, frigjør en ved å ta den fra en annen kategori."
+
+msgid "Le libellé correspond à « {pattern} »"
+msgstr "Beskrivelsen samsvarer med «{pattern}»"
+
+msgid "Le libellé contient « {pattern} »"
+msgstr "Beskrivelsen inneholder «{pattern}»"
+
+msgid "Supprimer la règle"
+msgstr "Slett regel"
+
+msgid "Règle supprimée"
+msgstr "Regelen er slettet"
+
+msgid "Aucune règle pour l’instant"
+msgstr "Ingen regler ennå"
+
+msgid "Changez la catégorie d’une opération pour en créer une."
+msgstr "Endre kategorien til en transaksjon for å opprette en."
+
+msgid "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées."
+msgstr "En manuell retting av en transaksjon går foran reglene. Å slette en regel endrer ikke transaksjoner som allerede er sortert."
+
+msgid "Règles de catégorisation"
+msgstr "Sorteringsregler"
+
+msgid "Virements entre vos comptes"
+msgstr "Overføringer mellom kontoene dine"
+
+msgid "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils ne comptent ni en dépenses ni en revenus."
+msgstr "En belastning og en godskrivning av samme beløp på to av kontoene dine, høyst 3 dager fra hverandre. Når de er bekreftet, telles de verken som utgift eller inntekt."
+
+msgid "Tout confirmer"
+msgstr "Bekreft alle"
+
+msgid "{n} virement confirmé"
+msgid_plural "{n} virements confirmés"
+msgstr[0] "{n} overføring bekreftet"
+msgstr[1] "{n} overføringer bekreftet"
+
+msgid "Ce n’est pas un virement"
+msgstr "Ikke en overføring"
+
+msgid "Confirmer"
+msgstr "Bekreft"
+
+msgid "Virement confirmé"
+msgstr "Overføringen er bekreftet"
+
+msgid "Aucun virement à confirmer"
+msgstr "Ingen overføringer å bekrefte"
+
+msgid "Noms du foyer"
+msgstr "Navn i husstanden"
+
+msgid "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer en « Virement interne »."
+msgstr "Overføringer fra et medlem av husstanden er ikke ekte inntekter. Finaryx foreslår å sortere dem som «Intern overføring»."
+
+msgid "Modifier les noms…"
+msgstr "Rediger navn…"
+
+msgid "{n} opération contient « {name} »"
+msgid_plural "{n} opérations contiennent « {name} »"
+msgstr[0] "{n} transaksjon inneholder «{name}»"
+msgstr[1] "{n} transaksjoner inneholder «{name}»"
+
+msgid "Crée la règle « le libellé contient {name} → Virement interne »"
+msgstr "Oppretter regelen «beskrivelsen inneholder {name} → Intern overføring»"
+
+msgid "Classer en virement interne"
+msgstr "Sorter som intern overføring"
+
+msgid "Règle créée, {n} opération classée"
+msgid_plural "Règle créée, {n} opérations classées"
+msgstr[0] "Regelen er opprettet, {n} transaksjon sortert"
+msgstr[1] "Regelen er opprettet, {n} transaksjoner sortert"
+
+msgid "Aucun nom du foyer pour l’instant"
+msgstr "Ingen navn i husstanden ennå"
+
+msgid "Aucune opération à classer"
+msgstr "Ingen transaksjoner å sortere"
+
+msgid "Ajoutez-les dans les préférences, par exemple votre nom et celui de votre conjoint."
+msgstr "Legg dem til i innstillingene, for eksempel navnet ditt og partnerens."
+
+msgid "Les opérations de ces noms sont déjà des virements internes."
+msgstr "Transaksjonene med disse navnene er allerede interne overføringer."
+
+msgid "Période"
+msgstr "Periode"
+
+msgid "{n} mois"
+msgstr "{n} måneder"
+
+msgid "Total sur {n} mois"
+msgstr "Sum over {n} måneder"
+
+msgid "Moyenne par mois"
+msgstr "Gjennomsnitt per måned"
+
+msgid "Mois le plus chargé"
+msgstr "Dyreste måned"
+
+msgid "Mois le plus léger"
+msgstr "Billigste måned"
+
+msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
+msgstr "Prosenten er kategoriens andel av månedens utgifter. For små andeler står i tabellen nedenfor."
+
+msgid "Mois par mois, par catégorie"
+msgstr "Måned for måned, per kategori"
+
+msgid "Catégorie"
+msgstr "Kategori"
+
+msgid "Par mois"
+msgstr "Per måned"
+
+msgid "Total"
+msgstr "Totalt"
+
+msgid "Part de chaque catégorie sur la période et montant cumulé."
+msgstr "Hver kategoris andel i perioden og samlet beløp."
+
+msgid "Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois."
+msgstr "Månedskolonnene viser kategoriens andel; raden Totalt viser månedens utgifter."
+
+msgid "Part de chaque catégorie"
+msgstr "Hver kategoris andel"
+
+msgid "{from} à {to}"
+msgstr "{from} til {to}"
+
+msgid "Ce fichier n’est pas une sauvegarde Finaryx."
+msgstr "Denne filen er ikke en sikkerhetskopi fra Finaryx."
+
+msgid "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir."
+msgstr "Denne sikkerhetskopien kommer fra en nyere versjon av Finaryx: oppdater programmet for å åpne den."
+
+msgid "Ce fichier n’est pas une base de données lisible."
+msgstr "Denne filen er ikke en lesbar database."
+
+msgid "Le fichier n’a pas pu être écrit ou lu : {error}"
+msgstr "Filen kunne ikke skrives eller leses: {error}"
+
+msgid "Exporter les données"
+msgstr "Eksporter data"
+
+msgid "Toutes les opérations"
+msgstr "Alle transaksjoner"
+
+msgid "Dernier mois"
+msgstr "Siste måned"
+
+msgid "{n} derniers mois"
+msgstr "Siste {n} måneder"
+
+msgid "Période choisie"
+msgstr "Valgt periode"
+
+msgid "Français"
+msgstr "Fransk"
+
+msgid "Du (JJ/MM/AAAA)"
+msgstr "Fra (DD/MM/ÅÅÅÅ)"
+
+msgid "Au (JJ/MM/AAAA)"
+msgstr "Til (DD/MM/ÅÅÅÅ)"
+
+msgid "Exporter la base de données"
+msgstr "Eksporter databasen"
+
+msgid "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne."
+msgstr "Dataene dine blir på datamaskinen din. En eksport lager en kopi i mappen du velger; ingenting sendes på nettet."
+
+msgid "Sauvegarde complète"
+msgstr "Full sikkerhetskopi"
+
+msgid "Exporter…"
+msgstr "Eksporter…"
+
+msgid "Restaurer une sauvegarde"
+msgstr "Gjenopprett en sikkerhetskopi"
+
+msgid "Remplace les données actuelles. Une copie de sécurité est faite avant."
+msgstr "Erstatter dataene som finnes nå. Det tas en sikkerhetskopi først."
+
+msgid "Restaurer…"
+msgstr "Gjenopprett…"
+
+msgid "Exporter en CSV"
+msgstr "Eksporter som CSV"
+
+msgid "Séparateur et décimales"
+msgstr "Skilletegn og desimaler"
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid "Format du CSV"
+msgstr "CSV-format"
+
+msgid "Exporter en CSV…"
+msgstr "Eksporter som CSV…"
+
+msgid "Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français."
+msgstr "Semikolon og desimalkomma: åpnes direkte i et fransk regneark."
+
+msgid "Virgule et point décimal : le format le plus courant hors de France."
+msgstr "Komma og desimalpunktum: det vanligste formatet utenfor Frankrike."
+
+msgid "Copier la base après chaque import"
+msgstr "Kopier databasen etter hver import"
+
+msgid "Garde les {n} dernières copies dans {dir}."
+msgstr "Beholder de {n} siste kopiene i {dir}."
+
+msgid "Désactivée en démonstration : rien n’est enregistré."
+msgstr "Av i demoen: ingenting lagres."
+
+msgid "La base n’est pas chiffrée : gardez les exports dans un dossier privé."
+msgstr "Databasen er ikke kryptert: oppbevar eksportene i en privat mappe."
+
+msgid "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles."
+msgstr "Nøyaktig kopi av filen finaryx.db (SQLite): kontoer, transaksjoner, kategorier og regler."
+
+msgid "Tous les comptes"
+msgstr "Alle kontoer"
+
+msgid "Date, libellé, montant, catégorie, compte, banque."
+msgstr "Dato, beskrivelse, beløp, kategori, konto, bank."
+
+msgid "Choisissez les deux dates."
+msgstr "Velg begge datoene."
+
+msgid "depuis {month}"
+msgstr "siden {month}"
+
+msgid "{n} ligne avec ces réglages"
+msgid_plural "{n} lignes avec ces réglages"
+msgstr[0] "{n} linje med disse innstillingene"
+msgstr[1] "{n} linjer med disse innstillingene"
+
+msgid "Base exportée"
+msgstr "Databasen er eksportert"
+
+msgid "Choisissez les deux dates de la période."
+msgstr "Velg periodens to datoer."
+
+msgid "{n} opération exportée"
+msgid_plural "{n} opérations exportées"
+msgstr[0] "{n} transaksjon eksportert"
+msgstr[1] "{n} transaksjoner eksportert"
+
+msgid "Sauvegardes Finaryx"
+msgstr "Sikkerhetskopier fra Finaryx"
+
+msgid "Ouvrir le dossier"
+msgstr "Åpne mappen"
+
+msgid "Cette sauvegarde contient {accounts} compte et {operations}."
+msgid_plural "Cette sauvegarde contient {accounts} comptes et {operations}."
+msgstr[0] "Denne sikkerhetskopien inneholder {accounts} konto og {operations}."
+msgstr[1] "Denne sikkerhetskopien inneholder {accounts} kontoer og {operations}."
+
+msgid "Les données actuelles seront remplacées. Une copie de sécurité est d’abord enregistrée dans {dir}."
+msgstr "Dataene som finnes nå, erstattes. Først lagres en sikkerhetskopi i {dir}."
+
+msgid "Les données de démonstration seront remplacées, en mémoire seulement."
+msgstr "Demodataene erstattes, bare i minnet."
+
+msgid "Restaurer cette sauvegarde ?"
+msgstr "Gjenopprette denne sikkerhetskopien?"
+
+msgid "Restaurer"
+msgstr "Gjenopprett"
+
+msgid "Sauvegarde restaurée"
+msgstr "Sikkerhetskopien er gjenopprettet"
+
+msgid "le 1er"
+msgstr "den 1."
+
+msgid "le {day}"
+msgstr "den {day}."
+
+msgid "Solde en fin de mois"
+msgstr "Saldo ved månedsslutt"
+
+msgid "{month} · prévu"
+msgstr "{month} · prognose"
+
+msgid "Fourchette"
+msgstr "Intervall"
+
+msgid "Dépenses attendues <b>{spending}</b> · revenus <b>{income}</b>"
+msgstr "Forventede utgifter <b>{spending}</b> · inntekter <b>{income}</b>"
+
+msgid "Aujourd’hui"
+msgstr "I dag"
+
+msgid "Dernière opération"
+msgstr "Siste transaksjon"
+
+msgid "{month} : pic de dépenses\nattendu ({amount})"
+msgstr "{month}: forventet\nutgiftstopp ({amount})"
+
+msgid "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}"
+msgstr "Saldo ved månedsslutt: {real} i {month}, prognose {end} i {last}, med et intervall fra {low} til {high}"
+
+msgid "Prévu"
+msgstr "Prognose"
+
+msgid "Fourchette probable"
+msgstr "Sannsynlig intervall"
+
+msgid "Pas encore assez de données pour une prévision"
+msgstr "Ikke nok data til en prognose ennå"
+
+msgid "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgid_plural "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgstr[0] "Finaryx trenger minst 3 måneder med transaksjoner for å lære vanene dine. Det mangler {n} måned: importer en eldre eksport for å låse opp denne visningen."
+msgstr[1] "Finaryx trenger minst 3 måneder med transaksjoner for å lære vanene dine. Det mangler {n} måneder: importer en eldre eksport for å låse opp denne visningen."
+
+msgid "Importer un export plus ancien"
+msgstr "Importer en eldre eksport"
+
+msgid "Habitudes calculées sur"
+msgstr "Vaner beregnet over"
+
+msgid "Période de référence"
+msgstr "Referanseperiode"
+
+msgid "Horizon"
+msgstr "Horisont"
+
+msgid "Horizon de prévision"
+msgstr "Prognosehorisont"
+
+msgid "{low} à {high}"
+msgstr "{low} til {high}"
+
+msgid "Fin {month} (prévu)"
+msgstr "Slutten av {month} (prognose)"
+
+msgid "Solde fin {month} (prévu)"
+msgstr "Saldo i slutten av {month} (prognose)"
+
+msgid "Fourchette : {range}"
+msgstr "Intervall: {range}"
+
+msgid "Dépenses prévues"
+msgstr "Forventede utgifter"
+
+msgid "{amount} / mois"
+msgstr "{amount} / mnd."
+
+msgid "Moyenne sur le mois à venir"
+msgid_plural "Moyenne sur les {n} mois à venir"
+msgstr[0] "Gjennomsnitt kommende måned"
+msgstr[1] "Gjennomsnitt de neste {n} månedene"
+
+msgid "Salaire détecté {day} du mois"
+msgstr "Lønn funnet {day} i måneden"
+
+msgid "{label} détecté {day} du mois"
+msgstr "{label} funnet {day} i måneden"
+
+msgid "Aucun revenu régulier détecté"
+msgstr "Ingen faste inntekter funnet"
+
+msgid "Revenus réguliers"
+msgstr "Faste inntekter"
+
+msgid "Réel de {from} à {to}, prévu de {first} à {last}"
+msgstr "Faktisk fra {from} til {to}, prognose fra {first} til {last}"
+
+msgid "Réel"
+msgstr "Faktisk"
+
+msgid "Estimation d’après vos charges récurrentes et vos dépenses moyennes. La fourchette s’élargit avec l’horizon."
+msgstr "Anslag ut fra de faste og gjennomsnittlige utgiftene dine. Intervallet øker med horisonten."
+
+msgid "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre."
+msgstr "Anslag ut fra de faste utgiftene dine og gjennomsnittet av de variable utgiftene. Intervallet øker med horisonten: jo lenger frem, desto mer usikker prognose."
+
+msgid "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgid_plural "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgstr[0] "Vaner beregnet over {n} måned: historikken går ikke lenger tilbake."
+msgstr[1] "Vaner beregnet over {n} måneder: historikken går ikke lenger tilbake."
+
+msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
+msgstr "Sesongvariasjon ikke tatt med: under 12 måneders historikk."
+
+msgid "{month} (en cours)"
+msgstr "{month} (pågår)"
+
+msgid "{amount} de dépenses"
+msgstr "{amount} i utgifter"
+
+msgid "{income} de revenus · {spending}"
+msgstr "{income} i inntekter · {spending}"
+
+msgid "{amount} sur le mois"
+msgstr "{amount} over måneden"
+
+msgid "Charges fixes"
+msgstr "Faste utgifter"
+
+msgid "Aucune charge récurrente détectée"
+msgstr "Ingen faste utgifter funnet"
+
+msgid "Une charge est récurrente quand le même libellé revient chaque mois, pour un montant proche."
+msgstr "En utgift er fast når den samme beskrivelsen kommer igjen hver måned med et lignende beløp."
+
+msgid "Mois par mois"
+msgstr "Måned for måned"
+
+msgid "Charges récurrentes détectées"
+msgstr "Faste utgifter som er funnet"
+
+msgid "Choisir un fichier…"
+msgstr "Velg en fil…"
+
+msgid "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est enregistré avant votre confirmation."
+msgstr "Velg CSV-eksporten fra en konto, eller slipp den her. Filen endres aldri, og ingenting lagres før du bekrefter."
+
+msgid "Fichiers CSV"
+msgstr "CSV-filer"
+
+msgid "Tous les fichiers"
+msgstr "Alle filer"
+
+msgid "Choisir un export CSV"
+msgstr "Velg en CSV-eksport"
+
+msgid "fichier"
+msgstr "fil"
+
+msgid "Impossible de lire le fichier : {error}"
+msgstr "Kan ikke lese filen: {error}"
+
+msgid "Le fichier ne se lit pas encore correctement"
+msgstr "Filen leses ikke riktig ennå"
+
+msgid "{n} ligne"
+msgid_plural "{n} lignes"
+msgstr[0] "{n} linje"
+msgstr[1] "{n} linjer"
+
+msgid "{n} colonne"
+msgid_plural "{n} colonnes"
+msgstr[0] "{n} kolonne"
+msgstr[1] "{n} kolonner"
+
+msgid "Changer…"
+msgstr "Endre…"
+
+msgid "Compte de destination"
+msgstr "Målkonto"
+
+msgid "Aucun compte pour l’instant : créez celui qui recevra ces opérations."
+msgstr "Ingen konto ennå: opprett den som skal motta disse transaksjonene."
+
+msgid "Créer un compte…"
+msgstr "Opprett en konto…"
+
+msgid "Nouveau compte…"
+msgstr "Ny konto…"
+
+msgid "Les opérations seront ajoutées à ce compte"
+msgstr "Transaksjonene legges til på denne kontoen"
+
+msgid "Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin."
+msgstr "Gjenkjent format: {name}. Kolonnene er knyttet; kontroller dem ved behov."
+
+msgid "Reconnu"
+msgstr "Gjenkjent"
+
+msgid "Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."
+msgstr "Format som aldri er importert: knytt kolonnene nedenfor. Neste gang gjenkjennes det."
+
+msgid "Nouveau format"
+msgstr "Nytt format"
+
+msgid "Modèle de banque"
+msgstr "Bankformat"
+
+msgid "Fichier"
+msgstr "Fil"
+
+msgid "Encodage"
+msgstr "Tegnkoding"
+
+msgid "Séparateur de colonnes"
+msgstr "Kolonneskilletegn"
+
+msgid "Ligne des en-têtes"
+msgstr "Overskriftslinje"
+
+msgid "Ligne {n}"
+msgstr "Linje {n}"
+
+msgid "Format des dates"
+msgstr "Datoformat"
+
+msgid "À vérifier : les jours et les mois peuvent être inversés"
+msgstr "Må sjekkes: dager og måneder kan være byttet om"
+
+msgid "Séparateur décimal"
+msgstr "Desimaltegn"
+
+msgid "Point ( . )"
+msgstr "Punktum ( . )"
+
+msgid "Format du fichier"
+msgstr "Filformat"
+
+msgid "Détecté automatiquement, à corriger si la lecture est mauvaise"
+msgstr "Funnet automatisk; rett det hvis filen leses feil"
+
+msgid "Colonnes du fichier"
+msgstr "Filens kolonner"
+
+msgid "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer »."
+msgstr "Angi hva hver kolonne i filen brukes til. Unødvendige kolonner står på «Ignorer»."
+
+msgid "Comment le montant est écrit"
+msgstr "Hvordan beløpet er skrevet"
+
+msgid "Écriture du montant"
+msgstr "Beløpsformat"
+
+msgid "Exemple : (vide)"
+msgstr "Eksempel: (tomt)"
+
+msgid "Exemple : {value}"
+msgstr "Eksempel: {value}"
+
+msgid "Champ pour la colonne {column}"
+msgstr "Felt for kolonnen {column}"
+
+msgid "Valeurs pour un débit"
+msgstr "Verdier for debet"
+
+msgid "Valeurs pour un crédit"
+msgstr "Verdier for kredit"
+
+msgid "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas."
+msgstr "Skill verdiene med komma; store bokstaver og aksenter spiller ingen rolle."
+
+msgid "Exclue"
+msgstr "Utelatt"
+
+msgid "Reconnue"
+msgstr "Gjenkjent"
+
+msgid "Proposée"
+msgstr "Foreslått"
+
+msgid "Catégorie de Finaryx pour {bank}"
+msgstr "Finaryx-kategori for {bank}"
+
+msgid "Afficher moins"
+msgstr "Vis færre"
+
+msgid "Voir la correspondance"
+msgid_plural "Voir les {n} correspondances"
+msgstr[0] "Se tilknytningen"
+msgstr[1] "Se de {n} tilknytningene"
+
+msgid "Catégories de la banque"
+msgstr "Bankens kategorier"
+
+msgid "La banque classe déjà ses opérations. Choisissez la catégorie de Finaryx qui correspond à chacune."
+msgstr "Banken sorterer allerede transaksjonene sine. Velg Finaryx-kategorien som svarer til hver av dem."
+
+msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
+msgstr "Tilknytningen lagres med formatet. En bankkategori som dukker opp senere, blir du spurt om her."
+
+msgid "Aperçu de l’import"
+msgstr "Forhåndsvisning av importen"
+
+msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
+msgstr "De fem første linjene, kategorier etter tilknytningen over"
+
+msgid "Choisissez ou créez le compte de destination pour voir l’aperçu."
+msgstr "Velg eller opprett målkontoen for å se forhåndsvisningen."
+
+msgid "L’aperçu apparaîtra quand les colonnes obligatoires seront associées."
+msgstr "Forhåndsvisningen vises når de obligatoriske kolonnene er knyttet."
+
+msgid "Nouveau"
+msgstr "Ny"
+
+msgid "Doublon"
+msgstr "Duplikat"
+
+msgid "Aucune ligne lisible"
+msgstr "Ingen lesbare linjer"
+
+msgid "Ces lignes ne seront pas importées."
+msgstr "Disse linjene importeres ikke."
+
+msgid "La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible."
+msgstr "Saldokolonnen stemmer ikke med beløpene: linje {lines}. Du kan likevel importere."
+
+msgid "À savoir avant d’importer"
+msgstr "Før import"
+
+msgid "Lignes lues"
+msgstr "Leste linjer"
+
+msgid "Nouvelles opérations"
+msgstr "Nye transaksjoner"
+
+msgid "Doublons ignorés"
+msgstr "Duplikater hoppet over"
+
+msgid "À vérifier (catégorie incertaine)"
+msgstr "Må sjekkes (usikker kategori)"
+
+msgid "Lignes illisibles, non importées"
+msgstr "Uleselige linjer, ikke importert"
+
+msgid "Recaler le solde initial"
+msgstr "Juster startsaldoen"
+
+msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
+msgstr "Ifølge saldokolonnen blir saldoen før den første importerte transaksjonen {amount}."
+
+msgid "Retenir ce format"
+msgstr "Husk dette formatet"
+
+msgid "Le prochain fichier de cette banque sera lu sans rien demander"
+msgstr "Neste fil fra denne banken leses uten spørsmål"
+
+msgid "Nom du format"
+msgstr "Navn på formatet"
+
+msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
+msgstr "Et duplikat har samme dato, beskrivelse, beløp og referanse som en transaksjon som allerede er lagret. Filene dine endres aldri."
+
+msgid "Résumé"
+msgstr "Sammendrag"
+
+msgid "Aucune nouvelle opération"
+msgstr "Ingen nye transaksjoner"
+
+msgid "Importer {n} opération"
+msgid_plural "Importer {n} opérations"
+msgstr[0] "Importer {n} transaksjon"
+msgstr[1] "Importer {n} transaksjoner"
+
+msgid "{n} opération importée"
+msgid_plural "{n} opérations importées"
+msgstr[0] "{n} transaksjon importert"
+msgstr[1] "{n} transaksjoner importert"
+
+msgid "{n} doublon ignoré"
+msgid_plural "{n} doublons ignorés"
+msgstr[0] "{n} duplikat hoppet over"
+msgstr[1] "{n} duplikater hoppet over"
+
+msgid "Aperçu"
+msgstr "Oversikt"
+
+msgid "Mois"
+msgstr "Måned"
+
+msgid "Compte affiché"
+msgstr "Vist konto"
+
+msgid "{n} Ko"
+msgstr "{n} kB"
+
+msgid "{n} Mo"
+msgstr "{n} MB"
+
+msgid "Non classé"
+msgstr "Ikke sortert"
+
+msgid "{month} · {amount} regroupés dans « Autres » dans les graphiques"
+msgstr "{month} · {amount} gruppert under «Annet» i diagrammer"
+
+msgid "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et les tableaux les montrent séparément."
+msgstr "Diagrammene viser høyst 12 farger, pluss «Annet» i grått. Kategorier uten farge telles her; lister og tabeller viser dem separat."
+
+msgid "Gérer les couleurs…"
+msgstr "Administrer farger…"
+
+msgid "Fermer"
+msgstr "Lukk"
+
+msgid "Détail de « Autres »"
+msgstr "Detaljer om «Annet»"
+
+msgid "Mois précédent : {month}"
+msgstr "Forrige måned: {month}"
+
+msgid "Mois suivant : {month}"
+msgstr "Neste måned: {month}"
+
+msgid "{first} le 1er, {last} au {day} {month}"
+msgstr "{first} den 1., {last} den {day}. {month}"
+
+msgid "Solde {of_month}"
+msgstr "Saldo i {of_month}"
+
+msgid "Dépenses du jour"
+msgstr "Dagens utgifter"
+
+msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
+msgstr "Utgifter hver dag i {of_month}; den {day}. skiller {peak} seg ut"
+
+msgid "Dépenses de chaque jour du mois"
+msgstr "Utgifter hver dag i måneden"
+
+msgid "Évolution du solde"
+msgstr "Saldoens utvikling"
+
+msgid "Part"
+msgstr "Andel"
+
+msgid "vs {month}"
+msgstr "mot {month}"
+
+msgid "Où part l’argent"
+msgstr "Hvor pengene går"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Ingen transaksjoner denne måneden"
+
+msgid "Rechercher une opération"
+msgstr "Søk etter en transaksjon"
+
+msgid "Filtrer par catégorie"
+msgstr "Filtrer etter kategori"
+
+msgid "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les libellés identiques."
+msgstr "Et klikk på en kategori endrer kategorien til transaksjonen og foreslår en regel for like beskrivelser."
+
+msgid "Toute la période"
+msgstr "Hele perioden"
+
+msgid "Toutes"
+msgstr "Alle"
+
+msgid "toute la période"
+msgstr "hele perioden"
+
+msgid "{pct} % des dépenses"
+msgstr "{pct} % av utgiftene"
+
+msgid "Aucune opération ne correspond à ces filtres"
+msgstr "Ingen transaksjoner samsvarer med filtrene"
+
+msgid "Afficher la suivante"
+msgid_plural "Afficher les {n} suivantes"
+msgstr[0] "Vis den neste"
+msgstr[1] "Vis de neste {n}"
+
+msgid "Nouvelle catégorie…"
+msgstr "Ny kategori…"
+
+msgid "Changer la catégorie de {label} (actuellement {category})"
+msgstr "Endre kategorien til {label} (nå {category})"
+
+msgid "Créer une règle ?"
+msgstr "Opprette en regel?"
+
+msgid "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports."
+msgstr "Beskrivelser som inneholder <b>{pattern}</b>, sorteres under <b>{category}</b> ved kommende importer."
+
+msgid "Appliquer aux opérations existantes"
+msgstr "Bruk på eksisterende transaksjoner"
+
+msgid "{n} opération sera modifiée, sauf celles corrigées à la main."
+msgid_plural "{n} opérations seront modifiées, sauf celles corrigées à la main."
+msgstr[0] "{n} transaksjon endres, unntatt de som er rettet for hånd."
+msgstr[1] "{n} transaksjoner endres, unntatt de som er rettet for hånd."
+
+msgid "Seulement cette opération"
+msgstr "Bare denne transaksjonen"
+
+msgid "Créer la règle"
+msgstr "Opprett regel"
+
+msgid "Règle créée, {n} autre opération classée"
+msgid_plural "Règle créée, {n} autres opérations classées"
+msgstr[0] "Regelen er opprettet, {n} transaksjon til sortert"
+msgstr[1] "Regelen er opprettet, {n} transaksjoner til sortert"
+
+msgid "Règle créée"
+msgstr "Regelen er opprettet"
+
+msgid "Catégorie modifiée"
+msgstr "Kategorien er endret"
+
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Dagens utgifter <b>{amount}</b>"
+
+msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
+msgstr "Saldo i {month}: fra {start} den 1. til {end} den {day}., sammenlignet med {previous}"
+
+msgid "Part des dépenses"
+msgstr "Andel av utgiftene"
+
+msgid "Écart vs {month}"
+msgstr "Forskjell mot {month}"
+
+msgid "cliquez pour le détail"
+msgstr "klikk for detaljer"
+
+msgid "Anneau des dépenses {of_month} par catégorie, le détail est dans la liste"
+msgstr "Ring over utgiftene i {of_month} per kategori; detaljene står i listen"
+
+msgid "dépensés"
+msgstr "brukt"
+
+msgid "Part du mois"
+msgstr "Andel av måneden"
+
+msgid "Total du mois"
+msgstr "Månedens sum"
+
+msgid "Dépenses mensuelles empilées par catégorie, de {from} à {to}"
+msgstr "Månedlige utgifter stablet per kategori, fra {from} til {to}"
+
+msgid "Solde total"
+msgstr "Samlet saldo"
+
+msgid "{amount} depuis le 1er {month}"
+msgstr "{amount} siden 1. {month}"
+
+msgid "{pct} % par rapport à {month}"
+msgstr "{pct} % sammenlignet med {month}"
+
+msgid "Dépenses {of_month}"
+msgstr "Utgifter i {of_month}"
+
+msgid "dont salaire {amount}"
+msgstr "herav lønn {amount}"
+
+msgid "dont {label} : {amount}"
+msgstr "herav {label}: {amount}"
+
+msgid "Revenus {of_month}"
+msgstr "Inntekter i {of_month}"
+
+msgid "{arrow} {amount} selon vos habitudes"
+msgstr "{arrow} {amount} ut fra vanene dine"
+
+msgid "Pas encore assez de données"
+msgstr "Ikke nok data ennå"
+
+msgid "Solde de tous les comptes, jour après jour"
+msgstr "Saldo for alle kontoer, dag for dag"
+
+msgid "Solde du compte, jour après jour"
+msgstr "Kontoens saldo, dag for dag"
+
+msgid "Évolution du mois"
+msgstr "Månedens utvikling"
+
+msgid "Détail du mois"
+msgstr "Månedens detaljer"
+
+msgid "{amount} dépensés de {from} à {to}"
+msgstr "{amount} brukt fra {from} til {to}"
+
+msgid "Cumul sur 6 mois"
+msgstr "Summer over 6 måneder"
+
+msgid "Voir le cumul"
+msgstr "Se summer"
+
+msgid "{month} · {amount} dépensés"
+msgstr "{month} · {amount} brukt"
+
+msgid "Par catégorie"
+msgstr "Per kategori"
+
+msgid "D’après vos dépenses du dernier mois"
+msgid_plural "D’après vos dépenses des {n} derniers mois"
+msgstr[0] "Ut fra utgiftene dine siste måned"
+msgstr[1] "Ut fra utgiftene dine de siste {n} månedene"
+
+msgid "Solde fin de mois"
+msgstr "Saldo ved månedsslutt"
+
+msgid "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgid_plural "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgstr[0] "En prognose krever minst 3 måneder med transaksjoner. Det mangler {n} måned."
+msgstr[1] "En prognose krever minst 3 måneder med transaksjoner. Det mangler {n} måneder."
+
+msgid "Prévision à 6 mois"
+msgstr "Prognose for 6 måneder"
+
+msgid "Pas encore d’opérations"
+msgstr "Ingen transaksjoner ennå"
+
+msgid "Importez l’export CSV d’un compte pour voir cette vue."
+msgstr "Importer CSV-eksporten fra en konto for å se denne visningen."
+
+msgid "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé comme virement interne : ni dépense, ni revenu."
+msgstr "Navnet ditt, partnerens… En overføring der beskrivelsen inneholder ett av disse navnene, foreslås som intern overføring: verken utgift eller inntekt."
+
+msgid "Retirer ce nom"
+msgstr "Fjern dette navnet"
+
+msgid "Ajouter un nom"
+msgstr "Legg til et navn"
+
+msgid "Suivre le système"
+msgstr "Følg systemet"
+
+msgid "Clair"
+msgstr "Lys"
+
+msgid "Sombre"
+msgstr "Mørk"
+
+msgid "Apparence"
+msgstr "Utseende"
+
+msgid "Confidentialité"
+msgstr "Personvern"
+
+msgid "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune requête réseau. La base de données n’est pas chiffrée."
+msgstr "Alle dataene dine blir på denne datamaskinen. Finaryx gjør ingen nettverksforespørsler. Databasen er ikke kryptert."
+
+msgid "Impossible de lire la base de données."
+msgstr "Kan ikke lese databasen."
+
+msgid "{n} compte"
+msgid_plural "{n} comptes"
+msgstr[0] "{n} konto"
+msgstr[1] "{n} kontoer"
+
+msgid "{n} banque"
+msgid_plural "{n} banques"
+msgstr[0] "{n} bank"
+msgstr[1] "{n} banker"
+
+msgid "{n} virement entre vos comptes à confirmer"
+msgid_plural "{n} virements entre vos comptes à confirmer"
+msgstr[0] "{n} overføring mellom kontoene dine må bekreftes"
+msgstr[1] "{n} overføringer mellom kontoene dine må bekreftes"
+
+msgid "Voir"
+msgstr "Vis"
+
+msgid "La copie de sauvegarde automatique a échoué : {error}"
+msgstr "Den automatiske sikkerhetskopien mislyktes: {error}"
+
+msgid "La base de données n’est pas ouverte."
+msgstr "Databasen er ikke åpen."
+
+msgid "La modification n’a pas pu être enregistrée : {error}"
+msgstr "Endringen kunne ikke lagres: {error}"
+
+msgid "Compte ajouté"
+msgstr "Kontoen er lagt til"
+
+msgid "Compte archivé"
+msgstr "Kontoen er arkivert"
+
+msgid "Compte désarchivé"
+msgstr "Kontoen er tatt ut av arkivet"
+
+msgid "Le compte, son historique d’import et {n} opération seront effacés définitivement."
+msgid_plural "Le compte, son historique d’import et ses {n} opérations seront effacés définitivement."
+msgstr[0] "Kontoen, importhistorikken og {n} transaksjon slettes for godt."
+msgstr[1] "Kontoen, importhistorikken og de {n} transaksjonene slettes for godt."
+
+msgid "Compte supprimé, {n} opération effacée"
+msgid_plural "Compte supprimé, {n} opérations effacées"
+msgstr[0] "Kontoen er slettet, {n} transaksjon fjernet"
+msgstr[1] "Kontoen er slettet, {n} transaksjoner fjernet"
+
+msgid "sans nom"
+msgstr "uten navn"
+
+msgid "Annuler cet import ?"
+msgstr "Angre denne importen?"
+
+msgid "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés."
+msgid_plural "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés."
+msgstr[0] "{n} transaksjon som «{file}» la til på {account}, slettes. Andre importer endres ikke."
+msgstr[1] "De {n} transaksjonene som «{file}» la til på {account}, slettes. Andre importer endres ikke."
+
+msgid "Garder"
+msgstr "Behold"
+
+msgid "Supprimer les opérations"
+msgstr "Slett transaksjonene"
+
+msgid "Import annulé"
+msgstr "Importen er angret"

@@ -1283,8 +1283,8 @@ msgstr "De bank deelt haar transacties al in. Kies voor elke categorie de bijpas
 msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
 msgstr "Deze koppeling wordt met het formaat opgeslagen. Naar een bankcategorie die later verschijnt, wordt hier gevraagd."
 
-msgid "Aperçu"
-msgstr "Voorbeeld"
+msgid "Aperçu de l’import"
+msgstr "Voorbeeld van de import"
 
 msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
 msgstr "Eerste vijf regels, categorieën volgens de koppeling hierboven"
@@ -1366,6 +1366,9 @@ msgid "{n} doublon ignoré"
 msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} dubbele overgeslagen"
 msgstr[1] "{n} dubbele overgeslagen"
+
+msgid "Aperçu"
+msgstr "Overzicht"
 
 msgid "Mois"
 msgstr "Maand"

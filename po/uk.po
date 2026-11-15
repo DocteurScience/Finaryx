@@ -1,0 +1,1741 @@
+# Finaryx — Українська
+# Generated from po/translations.csv by build-aux/translations.py: edit the table.
+msgid ""
+msgstr ""
+"Project-Id-Version: finaryx\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Українська\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "fr"
+msgstr "uk"
+
+msgid "Aucun import"
+msgstr "Імпорту немає"
+
+msgid "À jour"
+msgstr "Актуально"
+
+msgid "À mettre à jour"
+msgstr "Потрібно оновити"
+
+msgid "{month} à importer"
+msgstr "{month}: потрібно імпортувати"
+
+msgid "Logement"
+msgstr "Житло"
+
+msgid "Alimentation"
+msgstr "Харчування"
+
+msgid "Transports"
+msgstr "Транспорт"
+
+msgid "Prêts et crédits"
+msgstr "Позики й кредити"
+
+msgid "Shopping et animaux"
+msgstr "Покупки й тварини"
+
+msgid "Abonnements et télécoms"
+msgstr "Підписки й зв’язок"
+
+msgid "Banque et assurances"
+msgstr "Банк і страхування"
+
+msgid "Autres"
+msgstr "Інше"
+
+msgid "Sorties et loisirs"
+msgstr "Розваги й дозвілля"
+
+msgid "Santé"
+msgstr "Здоров’я"
+
+msgid "Impôts et taxes"
+msgstr "Податки й збори"
+
+msgid "Administratif et éducation"
+msgstr "Адміністрація й освіта"
+
+msgid "Revenus"
+msgstr "Доходи"
+
+msgid "Virement interne"
+msgstr "Внутрішній переказ"
+
+msgid "Donnez un nom à la catégorie."
+msgstr "Дайте категорії назву."
+
+msgid "La catégorie « {name} » existe déjà."
+msgstr "Категорія «{name}» уже існує."
+
+msgid "Cette couleur est déjà utilisée par « {name} »."
+msgstr "Цей колір уже використовує «{name}»."
+
+msgid "Cette catégorie est nécessaire au fonctionnement de Finaryx et ne peut pas être supprimée."
+msgstr "Finaryx потребує цієї категорії: її не можна видалити."
+
+msgid "« Autres » garde toujours le gris."
+msgstr "«Інше» завжди зберігає сірий колір."
+
+msgid "Le motif de la règle est vide."
+msgstr "Шаблон правила порожній."
+
+msgid "Point-virgule ( ; )"
+msgstr "Крапка з комою ( ; )"
+
+msgid "Virgule ( , )"
+msgstr "Кома ( , )"
+
+msgid "Tabulation"
+msgstr "Табуляція"
+
+msgid "Barre verticale ( | )"
+msgstr "Вертикальна риска ( | )"
+
+msgid "JJ/MM/AAAA"
+msgstr "ДД.ММ.РРРР"
+
+msgid "AAAA-MM-JJ"
+msgstr "РРРР-ММ-ДД"
+
+msgid "JJ-MM-AA"
+msgstr "ДД-ММ-РР"
+
+msgid "MM/JJ/AAAA"
+msgstr "ММ/ДД/РРРР"
+
+msgid "Ignorer"
+msgstr "Ігнорувати"
+
+msgid "Date de l’opération"
+msgstr "Дата операції"
+
+msgid "Date de comptabilisation"
+msgstr "Дата проведення"
+
+msgid "Date de valeur"
+msgstr "Дата валютування"
+
+msgid "Libellé"
+msgstr "Опис"
+
+msgid "Détail du libellé"
+msgstr "Подробиці опису"
+
+msgid "Montant"
+msgstr "Сума"
+
+msgid "Débit"
+msgstr "Дебет"
+
+msgid "Crédit"
+msgstr "Кредит"
+
+msgid "Sens (débit ou crédit)"
+msgstr "Напрям (дебет або кредит)"
+
+msgid "Référence de la banque"
+msgstr "Референс банку"
+
+msgid "Solde après l’opération"
+msgstr "Залишок після операції"
+
+msgid "Devise"
+msgstr "Валюта"
+
+msgid "Catégorie de la banque"
+msgstr "Категорія банку"
+
+msgid "Sous-catégorie de la banque"
+msgstr "Підкатегорія банку"
+
+msgid "Une colonne"
+msgstr "Один стовпець"
+
+msgid "Débit et crédit"
+msgstr "Дебет і кредит"
+
+msgid "Montant et sens"
+msgstr "Сума й напрям"
+
+msgid "une date illisible"
+msgstr "нечитабельну дату"
+
+msgid "un libellé vide"
+msgstr "порожній опис"
+
+msgid "un montant illisible"
+msgstr "нечитабельну суму"
+
+msgid "un sens (débit ou crédit) inconnu"
+msgstr "невідомий напрям (дебет або кредит)"
+
+msgid "une autre devise que celle du compte"
+msgstr "іншу валюту, ніж у рахунку"
+
+msgid "Associez une colonne à : {fields}."
+msgstr "Призначте стовпець для: {fields}."
+
+msgid "{n} ligne a {problem} : ligne {lines}"
+msgid_plural "{n} lignes ont {problem} : lignes {lines}"
+msgstr[0] "{n} рядок має {problem}: рядок {lines}"
+msgstr[1] "{n} рядки мають {problem}: рядки {lines}"
+msgstr[2] "{n} рядків мають {problem}: рядки {lines}"
+
+msgid "Finaryx"
+msgstr "Finaryx"
+
+msgid "Suivez vos comptes bancaires, sans rien envoyer en ligne"
+msgstr "Стежте за банківськими рахунками, нічого не надсилаючи в інтернет"
+
+msgid "banque;budget;compte;dépenses;finances;CSV;"
+msgstr "банк;бюджет;рахунок;витрати;фінанси;гроші;CSV;"
+
+msgid "Style"
+msgstr "Стиль"
+
+msgid "Suivre le style du système, ou forcer le style clair ou sombre."
+msgstr "Дотримуватися системного стилю або примусово вибрати світлий чи темний."
+
+msgid "Largeur de la fenêtre"
+msgstr "Ширина вікна"
+
+msgid "Hauteur de la fenêtre"
+msgstr "Висота вікна"
+
+msgid "Sauvegarde automatique"
+msgstr "Автоматична резервна копія"
+
+msgid "Copier la base après chaque import et garder les 5 dernières copies."
+msgstr "Копіювати базу даних після кожного імпорту й зберігати 5 останніх копій."
+
+msgid "Fenêtre maximisée"
+msgstr "Вікно розгорнуто"
+
+msgid "Suivez vos comptes bancaires"
+msgstr "Стежте за банківськими рахунками"
+
+msgid "Finaryx importe les exports CSV de vos banques, les range dans une base locale et vous montre où part votre argent. Plusieurs comptes et plusieurs banques se suivent au même endroit, chacun dans sa devise."
+msgstr "Finaryx імпортує CSV-експорти ваших банків, зберігає їх у локальній базі даних і показує, куди йдуть ваші гроші. Кілька рахунків і банків — в одному місці, кожен у своїй валюті."
+
+msgid "Évolution du solde jour après jour, comparée au mois précédent"
+msgstr "Залишок день за днем у порівнянні з попереднім місяцем"
+
+msgid "Répartition des dépenses par catégorie et cumul sur 3, 6 ou 12 mois"
+msgstr "Витрати за категоріями й підсумки за 3, 6 або 12 місяців"
+
+msgid "Prévision du solde d’après vos charges récurrentes et vos habitudes, avec sa fourchette"
+msgstr "Прогноз залишку за вашими регулярними витратами й звичками, з діапазоном"
+
+msgid "Import guidé : détection du format, aperçu, doublons ignorés, annulation possible"
+msgstr "Покроковий імпорт: розпізнавання формату, попередній перегляд, пропуск дублікатів, скасування"
+
+msgid "Catégories, règles de classement et virements entre vos comptes"
+msgstr "Категорії, правила сортування й перекази між вашими рахунками"
+
+msgid "Sauvegarde, restauration et export CSV des opérations"
+msgstr "Резервна копія, відновлення й експорт операцій у CSV"
+
+msgid "Vos données restent sur votre ordinateur : Finaryx ne fait aucune requête réseau et n’envoie aucune statistique d’usage."
+msgstr "Ваші дані залишаються на вашому комп’ютері: Finaryx не робить мережевих запитів і не надсилає статистики використання."
+
+msgid "DocteurScience"
+msgstr "DocteurScience"
+
+msgid "banque"
+msgstr "банк"
+
+msgid "budget"
+msgstr "бюджет"
+
+msgid "compte"
+msgstr "рахунок"
+
+msgid "dépenses"
+msgstr "витрати"
+
+msgid "finances"
+msgstr "фінанси"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "Vue d’ensemble du mois"
+msgstr "Огляд місяця"
+
+msgid "Prévision du solde d’après vos habitudes"
+msgstr "Прогноз залишку за вашими звичками"
+
+msgid "Le mois en détail"
+msgstr "Місяць докладно"
+
+msgid "Cumul des dépenses par catégorie"
+msgstr "Сума витрат за категоріями"
+
+msgid "Vos comptes et l’historique des imports"
+msgstr "Ваші рахунки й історія імпорту"
+
+msgid "Thème sombre"
+msgstr "Темний стиль"
+
+msgid "Première version."
+msgstr "Перша версія."
+
+msgid "Import CSV avec profil Banque Populaire et mappage manuel pour les autres banques"
+msgstr "Імпорт CSV із профілем Banque Populaire і ручним призначенням для інших банків"
+
+msgid "Vue d’ensemble, mois en détail, cumul et prévisions"
+msgstr "Огляд, місяць докладно, підсумки й прогноз"
+
+msgid "Catégories, règles et virements entre vos comptes"
+msgstr "Категорії, правила й перекази між вашими рахунками"
+
+msgid "Sauvegarde, restauration et export CSV"
+msgstr "Резервна копія, відновлення й експорт у CSV"
+
+msgid "Général"
+msgstr "Загальне"
+
+msgid "Importer un CSV"
+msgstr "Імпортувати CSV"
+
+msgid "Préférences"
+msgstr "Параметри"
+
+msgid "Raccourcis clavier"
+msgstr "Клавіатурні скорочення"
+
+msgid "Fermer la fenêtre"
+msgstr "Закрити вікно"
+
+msgid "Quitter"
+msgstr "Вийти"
+
+msgid "Navigation"
+msgstr "Навігація"
+
+msgid "Vue d'ensemble"
+msgstr "Огляд"
+
+msgid "Mois en détail"
+msgstr "Місяць докладно"
+
+msgid "Cumul"
+msgstr "Підсумки"
+
+msgid "Prévisions"
+msgstr "Прогноз"
+
+msgid "Comptes"
+msgstr "Рахунки"
+
+msgid "Opérations"
+msgstr "Операції"
+
+msgid "Rechercher un libellé"
+msgstr "Шукати опис"
+
+msgid "Catégories et règles…"
+msgstr "Категорії й правила…"
+
+msgid "Exporter les données…"
+msgstr "Експортувати дані…"
+
+msgid "À propos de Finaryx"
+msgstr "Про Finaryx"
+
+msgid "Menu principal"
+msgstr "Головне меню"
+
+msgid "Navigation principale"
+msgstr "Головна навігація"
+
+msgid "Dernier import"
+msgstr "Останній імпорт"
+
+msgid "Importer"
+msgstr "Імпортувати"
+
+msgid "Ajouter un compte"
+msgstr "Додати рахунок"
+
+msgid "Ajouter"
+msgstr "Додати"
+
+msgid "Démonstration : rien n’est enregistré"
+msgstr "Демонстрація: нічого не зберігається"
+
+msgid "Bienvenue dans Finaryx"
+msgstr "Ласкаво просимо до Finaryx"
+
+msgid "Importez l’export CSV d’un compte pour voir où part votre argent. Tout reste sur votre ordinateur, rien n’est envoyé en ligne."
+msgstr "Імпортуйте CSV-експорт рахунку, щоб побачити, куди йдуть ваші гроші. Усе залишається на вашому комп’ютері, нічого не надсилається в інтернет."
+
+msgid "Ajouter un compte d’abord"
+msgstr "Спершу додати рахунок"
+
+msgid "Pour commencer"
+msgstr "Для початку"
+
+msgid "Exportez vos opérations en CSV"
+msgstr "Експортуйте свої операції в CSV"
+
+msgid "Depuis le site ou l’application de votre banque, choisissez la période la plus longue possible."
+msgstr "На сайті чи в застосунку банку виберіть якомога довший період."
+
+msgid "Importez le fichier dans Finaryx"
+msgstr "Імпортуйте файл у Finaryx"
+
+msgid "Le format Banque Populaire est reconnu. Pour les autres banques, vous associez les colonnes une seule fois."
+msgstr "Формат Banque Populaire розпізнається. Для інших банків ви призначаєте стовпці один раз."
+
+msgid "Vérifiez les catégories"
+msgstr "Перевірте категорії"
+
+msgid "Les opérations incertaines sont signalées « À vérifier ». Une correction peut devenir une règle."
+msgstr "Сумнівні операції позначено «Перевірити». Виправлення може стати правилом."
+
+msgid "Impossible d’ouvrir la base de données"
+msgstr "Не вдалося відкрити базу даних"
+
+msgid "Nom"
+msgstr "Назва"
+
+msgid "Banque"
+msgstr "Банк"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Compte courant"
+msgstr "Поточний рахунок"
+
+msgid "Épargne"
+msgstr "Заощадження"
+
+msgid "Les totaux sont calculés séparément pour chaque devise."
+msgstr "Підсумки обчислюються окремо для кожної валюти."
+
+msgid "Numéro de compte (facultatif)"
+msgstr "Номер рахунку (необов’язково)"
+
+msgid "Solde avant la première opération importée"
+msgstr "Залишок до першої імпортованої операції"
+
+msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
+msgstr "Залиште залишок порожнім, якщо він нульовий. Якщо імпортований файл має стовпець залишку, Finaryx запропонує його вирівняти."
+
+msgid "Annuler"
+msgstr "Скасувати"
+
+msgid "Enregistrer"
+msgstr "Зберегти"
+
+msgid "Modifier le compte"
+msgstr "Редагувати рахунок"
+
+msgid "Ouvrir des données de démonstration (rien n’est enregistré)"
+msgstr "Відкрити демонстраційні дані (нічого не зберігається)"
+
+msgid "Suivi de comptes bancaires. Vos données restent sur cet ordinateur : aucune requête réseau, aucune télémétrie. La base de données n’est pas chiffrée."
+msgstr "Облік банківських рахунків. Ваші дані залишаються на цьому комп’ютері: жодних мережевих запитів, жодної телеметрії. База даних не зашифрована."
+
+msgid "Couleur dans les graphiques"
+msgstr "Колір на діаграмах"
+
+msgid "Couleur {n}"
+msgstr "Колір {n}"
+
+msgid "Utilisée par {name}"
+msgstr "Використовує: {name}"
+
+msgid "Libre"
+msgstr "Вільний"
+
+msgid "Aucune couleur"
+msgstr "Без кольору"
+
+msgid "Regroupée dans « Autres » dans les graphiques"
+msgstr "На діаграмах у групі «Інше»"
+
+msgid "Toutes les couleurs sont prises. Cette catégorie sera comptée dans « Autres » dans les graphiques et séparée partout ailleurs. Libérez une couleur en retirant celle d’une autre catégorie."
+msgstr "Усі кольори зайняті. Ця категорія на діаграмах рахуватиметься в «Інше», а всюди інде — окремо. Звільніть колір, забравши його в іншої категорії."
+
+msgid "Créer"
+msgstr "Створити"
+
+msgid "Nouvelle catégorie"
+msgstr "Нова категорія"
+
+msgid "Modifier la catégorie"
+msgstr "Редагувати категорію"
+
+msgid "Fusionner dans"
+msgstr "Об’єднати з"
+
+msgid "Les opérations et les règles passent dans la catégorie choisie"
+msgstr "Операції й правила переходять до вибраної категорії"
+
+msgid "Fusionner…"
+msgstr "Об’єднати…"
+
+msgid "Supprimer la catégorie"
+msgstr "Видалити категорію"
+
+msgid "Son opération passera dans « Autres », à vérifier ; ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », à vérifier ; ses règles seront supprimées."
+msgstr[0] "Її операція перейде до «Інше» на перевірку; її правила буде видалено."
+msgstr[1] "Її {n} операції перейдуть до «Інше» на перевірку; її правила буде видалено."
+msgstr[2] "Її {n} операцій перейдуть до «Інше» на перевірку; її правила буде видалено."
+
+msgid "Supprimer…"
+msgstr "Видалити…"
+
+msgid "Fusionner « {from} » dans « {into} » ?"
+msgstr "Об’єднати «{from}» з «{into}»?"
+
+msgid "{n} opération et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgid_plural "{n} opérations et les règles de « {from} » passeront dans « {into} ». Les totaux ne changent pas."
+msgstr[0] "{n} операція й правила «{from}» перейдуть до «{into}». Підсумки не зміняться."
+msgstr[1] "{n} операції й правила «{from}» перейдуть до «{into}». Підсумки не зміняться."
+msgstr[2] "{n} операцій і правила «{from}» перейдуть до «{into}». Підсумки не зміняться."
+
+msgid "Fusionner"
+msgstr "Об’єднати"
+
+msgid "Catégories fusionnées"
+msgstr "Категорії об’єднано"
+
+msgid "Supprimer « {name} » ?"
+msgstr "Видалити «{name}»?"
+
+msgid "Son opération passera dans « Autres », marquée « À vérifier ». Ses règles seront supprimées."
+msgid_plural "Ses {n} opérations passeront dans « Autres », marquées « À vérifier ». Ses règles seront supprimées."
+msgstr[0] "Її операція перейде до «Інше» з позначкою «Перевірити». Її правила буде видалено."
+msgstr[1] "Її {n} операції перейдуть до «Інше» з позначкою «Перевірити». Її правила буде видалено."
+msgstr[2] "Її {n} операцій перейдуть до «Інше» з позначкою «Перевірити». Її правила буде видалено."
+
+msgid "Supprimer"
+msgstr "Видалити"
+
+msgid "Catégorie supprimée"
+msgstr "Категорію видалено"
+
+msgid "Compte"
+msgstr "Рахунок"
+
+msgid "Solde au {date}"
+msgstr "Залишок на {date}"
+
+msgid "Solde"
+msgstr "Залишок"
+
+msgid "{amount} en {month}"
+msgstr "{amount} за {month}"
+
+msgid "{n} opération enregistrée"
+msgid_plural "{n} opérations enregistrées"
+msgstr[0] "{n} збережена операція"
+msgstr[1] "{n} збережені операції"
+msgstr[2] "{n} збережених операцій"
+
+msgid "Solde du compte sur 6 mois : de {start} en {from} à {end} en {to}"
+msgstr "Залишок рахунку за 6 місяців: від {start} ({from}) до {end} ({to})"
+
+msgid "Aucune"
+msgstr "Немає"
+
+msgid "Modifier"
+msgstr "Редагувати"
+
+msgid "Modifier : {field}"
+msgstr "Редагувати: {field}"
+
+msgid "Réglages du compte"
+msgstr "Налаштування рахунку"
+
+msgid "Dernières opérations"
+msgstr "Останні операції"
+
+msgid "Tout voir"
+msgstr "Показати все"
+
+msgid "Aucune opération"
+msgstr "Операцій немає"
+
+msgid "Sans catégorie"
+msgstr "Без категорії"
+
+msgid "À vérifier"
+msgstr "Перевірити"
+
+msgid "Désarchiver le compte"
+msgstr "Розархівувати рахунок"
+
+msgid "Il revient dans les totaux."
+msgstr "Він знову враховується в підсумках."
+
+msgid "Désarchiver"
+msgstr "Розархівувати"
+
+msgid "Archiver le compte"
+msgstr "Архівувати рахунок"
+
+msgid "Il disparaît des totaux, ses opérations restent consultables."
+msgstr "Він зникає з підсумків; його операції залишаються доступними."
+
+msgid "Archiver"
+msgstr "Архівувати"
+
+msgid "Supprimer le compte et ses opérations"
+msgstr "Видалити рахунок і його операції"
+
+msgid "Action définitive, {n} opération serait effacée."
+msgid_plural "Action définitive, {n} opérations seraient effacées."
+msgstr[0] "Остаточно: буде стерто {n} операцію."
+msgstr[1] "Остаточно: буде стерто {n} операції."
+msgstr[2] "Остаточно: буде стерто {n} операцій."
+
+msgid "Zone sensible"
+msgstr "Небезпечна зона"
+
+msgid "compte courant"
+msgstr "поточний рахунок"
+
+msgid "épargne"
+msgstr "заощадження"
+
+msgid "Solde de tous les comptes"
+msgstr "Залишок усіх рахунків"
+
+msgid "Solde des comptes en {currency}"
+msgstr "Залишок рахунків у {currency}"
+
+msgid "Vos comptes"
+msgstr "Ваші рахунки"
+
+msgid "Comptes archivés"
+msgstr "Архівовані рахунки"
+
+msgid "Ils ne comptent pas dans les totaux."
+msgstr "Вони не враховуються в підсумках."
+
+msgid "{n} opération"
+msgid_plural "{n} opérations"
+msgstr[0] "{n} операція"
+msgstr[1] "{n} операції"
+msgstr[2] "{n} операцій"
+
+msgid "Importé le {date}"
+msgstr "Імпортовано {date}"
+
+msgid "Dernier import le {date}"
+msgstr "Останній імпорт {date}"
+
+msgid "Ajoutez un export CSV pour voir ses opérations"
+msgstr "Додайте CSV-експорт, щоб побачити його операції"
+
+msgid "Évolution du solde sur 6 mois : en hausse de {amount}"
+msgstr "Залишок за 6 місяців: зростання на {amount}"
+
+msgid "Évolution du solde sur 6 mois : en baisse de {amount}"
+msgstr "Залишок за 6 місяців: зниження на {amount}"
+
+msgid "Historique des imports"
+msgstr "Історія імпорту"
+
+msgid "Les doublons ne sont jamais enregistrés deux fois"
+msgstr "Дублікати ніколи не зберігаються двічі"
+
+msgid "Importer un CSV…"
+msgstr "Імпортувати CSV…"
+
+msgid "Aucun import pour l’instant"
+msgstr "Імпорту поки немає"
+
+msgid "{n} nouvelle"
+msgid_plural "{n} nouvelles"
+msgstr[0] "{n} нова"
+msgstr[1] "{n} нові"
+msgstr[2] "{n} нових"
+
+msgid "{n} ajoutée"
+msgid_plural "{n} ajoutées"
+msgstr[0] "{n} додана"
+msgstr[1] "{n} додані"
+msgstr[2] "{n} доданих"
+
+msgid "{n} doublon"
+msgid_plural "{n} doublons"
+msgstr[0] "{n} дублікат"
+msgstr[1] "{n} дублікати"
+msgstr[2] "{n} дублікатів"
+
+msgid "Annuler cet import"
+msgstr "Скасувати цей імпорт"
+
+msgid "Part du total"
+msgstr "Частка загальної суми"
+
+msgid "Part de chaque compte dans le solde total : {list}"
+msgstr "Частка кожного рахунку в загальному залишку: {list}"
+
+msgid "catégorie par défaut, non supprimable"
+msgstr "категорія за замовчуванням, не можна видалити"
+
+msgid "catégorie spéciale, comptée en revenus"
+msgstr "особлива категорія, враховується як дохід"
+
+msgid "catégorie spéciale, exclue des statistiques"
+msgstr "особлива категорія, не входить у статистику"
+
+msgid "couleur de graphique {n}"
+msgstr "колір діаграми {n}"
+
+msgid "sans couleur, regroupée dans « Autres » dans les graphiques"
+msgstr "без кольору, на діаграмах в «Інше»"
+
+msgid "Catégories et règles"
+msgstr "Категорії й правила"
+
+msgid "Catégories"
+msgstr "Категорії"
+
+msgid "Modifier la catégorie {name}"
+msgstr "Редагувати категорію {name}"
+
+msgid "Les graphiques distinguent au plus 12 couleurs, plus « Autres » en gris. Une catégorie sans couleur est comptée dans « Autres » dans les graphiques, mais reste séparée dans les listes, les filtres et les tableaux. Un clic sur « Autres » dans un graphique en affiche le détail. Pour donner une couleur à une catégorie, libérez-en une en la retirant à une autre catégorie."
+msgstr "Діаграми показують щонайбільше 12 кольорів і ще сіре «Інше». Категорія без кольору на діаграмах рахується в «Інше», а в списках, фільтрах і таблицях — окремо. Натисніть «Інше» на діаграмі, щоб побачити подробиці. Щоб дати категорії колір, звільніть його, забравши в іншої категорії."
+
+msgid "Le libellé correspond à « {pattern} »"
+msgstr "Опис відповідає «{pattern}»"
+
+msgid "Le libellé contient « {pattern} »"
+msgstr "Опис містить «{pattern}»"
+
+msgid "Supprimer la règle"
+msgstr "Видалити правило"
+
+msgid "Règle supprimée"
+msgstr "Правило видалено"
+
+msgid "Aucune règle pour l’instant"
+msgstr "Правил поки немає"
+
+msgid "Changez la catégorie d’une opération pour en créer une."
+msgstr "Змініть категорію операції, щоб створити правило."
+
+msgid "Une correction manuelle faite sur une opération passe avant les règles. Supprimer une règle ne change pas les opérations déjà classées."
+msgstr "Ручне виправлення операції має перевагу над правилами. Видалення правила не змінює вже відсортовані операції."
+
+msgid "Règles de catégorisation"
+msgstr "Правила сортування"
+
+msgid "Virements entre vos comptes"
+msgstr "Перекази між вашими рахунками"
+
+msgid "Un débit et un crédit du même montant sur deux de vos comptes, à 3 jours d’écart au plus. Confirmés, ils ne comptent ni en dépenses ni en revenus."
+msgstr "Списання й зарахування однакової суми на двох ваших рахунках з різницею не більше 3 днів. Після підтвердження вони не враховуються ні як витрати, ні як доходи."
+
+msgid "Tout confirmer"
+msgstr "Підтвердити всі"
+
+msgid "{n} virement confirmé"
+msgid_plural "{n} virements confirmés"
+msgstr[0] "{n} переказ підтверджено"
+msgstr[1] "{n} перекази підтверджено"
+msgstr[2] "{n} переказів підтверджено"
+
+msgid "Ce n’est pas un virement"
+msgstr "Це не переказ"
+
+msgid "Confirmer"
+msgstr "Підтвердити"
+
+msgid "Virement confirmé"
+msgstr "Переказ підтверджено"
+
+msgid "Aucun virement à confirmer"
+msgstr "Немає переказів для підтвердження"
+
+msgid "Noms du foyer"
+msgstr "Імена членів родини"
+
+msgid "Les virements venant d’un membre du foyer ne sont pas de vrais revenus. Finaryx propose de les classer en « Virement interne »."
+msgstr "Перекази від члена родини — не справжні доходи. Finaryx пропонує зараховувати їх до «Внутрішній переказ»."
+
+msgid "Modifier les noms…"
+msgstr "Редагувати імена…"
+
+msgid "{n} opération contient « {name} »"
+msgid_plural "{n} opérations contiennent « {name} »"
+msgstr[0] "{n} операція містить «{name}»"
+msgstr[1] "{n} операції містять «{name}»"
+msgstr[2] "{n} операцій містять «{name}»"
+
+msgid "Crée la règle « le libellé contient {name} → Virement interne »"
+msgstr "Створює правило «опис містить {name} → Внутрішній переказ»"
+
+msgid "Classer en virement interne"
+msgstr "Зарахувати до внутрішнього переказу"
+
+msgid "Règle créée, {n} opération classée"
+msgid_plural "Règle créée, {n} opérations classées"
+msgstr[0] "Правило створено, відсортовано {n} операцію"
+msgstr[1] "Правило створено, відсортовано {n} операції"
+msgstr[2] "Правило створено, відсортовано {n} операцій"
+
+msgid "Aucun nom du foyer pour l’instant"
+msgstr "Імен членів родини поки немає"
+
+msgid "Aucune opération à classer"
+msgstr "Немає операцій для сортування"
+
+msgid "Ajoutez-les dans les préférences, par exemple votre nom et celui de votre conjoint."
+msgstr "Додайте їх у параметрах, наприклад своє ім’я та ім’я партнера."
+
+msgid "Les opérations de ces noms sont déjà des virements internes."
+msgstr "Операції з цими іменами вже є внутрішніми переказами."
+
+msgid "Période"
+msgstr "Період"
+
+msgid "{n} mois"
+msgstr "{n} міс."
+
+msgid "Total sur {n} mois"
+msgstr "Сума за {n} міс."
+
+msgid "Moyenne par mois"
+msgstr "Середнє за місяць"
+
+msgid "Mois le plus chargé"
+msgstr "Найдорожчий місяць"
+
+msgid "Mois le plus léger"
+msgstr "Найдешевший місяць"
+
+msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
+msgstr "Відсоток — це частка категорії у витратах місяця. Замалі частки наведено в таблиці нижче."
+
+msgid "Mois par mois, par catégorie"
+msgstr "Місяць за місяцем, за категоріями"
+
+msgid "Catégorie"
+msgstr "Категорія"
+
+msgid "Par mois"
+msgstr "За місяць"
+
+msgid "Total"
+msgstr "Разом"
+
+msgid "Part de chaque catégorie sur la période et montant cumulé."
+msgstr "Частка кожної категорії за період і загальна сума."
+
+msgid "Les colonnes de mois donnent la part de la catégorie ; la ligne Total donne les dépenses du mois."
+msgstr "Стовпці місяців показують частку категорії; рядок «Разом» — витрати місяця."
+
+msgid "Part de chaque catégorie"
+msgstr "Частка кожної категорії"
+
+msgid "{from} à {to}"
+msgstr "{from} – {to}"
+
+msgid "Ce fichier n’est pas une sauvegarde Finaryx."
+msgstr "Цей файл не є резервною копією Finaryx."
+
+msgid "Cette sauvegarde vient d’une version plus récente de Finaryx : mettez l’application à jour pour l’ouvrir."
+msgstr "Ця резервна копія з новішої версії Finaryx: оновіть застосунок, щоб її відкрити."
+
+msgid "Ce fichier n’est pas une base de données lisible."
+msgstr "Цей файл не є читабельною базою даних."
+
+msgid "Le fichier n’a pas pu être écrit ou lu : {error}"
+msgstr "Не вдалося записати чи прочитати файл: {error}"
+
+msgid "Exporter les données"
+msgstr "Експортувати дані"
+
+msgid "Toutes les opérations"
+msgstr "Усі операції"
+
+msgid "Dernier mois"
+msgstr "Останній місяць"
+
+msgid "{n} derniers mois"
+msgstr "Останні {n} міс."
+
+msgid "Période choisie"
+msgstr "Вибраний період"
+
+msgid "Français"
+msgstr "Французький"
+
+msgid "Du (JJ/MM/AAAA)"
+msgstr "З (ДД/ММ/РРРР)"
+
+msgid "Au (JJ/MM/AAAA)"
+msgstr "По (ДД/ММ/РРРР)"
+
+msgid "Exporter la base de données"
+msgstr "Експортувати базу даних"
+
+msgid "Les données restent sur votre ordinateur. Un export crée une copie dans le dossier de votre choix ; rien n’est envoyé en ligne."
+msgstr "Ваші дані залишаються на вашому комп’ютері. Експорт створює копію у вибраній теці; нічого не надсилається в інтернет."
+
+msgid "Sauvegarde complète"
+msgstr "Повна резервна копія"
+
+msgid "Exporter…"
+msgstr "Експортувати…"
+
+msgid "Restaurer une sauvegarde"
+msgstr "Відновити резервну копію"
+
+msgid "Remplace les données actuelles. Une copie de sécurité est faite avant."
+msgstr "Замінює поточні дані. Спочатку створюється запасна копія."
+
+msgid "Restaurer…"
+msgstr "Відновити…"
+
+msgid "Exporter en CSV"
+msgstr "Експортувати в CSV"
+
+msgid "Séparateur et décimales"
+msgstr "Роздільник і десяткові знаки"
+
+msgid "Standard"
+msgstr "Стандартний"
+
+msgid "Format du CSV"
+msgstr "Формат CSV"
+
+msgid "Exporter en CSV…"
+msgstr "Експортувати в CSV…"
+
+msgid "Point-virgule et virgule décimale : s’ouvre directement dans un tableur en français."
+msgstr "Крапка з комою й десяткова кома: відкривається одразу у французькій електронній таблиці."
+
+msgid "Virgule et point décimal : le format le plus courant hors de France."
+msgstr "Кома й десяткова крапка: найпоширеніший формат за межами Франції."
+
+msgid "Copier la base après chaque import"
+msgstr "Копіювати базу даних після кожного імпорту"
+
+msgid "Garde les {n} dernières copies dans {dir}."
+msgstr "Зберігає {n} останніх копій у {dir}."
+
+msgid "Désactivée en démonstration : rien n’est enregistré."
+msgstr "Вимкнено в демонстрації: нічого не зберігається."
+
+msgid "La base n’est pas chiffrée : gardez les exports dans un dossier privé."
+msgstr "База даних не зашифрована: тримайте експорти в приватній теці."
+
+msgid "Copie fidèle du fichier finaryx.db (SQLite) : comptes, opérations, catégories et règles."
+msgstr "Точна копія файлу finaryx.db (SQLite): рахунки, операції, категорії й правила."
+
+msgid "Tous les comptes"
+msgstr "Усі рахунки"
+
+msgid "Date, libellé, montant, catégorie, compte, banque."
+msgstr "Дата, опис, сума, категорія, рахунок, банк."
+
+msgid "Choisissez les deux dates."
+msgstr "Виберіть обидві дати."
+
+msgid "depuis {month}"
+msgstr "від {month}"
+
+msgid "{n} ligne avec ces réglages"
+msgid_plural "{n} lignes avec ces réglages"
+msgstr[0] "{n} рядок із цими налаштуваннями"
+msgstr[1] "{n} рядки з цими налаштуваннями"
+msgstr[2] "{n} рядків із цими налаштуваннями"
+
+msgid "Base exportée"
+msgstr "Базу даних експортовано"
+
+msgid "Choisissez les deux dates de la période."
+msgstr "Виберіть обидві дати періоду."
+
+msgid "{n} opération exportée"
+msgid_plural "{n} opérations exportées"
+msgstr[0] "Експортовано {n} операцію"
+msgstr[1] "Експортовано {n} операції"
+msgstr[2] "Експортовано {n} операцій"
+
+msgid "Sauvegardes Finaryx"
+msgstr "Резервні копії Finaryx"
+
+msgid "Ouvrir le dossier"
+msgstr "Відкрити теку"
+
+msgid "Cette sauvegarde contient {accounts} compte et {operations}."
+msgid_plural "Cette sauvegarde contient {accounts} comptes et {operations}."
+msgstr[0] "Ця резервна копія містить {accounts} рахунок і {operations}."
+msgstr[1] "Ця резервна копія містить {accounts} рахунки й {operations}."
+msgstr[2] "Ця резервна копія містить {accounts} рахунків і {operations}."
+
+msgid "Les données actuelles seront remplacées. Une copie de sécurité est d’abord enregistrée dans {dir}."
+msgstr "Поточні дані буде замінено. Спочатку запасну копію буде збережено в {dir}."
+
+msgid "Les données de démonstration seront remplacées, en mémoire seulement."
+msgstr "Демонстраційні дані буде замінено, лише в пам’яті."
+
+msgid "Restaurer cette sauvegarde ?"
+msgstr "Відновити цю резервну копію?"
+
+msgid "Restaurer"
+msgstr "Відновити"
+
+msgid "Sauvegarde restaurée"
+msgstr "Резервну копію відновлено"
+
+msgid "le 1er"
+msgstr "1-го числа"
+
+msgid "le {day}"
+msgstr "{day}-го числа"
+
+msgid "Solde en fin de mois"
+msgstr "Залишок на кінець місяця"
+
+msgid "{month} · prévu"
+msgstr "{month} · прогноз"
+
+msgid "Fourchette"
+msgstr "Діапазон"
+
+msgid "Dépenses attendues <b>{spending}</b> · revenus <b>{income}</b>"
+msgstr "Очікувані витрати <b>{spending}</b> · доходи <b>{income}</b>"
+
+msgid "Aujourd’hui"
+msgstr "Сьогодні"
+
+msgid "Dernière opération"
+msgstr "Остання операція"
+
+msgid "{month} : pic de dépenses\nattendu ({amount})"
+msgstr "{month}: очікуваний\nпік витрат ({amount})"
+
+msgid "Solde en fin de mois : {real} en {month}, prévu à {end} en {last}, avec une fourchette de {low} à {high}"
+msgstr "Залишок на кінець місяця: {real} ({month}), прогноз {end} ({last}), у діапазоні від {low} до {high}"
+
+msgid "Prévu"
+msgstr "Прогноз"
+
+msgid "Fourchette probable"
+msgstr "Імовірний діапазон"
+
+msgid "Pas encore assez de données pour une prévision"
+msgstr "Поки замало даних для прогнозу"
+
+msgid "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgid_plural "Finaryx a besoin d’au moins 3 mois d’opérations pour repérer vos habitudes. Il vous en manque {n} : importez un export plus ancien pour débloquer cette vue."
+msgstr[0] "Finaryx потребує щонайменше 3 місяці операцій, щоб вивчити ваші звички. Бракує {n} місяця: імпортуйте старіший експорт, щоб відкрити цей вигляд."
+msgstr[1] "Finaryx потребує щонайменше 3 місяці операцій, щоб вивчити ваші звички. Бракує {n} місяців: імпортуйте старіший експорт, щоб відкрити цей вигляд."
+msgstr[2] "Finaryx потребує щонайменше 3 місяці операцій, щоб вивчити ваші звички. Бракує {n} місяців: імпортуйте старіший експорт, щоб відкрити цей вигляд."
+
+msgid "Importer un export plus ancien"
+msgstr "Імпортувати старіший експорт"
+
+msgid "Habitudes calculées sur"
+msgstr "Звички обчислено за"
+
+msgid "Période de référence"
+msgstr "Опорний період"
+
+msgid "Horizon"
+msgstr "Горизонт"
+
+msgid "Horizon de prévision"
+msgstr "Горизонт прогнозу"
+
+msgid "{low} à {high}"
+msgstr "від {low} до {high}"
+
+msgid "Fin {month} (prévu)"
+msgstr "Кінець: {month} (прогноз)"
+
+msgid "Solde fin {month} (prévu)"
+msgstr "Залишок на кінець: {month} (прогноз)"
+
+msgid "Fourchette : {range}"
+msgstr "Діапазон: {range}"
+
+msgid "Dépenses prévues"
+msgstr "Очікувані витрати"
+
+msgid "{amount} / mois"
+msgstr "{amount} / міс."
+
+msgid "Moyenne sur le mois à venir"
+msgid_plural "Moyenne sur les {n} mois à venir"
+msgstr[0] "Середнє за наступний місяць"
+msgstr[1] "Середнє за наступні {n} місяці"
+msgstr[2] "Середнє за наступні {n} місяців"
+
+msgid "Salaire détecté {day} du mois"
+msgstr "Зарплату виявлено {day} місяця"
+
+msgid "{label} détecté {day} du mois"
+msgstr "{label} виявлено {day} місяця"
+
+msgid "Aucun revenu régulier détecté"
+msgstr "Регулярних доходів не виявлено"
+
+msgid "Revenus réguliers"
+msgstr "Регулярні доходи"
+
+msgid "Réel de {from} à {to}, prévu de {first} à {last}"
+msgstr "Фактично: {from} – {to}, прогноз: {first} – {last}"
+
+msgid "Réel"
+msgstr "Фактично"
+
+msgid "Estimation d’après vos charges récurrentes et vos dépenses moyennes. La fourchette s’élargit avec l’horizon."
+msgstr "Оцінка за вашими регулярними й середніми витратами. Діапазон зростає з горизонтом."
+
+msgid "Estimation calculée à partir de vos charges récurrentes et de la moyenne de vos dépenses variables. La fourchette s’élargit avec l’horizon : plus on regarde loin, moins la prévision est sûre."
+msgstr "Оцінка на основі ваших регулярних витрат і середнього змінних витрат. Діапазон зростає з горизонтом: що далі, то менш певний прогноз."
+
+msgid "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgid_plural "Habitudes calculées sur {n} mois : l’historique ne remonte pas plus loin."
+msgstr[0] "Звички обчислено за {n} місяць: історія не сягає далі."
+msgstr[1] "Звички обчислено за {n} місяці: історія не сягає далі."
+msgstr[2] "Звички обчислено за {n} місяців: історія не сягає далі."
+
+msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
+msgstr "Сезонність не враховано: історія коротша за 12 місяців."
+
+msgid "{month} (en cours)"
+msgstr "{month} (триває)"
+
+msgid "{amount} de dépenses"
+msgstr "Витрати: {amount}"
+
+msgid "{income} de revenus · {spending}"
+msgstr "Доходи: {income} · {spending}"
+
+msgid "{amount} sur le mois"
+msgstr "{amount} за місяць"
+
+msgid "Charges fixes"
+msgstr "Постійні витрати"
+
+msgid "Aucune charge récurrente détectée"
+msgstr "Регулярних витрат не виявлено"
+
+msgid "Une charge est récurrente quand le même libellé revient chaque mois, pour un montant proche."
+msgstr "Витрата регулярна, коли той самий опис повторюється щомісяця з подібною сумою."
+
+msgid "Mois par mois"
+msgstr "Місяць за місяцем"
+
+msgid "Charges récurrentes détectées"
+msgstr "Виявлені регулярні витрати"
+
+msgid "Choisir un fichier…"
+msgstr "Вибрати файл…"
+
+msgid "Choisissez l’export CSV d’un compte, ou déposez-le ici. Le fichier n’est jamais modifié et rien n’est enregistré avant votre confirmation."
+msgstr "Виберіть CSV-експорт рахунку або перетягніть його сюди. Файл ніколи не змінюється, і нічого не зберігається до вашого підтвердження."
+
+msgid "Fichiers CSV"
+msgstr "Файли CSV"
+
+msgid "Tous les fichiers"
+msgstr "Усі файли"
+
+msgid "Choisir un export CSV"
+msgstr "Вибрати CSV-експорт"
+
+msgid "fichier"
+msgstr "файл"
+
+msgid "Impossible de lire le fichier : {error}"
+msgstr "Не вдалося прочитати файл: {error}"
+
+msgid "Le fichier ne se lit pas encore correctement"
+msgstr "Файл поки читається неправильно"
+
+msgid "{n} ligne"
+msgid_plural "{n} lignes"
+msgstr[0] "{n} рядок"
+msgstr[1] "{n} рядки"
+msgstr[2] "{n} рядків"
+
+msgid "{n} colonne"
+msgid_plural "{n} colonnes"
+msgstr[0] "{n} стовпець"
+msgstr[1] "{n} стовпці"
+msgstr[2] "{n} стовпців"
+
+msgid "Changer…"
+msgstr "Змінити…"
+
+msgid "Compte de destination"
+msgstr "Рахунок призначення"
+
+msgid "Aucun compte pour l’instant : créez celui qui recevra ces opérations."
+msgstr "Рахунків поки немає: створіть той, що прийме ці операції."
+
+msgid "Créer un compte…"
+msgstr "Створити рахунок…"
+
+msgid "Nouveau compte…"
+msgstr "Новий рахунок…"
+
+msgid "Les opérations seront ajoutées à ce compte"
+msgstr "Операції буде додано до цього рахунку"
+
+msgid "Modèle reconnu : {name}. Les colonnes sont associées, vérifiez-les si besoin."
+msgstr "Розпізнаний формат: {name}. Стовпці призначено; за потреби перевірте їх."
+
+msgid "Reconnu"
+msgstr "Розпізнано"
+
+msgid "Format jamais importé : associez les colonnes ci-dessous. Il sera reconnu la prochaine fois."
+msgstr "Формат ще не імпортувався: призначте стовпці нижче. Наступного разу його буде розпізнано."
+
+msgid "Nouveau format"
+msgstr "Новий формат"
+
+msgid "Modèle de banque"
+msgstr "Формат банку"
+
+msgid "Fichier"
+msgstr "Файл"
+
+msgid "Encodage"
+msgstr "Кодування"
+
+msgid "Séparateur de colonnes"
+msgstr "Роздільник стовпців"
+
+msgid "Ligne des en-têtes"
+msgstr "Рядок заголовків"
+
+msgid "Ligne {n}"
+msgstr "Рядок {n}"
+
+msgid "Format des dates"
+msgstr "Формат дат"
+
+msgid "À vérifier : les jours et les mois peuvent être inversés"
+msgstr "Перевірте: дні й місяці можуть бути переплутані"
+
+msgid "Séparateur décimal"
+msgstr "Десятковий роздільник"
+
+msgid "Point ( . )"
+msgstr "Крапка ( . )"
+
+msgid "Format du fichier"
+msgstr "Формат файлу"
+
+msgid "Détecté automatiquement, à corriger si la lecture est mauvaise"
+msgstr "Визначено автоматично; виправте, якщо файл читається неправильно"
+
+msgid "Colonnes du fichier"
+msgstr "Стовпці файлу"
+
+msgid "Dites à quoi sert chaque colonne du fichier. Les colonnes inutiles restent sur « Ignorer »."
+msgstr "Вкажіть, для чого кожен стовпець файлу. Непотрібні стовпці лишаються на «Ігнорувати»."
+
+msgid "Comment le montant est écrit"
+msgstr "Як записано суму"
+
+msgid "Écriture du montant"
+msgstr "Запис суми"
+
+msgid "Exemple : (vide)"
+msgstr "Приклад: (порожньо)"
+
+msgid "Exemple : {value}"
+msgstr "Приклад: {value}"
+
+msgid "Champ pour la colonne {column}"
+msgstr "Поле для стовпця {column}"
+
+msgid "Valeurs pour un débit"
+msgstr "Значення для дебету"
+
+msgid "Valeurs pour un crédit"
+msgstr "Значення для кредиту"
+
+msgid "Séparez les valeurs par des virgules ; la casse et les accents ne comptent pas."
+msgstr "Розділяйте значення комами; регістр і діакритика не важать."
+
+msgid "Exclue"
+msgstr "Виключено"
+
+msgid "Reconnue"
+msgstr "Розпізнано"
+
+msgid "Proposée"
+msgstr "Запропоновано"
+
+msgid "Catégorie de Finaryx pour {bank}"
+msgstr "Категорія Finaryx для {bank}"
+
+msgid "Afficher moins"
+msgstr "Показати менше"
+
+msgid "Voir la correspondance"
+msgid_plural "Voir les {n} correspondances"
+msgstr[0] "Показати відповідність"
+msgstr[1] "Показати {n} відповідності"
+msgstr[2] "Показати {n} відповідностей"
+
+msgid "Catégories de la banque"
+msgstr "Категорії банку"
+
+msgid "La banque classe déjà ses opérations. Choisissez la catégorie de Finaryx qui correspond à chacune."
+msgstr "Банк уже сортує свої операції. Виберіть відповідну категорію Finaryx для кожної."
+
+msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
+msgstr "Ця відповідність зберігається разом із форматом. Про категорію банку, яка з’явиться пізніше, буде запитано тут."
+
+msgid "Aperçu de l’import"
+msgstr "Попередній перегляд імпорту"
+
+msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
+msgstr "Перші п’ять рядків, категорії за відповідністю вище"
+
+msgid "Choisissez ou créez le compte de destination pour voir l’aperçu."
+msgstr "Виберіть або створіть рахунок призначення, щоб побачити попередній перегляд."
+
+msgid "L’aperçu apparaîtra quand les colonnes obligatoires seront associées."
+msgstr "Попередній перегляд з’явиться, коли буде призначено обов’язкові стовпці."
+
+msgid "Nouveau"
+msgstr "Нова"
+
+msgid "Doublon"
+msgstr "Дублікат"
+
+msgid "Aucune ligne lisible"
+msgstr "Немає читабельних рядків"
+
+msgid "Ces lignes ne seront pas importées."
+msgstr "Ці рядки не буде імпортовано."
+
+msgid "La colonne de solde ne suit pas les montants : ligne {lines}. L’import reste possible."
+msgstr "Стовпець залишку не відповідає сумам: рядок {lines}. Імпорт усе одно можливий."
+
+msgid "À savoir avant d’importer"
+msgstr "Перед імпортом"
+
+msgid "Lignes lues"
+msgstr "Прочитано рядків"
+
+msgid "Nouvelles opérations"
+msgstr "Нові операції"
+
+msgid "Doublons ignorés"
+msgstr "Пропущені дублікати"
+
+msgid "À vérifier (catégorie incertaine)"
+msgstr "Перевірити (сумнівна категорія)"
+
+msgid "Lignes illisibles, non importées"
+msgstr "Нечитабельні рядки, не імпортовано"
+
+msgid "Recaler le solde initial"
+msgstr "Вирівняти початковий залишок"
+
+msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
+msgstr "За стовпцем залишку залишок до першої імпортованої операції стає {amount}."
+
+msgid "Retenir ce format"
+msgstr "Запам’ятати цей формат"
+
+msgid "Le prochain fichier de cette banque sera lu sans rien demander"
+msgstr "Наступний файл цього банку буде прочитано без запитань"
+
+msgid "Nom du format"
+msgstr "Назва формату"
+
+msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
+msgstr "Дублікат має ту саму дату, опис, суму й референс, що й уже збережена операція. Ваші файли ніколи не змінюються."
+
+msgid "Résumé"
+msgstr "Підсумок"
+
+msgid "Aucune nouvelle opération"
+msgstr "Нових операцій немає"
+
+msgid "Importer {n} opération"
+msgid_plural "Importer {n} opérations"
+msgstr[0] "Імпортувати {n} операцію"
+msgstr[1] "Імпортувати {n} операції"
+msgstr[2] "Імпортувати {n} операцій"
+
+msgid "{n} opération importée"
+msgid_plural "{n} opérations importées"
+msgstr[0] "Імпортовано {n} операцію"
+msgstr[1] "Імпортовано {n} операції"
+msgstr[2] "Імпортовано {n} операцій"
+
+msgid "{n} doublon ignoré"
+msgid_plural "{n} doublons ignorés"
+msgstr[0] "Пропущено {n} дублікат"
+msgstr[1] "Пропущено {n} дублікати"
+msgstr[2] "Пропущено {n} дублікатів"
+
+msgid "Aperçu"
+msgstr "Огляд"
+
+msgid "Mois"
+msgstr "Місяць"
+
+msgid "Compte affiché"
+msgstr "Показаний рахунок"
+
+msgid "{n} Ko"
+msgstr "{n} КБ"
+
+msgid "{n} Mo"
+msgstr "{n} МБ"
+
+msgid "Non classé"
+msgstr "Не відсортовано"
+
+msgid "{month} · {amount} regroupés dans « Autres » dans les graphiques"
+msgstr "{month} · {amount} на діаграмах у групі «Інше»"
+
+msgid "Les graphiques montrent au plus 12 couleurs, plus « Autres » en gris. Les catégories sans couleur sont comptées ici ; les listes et les tableaux les montrent séparément."
+msgstr "Діаграми показують щонайбільше 12 кольорів і ще сіре «Інше». Категорії без кольору рахуються тут; списки й таблиці показують їх окремо."
+
+msgid "Gérer les couleurs…"
+msgstr "Керувати кольорами…"
+
+msgid "Fermer"
+msgstr "Закрити"
+
+msgid "Détail de « Autres »"
+msgstr "Подробиці «Інше»"
+
+msgid "Mois précédent : {month}"
+msgstr "Попередній місяць: {month}"
+
+msgid "Mois suivant : {month}"
+msgstr "Наступний місяць: {month}"
+
+msgid "{first} le 1er, {last} au {day} {month}"
+msgstr "{first} 1-го числа, {last} {day}-го числа ({month})"
+
+msgid "Solde {of_month}"
+msgstr "Залишок: {of_month}"
+
+msgid "Dépenses du jour"
+msgstr "Витрати дня"
+
+msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
+msgstr "Витрати кожного дня: {of_month}; {day}-го числа вирізняється {peak}"
+
+msgid "Dépenses de chaque jour du mois"
+msgstr "Витрати кожного дня місяця"
+
+msgid "Évolution du solde"
+msgstr "Зміна залишку"
+
+msgid "Part"
+msgstr "Частка"
+
+msgid "vs {month}"
+msgstr "порівняно з {month}"
+
+msgid "Où part l’argent"
+msgstr "Куди йдуть гроші"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Цього місяця операцій немає"
+
+msgid "Rechercher une opération"
+msgstr "Шукати операцію"
+
+msgid "Filtrer par catégorie"
+msgstr "Фільтрувати за категорією"
+
+msgid "Cliquer sur une catégorie change la catégorie de l’opération et propose d’en faire une règle pour les libellés identiques."
+msgstr "Натискання на категорію змінює категорію операції та пропонує зробити правило для однакових описів."
+
+msgid "Toute la période"
+msgstr "Увесь період"
+
+msgid "Toutes"
+msgstr "Усі"
+
+msgid "toute la période"
+msgstr "увесь період"
+
+msgid "{pct} % des dépenses"
+msgstr "{pct}% витрат"
+
+msgid "Aucune opération ne correspond à ces filtres"
+msgstr "Жодна операція не відповідає цим фільтрам"
+
+msgid "Afficher la suivante"
+msgid_plural "Afficher les {n} suivantes"
+msgstr[0] "Показати наступну"
+msgstr[1] "Показати наступні {n}"
+msgstr[2] "Показати наступні {n}"
+
+msgid "Nouvelle catégorie…"
+msgstr "Нова категорія…"
+
+msgid "Changer la catégorie de {label} (actuellement {category})"
+msgstr "Змінити категорію {label} (зараз {category})"
+
+msgid "Créer une règle ?"
+msgstr "Створити правило?"
+
+msgid "Les libellés qui contiennent <b>{pattern}</b> seront classés en <b>{category}</b> lors des prochains imports."
+msgstr "Описи, що містять <b>{pattern}</b>, під час наступних імпортів буде зараховано до <b>{category}</b>."
+
+msgid "Appliquer aux opérations existantes"
+msgstr "Застосувати до наявних операцій"
+
+msgid "{n} opération sera modifiée, sauf celles corrigées à la main."
+msgid_plural "{n} opérations seront modifiées, sauf celles corrigées à la main."
+msgstr[0] "Буде змінено {n} операцію, крім виправлених вручну."
+msgstr[1] "Буде змінено {n} операції, крім виправлених вручну."
+msgstr[2] "Буде змінено {n} операцій, крім виправлених вручну."
+
+msgid "Seulement cette opération"
+msgstr "Лише ця операція"
+
+msgid "Créer la règle"
+msgstr "Створити правило"
+
+msgid "Règle créée, {n} autre opération classée"
+msgid_plural "Règle créée, {n} autres opérations classées"
+msgstr[0] "Правило створено, відсортовано ще {n} операцію"
+msgstr[1] "Правило створено, відсортовано ще {n} операції"
+msgstr[2] "Правило створено, відсортовано ще {n} операцій"
+
+msgid "Règle créée"
+msgstr "Правило створено"
+
+msgid "Catégorie modifiée"
+msgstr "Категорію змінено"
+
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Витрати дня <b>{amount}</b>"
+
+msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
+msgstr "Залишок ({month}): від {start} 1-го числа до {end} {day}-го числа, порівняно з {previous}"
+
+msgid "Part des dépenses"
+msgstr "Частка витрат"
+
+msgid "Écart vs {month}"
+msgstr "Різниця порівняно з {month}"
+
+msgid "cliquez pour le détail"
+msgstr "натисніть, щоб побачити подробиці"
+
+msgid "Anneau des dépenses {of_month} par catégorie, le détail est dans la liste"
+msgstr "Кільце витрат ({of_month}) за категоріями; подробиці у списку"
+
+msgid "dépensés"
+msgstr "витрачено"
+
+msgid "Part du mois"
+msgstr "Частка місяця"
+
+msgid "Total du mois"
+msgstr "Разом за місяць"
+
+msgid "Dépenses mensuelles empilées par catégorie, de {from} à {to}"
+msgstr "Місячні витрати за категоріями стовпцями, {from} – {to}"
+
+msgid "Solde total"
+msgstr "Загальний залишок"
+
+msgid "{amount} depuis le 1er {month}"
+msgstr "{amount} з 1-го числа ({month})"
+
+msgid "{pct} % par rapport à {month}"
+msgstr "{pct}% порівняно з {month}"
+
+msgid "Dépenses {of_month}"
+msgstr "Витрати: {of_month}"
+
+msgid "dont salaire {amount}"
+msgstr "з них зарплата {amount}"
+
+msgid "dont {label} : {amount}"
+msgstr "з них {label}: {amount}"
+
+msgid "Revenus {of_month}"
+msgstr "Доходи: {of_month}"
+
+msgid "{arrow} {amount} selon vos habitudes"
+msgstr "{arrow} {amount} за вашими звичками"
+
+msgid "Pas encore assez de données"
+msgstr "Поки замало даних"
+
+msgid "Solde de tous les comptes, jour après jour"
+msgstr "Залишок усіх рахунків день за днем"
+
+msgid "Solde du compte, jour après jour"
+msgstr "Залишок рахунку день за днем"
+
+msgid "Évolution du mois"
+msgstr "Зміни за місяць"
+
+msgid "Détail du mois"
+msgstr "Подробиці місяця"
+
+msgid "{amount} dépensés de {from} à {to}"
+msgstr "Витрачено {amount}: {from} – {to}"
+
+msgid "Cumul sur 6 mois"
+msgstr "Підсумки за 6 місяців"
+
+msgid "Voir le cumul"
+msgstr "Показати підсумки"
+
+msgid "{month} · {amount} dépensés"
+msgstr "{month} · витрачено {amount}"
+
+msgid "Par catégorie"
+msgstr "За категоріями"
+
+msgid "D’après vos dépenses du dernier mois"
+msgid_plural "D’après vos dépenses des {n} derniers mois"
+msgstr[0] "За вашими витратами за останній місяць"
+msgstr[1] "За вашими витратами за останні {n} місяці"
+msgstr[2] "За вашими витратами за останні {n} місяців"
+
+msgid "Solde fin de mois"
+msgstr "Залишок на кінець місяця"
+
+msgid "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgid_plural "Il faut au moins 3 mois d’opérations pour une prévision. Il en manque {n}."
+msgstr[0] "Прогноз потребує щонайменше 3 місяці операцій. Бракує {n} місяця."
+msgstr[1] "Прогноз потребує щонайменше 3 місяці операцій. Бракує {n} місяців."
+msgstr[2] "Прогноз потребує щонайменше 3 місяці операцій. Бракує {n} місяців."
+
+msgid "Prévision à 6 mois"
+msgstr "Прогноз на 6 місяців"
+
+msgid "Pas encore d’opérations"
+msgstr "Операцій поки немає"
+
+msgid "Importez l’export CSV d’un compte pour voir cette vue."
+msgstr "Імпортуйте CSV-експорт рахунку, щоб побачити цей вигляд."
+
+msgid "Votre nom, celui de votre conjoint… Un virement dont le libellé contient l’un de ces noms est proposé comme virement interne : ni dépense, ni revenu."
+msgstr "Ваше ім’я, ім’я партнера… Переказ, опис якого містить одне з цих імен, пропонується як внутрішній переказ: ні витрата, ні дохід."
+
+msgid "Retirer ce nom"
+msgstr "Прибрати це ім’я"
+
+msgid "Ajouter un nom"
+msgstr "Додати ім’я"
+
+msgid "Suivre le système"
+msgstr "Як у системі"
+
+msgid "Clair"
+msgstr "Світлий"
+
+msgid "Sombre"
+msgstr "Темний"
+
+msgid "Apparence"
+msgstr "Вигляд"
+
+msgid "Confidentialité"
+msgstr "Приватність"
+
+msgid "Toutes vos données restent sur cet ordinateur. Finaryx n’effectue aucune requête réseau. La base de données n’est pas chiffrée."
+msgstr "Усі ваші дані залишаються на цьому комп’ютері. Finaryx не робить мережевих запитів. База даних не зашифрована."
+
+msgid "Impossible de lire la base de données."
+msgstr "Не вдалося прочитати базу даних."
+
+msgid "{n} compte"
+msgid_plural "{n} comptes"
+msgstr[0] "{n} рахунок"
+msgstr[1] "{n} рахунки"
+msgstr[2] "{n} рахунків"
+
+msgid "{n} banque"
+msgid_plural "{n} banques"
+msgstr[0] "{n} банк"
+msgstr[1] "{n} банки"
+msgstr[2] "{n} банків"
+
+msgid "{n} virement entre vos comptes à confirmer"
+msgid_plural "{n} virements entre vos comptes à confirmer"
+msgstr[0] "{n} переказ між вашими рахунками чекає підтвердження"
+msgstr[1] "{n} перекази між вашими рахунками чекають підтвердження"
+msgstr[2] "{n} переказів між вашими рахунками чекають підтвердження"
+
+msgid "Voir"
+msgstr "Переглянути"
+
+msgid "La copie de sauvegarde automatique a échoué : {error}"
+msgstr "Не вдалося створити автоматичну резервну копію: {error}"
+
+msgid "La base de données n’est pas ouverte."
+msgstr "Базу даних не відкрито."
+
+msgid "La modification n’a pas pu être enregistrée : {error}"
+msgstr "Не вдалося зберегти зміну: {error}"
+
+msgid "Compte ajouté"
+msgstr "Рахунок додано"
+
+msgid "Compte archivé"
+msgstr "Рахунок архівовано"
+
+msgid "Compte désarchivé"
+msgstr "Рахунок розархівовано"
+
+msgid "Le compte, son historique d’import et {n} opération seront effacés définitivement."
+msgid_plural "Le compte, son historique d’import et ses {n} opérations seront effacés définitivement."
+msgstr[0] "Рахунок, його історію імпорту та {n} операцію буде остаточно стерто."
+msgstr[1] "Рахунок, його історію імпорту та {n} операції буде остаточно стерто."
+msgstr[2] "Рахунок, його історію імпорту та {n} операцій буде остаточно стерто."
+
+msgid "Compte supprimé, {n} opération effacée"
+msgid_plural "Compte supprimé, {n} opérations effacées"
+msgstr[0] "Рахунок видалено, стерто {n} операцію"
+msgstr[1] "Рахунок видалено, стерто {n} операції"
+msgstr[2] "Рахунок видалено, стерто {n} операцій"
+
+msgid "sans nom"
+msgstr "без назви"
+
+msgid "Annuler cet import ?"
+msgstr "Скасувати цей імпорт?"
+
+msgid "{n} opération ajoutée par « {file} » sur {account} sera supprimée. Les autres imports ne sont pas modifiés."
+msgid_plural "Les {n} opérations ajoutées par « {file} » sur {account} seront supprimées. Les autres imports ne sont pas modifiés."
+msgstr[0] "{n} операцію, додану файлом «{file}» до {account}, буде видалено. Інші імпорти не зміняться."
+msgstr[1] "{n} операції, додані файлом «{file}» до {account}, буде видалено. Інші імпорти не зміняться."
+msgstr[2] "{n} операцій, доданих файлом «{file}» до {account}, буде видалено. Інші імпорти не зміняться."
+
+msgid "Garder"
+msgstr "Залишити"
+
+msgid "Supprimer les opérations"
+msgstr "Видалити операції"
+
+msgid "Import annulé"
+msgstr "Імпорт скасовано"

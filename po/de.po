@@ -1283,8 +1283,8 @@ msgstr "Die Bank sortiert ihre Buchungen bereits. Wählen Sie für jede die pass
 msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
 msgstr "Diese Zuordnung wird mit dem Format gespeichert. Nach einer später erscheinenden Bankkategorie wird hier gefragt."
 
-msgid "Aperçu"
-msgstr "Vorschau"
+msgid "Aperçu de l’import"
+msgstr "Importvorschau"
 
 msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
 msgstr "Die ersten fünf Zeilen, Kategorien nach der Zuordnung oben"
@@ -1366,6 +1366,9 @@ msgid "{n} doublon ignoré"
 msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} Duplikat übersprungen"
 msgstr[1] "{n} Duplikate übersprungen"
+
+msgid "Aperçu"
+msgstr "Übersicht"
 
 msgid "Mois"
 msgstr "Monat"

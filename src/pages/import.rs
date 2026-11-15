@@ -956,7 +956,7 @@ impl ImportPage {
         let title = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)
             .build();
-        title.append(&heading(&gettext("Aperçu")));
+        title.append(&heading(&gettext("Aperçu de l’import")));
         title.append(&caption(&gettext(
             "Cinq premières lignes, catégories d’après la correspondance ci-dessus",
         )));

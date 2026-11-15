@@ -1283,8 +1283,8 @@ msgstr "The bank already sorts its transactions. Choose the matching Finaryx cat
 msgid "Cette correspondance est enregistrée avec le format. Une catégorie de la banque qui apparaîtra plus tard vous sera demandée ici."
 msgstr "This match is saved with the format. A bank category that shows up later will be asked here."
 
-msgid "Aperçu"
-msgstr "Preview"
+msgid "Aperçu de l’import"
+msgstr "Import preview"
 
 msgid "Cinq premières lignes, catégories d’après la correspondance ci-dessus"
 msgstr "First five rows, categories from the match above"
@@ -1366,6 +1366,9 @@ msgid "{n} doublon ignoré"
 msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} duplicate skipped"
 msgstr[1] "{n} duplicates skipped"
+
+msgid "Aperçu"
+msgstr "Overview"
 
 msgid "Mois"
 msgstr "Month"
