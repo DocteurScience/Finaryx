@@ -17,7 +17,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Version to publish (e.g. v0.1.0); empty: build only"
+        description: "Étiquette à publier, par exemple v0.1.0 (vide : construction seulement, rien n’est publié)"
         required: false
         default: ""
 
@@ -33,6 +33,18 @@ jobs:
       options: --privileged
     steps:
       - uses: actions/checkout@v4
+
+      - name: Mode
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" != workflow_dispatch ]; then
+            echo "Build only ($GITHUB_EVENT_NAME)."
+          elif [ -z "$TAG" ]; then
+            echo "::warning title=Rien n’est publié::Champ d’étiquette vide : le Flatpak est seulement construit. Pour publier, relancer avec l’étiquette (par exemple v0.1.0)."
+          else
+            echo "::notice title=Publication::Étiquette $TAG : la version sera publiée après la construction."
+          fi
 
       - name: Manifest for this commit
         run: |
