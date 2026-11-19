@@ -3,10 +3,11 @@
 # release tag. The bundle is kept as an artifact of the run and, for a
 # v* tag, attached to the GitHub release.
 #
-# Publishing a version: Actions > Flatpak > Run workflow on main, with the
-# tag (e.g. v0.1.0). The run creates the tag and the release (text:
-# .github/release-notes.md) and attaches the bundle. It is started by hand
-# by the owner, never by a Claude session.
+# Publishing a version: Actions > Flatpak > Run workflow on main. A manual
+# run always publishes the version of Cargo.toml (tag v<version>): it
+# creates the tag and the release (text: .github/release-notes.md) and
+# attaches the bundle. It is started by hand by the owner, never by a
+# Claude session.
 name: Flatpak
 
 on:
@@ -15,11 +16,6 @@ on:
     tags: ["v*"]
   pull_request:
   workflow_dispatch:
-    inputs:
-      tag:
-        description: "Étiquette à publier, par exemple v0.1.0 (vide : construction seulement, rien n’est publié)"
-        required: false
-        default: ""
 
 permissions:
   contents: write
@@ -35,15 +31,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Mode
-        env:
-          TAG: ${{ inputs.tag }}
         run: |
-          if [ "$GITHUB_EVENT_NAME" != workflow_dispatch ]; then
-            echo "Build only ($GITHUB_EVENT_NAME)."
-          elif [ -z "$TAG" ]; then
-            echo "::warning title=Rien n’est publié::Champ d’étiquette vide : le Flatpak est seulement construit. Pour publier, relancer avec l’étiquette (par exemple v0.1.0)."
+          version=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            echo "::notice title=Publication::Version v$version : elle sera publiée après la construction."
           else
-            echo "::notice title=Publication::Étiquette $TAG : la version sera publiée après la construction."
+            echo "Build only ($GITHUB_EVENT_NAME)."
           fi
 
       - name: Manifest for this commit
@@ -65,13 +58,13 @@ jobs:
           cache-key: flatpak-builder-${{ github.sha }}
 
       - name: Publish the release
-        if: startsWith(github.ref, 'refs/tags/v') || inputs.tag != ''
+        if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || inputs.tag }}
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           version=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then TAG="v$version"; else TAG="$GITHUB_REF_NAME"; fi
           if [ "$TAG" != "v$version" ]; then
             echo "The tag $TAG does not match the version of Cargo.toml (v$version)."; exit 1
           fi
