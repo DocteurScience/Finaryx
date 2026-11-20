@@ -192,6 +192,7 @@ pub fn donut(
         let hit = part_at(&c.parts, area.width() as f64, area.height() as f64, x, y);
         if hit != hovered.get() {
             hovered.set(hit);
+            area.set_cursor_from_name(hit.map(|_| "pointer"));
             area.queue_draw();
         }
     });

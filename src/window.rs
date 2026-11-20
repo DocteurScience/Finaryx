@@ -54,8 +54,6 @@ mod imp {
         #[template_child]
         pub window_title: TemplateChild<adw::WindowTitle>,
         #[template_child]
-        pub import_button: TemplateChild<gtk::Button>,
-        #[template_child]
         pub import_icon_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub add_account_button: TemplateChild<gtk::Button>,
@@ -564,6 +562,52 @@ impl FinaryxWindow {
         imp.split_view.set_show_content(true);
     }
 
+    /// Opens the detail of a category from the month `from` to the month
+    /// `to` (excluded), for the selected accounts.
+    pub fn show_category(&self, category_id: i64, from: NaiveDate, to: NaiveDate) {
+        let imp = self.imp();
+        let narrow = imp.narrow.get();
+        let page = self.read(|conn| {
+            let Some(scope) = finaryx_core::stats::scope(conn, self.selected_account())? else {
+                return Ok(None);
+            };
+            pages::category_detail::page(self, conn, &scope, category_id, from, to, narrow)
+                .map(Some)
+        });
+        if let Some(Some(page)) = page {
+            imp.content_nav.pop_to_tag("main");
+            imp.content_nav.push(&page);
+            imp.split_view.set_show_content(true);
+        }
+    }
+
+    /// Opens what a chart group stands for over the months `from` to `to`
+    /// (excluded): the page of its category, or the detail of "Autres".
+    pub fn show_chart_group(&self, slot: u8, from: NaiveDate, to: NaiveDate) {
+        use finaryx_core::stats;
+        let found = self
+            .read(|conn| {
+                let Some(scope) = stats::scope(conn, self.selected_account())? else {
+                    return Ok(None);
+                };
+                let parts =
+                    stats::chart_parts(&stats::spending_by_category(conn, &scope, from, to)?);
+                Ok(parts
+                    .into_iter()
+                    .find(|p| p.slot == slot)
+                    .map(|p| (p, scope.currency)))
+            })
+            .flatten();
+        let Some((part, currency)) = found else {
+            return;
+        };
+        if slot == finaryx_core::categories::OTHERS_GROUP {
+            pages::show_others_dialog(self, &part, from, to, &currency);
+        } else if let Some(member) = part.members.first() {
+            self.show_category(member.category_id, from, to);
+        }
+    }
+
     fn setup_sidebar(&self) {
         let list = &self.imp().sidebar_list;
         for page in MAIN_PAGES.iter() {
@@ -783,8 +827,8 @@ impl FinaryxWindow {
         imp.window_title.set_title(&title);
         imp.main_page.set_title(&title);
 
-        // Start of the header bar: "Ajouter" on Accounts, "Importer"
-        // elsewhere; icon only in the narrow layout (mockup Etroit*).
+        // Start of the header bar: "Ajouter" on Accounts; icon only in the
+        // narrow layout (mockup Etroit*).
         let narrow = imp.narrow.get();
         let on_accounts = page.name == "accounts";
         // Subtitle: "4 comptes · 3 banques" on the accounts page (step 5
@@ -799,8 +843,11 @@ impl FinaryxWindow {
                 .unwrap_or_default()
         };
         imp.window_title.set_subtitle(&subtitle);
-        imp.import_button.set_visible(!on_accounts && !narrow);
-        imp.import_icon_button.set_visible(!on_accounts && narrow);
+        // "Importer un CSV" is in the sidebar; the header only offers it
+        // (as an icon) when the sidebar is collapsed.
+        let collapsed = imp.breakpoints.get().1;
+        imp.import_icon_button
+            .set_visible(!on_accounts && collapsed);
         imp.add_account_button.set_visible(on_accounts && !narrow);
         imp.add_account_icon_button
             .set_visible(on_accounts && narrow);
@@ -930,7 +977,7 @@ impl FinaryxWindow {
             number: None,
             kind: finaryx_core::models::AccountKind::Checking,
             currency: "EUR".into(),
-            opening_balance_cents: 0,
+            balance_cents: None,
         });
         account_dialog::present_new(self, initial.as_ref(), move |changes| {
             let window = weak.upgrade()?;
@@ -957,7 +1004,7 @@ impl FinaryxWindow {
             number: a.number,
             kind: a.kind,
             currency: a.currency,
-            opening_balance_cents: a.opening_balance_cents,
+            balance_cents: Some(overview.balance_cents),
         })
     }
 

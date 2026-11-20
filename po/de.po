@@ -359,9 +359,6 @@ msgstr "Hauptnavigation"
 msgid "Dernier import"
 msgstr "Letzter Import"
 
-msgid "Importer"
-msgstr "Importieren"
-
 msgid "Ajouter un compte"
 msgstr "Konto hinzufügen"
 
@@ -425,11 +422,14 @@ msgstr "Summen werden für jede Währung getrennt berechnet."
 msgid "Numéro de compte (facultatif)"
 msgstr "Kontonummer (optional)"
 
-msgid "Solde avant la première opération importée"
-msgstr "Kontostand vor der ersten importierten Buchung"
+msgid "Solde actuel"
+msgstr "Aktueller Kontostand"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "Lassen Sie den Kontostand leer, wenn er null ist. Enthält die importierte Datei eine Saldenspalte, schlägt Finaryx eine Anpassung vor."
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "Der Kontostand wird beim Import angegeben: Finaryx fragt nach dem Stand nach der letzten Buchung der Datei."
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "Kontostand nach der letzten erfassten Buchung. Finaryx berechnet daraus den Anfangsstand."
 
 msgid "Annuler"
 msgstr "Abbrechen"
@@ -791,6 +791,27 @@ msgstr "Fügen Sie sie in den Einstellungen hinzu, zum Beispiel Ihren Namen und 
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "Die Buchungen dieser Namen sind bereits interne Überweisungen."
 
+msgid "{from} à {to}"
+msgstr "{from} bis {to}"
+
+msgid "Sorties"
+msgstr "Ausgänge"
+
+msgid "Entrées"
+msgstr "Eingänge"
+
+msgid "Remboursements et autres crédits"
+msgstr "Erstattungen und andere Gutschriften"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "Keine Buchungen in dieser Kategorie im Zeitraum."
+
+msgid "Par mois"
+msgstr "Pro Monat"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "In der Buchungsliste bearbeiten"
+
 msgid "Période"
 msgstr "Zeitraum"
 
@@ -809,6 +830,9 @@ msgstr "Teuerster Monat"
 msgid "Mois le plus léger"
 msgstr "Günstigster Monat"
 
+msgid "Voir les opérations : {name}"
+msgstr "Buchungen anzeigen: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "Der Prozentsatz ist der Anteil der Kategorie an den Ausgaben des Monats. Zu kleine Anteile stehen in der Tabelle darunter."
 
@@ -817,9 +841,6 @@ msgstr "Monat für Monat, nach Kategorie"
 
 msgid "Catégorie"
 msgstr "Kategorie"
-
-msgid "Par mois"
-msgstr "Pro Monat"
 
 msgid "Total"
 msgstr "Summe"
@@ -832,9 +853,6 @@ msgstr "Die Monatsspalten zeigen den Anteil der Kategorie; die Zeile Summe zeigt
 
 msgid "Part de chaque catégorie"
 msgstr "Anteil jeder Kategorie"
-
-msgid "{from} à {to}"
-msgstr "{from} bis {to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "Diese Datei ist keine Finaryx-Sicherung."
@@ -1328,11 +1346,8 @@ msgstr "Zu prüfen (unsichere Kategorie)"
 msgid "Lignes illisibles, non importées"
 msgstr "Unlesbare Zeilen, nicht importiert"
 
-msgid "Recaler le solde initial"
-msgstr "Anfangsstand anpassen"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "Laut Saldenspalte wird der Kontostand vor der ersten importierten Buchung zu {amount}."
+msgid "Solde au {date}, après la dernière opération"
+msgstr "Kontostand am {date}, nach der letzten Buchung"
 
 msgid "Retenir ce format"
 msgstr "Dieses Format merken"
@@ -1342,6 +1357,9 @@ msgstr "Die nächste Datei dieser Bank wird ohne Rückfrage gelesen"
 
 msgid "Nom du format"
 msgstr "Name des Formats"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "Der Kontostand ist optional: Geben Sie den Stand an, den Ihre Bank nach der letzten Buchung der Datei zeigt; Finaryx berechnet daraus den Anfangsstand des Kontos. Leer bleibt alles unverändert."
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "Ein Duplikat hat dasselbe Datum, denselben Buchungstext, denselben Betrag und dieselbe Referenz wie eine bereits gespeicherte Buchung. Ihre Dateien werden nie verändert."
@@ -1356,6 +1374,9 @@ msgid "Importer {n} opération"
 msgid_plural "Importer {n} opérations"
 msgstr[0] "{n} Buchung importieren"
 msgstr[1] "{n} Buchungen importieren"
+
+msgid "Le solde saisi est illisible."
+msgstr "Der eingegebene Kontostand ist nicht lesbar."
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1382,6 +1403,9 @@ msgstr "{n} KB"
 msgid "{n} Mo"
 msgstr "{n} MB"
 
+msgid "Détail de « Autres »"
+msgstr "Details zu „Sonstiges“"
+
 msgid "Non classé"
 msgstr "Nicht eingeordnet"
 
@@ -1396,9 +1420,6 @@ msgstr "Farben verwalten …"
 
 msgid "Fermer"
 msgstr "Schließen"
-
-msgid "Détail de « Autres »"
-msgstr "Details zu „Sonstiges“"
 
 msgid "Mois précédent : {month}"
 msgstr "Vorheriger Monat: {month}"

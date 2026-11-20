@@ -255,9 +255,9 @@ impl AccountDetailPage {
             (gettext("Type"), kind, Field::Kind),
             (gettext("Devise"), a.currency.clone(), Field::Currency),
             (
-                gettext("Solde avant la première opération importée"),
-                amount(a.opening_balance_cents, &a.currency, Sign::Negative),
-                Field::OpeningBalance,
+                gettext("Solde actuel"),
+                amount(o.balance_cents, &a.currency, Sign::Negative),
+                Field::Balance,
             ),
         ];
         for (title, value, field) in rows {

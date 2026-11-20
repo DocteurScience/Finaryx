@@ -359,9 +359,6 @@ msgstr "Ana gezinme"
 msgid "Dernier import"
 msgstr "Son içe aktarma"
 
-msgid "Importer"
-msgstr "İçe aktar"
-
 msgid "Ajouter un compte"
 msgstr "Hesap ekle"
 
@@ -425,11 +422,14 @@ msgstr "Toplamlar her para birimi için ayrı hesaplanır."
 msgid "Numéro de compte (facultatif)"
 msgstr "Hesap numarası (isteğe bağlı)"
 
-msgid "Solde avant la première opération importée"
-msgstr "İlk içe aktarılan işlemden önceki bakiye"
+msgid "Solde actuel"
+msgstr "Güncel bakiye"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "Bakiye sıfırsa boş bırakın. İçe aktarılan dosyada bakiye sütunu varsa Finaryx onu düzeltmeyi önerir."
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "Bakiye içe aktarırken girilir: Finaryx dosyadaki son işlemden sonraki bakiyeyi sorar."
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "Kaydedilen son işlemden sonraki bakiye. Finaryx açılış bakiyesini buradan hesaplar."
 
 msgid "Annuler"
 msgstr "İptal"
@@ -791,6 +791,27 @@ msgstr "Bunları tercihlerde ekleyin, örneğin kendi adınızı ve eşinizin ad
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "Bu adlara ait işlemler zaten iç transfer."
 
+msgid "{from} à {to}"
+msgstr "{from} – {to}"
+
+msgid "Sorties"
+msgstr "Çıkışlar"
+
+msgid "Entrées"
+msgstr "Girişler"
+
+msgid "Remboursements et autres crédits"
+msgstr "İadeler ve diğer alacaklar"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "Bu dönemde bu kategoride işlem yok."
+
+msgid "Par mois"
+msgstr "Aylık"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "İşlem listesinde düzenle"
+
 msgid "Période"
 msgstr "Dönem"
 
@@ -809,6 +830,9 @@ msgstr "En yüklü ay"
 msgid "Mois le plus léger"
 msgstr "En hafif ay"
 
+msgid "Voir les opérations : {name}"
+msgstr "İşlemleri gör: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "Yüzde, kategorinin o ayın harcamalarındaki payıdır. Yazılamayacak kadar küçük paylar aşağıdaki tablodadır."
 
@@ -817,9 +841,6 @@ msgstr "Ay ay, kategoriye göre"
 
 msgid "Catégorie"
 msgstr "Kategori"
-
-msgid "Par mois"
-msgstr "Aylık"
 
 msgid "Total"
 msgstr "Toplam"
@@ -832,9 +853,6 @@ msgstr "Ay sütunları kategorinin payını, Toplam satırı ayın harcamaların
 
 msgid "Part de chaque catégorie"
 msgstr "Her kategorinin payı"
-
-msgid "{from} à {to}"
-msgstr "{from} – {to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "Bu dosya bir Finaryx yedeği değil."
@@ -1328,11 +1346,8 @@ msgstr "Kontrol edilecek (belirsiz kategori)"
 msgid "Lignes illisibles, non importées"
 msgstr "Okunamayan satırlar, içe aktarılmadı"
 
-msgid "Recaler le solde initial"
-msgstr "Açılış bakiyesini düzelt"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "Bakiye sütununa göre ilk içe aktarılan işlemden önceki bakiye {amount} olur."
+msgid "Solde au {date}, après la dernière opération"
+msgstr "{date} bakiyesi, son işlemden sonra"
 
 msgid "Retenir ce format"
 msgstr "Bu biçimi hatırla"
@@ -1342,6 +1357,9 @@ msgstr "Bu bankanın sonraki dosyası hiçbir şey sormadan okunacak"
 
 msgid "Nom du format"
 msgstr "Biçimin adı"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "Bakiye isteğe bağlıdır: bankanızın dosyadaki son işlemden sonra gösterdiği bakiyeyi girin, Finaryx hesabın açılış bakiyesini hesaplar. Boş bırakılırsa hiçbir şey değişmez."
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "Yinelenen bir işlem, kayıtlı bir işlemle aynı tarih, açıklama, tutar ve referansa sahiptir. Dosyalarınız asla değiştirilmez."
@@ -1356,6 +1374,9 @@ msgid "Importer {n} opération"
 msgid_plural "Importer {n} opérations"
 msgstr[0] "{n} işlemi içe aktar"
 msgstr[1] "{n} işlemi içe aktar"
+
+msgid "Le solde saisi est illisible."
+msgstr "Girilen bakiye okunamıyor."
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1382,6 +1403,9 @@ msgstr "{n} KB"
 msgid "{n} Mo"
 msgstr "{n} MB"
 
+msgid "Détail de « Autres »"
+msgstr "“Diğer” ayrıntısı"
+
 msgid "Non classé"
 msgstr "Sınıflandırılmamış"
 
@@ -1396,9 +1420,6 @@ msgstr "Renkleri yönet…"
 
 msgid "Fermer"
 msgstr "Kapat"
-
-msgid "Détail de « Autres »"
-msgstr "“Diğer” ayrıntısı"
 
 msgid "Mois précédent : {month}"
 msgstr "Önceki ay: {month}"

@@ -359,9 +359,6 @@ msgstr "Hoofdnavigatie"
 msgid "Dernier import"
 msgstr "Laatste import"
 
-msgid "Importer"
-msgstr "Importeren"
-
 msgid "Ajouter un compte"
 msgstr "Rekening toevoegen"
 
@@ -425,11 +422,14 @@ msgstr "Totalen worden voor elke valuta apart berekend."
 msgid "Numéro de compte (facultatif)"
 msgstr "Rekeningnummer (optioneel)"
 
-msgid "Solde avant la première opération importée"
-msgstr "Saldo vóór de eerste geïmporteerde transactie"
+msgid "Solde actuel"
+msgstr "Huidig saldo"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "Laat het saldo leeg als het nul is. Als het geïmporteerde bestand een saldokolom heeft, stelt Finaryx voor het aan te passen."
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "Het saldo vul je in bij het importeren: Finaryx vraagt het saldo na de laatste transactie van het bestand."
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "Saldo na de laatste geregistreerde transactie. Finaryx leidt daaruit het beginsaldo af."
 
 msgid "Annuler"
 msgstr "Annuleren"
@@ -791,6 +791,27 @@ msgstr "Voeg ze toe in de voorkeuren, bijvoorbeeld uw naam en die van uw partner
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "De transacties van deze namen zijn al interne overboekingen."
 
+msgid "{from} à {to}"
+msgstr "{from} tot {to}"
+
+msgid "Sorties"
+msgstr "Uitgaand"
+
+msgid "Entrées"
+msgstr "Inkomend"
+
+msgid "Remboursements et autres crédits"
+msgstr "Terugbetalingen en andere bijschrijvingen"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "Geen transacties in deze categorie in deze periode."
+
+msgid "Par mois"
+msgstr "Per maand"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "Bewerken in de transactielijst"
+
 msgid "Période"
 msgstr "Periode"
 
@@ -809,6 +830,9 @@ msgstr "Duurste maand"
 msgid "Mois le plus léger"
 msgstr "Goedkoopste maand"
 
+msgid "Voir les opérations : {name}"
+msgstr "Transacties bekijken: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "Het percentage is het aandeel van de categorie in de uitgaven van de maand. Te kleine aandelen staan in de tabel eronder."
 
@@ -817,9 +841,6 @@ msgstr "Maand na maand, per categorie"
 
 msgid "Catégorie"
 msgstr "Categorie"
-
-msgid "Par mois"
-msgstr "Per maand"
 
 msgid "Total"
 msgstr "Totaal"
@@ -832,9 +853,6 @@ msgstr "De maandkolommen geven het aandeel van de categorie; de rij Totaal geeft
 
 msgid "Part de chaque catégorie"
 msgstr "Aandeel van elke categorie"
-
-msgid "{from} à {to}"
-msgstr "{from} tot {to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "Dit bestand is geen back-up van Finaryx."
@@ -1328,11 +1346,8 @@ msgstr "Te controleren (onzekere categorie)"
 msgid "Lignes illisibles, non importées"
 msgstr "Onleesbare regels, niet geïmporteerd"
 
-msgid "Recaler le solde initial"
-msgstr "Beginsaldo aanpassen"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "Volgens de saldokolom wordt het saldo vóór de eerste geïmporteerde transactie {amount}."
+msgid "Solde au {date}, après la dernière opération"
+msgstr "Saldo op {date}, na de laatste transactie"
 
 msgid "Retenir ce format"
 msgstr "Dit formaat onthouden"
@@ -1342,6 +1357,9 @@ msgstr "Het volgende bestand van deze bank wordt gelezen zonder iets te vragen"
 
 msgid "Nom du format"
 msgstr "Naam van het formaat"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "Het saldo is optioneel: vul het saldo in dat je bank toont na de laatste transactie van het bestand, dan leidt Finaryx het beginsaldo van de rekening af. Leeg verandert er niets."
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "Een dubbele transactie heeft dezelfde datum, omschrijving, hetzelfde bedrag en dezelfde referentie als een al opgeslagen transactie. Uw bestanden worden nooit gewijzigd."
@@ -1356,6 +1374,9 @@ msgid "Importer {n} opération"
 msgid_plural "Importer {n} opérations"
 msgstr[0] "{n} transactie importeren"
 msgstr[1] "{n} transacties importeren"
+
+msgid "Le solde saisi est illisible."
+msgstr "Het ingevoerde saldo is onleesbaar."
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1382,6 +1403,9 @@ msgstr "{n} kB"
 msgid "{n} Mo"
 msgstr "{n} MB"
 
+msgid "Détail de « Autres »"
+msgstr "Details van ‘Overig’"
+
 msgid "Non classé"
 msgstr "Niet ingedeeld"
 
@@ -1396,9 +1420,6 @@ msgstr "Kleuren beheren…"
 
 msgid "Fermer"
 msgstr "Sluiten"
-
-msgid "Détail de « Autres »"
-msgstr "Details van ‘Overig’"
 
 msgid "Mois précédent : {month}"
 msgstr "Vorige maand: {month}"

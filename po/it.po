@@ -359,9 +359,6 @@ msgstr "Navigazione principale"
 msgid "Dernier import"
 msgstr "Ultima importazione"
 
-msgid "Importer"
-msgstr "Importa"
-
 msgid "Ajouter un compte"
 msgstr "Aggiungi un conto"
 
@@ -425,11 +422,14 @@ msgstr "I totali sono calcolati separatamente per ogni valuta."
 msgid "Numéro de compte (facultatif)"
 msgstr "Numero di conto (facoltativo)"
 
-msgid "Solde avant la première opération importée"
-msgstr "Saldo prima del primo movimento importato"
+msgid "Solde actuel"
+msgstr "Saldo attuale"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "Lascia vuoto il saldo se è zero. Se il file importato ha una colonna del saldo, Finaryx proporrà di riallinearlo."
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "Il saldo si indica all’importazione: Finaryx chiede il saldo dopo l’ultimo movimento del file."
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "Saldo dopo l’ultimo movimento registrato. Finaryx ne ricava il saldo iniziale."
 
 msgid "Annuler"
 msgstr "Annulla"
@@ -791,6 +791,27 @@ msgstr "Aggiungili nelle preferenze, per esempio il tuo nome e quello del tuo pa
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "I movimenti di questi nomi sono già giroconti interni."
 
+msgid "{from} à {to}"
+msgstr "Da {from} a {to}"
+
+msgid "Sorties"
+msgstr "Uscite"
+
+msgid "Entrées"
+msgstr "Entrate"
+
+msgid "Remboursements et autres crédits"
+msgstr "Rimborsi e altri accrediti"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "Nessun movimento in questa categoria nel periodo."
+
+msgid "Par mois"
+msgstr "Al mese"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "Modifica nell’elenco dei movimenti"
+
 msgid "Période"
 msgstr "Periodo"
 
@@ -809,6 +830,9 @@ msgstr "Mese più costoso"
 msgid "Mois le plus léger"
 msgstr "Mese più leggero"
 
+msgid "Voir les opérations : {name}"
+msgstr "Vedi movimenti: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "La percentuale è la quota della categoria nelle spese del mese. Le quote troppo piccole per essere scritte sono nella tabella sotto."
 
@@ -817,9 +841,6 @@ msgstr "Mese per mese, per categoria"
 
 msgid "Catégorie"
 msgstr "Categoria"
-
-msgid "Par mois"
-msgstr "Al mese"
 
 msgid "Total"
 msgstr "Totale"
@@ -832,9 +853,6 @@ msgstr "Le colonne dei mesi indicano la quota della categoria; la riga Totale in
 
 msgid "Part de chaque catégorie"
 msgstr "Quota di ogni categoria"
-
-msgid "{from} à {to}"
-msgstr "Da {from} a {to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "Questo file non è un backup di Finaryx."
@@ -1328,11 +1346,8 @@ msgstr "Da verificare (categoria incerta)"
 msgid "Lignes illisibles, non importées"
 msgstr "Righe illeggibili, non importate"
 
-msgid "Recaler le solde initial"
-msgstr "Riallinea il saldo iniziale"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "Secondo la colonna del saldo, il saldo prima del primo movimento importato diventa {amount}."
+msgid "Solde au {date}, après la dernière opération"
+msgstr "Saldo al {date}, dopo l’ultimo movimento"
 
 msgid "Retenir ce format"
 msgstr "Ricorda questo formato"
@@ -1342,6 +1357,9 @@ msgstr "Il prossimo file di questa banca sarà letto senza chiedere nulla"
 
 msgid "Nom du format"
 msgstr "Nome del formato"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "Il saldo è facoltativo: indica quello che mostra la banca dopo l’ultimo movimento del file e Finaryx ne ricava il saldo iniziale del conto. Se vuoto, non cambia nulla."
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "Un duplicato ha la stessa data, la stessa descrizione, lo stesso importo e lo stesso riferimento di un movimento già registrato. I tuoi file non vengono mai modificati."
@@ -1356,6 +1374,9 @@ msgid "Importer {n} opération"
 msgid_plural "Importer {n} opérations"
 msgstr[0] "Importa {n} movimento"
 msgstr[1] "Importa {n} movimenti"
+
+msgid "Le solde saisi est illisible."
+msgstr "Il saldo inserito non è leggibile."
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1382,6 +1403,9 @@ msgstr "{n} KB"
 msgid "{n} Mo"
 msgstr "{n} MB"
 
+msgid "Détail de « Autres »"
+msgstr "Dettaglio di «Altro»"
+
 msgid "Non classé"
 msgstr "Non classificato"
 
@@ -1396,9 +1420,6 @@ msgstr "Gestisci i colori…"
 
 msgid "Fermer"
 msgstr "Chiudi"
-
-msgid "Détail de « Autres »"
-msgstr "Dettaglio di «Altro»"
 
 msgid "Mois précédent : {month}"
 msgstr "Mese precedente: {month}"

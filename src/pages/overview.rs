@@ -226,7 +226,7 @@ pub fn months_columns(
     scope: &Scope,
     months: &[NaiveDate],
     height: i32,
-    segment_labels: bool,
+    on_click: impl Fn(NaiveDate, u8) + 'static,
 ) -> Result<(gtk::DrawingArea, Vec<[i64; CHART_GROUPS]>)> {
     let data = stats::monthly_by_slot(conn, scope, months)?;
     let names = slot_names(conn)?;
@@ -249,7 +249,7 @@ pub fn months_columns(
                 values: *row,
                 total_label: amount_whole(total, cur, Sign::Negative),
                 segment_labels: std::array::from_fn(|k| {
-                    if segment_labels && row[k] > 0 {
+                    if row[k] > 0 {
                         pct0_label(row[k], total)
                     } else {
                         String::new()
@@ -316,7 +316,12 @@ pub fn months_columns(
             .map(|t| (*t, amount_whole(*t, cur, Sign::Negative)))
             .collect(),
     };
-    Ok((columns::stacked_columns(chart, height, &description), data))
+    // Index 0 = colour 1 … index 12 = "Autres" (group 13).
+    let clicked_months = months.to_vec();
+    let chart = columns::stacked_columns(chart, height, &description, move |m, k| {
+        on_click(clicked_months[m], k as u8 + 1)
+    });
+    Ok((chart, data))
 }
 
 /// Names of the 13 chart groups: the category holding each colour
@@ -600,7 +605,14 @@ impl OverviewPage {
 
         // 6-month cumulative.
         let months = stats::months_ending(month, 6);
-        let (chart, data) = months_columns(conn, scope, &months, 222, false)?;
+        let (chart, data) = months_columns(conn, scope, &months, 280, {
+            let weak = self.window.clone();
+            move |m, slot| {
+                if let Some(w) = weak.upgrade() {
+                    w.show_chart_group(slot, m, stats::next_month(m));
+                }
+            }
+        })?;
         let total: i64 = data.iter().map(|r| r.iter().sum::<i64>()).sum();
         let text = gettext("{amount} dépensés de {from} à {to}")
             .replace("{amount}", &amount(total, cur, Sign::Negative))
@@ -623,9 +635,7 @@ impl OverviewPage {
         let prev_parts =
             stats::chart_parts(&stats::spending_by_category(conn, scope, prev, month)?);
         let weak = self.window.clone();
-        let parts_for_click = parts.clone();
         let month_for_click = month;
-        let currency = scope.currency.clone();
         let ring = month_donut(
             &parts,
             &prev_parts,
@@ -633,13 +643,8 @@ impl OverviewPage {
             cur,
             if narrow { 220 } else { 284 },
             move |slot| {
-                if slot == OTHERS_GROUP {
-                    if let (Some(w), Some(p)) = (
-                        weak.upgrade(),
-                        parts_for_click.iter().find(|p| p.slot == OTHERS_GROUP),
-                    ) {
-                        super::show_others_dialog(&w, p, month_for_click, &currency);
-                    }
+                if let Some(w) = weak.upgrade() {
+                    w.show_chart_group(slot, month_for_click, stats::next_month(month_for_click));
                 }
             },
         );
@@ -649,12 +654,22 @@ impl OverviewPage {
             .build();
         let total: i64 = parts.iter().map(|p| p.amount).sum();
         for p in &parts {
-            list.append(&part_row(
+            let row = part_row(
                 Some(p.slot),
                 &p.name,
                 &amount(p.amount, cur, Sign::Negative),
                 &pct1(p.amount, total),
                 None,
+            );
+            let (weak, slot) = (self.window.clone(), p.slot);
+            list.append(&super::clickable(
+                &row,
+                &gettext("Voir les opérations : {name}").replace("{name}", &p.name),
+                move || {
+                    if let Some(w) = weak.upgrade() {
+                        w.show_chart_group(slot, month, stats::next_month(month));
+                    }
+                },
             ));
         }
         let body = gtk::FlowBox::builder()

@@ -643,6 +643,47 @@ pub fn operations(
     })
 }
 
+/// Totals of one category over one month (category page).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CategoryMonth {
+    pub month: NaiveDate,
+    /// Money out, positive.
+    pub outflow: i64,
+    /// Money in (refunds, income), positive.
+    pub inflow: i64,
+    pub operations: i64,
+}
+
+/// Month-by-month totals of a category from `from` to `to` (excluded),
+/// most recent month first; months without operations are left out.
+pub fn category_months(
+    conn: &Connection,
+    scope: &Scope,
+    category_id: Id,
+    from: NaiveDate,
+    to: NaiveDate,
+) -> Result<Vec<CategoryMonth>> {
+    let mut stmt = conn.prepare(&format!(
+        "SELECT strftime('%Y-%m-01', t.booked_on),
+                coalesce(sum(CASE WHEN t.amount_cents < 0 THEN -t.amount_cents ELSE 0 END), 0),
+                coalesce(sum(CASE WHEN t.amount_cents > 0 THEN t.amount_cents ELSE 0 END), 0),
+                count(*)
+         FROM txn t
+         WHERE {} AND t.category_id = ?1 AND t.booked_on >= ?2 AND t.booked_on < ?3
+         GROUP BY 1 ORDER BY 1 DESC",
+        scope.accounts_sql("t.account_id")
+    ))?;
+    let rows = stmt.query_map(rusqlite::params![category_id, from, to], |r| {
+        Ok(CategoryMonth {
+            month: r.get(0)?,
+            outflow: r.get(1)?,
+            inflow: r.get(2)?,
+            operations: r.get(3)?,
+        })
+    })?;
+    Ok(rows.collect::<rusqlite::Result<_>>()?)
+}
+
 /// Sets the category of an operation by hand ("À vérifier" is cleared).
 pub fn set_category(conn: &Connection, txn_id: Id, category_id: Id) -> Result<()> {
     conn.execute(
@@ -720,6 +761,33 @@ mod tests {
         assert_eq!(june.average_months, 0);
         let may = cumulative_spending(&conn, &s, d("2026-05-01"), None).unwrap();
         assert!(may.previous.is_empty());
+    }
+
+    #[test]
+    fn category_months_match_the_spending_by_category() {
+        let (conn, s) = demo_scope();
+        let (from, to) = (d("2026-05-01"), d("2026-11-01"));
+        let food = crate::models::builtin::FOOD;
+        let months = category_months(&conn, &s, food, from, to).unwrap();
+        assert_eq!(months.len(), 6);
+        assert_eq!(months[0].month, d("2026-10-01"));
+        for m in &months {
+            let spent = spending_by_category(&conn, &s, m.month, next_month(m.month))
+                .unwrap()
+                .into_iter()
+                .find(|c| c.category_id == food)
+                .unwrap();
+            assert_eq!(m.outflow - m.inflow, spent.amount);
+            assert_eq!(m.operations, spent.operations);
+        }
+        let filter = OperationFilter {
+            category_id: Some(food),
+            from: Some(from),
+            to: Some(to),
+            ..Default::default()
+        };
+        let all = operations(&conn, &s, &filter, 10_000, 0).unwrap();
+        assert_eq!(all.count, months.iter().map(|m| m.operations).sum::<i64>());
     }
 
     #[test]

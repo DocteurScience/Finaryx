@@ -2,9 +2,14 @@
 # Regenerates the navigation icons in data/icons/symbolic from the mockup
 # stroke paths (design/*.dc.html). GTK recolours symbolic icons through
 # their fill, so strokes are converted to filled outlines with shapely.
+# The mockup draws on a 24-unit grid; the outlines are scaled to the
+# 16 px grid of symbolic icons, with viewBox = width/height: GTK 4.20's
+# own symbolic renderer does not scale a different viewBox (it clipped
+# the icons to their top-left corner).
 # Usage: python3 build-aux/gen-icons.py data/icons/symbolic
 import re, sys
 from shapely.geometry import LineString, Polygon
+from shapely.affinity import scale
 from shapely.ops import unary_union
 ICONS = {
  'overview': 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',
@@ -43,12 +48,12 @@ def ring(coords):
     return 'M'+' L'.join(f'{px:.2f} {py:.2f}' for px,py in pts[:-1])+' Z'
 for name,d in ICONS.items():
     geoms=[LineString(s).buffer(0.9, cap_style='round', join_style='round', quad_segs=6) for s in parse(d)]
-    u=unary_union(geoms)
+    u=scale(unary_union(geoms), 16/24, 16/24, origin=(0, 0))
     polys = list(u.geoms) if hasattr(u,'geoms') else [u]
     parts=[]
     for p in polys:
         parts.append(ring(p.exterior.coords))
         parts += [ring(r.coords) for r in p.interiors]
-    out=f'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="#222222" fill-rule="evenodd" d="{" ".join(parts)}"/></svg>\n'
+    out=f'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="#222222" fill-rule="evenodd" d="{" ".join(parts)}"/></svg>\n'
     open(f'{sys.argv[1]}/finaryx-{name}-symbolic.svg','w').write(out)
     print(name, len(out))

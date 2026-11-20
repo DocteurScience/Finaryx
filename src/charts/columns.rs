@@ -80,7 +80,13 @@ impl Geometry {
     }
 }
 
-pub fn stacked_columns(chart: Columns, height: i32, accessible_label: &str) -> gtk::DrawingArea {
+/// `on_click` receives the clicked segment: (column index, slot index).
+pub fn stacked_columns(
+    chart: Columns,
+    height: i32,
+    accessible_label: &str,
+    on_click: impl Fn(usize, usize) + 'static,
+) -> gtk::DrawingArea {
     let area = gtk::DrawingArea::builder()
         .content_height(height)
         .hexpand(true)
@@ -210,6 +216,7 @@ pub fn stacked_columns(chart: Columns, height: i32, accessible_label: &str) -> g
         let hit = g.hit(&c, x, y);
         if hit != hovered.get() {
             hovered.set(hit);
+            area.set_cursor_from_name(hit.map(|_| "pointer"));
             area.queue_draw();
         }
     });
@@ -221,6 +228,22 @@ pub fn stacked_columns(chart: Columns, height: i32, accessible_label: &str) -> g
         }
     });
     area.add_controller(motion);
+
+    let click = gtk::GestureClick::new();
+    let (c, weak) = (chart.clone(), area.downgrade());
+    click.connect_released(move |_, _, x, y| {
+        let Some(area) = weak.upgrade() else { return };
+        let g = Geometry {
+            w: area.width() as f64,
+            h: area.height() as f64,
+            max,
+            n: c.columns.len().max(1),
+        };
+        if let Some((m, k)) = g.hit(&c, x, y) {
+            on_click(m, k);
+        }
+    });
+    area.add_controller(click);
 
     let c = chart.clone();
     let cache = TipCache::default();

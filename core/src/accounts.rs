@@ -234,7 +234,10 @@ pub struct AccountChanges {
     pub number: Option<String>,
     pub kind: AccountKind,
     pub currency: String,
-    pub opening_balance_cents: i64,
+    /// Balance after all the account's operations ("Solde actuel"):
+    /// the opening balance is derived from it. `None`: unchanged (zero
+    /// for a new account).
+    pub balance_cents: Option<i64>,
 }
 
 fn validate(changes: &AccountChanges) -> Result<()> {
@@ -275,7 +278,7 @@ pub fn create_account(conn: &Connection, changes: &AccountChanges) -> Result<Id>
             number: changes.number.clone().filter(|n| !n.trim().is_empty()),
             kind: changes.kind,
             currency: changes.currency.clone(),
-            opening_balance_cents: changes.opening_balance_cents,
+            opening_balance_cents: changes.balance_cents.unwrap_or(0),
             color_slot,
         },
     )
@@ -291,8 +294,7 @@ pub fn update_account(
     let tx = conn.transaction()?;
     let bank_id = bank_id(&tx, &changes.bank_name)?;
     tx.execute(
-        "UPDATE account SET bank_id = ?2, name = ?3, number = ?4, kind = ?5, currency = ?6,
-                            opening_balance_cents = ?7
+        "UPDATE account SET bank_id = ?2, name = ?3, number = ?4, kind = ?5, currency = ?6
          WHERE id = ?1",
         params![
             account_id,
@@ -301,9 +303,11 @@ pub fn update_account(
             changes.number.clone().filter(|n| !n.trim().is_empty()),
             changes.kind.as_str(),
             changes.currency,
-            changes.opening_balance_cents,
         ],
     )?;
+    if let Some(balance) = changes.balance_cents {
+        repo::set_balance_at(&tx, account_id, balance, None)?;
+    }
     remove_unused_banks(&tx)?;
     tx.commit()?;
     Ok(())
@@ -464,6 +468,7 @@ mod tests {
     use super::*;
     use crate::db::open_in_memory;
     use crate::demo;
+    use crate::models::NewTransaction;
 
     fn d(s: &str) -> NaiveDate {
         s.parse().unwrap()
@@ -566,7 +571,7 @@ mod tests {
             number: Some("".into()),
             kind: AccountKind::Checking,
             currency: "USD".into(),
-            opening_balance_cents: 12_345,
+            balance_cents: Some(12_345),
         };
         let id = create_account(&conn, &changes).unwrap();
         let account = &repo::list_accounts(&conn, true).unwrap()[0];
@@ -604,6 +609,45 @@ mod tests {
         .unwrap();
         // "Banque X" is still used by the second account.
         assert_eq!(repo::list_banks(&conn).unwrap().len(), 2);
+        // The balance given is the current one: the opening balance
+        // absorbs the operations.
+        repo::insert_transactions(
+            &conn,
+            id,
+            None,
+            &[NewTransaction::simple(
+                "2026-10-01".parse().unwrap(),
+                "COURSES",
+                -2_000,
+                crate::models::builtin::FOOD,
+            )],
+        )
+        .unwrap();
+        assert_eq!(repo::account_balance(&conn, id, None).unwrap(), 10_345);
+        update_account(
+            &mut conn,
+            id,
+            &AccountChanges {
+                balance_cents: Some(50_000),
+                bank_name: "Banque Y".into(),
+                kind: AccountKind::Savings,
+                ..changes.clone()
+            },
+        )
+        .unwrap();
+        assert_eq!(repo::account_balance(&conn, id, None).unwrap(), 50_000);
+        update_account(
+            &mut conn,
+            id,
+            &AccountChanges {
+                balance_cents: None,
+                bank_name: "Banque Y".into(),
+                kind: AccountKind::Savings,
+                ..changes.clone()
+            },
+        )
+        .unwrap();
+        assert_eq!(repo::account_balance(&conn, id, None).unwrap(), 50_000);
         update_account(
             &mut conn,
             second,

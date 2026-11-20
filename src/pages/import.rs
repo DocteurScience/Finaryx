@@ -8,12 +8,13 @@ use std::rc::Rc;
 
 use adw::prelude::*;
 use finaryx_core::accounts::{self as core_accounts, AccountOverview};
+use finaryx_core::dates;
 use finaryx_core::importers::format::{self, DateFormat, Encoding};
 use finaryx_core::importers::mapping::{AmountMode, BankCategoryChoice, Field};
 use finaryx_core::importers::plan::{self, Analysis, CommitOptions, Plan, RowState};
 use finaryx_core::importers::profiles;
 use finaryx_core::models::{Category, Id};
-use finaryx_core::money::Sign;
+use finaryx_core::money::{self, Currency, Sign};
 use finaryx_core::repo;
 use gettextrs::{gettext, ngettext};
 use gtk::{gio, glib};
@@ -42,7 +43,9 @@ struct State {
     plan: Option<Plan>,
     remember: bool,
     format_name: String,
-    adjust_opening: bool,
+    /// Text of "Solde au …, après la dernière opération" (`None`: not
+    /// edited yet, pre-filled from the file's balance column).
+    balance_text: Option<String>,
     show_all_categories: bool,
 }
 
@@ -285,7 +288,7 @@ impl ImportPage {
             plan: None,
             remember,
             format_name,
-            adjust_opening: false,
+            balance_text: None,
             show_all_categories: false,
         }));
         self.stack.set_visible_child_name("content");
@@ -1111,21 +1114,32 @@ impl ImportPage {
                     unreadable,
                 ));
             }
-            if let Some(opening) = plan.balance.suggested_opening {
-                let currency = self.account_currency(s.account_id);
-                let currency = currency.as_str();
-                let row = adw::SwitchRow::builder()
-                    .title(gettext("Recaler le solde initial"))
-                    .subtitle(
-                        gettext("D’après la colonne de solde, le solde avant la première opération importée devient {amount}.")
-                            .replace("{amount}", &amount(opening, currency, Sign::Negative)),
+            if let Some((_, last)) = plan::period(plan) {
+                let code = self.account_currency(s.account_id);
+                let text = s.balance_text.clone().unwrap_or_else(|| {
+                    plan.balance
+                        .end_balance
+                        .map(|cents| editable_amount(cents, &code))
+                        .unwrap_or_default()
+                });
+                let row = adw::EntryRow::builder()
+                    .title(
+                        gettext("Solde au {date}, après la dernière opération")
+                            .replace("{date}", &dates::day_month_year(last)),
                     )
-                    .active(s.adjust_opening)
+                    .text(&text)
+                    .input_purpose(gtk::InputPurpose::Number)
                     .build();
                 let weak = Rc::downgrade(self);
-                row.connect_active_notify(move |r| {
+                row.connect_changed(move |e| {
                     if let Some(this) = weak.upgrade() {
-                        this.state.borrow_mut().as_mut().unwrap().adjust_opening = r.is_active();
+                        let text = e.text().to_string();
+                        if parse_balance(&text, &code).is_err() {
+                            e.add_css_class("error");
+                        } else {
+                            e.remove_css_class("error");
+                        }
+                        this.state.borrow_mut().as_mut().unwrap().balance_text = Some(text);
                     }
                 });
                 list.append(&row);
@@ -1165,6 +1179,9 @@ impl ImportPage {
             .spacing(10)
             .build();
         body.append(&list);
+        body.append(&caption(&gettext(
+            "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change.",
+        )));
         body.append(&caption(&gettext(
             "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés.",
         )));
@@ -1262,10 +1279,17 @@ impl ImportPage {
                 .and_then(|o| o.bank_name);
             let options = CommitOptions {
                 save_profile: s.remember.then(|| (s.format_name.clone(), bank)),
-                new_opening: if s.adjust_opening {
-                    plan.balance.suggested_opening
-                } else {
-                    None
+                balance_after: match &s.balance_text {
+                    Some(text) => {
+                        match parse_balance(text, &self.account_currency(Some(account))) {
+                            Ok(balance) => balance,
+                            Err(()) => {
+                                window.toast(&gettext("Le solde saisi est illisible."));
+                                return;
+                            }
+                        }
+                    }
+                    None => plan.balance.end_balance,
                 },
             };
             window.change(|conn| {
@@ -1404,4 +1428,26 @@ fn problems_box(title: &str, messages: &[String]) -> gtk::Box {
         );
     }
     card
+}
+
+/// An amount as typed in an entry: without the currency symbol, so that
+/// it reads back with `parse_balance`.
+fn editable_amount(cents: i64, code: &str) -> String {
+    let currency = Currency::from_code(code).unwrap_or(Currency::EUR);
+    money::format_amount(cents, &currency, Sign::Negative)
+        .trim_end_matches(currency.symbol)
+        .trim_end_matches(money::NNBSP)
+        .trim_start_matches(currency.symbol)
+        .to_owned()
+}
+
+/// Balance typed by the user: `None` when the field is empty.
+fn parse_balance(text: &str, code: &str) -> Result<Option<i64>, ()> {
+    if text.trim().is_empty() {
+        return Ok(None);
+    }
+    let currency = Currency::from_code(code).unwrap_or(Currency::EUR);
+    money::parse_amount(text, &currency)
+        .map(Some)
+        .map_err(|_| ())
 }

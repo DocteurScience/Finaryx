@@ -14,7 +14,7 @@ pub enum Field {
     Bank,
     Kind,
     Currency,
-    OpeningBalance,
+    Balance,
 }
 
 /// Opens the dialog. `initial` is `None` to add an account. `on_save`
@@ -51,7 +51,7 @@ fn present_full(
         number: None,
         kind: AccountKind::Checking,
         currency: "EUR".into(),
-        opening_balance_cents: 0,
+        balance_cents: None,
     };
     let initial = initial.cloned().unwrap_or(default);
 
@@ -102,23 +102,23 @@ fn present_full(
         .build();
 
     let initial_currency = Currency::from_code(&initial.currency).unwrap_or(Currency::EUR);
-    let opening_text = if adding && initial.opening_balance_cents == 0 {
-        String::new()
-    } else {
-        // Without the symbol, so that the text can be edited and re-read.
-        let text = money::format_amount(
-            initial.opening_balance_cents,
-            &initial_currency,
-            Sign::Negative,
-        );
-        text.trim_end_matches(initial_currency.symbol)
-            .trim_end_matches(money::NNBSP)
-            .to_owned()
-    };
+    // Without the symbol, so that the text can be edited and re-read.
+    let opening_text = initial
+        .balance_cents
+        .map(|cents| {
+            money::format_amount(cents, &initial_currency, Sign::Negative)
+                .trim_end_matches(initial_currency.symbol)
+                .trim_end_matches(money::NNBSP)
+                .to_owned()
+        })
+        .unwrap_or_default();
+    // A new account has no operations yet: its balance is asked at the
+    // import ("Solde après la dernière opération").
     let opening = adw::EntryRow::builder()
-        .title(gettext("Solde avant la première opération importée"))
+        .title(gettext("Solde actuel"))
         .text(&opening_text)
         .input_purpose(gtk::InputPurpose::Number)
+        .visible(!adding)
         .build();
 
     let group = adw::PreferencesGroup::new();
@@ -133,9 +133,11 @@ fn present_full(
         group.add(row);
     }
     let hint = gtk::Label::builder()
-        .label(gettext(
-            "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler.",
-        ))
+        .label(if adding {
+            gettext("Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier.")
+        } else {
+            gettext("Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ.")
+        })
         .wrap(true)
         .xalign(0.0)
         .css_classes(["caption", "dim-label"])
@@ -206,11 +208,12 @@ fn present_full(
                 .get(currency.selected() as usize)
                 .copied()
                 .unwrap_or(Currency::EUR);
+            // Empty: balance unchanged.
             let text = opening.text();
             let amount = if text.trim().is_empty() {
-                Ok(0)
+                Ok(None)
             } else {
-                money::parse_amount(&text, &cur)
+                money::parse_amount(&text, &cur).map(Some)
             };
             if amount.is_err() {
                 opening.add_css_class("error");
@@ -227,7 +230,7 @@ fn present_full(
                     AccountKind::Checking
                 },
                 currency: cur.code.to_owned(),
-                opening_balance_cents: amount.ok()?,
+                balance_cents: amount.ok()?,
             };
             (!changes.name.is_empty()).then_some(changes)
         }
@@ -290,7 +293,7 @@ fn present_full(
         Field::Bank => bank.upcast(),
         Field::Kind => kind.upcast(),
         Field::Currency => currency.upcast(),
-        Field::OpeningBalance => opening.upcast(),
+        Field::Balance => opening.upcast(),
     };
     target.grab_focus();
 }

@@ -18,6 +18,7 @@ src/main.rs
 src/pages/account_detail.rs
 src/pages/accounts.rs
 src/pages/categories.rs
+src/pages/category_detail.rs
 src/pages/cumulative.rs
 src/pages/export.rs
 src/pages/forecast.rs

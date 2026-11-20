@@ -359,9 +359,6 @@ msgstr "Päänavigointi"
 msgid "Dernier import"
 msgstr "Viimeisin tuonti"
 
-msgid "Importer"
-msgstr "Tuo"
-
 msgid "Ajouter un compte"
 msgstr "Lisää tili"
 
@@ -425,11 +422,14 @@ msgstr "Summat lasketaan erikseen kullekin valuutalle."
 msgid "Numéro de compte (facultatif)"
 msgstr "Tilinumero (valinnainen)"
 
-msgid "Solde avant la première opération importée"
-msgstr "Saldo ennen ensimmäistä tuotua tapahtumaa"
+msgid "Solde actuel"
+msgstr "Nykyinen saldo"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "Jätä saldo tyhjäksi, jos se on nolla. Jos tuodussa tiedostossa on saldosarake, Finaryx ehdottaa sen korjaamista."
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "Saldo annetaan tuonnissa: Finaryx kysyy saldoa tiedoston viimeisen tapahtuman jälkeen."
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "Saldo viimeisimmän kirjatun tapahtuman jälkeen. Finaryx laskee siitä alkusaldon."
 
 msgid "Annuler"
 msgstr "Peru"
@@ -791,6 +791,27 @@ msgstr "Lisää ne asetuksissa, esimerkiksi oma nimesi ja kumppanisi nimi."
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "Näiden nimien tapahtumat ovat jo sisäisiä siirtoja."
 
+msgid "{from} à {to}"
+msgstr "{from} – {to}"
+
+msgid "Sorties"
+msgstr "Lähtevät"
+
+msgid "Entrées"
+msgstr "Saapuvat"
+
+msgid "Remboursements et autres crédits"
+msgstr "Palautukset ja muut hyvitykset"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "Tässä luokassa ei ole tapahtumia jakson aikana."
+
+msgid "Par mois"
+msgstr "Kuukaudessa"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "Muokkaa tapahtumaluettelossa"
+
 msgid "Période"
 msgstr "Ajanjakso"
 
@@ -809,6 +830,9 @@ msgstr "Kallein kuukausi"
 msgid "Mois le plus léger"
 msgstr "Edullisin kuukausi"
 
+msgid "Voir les opérations : {name}"
+msgstr "Näytä tapahtumat: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "Prosentti on luokan osuus kuukauden menoista. Liian pienet osuudet ovat alla olevassa taulukossa."
 
@@ -817,9 +841,6 @@ msgstr "Kuukausittain, luokittain"
 
 msgid "Catégorie"
 msgstr "Luokka"
-
-msgid "Par mois"
-msgstr "Kuukaudessa"
 
 msgid "Total"
 msgstr "Yhteensä"
@@ -832,9 +853,6 @@ msgstr "Kuukausisarakkeet näyttävät luokan osuuden; Yhteensä-rivi näyttää
 
 msgid "Part de chaque catégorie"
 msgstr "Kunkin luokan osuus"
-
-msgid "{from} à {to}"
-msgstr "{from} – {to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "Tämä tiedosto ei ole Finaryxin varmuuskopio."
@@ -1328,11 +1346,8 @@ msgstr "Tarkistettava (epävarma luokka)"
 msgid "Lignes illisibles, non importées"
 msgstr "Lukukelvottomat rivit, ei tuotu"
 
-msgid "Recaler le solde initial"
-msgstr "Korjaa alkusaldo"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "Saldosarakkeen mukaan saldo ennen ensimmäistä tuotua tapahtumaa on {amount}."
+msgid "Solde au {date}, après la dernière opération"
+msgstr "Saldo {date} viimeisen tapahtuman jälkeen"
 
 msgid "Retenir ce format"
 msgstr "Muista tämä muoto"
@@ -1342,6 +1357,9 @@ msgstr "Tämän pankin seuraava tiedosto luetaan kysymättä mitään"
 
 msgid "Nom du format"
 msgstr "Muodon nimi"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "Saldo on vapaaehtoinen: anna pankin ilmoittama saldo tiedoston viimeisen tapahtuman jälkeen, niin Finaryx laskee tilin alkusaldon. Tyhjänä mikään ei muutu."
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "Kaksoiskappaleella on sama päivämäärä, kuvaus, summa ja viite kuin jo tallennetulla tapahtumalla. Tiedostojasi ei koskaan muuteta."
@@ -1356,6 +1374,9 @@ msgid "Importer {n} opération"
 msgid_plural "Importer {n} opérations"
 msgstr[0] "Tuo {n} tapahtuma"
 msgstr[1] "Tuo {n} tapahtumaa"
+
+msgid "Le solde saisi est illisible."
+msgstr "Annettua saldoa ei voi lukea."
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1382,6 +1403,9 @@ msgstr "{n} kt"
 msgid "{n} Mo"
 msgstr "{n} Mt"
 
+msgid "Détail de « Autres »"
+msgstr "Ryhmän ”Muut” tiedot"
+
 msgid "Non classé"
 msgstr "Lajittelematon"
 
@@ -1396,9 +1420,6 @@ msgstr "Hallitse värejä…"
 
 msgid "Fermer"
 msgstr "Sulje"
-
-msgid "Détail de « Autres »"
-msgstr "Ryhmän ”Muut” tiedot"
 
 msgid "Mois précédent : {month}"
 msgstr "Edellinen kuukausi: {month}"

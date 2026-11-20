@@ -251,9 +251,9 @@ pub struct PlannedRow {
 pub struct BalanceCheck {
     /// Lines where balance ≠ previous balance + amount.
     pub inconsistent_lines: Vec<usize>,
-    /// Opening balance that makes the account match the file, when it
-    /// differs from the current one.
-    pub suggested_opening: Option<i64>,
+    /// Balance given by the file after its last operation (the latest
+    /// date), to pre-fill "Solde après la dernière opération".
+    pub end_balance: Option<i64>,
 }
 
 #[derive(Debug, Clone, Default)]
@@ -358,22 +358,18 @@ pub fn plan(conn: &Connection, table: &Table, mapping: &Mapping, account_id: Id)
             txn: txn.clone(),
         });
     }
-    plan.balance = check_balance(conn, account_id, &parsed)?;
+    plan.balance = check_balance(&parsed);
     Ok(plan)
 }
 
 /// Chronological walk of the balance column.
-fn check_balance(
-    conn: &Connection,
-    account_id: Id,
-    parsed: &[(usize, ParsedRow)],
-) -> Result<BalanceCheck> {
+fn check_balance(parsed: &[(usize, ParsedRow)]) -> BalanceCheck {
     let with_balance: Vec<&(usize, ParsedRow)> = parsed
         .iter()
         .filter(|(_, r)| r.balance_cents.is_some())
         .collect();
     if with_balance.len() != parsed.len() || parsed.is_empty() {
-        return Ok(BalanceCheck::default());
+        return BalanceCheck::default();
     }
     // Files are sorted one way or the other; same-day rows keep the file's
     // relative order.
@@ -389,19 +385,8 @@ fn check_balance(
             check.inconsistent_lines.push(pair[1].0);
         }
     }
-    let first = &rows[0].1;
-    let before_file = first.balance_cents.unwrap() - first.amount_cents;
-    let day_before = first.booked_on.pred_opt().unwrap_or(first.booked_on);
-    let current = repo::account_balance(conn, account_id, Some(day_before))?;
-    if current != before_file {
-        let opening: i64 = conn.query_row(
-            "SELECT opening_balance_cents FROM account WHERE id = ?1",
-            [account_id],
-            |r| r.get(0),
-        )?;
-        check.suggested_opening = Some(opening + before_file - current);
-    }
-    Ok(check)
+    check.end_balance = rows.last().and_then(|(_, r)| r.balance_cents);
+    check
 }
 
 /// What to do besides inserting the operations.
@@ -409,8 +394,10 @@ fn check_balance(
 pub struct CommitOptions {
     /// "Retenir ce format": profile name and bank.
     pub save_profile: Option<(String, Option<String>)>,
-    /// New opening balance, after the user's confirmation.
-    pub new_opening: Option<i64>,
+    /// Balance of the account after the file's last operation (end of its
+    /// latest date), given by the user: the opening balance is set so
+    /// that the account matches it.
+    pub balance_after: Option<i64>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -457,8 +444,8 @@ pub fn commit(
         }
         profiles::save_profile(&tx, name, bank.as_deref(), &table.headers, mapping)?;
     }
-    if let Some(opening) = options.new_opening {
-        repo::set_opening_balance(&tx, account_id, opening)?;
+    if let (Some(balance), Some((_, last))) = (options.balance_after, period(plan)) {
+        repo::set_balance_at(&tx, account_id, balance, Some(last))?;
     }
     tx.commit()?;
     Ok(ImportSummary {

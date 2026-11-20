@@ -360,9 +360,6 @@ msgstr "Головна навігація"
 msgid "Dernier import"
 msgstr "Останній імпорт"
 
-msgid "Importer"
-msgstr "Імпортувати"
-
 msgid "Ajouter un compte"
 msgstr "Додати рахунок"
 
@@ -426,11 +423,14 @@ msgstr "Підсумки обчислюються окремо для кожно
 msgid "Numéro de compte (facultatif)"
 msgstr "Номер рахунку (необов’язково)"
 
-msgid "Solde avant la première opération importée"
-msgstr "Залишок до першої імпортованої операції"
+msgid "Solde actuel"
+msgstr "Поточний баланс"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "Залиште залишок порожнім, якщо він нульовий. Якщо імпортований файл має стовпець залишку, Finaryx запропонує його вирівняти."
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "Баланс вказується під час імпорту: Finaryx запитає баланс після останньої операції у файлі."
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "Баланс після останньої записаної операції. Finaryx обчислить з нього початковий баланс."
 
 msgid "Annuler"
 msgstr "Скасувати"
@@ -804,6 +804,27 @@ msgstr "Додайте їх у параметрах, наприклад своє
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "Операції з цими іменами вже є внутрішніми переказами."
 
+msgid "{from} à {to}"
+msgstr "{from} – {to}"
+
+msgid "Sorties"
+msgstr "Витрати"
+
+msgid "Entrées"
+msgstr "Надходження"
+
+msgid "Remboursements et autres crédits"
+msgstr "Повернення та інші зарахування"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "За цей період у категорії немає операцій."
+
+msgid "Par mois"
+msgstr "За місяць"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "Змінити у списку операцій"
+
 msgid "Période"
 msgstr "Період"
 
@@ -822,6 +843,9 @@ msgstr "Найдорожчий місяць"
 msgid "Mois le plus léger"
 msgstr "Найдешевший місяць"
 
+msgid "Voir les opérations : {name}"
+msgstr "Переглянути операції: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "Відсоток — це частка категорії у витратах місяця. Замалі частки наведено в таблиці нижче."
 
@@ -830,9 +854,6 @@ msgstr "Місяць за місяцем, за категоріями"
 
 msgid "Catégorie"
 msgstr "Категорія"
-
-msgid "Par mois"
-msgstr "За місяць"
 
 msgid "Total"
 msgstr "Разом"
@@ -845,9 +866,6 @@ msgstr "Стовпці місяців показують частку катег
 
 msgid "Part de chaque catégorie"
 msgstr "Частка кожної категорії"
-
-msgid "{from} à {to}"
-msgstr "{from} – {to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "Цей файл не є резервною копією Finaryx."
@@ -1350,11 +1368,8 @@ msgstr "Перевірити (сумнівна категорія)"
 msgid "Lignes illisibles, non importées"
 msgstr "Нечитабельні рядки, не імпортовано"
 
-msgid "Recaler le solde initial"
-msgstr "Вирівняти початковий залишок"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "За стовпцем залишку залишок до першої імпортованої операції стає {amount}."
+msgid "Solde au {date}, après la dernière opération"
+msgstr "Баланс на {date}, після останньої операції"
 
 msgid "Retenir ce format"
 msgstr "Запам’ятати цей формат"
@@ -1364,6 +1379,9 @@ msgstr "Наступний файл цього банку буде прочит�
 
 msgid "Nom du format"
 msgstr "Назва формату"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "Баланс необов’язковий: вкажіть той, що показує банк після останньої операції у файлі, і Finaryx обчислить початковий баланс рахунку. Якщо порожньо, нічого не зміниться."
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "Дублікат має ту саму дату, опис, суму й референс, що й уже збережена операція. Ваші файли ніколи не змінюються."
@@ -1379,6 +1397,9 @@ msgid_plural "Importer {n} opérations"
 msgstr[0] "Імпортувати {n} операцію"
 msgstr[1] "Імпортувати {n} операції"
 msgstr[2] "Імпортувати {n} операцій"
+
+msgid "Le solde saisi est illisible."
+msgstr "Введений баланс неможливо прочитати."
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1407,6 +1428,9 @@ msgstr "{n} КБ"
 msgid "{n} Mo"
 msgstr "{n} МБ"
 
+msgid "Détail de « Autres »"
+msgstr "Подробиці «Інше»"
+
 msgid "Non classé"
 msgstr "Не відсортовано"
 
@@ -1421,9 +1445,6 @@ msgstr "Керувати кольорами…"
 
 msgid "Fermer"
 msgstr "Закрити"
-
-msgid "Détail de « Autres »"
-msgstr "Подробиці «Інше»"
 
 msgid "Mois précédent : {month}"
 msgstr "Попередній місяць: {month}"

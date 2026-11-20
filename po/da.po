@@ -359,9 +359,6 @@ msgstr "Hovednavigation"
 msgid "Dernier import"
 msgstr "Seneste import"
 
-msgid "Importer"
-msgstr "Importér"
-
 msgid "Ajouter un compte"
 msgstr "Tilføj konto"
 
@@ -425,11 +422,14 @@ msgstr "Summerne beregnes separat for hver valuta."
 msgid "Numéro de compte (facultatif)"
 msgstr "Kontonummer (valgfrit)"
 
-msgid "Solde avant la première opération importée"
-msgstr "Saldo før den første importerede transaktion"
+msgid "Solde actuel"
+msgstr "Aktuel saldo"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "Lad saldoen være tom, hvis den er nul. Hvis den importerede fil har en saldokolonne, foreslår Finaryx at justere den."
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "Saldoen angives ved importen: Finaryx spørger om saldoen efter filens sidste transaktion."
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "Saldo efter den sidst registrerede transaktion. Finaryx beregner startsaldoen ud fra den."
 
 msgid "Annuler"
 msgstr "Annuller"
@@ -791,6 +791,27 @@ msgstr "Tilføj dem i indstillingerne, for eksempel dit navn og din partners."
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "Transaktionerne med disse navne er allerede interne overførsler."
 
+msgid "{from} à {to}"
+msgstr "{from} til {to}"
+
+msgid "Sorties"
+msgstr "Udgående"
+
+msgid "Entrées"
+msgstr "Indgående"
+
+msgid "Remboursements et autres crédits"
+msgstr "Refusioner og andre indbetalinger"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "Ingen transaktioner i denne kategori i perioden."
+
+msgid "Par mois"
+msgstr "Pr. måned"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "Rediger i transaktionslisten"
+
 msgid "Période"
 msgstr "Periode"
 
@@ -809,6 +830,9 @@ msgstr "Dyreste måned"
 msgid "Mois le plus léger"
 msgstr "Billigste måned"
 
+msgid "Voir les opérations : {name}"
+msgstr "Se transaktioner: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "Procenten er kategoriens andel af månedens udgifter. For små andele står i tabellen nedenfor."
 
@@ -817,9 +841,6 @@ msgstr "Måned for måned, pr. kategori"
 
 msgid "Catégorie"
 msgstr "Kategori"
-
-msgid "Par mois"
-msgstr "Pr. måned"
 
 msgid "Total"
 msgstr "I alt"
@@ -832,9 +853,6 @@ msgstr "Månedskolonnerne viser kategoriens andel; rækken I alt viser månedens
 
 msgid "Part de chaque catégorie"
 msgstr "Hver kategoris andel"
-
-msgid "{from} à {to}"
-msgstr "{from} til {to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "Denne fil er ikke en sikkerhedskopi fra Finaryx."
@@ -1328,11 +1346,8 @@ msgstr "Skal tjekkes (usikker kategori)"
 msgid "Lignes illisibles, non importées"
 msgstr "Ulæselige linjer, ikke importeret"
 
-msgid "Recaler le solde initial"
-msgstr "Justér startsaldoen"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "Ifølge saldokolonnen bliver saldoen før den første importerede transaktion {amount}."
+msgid "Solde au {date}, après la dernière opération"
+msgstr "Saldo den {date}, efter sidste transaktion"
 
 msgid "Retenir ce format"
 msgstr "Husk dette format"
@@ -1342,6 +1357,9 @@ msgstr "Den næste fil fra denne bank læses uden spørgsmål"
 
 msgid "Nom du format"
 msgstr "Formatets navn"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "Saldoen er valgfri: angiv den, banken viser efter filens sidste transaktion, så beregner Finaryx kontoens startsaldo. Tom ændrer intet."
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "En dublet har samme dato, tekst, beløb og reference som en allerede gemt transaktion. Dine filer ændres aldrig."
@@ -1356,6 +1374,9 @@ msgid "Importer {n} opération"
 msgid_plural "Importer {n} opérations"
 msgstr[0] "Importér {n} transaktion"
 msgstr[1] "Importér {n} transaktioner"
+
+msgid "Le solde saisi est illisible."
+msgstr "Den indtastede saldo kan ikke læses."
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1382,6 +1403,9 @@ msgstr "{n} kB"
 msgid "{n} Mo"
 msgstr "{n} MB"
 
+msgid "Détail de « Autres »"
+msgstr "Detaljer om »Andet«"
+
 msgid "Non classé"
 msgstr "Ikke sorteret"
 
@@ -1396,9 +1420,6 @@ msgstr "Administrér farver…"
 
 msgid "Fermer"
 msgstr "Luk"
-
-msgid "Détail de « Autres »"
-msgstr "Detaljer om »Andet«"
 
 msgid "Mois précédent : {month}"
 msgstr "Forrige måned: {month}"

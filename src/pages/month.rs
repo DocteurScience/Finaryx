@@ -6,7 +6,6 @@ use std::cell::Cell;
 
 use adw::prelude::*;
 use chrono::{Datelike, NaiveDate};
-use finaryx_core::categories::OTHERS_GROUP;
 use finaryx_core::db::Result;
 use finaryx_core::money::Sign;
 use finaryx_core::rusqlite::Connection;
@@ -269,8 +268,6 @@ impl MonthPage {
         let parts = stats::chart_parts(&categories);
         let prev_parts = stats::chart_parts(&previous);
         let weak = self.window.clone();
-        let parts_for_click = parts.clone();
-        let currency = scope.currency.clone();
         let ring = month_donut(
             &parts,
             &prev_parts,
@@ -278,13 +275,8 @@ impl MonthPage {
             cur,
             if narrow { 220 } else { 300 },
             move |slot| {
-                if slot == OTHERS_GROUP {
-                    if let (Some(w), Some(p)) = (
-                        weak.upgrade(),
-                        parts_for_click.iter().find(|p| p.slot == OTHERS_GROUP),
-                    ) {
-                        super::show_others_dialog(&w, p, month, &currency);
-                    }
+                if let Some(w) = weak.upgrade() {
+                    w.show_chart_group(slot, month, stats::next_month(month));
                 }
             },
         );
@@ -338,8 +330,21 @@ impl MonthPage {
                 &pct1(c.amount, total),
                 (!narrow).then_some(delta.as_str()),
             );
-            row.set_tooltip_text(Some(&n_ops(c.operations)));
-            table.append(&row);
+            let weak = self.window.clone();
+            let category = c.category_id;
+            table.append(&super::clickable(
+                &row,
+                &format!(
+                    "{} · {}",
+                    gettext("Voir les opérations : {name}").replace("{name}", &c.name),
+                    n_ops(c.operations)
+                ),
+                move || {
+                    if let Some(w) = weak.upgrade() {
+                        w.show_category(category, month, stats::next_month(month));
+                    }
+                },
+            ));
         }
         // Ring beside the table when there is room, above it otherwise.
         let body = gtk::FlowBox::builder()

@@ -6,7 +6,7 @@ use finaryx_core::importers::format::{DateFormat, Encoding};
 use finaryx_core::importers::mapping::{AmountMode, BankCategoryChoice, Field, RowProblem};
 use finaryx_core::importers::plan::{self, CommitOptions, RowState};
 use finaryx_core::importers::profiles;
-use finaryx_core::models::{builtin, AccountKind, CategorySource, NewAccount};
+use finaryx_core::models::{builtin, AccountKind, CategorySource, NewAccount, NewTransaction};
 use finaryx_core::repo;
 use finaryx_core::rusqlite::Connection;
 
@@ -145,7 +145,7 @@ fn an_import_is_atomic() {
     // transaction: nothing at all must remain.
     let options = CommitOptions {
         save_profile: Some(("  ".into(), None)),
-        new_opening: None,
+        balance_after: None,
     };
     assert!(plan::commit(
         &mut conn,
@@ -185,14 +185,13 @@ fn unknown_format_with_metadata_lines_and_a_balance_column() {
     assert_eq!(p.rows.len(), 4);
     assert_eq!(p.rows[2].txn.label, "CAFE, CROISSANT");
     assert!(p.balance.inconsistent_lines.is_empty());
-    // The file says 1 000,00 € before its first operation; so does the
-    // account (opening balance 1 000,00 €): nothing to adjust.
-    assert_eq!(p.balance.suggested_opening, None);
+    // Balance after the file's last operation, to pre-fill the field.
+    assert_eq!(p.balance.end_balance, Some(267_930));
 
     // Remember the format: the next file is recognised.
     let options = CommitOptions {
         save_profile: Some(("Ma banque".into(), Some("Banque X".into()))),
-        new_opening: None,
+        balance_after: None,
     };
     plan::commit(
         &mut conn,
@@ -211,15 +210,30 @@ fn unknown_format_with_metadata_lines_and_a_balance_column() {
 }
 
 #[test]
-fn balance_column_suggests_a_new_opening_balance() {
+fn balance_after_the_last_operation_sets_the_opening_balance() {
     let (mut conn, account) = setup();
     repo::set_opening_balance(&conn, account, 0).unwrap();
+    // An operation after the file, already in the account: it must not
+    // change the balance given for the file's last day.
+    repo::insert_transactions(
+        &conn,
+        account,
+        None,
+        &[NewTransaction::simple(
+            "2026-12-01".parse().unwrap(),
+            "LATER",
+            -1_000,
+            builtin::OTHERS,
+        )],
+    )
+    .unwrap();
     let a = plan::analyze(&conn, GENERIC).unwrap();
     let p = plan::plan(&conn, &a.table, &a.mapping, account).unwrap();
-    assert_eq!(p.balance.suggested_opening, Some(100_000));
+    assert_eq!(p.balance.end_balance, Some(267_930));
+    let (_, last) = plan::period(&p).unwrap();
     let options = CommitOptions {
         save_profile: None,
-        new_opening: p.balance.suggested_opening,
+        balance_after: p.balance.end_balance,
     };
     plan::commit(
         &mut conn,
@@ -233,8 +247,12 @@ fn balance_column_suggests_a_new_opening_balance() {
     )
     .unwrap();
     assert_eq!(
-        repo::account_balance(&conn, account, None).unwrap(),
+        repo::account_balance(&conn, account, Some(last)).unwrap(),
         267_930
+    );
+    assert_eq!(
+        repo::account_balance(&conn, account, None).unwrap(),
+        266_930
     );
 
     // A broken balance column is reported line by line.

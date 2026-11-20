@@ -164,18 +164,6 @@
                               <object class="AdwHeaderBar">
                                 <property name="show-back-button">False</property>
                                 <child type="start">
-                                  <object class="GtkButton" id="import_button">
-                                    <property name="action-name">win.import</property>
-                                    <property name="tooltip-text" translatable="yes">Importer un CSV</property>
-                                    <property name="child">
-                                      <object class="AdwButtonContent">
-                                        <property name="icon-name">finaryx-import-symbolic</property>
-                                        <property name="label" translatable="yes">Importer</property>
-                                      </object>
-                                    </property>
-                                  </object>
-                                </child>
-                                <child type="start">
                                   <object class="GtkButton" id="import_icon_button">
                                     <property name="action-name">win.import</property>
                                     <property name="icon-name">finaryx-import-symbolic</property>

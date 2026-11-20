@@ -359,9 +359,6 @@ msgstr "Main navigation"
 msgid "Dernier import"
 msgstr "Last import"
 
-msgid "Importer"
-msgstr "Import"
-
 msgid "Ajouter un compte"
 msgstr "Add Account"
 
@@ -425,11 +422,14 @@ msgstr "Totals are calculated separately for each currency."
 msgid "Numéro de compte (facultatif)"
 msgstr "Account number (optional)"
 
-msgid "Solde avant la première opération importée"
-msgstr "Balance before the first imported transaction"
+msgid "Solde actuel"
+msgstr "Current balance"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "Leave the balance empty if it is zero. If the imported file has a balance column, Finaryx will offer to adjust it."
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "The balance is set when importing: Finaryx asks for the balance after the file's last transaction."
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "Balance after the last recorded transaction. Finaryx works out the opening balance from it."
 
 msgid "Annuler"
 msgstr "Cancel"
@@ -791,6 +791,27 @@ msgstr "Add them in the preferences, for example your name and your partner’s.
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "The transactions of these names are already internal transfers."
 
+msgid "{from} à {to}"
+msgstr "{from} to {to}"
+
+msgid "Sorties"
+msgstr "Money out"
+
+msgid "Entrées"
+msgstr "Money in"
+
+msgid "Remboursements et autres crédits"
+msgstr "Refunds and other credits"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "No transactions in this category over the period."
+
+msgid "Par mois"
+msgstr "Per month"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "Edit in the transaction list"
+
 msgid "Période"
 msgstr "Period"
 
@@ -809,6 +830,9 @@ msgstr "Busiest month"
 msgid "Mois le plus léger"
 msgstr "Lightest month"
 
+msgid "Voir les opérations : {name}"
+msgstr "See transactions: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "The percentage is the category’s share of the month’s spending. Shares too thin to be written are in the table below."
 
@@ -817,9 +841,6 @@ msgstr "Month by month, by category"
 
 msgid "Catégorie"
 msgstr "Category"
-
-msgid "Par mois"
-msgstr "Per month"
 
 msgid "Total"
 msgstr "Total"
@@ -832,9 +853,6 @@ msgstr "The month columns give the category’s share; the Total row gives the m
 
 msgid "Part de chaque catégorie"
 msgstr "Share of each category"
-
-msgid "{from} à {to}"
-msgstr "{from} to {to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "This file is not a Finaryx backup."
@@ -1328,11 +1346,8 @@ msgstr "To review (uncertain category)"
 msgid "Lignes illisibles, non importées"
 msgstr "Unreadable rows, not imported"
 
-msgid "Recaler le solde initial"
-msgstr "Adjust the Opening Balance"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "According to the balance column, the balance before the first imported transaction becomes {amount}."
+msgid "Solde au {date}, après la dernière opération"
+msgstr "Balance on {date}, after the last transaction"
 
 msgid "Retenir ce format"
 msgstr "Remember This Format"
@@ -1342,6 +1357,9 @@ msgstr "The next file from this bank will be read without asking anything"
 
 msgid "Nom du format"
 msgstr "Format name"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "The balance is optional: enter the one your bank shows after the file's last transaction, and Finaryx works out the account's opening balance. Left empty, nothing changes."
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "A duplicate has the same date, description, amount and reference as a transaction already recorded. Your files are never modified."
@@ -1356,6 +1374,9 @@ msgid "Importer {n} opération"
 msgid_plural "Importer {n} opérations"
 msgstr[0] "Import {n} Transaction"
 msgstr[1] "Import {n} Transactions"
+
+msgid "Le solde saisi est illisible."
+msgstr "The balance entered cannot be read."
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1382,6 +1403,9 @@ msgstr "{n} KB"
 msgid "{n} Mo"
 msgstr "{n} MB"
 
+msgid "Détail de « Autres »"
+msgstr "Details of “Other”"
+
 msgid "Non classé"
 msgstr "Uncategorized"
 
@@ -1396,9 +1420,6 @@ msgstr "Manage Colors…"
 
 msgid "Fermer"
 msgstr "Close"
-
-msgid "Détail de « Autres »"
-msgstr "Details of “Other”"
 
 msgid "Mois précédent : {month}"
 msgstr "Previous month: {month}"

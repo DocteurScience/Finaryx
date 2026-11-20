@@ -111,7 +111,7 @@ Catégories initiales, **dans cet ordre fixe** (la couleur suit l'entité, jamai
 Catégories **sans couleur** (regroupées dans « Autres » dans les graphiques, séparées partout ailleurs) : Sorties et loisirs · Santé · Impôts et taxes · Administratif et éducation. Catégories spéciales : « Revenus » (`is_income`) et « Virement interne » (`exclude_from_stats`).
 Les maquettes (`design/`) montrent encore l'ancien jeu de 8 catégories avec des données d'exemple : le jeu ci-dessus est celui à implémenter.
 
-**Solde d'un compte à une date** = `opening_balance_cents` + somme des opérations jusqu'à cette date. Le solde total est la somme des comptes non archivés. Si le CSV contient une colonne de solde, l'utiliser pour recaler `opening_balance_cents` (avec confirmation).
+**Solde d'un compte à une date** = `opening_balance_cents` + somme des opérations jusqu'à cette date. Le solde total est la somme des comptes non archivés. Le solde n'est jamais demandé « avant la première opération » (date parfois très ancienne) : l'import demande le solde du compte après la dernière opération du fichier (prérempli par la colonne de solde quand elle existe, facultatif) et le dialogue d'un compte demande son solde actuel ; `opening_balance_cents` en est déduit (`repo::set_balance_at`).
 
 ---
 
@@ -186,6 +186,9 @@ Barre latérale (260 px) : Vue d'ensemble, Mois en détail, Cumul, Prévisions �
 ### Mois en détail (`Mois.dc.html`)
 Boutons mois précédent/suivant. « Rythme des dépenses » : courbe des dépenses cumulées depuis le 1er, avec le mois précédent en pointillé gris et la moyenne des 6 mois complets précédents en aire grise (à partir de 2 mois) ; phrase de synthèse (montant dépensé à la date, écart avec le mois précédent à la même date) ; dépenses du jour dans l’info-bulle. La courbe du solde reste sur la vue d’ensemble. (Remplace la courbe du solde et les barres des dépenses du jour, jugées peu claires.) Anneau par catégorie + liste (catégorie, montant, part, écart vs mois précédent). 6 dernières opérations, lien « Tout voir » (liste complète filtrable : recherche texte, catégorie, compte ; changement de catégorie en ligne).
 
+### Détail d'une catégorie
+Un clic sur une catégorie (segment de l'anneau ou ligne du tableau dans Mois en détail et la vue d'ensemble ; segment d'une colonne, légende ou ligne du tableau dans Cumul et dans « Cumul sur 6 mois ») ouvre une page dédiée : nom et couleur, sorties, entrées (remboursements), nombre d'opérations, détail par mois si la période en compte plusieurs, puis toutes les opérations groupées par mois. Un segment de colonne ouvre son mois ; la légende et le tableau du Cumul ouvrent toute la période. Le gris « Autres » ouvre « Détail de « Autres » », dont chaque ligne mène à sa catégorie. Bouton « Modifier dans la liste des opérations » pour changer la catégorie d'une opération. Dans « Cumul sur 6 mois » de la vue d'ensemble, les pourcentages sont écrits dans les segments comme sur la page Cumul.
+
 ### Cumul (`Cumul.dc.html`)
 Sélecteur 3 / 6 / 12 mois. 4 cartes (total, moyenne mensuelle, mois max, mois min). Colonnes empilées par mois (ordre de catégories fixe, total au-dessus de chaque colonne). Pourcentage de la catégorie dans le mois écrit **dans chaque segment** quand le segment fait au moins 16 px de haut ; le tableau « Part de chaque catégorie » dessous donne tous les pourcentages (6 mois + part sur la période + cumul € + moyenne/mois + ligne Total).
 
@@ -196,13 +199,13 @@ Deux sélecteurs : période d'apprentissage (3/6/12 mois) et horizon (3/6/12 moi
 Liste complète, atteinte depuis « Tout voir ». Champ de recherche (libellé), liste déroulante de compte, liste déroulante de période, rangée de pastilles de catégories (« Toutes » + 8 catégories, une seule sélectionnée à la fois ; la sélection est entourée de la couleur d'accent). Sous les filtres : nombre d'opérations, catégorie, période, et à droite le total filtré avec sa part des dépenses. Chaque ligne : date, libellé, compte, badge « À vérifier » éventuel, bouton de catégorie (ouvre un menu pour la changer, avec proposition de créer une règle), montant. Pagination « Afficher les N suivantes ».
 
 ### Détail d'un compte (`CompteDetail.dc.html`)
-Atteint depuis une ligne de la page Comptes (bouton retour vers Comptes). Carte solde + courbe des 6 derniers mois (une valeur par semaine, info-bulle au survol). Groupe « Réglages du compte » (nom, banque, type, solde initial, chacun avec un bouton Modifier). 5 dernières opérations + « Tout voir ». « Zone sensible » : Archiver (retire le compte des totaux) et Supprimer (action destructive, couleur rouge, confirmation obligatoire avec le nombre d'opérations effacées).
+Atteint depuis une ligne de la page Comptes (bouton retour vers Comptes). Carte solde + courbe des 6 derniers mois (une valeur par semaine, info-bulle au survol). Groupe « Réglages du compte » (nom, banque, type, solde actuel, chacun avec un bouton Modifier). 5 dernières opérations + « Tout voir ». « Zone sensible » : Archiver (retire le compte des totaux) et Supprimer (action destructive, couleur rouge, confirmation obligatoire avec le nombre d'opérations effacées).
 
 ### Premier lancement et états vides (`Accueil.dc.html`)
 Aucun compte : `AdwStatusPage` « Bienvenue dans Finaryx », bouton suggéré « Importer un CSV », bouton secondaire « Ajouter un compte d'abord », liste « Pour commencer » en 3 étapes. Même page : état « pas assez de données pour une prévision » (moins de 3 mois d'historique), avec action « Importer un export plus ancien ». Prévoir le même principe pour toute vue sans données (mois vide, catégorie vide).
 
 ### Comptes (`Comptes.dc.html`)
-Carte du total avec barre de répartition par compte (info-bulle par compte). Liste des comptes : avatar à initiales, banque, mini-courbe, solde, nombre d'opérations, état de la dernière importation, chevron vers le détail. « Ajouter » (nom, banque, type, solde initial). Historique des imports (fichier, compte, date, compteurs) ; action « Annuler cet import » = supprimer les `txn` du lot (avec confirmation).
+Carte du total avec barre de répartition par compte (info-bulle par compte). Liste des comptes : avatar à initiales, banque, mini-courbe, solde, nombre d'opérations, état de la dernière importation, chevron vers le détail. « Ajouter » (nom, banque, type ; le solde est demandé à l'import). Historique des imports (fichier, compte, date, compteurs) ; action « Annuler cet import » = supprimer les `txn` du lot (avec confirmation).
 
 ---
 

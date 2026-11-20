@@ -95,8 +95,16 @@ impl CumulativePage {
         let cur = scope.currency.as_str();
         let n = self.months.get();
         let months = stats::months_ending(last, n);
+        let (from, to) = (months[0], stats::next_month(last));
         let (chart, data) =
-            months_columns(conn, scope, &months, if narrow { 300 } else { 420 }, true)?;
+            months_columns(conn, scope, &months, if narrow { 300 } else { 420 }, {
+                let weak = self.window.clone();
+                move |m, slot| {
+                    if let Some(w) = weak.upgrade() {
+                        w.show_chart_group(slot, m, stats::next_month(m));
+                    }
+                }
+            })?;
         let totals: Vec<i64> = data.iter().map(|r| r.iter().sum()).collect();
         let grand: i64 = totals.iter().sum();
         let average = grand / n as i64;
@@ -185,7 +193,17 @@ impl CumulativePage {
                     .xalign(0.0)
                     .build(),
             );
-            legend.append(&item);
+            let weak = self.window.clone();
+            let group = k as u8 + 1;
+            legend.append(&super::clickable(
+                &item,
+                &gettext("Voir les opérations : {name}").replace("{name}", name),
+                move || {
+                    if let Some(w) = weak.upgrade() {
+                        w.show_chart_group(group, from, to);
+                    }
+                },
+            ));
         }
         super::unfocusable_children(&legend);
         let card = chart_card(&[
@@ -289,6 +307,18 @@ impl CumulativePage {
                     .wrap(narrow)
                     .build(),
             );
+            let weak = self.window.clone();
+            let category = row.category_id;
+            let name = super::clickable(
+                &name,
+                &gettext("Voir les opérations : {name}").replace("{name}", &row.name),
+                move || {
+                    if let Some(w) = weak.upgrade() {
+                        w.show_category(category, from, to);
+                    }
+                },
+            );
+            name.set_halign(gtk::Align::Start);
             grid.attach(&name, 0, y, 1, 1);
             if !narrow {
                 for (i, v) in row.months.iter().enumerate() {

@@ -358,9 +358,6 @@ msgstr "メインナビゲーション"
 msgid "Dernier import"
 msgstr "最終インポート"
 
-msgid "Importer"
-msgstr "インポート"
-
 msgid "Ajouter un compte"
 msgstr "口座を追加"
 
@@ -424,11 +421,14 @@ msgstr "合計は通貨ごとに別々に計算されます。"
 msgid "Numéro de compte (facultatif)"
 msgstr "口座番号 (任意)"
 
-msgid "Solde avant la première opération importée"
-msgstr "最初にインポートした取引の前の残高"
+msgid "Solde actuel"
+msgstr "現在の残高"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "残高が 0 なら空欄のままにしてください。インポートしたファイルに残高の列があれば、Finaryx が調整を提案します。"
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "残高はインポート時に入力します。Finaryx はファイルの最後の取引後の残高を尋ねます。"
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "記録済みの最後の取引後の残高です。Finaryx はここから開始残高を求めます。"
 
 msgid "Annuler"
 msgstr "キャンセル"
@@ -778,6 +778,27 @@ msgstr "設定で追加してください。たとえばご自身とパートナ
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "これらの名前の取引はすでに口座間振替です。"
 
+msgid "{from} à {to}"
+msgstr "{from}～{to}"
+
+msgid "Sorties"
+msgstr "出金"
+
+msgid "Entrées"
+msgstr "入金"
+
+msgid "Remboursements et autres crédits"
+msgstr "返金とその他の入金"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "この期間、このカテゴリーの取引はありません。"
+
+msgid "Par mois"
+msgstr "月あたり"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "取引の一覧で編集"
+
 msgid "Période"
 msgstr "期間"
 
@@ -796,6 +817,9 @@ msgstr "支出が最も多い月"
 msgid "Mois le plus léger"
 msgstr "支出が最も少ない月"
 
+msgid "Voir les opérations : {name}"
+msgstr "取引を表示: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "割合は、その月の支出に占めるカテゴリーの比率です。書き込めないほど小さな割合は下の表にあります。"
 
@@ -804,9 +828,6 @@ msgstr "月別・カテゴリー別"
 
 msgid "Catégorie"
 msgstr "カテゴリー"
-
-msgid "Par mois"
-msgstr "月あたり"
 
 msgid "Total"
 msgstr "合計"
@@ -819,9 +840,6 @@ msgstr "月の列はカテゴリーの割合、「合計」の行はその月の
 
 msgid "Part de chaque catégorie"
 msgstr "各カテゴリーの割合"
-
-msgid "{from} à {to}"
-msgstr "{from}～{to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "このファイルは Finaryx のバックアップではありません。"
@@ -1306,11 +1324,8 @@ msgstr "要確認 (カテゴリーが不確か)"
 msgid "Lignes illisibles, non importées"
 msgstr "読めない行 (インポートしません)"
 
-msgid "Recaler le solde initial"
-msgstr "開始残高を調整"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "残高の列によると、最初にインポートした取引の前の残高は {amount} になります。"
+msgid "Solde au {date}, après la dernière opération"
+msgstr "{date} の残高 (最後の取引後)"
 
 msgid "Retenir ce format"
 msgstr "この形式を記憶"
@@ -1320,6 +1335,9 @@ msgstr "この銀行の次のファイルは確認なしで読み込みます"
 
 msgid "Nom du format"
 msgstr "形式の名前"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "残高は任意です。ファイルの最後の取引後に銀行が示す残高を入力すると、Finaryx が口座の開始残高を求めます。空欄なら何も変わりません。"
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "重複とは、記録済みの取引と日付・摘要・金額・参照番号がすべて同じ取引です。ファイルが変更されることはありません。"
@@ -1333,6 +1351,9 @@ msgstr "新しい取引はありません"
 msgid "Importer {n} opération"
 msgid_plural "Importer {n} opérations"
 msgstr[0] "{n} 件の取引をインポート"
+
+msgid "Le solde saisi est illisible."
+msgstr "入力された残高を読み取れません。"
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1357,6 +1378,9 @@ msgstr "{n} KB"
 msgid "{n} Mo"
 msgstr "{n} MB"
 
+msgid "Détail de « Autres »"
+msgstr "「その他」の内訳"
+
 msgid "Non classé"
 msgstr "未分類"
 
@@ -1371,9 +1395,6 @@ msgstr "色を管理…"
 
 msgid "Fermer"
 msgstr "閉じる"
-
-msgid "Détail de « Autres »"
-msgstr "「その他」の内訳"
 
 msgid "Mois précédent : {month}"
 msgstr "前の月: {month}"

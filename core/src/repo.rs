@@ -331,6 +331,23 @@ pub fn account_balance(conn: &Connection, account_id: Id, on: Option<NaiveDate>)
     )?)
 }
 
+/// Sets the opening balance so that the account's balance at the end of
+/// `on` (or after all its operations) is `balance`.
+pub fn set_balance_at(
+    conn: &Connection,
+    account_id: Id,
+    balance: i64,
+    on: Option<NaiveDate>,
+) -> Result<()> {
+    let operations: i64 = conn.query_row(
+        "SELECT coalesce(sum(amount_cents), 0) FROM txn
+         WHERE account_id = ?1 AND (?2 IS NULL OR booked_on <= ?2)",
+        params![account_id, on],
+        |r| r.get(0),
+    )?;
+    set_opening_balance(conn, account_id, balance - operations)
+}
+
 /// Total balance of the non-archived accounts, one entry per currency
 /// (never converted), sorted by currency code.
 pub fn total_balance_by_currency(

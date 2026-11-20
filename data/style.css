@@ -142,3 +142,11 @@ button.period {
   padding-left: 6px;
   padding-right: 6px;
 }
+
+/* A table line or legend item that opens the detail of its category: a
+   flat button keeping the line's look. */
+button.clickable-line {
+  padding: 0 4px;
+  min-height: 0;
+  font-weight: normal;
+}

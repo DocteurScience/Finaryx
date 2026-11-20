@@ -358,9 +358,6 @@ msgstr "主导航"
 msgid "Dernier import"
 msgstr "上次导入"
 
-msgid "Importer"
-msgstr "导入"
-
 msgid "Ajouter un compte"
 msgstr "添加账户"
 
@@ -424,11 +421,14 @@ msgstr "合计按货币分别计算。"
 msgid "Numéro de compte (facultatif)"
 msgstr "账号 (可选)"
 
-msgid "Solde avant la première opération importée"
-msgstr "首笔导入交易之前的余额"
+msgid "Solde actuel"
+msgstr "当前余额"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "如果余额为 0，请留空。如果导入的文件有余额列，Finaryx 会建议调整。"
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "余额在导入时填写：Finaryx 会询问文件中最后一笔交易后的余额。"
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "最后一笔已记录交易后的余额。Finaryx 据此推算期初余额。"
 
 msgid "Annuler"
 msgstr "取消"
@@ -778,6 +778,27 @@ msgstr "请在首选项中添加，例如您和伴侣的姓名。"
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "含有这些姓名的交易已经是账户间转账。"
 
+msgid "{from} à {to}"
+msgstr "{from}至{to}"
+
+msgid "Sorties"
+msgstr "支出"
+
+msgid "Entrées"
+msgstr "收入"
+
+msgid "Remboursements et autres crédits"
+msgstr "退款及其他入账"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "此期间该分类没有交易。"
+
+msgid "Par mois"
+msgstr "每月"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "在交易列表中编辑"
+
 msgid "Période"
 msgstr "时间段"
 
@@ -796,6 +817,9 @@ msgstr "支出最多的月份"
 msgid "Mois le plus léger"
 msgstr "支出最少的月份"
 
+msgid "Voir les opérations : {name}"
+msgstr "查看交易：{name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "比例为该分类占当月支出的份额。太小无法标注的比例见下表。"
 
@@ -804,9 +828,6 @@ msgstr "按月份和分类"
 
 msgid "Catégorie"
 msgstr "分类"
-
-msgid "Par mois"
-msgstr "每月"
 
 msgid "Total"
 msgstr "合计"
@@ -819,9 +840,6 @@ msgstr "月份列显示各分类的比例，“合计”行显示当月支出。
 
 msgid "Part de chaque catégorie"
 msgstr "各分类的比例"
-
-msgid "{from} à {to}"
-msgstr "{from}至{to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "此文件不是 Finaryx 备份。"
@@ -1306,11 +1324,8 @@ msgstr "待核对 (分类不确定)"
 msgid "Lignes illisibles, non importées"
 msgstr "无法读取的行 (不导入)"
 
-msgid "Recaler le solde initial"
-msgstr "调整期初余额"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "根据余额列，首笔导入交易之前的余额为 {amount}。"
+msgid "Solde au {date}, après la dernière opération"
+msgstr "{date}余额（最后一笔交易后）"
 
 msgid "Retenir ce format"
 msgstr "记住此格式"
@@ -1320,6 +1335,9 @@ msgstr "此银行的下一个文件将直接读取，无需检查"
 
 msgid "Nom du format"
 msgstr "格式名称"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "余额为选填：填写银行在文件最后一笔交易后显示的余额，Finaryx 会据此推算账户的期初余额。留空则不作更改。"
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "重复交易是指日期、摘要、金额和参考号与已记录交易完全相同的交易。文件不会被修改。"
@@ -1333,6 +1351,9 @@ msgstr "没有新交易"
 msgid "Importer {n} opération"
 msgid_plural "Importer {n} opérations"
 msgstr[0] "导入 {n} 笔交易"
+
+msgid "Le solde saisi est illisible."
+msgstr "无法读取输入的余额。"
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1357,6 +1378,9 @@ msgstr "{n} KB"
 msgid "{n} Mo"
 msgstr "{n} MB"
 
+msgid "Détail de « Autres »"
+msgstr "“其他”明细"
+
 msgid "Non classé"
 msgstr "未分类"
 
@@ -1371,9 +1395,6 @@ msgstr "管理颜色…"
 
 msgid "Fermer"
 msgstr "关闭"
-
-msgid "Détail de « Autres »"
-msgstr "“其他”明细"
 
 msgid "Mois précédent : {month}"
 msgstr "上个月：{month}"

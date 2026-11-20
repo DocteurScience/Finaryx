@@ -276,6 +276,7 @@ pub fn clear(container: &gtk::Box) {
 }
 
 pub mod categories;
+pub mod category_detail;
 pub mod cumulative;
 pub mod export;
 pub mod forecast;
@@ -449,14 +450,20 @@ pub fn n_ops(n: i64) -> String {
 }
 
 /// "Détail de « Autres »": the categories grouped in grey in the charts.
+/// A line opens the detail of its category.
 pub fn show_others_dialog(
-    parent: &impl IsA<gtk::Widget>,
+    window: &crate::window::FinaryxWindow,
     part: &finaryx_core::stats::ChartPart,
-    month: chrono::NaiveDate,
+    from: chrono::NaiveDate,
+    to: chrono::NaiveDate,
     currency: &str,
 ) {
     use gettextrs::gettext;
     let list = boxed_list();
+    let dialog = adw::Dialog::builder()
+        .title(gettext("Détail de « Autres »"))
+        .content_width(440)
+        .build();
     for m in &part.members {
         let name = if m.category_id == finaryx_core::models::builtin::OTHERS {
             gettext("Non classé")
@@ -466,7 +473,15 @@ pub fn show_others_dialog(
         let row = adw::ActionRow::builder()
             .title(name)
             .subtitle(n_ops(m.operations))
+            .activatable(true)
             .build();
+        let (weak, d, id) = (window.downgrade(), dialog.clone(), m.category_id);
+        row.connect_activated(move |_| {
+            d.close();
+            if let Some(w) = weak.upgrade() {
+                w.show_category(id, from, to);
+            }
+        });
         row.add_suffix(
             &gtk::Label::builder()
                 .label(format!(
@@ -489,7 +504,10 @@ pub fn show_others_dialog(
         .build();
     content.append(&caption(
         &gettext("{month} · {amount} regroupés dans « Autres » dans les graphiques")
-            .replace("{month}", &capitalized(&chrono_month(month)))
+            .replace(
+                "{month}",
+                &category_detail::period_label(from, finaryx_core::stats::previous_month(to)),
+            )
             .replace("{amount}", &amount(part.amount, currency, Sign::Negative)),
     ));
     content.append(&list);
@@ -514,11 +532,7 @@ pub fn show_others_dialog(
     let toolbar = adw::ToolbarView::new();
     toolbar.add_top_bar(&adw::HeaderBar::new());
     toolbar.set_content(Some(&content));
-    let dialog = adw::Dialog::builder()
-        .title(gettext("Détail de « Autres »"))
-        .content_width(440)
-        .child(&toolbar)
-        .build();
+    dialog.set_child(Some(&toolbar));
     let d = dialog.clone();
     close.connect_clicked(move |_| {
         d.close();
@@ -527,9 +541,22 @@ pub fn show_others_dialog(
     manage.connect_clicked(move |_| {
         d.close();
     });
-    dialog.present(Some(parent));
+    dialog.present(Some(window));
 }
 
-fn chrono_month(m: chrono::NaiveDate) -> String {
-    finaryx_core::dates::month_year(m)
+/// Makes a line (table row, legend item) open something: a flat button
+/// that keeps the line's look, reachable with the keyboard.
+pub fn clickable(
+    child: &impl IsA<gtk::Widget>,
+    accessible_label: &str,
+    on_click: impl Fn() + 'static,
+) -> gtk::Button {
+    let button = gtk::Button::builder()
+        .child(child)
+        .css_classes(["flat", "clickable-line"])
+        .tooltip_text(accessible_label)
+        .build();
+    button.update_property(&[gtk::accessible::Property::Label(accessible_label)]);
+    button.connect_clicked(move |_| on_click());
+    button
 }

@@ -360,9 +360,6 @@ msgstr "Hlavní navigace"
 msgid "Dernier import"
 msgstr "Poslední import"
 
-msgid "Importer"
-msgstr "Importovat"
-
 msgid "Ajouter un compte"
 msgstr "Přidat účet"
 
@@ -426,11 +423,14 @@ msgstr "Součty se počítají zvlášť pro každou měnu."
 msgid "Numéro de compte (facultatif)"
 msgstr "Číslo účtu (nepovinné)"
 
-msgid "Solde avant la première opération importée"
-msgstr "Zůstatek před první importovanou transakcí"
+msgid "Solde actuel"
+msgstr "Aktuální zůstatek"
 
-msgid "Laissez le solde vide s’il est nul. Si le fichier importé contient une colonne de solde, Finaryx proposera de le recaler."
-msgstr "Pokud je zůstatek nulový, nechte pole prázdné. Pokud importovaný soubor obsahuje sloupec zůstatku, Finaryx navrhne jeho úpravu."
+msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
+msgstr "Zůstatek se zadává při importu: Finaryx se zeptá na zůstatek po poslední transakci v souboru."
+
+msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
+msgstr "Zůstatek po poslední zaznamenané transakci. Finaryx z něj odvodí počáteční zůstatek."
 
 msgid "Annuler"
 msgstr "Zrušit"
@@ -804,6 +804,27 @@ msgstr "Přidejte je v předvolbách, například své jméno a jméno partnera.
 msgid "Les opérations de ces noms sont déjà des virements internes."
 msgstr "Transakce těchto jmen už jsou interními převody."
 
+msgid "{from} à {to}"
+msgstr "{from} – {to}"
+
+msgid "Sorties"
+msgstr "Odchozí"
+
+msgid "Entrées"
+msgstr "Příchozí"
+
+msgid "Remboursements et autres crédits"
+msgstr "Vratky a jiné připsané částky"
+
+msgid "Aucune opération dans cette catégorie sur la période."
+msgstr "V tomto období nejsou v této kategorii žádné transakce."
+
+msgid "Par mois"
+msgstr "Za měsíc"
+
+msgid "Modifier dans la liste des opérations"
+msgstr "Upravit v seznamu transakcí"
+
 msgid "Période"
 msgstr "Období"
 
@@ -822,6 +843,9 @@ msgstr "Nejdražší měsíc"
 msgid "Mois le plus léger"
 msgstr "Nejlevnější měsíc"
 
+msgid "Voir les opérations : {name}"
+msgstr "Zobrazit transakce: {name}"
+
 msgid "Le pourcentage est la part de la catégorie dans les dépenses du mois. Les parts trop fines pour être écrites sont dans le tableau en dessous."
 msgstr "Procento je podíl kategorie na výdajích měsíce. Příliš malé podíly jsou v tabulce níže."
 
@@ -830,9 +854,6 @@ msgstr "Měsíc po měsíci, podle kategorií"
 
 msgid "Catégorie"
 msgstr "Kategorie"
-
-msgid "Par mois"
-msgstr "Za měsíc"
 
 msgid "Total"
 msgstr "Celkem"
@@ -845,9 +866,6 @@ msgstr "Sloupce měsíců udávají podíl kategorie; řádek Celkem udává vý
 
 msgid "Part de chaque catégorie"
 msgstr "Podíl každé kategorie"
-
-msgid "{from} à {to}"
-msgstr "{from} – {to}"
 
 msgid "Ce fichier n’est pas une sauvegarde Finaryx."
 msgstr "Tento soubor není záloha Finaryx."
@@ -1350,11 +1368,8 @@ msgstr "Ke kontrole (nejistá kategorie)"
 msgid "Lignes illisibles, non importées"
 msgstr "Nečitelné řádky, neimportovány"
 
-msgid "Recaler le solde initial"
-msgstr "Upravit počáteční zůstatek"
-
-msgid "D’après la colonne de solde, le solde avant la première opération importée devient {amount}."
-msgstr "Podle sloupce zůstatku bude zůstatek před první importovanou transakcí {amount}."
+msgid "Solde au {date}, après la dernière opération"
+msgstr "Zůstatek k {date}, po poslední transakci"
 
 msgid "Retenir ce format"
 msgstr "Zapamatovat tento formát"
@@ -1364,6 +1379,9 @@ msgstr "Další soubor z této banky se načte bez ptaní"
 
 msgid "Nom du format"
 msgstr "Název formátu"
+
+msgid "Le solde est facultatif : indiquez celui que donne votre banque après la dernière opération du fichier, Finaryx en déduit le solde de départ du compte. Vide, rien ne change."
+msgstr "Zůstatek je nepovinný: zadejte ten, který banka uvádí po poslední transakci v souboru, a Finaryx z něj odvodí počáteční zůstatek účtu. Když pole necháte prázdné, nic se nezmění."
 
 msgid "Un doublon a la même date, le même libellé, le même montant et la même référence qu’une opération déjà enregistrée. Vos fichiers ne sont jamais modifiés."
 msgstr "Duplicita má stejné datum, popis, částku a referenci jako již uložená transakce. Vaše soubory se nikdy nemění."
@@ -1379,6 +1397,9 @@ msgid_plural "Importer {n} opérations"
 msgstr[0] "Importovat {n} transakci"
 msgstr[1] "Importovat {n} transakce"
 msgstr[2] "Importovat {n} transakcí"
+
+msgid "Le solde saisi est illisible."
+msgstr "Zadaný zůstatek nelze přečíst."
 
 msgid "{n} opération importée"
 msgid_plural "{n} opérations importées"
@@ -1407,6 +1428,9 @@ msgstr "{n} kB"
 msgid "{n} Mo"
 msgstr "{n} MB"
 
+msgid "Détail de « Autres »"
+msgstr "Podrobnosti „Ostatní“"
+
 msgid "Non classé"
 msgstr "Nezařazeno"
 
@@ -1421,9 +1445,6 @@ msgstr "Spravovat barvy…"
 
 msgid "Fermer"
 msgstr "Zavřít"
-
-msgid "Détail de « Autres »"
-msgstr "Podrobnosti „Ostatní“"
 
 msgid "Mois précédent : {month}"
 msgstr "Předchozí měsíc: {month}"
