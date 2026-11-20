@@ -54,11 +54,12 @@ jobs:
       # The preinstalled runtimes sit in a read-only layer of the image;
       # overlayfs cannot rename their directories when flatpak updates
       # them ("Invalid cross-device link", then exit code 139). A copy in
-      # the writable layer, mounted in their place, can be updated.
+      # the writable layer can be updated: flatpak uses it through
+      # FLATPAK_SYSTEM_DIR (the image has no `mount`).
       - name: Writable Flatpak installation
         run: |
           cp -a /var/lib/flatpak /var/lib/flatpak-rw
-          mount --bind /var/lib/flatpak-rw /var/lib/flatpak
+          echo "FLATPAK_SYSTEM_DIR=/var/lib/flatpak-rw" >> "$GITHUB_ENV"
 
       # Should the update still fail: one more attempt.
       - id: build
