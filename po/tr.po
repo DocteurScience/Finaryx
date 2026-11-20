@@ -323,6 +323,9 @@ msgstr "Genel"
 msgid "Importer un CSV"
 msgstr "CSV içe aktar"
 
+msgid "Ajouter une opération"
+msgstr "İşlem ekle"
+
 msgid "Préférences"
 msgstr "Tercihler"
 
@@ -358,6 +361,9 @@ msgstr "İşlemler"
 
 msgid "Rechercher un libellé"
 msgstr "Açıklama ara"
+
+msgid "Ajouter une opération…"
+msgstr "İşlem ekle…"
 
 msgid "Catégories et règles…"
 msgstr "Kategoriler ve kurallar…"
@@ -443,8 +449,8 @@ msgstr "Hesap numarası (isteğe bağlı)"
 msgid "Solde actuel"
 msgstr "Güncel bakiye"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "Bakiye içe aktarırken girilir: Finaryx dosyadaki son işlemden sonraki bakiyeyi sorar."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "İsteğe bağlı, elle tutulan bir hesap için. Daha sonra bir hesap özeti içe aktarırsanız Finaryx son işlemden sonraki bakiyeyi sorar."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Kaydedilen son işlemden sonraki bakiye. Finaryx açılış bakiyesini buradan hesaplar."
@@ -542,8 +548,59 @@ msgstr "Sil"
 msgid "Catégorie supprimée"
 msgstr "Kategori silindi"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Önce bir hesap ekleyin."
+
 msgid "Compte"
 msgstr "Hesap"
+
+msgid "Date"
+msgstr "Tarih"
+
+msgid "Choisir la date"
+msgstr "Tarih seç"
+
+msgid "Dépense"
+msgstr "Harcama"
+
+msgid "Entrée"
+msgstr "Giriş"
+
+msgid "Sens"
+msgstr "Yön"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Otomatik, açıklamaya göre"
+
+msgid "Catégorie"
+msgstr "Kategori"
+
+msgid "Proposée : {name}"
+msgstr "Önerilen: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "İşlem daha sonra içe aktarılan bir hesap özetinde görünürse Finaryx bu kaydı bankanınkiyle değiştirmeyi önerir."
+
+msgid "Supprimer la saisie"
+msgstr "Kaydı sil"
+
+msgid "Modifier la saisie"
+msgstr "Kaydı düzenle"
+
+msgid "Saisie modifiée"
+msgstr "Kayıt değiştirildi"
+
+msgid "Opération ajoutée"
+msgstr "İşlem eklendi"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Bu kayıt silinsin mi?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "Elle girilen işlem silinir. İçe aktarılan işlemler değişmez."
+
+msgid "Saisie supprimée"
+msgstr "Kayıt silindi"
 
 msgid "Solde au {date}"
 msgstr "Bakiye ({date})"
@@ -856,9 +913,6 @@ msgstr "Yüzde, kategorinin o ayın harcamalarındaki payıdır. Yazılamayacak 
 
 msgid "Mois par mois, par catégorie"
 msgstr "Ay ay, kategoriye göre"
-
-msgid "Catégorie"
-msgstr "Kategori"
 
 msgid "Total"
 msgstr "Toplam"
@@ -1349,6 +1403,18 @@ msgstr "Bakiye sütunu tutarlarla uyuşmuyor: satır {lines}. İçe aktarma yine
 msgid "À savoir avant d’importer"
 msgstr "İçe aktarmadan önce"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · girildi: {manual_date}, bankada: {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "Elle girilen bu işlemler dosyada da var (aynı tutar, en fazla 7 gün fark). Açıkken bankanın işlemiyle değiştirilir ve kategorileri korunur. Kapalıyken ikisi de tutulur."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Bulunan elle girilen kayıtlar"
+
 msgid "Lignes lues"
 msgstr "Okunan satırlar"
 
@@ -1406,6 +1472,11 @@ msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} yinelenen atlandı"
 msgstr[1] "{n} yinelenen atlandı"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} elle girilen kayıt değiştirildi"
+msgstr[1] "{n} elle girilen kayıt değiştirildi"
+
 msgid "Aperçu"
 msgstr "Özet"
 
@@ -1438,6 +1509,9 @@ msgstr "Renkleri yönet…"
 
 msgid "Fermer"
 msgstr "Kapat"
+
+msgid "Saisie manuelle"
+msgstr "Elle girilen"
 
 msgid "Mois précédent : {month}"
 msgstr "Önceki ay: {month}"

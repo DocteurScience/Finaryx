@@ -112,13 +112,12 @@ fn present_full(
                 .to_owned()
         })
         .unwrap_or_default();
-    // A new account has no operations yet: its balance is asked at the
-    // import ("Solde après la dernière opération").
+    // Optional for a new account: an import asks again for the balance
+    // after its last operation.
     let opening = adw::EntryRow::builder()
         .title(gettext("Solde actuel"))
         .text(&opening_text)
         .input_purpose(gtk::InputPurpose::Number)
-        .visible(!adding)
         .build();
 
     let group = adw::PreferencesGroup::new();
@@ -134,7 +133,7 @@ fn present_full(
     }
     let hint = gtk::Label::builder()
         .label(if adding {
-            gettext("Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier.")
+            gettext("Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération.")
         } else {
             gettext("Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ.")
         })

@@ -13,6 +13,7 @@ pub mod forecast;
 pub mod i18n;
 pub mod importers;
 pub mod locale;
+pub mod manual;
 pub mod models;
 pub mod money;
 pub mod normalize;

@@ -420,6 +420,8 @@ pub struct OperationRow {
     /// Chart colour of the category (`None`: grouped in "Autres").
     pub category_slot: Option<u8>,
     pub needs_review: bool,
+    /// Typed by hand: can be changed or deleted.
+    pub is_manual: bool,
 }
 
 /// Most recent operations of an account.
@@ -429,7 +431,8 @@ pub fn recent_operations(
     limit: usize,
 ) -> Result<Vec<OperationRow>> {
     let mut stmt = conn.prepare(
-        "SELECT t.id, t.booked_on, t.label, t.amount_cents, c.name, c.slot, t.needs_review, c.id
+        "SELECT t.id, t.booked_on, t.label, t.amount_cents, c.name, c.slot, t.needs_review, c.id,
+                t.is_manual
          FROM txn t LEFT JOIN category c ON c.id = t.category_id
          WHERE t.account_id = ?1
          ORDER BY t.booked_on DESC, t.id DESC LIMIT ?2",
@@ -446,6 +449,7 @@ pub fn recent_operations(
             },
             category_slot: r.get(5)?,
             needs_review: r.get(6)?,
+            is_manual: r.get(8)?,
         })
     })?;
     Ok(rows.collect::<rusqlite::Result<_>>()?)

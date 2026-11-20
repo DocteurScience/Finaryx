@@ -556,6 +556,8 @@ pub struct OperationItem {
     pub category_slot: Option<u8>,
     pub amount_cents: i64,
     pub needs_review: bool,
+    /// Typed by hand ("Saisie manuelle"): can be changed or deleted.
+    pub is_manual: bool,
 }
 
 /// Operations matching the filter, most recent first: one page, the
@@ -612,7 +614,7 @@ pub fn operations(
     )?;
     let mut stmt = conn.prepare(&format!(
         "SELECT t.id, t.booked_on, t.label, a.name, b.name, t.category_id, c.name, c.slot, t.amount_cents,
-                t.needs_review
+                t.needs_review, t.is_manual
          FROM txn t JOIN account a ON a.id = t.account_id LEFT JOIN bank b ON b.id = a.bank_id
          LEFT JOIN category c ON c.id = t.category_id
          WHERE {clause} ORDER BY t.booked_on DESC, t.id DESC LIMIT {limit} OFFSET {offset}"
@@ -633,6 +635,7 @@ pub fn operations(
                 category_slot: r.get(7)?,
                 amount_cents: r.get(8)?,
                 needs_review: r.get(9)?,
+                is_manual: r.get(10)?,
             })
         })?
         .collect::<rusqlite::Result<_>>()?;

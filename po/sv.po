@@ -323,6 +323,9 @@ msgstr "Allmänt"
 msgid "Importer un CSV"
 msgstr "Importera CSV"
 
+msgid "Ajouter une opération"
+msgstr "Lägg till transaktion"
+
 msgid "Préférences"
 msgstr "Inställningar"
 
@@ -358,6 +361,9 @@ msgstr "Transaktioner"
 
 msgid "Rechercher un libellé"
 msgstr "Sök i beskrivningar"
+
+msgid "Ajouter une opération…"
+msgstr "Lägg till transaktion…"
 
 msgid "Catégories et règles…"
 msgstr "Kategorier och regler…"
@@ -443,8 +449,8 @@ msgstr "Kontonummer (valfritt)"
 msgid "Solde actuel"
 msgstr "Aktuellt saldo"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "Saldot anges vid importen: Finaryx frågar efter saldot efter filens sista transaktion."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "Valfritt, för ett konto som förs för hand. Om du senare importerar ett kontoutdrag frågar Finaryx efter saldot efter dess sista transaktion."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Saldo efter den senast registrerade transaktionen. Finaryx räknar fram ingående saldo utifrån det."
@@ -542,8 +548,59 @@ msgstr "Ta bort"
 msgid "Catégorie supprimée"
 msgstr "Kategorin borttagen"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Lägg först till ett konto."
+
 msgid "Compte"
 msgstr "Konto"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Choisir la date"
+msgstr "Välj datum"
+
+msgid "Dépense"
+msgstr "Utgift"
+
+msgid "Entrée"
+msgstr "Inkomst"
+
+msgid "Sens"
+msgstr "Riktning"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Automatisk, utifrån beskrivningen"
+
+msgid "Catégorie"
+msgstr "Kategori"
+
+msgid "Proposée : {name}"
+msgstr "Förslag: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "Om transaktionen senare dyker upp i ett importerat kontoutdrag föreslår Finaryx att posten ersätts med bankens."
+
+msgid "Supprimer la saisie"
+msgstr "Ta bort posten"
+
+msgid "Modifier la saisie"
+msgstr "Redigera posten"
+
+msgid "Saisie modifiée"
+msgstr "Posten ändrad"
+
+msgid "Opération ajoutée"
+msgstr "Transaktion tillagd"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Ta bort den här posten?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "Den manuellt inmatade transaktionen tas bort. Importerade transaktioner ändras inte."
+
+msgid "Saisie supprimée"
+msgstr "Posten borttagen"
 
 msgid "Solde au {date}"
 msgstr "Saldo den {date}"
@@ -856,9 +913,6 @@ msgstr "Procentsatsen är kategorins andel av månadens utgifter. För små ande
 
 msgid "Mois par mois, par catégorie"
 msgstr "Månad för månad, per kategori"
-
-msgid "Catégorie"
-msgstr "Kategori"
 
 msgid "Total"
 msgstr "Totalt"
@@ -1349,6 +1403,18 @@ msgstr "Saldokolumnen stämmer inte med beloppen: rad {lines}. Det går ändå a
 msgid "À savoir avant d’importer"
 msgstr "Före importen"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · inmatad {manual_date}, hos banken {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "De här manuellt inmatade transaktionerna finns också i filen (samma belopp, inom 7 dagar). Påslagna ersätts de av bankens transaktion, som behåller deras kategori. Avslagna behålls båda."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Hittade manuella poster"
+
 msgid "Lignes lues"
 msgstr "Lästa rader"
 
@@ -1406,6 +1472,11 @@ msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} dubblett överhoppad"
 msgstr[1] "{n} dubbletter överhoppade"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} manuell post ersatt"
+msgstr[1] "{n} manuella poster ersatta"
+
 msgid "Aperçu"
 msgstr "Översikt"
 
@@ -1438,6 +1509,9 @@ msgstr "Hantera färger…"
 
 msgid "Fermer"
 msgstr "Stäng"
+
+msgid "Saisie manuelle"
+msgstr "Manuell post"
 
 msgid "Mois précédent : {month}"
 msgstr "Föregående månad: {month}"

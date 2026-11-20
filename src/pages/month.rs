@@ -429,8 +429,18 @@ pub fn operation_row(op: &stats::OperationItem, currency: &str, narrow: bool) ->
         Some(bank) => format!("{} · {}", op.account_name, bank),
         None => op.account_name.clone(),
     };
-    text.append(&caption(&account));
+    if op.is_manual {
+        let sub = gtk::Box::builder().spacing(8).build();
+        sub.append(&caption(&account));
+        sub.append(&super::manual_badge());
+        text.append(&sub);
+    } else {
+        text.append(&caption(&account));
+    }
     line.append(&text);
+    if op.is_manual {
+        line.append(&super::edit_manual_button(op.id));
+    }
     if !narrow {
         let cat = gtk::Box::builder()
             .spacing(6)

@@ -53,6 +53,15 @@ impl OperationsPage {
     pub fn new(window: &FinaryxWindow) -> Rc<Self> {
         let title = adw::WindowTitle::new(&gettext("Opérations"), "");
         let header = adw::HeaderBar::builder().title_widget(&title).build();
+        let add = gtk::Button::builder()
+            .icon_name("list-add-symbolic")
+            .tooltip_text(gettext("Ajouter une opération"))
+            .action_name("win.add-operation")
+            .build();
+        add.update_property(&[gtk::accessible::Property::Label(&gettext(
+            "Ajouter une opération",
+        ))]);
+        header.pack_end(&add);
         let search = gtk::SearchEntry::builder()
             .placeholder_text(gettext("Rechercher un libellé"))
             .hexpand(true)
@@ -477,8 +486,14 @@ impl OperationsPage {
                     .build(),
             );
         }
+        if op.is_manual {
+            sub.append(&super::manual_badge());
+        }
         text.append(&sub);
         line.append(&text);
+        if op.is_manual {
+            line.append(&super::edit_manual_button(op.id));
+        }
 
         // Category button: a menu of all categories.
         let content = gtk::Box::builder().spacing(6).build();

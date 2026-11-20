@@ -322,6 +322,9 @@ msgstr "全般"
 msgid "Importer un CSV"
 msgstr "CSV をインポート"
 
+msgid "Ajouter une opération"
+msgstr "取引を追加"
+
 msgid "Préférences"
 msgstr "設定"
 
@@ -357,6 +360,9 @@ msgstr "取引"
 
 msgid "Rechercher un libellé"
 msgstr "摘要を検索"
+
+msgid "Ajouter une opération…"
+msgstr "取引を追加…"
 
 msgid "Catégories et règles…"
 msgstr "カテゴリーとルール…"
@@ -442,8 +448,8 @@ msgstr "口座番号 (任意)"
 msgid "Solde actuel"
 msgstr "現在の残高"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "残高はインポート時に入力します。Finaryx はファイルの最後の取引後の残高を尋ねます。"
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "手入力で管理する口座の場合は任意です。後で明細をインポートすると、Finaryx はその最後の取引後の残高を尋ねます。"
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "記録済みの最後の取引後の残高です。Finaryx はここから開始残高を求めます。"
@@ -538,8 +544,59 @@ msgstr "削除"
 msgid "Catégorie supprimée"
 msgstr "カテゴリーを削除しました"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "先に口座を追加してください。"
+
 msgid "Compte"
 msgstr "口座"
+
+msgid "Date"
+msgstr "日付"
+
+msgid "Choisir la date"
+msgstr "日付を選択"
+
+msgid "Dépense"
+msgstr "支出"
+
+msgid "Entrée"
+msgstr "入金"
+
+msgid "Sens"
+msgstr "種類"
+
+msgid "Automatique, d’après le libellé"
+msgstr "自動 (摘要から判断)"
+
+msgid "Catégorie"
+msgstr "カテゴリー"
+
+msgid "Proposée : {name}"
+msgstr "提案: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "後でインポートした明細にこの取引が含まれていれば、Finaryx はこの手入力を銀行の取引に置き換えるよう提案します。"
+
+msgid "Supprimer la saisie"
+msgstr "手入力を削除"
+
+msgid "Modifier la saisie"
+msgstr "手入力を編集"
+
+msgid "Saisie modifiée"
+msgstr "手入力を変更しました"
+
+msgid "Opération ajoutée"
+msgstr "取引を追加しました"
+
+msgid "Supprimer cette saisie ?"
+msgstr "この手入力を削除しますか?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "手入力した取引を削除します。インポートした取引は変わりません。"
+
+msgid "Saisie supprimée"
+msgstr "手入力を削除しました"
 
 msgid "Solde au {date}"
 msgstr "{date} 時点の残高"
@@ -843,9 +900,6 @@ msgstr "割合は、その月の支出に占めるカテゴリーの比率です
 
 msgid "Mois par mois, par catégorie"
 msgstr "月別・カテゴリー別"
-
-msgid "Catégorie"
-msgstr "カテゴリー"
 
 msgid "Total"
 msgstr "合計"
@@ -1327,6 +1381,18 @@ msgstr "残高の列が金額と一致しません: {lines} 行目。インポ�
 msgid "À savoir avant d’importer"
 msgstr "インポートの前に"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · 入力 {manual_date}、銀行 {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "これらの手入力の取引はファイルにも含まれています (同じ金額、7 日以内)。オンにすると銀行の取引に置き換わり、カテゴリーは引き継がれます。オフにすると両方が残ります。"
+
+msgid "Saisies manuelles retrouvées"
+msgstr "見つかった手入力"
+
 msgid "Lignes lues"
 msgstr "読み込んだ行"
 
@@ -1381,6 +1447,10 @@ msgid "{n} doublon ignoré"
 msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} 件の重複をスキップしました"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "手入力 {n} 件を置き換えました"
+
 msgid "Aperçu"
 msgstr "概要"
 
@@ -1413,6 +1483,9 @@ msgstr "色を管理…"
 
 msgid "Fermer"
 msgstr "閉じる"
+
+msgid "Saisie manuelle"
+msgstr "手入力"
 
 msgid "Mois précédent : {month}"
 msgstr "前の月: {month}"

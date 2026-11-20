@@ -6,6 +6,10 @@
   <menu id="primary_menu">
     <section>
       <item>
+        <attribute name="label" translatable="yes">Ajouter une opération…</attribute>
+        <attribute name="action">win.add-operation</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">Catégories et règles…</attribute>
         <attribute name="action">win.categories</attribute>
       </item>

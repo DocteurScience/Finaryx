@@ -4,6 +4,7 @@ mod category_dialog;
 mod charts;
 mod config;
 mod database;
+mod operation_dialog;
 mod pages;
 mod preferences;
 mod settings;

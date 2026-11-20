@@ -298,6 +298,17 @@ impl AccountDetailPage {
         let callback = self.callbacks.see_all.clone();
         let id = a.id;
         see_all.connect_clicked(move |_| callback(id));
+        let add = gtk::Button::builder()
+            .icon_name("list-add-symbolic")
+            .tooltip_text(gettext("Ajouter une opération"))
+            .css_classes(["flat"])
+            .action_name("win.add-operation-to")
+            .action_target(&id.to_variant())
+            .build();
+        add.update_property(&[gtk::accessible::Property::Label(&gettext(
+            "Ajouter une opération",
+        ))]);
+        header.append(&add);
         header.append(&see_all);
 
         let list = boxed_list();
@@ -353,8 +364,14 @@ impl AccountDetailPage {
                         .build(),
                 );
             }
+            if op.is_manual {
+                cat.append(&super::manual_badge());
+            }
             text.append(&cat);
             row.append(&text);
+            if op.is_manual {
+                row.append(&super::edit_manual_button(op.id));
+            }
             row.append(
                 &gtk::Label::builder()
                     .label(amount(op.amount_cents, &a.currency, Sign::Negative))

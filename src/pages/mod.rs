@@ -560,3 +560,27 @@ pub fn clickable(
     button.connect_clicked(move |_| on_click());
     button
 }
+
+/// "Saisie manuelle": marks an operation typed by hand.
+pub fn manual_badge() -> gtk::Label {
+    gtk::Label::builder()
+        .label(gettextrs::gettext("Saisie manuelle"))
+        .css_classes(["status-badge", "manual"])
+        .valign(gtk::Align::Center)
+        .build()
+}
+
+/// Pencil button opening the dialog of a manual operation.
+pub fn edit_manual_button(txn_id: finaryx_core::models::Id) -> gtk::Button {
+    let label = gettextrs::gettext("Modifier la saisie");
+    let button = gtk::Button::builder()
+        .icon_name("document-edit-symbolic")
+        .tooltip_text(&label)
+        .valign(gtk::Align::Center)
+        .css_classes(["flat", "circular"])
+        .action_name("win.edit-operation")
+        .action_target(&txn_id.to_variant())
+        .build();
+    button.update_property(&[gtk::accessible::Property::Label(&label)]);
+    button
+}

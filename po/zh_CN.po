@@ -322,6 +322,9 @@ msgstr "常规"
 msgid "Importer un CSV"
 msgstr "导入 CSV"
 
+msgid "Ajouter une opération"
+msgstr "添加交易"
+
 msgid "Préférences"
 msgstr "首选项"
 
@@ -357,6 +360,9 @@ msgstr "交易"
 
 msgid "Rechercher un libellé"
 msgstr "搜索摘要"
+
+msgid "Ajouter une opération…"
+msgstr "添加交易…"
 
 msgid "Catégories et règles…"
 msgstr "分类和规则…"
@@ -442,8 +448,8 @@ msgstr "账号 (可选)"
 msgid "Solde actuel"
 msgstr "当前余额"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "余额在导入时填写：Finaryx 会询问文件中最后一笔交易后的余额。"
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "选填，适用于手动记账的账户。之后导入对账单时，Finaryx 会询问其最后一笔交易后的余额。"
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "最后一笔已记录交易后的余额。Finaryx 据此推算期初余额。"
@@ -538,8 +544,59 @@ msgstr "删除"
 msgid "Catégorie supprimée"
 msgstr "分类已删除"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "请先添加账户。"
+
 msgid "Compte"
 msgstr "账户"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "Choisir la date"
+msgstr "选择日期"
+
+msgid "Dépense"
+msgstr "支出"
+
+msgid "Entrée"
+msgstr "收入"
+
+msgid "Sens"
+msgstr "类型"
+
+msgid "Automatique, d’après le libellé"
+msgstr "自动（根据摘要）"
+
+msgid "Catégorie"
+msgstr "分类"
+
+msgid "Proposée : {name}"
+msgstr "建议：{name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "如果该交易之后出现在导入的对账单中，Finaryx 会建议用银行记录替换这条手动记录。"
+
+msgid "Supprimer la saisie"
+msgstr "删除记录"
+
+msgid "Modifier la saisie"
+msgstr "编辑记录"
+
+msgid "Saisie modifiée"
+msgstr "记录已修改"
+
+msgid "Opération ajoutée"
+msgstr "交易已添加"
+
+msgid "Supprimer cette saisie ?"
+msgstr "删除这条记录？"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "手动输入的交易将被删除。导入的交易不受影响。"
+
+msgid "Saisie supprimée"
+msgstr "记录已删除"
 
 msgid "Solde au {date}"
 msgstr "{date} 的余额"
@@ -843,9 +900,6 @@ msgstr "比例为该分类占当月支出的份额。太小无法标注的比例
 
 msgid "Mois par mois, par catégorie"
 msgstr "按月份和分类"
-
-msgid "Catégorie"
-msgstr "分类"
 
 msgid "Total"
 msgstr "合计"
@@ -1327,6 +1381,18 @@ msgstr "余额列与金额不符：第 {lines} 行。仍可导入。"
 msgid "À savoir avant d’importer"
 msgstr "导入之前"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · 录入于 {manual_date}，银行记账于 {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "这些手动记录也出现在文件中（金额相同，相差 7 天以内）。开启时，它们会被银行交易替换并保留分类；关闭时，两者都会保留。"
+
+msgid "Saisies manuelles retrouvées"
+msgstr "找到的手动记录"
+
 msgid "Lignes lues"
 msgstr "已读取的行"
 
@@ -1381,6 +1447,10 @@ msgid "{n} doublon ignoré"
 msgid_plural "{n} doublons ignorés"
 msgstr[0] "已跳过 {n} 笔重复"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "已替换 {n} 条手动记录"
+
 msgid "Aperçu"
 msgstr "概览"
 
@@ -1413,6 +1483,9 @@ msgstr "管理颜色…"
 
 msgid "Fermer"
 msgstr "关闭"
+
+msgid "Saisie manuelle"
+msgstr "手动记录"
 
 msgid "Mois précédent : {month}"
 msgstr "上个月：{month}"

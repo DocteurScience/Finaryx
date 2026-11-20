@@ -146,6 +146,7 @@ fn an_import_is_atomic() {
     let options = CommitOptions {
         save_profile: Some(("  ".into(), None)),
         balance_after: None,
+        reconcile: Vec::new(),
     };
     assert!(plan::commit(
         &mut conn,
@@ -192,6 +193,7 @@ fn unknown_format_with_metadata_lines_and_a_balance_column() {
     let options = CommitOptions {
         save_profile: Some(("Ma banque".into(), Some("Banque X".into()))),
         balance_after: None,
+        reconcile: Vec::new(),
     };
     plan::commit(
         &mut conn,
@@ -234,6 +236,7 @@ fn balance_after_the_last_operation_sets_the_opening_balance() {
     let options = CommitOptions {
         save_profile: None,
         balance_after: p.balance.end_balance,
+        reconcile: Vec::new(),
     };
     plan::commit(
         &mut conn,
@@ -307,4 +310,92 @@ fn bank_category_choices_are_applied() {
         .unwrap();
     assert_eq!(row.txn.category_id, Some(builtin::SHOPPING));
     assert_eq!(row.state, RowState::New);
+}
+
+#[test]
+fn a_manual_operation_found_in_the_file_is_replaced_on_confirmation() {
+    use finaryx_core::manual::{self, ManualOperation};
+    let (mut conn, account) = setup();
+    let rent = manual::add(
+        &conn,
+        account,
+        &ManualOperation {
+            booked_on: "2026-10-03".parse().unwrap(),
+            label: "Loyer octobre".into(),
+            amount_cents: -69_000,
+            category_id: Some(builtin::HOUSING),
+        },
+    )
+    .unwrap();
+    let a = plan::analyze(&conn, GENERIC).unwrap();
+    let p = plan::plan(&conn, &a.table, &a.mapping, account).unwrap();
+    // RENT, 2 days later, same amount.
+    assert_eq!(p.reconciliations.len(), 1);
+    let r = &p.reconciliations[0];
+    assert_eq!((r.manual_id, r.row), (rent, 1));
+    assert_eq!(p.rows[r.row].txn.label, "RENT");
+
+    let commit = |conn: &mut Connection, reconcile: Vec<i64>| {
+        plan::commit(
+            conn,
+            account,
+            "generic_us.csv",
+            &a.table,
+            &a.mapping,
+            &p,
+            &CommitOptions {
+                reconcile,
+                ..Default::default()
+            },
+            "2026-11-11T10:00:00",
+        )
+        .unwrap()
+    };
+    // Confirmed: the bank's operation replaces the manual one and keeps
+    // its category.
+    let summary = commit(&mut conn, vec![rent]);
+    assert_eq!((summary.inserted, summary.reconciled), (4, 1));
+    assert!(manual::get(&conn, rent).unwrap().is_none());
+    let (category, source): (i64, String) = conn
+        .query_row(
+            "SELECT category_id, category_source FROM txn WHERE label = 'RENT'",
+            [],
+            |r| Ok((r.get(0)?, r.get(1)?)),
+        )
+        .unwrap();
+    assert_eq!((category, source.as_str()), (builtin::HOUSING, "manual"));
+    let count: i64 = conn
+        .query_row(
+            "SELECT count(*) FROM txn WHERE amount_cents = -69000",
+            [],
+            |r| r.get(0),
+        )
+        .unwrap();
+    assert_eq!(count, 1);
+}
+
+#[test]
+fn without_confirmation_the_manual_operation_stays() {
+    use finaryx_core::manual::{self, ManualOperation};
+    let (mut conn, account) = setup();
+    let rent = manual::add(
+        &conn,
+        account,
+        &ManualOperation {
+            booked_on: "2026-10-03".parse().unwrap(),
+            label: "Loyer octobre".into(),
+            amount_cents: -69_000,
+            category_id: None,
+        },
+    )
+    .unwrap();
+    let summary = import(&mut conn, account, GENERIC, "generic_us.csv");
+    assert_eq!((summary.inserted, summary.reconciled), (4, 0));
+    assert!(manual::get(&conn, rent).unwrap().is_some());
+    // Imported again: nothing new, and the pair is no longer proposed
+    // since the bank's operation is a duplicate.
+    let a = plan::analyze(&conn, GENERIC).unwrap();
+    let p = plan::plan(&conn, &a.table, &a.mapping, account).unwrap();
+    assert_eq!(p.to_import(), 0);
+    assert!(p.reconciliations.is_empty());
 }

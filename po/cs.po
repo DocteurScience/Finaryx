@@ -324,6 +324,9 @@ msgstr "Obecné"
 msgid "Importer un CSV"
 msgstr "Importovat CSV"
 
+msgid "Ajouter une opération"
+msgstr "Přidat transakci"
+
 msgid "Préférences"
 msgstr "Předvolby"
 
@@ -359,6 +362,9 @@ msgstr "Transakce"
 
 msgid "Rechercher un libellé"
 msgstr "Hledat popis"
+
+msgid "Ajouter une opération…"
+msgstr "Přidat transakci…"
 
 msgid "Catégories et règles…"
 msgstr "Kategorie a pravidla…"
@@ -444,8 +450,8 @@ msgstr "Číslo účtu (nepovinné)"
 msgid "Solde actuel"
 msgstr "Aktuální zůstatek"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "Zůstatek se zadává při importu: Finaryx se zeptá na zůstatek po poslední transakci v souboru."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "Nepovinné, pro účet vedený ručně. Pokud později importujete výpis, Finaryx se zeptá na zůstatek po jeho poslední transakci."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Zůstatek po poslední zaznamenané transakci. Finaryx z něj odvodí počáteční zůstatek."
@@ -546,8 +552,59 @@ msgstr "Smazat"
 msgid "Catégorie supprimée"
 msgstr "Kategorie smazána"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Nejprve přidejte účet."
+
 msgid "Compte"
 msgstr "Účet"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Choisir la date"
+msgstr "Vybrat datum"
+
+msgid "Dépense"
+msgstr "Výdaj"
+
+msgid "Entrée"
+msgstr "Příjem"
+
+msgid "Sens"
+msgstr "Směr"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Automaticky, podle popisu"
+
+msgid "Catégorie"
+msgstr "Kategorie"
+
+msgid "Proposée : {name}"
+msgstr "Navrženo: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "Pokud se transakce později objeví v importovaném výpisu, Finaryx nabídne nahradit tento záznam záznamem banky."
+
+msgid "Supprimer la saisie"
+msgstr "Smazat záznam"
+
+msgid "Modifier la saisie"
+msgstr "Upravit záznam"
+
+msgid "Saisie modifiée"
+msgstr "Záznam upraven"
+
+msgid "Opération ajoutée"
+msgstr "Transakce přidána"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Smazat tento záznam?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "Ručně zadaná transakce bude smazána. Importované transakce se nezmění."
+
+msgid "Saisie supprimée"
+msgstr "Záznam smazán"
 
 msgid "Solde au {date}"
 msgstr "Zůstatek k {date}"
@@ -869,9 +926,6 @@ msgstr "Procento je podíl kategorie na výdajích měsíce. Příliš malé pod
 
 msgid "Mois par mois, par catégorie"
 msgstr "Měsíc po měsíci, podle kategorií"
-
-msgid "Catégorie"
-msgstr "Kategorie"
 
 msgid "Total"
 msgstr "Celkem"
@@ -1371,6 +1425,18 @@ msgstr "Sloupec zůstatku neodpovídá částkám: řádek {lines}. Import je p�
 msgid "À savoir avant d’importer"
 msgstr "Před importem"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · zadáno {manual_date}, v bance {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "Tyto ručně zadané transakce jsou i v souboru (stejná částka, do 7 dnů). Zapnuté se nahradí transakcí banky, která převezme jejich kategorii. Vypnuté se ponechají obě."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Nalezené ruční záznamy"
+
 msgid "Lignes lues"
 msgstr "Přečtené řádky"
 
@@ -1431,6 +1497,12 @@ msgstr[0] "Přeskočena {n} duplicita"
 msgstr[1] "Přeskočeny {n} duplicity"
 msgstr[2] "Přeskočeno {n} duplicit"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} ruční záznam nahrazen"
+msgstr[1] "{n} ruční záznamy nahrazeny"
+msgstr[2] "{n} ručních záznamů nahrazeno"
+
 msgid "Aperçu"
 msgstr "Přehled"
 
@@ -1463,6 +1535,9 @@ msgstr "Spravovat barvy…"
 
 msgid "Fermer"
 msgstr "Zavřít"
+
+msgid "Saisie manuelle"
+msgstr "Ruční záznam"
 
 msgid "Mois précédent : {month}"
 msgstr "Předchozí měsíc: {month}"

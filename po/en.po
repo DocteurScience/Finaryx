@@ -323,6 +323,9 @@ msgstr "General"
 msgid "Importer un CSV"
 msgstr "Import CSV"
 
+msgid "Ajouter une opération"
+msgstr "Add transaction"
+
 msgid "Préférences"
 msgstr "Preferences"
 
@@ -358,6 +361,9 @@ msgstr "Transactions"
 
 msgid "Rechercher un libellé"
 msgstr "Search Descriptions"
+
+msgid "Ajouter une opération…"
+msgstr "Add Transaction…"
 
 msgid "Catégories et règles…"
 msgstr "Categories and Rules…"
@@ -443,8 +449,8 @@ msgstr "Account number (optional)"
 msgid "Solde actuel"
 msgstr "Current balance"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "The balance is set when importing: Finaryx asks for the balance after the file's last transaction."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "Optional, for an account kept by hand. If you later import a statement, Finaryx will ask for the balance after its last transaction."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Balance after the last recorded transaction. Finaryx works out the opening balance from it."
@@ -542,8 +548,59 @@ msgstr "Delete"
 msgid "Catégorie supprimée"
 msgstr "Category deleted"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Add an account first."
+
 msgid "Compte"
 msgstr "Account"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Choisir la date"
+msgstr "Choose the date"
+
+msgid "Dépense"
+msgstr "Spending"
+
+msgid "Entrée"
+msgstr "Income"
+
+msgid "Sens"
+msgstr "Direction"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Automatic, from the description"
+
+msgid "Catégorie"
+msgstr "Category"
+
+msgid "Proposée : {name}"
+msgstr "Suggested: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "If the transaction later appears in an imported statement, Finaryx will offer to replace this entry with the bank's."
+
+msgid "Supprimer la saisie"
+msgstr "Delete entry"
+
+msgid "Modifier la saisie"
+msgstr "Edit entry"
+
+msgid "Saisie modifiée"
+msgstr "Entry updated"
+
+msgid "Opération ajoutée"
+msgstr "Transaction added"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Delete this entry?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "The manually entered transaction is deleted. Imported transactions do not change."
+
+msgid "Saisie supprimée"
+msgstr "Entry deleted"
 
 msgid "Solde au {date}"
 msgstr "Balance on {date}"
@@ -856,9 +913,6 @@ msgstr "The percentage is the category’s share of the month’s spending. Shar
 
 msgid "Mois par mois, par catégorie"
 msgstr "Month by month, by category"
-
-msgid "Catégorie"
-msgstr "Category"
 
 msgid "Total"
 msgstr "Total"
@@ -1349,6 +1403,18 @@ msgstr "The balance column does not follow the amounts: row {lines}. You can sti
 msgid "À savoir avant d’importer"
 msgstr "Before importing"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · entered on {manual_date}, at the bank on {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "These manually entered transactions are also in the file (same amount, within 7 days). When on, they are replaced by the bank's transaction, which keeps their category. When off, both are kept."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Manual entries found"
+
 msgid "Lignes lues"
 msgstr "Rows read"
 
@@ -1406,6 +1472,11 @@ msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} duplicate skipped"
 msgstr[1] "{n} duplicates skipped"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} manual entry replaced"
+msgstr[1] "{n} manual entries replaced"
+
 msgid "Aperçu"
 msgstr "Overview"
 
@@ -1438,6 +1509,9 @@ msgstr "Manage Colors…"
 
 msgid "Fermer"
 msgstr "Close"
+
+msgid "Saisie manuelle"
+msgstr "Manual entry"
 
 msgid "Mois précédent : {month}"
 msgstr "Previous month: {month}"

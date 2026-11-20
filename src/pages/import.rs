@@ -46,6 +46,9 @@ struct State {
     /// Text of "Solde au …, après la dernière opération" (`None`: not
     /// edited yet, pre-filled from the file's balance column).
     balance_text: Option<String>,
+    /// Manual operations the user keeps although the file has them
+    /// (switch turned off in "Saisies manuelles retrouvées").
+    keep_manual: HashSet<Id>,
     show_all_categories: bool,
 }
 
@@ -289,6 +292,7 @@ impl ImportPage {
             remember,
             format_name,
             balance_text: None,
+            keep_manual: HashSet::new(),
             show_all_categories: false,
         }));
         self.stack.set_visible_child_name("content");
@@ -363,6 +367,9 @@ impl ImportPage {
         }
         clear(&self.result_box);
         self.result_box.append(&self.preview_section());
+        if let Some(section) = self.reconcile_section() {
+            self.result_box.append(&section);
+        }
         self.result_box.append(&self.summary_section());
         self.result_box.append(&self.buttons());
     }
@@ -1079,6 +1086,61 @@ impl ImportPage {
         section(title.upcast_ref(), &body)
     }
 
+    /// Manual operations of the account found again in the file: each one
+    /// is replaced by the bank's version unless its switch is turned off.
+    fn reconcile_section(self: &Rc<Self>) -> Option<gtk::Box> {
+        let state = self.state.borrow();
+        let s = state.as_ref()?;
+        let plan = s.plan.as_ref()?;
+        if plan.reconciliations.is_empty() {
+            return None;
+        }
+        let code = self.account_currency(s.account_id);
+        let list = boxed_list();
+        for r in &plan.reconciliations {
+            let bank = &plan.rows[r.row].txn;
+            let row = adw::SwitchRow::builder()
+                .title(
+                    gettext("{manual} → {bank}")
+                        .replace("{manual}", &r.manual_label)
+                        .replace("{bank}", &bank.label),
+                )
+                .subtitle(
+                    gettext("{amount} · saisie le {manual_date}, à la banque le {bank_date}")
+                        .replace("{amount}", &amount(r.amount_cents, &code, Sign::Negative))
+                        .replace("{manual_date}", &dates::day_month_ordinal(r.manual_date))
+                        .replace("{bank_date}", &dates::day_month_ordinal(bank.booked_on)),
+                )
+                .active(!s.keep_manual.contains(&r.manual_id))
+                .build();
+            let (weak, id) = (Rc::downgrade(self), r.manual_id);
+            row.connect_active_notify(move |row| {
+                if let Some(this) = weak.upgrade() {
+                    let mut state = this.state.borrow_mut();
+                    let keep = &mut state.as_mut().unwrap().keep_manual;
+                    if row.is_active() {
+                        keep.remove(&id);
+                    } else {
+                        keep.insert(id);
+                    }
+                }
+            });
+            list.append(&row);
+        }
+        let body = gtk::Box::builder()
+            .orientation(gtk::Orientation::Vertical)
+            .spacing(10)
+            .build();
+        body.append(&list);
+        body.append(&caption(&gettext(
+            "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées.",
+        )));
+        Some(section(
+            heading(&gettext("Saisies manuelles retrouvées")).upcast_ref(),
+            &body,
+        ))
+    }
+
     fn summary_section(self: &Rc<Self>) -> gtk::Box {
         let state = self.state.borrow();
         let s = state.as_ref().unwrap();
@@ -1291,6 +1353,12 @@ impl ImportPage {
                     }
                     None => plan.balance.end_balance,
                 },
+                reconcile: plan
+                    .reconciliations
+                    .iter()
+                    .map(|r| r.manual_id)
+                    .filter(|id| !s.keep_manual.contains(id))
+                    .collect(),
             };
             window.change(|conn| {
                 plan::commit(
@@ -1322,6 +1390,16 @@ impl ImportPage {
                         )
                     );
                 }
+                if summary.reconciled > 0 {
+                    text = format!(
+                        "{text} · {}",
+                        n_text(
+                            "{n} saisie manuelle remplacée",
+                            "{n} saisies manuelles remplacées",
+                            summary.reconciled
+                        )
+                    );
+                }
                 self.state.replace(None);
                 window.auto_backup();
                 window.show_page("accounts");
@@ -1334,6 +1412,14 @@ impl ImportPage {
 
     // Rebuilding from a signal handler of a widget that is about to be
     // destroyed is deferred to the main loop.
+    /// After a change in the database (a manual operation added meanwhile):
+    /// duplicates and reconciliations are computed again.
+    pub fn refresh(self: &Rc<Self>) {
+        if self.state.borrow().is_some() {
+            self.rebuild_all_later();
+        }
+    }
+
     fn rebuild_all_later(self: &Rc<Self>) {
         let weak = Rc::downgrade(self);
         glib::idle_add_local_once(move || {

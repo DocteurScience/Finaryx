@@ -323,6 +323,9 @@ msgstr "Generale"
 msgid "Importer un CSV"
 msgstr "Importa CSV"
 
+msgid "Ajouter une opération"
+msgstr "Aggiungi movimento"
+
 msgid "Préférences"
 msgstr "Preferenze"
 
@@ -358,6 +361,9 @@ msgstr "Movimenti"
 
 msgid "Rechercher un libellé"
 msgstr "Cerca una descrizione"
+
+msgid "Ajouter une opération…"
+msgstr "Aggiungi movimento…"
 
 msgid "Catégories et règles…"
 msgstr "Categorie e regole…"
@@ -443,8 +449,8 @@ msgstr "Numero di conto (facoltativo)"
 msgid "Solde actuel"
 msgstr "Saldo attuale"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "Il saldo si indica all’importazione: Finaryx chiede il saldo dopo l’ultimo movimento del file."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "Facoltativo, per un conto tenuto a mano. Se poi importi un estratto, Finaryx chiederà il saldo dopo il suo ultimo movimento."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Saldo dopo l’ultimo movimento registrato. Finaryx ne ricava il saldo iniziale."
@@ -542,8 +548,59 @@ msgstr "Elimina"
 msgid "Catégorie supprimée"
 msgstr "Categoria eliminata"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Aggiungi prima un conto."
+
 msgid "Compte"
 msgstr "Conto"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Choisir la date"
+msgstr "Scegli la data"
+
+msgid "Dépense"
+msgstr "Spesa"
+
+msgid "Entrée"
+msgstr "Entrata"
+
+msgid "Sens"
+msgstr "Tipo"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Automatica, in base alla descrizione"
+
+msgid "Catégorie"
+msgstr "Categoria"
+
+msgid "Proposée : {name}"
+msgstr "Proposta: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "Se il movimento compare poi in un estratto importato, Finaryx proporrà di sostituire questo inserimento con quello della banca."
+
+msgid "Supprimer la saisie"
+msgstr "Elimina l’inserimento"
+
+msgid "Modifier la saisie"
+msgstr "Modifica l’inserimento"
+
+msgid "Saisie modifiée"
+msgstr "Inserimento modificato"
+
+msgid "Opération ajoutée"
+msgstr "Movimento aggiunto"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Eliminare questo inserimento?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "Il movimento inserito a mano viene eliminato. I movimenti importati non cambiano."
+
+msgid "Saisie supprimée"
+msgstr "Inserimento eliminato"
 
 msgid "Solde au {date}"
 msgstr "Saldo al {date}"
@@ -856,9 +913,6 @@ msgstr "La percentuale è la quota della categoria nelle spese del mese. Le quot
 
 msgid "Mois par mois, par catégorie"
 msgstr "Mese per mese, per categoria"
-
-msgid "Catégorie"
-msgstr "Categoria"
 
 msgid "Total"
 msgstr "Totale"
@@ -1349,6 +1403,18 @@ msgstr "La colonna del saldo non segue gli importi: riga {lines}. L’importazio
 msgid "À savoir avant d’importer"
 msgstr "Prima di importare"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · inserito il {manual_date}, in banca il {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "Questi movimenti inseriti a mano sono anche nel file (stesso importo, entro 7 giorni). Se attivi, vengono sostituiti dal movimento della banca, che ne mantiene la categoria. Se disattivati, si conservano entrambi."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Inserimenti manuali ritrovati"
+
 msgid "Lignes lues"
 msgstr "Righe lette"
 
@@ -1406,6 +1472,11 @@ msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} duplicato ignorato"
 msgstr[1] "{n} duplicati ignorati"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} inserimento manuale sostituito"
+msgstr[1] "{n} inserimenti manuali sostituiti"
+
 msgid "Aperçu"
 msgstr "Panoramica"
 
@@ -1438,6 +1509,9 @@ msgstr "Gestisci i colori…"
 
 msgid "Fermer"
 msgstr "Chiudi"
+
+msgid "Saisie manuelle"
+msgstr "Inserimento manuale"
 
 msgid "Mois précédent : {month}"
 msgstr "Mese precedente: {month}"

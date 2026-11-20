@@ -125,6 +125,7 @@ impl FinaryxApplication {
         self.set_accels_for_action("window.close", &["<Control>w"]);
         self.set_accels_for_action("win.show-help-overlay", &["<Control>question"]);
         self.set_accels_for_action("win.import", &["<Control>i"]);
+        self.set_accels_for_action("win.add-operation", &["<Control>n"]);
         for (i, page) in crate::pages::MAIN_PAGES.iter().enumerate() {
             let accel = format!("<Alt>{}", i + 1);
             self.set_accels_for_action(&format!("win.show-page::{}", page.name), &[&accel]);

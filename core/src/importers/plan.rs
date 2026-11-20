@@ -17,7 +17,8 @@ use super::profiles::{self, Profile};
 use crate::categorize::Categorizer;
 use crate::db::{Error, Result};
 use crate::i18n::{gettext, ngettext_n};
-use crate::models::{Category, Id, NewTransaction};
+use crate::manual;
+use crate::models::{Category, CategorySource, Id, NewTransaction};
 use crate::repo;
 
 /// The file once split into columns.
@@ -263,6 +264,9 @@ pub struct Plan {
     /// Unreadable rows, by problem (not imported, always reported).
     pub unreadable: BTreeMap<RowProblem, Vec<usize>>,
     pub balance: BalanceCheck,
+    /// Manual operations of the account found again in the file (`row`:
+    /// index in `rows`); replaced only when the user confirms.
+    pub reconciliations: Vec<manual::Reconciliation>,
 }
 
 impl Plan {
@@ -359,6 +363,12 @@ pub fn plan(conn: &Connection, table: &Table, mapping: &Mapping, account_id: Id)
         });
     }
     plan.balance = check_balance(&parsed);
+    let candidates: Vec<Option<(NaiveDate, i64)>> = plan
+        .rows
+        .iter()
+        .map(|r| (r.state != RowState::Duplicate).then_some((r.txn.booked_on, r.txn.amount_cents)))
+        .collect();
+    plan.reconciliations = manual::reconciliations(conn, account_id, &candidates)?;
     Ok(plan)
 }
 
@@ -398,6 +408,10 @@ pub struct CommitOptions {
     /// latest date), given by the user: the opening balance is set so
     /// that the account matches it.
     pub balance_after: Option<i64>,
+    /// Manual operations (ids from `Plan::reconciliations`) the user
+    /// confirmed: the file's operation replaces each of them and keeps its
+    /// category.
+    pub reconcile: Vec<Id>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -406,6 +420,8 @@ pub struct ImportSummary {
     pub inserted: usize,
     pub duplicates: usize,
     pub review: usize,
+    /// Manual operations replaced by the file's version.
+    pub reconciled: usize,
 }
 
 /// Imports the plan in a single transaction: either everything is
@@ -425,7 +441,21 @@ pub fn commit(
     let batch_id = repo::insert_batch(&tx, account_id, Some(filename), now)?;
     // All readable rows go through the insertion: those already present
     // are skipped by the unique key (a file may have changed meanwhile).
-    let txns: Vec<NewTransaction> = plan.rows.iter().map(|r| r.txn.clone()).collect();
+    let mut txns: Vec<NewTransaction> = plan.rows.iter().map(|r| r.txn.clone()).collect();
+    let mut reconciled = 0;
+    for r in plan
+        .reconciliations
+        .iter()
+        .filter(|r| options.reconcile.contains(&r.manual_id))
+    {
+        if let Some(category) = manual::take_over(&tx, r.manual_id)? {
+            let txn = &mut txns[r.row];
+            txn.category_id = Some(category);
+            txn.category_source = CategorySource::Manual;
+            txn.needs_review = false;
+        }
+        reconciled += 1;
+    }
     let outcome = repo::insert_transactions(&tx, account_id, Some(batch_id), &txns)?;
     tx.execute(
         "UPDATE import_batch SET rows_read = ?2, rows_new = ?3, rows_duplicate = ?4, rows_review = ?5
@@ -453,6 +483,7 @@ pub fn commit(
         inserted: outcome.inserted.len(),
         duplicates: outcome.duplicates,
         review: outcome.review,
+        reconciled,
     })
 }
 

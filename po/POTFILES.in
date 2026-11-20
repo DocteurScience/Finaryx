@@ -13,6 +13,7 @@ data/ui/window.ui
 src/account_dialog.rs
 src/application.rs
 src/category_dialog.rs
+src/operation_dialog.rs
 src/database.rs
 src/main.rs
 src/pages/account_detail.rs

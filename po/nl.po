@@ -323,6 +323,9 @@ msgstr "Algemeen"
 msgid "Importer un CSV"
 msgstr "CSV importeren"
 
+msgid "Ajouter une opération"
+msgstr "Transactie toevoegen"
+
 msgid "Préférences"
 msgstr "Voorkeuren"
 
@@ -358,6 +361,9 @@ msgstr "Transacties"
 
 msgid "Rechercher un libellé"
 msgstr "Omschrijving zoeken"
+
+msgid "Ajouter une opération…"
+msgstr "Transactie toevoegen…"
 
 msgid "Catégories et règles…"
 msgstr "Categorieën en regels…"
@@ -443,8 +449,8 @@ msgstr "Rekeningnummer (optioneel)"
 msgid "Solde actuel"
 msgstr "Huidig saldo"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "Het saldo vul je in bij het importeren: Finaryx vraagt het saldo na de laatste transactie van het bestand."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "Optioneel, voor een rekening die je met de hand bijhoudt. Als je later een afschrift importeert, vraagt Finaryx het saldo na de laatste transactie ervan."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Saldo na de laatste geregistreerde transactie. Finaryx leidt daaruit het beginsaldo af."
@@ -542,8 +548,59 @@ msgstr "Verwijderen"
 msgid "Catégorie supprimée"
 msgstr "Categorie verwijderd"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Voeg eerst een rekening toe."
+
 msgid "Compte"
 msgstr "Rekening"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Choisir la date"
+msgstr "Datum kiezen"
+
+msgid "Dépense"
+msgstr "Uitgave"
+
+msgid "Entrée"
+msgstr "Inkomsten"
+
+msgid "Sens"
+msgstr "Richting"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Automatisch, op basis van de omschrijving"
+
+msgid "Catégorie"
+msgstr "Categorie"
+
+msgid "Proposée : {name}"
+msgstr "Voorgesteld: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "Als de transactie later in een geïmporteerd afschrift staat, stelt Finaryx voor deze invoer te vervangen door die van de bank."
+
+msgid "Supprimer la saisie"
+msgstr "Invoer verwijderen"
+
+msgid "Modifier la saisie"
+msgstr "Invoer bewerken"
+
+msgid "Saisie modifiée"
+msgstr "Invoer gewijzigd"
+
+msgid "Opération ajoutée"
+msgstr "Transactie toegevoegd"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Deze invoer verwijderen?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "De handmatig ingevoerde transactie wordt verwijderd. Geïmporteerde transacties veranderen niet."
+
+msgid "Saisie supprimée"
+msgstr "Invoer verwijderd"
 
 msgid "Solde au {date}"
 msgstr "Saldo op {date}"
@@ -856,9 +913,6 @@ msgstr "Het percentage is het aandeel van de categorie in de uitgaven van de maa
 
 msgid "Mois par mois, par catégorie"
 msgstr "Maand na maand, per categorie"
-
-msgid "Catégorie"
-msgstr "Categorie"
 
 msgid "Total"
 msgstr "Totaal"
@@ -1349,6 +1403,18 @@ msgstr "De saldokolom volgt de bedragen niet: regel {lines}. Importeren blijft m
 msgid "À savoir avant d’importer"
 msgstr "Voor het importeren"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · ingevoerd op {manual_date}, bij de bank op {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "Deze handmatig ingevoerde transacties staan ook in het bestand (zelfde bedrag, binnen 7 dagen). Ingeschakeld worden ze vervangen door de transactie van de bank, die hun categorie behoudt. Uitgeschakeld blijven ze allebei bestaan."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Gevonden handmatige invoer"
+
 msgid "Lignes lues"
 msgstr "Gelezen regels"
 
@@ -1406,6 +1472,11 @@ msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} dubbele overgeslagen"
 msgstr[1] "{n} dubbele overgeslagen"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} handmatige invoer vervangen"
+msgstr[1] "{n} handmatige invoeren vervangen"
+
 msgid "Aperçu"
 msgstr "Overzicht"
 
@@ -1438,6 +1509,9 @@ msgstr "Kleuren beheren…"
 
 msgid "Fermer"
 msgstr "Sluiten"
+
+msgid "Saisie manuelle"
+msgstr "Handmatige invoer"
 
 msgid "Mois précédent : {month}"
 msgstr "Vorige maand: {month}"

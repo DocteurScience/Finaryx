@@ -323,6 +323,9 @@ msgstr "Generelt"
 msgid "Importer un CSV"
 msgstr "Importer CSV"
 
+msgid "Ajouter une opération"
+msgstr "Legg til transaksjon"
+
 msgid "Préférences"
 msgstr "Innstillinger"
 
@@ -358,6 +361,9 @@ msgstr "Transaksjoner"
 
 msgid "Rechercher un libellé"
 msgstr "Søk i beskrivelser"
+
+msgid "Ajouter une opération…"
+msgstr "Legg til transaksjon …"
 
 msgid "Catégories et règles…"
 msgstr "Kategorier og regler…"
@@ -443,8 +449,8 @@ msgstr "Kontonummer (valgfritt)"
 msgid "Solde actuel"
 msgstr "Nåværende saldo"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "Saldoen oppgis ved importen: Finaryx spør etter saldoen etter filens siste transaksjon."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "Valgfritt, for en konto som føres for hånd. Hvis du senere importerer et kontoutskrift, spør Finaryx etter saldoen etter dets siste transaksjon."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Saldo etter den sist registrerte transaksjonen. Finaryx regner ut startsaldoen ut fra den."
@@ -542,8 +548,59 @@ msgstr "Slett"
 msgid "Catégorie supprimée"
 msgstr "Kategorien er slettet"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Legg først til en konto."
+
 msgid "Compte"
 msgstr "Konto"
+
+msgid "Date"
+msgstr "Dato"
+
+msgid "Choisir la date"
+msgstr "Velg dato"
+
+msgid "Dépense"
+msgstr "Utgift"
+
+msgid "Entrée"
+msgstr "Inntekt"
+
+msgid "Sens"
+msgstr "Retning"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Automatisk, ut fra teksten"
+
+msgid "Catégorie"
+msgstr "Kategori"
+
+msgid "Proposée : {name}"
+msgstr "Forslag: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "Hvis transaksjonen senere dukker opp i et importert kontoutskrift, foreslår Finaryx å erstatte posteringen med bankens."
+
+msgid "Supprimer la saisie"
+msgstr "Slett posteringen"
+
+msgid "Modifier la saisie"
+msgstr "Rediger posteringen"
+
+msgid "Saisie modifiée"
+msgstr "Posteringen endret"
+
+msgid "Opération ajoutée"
+msgstr "Transaksjon lagt til"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Slette denne posteringen?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "Den manuelt registrerte transaksjonen slettes. Importerte transaksjoner endres ikke."
+
+msgid "Saisie supprimée"
+msgstr "Posteringen slettet"
 
 msgid "Solde au {date}"
 msgstr "Saldo per {date}"
@@ -856,9 +913,6 @@ msgstr "Prosenten er kategoriens andel av månedens utgifter. For små andeler s
 
 msgid "Mois par mois, par catégorie"
 msgstr "Måned for måned, per kategori"
-
-msgid "Catégorie"
-msgstr "Kategori"
 
 msgid "Total"
 msgstr "Totalt"
@@ -1349,6 +1403,18 @@ msgstr "Saldokolonnen stemmer ikke med beløpene: linje {lines}. Du kan likevel 
 msgid "À savoir avant d’importer"
 msgstr "Før import"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · registrert {manual_date}, i banken {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "Disse manuelt registrerte transaksjonene står også i filen (samme beløp, innen 7 dager). Slått på erstattes de av bankens transaksjon, som beholder kategorien deres. Slått av beholdes begge."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Funnet manuelle posteringer"
+
 msgid "Lignes lues"
 msgstr "Leste linjer"
 
@@ -1406,6 +1472,11 @@ msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} duplikat hoppet over"
 msgstr[1] "{n} duplikater hoppet over"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} manuell postering erstattet"
+msgstr[1] "{n} manuelle posteringer erstattet"
+
 msgid "Aperçu"
 msgstr "Oversikt"
 
@@ -1438,6 +1509,9 @@ msgstr "Administrer farger…"
 
 msgid "Fermer"
 msgstr "Lukk"
+
+msgid "Saisie manuelle"
+msgstr "Manuell postering"
 
 msgid "Mois précédent : {month}"
 msgstr "Forrige måned: {month}"

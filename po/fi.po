@@ -323,6 +323,9 @@ msgstr "Yleiset"
 msgid "Importer un CSV"
 msgstr "Tuo CSV"
 
+msgid "Ajouter une opération"
+msgstr "Lisää tapahtuma"
+
 msgid "Préférences"
 msgstr "Asetukset"
 
@@ -358,6 +361,9 @@ msgstr "Tapahtumat"
 
 msgid "Rechercher un libellé"
 msgstr "Hae kuvausta"
+
+msgid "Ajouter une opération…"
+msgstr "Lisää tapahtuma…"
 
 msgid "Catégories et règles…"
 msgstr "Luokat ja säännöt…"
@@ -443,8 +449,8 @@ msgstr "Tilinumero (valinnainen)"
 msgid "Solde actuel"
 msgstr "Nykyinen saldo"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "Saldo annetaan tuonnissa: Finaryx kysyy saldoa tiedoston viimeisen tapahtuman jälkeen."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "Valinnainen käsin pidetylle tilille. Jos tuot myöhemmin tiliotteen, Finaryx kysyy saldoa sen viimeisen tapahtuman jälkeen."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Saldo viimeisimmän kirjatun tapahtuman jälkeen. Finaryx laskee siitä alkusaldon."
@@ -542,8 +548,59 @@ msgstr "Poista"
 msgid "Catégorie supprimée"
 msgstr "Luokka poistettu"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Lisää ensin tili."
+
 msgid "Compte"
 msgstr "Tili"
+
+msgid "Date"
+msgstr "Päivämäärä"
+
+msgid "Choisir la date"
+msgstr "Valitse päivämäärä"
+
+msgid "Dépense"
+msgstr "Meno"
+
+msgid "Entrée"
+msgstr "Tulo"
+
+msgid "Sens"
+msgstr "Suunta"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Automaattinen, kuvauksen perusteella"
+
+msgid "Catégorie"
+msgstr "Luokka"
+
+msgid "Proposée : {name}"
+msgstr "Ehdotus: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "Jos tapahtuma näkyy myöhemmin tuodussa tiliotteessa, Finaryx ehdottaa tämän merkinnän korvaamista pankin tapahtumalla."
+
+msgid "Supprimer la saisie"
+msgstr "Poista merkintä"
+
+msgid "Modifier la saisie"
+msgstr "Muokkaa merkintää"
+
+msgid "Saisie modifiée"
+msgstr "Merkintä muutettu"
+
+msgid "Opération ajoutée"
+msgstr "Tapahtuma lisätty"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Poistetaanko tämä merkintä?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "Käsin syötetty tapahtuma poistetaan. Tuodut tapahtumat eivät muutu."
+
+msgid "Saisie supprimée"
+msgstr "Merkintä poistettu"
 
 msgid "Solde au {date}"
 msgstr "Saldo {date}"
@@ -856,9 +913,6 @@ msgstr "Prosentti on luokan osuus kuukauden menoista. Liian pienet osuudet ovat 
 
 msgid "Mois par mois, par catégorie"
 msgstr "Kuukausittain, luokittain"
-
-msgid "Catégorie"
-msgstr "Luokka"
 
 msgid "Total"
 msgstr "Yhteensä"
@@ -1349,6 +1403,18 @@ msgstr "Saldosarake ei vastaa summia: rivi {lines}. Tuonti on silti mahdollinen.
 msgid "À savoir avant d’importer"
 msgstr "Ennen tuontia"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · syötetty {manual_date}, pankissa {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "Nämä käsin syötetyt tapahtumat ovat myös tiedostossa (sama summa, enintään 7 päivän ero). Päällä ne korvataan pankin tapahtumalla, joka säilyttää niiden luokan. Pois päältä molemmat säilytetään."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Löydetyt käsin syötetyt"
+
 msgid "Lignes lues"
 msgstr "Luetut rivit"
 
@@ -1406,6 +1472,11 @@ msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} kaksoiskappale ohitettu"
 msgstr[1] "{n} kaksoiskappaletta ohitettu"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} käsin syötetty tapahtuma korvattu"
+msgstr[1] "{n} käsin syötettyä tapahtumaa korvattu"
+
 msgid "Aperçu"
 msgstr "Yleiskuva"
 
@@ -1438,6 +1509,9 @@ msgstr "Hallitse värejä…"
 
 msgid "Fermer"
 msgstr "Sulje"
+
+msgid "Saisie manuelle"
+msgstr "Käsin syötetty"
 
 msgid "Mois précédent : {month}"
 msgstr "Edellinen kuukausi: {month}"

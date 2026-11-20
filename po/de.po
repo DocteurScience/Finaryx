@@ -323,6 +323,9 @@ msgstr "Allgemein"
 msgid "Importer un CSV"
 msgstr "CSV importieren"
 
+msgid "Ajouter une opération"
+msgstr "Buchung hinzufügen"
+
 msgid "Préférences"
 msgstr "Einstellungen"
 
@@ -358,6 +361,9 @@ msgstr "Buchungen"
 
 msgid "Rechercher un libellé"
 msgstr "Buchungstext suchen"
+
+msgid "Ajouter une opération…"
+msgstr "Buchung hinzufügen …"
 
 msgid "Catégories et règles…"
 msgstr "Kategorien und Regeln …"
@@ -443,8 +449,8 @@ msgstr "Kontonummer (optional)"
 msgid "Solde actuel"
 msgstr "Aktueller Kontostand"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "Der Kontostand wird beim Import angegeben: Finaryx fragt nach dem Stand nach der letzten Buchung der Datei."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "Optional, für ein von Hand geführtes Konto. Wenn Sie später einen Auszug importieren, fragt Finaryx nach dem Stand nach dessen letzter Buchung."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Kontostand nach der letzten erfassten Buchung. Finaryx berechnet daraus den Anfangsstand."
@@ -542,8 +548,59 @@ msgstr "Löschen"
 msgid "Catégorie supprimée"
 msgstr "Kategorie gelöscht"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Fügen Sie zuerst ein Konto hinzu."
+
 msgid "Compte"
 msgstr "Konto"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Choisir la date"
+msgstr "Datum wählen"
+
+msgid "Dépense"
+msgstr "Ausgabe"
+
+msgid "Entrée"
+msgstr "Eingang"
+
+msgid "Sens"
+msgstr "Richtung"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Automatisch, nach dem Buchungstext"
+
+msgid "Catégorie"
+msgstr "Kategorie"
+
+msgid "Proposée : {name}"
+msgstr "Vorschlag: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "Taucht die Buchung später in einem importierten Auszug auf, schlägt Finaryx vor, diesen Eintrag durch den der Bank zu ersetzen."
+
+msgid "Supprimer la saisie"
+msgstr "Eintrag löschen"
+
+msgid "Modifier la saisie"
+msgstr "Eintrag bearbeiten"
+
+msgid "Saisie modifiée"
+msgstr "Eintrag geändert"
+
+msgid "Opération ajoutée"
+msgstr "Buchung hinzugefügt"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Diesen Eintrag löschen?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "Die von Hand eingegebene Buchung wird gelöscht. Importierte Buchungen ändern sich nicht."
+
+msgid "Saisie supprimée"
+msgstr "Eintrag gelöscht"
 
 msgid "Solde au {date}"
 msgstr "Kontostand am {date}"
@@ -856,9 +913,6 @@ msgstr "Der Prozentsatz ist der Anteil der Kategorie an den Ausgaben des Monats.
 
 msgid "Mois par mois, par catégorie"
 msgstr "Monat für Monat, nach Kategorie"
-
-msgid "Catégorie"
-msgstr "Kategorie"
 
 msgid "Total"
 msgstr "Summe"
@@ -1349,6 +1403,18 @@ msgstr "Die Saldenspalte passt nicht zu den Beträgen: Zeile {lines}. Der Import
 msgid "À savoir avant d’importer"
 msgstr "Vor dem Import"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · eingetragen am {manual_date}, bei der Bank am {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "Diese von Hand eingegebenen Buchungen stehen auch in der Datei (gleicher Betrag, höchstens 7 Tage Abstand). Eingeschaltet werden sie durch die Buchung der Bank ersetzt, die ihre Kategorie übernimmt. Ausgeschaltet bleiben beide erhalten."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Gefundene manuelle Buchungen"
+
 msgid "Lignes lues"
 msgstr "Gelesene Zeilen"
 
@@ -1406,6 +1472,11 @@ msgid_plural "{n} doublons ignorés"
 msgstr[0] "{n} Duplikat übersprungen"
 msgstr[1] "{n} Duplikate übersprungen"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} manuelle Buchung ersetzt"
+msgstr[1] "{n} manuelle Buchungen ersetzt"
+
 msgid "Aperçu"
 msgstr "Übersicht"
 
@@ -1438,6 +1509,9 @@ msgstr "Farben verwalten …"
 
 msgid "Fermer"
 msgstr "Schließen"
+
+msgid "Saisie manuelle"
+msgstr "Manuelle Buchung"
 
 msgid "Mois précédent : {month}"
 msgstr "Vorheriger Monat: {month}"

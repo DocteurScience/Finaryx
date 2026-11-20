@@ -211,6 +211,10 @@ impl FinaryxWindow {
         if let Some(page) = operations {
             page.refresh_list();
         }
+        let import = self.imp().import_page.borrow().clone();
+        if let Some(page) = import {
+            page.refresh();
+        }
     }
 
     fn try_reload(&self) -> finaryx_core::db::Result<()> {
@@ -675,7 +679,36 @@ impl FinaryxWindow {
         let export = gio::ActionEntry::builder("export")
             .activate(|window: &Self, _, _| window.show_export())
             .build();
-        self.add_action_entries([show_page, import, add_account, categories, export]);
+        let add_operation = gio::ActionEntry::builder("add-operation")
+            .activate(|window: &Self, _, _| crate::operation_dialog::present(window, None, None))
+            .build();
+        // Parameter: id of the account.
+        let add_operation_to = gio::ActionEntry::builder("add-operation-to")
+            .parameter_type(Some(glib::VariantTy::INT64))
+            .activate(|window: &Self, _, param| {
+                let account = param.and_then(|p| p.get::<i64>());
+                crate::operation_dialog::present(window, account, None);
+            })
+            .build();
+        // Parameter: id of the manual operation.
+        let edit_operation = gio::ActionEntry::builder("edit-operation")
+            .parameter_type(Some(glib::VariantTy::INT64))
+            .activate(|window: &Self, _, param| {
+                if let Some(id) = param.and_then(|p| p.get::<i64>()) {
+                    crate::operation_dialog::present(window, None, Some(id));
+                }
+            })
+            .build();
+        self.add_action_entries([
+            show_page,
+            import,
+            add_account,
+            categories,
+            export,
+            add_operation,
+            add_operation_to,
+            edit_operation,
+        ]);
     }
 
     fn setup_signals(&self) {

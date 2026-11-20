@@ -324,6 +324,9 @@ msgstr "Загальне"
 msgid "Importer un CSV"
 msgstr "Імпортувати CSV"
 
+msgid "Ajouter une opération"
+msgstr "Додати операцію"
+
 msgid "Préférences"
 msgstr "Параметри"
 
@@ -359,6 +362,9 @@ msgstr "Операції"
 
 msgid "Rechercher un libellé"
 msgstr "Шукати опис"
+
+msgid "Ajouter une opération…"
+msgstr "Додати операцію…"
 
 msgid "Catégories et règles…"
 msgstr "Категорії й правила…"
@@ -444,8 +450,8 @@ msgstr "Номер рахунку (необов’язково)"
 msgid "Solde actuel"
 msgstr "Поточний баланс"
 
-msgid "Le solde se renseigne à l’import : Finaryx demande le solde après la dernière opération du fichier."
-msgstr "Баланс вказується під час імпорту: Finaryx запитає баланс після останньої операції у файлі."
+msgid "Facultatif, pour un compte tenu à la main. Si vous importez ensuite un relevé, Finaryx demandera le solde après sa dernière opération."
+msgstr "Необов’язково, для рахунку, який ведеться вручну. Якщо згодом ви імпортуєте виписку, Finaryx запитає баланс після її останньої операції."
 
 msgid "Solde après la dernière opération enregistrée. Finaryx en déduit le solde de départ."
 msgstr "Баланс після останньої записаної операції. Finaryx обчислить з нього початковий баланс."
@@ -546,8 +552,59 @@ msgstr "Видалити"
 msgid "Catégorie supprimée"
 msgstr "Категорію видалено"
 
+msgid "Ajoutez d’abord un compte."
+msgstr "Спочатку додайте рахунок."
+
 msgid "Compte"
 msgstr "Рахунок"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Choisir la date"
+msgstr "Вибрати дату"
+
+msgid "Dépense"
+msgstr "Витрата"
+
+msgid "Entrée"
+msgstr "Надходження"
+
+msgid "Sens"
+msgstr "Напрям"
+
+msgid "Automatique, d’après le libellé"
+msgstr "Автоматично, за описом"
+
+msgid "Catégorie"
+msgstr "Категорія"
+
+msgid "Proposée : {name}"
+msgstr "Запропоновано: {name}"
+
+msgid "Si l’opération arrive ensuite dans un relevé importé, Finaryx proposera de remplacer cette saisie par celle de la banque."
+msgstr "Якщо операція згодом з’явиться в імпортованій виписці, Finaryx запропонує замінити цей запис банківським."
+
+msgid "Supprimer la saisie"
+msgstr "Видалити запис"
+
+msgid "Modifier la saisie"
+msgstr "Змінити запис"
+
+msgid "Saisie modifiée"
+msgstr "Запис змінено"
+
+msgid "Opération ajoutée"
+msgstr "Операцію додано"
+
+msgid "Supprimer cette saisie ?"
+msgstr "Видалити цей запис?"
+
+msgid "L’opération saisie à la main est effacée. Les opérations importées ne changent pas."
+msgstr "Операцію, введену вручну, буде видалено. Імпортовані операції не зміняться."
+
+msgid "Saisie supprimée"
+msgstr "Запис видалено"
 
 msgid "Solde au {date}"
 msgstr "Залишок на {date}"
@@ -869,9 +926,6 @@ msgstr "Відсоток — це частка категорії у витра�
 
 msgid "Mois par mois, par catégorie"
 msgstr "Місяць за місяцем, за категоріями"
-
-msgid "Catégorie"
-msgstr "Категорія"
 
 msgid "Total"
 msgstr "Разом"
@@ -1371,6 +1425,18 @@ msgstr "Стовпець залишку не відповідає сумам: р
 msgid "À savoir avant d’importer"
 msgstr "Перед імпортом"
 
+msgid "{manual} → {bank}"
+msgstr "{manual} → {bank}"
+
+msgid "{amount} · saisie le {manual_date}, à la banque le {bank_date}"
+msgstr "{amount} · введено {manual_date}, у банку {bank_date}"
+
+msgid "Ces opérations saisies à la main figurent aussi dans le fichier (même montant, à 7 jours près). Activées, elles sont remplacées par l’opération de la banque, qui garde leur catégorie. Désactivées, les deux sont conservées."
+msgstr "Ці введені вручну операції також є у файлі (та сама сума, до 7 днів різниці). Якщо ввімкнено, їх замінить банківська операція зі збереженням категорії. Якщо вимкнено, залишаться обидві."
+
+msgid "Saisies manuelles retrouvées"
+msgstr "Знайдені ручні записи"
+
 msgid "Lignes lues"
 msgstr "Прочитано рядків"
 
@@ -1431,6 +1497,12 @@ msgstr[0] "Пропущено {n} дублікат"
 msgstr[1] "Пропущено {n} дублікати"
 msgstr[2] "Пропущено {n} дублікатів"
 
+msgid "{n} saisie manuelle remplacée"
+msgid_plural "{n} saisies manuelles remplacées"
+msgstr[0] "{n} ручний запис замінено"
+msgstr[1] "{n} ручні записи замінено"
+msgstr[2] "{n} ручних записів замінено"
+
 msgid "Aperçu"
 msgstr "Огляд"
 
@@ -1463,6 +1535,9 @@ msgstr "Керувати кольорами…"
 
 msgid "Fermer"
 msgstr "Закрити"
+
+msgid "Saisie manuelle"
+msgstr "Ручний запис"
 
 msgid "Mois précédent : {month}"
 msgstr "Попередній місяць: {month}"

@@ -16,7 +16,7 @@ pub const APPLICATION_ID: i32 = 0x464E_5258;
 /// Ordered list of migrations. Migration `i` (0-based) brings the schema
 /// from version `i` to `i + 1`. Never edit a migration that has shipped:
 /// append a new one.
-pub const MIGRATIONS: &[&str] = &[MIGRATION_1, MIGRATION_2, MIGRATION_3];
+pub const MIGRATIONS: &[&str] = &[MIGRATION_1, MIGRATION_2, MIGRATION_3, MIGRATION_4];
 
 /// Schema version written by this build of the application.
 pub const SCHEMA_VERSION: i32 = MIGRATIONS.len() as i32;
@@ -316,6 +316,12 @@ WHEN OLD.id = 8
 BEGIN
   SELECT RAISE(ABORT, 'the "Autres" category cannot be deleted');
 END;
+"#;
+
+/// Operations typed by hand ("Saisie manuelle", `manual.rs`).
+const MIGRATION_4: &str = r#"
+ALTER TABLE txn ADD COLUMN is_manual INTEGER NOT NULL DEFAULT 0 CHECK (is_manual IN (0, 1));
+CREATE INDEX txn_manual ON txn(account_id, booked_on) WHERE is_manual = 1;
 "#;
 
 #[cfg(test)]
