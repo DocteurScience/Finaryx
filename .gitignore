@@ -14,3 +14,9 @@ po/*.pot
 *.db-shm
 /*.csv
 *.partial
+
+# Snap build outputs
+/*.snap
+/parts/
+/stage/
+/prime/

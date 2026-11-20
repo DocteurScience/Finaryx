@@ -1,14 +1,14 @@
 # Builds the Flatpak with the publication manifest (offline: crates from
 # build-aux/cargo-sources.json), on the checked-out commit instead of the
-# release tag. The bundle is kept as an artifact of the run and, for a
-# v* tag, attached to the GitHub release.
+# release tag, and the Snap (snap/snapcraft.yaml). Both are kept as
+# artifacts of the run and, when publishing, attached to the release.
 #
-# Publishing a version: Actions > Flatpak > Run workflow on main. A manual
-# run always publishes the version of Cargo.toml (tag v<version>): it
-# creates the tag and the release (text: .github/release-notes.md) and
-# attaches the bundle. It is started by hand by the owner, never by a
-# Claude session.
-name: Flatpak
+# Publishing a version: Actions > Flatpak et Snap > Run workflow on main.
+# A manual run always publishes the version of Cargo.toml (tag
+# v<version>): once both packages are built, it creates the tag and the
+# release (text: .github/release-notes.md) and attaches them. It is
+# started by hand by the owner, never by a Claude session.
+name: Flatpak et Snap
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
         run: |
           version=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
-            echo "::notice title=Publication::Version v$version : elle sera publiée après la construction."
+            echo "::notice title=Publication::Version v$version : elle sera publiée une fois le Flatpak et le Snap construits."
           else
             echo "Build only ($GITHUB_EVENT_NAME)."
           fi
@@ -69,12 +69,45 @@ jobs:
           manifest-path: build-aux/ci.json
           cache-key: flatpak-builder-${{ github.sha }}-retry
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flatpak
+          path: finaryx.flatpak
+
+  snap:
+    name: Snap
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: snapcraft
+        uses: snapcore/action-build@v1
+
+      - name: Name of the file
+        run: mv "${{ steps.snapcraft.outputs.snap }}" finaryx.snap
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: snap
+          path: finaryx.snap
+
+  release:
+    name: Publication
+    needs: [flatpak, snap]
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
       - name: Publish the release
-        if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           version=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then TAG="v$version"; else TAG="$GITHUB_REF_NAME"; fi
           if [ "$TAG" != "v$version" ]; then
@@ -89,4 +122,4 @@ jobs:
             gh release create "$TAG" --title "Finaryx $version" \
               --notes-file .github/release-notes.md --target "$GITHUB_SHA"
           fi
-          gh release upload "$TAG" finaryx.flatpak --clobber
+          gh release upload "$TAG" dist/finaryx.flatpak dist/finaryx.snap --clobber

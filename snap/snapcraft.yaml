@@ -1,0 +1,55 @@
+# Snap of Finaryx, built with Meson like the Flatpak. Strict confinement
+# without the network plug: the application cannot reach the network.
+# Built by .github/workflows/flatpak.yml (snapcore/action-build); locally:
+# `snapcraft` from the repository root (needs LXD or Multipass).
+name: finaryx
+base: core24
+adopt-info: finaryx
+grade: stable
+confinement: strict
+license: AGPL-3.0-or-later
+platforms:
+  amd64:
+
+apps:
+  finaryx:
+    command: usr/bin/finaryx
+    # GTK 4.14 and libadwaita 1.5 from the gnome-46-2404 platform snap,
+    # the versions Finaryx is written for.
+    extensions: [gnome]
+    common-id: io.github.docteurscience.Finaryx
+    desktop: usr/share/applications/io.github.docteurscience.Finaryx.desktop
+    environment:
+      GSETTINGS_SCHEMA_DIR: $SNAP/usr/share/glib-2.0/schemas
+    # CSV files opened from the file manager or given on the command line;
+    # the file chooser goes through the desktop portal.
+    plugs:
+      - home
+
+parts:
+  finaryx:
+    plugin: meson
+    source: .
+    meson-parameters:
+      - --prefix=/usr
+      - --buildtype=release
+      - -Dprofile=default
+    build-packages:
+      - curl
+      - desktop-file-utils
+      - appstream
+      - gettext
+      - libglib2.0-bin
+    override-pull: |
+      craftctl default
+      craftctl set version="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
+    # Ubuntu 24.04's Rust is older than the project's (rust-version 1.80):
+    # stable Rust from rustup, for the build only.
+    override-build: |
+      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+        | sh -s -- -y --profile minimal --default-toolchain stable
+      export PATH="$HOME/.cargo/bin:$PATH"
+      craftctl default
+      glib-compile-schemas "$CRAFT_PART_INSTALL/usr/share/glib-2.0/schemas"
+    parse-info:
+      - usr/share/metainfo/io.github.docteurscience.Finaryx.metainfo.xml

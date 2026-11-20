@@ -15,7 +15,7 @@ use gtk::{gio, glib};
 
 fn main() -> glib::ExitCode {
     gettextrs::setlocale(LocaleCategory::LcAll, "");
-    gettextrs::bindtextdomain(config::GETTEXT_PACKAGE, config::LOCALEDIR)
+    gettextrs::bindtextdomain(config::GETTEXT_PACKAGE, locale_dir())
         .expect("Unable to bind the text domain");
     gettextrs::bind_textdomain_codeset(config::GETTEXT_PACKAGE, "UTF-8")
         .expect("Unable to set the text domain encoding");
@@ -31,4 +31,13 @@ fn main() -> glib::ExitCode {
     glib::set_application_name("Finaryx");
     let app = application::FinaryxApplication::new();
     app.run()
+}
+
+/// Translations: in a snap, the installed files are under `$SNAP`, not
+/// at the prefix the build was configured with.
+fn locale_dir() -> std::path::PathBuf {
+    std::env::var_os("SNAP")
+        .map(|root| std::path::Path::new(&root).join(config::LOCALEDIR.trim_start_matches('/')))
+        .filter(|dir| dir.is_dir())
+        .unwrap_or_else(|| config::LOCALEDIR.into())
 }
