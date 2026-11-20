@@ -8,6 +8,9 @@ adopt-info: finaryx
 grade: stable
 confinement: strict
 license: AGPL-3.0-or-later
+contact: https://github.com/DocteurScience/Finaryx/issues
+issues: https://github.com/DocteurScience/Finaryx/issues
+source-code: https://github.com/DocteurScience/Finaryx
 platforms:
   amd64:
 
