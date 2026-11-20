@@ -280,12 +280,13 @@ impl CumulativePage {
             name.append(&charts::color_swatch(12, move |w| {
                 charts::category_color(w, slot)
             }));
+            // The table scrolls sideways, so names keep their width:
+            // one line, wrapped between words only in the narrow layout.
             name.append(
                 &gtk::Label::builder()
                     .label(&row.name)
                     .xalign(0.0)
-                    .wrap(true)
-                    .wrap_mode(gtk::pango::WrapMode::WordChar)
+                    .wrap(narrow)
                     .build(),
             );
             grid.attach(&name, 0, y, 1, 1);
