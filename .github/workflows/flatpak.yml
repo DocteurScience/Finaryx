@@ -95,6 +95,21 @@ jobs:
       - name: Name of the file
         run: mv "${{ steps.snapcraft.outputs.snap }}" finaryx.snap
 
+      # What the application needs at run time: launcher, compiled
+      # settings schema, translations, metadata.
+      - name: Check the snap content
+        run: |
+          command -v unsquashfs >/dev/null || sudo apt-get install -y squashfs-tools
+          unsquashfs -lc finaryx.snap > content.txt
+          for f in meta/snap.yaml usr/bin/finaryx \
+                   usr/share/glib-2.0/schemas/gschemas.compiled \
+                   usr/share/locale/de/LC_MESSAGES/finaryx.mo \
+                   usr/share/locale/zh_CN/LC_MESSAGES/finaryx.mo; do
+            grep -q "squashfs-root/$f\$" content.txt || { echo "Missing: $f"; exit 1; }
+          done
+          grep -q 'squashfs-root/meta/gui/.*\.desktop$' content.txt || { echo "Missing: desktop file"; exit 1; }
+          unsquashfs -cat finaryx.snap meta/snap.yaml
+
       - uses: actions/upload-artifact@v4
         with:
           name: snap
