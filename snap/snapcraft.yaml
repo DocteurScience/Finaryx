@@ -28,14 +28,14 @@ apps:
 
 parts:
   finaryx:
-    plugin: meson
+    # Meson by hand (nil plugin): the Rust toolchain installed below must
+    # be on the PATH of the same shell that runs meson.
+    plugin: nil
     source: .
-    meson-parameters:
-      - --prefix=/usr
-      - --buildtype=release
-      - -Dprofile=default
     build-packages:
       - curl
+      - meson
+      - ninja-build
       - desktop-file-utils
       - appstream
       - gettext
@@ -45,15 +45,15 @@ parts:
       craftctl set version="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
     # Ubuntu 24.04's Rust is older than the project's (rust-version 1.80):
     # stable Rust from rustup, for the build only.
-    # Toolchain kept next to the part's build directory (snapcraft's $HOME and
-    # $CARGO_HOME need not match).
     override-build: |
-      export CARGO_HOME="$CRAFT_PART_BUILD/../rust/cargo" RUSTUP_HOME="$CRAFT_PART_BUILD/../rust/rustup"
+      export CARGO_HOME="$CRAFT_PART_BUILD/rust/cargo" RUSTUP_HOME="$CRAFT_PART_BUILD/rust/rustup"
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
         | sh -s -- -y --profile minimal --default-toolchain stable --no-modify-path
       export PATH="$CARGO_HOME/bin:$PATH"
       rustc --version
-      craftctl default
+      meson setup _build "$CRAFT_PART_SRC" --prefix=/usr --buildtype=release -Dprofile=default
+      meson compile -C _build
+      DESTDIR="$CRAFT_PART_INSTALL" meson install -C _build
       glib-compile-schemas "$CRAFT_PART_INSTALL/usr/share/glib-2.0/schemas"
     parse-info:
       - usr/share/metainfo/io.github.docteurscience.Finaryx.metainfo.xml
