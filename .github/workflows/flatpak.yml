@@ -51,11 +51,23 @@ jobs:
           json.dump(m, open("build-aux/ci.json", "w"), indent=2)
           PY
 
-      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+      # The runner sometimes fails to update the GNOME SDK ("Invalid
+      # cross-device link", then exit code 139): one more attempt.
+      - id: build
+        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        continue-on-error: true
         with:
           bundle: finaryx.flatpak
           manifest-path: build-aux/ci.json
           cache-key: flatpak-builder-${{ github.sha }}
+
+      - name: Build again after a failed attempt
+        if: steps.build.outcome == 'failure'
+        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        with:
+          bundle: finaryx.flatpak
+          manifest-path: build-aux/ci.json
+          cache-key: flatpak-builder-${{ github.sha }}-retry
 
       - name: Publish the release
         if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
