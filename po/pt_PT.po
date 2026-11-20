@@ -1406,23 +1406,34 @@ msgstr "Mês anterior: {month}"
 msgid "Mois suivant : {month}"
 msgstr "Próximo mês: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} no dia 1, {last} em {day} de {month}"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "Média de {n} mês"
+msgstr[1] "Média de {n} meses"
 
-msgid "Solde {of_month}"
-msgstr "Saldo de {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{amount} gastos até {date}"
 
-msgid "Dépenses du jour"
-msgstr "Gastos do dia"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "mais {amount} do que no mês anterior na mesma data"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "Gastos de cada dia de {of_month}; no dia {day}, {peak} se destaca"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "menos {amount} do que no mês anterior na mesma data"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "Gastos de cada dia do mês"
+msgid "autant que le mois précédent à la même date"
+msgstr "o mesmo que no mês anterior na mesma data"
 
-msgid "Évolution du solde"
-msgstr "Evolução do saldo"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Gastos do dia <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Nenhuma transação neste mês"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "Gastos acumulados de {of_month}: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "Ritmo dos gastos"
 
 msgid "Part"
 msgstr "Parte"
@@ -1432,9 +1443,6 @@ msgstr "vs. {month}"
 
 msgid "Où part l’argent"
 msgstr "Para onde vai o dinheiro"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "Nenhuma transação neste mês"
 
 msgid "Rechercher une opération"
 msgstr "Pesquisar uma transação"
@@ -1501,9 +1509,6 @@ msgstr "Regra criada"
 
 msgid "Catégorie modifiée"
 msgstr "Categoria alterada"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "Gastos do dia <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "Saldo de {month}: de {start} no dia 1 a {end} no dia {day}, comparado com {previous}"

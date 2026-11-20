@@ -1406,23 +1406,34 @@ msgstr "Föregående månad: {month}"
 msgid "Mois suivant : {month}"
 msgstr "Nästa månad: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} dag 1, {last} den {day} {month}"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "Snitt över {n} månad"
+msgstr[1] "Snitt över {n} månader"
 
-msgid "Solde {of_month}"
-msgstr "Saldo i {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{amount} spenderat till och med {date}"
 
-msgid "Dépenses du jour"
-msgstr "Dagens utgifter"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "{amount} mer än förra månaden samma datum"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "Utgifter varje dag i {of_month}; dag {day} sticker {peak} ut"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "{amount} mindre än förra månaden samma datum"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "Utgifter varje dag i månaden"
+msgid "autant que le mois précédent à la même date"
+msgstr "lika mycket som förra månaden samma datum"
 
-msgid "Évolution du solde"
-msgstr "Saldots utveckling"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Dagens utgifter <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Inga transaktioner den här månaden"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "Utgifter sedan 1 {of_month}: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "Utgiftstakt"
 
 msgid "Part"
 msgstr "Andel"
@@ -1432,9 +1443,6 @@ msgstr "mot {month}"
 
 msgid "Où part l’argent"
 msgstr "Vart pengarna tar vägen"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "Inga transaktioner den här månaden"
 
 msgid "Rechercher une opération"
 msgstr "Sök efter en transaktion"
@@ -1501,9 +1509,6 @@ msgstr "Regeln skapad"
 
 msgid "Catégorie modifiée"
 msgstr "Kategorin ändrad"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "Dagens utgifter <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "Saldo i {month}: från {start} dag 1 till {end} dag {day}, jämfört med {previous}"

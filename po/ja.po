@@ -1381,23 +1381,33 @@ msgstr "前の月: {month}"
 msgid "Mois suivant : {month}"
 msgstr "次の月: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} (1 日)、{last} ({month}{day} 日)"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "{n} か月の平均"
 
-msgid "Solde {of_month}"
-msgstr "残高: {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{date}までに {amount} を支出"
 
-msgid "Dépenses du jour"
-msgstr "その日の支出"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "前月の同じ日より {amount} 多い"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "{of_month}の日ごとの支出。{day} 日は {peak} が目立ちます"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "前月の同じ日より {amount} 少ない"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "月の日ごとの支出"
+msgid "autant que le mois précédent à la même date"
+msgstr "前月の同じ日と同額"
 
-msgid "Évolution du solde"
-msgstr "残高の推移"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "その日の支出 <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "今月の取引はありません"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "{of_month}の累計支出: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "支出のペース"
 
 msgid "Part"
 msgstr "割合"
@@ -1407,9 +1417,6 @@ msgstr "{month}との比較"
 
 msgid "Où part l’argent"
 msgstr "お金の行き先"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "今月の取引はありません"
 
 msgid "Rechercher une opération"
 msgstr "取引を検索"
@@ -1473,9 +1480,6 @@ msgstr "ルールを作成しました"
 
 msgid "Catégorie modifiée"
 msgstr "カテゴリーを変更しました"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "その日の支出 <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "{month}の残高: 1 日の {start} から {day} 日の {end} ({previous}と比較)"

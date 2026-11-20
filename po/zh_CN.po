@@ -1381,23 +1381,33 @@ msgstr "上个月：{month}"
 msgid "Mois suivant : {month}"
 msgstr "下个月：{month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} (1 日)，{last} ({month}{day} 日)"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "{n} 个月平均"
 
-msgid "Solde {of_month}"
-msgstr "余额：{of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "截至{date}已支出 {amount}"
 
-msgid "Dépenses du jour"
-msgstr "当日支出"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "比上月同期多 {amount}"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "{of_month}的每日支出。{day} 日的 {peak} 较为突出"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "比上月同期少 {amount}"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "当月每日支出"
+msgid "autant que le mois précédent à la même date"
+msgstr "与上月同期持平"
 
-msgid "Évolution du solde"
-msgstr "余额变化"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "当日支出 <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "本月没有交易"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "{of_month}累计支出：{summary}"
+
+msgid "Rythme des dépenses"
+msgstr "支出节奏"
 
 msgid "Part"
 msgstr "比例"
@@ -1407,9 +1417,6 @@ msgstr "与{month}对比"
 
 msgid "Où part l’argent"
 msgstr "您的钱花在哪里"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "本月没有交易"
 
 msgid "Rechercher une opération"
 msgstr "搜索交易"
@@ -1473,9 +1480,6 @@ msgstr "规则已创建"
 
 msgid "Catégorie modifiée"
 msgstr "分类已更改"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "当日支出 <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "{month}余额：从 1 日的 {start} 到 {day} 日的 {end} (与{previous}对比)"

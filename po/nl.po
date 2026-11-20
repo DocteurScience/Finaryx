@@ -1406,23 +1406,34 @@ msgstr "Vorige maand: {month}"
 msgid "Mois suivant : {month}"
 msgstr "Volgende maand: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} op dag 1, {last} op {day} {month}"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "Gemiddelde over {n} maand"
+msgstr[1] "Gemiddelde over {n} maanden"
 
-msgid "Solde {of_month}"
-msgstr "Saldo in {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{amount} uitgegeven tot {date}"
 
-msgid "Dépenses du jour"
-msgstr "Uitgaven van de dag"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "{amount} meer dan vorige maand op dezelfde datum"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "Uitgaven van elke dag in {of_month}; op dag {day} springt {peak} eruit"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "{amount} minder dan vorige maand op dezelfde datum"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "Uitgaven van elke dag van de maand"
+msgid "autant que le mois précédent à la même date"
+msgstr "evenveel als vorige maand op dezelfde datum"
 
-msgid "Évolution du solde"
-msgstr "Verloop van het saldo"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Uitgaven van de dag <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Geen transacties deze maand"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "Uitgaven sinds 1 {of_month}: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "Uitgaventempo"
 
 msgid "Part"
 msgstr "Aandeel"
@@ -1432,9 +1443,6 @@ msgstr "t.o.v. {month}"
 
 msgid "Où part l’argent"
 msgstr "Waar het geld naartoe gaat"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "Geen transacties deze maand"
 
 msgid "Rechercher une opération"
 msgstr "Transactie zoeken"
@@ -1501,9 +1509,6 @@ msgstr "Regel gemaakt"
 
 msgid "Catégorie modifiée"
 msgstr "Categorie gewijzigd"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "Uitgaven van de dag <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "Saldo in {month}: van {start} op dag 1 tot {end} op dag {day}, vergeleken met {previous}"

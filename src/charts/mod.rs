@@ -1,7 +1,6 @@
 //! Charts drawn with Cairo. Colours always come from the current theme
 //! (`data/style.css`, `data/style-dark.css`), never from the code.
 
-pub mod bars;
 pub mod columns;
 pub mod donut;
 pub mod line;
@@ -241,6 +240,8 @@ pub enum LegendMark {
     Bars,
     /// Square of the forecast range.
     Band,
+    /// Light grey area with a top edge (usual level).
+    Area,
 }
 
 pub fn legend_mark(kind: LegendMark) -> gtk::DrawingArea {
@@ -285,6 +286,21 @@ pub fn legend_mark(kind: LegendMark) -> gtk::DrawingArea {
                     cr.rectangle(0.5, 0.5, w - 1.0, h - 1.0);
                     let _ = cr.stroke();
                 }
+            }
+            LegendMark::Area => {
+                let ghost = theme_color(area, "finaryx_ghost");
+                let mut fill = ghost;
+                fill.set_alpha(0.22);
+                set_source(cr, &fill);
+                cr.rectangle(0.0, 0.0, w, h);
+                let _ = cr.fill();
+                let mut edge = ghost;
+                edge.set_alpha(0.7);
+                set_source(cr, &edge);
+                cr.set_line_width(1.0);
+                cr.move_to(0.0, 0.5);
+                cr.line_to(w, 0.5);
+                let _ = cr.stroke();
             }
         }
     });

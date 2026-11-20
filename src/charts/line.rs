@@ -19,6 +19,9 @@ pub struct LineChart {
     pub values: Vec<i64>,
     /// Previous period, drawn dashed in `finaryx_ghost`.
     pub ghost: Option<Vec<i64>>,
+    /// Usual level (average month), drawn as a light area from the bottom
+    /// of the chart with a thin top edge, behind the other series.
+    pub reference: Option<Vec<i64>>,
     /// Number of positions on the x axis (0: the longest series).
     pub slots: usize,
     /// Tooltip of each position.
@@ -188,10 +191,38 @@ pub fn line_chart(chart: LineChart, height: i32, accessible_label: &str) -> gtk:
             );
         }
 
+        if let Some(reference) = c
+            .reference
+            .as_deref()
+            .map(|r| &r[..r.len().min(g.slots)])
+            .filter(|r| !r.is_empty())
+        {
+            let ghost = theme_color(area, "finaryx_ghost");
+            let mut fill = ghost;
+            fill.set_alpha(0.22);
+            set_source(cr, &fill);
+            cr.move_to(g.x(0), g.bottom);
+            for (i, v) in reference.iter().enumerate() {
+                cr.line_to(g.x(i), g.y(*v));
+            }
+            cr.line_to(g.x(reference.len() - 1), g.bottom);
+            cr.close_path();
+            let _ = cr.fill();
+            let mut edge = ghost;
+            edge.set_alpha(0.7);
+            set_source(cr, &edge);
+            cr.move_to(g.x(0), g.y(reference[0]));
+            for (i, v) in reference.iter().enumerate().skip(1) {
+                cr.line_to(g.x(i), g.y(*v));
+            }
+            cr.set_line_width(1.0);
+            let _ = cr.stroke();
+        }
         if let Some(ghost) = &c.ghost {
             set_source(cr, &theme_color(area, "finaryx_ghost"));
             cr.set_dash(&[5.0, 4.0], 0.0);
-            stroke_series(cr, &g, ghost);
+            // A longer previous month stops at the end of the axis.
+            stroke_series(cr, &g, &ghost[..ghost.len().min(g.slots)]);
             cr.set_dash(&[], 0.0);
         }
         let s1 = theme_color(area, "finaryx_s1");

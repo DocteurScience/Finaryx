@@ -1406,23 +1406,34 @@ msgstr "Önceki ay: {month}"
 msgid "Mois suivant : {month}"
 msgstr "Sonraki ay: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} ayın 1’inde, {last} {day} {month}"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "{n} aylık ortalama"
+msgstr[1] "{n} aylık ortalama"
 
-msgid "Solde {of_month}"
-msgstr "Bakiye: {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{date} itibarıyla {amount} harcandı"
 
-msgid "Dépenses du jour"
-msgstr "Günün harcaması"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "geçen ayın aynı tarihine göre {amount} fazla"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "Her günün harcaması: {of_month}; ayın {day}. günü {peak} öne çıkıyor"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "geçen ayın aynı tarihine göre {amount} az"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "Ayın her gününün harcaması"
+msgid "autant que le mois précédent à la même date"
+msgstr "geçen ayın aynı tarihiyle aynı"
 
-msgid "Évolution du solde"
-msgstr "Bakiyenin seyri"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Günün harcaması <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Bu ay işlem yok"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "Birikimli harcamalar, {of_month}: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "Harcama hızı"
 
 msgid "Part"
 msgstr "Pay"
@@ -1432,9 +1443,6 @@ msgstr "{month} ile karşılaştırma"
 
 msgid "Où part l’argent"
 msgstr "Para nereye gidiyor"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "Bu ay işlem yok"
 
 msgid "Rechercher une opération"
 msgstr "İşlem ara"
@@ -1501,9 +1509,6 @@ msgstr "Kural oluşturuldu"
 
 msgid "Catégorie modifiée"
 msgstr "Kategori değiştirildi"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "Günün harcaması <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "Bakiye ({month}): ayın 1’inde {start}, {day}. günü {end}; karşılaştırma: {previous}"

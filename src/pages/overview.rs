@@ -52,6 +52,26 @@ impl std::fmt::Debug for OverviewPage {
     }
 }
 
+/// Labels of the day axis of `month`: the first day with its month name,
+/// the others as numbers. Days past the end of the month move to its
+/// last day (31 in a 30-day month, 29 in February).
+pub fn day_labels(month: NaiveDate, days: &[u32]) -> Vec<(usize, String)> {
+    let last = stats::days_in_month(month);
+    let mut out: Vec<(usize, String)> = Vec::new();
+    for d in days.iter().map(|d| (*d).min(last)) {
+        if out.last().is_some_and(|(i, _)| *i == d as usize - 1) {
+            continue;
+        }
+        let label = if d == 1 {
+            dates::day_month(month)
+        } else {
+            d.to_string()
+        };
+        out.push((d as usize - 1, label));
+    }
+    out
+}
+
 /// Balance curve of a month with the previous month dashed.
 pub fn month_line(
     conn: &Connection,
@@ -104,17 +124,7 @@ pub fn month_line(
             tip
         })
         .collect();
-    let x_labels = x_days
-        .iter()
-        .map(|d| {
-            let label = if *d == 1 {
-                dates::day_month(month)
-            } else {
-                d.to_string()
-            };
-            (*d as usize - 1, label)
-        })
-        .collect();
+    let x_labels = day_labels(month, x_days);
     let end = current.balances.last().copied();
     let chart = line::LineChart {
         values: current.balances.clone(),

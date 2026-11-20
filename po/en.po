@@ -1406,23 +1406,34 @@ msgstr "Previous month: {month}"
 msgid "Mois suivant : {month}"
 msgstr "Next month: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} on day 1, {last} on {month} {day}"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "Average over {n} month"
+msgstr[1] "Average over {n} months"
 
-msgid "Solde {of_month}"
-msgstr "Balance in {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{amount} spent by {date}"
 
-msgid "Dépenses du jour"
-msgstr "Spending of the day"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "{amount} more than last month at the same date"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "Spending of each day in {of_month}; on day {day}, {peak} stands out"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "{amount} less than last month at the same date"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "Spending of each day of the month"
+msgid "autant que le mois précédent à la même date"
+msgstr "the same as last month at the same date"
 
-msgid "Évolution du solde"
-msgstr "Balance trend"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Spending of the day <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "No transactions this month"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "Spending since {of_month} 1: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "Spending pace"
 
 msgid "Part"
 msgstr "Share"
@@ -1432,9 +1443,6 @@ msgstr "vs {month}"
 
 msgid "Où part l’argent"
 msgstr "Where the Money Goes"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "No transactions this month"
 
 msgid "Rechercher une opération"
 msgstr "Search for a transaction"
@@ -1501,9 +1509,6 @@ msgstr "Rule created"
 
 msgid "Catégorie modifiée"
 msgstr "Category changed"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "Spending of the day <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "Balance in {month}: from {start} on day 1 to {end} on day {day}, compared with {previous}"

@@ -1406,23 +1406,34 @@ msgstr "Vorheriger Monat: {month}"
 msgid "Mois suivant : {month}"
 msgstr "Nächster Monat: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} am 1., {last} am {day}. {month}"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "Durchschnitt über {n} Monat"
+msgstr[1] "Durchschnitt über {n} Monate"
 
-msgid "Solde {of_month}"
-msgstr "Kontostand im {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{amount} ausgegeben bis zum {date}"
 
-msgid "Dépenses du jour"
-msgstr "Ausgaben des Tages"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "{amount} mehr als im Vormonat am selben Tag"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "Ausgaben jedes Tages im {of_month}; am {day}. sticht {peak} hervor"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "{amount} weniger als im Vormonat am selben Tag"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "Ausgaben jedes Tages im Monat"
+msgid "autant que le mois précédent à la même date"
+msgstr "genauso viel wie im Vormonat am selben Tag"
 
-msgid "Évolution du solde"
-msgstr "Verlauf des Kontostands"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Ausgaben des Tages <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Keine Buchungen in diesem Monat"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "Ausgaben seit dem 1. {of_month}: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "Ausgabentempo"
 
 msgid "Part"
 msgstr "Anteil"
@@ -1432,9 +1443,6 @@ msgstr "ggü. {month}"
 
 msgid "Où part l’argent"
 msgstr "Wohin das Geld geht"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "Keine Buchungen in diesem Monat"
 
 msgid "Rechercher une opération"
 msgstr "Buchung suchen"
@@ -1501,9 +1509,6 @@ msgstr "Regel erstellt"
 
 msgid "Catégorie modifiée"
 msgstr "Kategorie geändert"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "Ausgaben des Tages <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "Kontostand im {month}: von {start} am 1. bis {end} am {day}., verglichen mit {previous}"

@@ -285,6 +285,93 @@ pub fn daily(
     })
 }
 
+/// Spending accumulated since the 1st, day by day (month page).
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct CumulativeSpending {
+    /// The month, up to `until` when it falls inside it.
+    pub current: Vec<i64>,
+    /// The previous month, whole.
+    pub previous: Vec<i64>,
+    /// Day-by-day mean of up to six full months before the month
+    /// (empty with fewer than two). A shorter month keeps its last value.
+    pub average: Vec<i64>,
+    /// Number of months in `average`.
+    pub average_months: usize,
+}
+
+fn running_sum(values: &[i64]) -> Vec<i64> {
+    let mut total = 0;
+    values
+        .iter()
+        .map(|v| {
+            total += v;
+            total
+        })
+        .collect()
+}
+
+/// Spending since the 1st of `month`, of the previous month and of the
+/// average month. Months only partly imported (before the first
+/// operation's month when it does not start on the 1st) are left out of
+/// the average.
+pub fn cumulative_spending(
+    conn: &Connection,
+    scope: &Scope,
+    month: NaiveDate,
+    until: Option<NaiveDate>,
+) -> Result<CumulativeSpending> {
+    let month = first_of_month(month);
+    let current = running_sum(&daily(conn, scope, month, until)?.spending);
+    let first: Option<NaiveDate> = conn.query_row(
+        &format!(
+            "SELECT min(booked_on) FROM txn WHERE {}",
+            scope.accounts_sql("account_id")
+        ),
+        [],
+        |r| r.get(0),
+    )?;
+    let Some(first) = first else {
+        return Ok(CumulativeSpending {
+            current,
+            ..Default::default()
+        });
+    };
+    let first_full = if first.day() == 1 {
+        first_of_month(first)
+    } else {
+        next_month(first)
+    };
+    let prev = previous_month(month);
+    let previous = if prev >= first_of_month(first) {
+        running_sum(&daily(conn, scope, prev, None)?.spending)
+    } else {
+        Vec::new()
+    };
+    let mut months = Vec::new();
+    let mut m = prev;
+    while months.len() < 6 && m >= first_full {
+        months.push(running_sum(&daily(conn, scope, m, None)?.spending));
+        m = previous_month(m);
+    }
+    let average = if months.len() >= 2 {
+        let n = months.len() as i64;
+        (0..days_in_month(month) as usize)
+            .map(|i| {
+                let sum: i64 = months.iter().map(|c| c[i.min(c.len() - 1)]).sum();
+                (sum + n / 2).div_euclid(n)
+            })
+            .collect()
+    } else {
+        Vec::new()
+    };
+    Ok(CumulativeSpending {
+        current,
+        previous,
+        average_months: if average.is_empty() { 0 } else { months.len() },
+        average,
+    })
+}
+
 /// Spending of one category over a period.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CategorySpending {
@@ -592,6 +679,47 @@ mod tests {
         assert_eq!(one.accounts, vec![s.accounts[1]]);
         assert_eq!(latest_month(&conn, &s).unwrap(), Some(d("2026-10-01")));
         assert_eq!(earliest_month(&conn, &s).unwrap(), Some(d("2026-05-01")));
+    }
+
+    #[test]
+    fn cumulative_spending_of_october() {
+        let (conn, s) = demo_scope();
+        let oct = d("2026-10-01");
+        let c = cumulative_spending(&conn, &s, oct, None).unwrap();
+        assert_eq!(c.current.len(), 31);
+        assert_eq!(*c.current.last().unwrap(), 262_490);
+        let sept = month_totals(&conn, &s, d("2026-09-01")).unwrap();
+        assert_eq!(c.previous.len(), 30);
+        assert_eq!(*c.previous.last().unwrap(), sept.spending);
+        // May to September: five full months.
+        assert_eq!(c.average_months, 5);
+        assert_eq!(c.average.len(), 31);
+        let ends: i64 = [
+            "2026-05-01",
+            "2026-06-01",
+            "2026-07-01",
+            "2026-08-01",
+            "2026-09-01",
+        ]
+        .iter()
+        .map(|m| month_totals(&conn, &s, d(m)).unwrap().spending)
+        .sum();
+        assert_eq!(*c.average.last().unwrap(), (ends + 2) / 5);
+        // Stopped on the last operation's day.
+        let until = cumulative_spending(&conn, &s, oct, Some(d("2026-10-15"))).unwrap();
+        assert_eq!(until.current.len(), 15);
+        assert_eq!(until.current[..], c.current[..15]);
+    }
+
+    #[test]
+    fn cumulative_spending_needs_two_months_for_an_average() {
+        let (conn, s) = demo_scope();
+        let june = cumulative_spending(&conn, &s, d("2026-06-01"), None).unwrap();
+        assert_eq!(june.previous.len(), 31);
+        assert!(june.average.is_empty());
+        assert_eq!(june.average_months, 0);
+        let may = cumulative_spending(&conn, &s, d("2026-05-01"), None).unwrap();
+        assert!(may.previous.is_empty());
     }
 
     #[test]

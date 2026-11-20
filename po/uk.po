@@ -1431,23 +1431,35 @@ msgstr "Попередній місяць: {month}"
 msgid "Mois suivant : {month}"
 msgstr "Наступний місяць: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} 1-го числа, {last} {day}-го числа ({month})"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "Середнє за {n} місяць"
+msgstr[1] "Середнє за {n} місяці"
+msgstr[2] "Середнє за {n} місяців"
 
-msgid "Solde {of_month}"
-msgstr "Залишок: {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{amount} витрачено до {date}"
 
-msgid "Dépenses du jour"
-msgstr "Витрати дня"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "на {amount} більше, ніж минулого місяця на ту саму дату"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "Витрати кожного дня: {of_month}; {day}-го числа вирізняється {peak}"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "на {amount} менше, ніж минулого місяця на ту саму дату"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "Витрати кожного дня місяця"
+msgid "autant que le mois précédent à la même date"
+msgstr "стільки ж, скільки минулого місяця на ту саму дату"
 
-msgid "Évolution du solde"
-msgstr "Зміна залишку"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Витрати дня <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Цього місяця операцій немає"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "Накопичені витрати, {of_month}: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "Темп витрат"
 
 msgid "Part"
 msgstr "Частка"
@@ -1457,9 +1469,6 @@ msgstr "порівняно з {month}"
 
 msgid "Où part l’argent"
 msgstr "Куди йдуть гроші"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "Цього місяця операцій немає"
 
 msgid "Rechercher une opération"
 msgstr "Шукати операцію"
@@ -1529,9 +1538,6 @@ msgstr "Правило створено"
 
 msgid "Catégorie modifiée"
 msgstr "Категорію змінено"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "Витрати дня <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "Залишок ({month}): від {start} 1-го числа до {end} {day}-го числа, порівняно з {previous}"

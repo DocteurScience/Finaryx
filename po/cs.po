@@ -1431,23 +1431,35 @@ msgstr "Předchozí měsíc: {month}"
 msgid "Mois suivant : {month}"
 msgstr "Další měsíc: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} 1. dne, {last} {day}. dne ({month})"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "Průměr za {n} měsíc"
+msgstr[1] "Průměr za {n} měsíce"
+msgstr[2] "Průměr za {n} měsíců"
 
-msgid "Solde {of_month}"
-msgstr "Zůstatek: {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{amount} utraceno do {date}"
 
-msgid "Dépenses du jour"
-msgstr "Výdaje dne"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "o {amount} více než minulý měsíc ke stejnému dni"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "Výdaje každého dne: {of_month}; {day}. dne vyniká {peak}"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "o {amount} méně než minulý měsíc ke stejnému dni"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "Výdaje každého dne v měsíci"
+msgid "autant que le mois précédent à la même date"
+msgstr "stejně jako minulý měsíc ke stejnému dni"
 
-msgid "Évolution du solde"
-msgstr "Vývoj zůstatku"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Výdaje dne <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Žádné transakce v tomto měsíci"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "Kumulované výdaje, {of_month}: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "Tempo výdajů"
 
 msgid "Part"
 msgstr "Podíl"
@@ -1457,9 +1469,6 @@ msgstr "oproti {month}"
 
 msgid "Où part l’argent"
 msgstr "Kam jdou peníze"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "Žádné transakce v tomto měsíci"
 
 msgid "Rechercher une opération"
 msgstr "Hledat transakci"
@@ -1529,9 +1538,6 @@ msgstr "Pravidlo vytvořeno"
 
 msgid "Catégorie modifiée"
 msgstr "Kategorie změněna"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "Výdaje dne <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "Zůstatek ({month}): od {start} 1. dne do {end} {day}. dne, ve srovnání s {previous}"

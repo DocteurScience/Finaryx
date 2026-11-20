@@ -1406,23 +1406,34 @@ msgstr "Edellinen kuukausi: {month}"
 msgid "Mois suivant : {month}"
 msgstr "Seuraava kuukausi: {month}"
 
-msgid "{first} le 1er, {last} au {day} {month}"
-msgstr "{first} päivänä 1, {last} {day}. {month}"
+msgid "Moyenne sur {n} mois"
+msgid_plural "Moyenne sur {n} mois"
+msgstr[0] "Keskiarvo {n} kuukaudelta"
+msgstr[1] "Keskiarvo {n} kuukaudelta"
 
-msgid "Solde {of_month}"
-msgstr "Saldo: {of_month}"
+msgid "{amount} dépensés au {date}"
+msgstr "{amount} käytetty {date} mennessä"
 
-msgid "Dépenses du jour"
-msgstr "Päivän menot"
+msgid "{amount} de plus que le mois précédent à la même date"
+msgstr "{amount} enemmän kuin edellisenä kuukautena samaan päivään mennessä"
 
-msgid "Dépenses de chaque jour {of_month} ; le {day}, {peak} domine"
-msgstr "Kunkin päivän menot: {of_month}; päivänä {day} erottuu {peak}"
+msgid "{amount} de moins que le mois précédent à la même date"
+msgstr "{amount} vähemmän kuin edellisenä kuukautena samaan päivään mennessä"
 
-msgid "Dépenses de chaque jour du mois"
-msgstr "Kuukauden kunkin päivän menot"
+msgid "autant que le mois précédent à la même date"
+msgstr "saman verran kuin edellisenä kuukautena samaan päivään mennessä"
 
-msgid "Évolution du solde"
-msgstr "Saldon kehitys"
+msgid "Dépenses du jour <b>{amount}</b>"
+msgstr "Päivän menot <b>{amount}</b>"
+
+msgid "Aucune opération ce mois-ci"
+msgstr "Ei tapahtumia tässä kuussa"
+
+msgid "Dépenses cumulées depuis le 1er {of_month} : {summary}"
+msgstr "Kertyneet menot, {of_month}: {summary}"
+
+msgid "Rythme des dépenses"
+msgstr "Menojen tahti"
 
 msgid "Part"
 msgstr "Osuus"
@@ -1432,9 +1443,6 @@ msgstr "vs. {month}"
 
 msgid "Où part l’argent"
 msgstr "Mihin rahat menevät"
-
-msgid "Aucune opération ce mois-ci"
-msgstr "Ei tapahtumia tässä kuussa"
 
 msgid "Rechercher une opération"
 msgstr "Hae tapahtumaa"
@@ -1501,9 +1509,6 @@ msgstr "Sääntö luotu"
 
 msgid "Catégorie modifiée"
 msgstr "Luokka muutettu"
-
-msgid "Dépenses du jour <b>{amount}</b>"
-msgstr "Päivän menot <b>{amount}</b>"
 
 msgid "Solde en {month} : de {start} le 1er à {end} le {day}, comparé à {previous}"
 msgstr "Saldo, {month}: {start} päivänä 1 – {end} päivänä {day}, verrattuna: {previous}"

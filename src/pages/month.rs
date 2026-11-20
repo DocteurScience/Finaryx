@@ -12,15 +12,15 @@ use finaryx_core::money::Sign;
 use finaryx_core::rusqlite::Connection;
 use finaryx_core::stats::{self, OperationFilter, Scope};
 use finaryx_core::{dates, scale};
-use gettextrs::gettext;
+use gettextrs::{gettext, ngettext};
 use gtk::glib;
 
-use super::overview::{month_donut, month_line, no_operations, part_row, section};
+use super::overview::{month_donut, no_operations, part_row, section};
 use super::{
     amount, amount_whole, boxed_list, capitalized, caption, chart_card, clear, legend_item, n_ops,
     pct1,
 };
-use crate::charts::{self, bars, LegendMark};
+use crate::charts::{self, line, LegendMark};
 use crate::window::FinaryxWindow;
 
 pub struct MonthPage {
@@ -133,108 +133,135 @@ impl MonthPage {
 
         let totals = stats::month_totals(conn, scope, month)?;
 
-        // Balance day by day, then spending of each day.
-        let (chart, current, _) = month_line(
-            conn,
-            scope,
-            month,
-            if narrow { 200 } else { 282 },
-            &[1, 5, 10, 15, 20, 25, 31],
-        )?;
-        let summary = match (current.balances.first(), current.balances.last()) {
-            (Some(first), Some(last)) => gettext("{first} le 1er, {last} au {day} {month}")
-                .replace("{first}", &amount_whole(*first, cur, Sign::Negative))
-                .replace("{last}", &amount_whole(*last, cur, Sign::Negative))
-                .replace("{day}", &current.balances.len().to_string())
-                .replace("{month}", dates::month_name(month.month())),
-            _ => String::new(),
-        };
-        let legend = super::legend(&[
-            legend_item(
-                LegendMark::Line,
-                &gettext("Solde {of_month}")
-                    .replace("{of_month}", &super::overview::of_month(month.month())),
-            ),
-            legend_item(
-                LegendMark::Ghost,
-                &capitalized(dates::month_name(prev.month())),
-            ),
-            legend_item(LegendMark::Bars, &gettext("Dépenses du jour")),
-        ]);
-
-        let max_day = current.spending.iter().copied().max().unwrap_or(0);
-        let ticks = scale::nice_ticks(0, max_day.max(100), 3, 100);
-        let peak_day = current
-            .spending
-            .iter()
-            .enumerate()
-            .max_by_key(|(_, v)| **v)
-            .map(|(i, _)| i);
-        let peak_label = match peak_day {
-            Some(i) if max_day > 0 => {
-                let day = month.with_day(i as u32 + 1).unwrap();
-                let filter = OperationFilter {
-                    from: Some(day),
-                    to: day.succ_opt(),
-                    ..Default::default()
-                };
-                let biggest = stats::operations(conn, scope, &filter, 200, 0)?
-                    .items
-                    .into_iter()
-                    .min_by_key(|o| o.amount_cents);
-                biggest.map(|o| {
-                    format!(
-                        "{} {}",
-                        capitalized(&o.label.to_lowercase()),
-                        amount_whole(-o.amount_cents, cur, Sign::Negative)
-                    )
-                })
+        // Spending since the 1st, against the previous month and the
+        // average month at the same date.
+        let last = stats::last_operation(conn, scope)?;
+        let spent = stats::cumulative_spending(conn, scope, month, last)?;
+        let daily = stats::daily(conn, scope, month, last)?;
+        let days = stats::days_in_month(month) as usize;
+        let month_label = capitalized(dates::month_name(month.month()));
+        let prev_label = capitalized(dates::month_name(prev.month()));
+        let average_label = ngettext(
+            "Moyenne sur {n} mois",
+            "Moyenne sur {n} mois",
+            spent.average_months as u32,
+        )
+        .replace("{n}", &spent.average_months.to_string());
+        let summary = match spent.current.last() {
+            Some(total) => {
+                let day = spent.current.len();
+                let text = gettext("{amount} dépensés au {date}")
+                    .replace("{amount}", &amount_whole(*total, cur, Sign::Negative))
+                    .replace(
+                        "{date}",
+                        &dates::day_month_ordinal(month.with_day(day as u32).unwrap()),
+                    );
+                match spent
+                    .previous
+                    .get(day.min(spent.previous.len()).wrapping_sub(1))
+                {
+                    Some(before) => {
+                        let gap = total - before;
+                        let compared = if gap > 0 {
+                            gettext("{amount} de plus que le mois précédent à la même date")
+                        } else if gap < 0 {
+                            gettext("{amount} de moins que le mois précédent à la même date")
+                        } else {
+                            gettext("autant que le mois précédent à la même date")
+                        }
+                        .replace("{amount}", &amount_whole(gap.abs(), cur, Sign::Negative));
+                        format!("{text} · {compared}")
+                    }
+                    None => text,
+                }
             }
-            _ => None,
+            None => String::new(),
         };
-        let tooltips = current
-            .spending
+        let mut items = vec![legend_item(LegendMark::Line, &month_label)];
+        if !spent.previous.is_empty() {
+            items.push(legend_item(LegendMark::Ghost, &prev_label));
+        }
+        if !spent.average.is_empty() {
+            items.push(legend_item(LegendMark::Area, &average_label));
+        }
+        let legend = super::legend(&items);
+
+        let all = spent
+            .current
             .iter()
-            .enumerate()
-            .map(|(i, v)| {
-                charts::Tip::new(dates::day_month_year(month.with_day(i as u32 + 1).unwrap())).row(
-                    charts::TipMark::Legend(LegendMark::Bars),
-                    gettext("Dépenses du jour"),
-                    amount(*v, cur, Sign::Negative),
-                )
+            .chain(&spent.previous)
+            .chain(&spent.average);
+        let (lo, hi) = (
+            all.clone().copied().min().unwrap_or(0).min(0),
+            all.copied().max().unwrap_or(0).max(100),
+        );
+        let ticks = scale::nice_ticks(lo, hi, 4, 100);
+        let tooltips = (0..days)
+            .map(|i| {
+                let mut tip =
+                    charts::Tip::new(dates::day_month_year(month.with_day(i as u32 + 1).unwrap()));
+                for (mark, label, series) in [
+                    (LegendMark::Line, &month_label, &spent.current),
+                    (LegendMark::Ghost, &prev_label, &spent.previous),
+                    (LegendMark::Area, &average_label, &spent.average),
+                ] {
+                    if let Some(v) = series.get(i) {
+                        tip = tip.row(
+                            charts::TipMark::Legend(mark),
+                            label.clone(),
+                            amount(*v, cur, Sign::Negative),
+                        );
+                    }
+                }
+                if let Some(s) = daily.spending.get(i) {
+                    tip = tip.footer(
+                        gettext("Dépenses du jour <b>{amount}</b>")
+                            .replace("{amount}", &amount(*s, cur, Sign::Negative)),
+                    );
+                }
+                tip
             })
             .collect();
-        let description = match (&peak_label, peak_day) {
-            (Some(p), Some(i)) => {
-                gettext("Dépenses de chaque jour {of_month} ; le {day}, {peak} domine")
-                    .replace("{of_month}", &super::overview::of_month(month.month()))
-                    .replace("{day}", &(i + 1).to_string())
-                    .replace("{peak}", p)
-            }
-            _ => gettext("Dépenses de chaque jour du mois"),
+        let chart = line::LineChart {
+            values: spent.current.clone(),
+            ghost: (!spent.previous.is_empty()).then(|| spent.previous.clone()),
+            reference: (!spent.average.is_empty()).then(|| spent.average.clone()),
+            slots: days,
+            tooltips,
+            ticks: ticks
+                .iter()
+                .map(|t| (*t, amount_whole(*t, cur, Sign::Negative)))
+                .collect(),
+            x_labels: super::overview::day_labels(
+                month,
+                if narrow {
+                    &[1, 10, 20, 31]
+                } else {
+                    &[1, 5, 10, 15, 20, 25, 31]
+                },
+            ),
+            end_label: spent
+                .current
+                .last()
+                .map(|e| amount_whole(*e, cur, Sign::Negative)),
+            gutter: true,
+            ..Default::default()
         };
-        let daily_bars = bars::bars(
-            bars::Bars {
-                values: current.spending.clone(),
-                slots: stats::days_in_month(month) as usize,
-                ticks: ticks
-                    .iter()
-                    .map(|t| (*t, amount_whole(*t, cur, Sign::Negative)))
-                    .collect(),
-                peak_label,
-                tooltips,
-            },
-            if narrow { 90 } else { 120 },
-            &description,
-        );
+        let description = if summary.is_empty() {
+            gettext("Aucune opération ce mois-ci")
+        } else {
+            gettext("Dépenses cumulées depuis le 1er {of_month} : {summary}")
+                .replace("{of_month}", &super::overview::of_month(month.month()))
+                .replace("{summary}", &summary)
+        };
+        let chart = line::line_chart(chart, if narrow { 200 } else { 282 }, &description);
         let card = chart_card(&[
             caption(&summary).upcast_ref(),
             legend.upcast_ref(),
             chart.upcast_ref(),
-            daily_bars.upcast_ref(),
         ]);
         self.root
-            .append(&section(&gettext("Évolution du solde"), None, &card));
+            .append(&section(&gettext("Rythme des dépenses"), None, &card));
 
         // Ring and table by category (categories listed separately).
         let categories = stats::spending_by_category(conn, scope, month, stats::next_month(month))?;
