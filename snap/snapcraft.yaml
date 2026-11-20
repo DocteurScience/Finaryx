@@ -45,10 +45,14 @@ parts:
       craftctl set version="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
     # Ubuntu 24.04's Rust is older than the project's (rust-version 1.80):
     # stable Rust from rustup, for the build only.
+    # Toolchain kept next to the part's build directory (snapcraft's $HOME and
+    # $CARGO_HOME need not match).
     override-build: |
+      export CARGO_HOME="$CRAFT_PART_BUILD/../rust/cargo" RUSTUP_HOME="$CRAFT_PART_BUILD/../rust/rustup"
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
-        | sh -s -- -y --profile minimal --default-toolchain stable
-      export PATH="$HOME/.cargo/bin:$PATH"
+        | sh -s -- -y --profile minimal --default-toolchain stable --no-modify-path
+      export PATH="$CARGO_HOME/bin:$PATH"
+      rustc --version
       craftctl default
       glib-compile-schemas "$CRAFT_PART_INSTALL/usr/share/glib-2.0/schemas"
     parse-info:
