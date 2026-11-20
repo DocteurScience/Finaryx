@@ -285,6 +285,24 @@ msgstr "Vaše účty a historie importů"
 msgid "Thème sombre"
 msgstr "Tmavý styl"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "Opravy a vylepšení po první verzi."
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "Tempo výdajů v měsíci ve srovnání s předchozím měsícem a průměrem"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "Podrobnosti kategorie po kliknutí na grafy a tabulky"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "Zůstatek účtu se zadává po poslední importované transakci"
+
+msgid "Interface traduite en 17 langues"
+msgstr "Rozhraní přeloženo do 17 jazyků"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "Opravené ikony, kumulativní tabulka a osa dnů"
+
 msgid "Première version."
 msgstr "První verze."
 

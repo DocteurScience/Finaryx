@@ -284,6 +284,24 @@ msgstr "Ihre Konten und der Importverlauf"
 msgid "Thème sombre"
 msgstr "Dunkler Stil"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "Korrekturen und Verbesserungen nach der ersten Version."
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "Ausgabentempo des Monats im Vergleich zum Vormonat und zum Durchschnitt"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "Details einer Kategorie per Klick auf Diagramme und Tabellen"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "Kontostand wird nach der letzten importierten Buchung abgefragt"
+
+msgid "Interface traduite en 17 langues"
+msgstr "Oberfläche in 17 Sprachen übersetzt"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "Symbole, Summentabelle und Tagesachse korrigiert"
+
 msgid "Première version."
 msgstr "Erste Version."
 

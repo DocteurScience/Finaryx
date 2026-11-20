@@ -283,6 +283,24 @@ msgstr "账户和导入记录"
 msgid "Thème sombre"
 msgstr "深色样式"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "首个版本之后的修复与改进。"
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "本月支出节奏，与上月及平均值对比"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "点击图表和表格查看分类详情"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "账户余额改为填写最后一笔导入交易后的余额"
+
+msgid "Interface traduite en 17 langues"
+msgstr "界面已翻译为 17 种语言"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "修复图标、累计表格和日期轴"
+
 msgid "Première version."
 msgstr "首个版本。"
 

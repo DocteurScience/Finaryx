@@ -285,6 +285,24 @@ msgstr "Ваші рахунки й історія імпорту"
 msgid "Thème sombre"
 msgstr "Темний стиль"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "Виправлення та покращення після першої версії."
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "Темп витрат за місяць порівняно з попереднім місяцем і середнім"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "Подробиці категорії після натискання на графіки й таблиці"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "Баланс рахунку запитується після останньої імпортованої операції"
+
+msgid "Interface traduite en 17 langues"
+msgstr "Інтерфейс перекладено 17 мовами"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "Виправлено значки, таблицю накопичень і вісь днів"
+
 msgid "Première version."
 msgstr "Перша версія."
 

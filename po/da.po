@@ -284,6 +284,24 @@ msgstr "Dine konti og importhistorikken"
 msgid "Thème sombre"
 msgstr "Mørk stil"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "Rettelser og forbedringer efter den første version."
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "Månedens udgiftstempo sammenlignet med sidste måned og gennemsnittet"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "Detaljer for en kategori ved at klikke på diagrammer og tabeller"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "Kontoens saldo efterspørges efter den sidst importerede transaktion"
+
+msgid "Interface traduite en 17 langues"
+msgstr "Brugerfladen oversat til 17 sprog"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "Rettede ikoner, summeringstabel og dagsakse"
+
 msgid "Première version."
 msgstr "Første version."
 

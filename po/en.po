@@ -284,6 +284,24 @@ msgstr "Your accounts and the import history"
 msgid "Thème sombre"
 msgstr "Dark style"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "Fixes and improvements after the first release."
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "Monthly spending pace, compared with the previous month and the average"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "Category details by clicking the charts and tables"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "Account balance asked after the last imported transaction"
+
+msgid "Interface traduite en 17 langues"
+msgstr "Interface translated into 17 languages"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "Fixed icons, cumulative table and day axis"
+
 msgid "Première version."
 msgstr "First release."
 

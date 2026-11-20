@@ -284,6 +284,24 @@ msgstr "Hesaplarınız ve içe aktarma geçmişi"
 msgid "Thème sombre"
 msgstr "Koyu stil"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "İlk sürümden sonra düzeltmeler ve iyileştirmeler."
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "Ayın harcama hızı, önceki ay ve ortalamayla karşılaştırmalı"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "Grafiklere ve tablolara tıklayarak kategori ayrıntıları"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "Hesap bakiyesi içe aktarılan son işlemden sonra sorulur"
+
+msgid "Interface traduite en 17 langues"
+msgstr "Arayüz 17 dile çevrildi"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "Simgeler, birikimli tablo ve gün ekseni düzeltildi"
+
 msgid "Première version."
 msgstr "İlk sürüm."
 

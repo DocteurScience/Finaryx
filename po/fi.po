@@ -284,6 +284,24 @@ msgstr "Tilisi ja tuontihistoria"
 msgid "Thème sombre"
 msgstr "Tumma tyyli"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "Korjauksia ja parannuksia ensimmäisen version jälkeen."
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "Kuukauden menojen tahti verrattuna edelliseen kuukauteen ja keskiarvoon"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "Luokan tiedot napsauttamalla kaavioita ja taulukoita"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "Tilin saldo kysytään viimeisen tuodun tapahtuman jälkeen"
+
+msgid "Interface traduite en 17 langues"
+msgstr "Käyttöliittymä käännetty 17 kielelle"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "Korjatut kuvakkeet, kertymätaulukko ja päiväakseli"
+
 msgid "Première version."
 msgstr "Ensimmäinen versio."
 

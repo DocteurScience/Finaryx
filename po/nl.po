@@ -284,6 +284,24 @@ msgstr "Uw rekeningen en de importgeschiedenis"
 msgid "Thème sombre"
 msgstr "Donkere stijl"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "Verbeteringen en reparaties na de eerste versie."
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "Uitgaventempo van de maand, vergeleken met vorige maand en het gemiddelde"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "Details van een categorie door op grafieken en tabellen te klikken"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "Rekeningsaldo gevraagd na de laatst geïmporteerde transactie"
+
+msgid "Interface traduite en 17 langues"
+msgstr "Interface vertaald in 17 talen"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "Pictogrammen, cumulatieve tabel en dagas gerepareerd"
+
 msgid "Première version."
 msgstr "Eerste versie."
 

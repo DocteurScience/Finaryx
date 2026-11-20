@@ -83,6 +83,18 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.1.1" date="2026-11-20">
+      <description>
+        <p>Corrections et améliorations après la première version.</p>
+        <ul>
+          <li>Rythme des dépenses du mois, comparé au mois précédent et à la moyenne</li>
+          <li>Détail d’une catégorie en cliquant sur les graphiques et les tableaux</li>
+          <li>Solde du compte demandé après la dernière opération importée</li>
+          <li>Interface traduite en 17 langues</li>
+          <li>Icônes, tableau du cumul et axe des jours corrigés</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.0" date="2026-11-12">
       <description>
         <p>Première version.</p>

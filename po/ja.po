@@ -283,6 +283,24 @@ msgstr "口座とインポート履歴"
 msgid "Thème sombre"
 msgstr "ダークスタイル"
 
+msgid "Corrections et améliorations après la première version."
+msgstr "最初のバージョン後の修正と改善。"
+
+msgid "Rythme des dépenses du mois, comparé au mois précédent et à la moyenne"
+msgstr "前月や平均と比べた今月の支出のペース"
+
+msgid "Détail d’une catégorie en cliquant sur les graphiques et les tableaux"
+msgstr "グラフや表をクリックしてカテゴリーの詳細を表示"
+
+msgid "Solde du compte demandé après la dernière opération importée"
+msgstr "口座残高はインポートした最後の取引後の値を入力"
+
+msgid "Interface traduite en 17 langues"
+msgstr "インターフェースを 17 言語に翻訳"
+
+msgid "Icônes, tableau du cumul et axe des jours corrigés"
+msgstr "アイコン、合計の表、日付の軸を修正"
+
 msgid "Première version."
 msgstr "最初のバージョンです。"
 
