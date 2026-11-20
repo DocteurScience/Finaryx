@@ -8,4 +8,7 @@ Finaryx 0.1.1 : corrections et améliorations après la première version. Vos d
 - Corrections : icônes de navigation rognées avec GNOME 49, noms de catégories écrasés dans le tableau du cumul, dernier jour de l’axe des mois de 30 jours et de février
 - Interface en français, traduite en 17 langues : anglais, allemand, espagnol, italien, portugais (Brésil et Portugal), néerlandais, polonais, tchèque, suédois, danois, norvégien, finnois, ukrainien, turc, japonais et chinois simplifié (traductions pas encore relues par des locuteurs natifs)
 
-Installation : téléchargez `finaryx.flatpak` ci-dessous (ajouté automatiquement quelques minutes après la publication), puis `flatpak install --user finaryx.flatpak`.
+Installation : téléchargez l’un des deux fichiers ci-dessous (ajoutés automatiquement quelques minutes après la publication).
+
+- Flatpak : `flatpak install --user finaryx.flatpak`
+- Snap : `sudo snap install --dangerous finaryx.snap` (`--dangerous` car le fichier ne vient pas du Snap Store et n’est donc pas signé). Le snap n’a pas accès au réseau.
