@@ -284,6 +284,18 @@ msgstr "Dina konton och importhistoriken"
 msgid "Thème sombre"
 msgstr "Mörk stil"
 
+msgid "Saisie manuelle des opérations."
+msgstr "Manuell inmatning av transaktioner."
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "Lägg till, redigera och ta bort manuellt inmatade transaktioner"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "Konton som förs helt för hand, utan CSV-export"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "Vid import ersätts poster som finns i kontoutdraget av bankens transaktion efter bekräftelse"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "Rättelser och förbättringar efter den första versionen."
 

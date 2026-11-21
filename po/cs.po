@@ -285,6 +285,18 @@ msgstr "Vaše účty a historie importů"
 msgid "Thème sombre"
 msgstr "Tmavý styl"
 
+msgid "Saisie manuelle des opérations."
+msgstr "Ruční zadávání transakcí."
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "Přidávání, úprava a mazání ručně zadaných transakcí"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "Účty vedené zcela ručně, bez exportu CSV"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "Při importu se záznamy nalezené ve výpisu po potvrzení nahradí transakcí banky"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "Opravy a vylepšení po první verzi."
 

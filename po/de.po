@@ -284,6 +284,18 @@ msgstr "Ihre Konten und der Importverlauf"
 msgid "Thème sombre"
 msgstr "Dunkler Stil"
 
+msgid "Saisie manuelle des opérations."
+msgstr "Manuelle Eingabe von Buchungen."
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "Von Hand eingegebene Buchungen hinzufügen, bearbeiten und löschen"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "Vollständig von Hand geführte Konten, ohne CSV-Export"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "Beim Import werden im Auszug gefundene Einträge nach Bestätigung durch die Buchung der Bank ersetzt"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "Korrekturen und Verbesserungen nach der ersten Version."
 

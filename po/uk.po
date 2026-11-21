@@ -285,6 +285,18 @@ msgstr "Ваші рахунки й історія імпорту"
 msgid "Thème sombre"
 msgstr "Темний стиль"
 
+msgid "Saisie manuelle des opérations."
+msgstr "Ручне введення операцій."
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "Додавання, зміна та видалення операцій, введених вручну"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "Рахунки, що ведуться повністю вручну, без експорту CSV"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "Під час імпорту записи, знайдені у виписці, після підтвердження замінюються банківською операцією"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "Виправлення та покращення після першої версії."
 

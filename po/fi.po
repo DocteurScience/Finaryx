@@ -284,6 +284,18 @@ msgstr "Tilisi ja tuontihistoria"
 msgid "Thème sombre"
 msgstr "Tumma tyyli"
 
+msgid "Saisie manuelle des opérations."
+msgstr "Tapahtumien syöttäminen käsin."
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "Käsin syötettyjen tapahtumien lisääminen, muokkaus ja poisto"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "Kokonaan käsin pidetyt tilit ilman CSV-vientiä"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "Tuonnissa tiliotteesta löytyvät merkinnät korvataan vahvistuksen jälkeen pankin tapahtumalla"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "Korjauksia ja parannuksia ensimmäisen version jälkeen."
 

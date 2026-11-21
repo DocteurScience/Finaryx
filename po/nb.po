@@ -284,6 +284,18 @@ msgstr "Kontoene dine og importhistorikken"
 msgid "Thème sombre"
 msgstr "Mørk stil"
 
+msgid "Saisie manuelle des opérations."
+msgstr "Manuell registrering av transaksjoner."
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "Legg til, rediger og slett manuelt registrerte transaksjoner"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "Kontoer som føres helt for hånd, uten CSV-eksport"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "Ved import erstattes posteringer som finnes i kontoutskriftet av bankens transaksjon etter bekreftelse"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "Rettelser og forbedringer etter den første versjonen."
 

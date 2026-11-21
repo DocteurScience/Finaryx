@@ -83,6 +83,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.0" date="2026-11-21">
+      <description>
+        <p>Saisie manuelle des opérations.</p>
+        <ul>
+          <li>Ajout, modification et suppression d’opérations saisies à la main</li>
+          <li>Comptes tenus entièrement à la main, sans export CSV</li>
+          <li>À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.1" date="2026-11-20">
       <description>
         <p>Corrections et améliorations après la première version.</p>

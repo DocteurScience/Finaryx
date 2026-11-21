@@ -283,6 +283,18 @@ msgstr "口座とインポート履歴"
 msgid "Thème sombre"
 msgstr "ダークスタイル"
 
+msgid "Saisie manuelle des opérations."
+msgstr "取引の手入力。"
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "手入力した取引の追加・編集・削除"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "CSV エクスポートなしで、すべて手入力で管理する口座"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "インポート時、明細に見つかった手入力は確認後に銀行の取引に置き換えられます"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "最初のバージョン後の修正と改善。"
 

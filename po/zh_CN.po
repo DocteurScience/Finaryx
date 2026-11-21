@@ -283,6 +283,18 @@ msgstr "账户和导入记录"
 msgid "Thème sombre"
 msgstr "深色样式"
 
+msgid "Saisie manuelle des opérations."
+msgstr "手动录入交易。"
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "添加、编辑和删除手动录入的交易"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "完全手动记账、无需 CSV 导出的账户"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "导入时，对账单中找到的手动记录经确认后会被银行交易替换"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "首个版本之后的修复与改进。"
 

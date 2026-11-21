@@ -284,6 +284,18 @@ msgstr "Hesaplarınız ve içe aktarma geçmişi"
 msgid "Thème sombre"
 msgstr "Koyu stil"
 
+msgid "Saisie manuelle des opérations."
+msgstr "İşlemlerin elle girilmesi."
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "Elle girilen işlemleri ekleme, düzenleme ve silme"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "Tamamen elle tutulan, CSV dışa aktarımı olmayan hesaplar"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "İçe aktarırken hesap özetinde bulunan kayıtlar onaydan sonra bankanın işlemiyle değiştirilir"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "İlk sürümden sonra düzeltmeler ve iyileştirmeler."
 

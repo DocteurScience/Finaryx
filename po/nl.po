@@ -284,6 +284,18 @@ msgstr "Uw rekeningen en de importgeschiedenis"
 msgid "Thème sombre"
 msgstr "Donkere stijl"
 
+msgid "Saisie manuelle des opérations."
+msgstr "Handmatige invoer van transacties."
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "Handmatig ingevoerde transacties toevoegen, bewerken en verwijderen"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "Rekeningen die volledig met de hand worden bijgehouden, zonder CSV-export"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "Bij het importeren worden invoeren die in het afschrift staan na bevestiging vervangen door de transactie van de bank"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "Verbeteringen en reparaties na de eerste versie."
 

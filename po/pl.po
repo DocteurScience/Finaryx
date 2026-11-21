@@ -285,6 +285,18 @@ msgstr "Twoje konta i historia importów"
 msgid "Thème sombre"
 msgstr "Ciemny styl"
 
+msgid "Saisie manuelle des opérations."
+msgstr "Ręczne wprowadzanie operacji."
+
+msgid "Ajout, modification et suppression d’opérations saisies à la main"
+msgstr "Dodawanie, edycja i usuwanie operacji wpisanych ręcznie"
+
+msgid "Comptes tenus entièrement à la main, sans export CSV"
+msgstr "Konta prowadzone całkowicie ręcznie, bez eksportu CSV"
+
+msgid "À l’import, les saisies retrouvées dans le relevé sont remplacées par l’opération de la banque après confirmation"
+msgstr "Przy imporcie wpisy znalezione w wyciągu są po potwierdzeniu zastępowane operacją z banku"
+
 msgid "Corrections et améliorations après la première version."
 msgstr "Poprawki i ulepszenia po pierwszej wersji."
 
