@@ -41,9 +41,10 @@ pub const BANQUE_POPULAIRE_COLUMNS: [(&str, Field); 13] = [
     ("Pointage operation", Field::Ignore),
 ];
 
-/// Profiles shipped with the application. Only the Banque Populaire one is
-/// verified on a real export; Boursorama and Revolut wait for anonymised
-/// examples.
+/// Profiles shipped with the application: only Banque Populaire, verified
+/// on a real export. Other banks (Boursorama, Revolut…) go through the
+/// manual mapping, which the user can save as a profile; a built-in
+/// profile is added only from a real, anonymised export.
 pub fn builtin_profiles() -> Vec<Profile> {
     let headers: Vec<String> = BANQUE_POPULAIRE_COLUMNS
         .iter()

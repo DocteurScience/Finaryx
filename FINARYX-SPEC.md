@@ -149,6 +149,7 @@ Formats connus. **Seul le premier a été vérifié sur un vrai export ; les aut
   - `Libelle simplifie` sert d'affichage, `Libelle operation` est conservé tel quel (`label_raw`) ; `Informations complementaires` contient le détail de carte (« CB****1234-… ») ; `Pointage operation` est ignoré (« 0 » presque partout).
   - `Categorie` et `Sous categorie` sont celles de la banque : voir « Table de correspondance » plus bas.
   - Piège : la colonne `Reference` **n'est pas unique** (des virements en série partagent la même référence). Ne pas s'en servir seule comme identifiant.
+- **Non vérifiés, aucun profil livré** (pas d'export réel disponible ; mappage manuel, que l'utilisateur peut retenir comme profil). À titre indicatif seulement :
 - **Boursorama** : séparateur `;`, colonnes du type `dateOp;dateVal;label;category;categoryParent;supplierFound;amount;comment;accountNum;accountLabel;accountbalance`, montants à virgule décimale.
 - **Revolut** : séparateur `,`, colonnes du type `Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance` ; ignorer les lignes dont l'état n'est pas `COMPLETED`.
 
