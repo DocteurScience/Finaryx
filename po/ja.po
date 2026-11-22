@@ -1180,6 +1180,10 @@ msgstr[0] "習慣は {n} か月分から計算しています。履歴はそれ�
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "季節変動は考慮していません: 履歴が 12 か月未満です。"
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "例外的なため予測に含めていません: {list}。"
+
 msgid "{month} (en cours)"
 msgstr "{month} (途中)"
 

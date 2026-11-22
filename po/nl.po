@@ -1199,6 +1199,11 @@ msgstr[1] "Gewoonten berekend over {n} maanden: de geschiedenis gaat niet verder
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Seizoensinvloed niet meegenomen: minder dan 12 maanden geschiedenis."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Niet meegenomen in de prognose omdat uitzonderlijk: {list}."
+msgstr[1] "Niet meegenomen in de prognose omdat uitzonderlijk: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (lopend)"
 

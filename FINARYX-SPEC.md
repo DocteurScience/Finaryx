@@ -243,12 +243,12 @@ Hors maquette : les écrans étroits et la variante Material 3 de cette page.
 
 Entrée : opérations des `N` derniers mois complets (N = période d'apprentissage), horizon `H` mois. Sortie par mois futur : dépenses attendues, revenus attendus, solde de fin de mois, demi-largeur de la fourchette.
 
-1. **Charges récurrentes** : regrouper par `label_norm` ; une série est récurrente si ≥ 3 occurrences, intervalle médian 28–32 jours (±3), écart de montant < 15 %. Projeter chaque série au jour du mois habituel avec son montant médian. Les afficher dans « Charges récurrentes détectées ».
-2. **Dépenses variables** : pour chaque catégorie, moyenne tronquée (on retire le mois le plus haut et le plus bas si N ≥ 6) du montant mensuel **hors récurrentes**.
+1. **Charges récurrentes** : regrouper par `label_norm` sans les noms de mois (« VIR SALAIRE NOVEMBRE » et « VIR SALAIRE DECEMBRE » forment une série) ; une série est récurrente si ≥ 3 occurrences, intervalle médian 28–32 jours (±3), écart de montant < 15 %. Projeter chaque série au jour du mois habituel avec son montant médian. Les afficher dans « Charges récurrentes détectées ».
+2. **Dépenses variables** : moyenne du total mensuel **hors récurrentes**, sans les dépenses exceptionnelles (une opération isolée, libellé vu un seul mois de la période, supérieure à un mois habituel de dépenses variables). *Révisé en 0.2.1-beta* : la moyenne tronquée par catégorie retirait le pic de chaque catégorie ; les pics tombant dans des mois différents (vacances, assurance, impôts), elle sous-estimait les dépenses et rendait la prévision optimiste.
 3. **Saisonnalité** (seulement si ≥ 12 mois d'historique) : facteur par mois du calendrier = dépenses de ce mois / moyenne annuelle, borné à [0,8 ; 1,3]. Sinon facteur 1 et l'interface indique « Saisonnalité non prise en compte : moins de 12 mois d'historique ».
-4. **Revenus** : séries récurrentes positives projetées de la même façon ; revenus ponctuels = moyenne des derniers mois, pondérée à 50 %.
+4. **Revenus** : séries récurrentes positives projetées de la même façon ; autres revenus = moyenne mensuelle sans les revenus exceptionnels (opération isolée supérieure à la moitié d'un mois habituel de revenus, salaire compris : prime, gros remboursement). Le seuil, plus bas que pour les dépenses, fait pencher la prévision du côté prudent. *Révisé en 0.2.1-beta* : la pondération à 50 % divisait par deux un salaire non reconnu comme série.
 5. **Solde** : solde actuel + somme cumulée (revenus attendus − dépenses attendues).
-6. **Fourchette** : `σ` = écart-type des erreurs mensuelles de ce même modèle rejoué sur l'historique (backtest simple) ; demi-largeur au mois `h` = `1,28 · σ · √h` (≈ intervalle à 80 %).
+6. **Fourchette** : le modèle est rejoué sur l'historique (backtest simple, opérations exceptionnelles écartées) ; `σ(h)` = moyenne quadratique des erreurs cumulées sur chaque suite de `h` mois consécutifs, mesurée tant que l'historique en contient au moins 3, puis prolongée en `σ(k) · √(h / k)` ; demi-largeur au mois `h` = `1,28 · σ(h)` (≈ intervalle à 80 %). *Révisé en 0.2.1-beta* : `1,28 · σ · √h` supposait des mois indépendants, alors qu'un mois chargé est souvent suivi d'un mois plus calme ; la fourchette à 6 mois était trop large. Les opérations exceptionnelles écartées sont listées sous le graphique (« Non reprise dans la prévision car exceptionnelle : … »).
 7. Afficher clairement que c'est une estimation. Aucune recommandation financière.
 
 Tests unitaires obligatoires : série mensuelle parfaite → prévision exacte ; une dépense exceptionnelle isolée n'est pas projetée ; moins de 3 mois d'historique → message « pas assez de données » plutôt qu'un graphique.
@@ -259,7 +259,7 @@ Tests unitaires obligatoires : série mensuelle parfaite → prévision exacte ;
 - Une série récurrente doit encore être active : sa dernière occurrence date de moins de 45 jours avant la fin de la période. L'intervalle médian accepté va de 25 à 35 jours (28–32 ± 3).
 - Les virements internes (catégorie « Virement interne ») ne sont ni des charges ni des revenus. Ils sont projetés avec leur moyenne mensuelle dans le solde : à peu près zéro pour tous les comptes, le virement d'épargne pour un seul compte.
 - Saisonnalité : facteur calculé sur les 12 derniers mois complets, appliqué aux dépenses variables (les charges récurrentes sont fixes).
-- `σ` est la moyenne quadratique des erreurs mensuelles du modèle rejoué sur la période d'apprentissage (sur le solde net du mois).
+- `σ` (affiché comme erreur type) est la moyenne quadratique des erreurs mensuelles du modèle rejoué sur la période d'apprentissage (sur le solde net du mois, opérations exceptionnelles écartées).
 - Pic annoté sur le graphique : le mois le plus chargé de l'horizon, s'il dépasse d'au moins 5 % la moyenne des mois prévus.
 
 ---

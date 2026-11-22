@@ -1218,6 +1218,12 @@ msgstr[2] "Zvyklosti počítané za {n} měsíců: historie dál nesahá."
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Sezónnost nezohledněna: méně než 12 měsíců historie."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Nezahrnuto do předpovědi jako výjimečné: {list}."
+msgstr[1] "Nezahrnuto do předpovědi jako výjimečné: {list}."
+msgstr[2] "Nezahrnuto do předpovědi jako výjimečné: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (probíhá)"
 

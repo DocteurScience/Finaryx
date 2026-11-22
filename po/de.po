@@ -1199,6 +1199,11 @@ msgstr[1] "Gewohnheiten über {n} Monate berechnet: Der Verlauf reicht nicht wei
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Saisonalität nicht berücksichtigt: weniger als 12 Monate Verlauf."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Als außergewöhnlich nicht in der Prognose berücksichtigt: {list}."
+msgstr[1] "Als außergewöhnlich nicht in der Prognose berücksichtigt: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (laufend)"
 

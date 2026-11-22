@@ -1218,6 +1218,12 @@ msgstr[2] "Звички обчислено за {n} місяців: історі
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Сезонність не враховано: історія коротша за 12 місяців."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Не враховано в прогнозі як виняткову: {list}."
+msgstr[1] "Не враховано в прогнозі як виняткові: {list}."
+msgstr[2] "Не враховано в прогнозі як виняткові: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (триває)"
 

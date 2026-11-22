@@ -554,6 +554,28 @@ impl ForecastPage {
                 "Saisonnalité non prise en compte : moins de 12 mois d’historique.",
             ));
         }
+        if !f.left_out.is_empty() {
+            let list: Vec<String> = f
+                .left_out
+                .iter()
+                .map(|(day, label, cents)| {
+                    format!(
+                        "{} ({}, {})",
+                        label,
+                        amount_whole(cents.abs(), cur, Sign::Negative),
+                        dates::day_month_ordinal(*day)
+                    )
+                })
+                .collect();
+            notes.push(
+                ngettext(
+                    "Non reprise dans la prévision car exceptionnelle : {list}.",
+                    "Non reprises dans la prévision car exceptionnelles : {list}.",
+                    f.left_out.len() as u32,
+                )
+                .replace("{list}", &list.join(", ")),
+            );
+        }
         let card = if narrow {
             chart_card(&[
                 chart_legend.upcast_ref(),

@@ -1199,6 +1199,11 @@ msgstr[1] "Abitudini calcolate su {n} mesi: la cronologia non va più indietro."
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Stagionalità non considerata: meno di 12 mesi di cronologia."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Non inclusa nella previsione perché eccezionale: {list}."
+msgstr[1] "Non incluse nella previsione perché eccezionali: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (in corso)"
 

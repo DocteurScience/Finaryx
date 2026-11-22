@@ -1199,6 +1199,11 @@ msgstr[1] "Tavat laskettu {n} kuukaudelta: historia ei ulotu kauemmas."
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Kausivaihtelua ei huomioitu: alle 12 kuukauden historia."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Ei mukana ennusteessa poikkeuksellisena: {list}."
+msgstr[1] "Ei mukana ennusteessa poikkeuksellisina: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (käynnissä)"
 

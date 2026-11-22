@@ -1180,6 +1180,10 @@ msgstr[0] "习惯根据 {n} 个月的数据计算：历史记录无法追溯到�
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "未考虑季节性：历史记录不足 12 个月。"
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "因属特殊情况，未计入预测：{list}。"
+
 msgid "{month} (en cours)"
 msgstr "{month} (进行中)"
 

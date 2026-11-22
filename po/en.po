@@ -1199,6 +1199,11 @@ msgstr[1] "Habits based on {n} months: the history does not go back further."
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Seasonality not taken into account: less than 12 months of history."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Not included in the forecast as exceptional: {list}."
+msgstr[1] "Not included in the forecast as exceptional: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (in progress)"
 

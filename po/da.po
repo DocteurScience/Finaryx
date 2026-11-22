@@ -1199,6 +1199,11 @@ msgstr[1] "Vaner beregnet over {n} måneder: historikken går ikke længere tilb
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Sæsonudsving ikke medregnet: under 12 måneders historik."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Ikke medtaget i prognosen, da den er usædvanlig: {list}."
+msgstr[1] "Ikke medtaget i prognosen, da de er usædvanlige: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (i gang)"
 

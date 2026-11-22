@@ -1218,6 +1218,12 @@ msgstr[2] "Nawyki liczone z {n} miesięcy: historia nie sięga dalej."
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Sezonowość nieuwzględniona: mniej niż 12 miesięcy historii."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Pominięta w prognozie jako wyjątkowa: {list}."
+msgstr[1] "Pominięte w prognozie jako wyjątkowe: {list}."
+msgstr[2] "Pominięte w prognozie jako wyjątkowe: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (w toku)"
 

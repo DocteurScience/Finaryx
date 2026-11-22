@@ -5,25 +5,40 @@
 //! future month: expected spending and income, end-of-month balance and
 //! the half-width of a probable range.
 //!
-//! 1. Recurring series: same normalised label and sign, at least 3
-//!    occurrences, median interval of about a month, amounts within 15 %
-//!    of their median. They are projected on their usual day with their
-//!    median amount.
-//! 2. Variable spending: per category, mean of the monthly amount without
-//!    the recurring series; with 6 months or more, the highest and the
-//!    lowest month are left out (an isolated exceptional expense is not
-//!    projected).
+//! 1. Recurring series: same normalised label without month names
+//!    ("VIR SALAIRE NOVEMBRE" and "VIR SALAIRE DECEMBRE" are one series)
+//!    and same sign, at least 3 occurrences, median interval of about a
+//!    month, amounts within 15 % of their median. They are projected on
+//!    their usual day with their median amount.
+//! 2. Variable spending: mean of the monthly total without the recurring
+//!    series. Only exceptional expenses are left out: a single operation
+//!    seen in one month of the period, larger than a whole usual month of
+//!    variable spending (a television, a car repair). Peaks of the categories
+//!    are kept: they fall in different months (holidays, insurance,
+//!    taxes), and leaving out the highest month of each category made the
+//!    forecast too optimistic.
 //! 3. Seasonality (12 months of history or more): factor per calendar
 //!    month, spending of that month / monthly mean, bounded to [0.8, 1.3],
 //!    applied to the variable spending.
-//! 4. Income: recurring series of the income categories; one-off income
-//!    is the monthly mean, weighted at 50 %.
+//! 4. Income: recurring series of the income categories; other income is
+//!    the mean of its monthly totals (a salary whose label changes still
+//!    counts in full). Exceptional income is left out, with a lower bar
+//!    than for expenses so that the forecast errs on the cautious side: a
+//!    single operation seen in one month, larger than half of a usual
+//!    month of income, salary included (a bonus, a large refund; ordinary
+//!    refunds stay).
 //! 5. Balance: current balance plus the expected flows (transfers between
 //!    accounts are projected with their monthly mean: about zero for all
 //!    the accounts, the savings transfer for one account).
-//! 6. Range: root mean square of the monthly errors of the same model
-//!    replayed on the learning period; half-width at month `h` =
-//!    1.28 · σ · √h (about an 80 % interval).
+//! 6. Range: the same model is replayed on the learning period
+//!    (exceptional operations left out: they are not forecast) and its
+//!    monthly errors are summed over every run of `h` consecutive months;
+//!    σ(h) is the root mean square of these sums, measured while the
+//!    history holds at least 3 such runs, then extended as σ · √(h / k)
+//!    from the last measured length `k`. A heavy month is often followed by
+//!    a lighter one: measured sums widen more slowly than 1.28 · σ(1) · √h,
+//!    which assumed independent months. Half-width = 1.28 · σ(h) (about an
+//!    80 % interval).
 //!
 //! Amounts are minor units; ratios are computed in floating point and the
 //! results rounded back to minor units.
@@ -62,6 +77,7 @@ const Z80: f64 = 1.28;
 pub struct Recurring {
     /// Label of its most recent operation.
     pub label: String,
+    /// Normalised label without month names: the key of the series.
     pub label_norm: String,
     /// Usual day of the month (median).
     pub day: u32,
@@ -107,6 +123,9 @@ pub struct Forecast {
     pub seasonal: bool,
     /// Typical monthly error of the model on the learning period.
     pub sigma: i64,
+    /// Exceptional operations of the learning period, not forecast:
+    /// (date, label, amount), oldest first.
+    pub left_out: Vec<(NaiveDate, String, i64)>,
 }
 
 impl Forecast {
@@ -170,9 +189,68 @@ struct Op {
     transfer: bool,
 }
 
+/// Month names and abbreviations (French, English) left out of the labels
+/// when looking for recurring series.
+const MONTH_WORDS: &[&str] = &[
+    "JANVIER",
+    "FEVRIER",
+    "MARS",
+    "AVRIL",
+    "MAI",
+    "JUIN",
+    "JUILLET",
+    "AOUT",
+    "SEPTEMBRE",
+    "OCTOBRE",
+    "NOVEMBRE",
+    "DECEMBRE",
+    "JANV",
+    "FEV",
+    "FEVR",
+    "AVR",
+    "JUIL",
+    "SEPT",
+    "OCT",
+    "NOV",
+    "DEC",
+    "JANUARY",
+    "FEBRUARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUGUST",
+    "SEPTEMBER",
+    "OCTOBER",
+    "NOVEMBER",
+    "DECEMBER",
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+];
+
+/// Label of a series: the normalised label without month names.
+pub fn series_label(label_norm: &str) -> String {
+    let words: Vec<&str> = label_norm
+        .split(' ')
+        .filter(|w| !w.is_empty() && !MONTH_WORDS.contains(w))
+        .collect();
+    if words.is_empty() {
+        label_norm.to_owned()
+    } else {
+        words.join(" ")
+    }
+}
+
 impl Op {
     fn key(&self) -> (String, bool) {
-        (self.label_norm.clone(), self.amount < 0)
+        (series_label(&self.label_norm), self.amount < 0)
     }
 }
 
@@ -226,15 +304,25 @@ fn mean(values: &[i64]) -> i64 {
     (s + s.signum() * n / 2) / n
 }
 
-/// Mean without the highest and the lowest value when there are 6 or more.
-fn trimmed_mean(values: &[i64]) -> i64 {
-    let mut v = values.to_vec();
-    v.sort_unstable();
-    if v.len() >= 6 {
-        v.remove(v.len() - 1);
-        v.remove(0);
+/// Root mean square of the sums of `h` consecutive monthly errors, while
+/// the history holds at least 3 runs of that length; beyond, the last
+/// measured value grows as √(h / k). Never narrower than for `h - 1`.
+fn range_sigma(errors: &[f64], h: usize) -> f64 {
+    let measured = |k: usize| -> f64 {
+        let sums: Vec<f64> = errors.windows(k).map(|w| w.iter().sum()).collect();
+        (sums.iter().map(|s| s * s).sum::<f64>() / sums.len() as f64).sqrt()
+    };
+    let longest = errors.len().saturating_sub(2).max(1);
+    let mut sigma = 0.0f64;
+    for k in 1..=h {
+        let s = if k <= longest {
+            measured(k)
+        } else {
+            measured(longest) * (k as f64 / longest as f64).sqrt()
+        };
+        sigma = sigma.max(s);
     }
-    mean(&v)
+    sigma
 }
 
 /// Index of a month in `months` (first days).
@@ -276,7 +364,7 @@ fn detect_recurring(ops: &[Op], period_end: NaiveDate) -> Vec<Recurring> {
             let mut days: Vec<i64> = group.iter().map(|o| o.date.day() as i64).collect();
             Some(Recurring {
                 label: last.label.clone(),
-                label_norm: last.label_norm.clone(),
+                label_norm: series_label(&last.label_norm),
                 day: median(&mut days).clamp(1, 31) as u32,
                 amount: m,
                 category_id: last.category_id,
@@ -294,8 +382,10 @@ struct Model {
     recurring: Vec<Recurring>,
     /// Expected variable spending per month (before seasonality).
     variable: i64,
-    /// Expected one-off income per month (already weighted).
+    /// Expected income per month outside the recurring series.
     one_off_income: i64,
+    /// Exceptional operations, not forecast.
+    left_out: Vec<(NaiveDate, String, i64)>,
     /// Mean monthly net of the transfers between accounts.
     transfers: i64,
 }
@@ -321,35 +411,52 @@ impl Model {
 
 /// Monthly sums of the parts of `ops` over `months`.
 struct Monthly {
-    variable: HashMap<Option<Id>, Vec<i64>>,
+    /// Variable spending (recurring series and exceptional expenses left
+    /// out).
+    variable: Vec<i64>,
     one_off_income: Vec<i64>,
+    /// All income, recurring series included.
+    income: Vec<i64>,
     transfers: Vec<i64>,
-    /// Net flow of every operation.
+    /// Net flow of every operation but the exceptional ones.
     net: Vec<i64>,
     /// Spending as the statistics count it (recurring included).
     spending: Vec<i64>,
 }
 
-fn monthly(ops: &[Op], months: &[NaiveDate], recurring: &HashSet<(String, bool)>) -> Monthly {
+fn monthly(
+    ops: &[Op],
+    months: &[NaiveDate],
+    recurring: &HashSet<(String, bool)>,
+    exceptional: &[bool],
+) -> Monthly {
     let n = months.len();
     let mut m = Monthly {
-        variable: HashMap::new(),
+        variable: vec![0; n],
         one_off_income: vec![0; n],
+        income: vec![0; n],
         transfers: vec![0; n],
         net: vec![0; n],
         spending: vec![0; n],
     };
-    for op in ops {
+    for (op, &exceptional) in ops.iter().zip(exceptional) {
         let Some(i) = month_index(months, op.date) else {
             continue;
         };
+        if !op.income && !op.transfer {
+            m.spending[i] -= op.amount;
+        }
+        // An exceptional expense or income is not forecast.
+        if exceptional {
+            continue;
+        }
         m.net[i] += op.amount;
+        if op.income && !op.transfer {
+            m.income[i] += op.amount;
+        }
         if op.transfer {
             m.transfers[i] += op.amount;
             continue;
-        }
-        if !op.income {
-            m.spending[i] -= op.amount;
         }
         if recurring.contains(&op.key()) {
             continue;
@@ -357,12 +464,44 @@ fn monthly(ops: &[Op], months: &[NaiveDate], recurring: &HashSet<(String, bool)>
         if op.income {
             m.one_off_income[i] += op.amount;
         } else {
-            m.variable
-                .entry(op.category_id)
-                .or_insert_with(|| vec![0; n])[i] -= op.amount;
+            m.variable[i] -= op.amount;
         }
     }
     m
+}
+
+/// Exceptional operations, outside the recurring series, with a label
+/// seen in one month only: an expense larger than the median month of
+/// variable spending, or an income larger than half of the median month of
+/// income (all of it, recurring series included).
+fn exceptional_operations(
+    ops: &[Op],
+    months: &[NaiveDate],
+    recurring: &HashSet<(String, bool)>,
+) -> Vec<bool> {
+    let none = vec![false; ops.len()];
+    let mut usual = monthly(ops, months, recurring, &none);
+    let spending = median(&mut usual.variable);
+    let income = median(&mut usual.income);
+    let mut seen_in: HashMap<(String, bool), HashSet<usize>> = HashMap::new();
+    for op in ops {
+        if let Some(i) = month_index(months, op.date) {
+            seen_in.entry(op.key()).or_default().insert(i);
+        }
+    }
+    ops.iter()
+        .map(|op| {
+            let isolated = !op.transfer
+                && !recurring.contains(&op.key())
+                && seen_in.get(&op.key()).map_or(0, HashSet::len) == 1;
+            isolated
+                && if op.income {
+                    op.amount > 0 && op.amount * 2 > income
+                } else {
+                    op.amount < 0 && spending > 0 && -op.amount > spending
+                }
+        })
+        .collect()
 }
 
 fn learn(ops: &[Op], months: &[NaiveDate]) -> (Model, Monthly) {
@@ -372,12 +511,19 @@ fn learn(ops: &[Op], months: &[NaiveDate]) -> (Model, Monthly) {
         .iter()
         .map(|r| (r.label_norm.clone(), r.amount < 0))
         .collect();
-    let sums = monthly(ops, months, &keys);
+    let exceptional = exceptional_operations(ops, months, &keys);
+    let sums = monthly(ops, months, &keys, &exceptional);
     let model = Model {
-        variable: sums.variable.values().map(|v| trimmed_mean(v)).sum(),
-        one_off_income: mean(&sums.one_off_income) / 2,
+        variable: mean(&sums.variable),
+        one_off_income: mean(&sums.one_off_income),
         transfers: mean(&sums.transfers),
         recurring,
+        left_out: ops
+            .iter()
+            .zip(&exceptional)
+            .filter(|(o, e)| **e && month_index(months, o.date).is_some())
+            .map(|(o, _)| (o.date, o.label.clone(), o.amount))
+            .collect(),
     };
     (model, sums)
 }
@@ -557,7 +703,7 @@ pub fn forecast(
             spending,
             income,
             balance,
-            half_width: (Z80 * sigma * (h as f64).sqrt()).round() as i64,
+            half_width: (Z80 * range_sigma(&errors, h)).round() as i64,
             partial,
         });
         month = next_month(month);
@@ -580,6 +726,7 @@ pub fn forecast(
         recurring: model.recurring,
         seasonal,
         sigma: sigma.round() as i64,
+        left_out: model.left_out,
     }))
 }
 
@@ -704,9 +851,99 @@ mod tests {
         for m in &f.months {
             assert_eq!(m.spending, 101_500);
         }
-        // The range reflects that the past was not that regular.
-        assert!(f.sigma > 0);
-        assert!(f.months[2].half_width > f.months[0].half_width);
+        // Not forecast, so it does not widen the range either, and the
+        // page says so.
+        assert_eq!(f.sigma, 0);
+        assert_eq!(
+            f.left_out,
+            vec![(d("2026-03-14"), "TELEVISEUR".into(), -150_000)]
+        );
+    }
+
+    #[test]
+    fn peaks_of_different_categories_are_kept() {
+        // Holidays in one month, insurance in another, taxes in a third:
+        // each is the highest month of its category, and together they
+        // are part of the usual spending.
+        let conn = open_in_memory().unwrap();
+        let scope = setup(&conn, 100_000);
+        for i in 0..6 {
+            perfect_month(&conn, month(i), i);
+        }
+        add(
+            &conn,
+            d("2026-02-10"),
+            "HOTEL DE LA PLAGE",
+            -24_000,
+            builtin::LEISURE,
+        );
+        add(
+            &conn,
+            d("2026-04-10"),
+            "ASSURANCE AUTO",
+            -24_000,
+            builtin::BANK_INSURANCE,
+        );
+        add(
+            &conn,
+            d("2026-06-10"),
+            "TAXE FONCIERE",
+            -24_000,
+            builtin::TAXES,
+        );
+        let f = ready(forecast(&conn, &scope, d("2026-07-15"), 6, 1).unwrap());
+        // 3 × 240,00 € over 6 months: 120,00 € a month more.
+        assert_eq!(f.months[0].spending, 101_500 + 12_000);
+        assert!(f.left_out.is_empty());
+    }
+
+    #[test]
+    fn salary_named_after_the_month_is_recurring() {
+        const MONTHS: [&str; 6] = ["JANVIER", "FEVRIER", "MARS", "AVRIL", "MAI", "JUIN"];
+        let conn = open_in_memory().unwrap();
+        let scope = setup(&conn, 0);
+        for i in 0..6 {
+            let day = |x: u32| month(i).with_day(x).unwrap();
+            add(
+                &conn,
+                day(28),
+                &format!("VIR SALAIRE {}", MONTHS[i as usize]),
+                200_000,
+                builtin::INCOME,
+            );
+            add(&conn, day(5), "LOYER", -70_000, builtin::HOUSING);
+        }
+        let f = ready(forecast(&conn, &scope, d("2026-07-15"), 6, 1).unwrap());
+        let salary = f.regular_income();
+        assert_eq!(salary.len(), 1);
+        assert_eq!((salary[0].amount, salary[0].day), (200_000, 28));
+        assert_eq!(f.months[0].income, 200_000);
+    }
+
+    #[test]
+    fn other_income_is_its_usual_month() {
+        // A salary whose amount varies too much to be a series, and one
+        // bonus: the mean of the salary, without the bonus (not half of
+        // everything as before).
+        let conn = open_in_memory().unwrap();
+        let scope = setup(&conn, 0);
+        let pay = [180_000, 200_000, 195_000, 230_000, 200_000, 190_000];
+        for i in 0..6 {
+            let day = |x: u32| month(i).with_day(x).unwrap();
+            add(
+                &conn,
+                day(1),
+                "VIR EMPLOYEUR",
+                pay[i as usize],
+                builtin::INCOME,
+            );
+        }
+        add(&conn, d("2026-06-15"), "PRIME", 300_000, builtin::INCOME);
+        let f = ready(forecast(&conn, &scope, d("2026-07-15"), 6, 1).unwrap());
+        assert!(f.regular_income().is_empty());
+        // (180 + 200 + 195 + 230 + 200 + 190) / 6
+        assert_eq!(f.months[0].income, 199_167);
+        assert_eq!(f.left_out, vec![(d("2026-06-15"), "PRIME".into(), 300_000)]);
     }
 
     #[test]

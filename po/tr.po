@@ -1199,6 +1199,11 @@ msgstr[1] "Alışkanlıklar {n} aya göre hesaplandı: geçmiş daha geriye gitm
 msgid "Saisonnalité non prise en compte : moins de 12 mois d’historique."
 msgstr "Mevsimsellik dikkate alınmadı: geçmiş 12 aydan kısa."
 
+msgid "Non reprise dans la prévision car exceptionnelle : {list}."
+msgid_plural "Non reprises dans la prévision car exceptionnelles : {list}."
+msgstr[0] "Olağan dışı olduğu için tahmine dahil edilmedi: {list}."
+msgstr[1] "Olağan dışı oldukları için tahmine dahil edilmedi: {list}."
+
 msgid "{month} (en cours)"
 msgstr "{month} (devam ediyor)"
 
