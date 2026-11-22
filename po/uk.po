@@ -285,6 +285,18 @@ msgstr "Ваші рахунки й історія імпорту"
 msgid "Thème sombre"
 msgstr "Темний стиль"
 
+msgid "Prévision plus réaliste."
+msgstr "Реалістичніший прогноз."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Очікувані витрати й надходження за фактичним середнім, без виняткових операцій"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Діапазон, виміряний за історією, вужчий на кілька місяців"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Виключені виняткові операції наведено під графіком"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Ручне введення операцій."
 

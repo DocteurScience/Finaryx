@@ -283,6 +283,18 @@ msgstr "账户和导入记录"
 msgid "Thème sombre"
 msgstr "深色样式"
 
+msgid "Prévision plus réaliste."
+msgstr "更贴近实际的预测。"
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "预计支出和收入按实际平均值计算，不含特殊交易"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "区间根据历史测算，数月后的区间更窄"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "被排除的特殊交易列在图表下方"
+
 msgid "Saisie manuelle des opérations."
 msgstr "手动录入交易。"
 

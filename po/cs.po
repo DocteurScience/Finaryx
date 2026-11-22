@@ -285,6 +285,18 @@ msgstr "Vaše účty a historie importů"
 msgid "Thème sombre"
 msgstr "Tmavý styl"
 
+msgid "Prévision plus réaliste."
+msgstr "Realističtější předpověď."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Očekávané výdaje a příjmy podle skutečného průměru, bez výjimečných transakcí"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Rozpětí měřené na historii, užší na několik měsíců dopředu"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Vynechané výjimečné transakce jsou uvedeny pod grafem"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Ruční zadávání transakcí."
 

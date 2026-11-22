@@ -284,6 +284,18 @@ msgstr "Hesaplarınız ve içe aktarma geçmişi"
 msgid "Thème sombre"
 msgstr "Koyu stil"
 
+msgid "Prévision plus réaliste."
+msgstr "Daha gerçekçi tahmin."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Beklenen harcama ve gelirler, olağan dışı işlemler hariç gerçek ortalamaya göre"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Geçmişe göre ölçülen aralık, birkaç ay için daha dar"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Dışarıda bırakılan olağan dışı işlemler grafiğin altında listelenir"
+
 msgid "Saisie manuelle des opérations."
 msgstr "İşlemlerin elle girilmesi."
 

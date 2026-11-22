@@ -284,6 +284,18 @@ msgstr "Your accounts and the import history"
 msgid "Thème sombre"
 msgstr "Dark style"
 
+msgid "Prévision plus réaliste."
+msgstr "More realistic forecast."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Expected spending and income from their actual average, without exceptional transactions"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Range measured on the history, narrower several months ahead"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Exceptional transactions left out are listed under the chart"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Manual entry of transactions."
 

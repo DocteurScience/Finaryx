@@ -284,6 +284,18 @@ msgstr "Dina konton och importhistoriken"
 msgid "Thème sombre"
 msgstr "Mörk stil"
 
+msgid "Prévision plus réaliste."
+msgstr "Mer realistisk prognos."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Förväntade utgifter och inkomster utifrån det faktiska genomsnittet, utan exceptionella transaktioner"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Intervall mätt på historiken, smalare flera månader fram"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Utelämnade exceptionella transaktioner listas under diagrammet"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Manuell inmatning av transaktioner."
 

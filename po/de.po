@@ -284,6 +284,18 @@ msgstr "Ihre Konten und der Importverlauf"
 msgid "Thème sombre"
 msgstr "Dunkler Stil"
 
+msgid "Prévision plus réaliste."
+msgstr "Realistischere Prognose."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Erwartete Ausgaben und Einnahmen nach ihrem tatsächlichen Durchschnitt, ohne außergewöhnliche Buchungen"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Spanne aus dem Verlauf gemessen, über mehrere Monate schmaler"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Ausgeschlossene außergewöhnliche Buchungen werden unter dem Diagramm aufgeführt"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Manuelle Eingabe von Buchungen."
 

@@ -83,6 +83,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.1-beta" type="development" date="2026-11-22">
+      <description>
+        <p>Prévision plus réaliste.</p>
+        <ul>
+          <li>Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles</li>
+          <li>Fourchette mesurée sur l’historique, moins large à plusieurs mois</li>
+          <li>Opérations exceptionnelles écartées listées sous le graphique</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.0-beta" type="development" date="2026-11-21">
       <description>
         <p>Saisie manuelle des opérations.</p>

@@ -284,6 +284,18 @@ msgstr "Uw rekeningen en de importgeschiedenis"
 msgid "Thème sombre"
 msgstr "Donkere stijl"
 
+msgid "Prévision plus réaliste."
+msgstr "Realistischere prognose."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Verwachte uitgaven en inkomsten op basis van het werkelijke gemiddelde, zonder uitzonderlijke transacties"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Bandbreedte gemeten op de geschiedenis, smaller over meerdere maanden"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Weggelaten uitzonderlijke transacties staan onder de grafiek"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Handmatige invoer van transacties."
 

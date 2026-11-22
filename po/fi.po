@@ -284,6 +284,18 @@ msgstr "Tilisi ja tuontihistoria"
 msgid "Thème sombre"
 msgstr "Tumma tyyli"
 
+msgid "Prévision plus réaliste."
+msgstr "Realistisempi ennuste."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Odotetut menot ja tulot todellisen keskiarvon mukaan ilman poikkeuksellisia tapahtumia"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Vaihteluväli mitattu historiasta, kapeampi usean kuukauden päähän"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Pois jätetyt poikkeukselliset tapahtumat luetellaan kaavion alla"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Tapahtumien syöttäminen käsin."
 

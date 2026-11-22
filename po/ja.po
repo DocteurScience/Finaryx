@@ -283,6 +283,18 @@ msgstr "口座とインポート履歴"
 msgid "Thème sombre"
 msgstr "ダークスタイル"
 
+msgid "Prévision plus réaliste."
+msgstr "より現実的な予測。"
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "予想支出と収入を例外的な取引を除いた実際の平均から算出"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "履歴から測った幅で、数か月先でも狭く"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "除外した例外的な取引をグラフの下に表示"
+
 msgid "Saisie manuelle des opérations."
 msgstr "取引の手入力。"
 

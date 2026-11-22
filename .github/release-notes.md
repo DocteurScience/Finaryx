@@ -1,12 +1,11 @@
-Finaryx 0.2.0 bêta : saisie manuelle des opérations. Vos données restent sur votre ordinateur : aucune requête réseau, aucune télémétrie.
+Finaryx 0.2.1 bêta : une prévision plus réaliste. Vos données restent sur votre ordinateur : aucune requête réseau, aucune télémétrie.
 
 Finaryx est en version bêta : tout fonctionne, mais l’application évolue encore et des défauts peuvent subsister. Faites des sauvegardes régulières (menu principal › Exporter les données).
 
-- Ajoutez une opération à la main (Ctrl+N, menu principal, bouton « + » de la liste des opérations ou du détail d’un compte) : date, libellé, dépense ou entrée, montant, catégorie proposée d’après le libellé
-- Les saisies portent le badge « Saisie manuelle » et se modifient ou se suppriment avec le crayon ; les opérations importées restent inchangées
-- Comptes tenus entièrement à la main (espèces, banque sans export) : le solde actuel peut être indiqué dès la création du compte
-- À l’import, une saisie retrouvée dans le relevé (même compte, même montant, à 7 jours près) est proposée au remplacement par l’opération de la banque, qui garde la catégorie choisie ; rien n’est remplacé sans votre accord
-- La base de données est mise à niveau automatiquement à la première ouverture ; une sauvegarde reste conseillée avant la mise à jour (menu principal › Exporter les données)
+- Dépenses prévues : la moyenne réelle de vos mois. Le calcul précédent écartait le mois le plus élevé de chaque catégorie (vacances, assurance, impôts…), ce qui sous-estimait les dépenses et rendait la prévision trop optimiste.
+- Revenus prévus : leur moyenne réelle. Un salaire non reconnu comme régulier n’est plus compté à moitié, et un salaire dont le libellé contient le mois (« VIR SALAIRE NOVEMBRE ») est reconnu.
+- Seules les opérations vraiment exceptionnelles sont écartées (un achat important isolé, une prime) ; elles sont listées sous le graphique pour que vous puissiez vérifier.
+- Fourchette : mesurée sur votre historique (un mois chargé est souvent suivi d’un mois plus calme), donc moins large à plusieurs mois. Avec peu d’historique, elle reste prudente.
 
 Installation : téléchargez l’un des deux fichiers ci-dessous (ajoutés automatiquement quelques minutes après la publication).
 

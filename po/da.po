@@ -284,6 +284,18 @@ msgstr "Dine konti og importhistorikken"
 msgid "Thème sombre"
 msgstr "Mørk stil"
 
+msgid "Prévision plus réaliste."
+msgstr "Mere realistisk prognose."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Forventede udgifter og indtægter ud fra det faktiske gennemsnit, uden usædvanlige transaktioner"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Interval målt på historikken, smallere flere måneder frem"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Udeladte usædvanlige transaktioner vises under diagrammet"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Manuel indtastning af transaktioner."
 

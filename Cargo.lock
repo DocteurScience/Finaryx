@@ -217,7 +217,7 @@ dependencies = [
 
 [[package]]
 name = "finaryx"
-version = "0.2.0-beta"
+version = "0.2.1-beta"
 dependencies = [
  "chrono",
  "finaryx-core",
@@ -230,7 +230,7 @@ dependencies = [
 
 [[package]]
 name = "finaryx-core"
-version = "0.2.0-beta"
+version = "0.2.1-beta"
 dependencies = [
  "chrono",
  "csv",

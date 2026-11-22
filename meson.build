@@ -1,7 +1,7 @@
 project(
   'finaryx',
   'rust',
-  version: '0.2.0-beta',
+  version: '0.2.1-beta',
   license: 'AGPL-3.0-or-later',
   meson_version: '>= 1.0',
 )

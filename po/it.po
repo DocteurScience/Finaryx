@@ -284,6 +284,18 @@ msgstr "I tuoi conti e la cronologia delle importazioni"
 msgid "Thème sombre"
 msgstr "Stile scuro"
 
+msgid "Prévision plus réaliste."
+msgstr "Previsione più realistica."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Spese ed entrate previste in base alla media reale, senza i movimenti eccezionali"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Intervallo misurato sullo storico, più stretto a più mesi"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "I movimenti eccezionali esclusi sono elencati sotto il grafico"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Inserimento manuale dei movimenti."
 

@@ -285,6 +285,18 @@ msgstr "Twoje konta i historia importów"
 msgid "Thème sombre"
 msgstr "Ciemny styl"
 
+msgid "Prévision plus réaliste."
+msgstr "Bardziej realistyczna prognoza."
+
+msgid "Dépenses et revenus prévus d’après leur moyenne réelle, sans les opérations exceptionnelles"
+msgstr "Przewidywane wydatki i wpływy według rzeczywistej średniej, bez operacji wyjątkowych"
+
+msgid "Fourchette mesurée sur l’historique, moins large à plusieurs mois"
+msgstr "Przedział mierzony na historii, węższy w perspektywie kilku miesięcy"
+
+msgid "Opérations exceptionnelles écartées listées sous le graphique"
+msgstr "Pominięte operacje wyjątkowe wymienione pod wykresem"
+
 msgid "Saisie manuelle des opérations."
 msgstr "Ręczne wprowadzanie operacji."
 
