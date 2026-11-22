@@ -83,7 +83,7 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="0.2.0" date="2026-11-21">
+    <release version="0.2.0-beta" type="development" date="2026-11-21">
       <description>
         <p>Saisie manuelle des opérations.</p>
         <ul>
@@ -93,7 +93,7 @@
         </ul>
       </description>
     </release>
-    <release version="0.1.1" date="2026-11-20">
+    <release version="0.1.1-beta" type="development" date="2026-11-20">
       <description>
         <p>Corrections et améliorations après la première version.</p>
         <ul>
@@ -105,7 +105,7 @@
         </ul>
       </description>
     </release>
-    <release version="0.1.0" date="2026-11-12">
+    <release version="0.1.0-beta" type="development" date="2026-11-12">
       <description>
         <p>Première version.</p>
         <ul>

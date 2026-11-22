@@ -1,4 +1,6 @@
-Finaryx 0.2.0 : saisie manuelle des opérations. Vos données restent sur votre ordinateur : aucune requête réseau, aucune télémétrie.
+Finaryx 0.2.0 bêta : saisie manuelle des opérations. Vos données restent sur votre ordinateur : aucune requête réseau, aucune télémétrie.
+
+Finaryx est en version bêta : tout fonctionne, mais l’application évolue encore et des défauts peuvent subsister. Faites des sauvegardes régulières (menu principal › Exporter les données).
 
 - Ajoutez une opération à la main (Ctrl+N, menu principal, bouton « + » de la liste des opérations ou du détail d’un compte) : date, libellé, dépense ou entrée, montant, catégorie proposée d’après le libellé
 - Les saisies portent le badge « Saisie manuelle » et se modifient ou se suppriment avec le crayon ; les opérations importées restent inchangées

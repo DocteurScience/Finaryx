@@ -140,10 +140,15 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] && [ "$GITHUB_REF" != refs/heads/main ]; then
             echo "Publish from main only."; exit 1
           fi
+          # X.Y.Z-beta: published as a pre-release, "(bêta)" in the title.
+          case "$version" in
+            *-beta*) title="Finaryx ${version%%-beta*} (bêta)"; pre=--prerelease ;;
+            *) title="Finaryx $version"; pre= ;;
+          esac
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release edit "$TAG" --notes-file .github/release-notes.md
+            gh release edit "$TAG" --title "$title" $pre --notes-file .github/release-notes.md
           else
-            gh release create "$TAG" --title "Finaryx $version" \
+            gh release create "$TAG" --title "$title" $pre \
               --notes-file .github/release-notes.md --target "$GITHUB_SHA"
           fi
           gh release upload "$TAG" dist/finaryx.flatpak dist/finaryx.snap --clobber
